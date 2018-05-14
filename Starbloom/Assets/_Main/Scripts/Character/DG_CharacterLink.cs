@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DG_CharacterLink : MonoBehaviour {
 
-    public DG_BasicCharMovement PlayerChar = null;
+    public Locomotion PlayerChar = null;
     public DG_ContextCheckHandler ContextCheck = null;
     public Transform PlayerT;
     public GameObject CharacterFacing = null;

@@ -16,8 +16,11 @@ public class MoveInput : MonoBehaviour
 		DG_PlayerInput.Player MP = QuickFind.InputController.MainPlayer;
 		if (MP.VerticalAxis != 0 || MP.HorizontalAxis != 0)
 			InputDetected = true;
-
+			
 		Vector3 inputVec = new Vector3(MP.HorizontalAxis, 0f, MP.VerticalAxis);
+		if (inputVec.magnitude > 1f)
+			inputVec.Normalize();
+
 		inputVec = Quaternion.Euler(0f, Camera.main.transform.rotation.eulerAngles.y, 0f) * inputVec; 
 
 		MoveController.SetInput( inputVec );
