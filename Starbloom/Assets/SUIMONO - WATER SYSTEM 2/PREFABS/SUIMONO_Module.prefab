@@ -911,10 +911,10 @@ MonoBehaviour:
   underwaterDebrisTransform: {fileID: 489560}
   underwaterDebrisRendererComponent: {fileID: 19961148}
   meshLevel:
-  - {fileID: 4300000, guid: f301f5ef8755d3d46b73665135298c4c, type: 3}
-  - {fileID: 4300002, guid: f301f5ef8755d3d46b73665135298c4c, type: 3}
-  - {fileID: 4300004, guid: f301f5ef8755d3d46b73665135298c4c, type: 3}
-  - {fileID: 4300006, guid: f301f5ef8755d3d46b73665135298c4c, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   shaderRepository:
   - {fileID: 4800000, guid: fd654610d0032bc41bacb0ff65c265bb, type: 3}
   - {fileID: 4800000, guid: e5880a40c6899cc48b0d4c22c09ea754, type: 3}
@@ -1026,10 +1026,10 @@ MonoBehaviour:
   abovewaterSound: {fileID: 8300000, guid: 627e0791d8d3f9248820dc5a725885b2, type: 3}
   underwaterSound: {fileID: 8300000, guid: 8f1b255d85888a9408fe3e75cc960dc3, type: 3}
   defaultSplashSound:
-  - {fileID: 8300000, guid: c602b9eea54a6d64d8464120f49341c6, type: 3}
-  - {fileID: 8300000, guid: 831fc30dbd5721644bb40e62a6d2338b, type: 3}
-  - {fileID: 8300000, guid: 486cdcdaf39e07f4686d2f5d84054b70, type: 3}
-  - {fileID: 8300000, guid: 952453ae2ff2c8b499b58a459b8ea343, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &11499628
 MonoBehaviour:
   m_ObjectHideFlags: 1
