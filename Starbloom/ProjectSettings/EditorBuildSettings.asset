@@ -4,5 +4,23 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/_Main/Scenes/Main.unity
+    guid: a3a440efc98c4574eaa8d425480182c8
+  - enabled: 1
+    path: Assets/_Main/Scenes/Additive/ProceduralEnvironment.unity
+    guid: dc21368e78a619740ad56702e6b300ed
+  - enabled: 1
+    path: Assets/_Main/Scenes/Additive/InGameHUD.unity
+    guid: c3ab0c4715b90054d92b4c2c3715fc2f
+  - enabled: 1
+    path: Assets/_Main/Scenes/Additive/Management.unity
+    guid: 193436bca3aed50499731be5c45ad142
+  - enabled: 1
+    path: Assets/_Main/Scenes/Additive/Networking.unity
+    guid: dbfc68ce425e5cb40beab2b37fcf2952
+  - enabled: 1
+    path: Assets/_Main/Scenes/Additive/Fade Handler.unity
+    guid: c5d1df5096f2a28449063409c388695d
   m_configObjects: {}

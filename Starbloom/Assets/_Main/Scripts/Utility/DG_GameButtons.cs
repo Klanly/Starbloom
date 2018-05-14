@@ -29,42 +29,56 @@ public class DG_GameButtons
     [System.Serializable]
     public class JoyAxis
     {
-        public float Value;
+        
         public bool Inverted = false;
         public string InputString;
         public bool InvertedAlt = false;
-        public string AltInputString;  
-        [HideInInspector] public bool Held;
-        [HideInInspector] public bool Up;
-        [HideInInspector] public bool Positive;
+        public string AltInputString;
 
-        public void Check()
+        //[HideInInspector]
+        public float Value;
+        //[HideInInspector]
+        public bool Held;
+        //[HideInInspector]
+        public bool Up;
+        //[HideInInspector]
+        public bool Positive;
+
+        public void Check(JoyAxis Joy)
         {
-            bool AxisIsGreater = true;
             //Joy Stick Check
+            bool Detected = false;
             float Axis = Input.GetAxis(InputString);
             if (Inverted) Axis = -Axis;
-            float AltAxis = Input.GetAxis(AltInputString);
-            if (InvertedAlt) AltAxis = -AltAxis;
-            if (Axis > 0.1f || AltAxis > 0.1f)
-                { Positive = true; Held = true; if (Axis > AltAxis) AxisIsGreater = true; }
-            else if (Axis < -0.1f || AltAxis < -0.1f)
-                { Positive = false; Held = true; if (Axis < AltAxis) AxisIsGreater = true; }
-            else if (Held)
-                { Held = false; Up = true; }
-            else
-                { Held = false; Up = false; }
-
-            if (AxisIsGreater)
+            Detected = CheckDetection(Axis, Joy);
+            if (Detected)
                 Value = Axis;
-            else
-                Value = AltAxis;
+            else if (AltInputString != string.Empty)
+            {
+                float AltAxis = Input.GetAxis(AltInputString);
+                if (InvertedAlt) AltAxis = -AltAxis;
+                Detected = CheckDetection(AltAxis, Joy);
+                if (Detected)
+                    Value = AltAxis;
+            }
+
+            if (!Detected)
+            {
+                if (Held) { Held = false; Up = true; }
+                    else { Held = false; Up = false; }
+            }
+        }
+        bool CheckDetection(float AxisValue, JoyAxis Joy)
+        {
+            if (AxisValue > 0.1f) { Joy.Positive = true; Joy.Held = true;
+                return true; }
+            else if (AxisValue < -0.1f) { Joy.Positive = false; Joy.Held = true;
+                return true; }
+
+            return false;
         }
     }
 
-
-
-    //This could be a list, but might start getting a little harder to figure it out later.
 
 
 
@@ -86,6 +100,9 @@ public class DG_GameButtons
     [Header("------ Joy Axis --------------------------------------------")]
     public JoyAxis JoyVert;
     public JoyAxis JoyHor;
+    [Header("Right Stick")]
+    public JoyAxis RJoyVert;
+    public JoyAxis RJoyHor;
     ////////////////////////////////////
 
 
@@ -104,9 +121,11 @@ public class DG_GameButtons
         //Start / Select ////////////////////////////////////////////////////////
         StartBut.Check();
         //Joy Axis ////////////////////////////////////////////////////////
-        JoyVert.Check();
-        JoyHor.Check();
-}
+        JoyVert.Check(JoyVert);
+        JoyHor.Check(JoyHor);
+        RJoyVert.Check(RJoyVert);
+        RJoyHor.Check(RJoyHor);
+    }
 
 
 

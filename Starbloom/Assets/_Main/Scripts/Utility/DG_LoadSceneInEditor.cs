@@ -24,6 +24,7 @@ public class DG_LoadSceneInEditor : MonoBehaviour
     public class SceneLink
     {
         [Header("-----------------------------------------------")]
+        public bool DebugDoNotLoad = false;
         public string SceneName;
         [Multiline(5)]
         public string EditorSceneFolderPath;
@@ -55,6 +56,8 @@ public class DG_LoadSceneInEditor : MonoBehaviour
             for (int ind = 0; ind < AdditiveSceneLinks.Length; ind++)
             {
                 SceneLink AdditiveScene = AdditiveSceneLinks[ind];
+                if (AdditiveScene.DebugDoNotLoad)
+                    continue;
                 for (int i = 0; i < scenecount; i++)
                 {
                     Scene SC = EditorSceneManager.GetSceneAt(i);
@@ -77,6 +80,8 @@ public class DG_LoadSceneInEditor : MonoBehaviour
             for (int ind = 0; ind < AdditiveSceneLinks.Length; ind++)
             {
                 SceneLink AdditiveScene = AdditiveSceneLinks[ind];
+                if (AdditiveScene.DebugDoNotLoad)
+                    continue;
                 for (int i = 0; i < scenecount; i++)
                 {
                     Scene SC = SceneManager.GetSceneAt(i);
@@ -88,6 +93,7 @@ public class DG_LoadSceneInEditor : MonoBehaviour
             }
         }
     }
+
 
 
 
