@@ -30,22 +30,19 @@ public class DG_PlayerInput : MonoBehaviour {
 
         [HideInInspector] public DG_CharacterLink CharLink;
         [HideInInspector] public InputStateModes InputState = InputStateModes.Normal;
+        [Header("Context Detection")] public ContextDetection Context;
+
 
         [HideInInspector] public bool NoActionThisFrame; //Added to Enable Double clicking with Unity's built in button system.
         [HideInInspector] public bool Moveable = true;
         [HideInInspector] public bool InVehicle = false;
         [HideInInspector] public bool ShowCursor = true;
 
-
         [HideInInspector] public float VerticalAxis;
         [HideInInspector] public float HorizontalAxis;
-
-
-        [Header("Context Detection")]
-        public ContextDetection Context;
-
-        [Header("Button Set")]
-        public DG_GameButtons ButtonSet;
+        [HideInInspector] public float CamVerticalAxis;
+        [HideInInspector] public float CamHorizontalAxis;
+        [Header("Button Set")] public DG_GameButtons ButtonSet;
     }
 
     [Header("Debug")]
@@ -74,33 +71,36 @@ public class DG_PlayerInput : MonoBehaviour {
         MainPlayer.ButtonSet.CheckButtons();
 
 
+        //Example of fetching Input buttons.
+        //QuickFind.InputController.MainPlayer.ButtonSet.Action.Up; 
+
+
         float JoystickVertical = 0;
         float JoystickHorizontal = 0;
-
-        //Direction Check
+        //Wasd Check
         if (MainPlayer.ButtonSet.UpDir.Held) JoystickVertical = 1;
         if (MainPlayer.ButtonSet.DownDir.Held) JoystickVertical = -1;
         if (MainPlayer.ButtonSet.RightDir.Held) JoystickHorizontal = 1;
         if (MainPlayer.ButtonSet.LeftDir.Held) JoystickHorizontal = -1;
-
-        if (MainPlayer.ButtonSet.JoyVert.Held)
-            JoystickVertical = MainPlayer.ButtonSet.JoyVert.Value;
-        if (MainPlayer.ButtonSet.JoyHor.Held)
-            JoystickHorizontal = MainPlayer.ButtonSet.JoyHor.Value;
-
-
-
+        //Controller Left Stick Check
+        if (MainPlayer.ButtonSet.JoyVert.Held) JoystickVertical = MainPlayer.ButtonSet.JoyVert.Value;
+        if (MainPlayer.ButtonSet.JoyHor.Held) JoystickHorizontal = MainPlayer.ButtonSet.JoyHor.Value;
+        //Set Values
         MainPlayer.VerticalAxis = JoystickVertical;
         MainPlayer.HorizontalAxis = JoystickHorizontal;
+        
 
-
-        if (MainPlayer.ButtonSet.Interact.Up) //Primary Action Key
-        {
-
-        }
-
-
-
+        JoystickVertical = 0;
+        JoystickHorizontal = 0;
+        //Camera Axis Check
+        bool MiddleMouseHeld = Input.GetMouseButton(2);
+        if (MainPlayer.ButtonSet.RJoyVert.Held) JoystickVertical = MainPlayer.ButtonSet.RJoyVert.Value;
+            else if (MiddleMouseHeld) JoystickVertical = Input.GetAxis("Vertical");
+        if (MainPlayer.ButtonSet.RJoyHor.Held) JoystickHorizontal = MainPlayer.ButtonSet.RJoyHor.Value;
+            else if (MiddleMouseHeld) JoystickHorizontal = Input.GetAxis("Horizontal");
+        //Set Values
+        MainPlayer.CamVerticalAxis = JoystickVertical;
+        MainPlayer.CamHorizontalAxis = JoystickHorizontal;
     }
 
 

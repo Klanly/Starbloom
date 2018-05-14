@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class DG_CharacterLink : MonoBehaviour {
 
-    public Locomotion PlayerChar = null;
     public DG_ContextCheckHandler ContextCheck = null;
+
+    public MoveInput CharInput = null;
+    public Locomotion PlayerChar = null;
+    public LocomotionAnim CharAnim = null;
+
     public Transform PlayerT;
-    public GameObject CharacterFacing = null;
 
     bool Allow = false;
 
@@ -15,9 +18,11 @@ public class DG_CharacterLink : MonoBehaviour {
 
     private void Awake()
     {
-        PlayerChar.enabled = false;
         ContextCheck.enabled = false;
-        CharacterFacing.SetActive(false);
+
+        CharInput.enabled = false;
+        PlayerChar.enabled = false;
+        CharAnim.enabled = false;
     }
 
 
@@ -44,12 +49,13 @@ public class DG_CharacterLink : MonoBehaviour {
             return;
         }
 
-        PlayerChar.enabled = true;
         ContextCheck.enabled = true;
-        CharacterFacing.SetActive(true);
+
+        CharInput.enabled = true;
+        PlayerChar.enabled = true;
+        CharAnim.enabled = true;
 
         QuickFind.InputController.MainPlayer.CharLink = this;
-
         QuickFind.PlayerCam.CharTrans = PlayerChar.transform;
 
         this.enabled = false;

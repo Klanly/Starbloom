@@ -7,10 +7,12 @@ public class CameraLogic : MonoBehaviour {
     public Transform CharTrans;
     public Camera MainCam;
 
-    [Header("Debug")]
+    [Header("Camera Control")]
     public bool AllowCameraPanning;
     public float MousePanHorSpeed;
     public float MousePanVertSpeed;
+    public float JoyPanHorSpeed;
+    public float JoyPanVertSpeed;
 
 
     Transform _T;
@@ -31,11 +33,20 @@ public class CameraLogic : MonoBehaviour {
 
         if (AllowCameraPanning)
         {
-            if (Input.GetMouseButton(2))
+            DG_PlayerInput.Player MP = QuickFind.InputController.MainPlayer;
+            if (MP.CamVerticalAxis != 0 || MP.CamHorizontalAxis != 0)
             {
                 Vector3 CurAngle = _T.eulerAngles;
-                CurAngle.x += Input.GetAxis("Vertical") * -MousePanHorSpeed;
-                CurAngle.y += Input.GetAxis("Horizontal") * MousePanVertSpeed;
+
+                float VertMult = -MousePanVertSpeed;
+                if (MP.ButtonSet.RJoyVert.Held) VertMult = JoyPanVertSpeed;
+                float HorMult = MousePanHorSpeed;
+                if (MP.ButtonSet.RJoyHor.Held) HorMult = JoyPanHorSpeed;
+
+
+                CurAngle.x += MP.CamVerticalAxis * VertMult;
+                CurAngle.y += MP.CamHorizontalAxis * HorMult;
+
                 _T.eulerAngles = CurAngle;
             }
         }

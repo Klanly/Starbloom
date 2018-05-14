@@ -8,6 +8,37 @@ using System.Collections.Generic;
 
 #if UNITY_EDITOR
 using UnityEditor.SceneManagement;
+public static class QuickFindInEditor
+{
+    public static NodeViewOptions NodeViewOptions = null;
+    public static NodeViewOptions GetEditorNodeViewOptions()
+    {
+        if (GameObject.Find("NodeViewerOptions") != null)
+            return GameObject.Find("NodeViewerOptions").GetComponent<NodeViewOptions>();
+        else
+        {
+            EditorSceneManager.OpenScene("Assets/_Main/Scenes/Additive/EditorOnly/EditorOnlyScene.unity", OpenSceneMode.Additive);
+            return GameObject.Find("NodeViewerOptions").GetComponent<NodeViewOptions>();
+        }
+    }
+
+
+    //Database
+    public static DG_DialogueManager GetEditorDialogueManager() { return GameObject.Find("Dialogue Database").GetComponent<DG_DialogueManager>(); }
+    public static DG_WordDatabase GetEditorWordDatabase() { return GameObject.Find("Word Database").GetComponent<DG_WordDatabase>(); }
+    public static DG_QuestDatabase GetEditorQuestDatabase() { return GameObject.Find("Quest Database").GetComponent<DG_QuestDatabase>(); }
+    public static DG_ItemsDatabase GetEditorItemDatabase() { return GameObject.Find("Item Database").GetComponent<DG_ItemsDatabase>(); }
+    public static DG_CharacterDatabase GetEditorCharacterDatabase() { return GameObject.Find("Character Database").GetComponent<DG_CharacterDatabase>(); }
+    public static DG_ColorCodes GetEditorColorCodes() { return GameObject.Find("Color Database").GetComponent<DG_ColorCodes>(); }
+
+    //Save Data
+    public static DG_DataBoolManager GetEditorDataBools() { return GameObject.Find("Bool Tracker").GetComponent<DG_DataBoolManager>(); }
+    public static DG_DataIntManager GetEditorDataInts() { return GameObject.Find("Int Tracker").GetComponent<DG_DataIntManager>(); }
+    public static DG_DataFloatManager GetEditorDataFloats() { return GameObject.Find("Float Tracker").GetComponent<DG_DataFloatManager>(); }
+    public static DG_DataStringManager GetEditorDataStrings() { return GameObject.Find("String Tracker").GetComponent<DG_DataStringManager>(); }
+    public static UserSettings GetEditorUserSettings() { return GameObject.Find("Player Settings").GetComponent<UserSettings>(); }
+
+}
 #endif
 
 
@@ -20,16 +51,53 @@ public static class QuickFind
     public static DG_PlayerInput InputController = null;
     public static DG_CharacterControllers CharacterManager = null;
 
+
     //GUI
+    public static DG_GUIMainMenu MainMenuUI = null;
     public static DG_GUI_FadeScreen FadeScreen = null;
+    public static NA_DialogueGUIController DialogueGUIController = null;
+    public static DG_TextPrintout TextPrintout = null;
+    public static DG_GUINameChange NameChangeUI = null;
+    public static DG_GUIControllerGhange ControllerChange = null;
+    public static DG_GUIContextHandler GUIContextHandler = null;
+
 
     //Cameras
     public static CameraLogic PlayerCam;
+    public static EZCameraShake.CameraShaker CameraShake = null;
 
 
     //Network
     public static ConnectAndJoinRandom NetworkMaster = null;
     public static DG_NetworkSync IDMaster = null;
+
+
+    //Database
+    public static DG_DialogueManager DialogueManager = null;
+    public static DG_WordDatabase WordDatabase = null;
+    public static DG_QuestDatabase QuestDatabase = null;
+    public static DG_ItemsDatabase ItemDatabase = null;
+    public static DG_CharacterDatabase CharacterDatabase = null;
+    public static DG_ColorCodes ColorDatabase = null;
+
+    //To Be removed
+    public static DG_PlayerInventory PlayerInventory = null;
+
+
+    //Save Data
+    public static DG_DataBoolManager DataBools = null;
+    public static DG_DataIntManager DataInts = null;
+    public static DG_DataFloatManager DataFloats = null;
+    public static DG_DataStringManager DataStrings = null;
+    public static UserSettings UserSettings = null;
+
+
+    //Serialization
+    public static DG_LocalDataHandler SaveHandler;
+
+
+    //Debug
+    public static DG_DebugSettings GameSettings = null;
 
 
 

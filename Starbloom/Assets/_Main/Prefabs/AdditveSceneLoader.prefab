@@ -67,7 +67,7 @@ Transform:
   m_GameObject: {fileID: 1889277932147788}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1000, y: 1, z: 1000}
+  m_LocalScale: {x: 10, y: 1, z: 10}
   m_Children: []
   m_Father: {fileID: 4225600225369534}
   m_RootOrder: 0
@@ -87,7 +87,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 0b1af9419dc8fd0458d208780f7d6704, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -142,13 +142,18 @@ MonoBehaviour:
   LoadAdditiveSceneInEditor: 1
   LoadAdditiveSceneOnPlay: 1
   AdditiveSceneLinks:
-  - SceneName: ProceduralEnvironment
+  - DebugDoNotLoad: 0
+    SceneName: ProceduralEnvironment
     EditorSceneFolderPath: Assets/_Main/Scenes/Additive/
-  - SceneName: InGameHUD
+  - DebugDoNotLoad: 0
+    SceneName: InGameHUD
     EditorSceneFolderPath: Assets/_Main/Scenes/Additive/
-  - SceneName: Management
+  - DebugDoNotLoad: 0
+    SceneName: Management
     EditorSceneFolderPath: Assets/_Main/Scenes/Additive/
-  - SceneName: Networking
+  - DebugDoNotLoad: 0
+    SceneName: Networking
     EditorSceneFolderPath: Assets/_Main/Scenes/Additive/
-  - SceneName: Fade Handler
+  - DebugDoNotLoad: 0
+    SceneName: Fade Handler
     EditorSceneFolderPath: Assets/_Main/Scenes/Additive/
