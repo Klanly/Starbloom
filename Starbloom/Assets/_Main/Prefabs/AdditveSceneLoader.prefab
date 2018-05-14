@@ -150,3 +150,5 @@ MonoBehaviour:
     EditorSceneFolderPath: Assets/_Main/Scenes/Additive/
   - SceneName: Networking
     EditorSceneFolderPath: Assets/_Main/Scenes/Additive/
+  - SceneName: Fade Handler
+    EditorSceneFolderPath: Assets/_Main/Scenes/Additive/

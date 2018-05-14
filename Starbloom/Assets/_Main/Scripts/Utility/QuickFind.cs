@@ -21,7 +21,7 @@ public static class QuickFind
     public static DG_CharacterControllers CharacterManager = null;
 
     //GUI
-
+    public static DG_GUI_FadeScreen FadeScreen = null;
 
     //Cameras
     public static CameraLogic PlayerCam;
