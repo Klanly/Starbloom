@@ -715,7 +715,7 @@ bool totalEclipse = false;
 		//GET CAMERA OBJECT
 		if (Application.isPlaying){
 			if (mainCamera == null){
-				mainCamera = Camera.main.transform;
+				mainCamera = QuickFind.PlayerCam.MainCam.transform;
 			}
 		}
 
