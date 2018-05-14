@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 055d9e817650c7f47806535d619c5edf
+labels:
+- networking
+- network
+- transform
+- sync
+- synchronization
+- buffer
+- photon
+- unet
+- netcode
+- smooth
+- AnySync
+- websocket
+timeCreated: 1521762153
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
