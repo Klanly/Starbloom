@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class DG_GUI_FadeScreen : MonoBehaviour {
 
@@ -18,61 +19,100 @@ public class DG_GUI_FadeScreen : MonoBehaviour {
         [Header("--------------------------------")]
         public FadeInSpeeds Speed;
         public float Time;
-        public DG.Tweening.Ease EaseMode;
     }
 
     [Header("Links")]
-    public Canvas FadeCanvas = null;
     public UnityEngine.UI.Image FadeImage = null;
 
     [Header("Times")]
     public SpeedTimes[] FadeInTimes;
     public SpeedTimes[] FadeOutTimes;
 
-    [Header("Callbacks")]
-    public UnityEngine.Events.UnityEvent FadeOutComplete;
-    public UnityEngine.Events.UnityEvent FadeInComplete;
-
-
 
     float Timer;
+    bool isFadeIn = false;
     SpeedTimes CurrentSpeedTime;
-
+    GameObject ReturnO;
+    string ReturnM;
 
 
     private void Awake()
     {
         QuickFind.FadeScreen = this;
     }
-
     private void Start()
     {
         this.enabled = false;
     }
 
 
+
+
+
     private void Update()
     {
-        
+        Timer = Timer - Time.deltaTime;
+        SetCanvas(Timer);
+
+        if (Timer < 0)
+        {
+            if(ReturnO != null)
+                ReturnO.SendMessage(ReturnM);
+            this.enabled = false;
+        }
     }
 
 
 
-
-    public void FadeOut(FadeInSpeeds Speed)
+    void SetCanvas(float TimeValue)
     {
-        //CurrentSpeedTime = 
+        float value = 0;
+        if (isFadeIn) value = TimeValue / CurrentSpeedTime.Time;
+            else value = (CurrentSpeedTime.Time - TimeValue) / CurrentSpeedTime.Time;
+            
+        if (value < 0) value = 0;
+            else if (value > 1) value = 1;
+
+        Color C = FadeImage.color;
+        C.a = value;
+        FadeImage.color = C;
     }
-    public void FadeIn(FadeInSpeeds Speed)
+
+
+
+    public void FadeOut(FadeInSpeeds Speed, GameObject ReturnObj = null, string ReturnMessage = "")
     {
-
+        ReturnO = ReturnObj;
+        ReturnM = ReturnMessage;
+        CurrentSpeedTime = GetNewSpeedTime(FadeOutTimes, Speed);
+        SetFade(false);
+    }
+    public void FadeIn(FadeInSpeeds Speed, GameObject ReturnObj = null, string ReturnMessage = "")
+    {
+        ReturnO = ReturnObj;
+        ReturnM = ReturnMessage;
+        CurrentSpeedTime = GetNewSpeedTime(FadeInTimes, Speed);
+        SetFade(true);
     }
 
-    //SpeedTimes GetNewSpeedTime(SpeedTimes[] Times, FadeInSpeeds Speed)
-    //{
-    //    for(int i = 0; i < Times.Length; i++)
-    //    {
-    //
-    //    }
-    //}
+
+    void SetFade(bool isFadein)
+    {
+        Timer = CurrentSpeedTime.Time;
+        isFadeIn = isFadein;
+        SetCanvas(Timer);
+        this.enabled = true;
+    }
+
+    SpeedTimes GetNewSpeedTime(SpeedTimes[] Times, FadeInSpeeds Speed)
+    {
+        for(int i = 0; i < Times.Length; i++)
+        {
+            if (Times[i].Speed == Speed)
+                return Times[i];
+        }
+
+        Debug.Log("There wasn't a speed enum set in the inspector with the requested value 'Fade Handler', perhaps it was deleted on accident.");
+        return null;
+    }
 }

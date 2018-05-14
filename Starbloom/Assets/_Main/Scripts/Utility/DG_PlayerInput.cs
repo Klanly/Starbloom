@@ -78,14 +78,16 @@ public class DG_PlayerInput : MonoBehaviour {
         float JoystickHorizontal = 0;
 
         //Direction Check
-        if (MainPlayer.ButtonSet.UpDir.Held)// || MainPlayer.ButtonSet.JoyVert.Held && MainPlayer.ButtonSet.JoyVert.Positive)
-            JoystickVertical = 1;
-        if (MainPlayer.ButtonSet.DownDir.Held)// || MainPlayer.ButtonSet.JoyVert.Held && !MainPlayer.ButtonSet.JoyVert.Positive)
-            JoystickVertical = -1;
-        if (MainPlayer.ButtonSet.RightDir.Held)// || MainPlayer.ButtonSet.JoyHor.Held && MainPlayer.ButtonSet.JoyHor.Positive)
-            JoystickHorizontal = 1;
-        if (MainPlayer.ButtonSet.LeftDir.Held)// || MainPlayer.ButtonSet.JoyHor.Held && !MainPlayer.ButtonSet.JoyHor.Positive)
-            JoystickHorizontal = -1;
+        if (MainPlayer.ButtonSet.UpDir.Held) JoystickVertical = 1;
+        if (MainPlayer.ButtonSet.DownDir.Held) JoystickVertical = -1;
+        if (MainPlayer.ButtonSet.RightDir.Held) JoystickHorizontal = 1;
+        if (MainPlayer.ButtonSet.LeftDir.Held) JoystickHorizontal = -1;
+
+        if (MainPlayer.ButtonSet.JoyVert.Held)
+            JoystickVertical = MainPlayer.ButtonSet.JoyVert.Value;
+        if (MainPlayer.ButtonSet.JoyHor.Held)
+            JoystickHorizontal = MainPlayer.ButtonSet.JoyHor.Value;
+
 
 
         MainPlayer.VerticalAxis = JoystickVertical;

@@ -29,6 +29,7 @@ public class DG_GameButtons
     [System.Serializable]
     public class JoyAxis
     {
+        public float Value;
         public bool Inverted = false;
         public string InputString;
         public bool InvertedAlt = false;
@@ -39,19 +40,25 @@ public class DG_GameButtons
 
         public void Check()
         {
+            bool AxisIsGreater = true;
             //Joy Stick Check
             float Axis = Input.GetAxis(InputString);
             if (Inverted) Axis = -Axis;
             float AltAxis = Input.GetAxis(AltInputString);
             if (InvertedAlt) AltAxis = -AltAxis;
-            if (Axis > 0.6f || AltAxis > 0.6f)
-                { Positive = true; Held = true; }
-            else if (Axis < -0.6f || AltAxis < -0.6f)
-                { Positive = false; Held = true; }
+            if (Axis > 0.1f || AltAxis > 0.1f)
+                { Positive = true; Held = true; if (Axis > AltAxis) AxisIsGreater = true; }
+            else if (Axis < -0.1f || AltAxis < -0.1f)
+                { Positive = false; Held = true; if (Axis < AltAxis) AxisIsGreater = true; }
             else if (Held)
                 { Held = false; Up = true; }
             else
                 { Held = false; Up = false; }
+
+            if (AxisIsGreater)
+                Value = Axis;
+            else
+                Value = AltAxis;
         }
     }
 

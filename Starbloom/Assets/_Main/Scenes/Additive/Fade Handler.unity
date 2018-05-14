@@ -160,8 +160,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
-  m_RaycastTarget: 1
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -222,50 +222,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 405be9d6c2e9a1c49b83dcaf222b4306, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FadeCanvas: {fileID: 1338287778}
   FadeImage: {fileID: 948721102}
   FadeInTimes:
   - Speed: 0
     Time: 0
-    EaseMode: 1
   - Speed: 1
     Time: 0.3
-    EaseMode: 1
   - Speed: 2
     Time: 0.8
-    EaseMode: 1
   - Speed: 3
     Time: 1.5
-    EaseMode: 1
   - Speed: 4
     Time: 3
-    EaseMode: 1
   FadeOutTimes:
   - Speed: 0
     Time: 0
-    EaseMode: 1
   - Speed: 1
     Time: 0.3
-    EaseMode: 1
   - Speed: 2
     Time: 0.8
-    EaseMode: 1
   - Speed: 3
     Time: 1.5
-    EaseMode: 1
   - Speed: 4
     Time: 3
-    EaseMode: 1
-  FadeOutComplete:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  FadeInComplete:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
 --- !u!1 &1338287774
 GameObject:
   m_ObjectHideFlags: 0
@@ -309,7 +288,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1338287774}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 1301386320, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
@@ -387,6 +366,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 709447d26d21bdb4daedc7a8894e885f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TestSpeed: 0
 --- !u!4 &1501455465
 Transform:
   m_ObjectHideFlags: 0
