@@ -1,2 +1,5 @@
 Starbloom/Library/
 Starbloom/Temp/
+*.csproj
+*.sln
+Starbloom/.vs/

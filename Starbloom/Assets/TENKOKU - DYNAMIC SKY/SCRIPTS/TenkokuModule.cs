@@ -712,12 +712,6 @@ bool totalEclipse = false;
 
 
 	void Awake(){
-		//GET CAMERA OBJECT
-		if (Application.isPlaying){
-			if (mainCamera == null){
-				mainCamera = QuickFind.PlayerCam.MainCam.transform;
-			}
-		}
 
 		//set custom random generator instance
 		randSeed = System.Environment.TickCount;
@@ -755,9 +749,17 @@ bool totalEclipse = false;
 
 
 	void Start () {
+			//GET CAMERA OBJECT
+			if (Application.isPlaying)
+			{
+				if (mainCamera == null)
+				{
+					mainCamera = QuickFind.PlayerCam.MainCam.transform;
+				}
+			}
 
-		//disconnect object from prefab connection
-		#if UNITY_EDITOR
+			//disconnect object from prefab connection
+#if UNITY_EDITOR
 			PrefabUtility.DisconnectPrefabInstance(this.gameObject);
 		#endif
 
