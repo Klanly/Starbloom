@@ -124,11 +124,13 @@ Material:
     - _BigCascadeAngleFalloff: 3
     - _BigCascadeFalloff: 80
     - _BigCascadeFoamFalloff: 3
+    - _BigCascadeNoisePower: 2.71
     - _BigCascadeNormalInfluence: 0
     - _BigCascadeNormalScale: 2
     - _BigCascadeSmoothness: 0
     - _BigCascadeSpecular: 0.84
     - _BigCascadeSpeed: 4
+    - _BigCascadeTransparency: 0
     - _BigCascadeWaterNormalScale: 0.9
     - _BigCascadeWaterTessScale: 0.2
     - _CascadeFalloff: 0.84
@@ -149,6 +151,7 @@ Material:
     - _Depth: 0.98
     - _DepthFalloff: -13
     - _Distortion: 0.03
+    - _EdgeLength: 25
     - _FastCascadeAngle: 90
     - _FastCascadeFalloff: 80
     - _FastCascadeNormalInfluence: 0
@@ -184,6 +187,7 @@ Material:
     - _SmallCascadeAngleFalloff: 0.8
     - _SmallCascadeFalloff: 80
     - _SmallCascadeFoamFalloff: 7.42
+    - _SmallCascadeNoisePower: 2.71
     - _SmallCascadeNormalInfluence: 20
     - _SmallCascadeNormalScale: 1
     - _SmallCascadeSmoothness: 0
@@ -194,6 +198,7 @@ Material:
     - _Smoothness: 0.9
     - _Specular: 0.1
     - _TessMax: 15
+    - _TessMaxDisp: 20
     - _TessMin: 0
     - _TessPhongStrength: 0.5
     - _TessValue: 20
@@ -228,7 +233,7 @@ Material:
     - _Color0: {r: 0, g: 0.6749488, b: 0.8088235, a: 0}
     - _Color1: {r: 0, g: 0.048731543, b: 0.22794023, a: 0}
     - _DeepColor: {r: 0.05708845, g: 0.095184885, b: 0.23528743, a: 0}
-    - _FoamColor: {r: 20, g: 20, b: 20, a: 0}
+    - _FoamColor: {r: 0.912, g: 0.874, b: 0.791, a: 1}
     - _FoamSpeed: {r: -0.001, g: 0.018, b: 0, a: 0}
     - _NoiseSpeed: {r: -0.2, g: -0.5, b: 0, a: 0}
     - _ShalowColor: {r: 0.5060554, g: 0.6617647, b: 0.61666334, a: 0}
