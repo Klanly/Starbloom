@@ -94,6 +94,8 @@ public static class QuickFind
 
     //Environment
     public static WeatherHandler WeatherHandler = null;
+    public static Tenkoku.Core.TenkokuModule WeatherModule = null;
+    public static TimeHandler TimeHandler = null;
 
     //Serialization
     public static DG_LocalDataHandler SaveHandler;

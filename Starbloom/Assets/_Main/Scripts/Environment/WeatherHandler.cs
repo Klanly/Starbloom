@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
 
-public class WeatherHandler : MonoBehaviour {
+public class WeatherHandler : MonoBehaviour
+{
 
     public enum Seasons
     {
@@ -17,11 +18,12 @@ public class WeatherHandler : MonoBehaviour {
         Clear,
         Overcast,
         Raining,
+        Thunderstorm,
         Snowing
     }
 
     [System.Serializable]
-	public class WeatherSetting
+    public class WeatherSetting
     {
         [Header("Data")]
         public WeatherTyps Weather;
@@ -65,16 +67,16 @@ public class WeatherHandler : MonoBehaviour {
     public WeatherSetting[] WinterWeather;
 
 
-
     [Header("Debug")]
     public Seasons DebugSeason;
     public WeatherTyps DebugWeather;
-
     [ButtonGroup]
     public void ChangeSeason()
-    {
-        QuickFind.IDMaster.AdjustWeather((int)DebugSeason, (int)DebugWeather);
-    }
+    { QuickFind.IDMaster.AdjustWeather((int)DebugSeason, (int)DebugWeather); }
+
+
+    Seasons CurrentSeason;
+    WeatherTyps CurrentWeather;
 
 
 
@@ -89,11 +91,70 @@ public class WeatherHandler : MonoBehaviour {
 
 
 
+    public void RequestMasterWeather()
+    {
+        QuickFind.IDMaster.RequestMasterWeather();
+    }
+    public void SyncWeatherToMaster()
+    {
+        List<int> WeatherValues = new List<int>();
+        Tenkoku.Core.TenkokuModule TimeModule = QuickFind.WeatherModule;
+        WeatherValues.Add((int)CurrentSeason);
+        WeatherValues.Add((int)CurrentWeather);
+
+        QuickFind.IDMaster.SyncWeatherToMaster(WeatherValues.ToArray());
+    }
+    public void GetMasterWeather(int[] Weather)
+    {
+        AdjustSeason(Weather[0], Weather[1]);
+    }
+
+
     public void AdjustSeason(int Season, int Weather)
     {
         Seasons SetSeason = (Seasons)Season;
         WeatherTyps SetWeather = (WeatherTyps)Weather;
 
+        CurrentSeason = SetSeason;
+        CurrentWeather = SetWeather;
 
+        WeatherSetting[] WeatherArray = null;
+        switch (SetSeason)
+        {
+            case Seasons.Spring: WeatherArray = SpringWeather; break;
+            case Seasons.Summer: WeatherArray = SummerWeather; break;
+            case Seasons.Fall: WeatherArray = FallWeather; break;
+            case Seasons.Winter: WeatherArray = WinterWeather; break;
+        }
+        WeatherSetting WS = null;
+        for (int i = 0; i < WeatherArray.Length; i++)
+        {
+            if (WeatherArray[i].Weather == SetWeather)
+                WS = WeatherArray[i];
+        }
+
+        SetWeatherValues(WS);
+    }
+    void SetWeatherValues(WeatherSetting Weather)
+    {
+        Tenkoku.Core.TenkokuModule WeatherModule = QuickFind.WeatherModule;
+
+        WeatherModule.weather_cloudAltoStratusAmt = Weather.weather_cloudAltoStratusAmt;
+        WeatherModule.weather_cloudCirrusAmt = Weather.weather_cloudCirrusAmt;
+        WeatherModule.weather_cloudCumulusAmt = Weather.weather_cloudCumulusAmt;
+        WeatherModule.weather_cloudScale = Weather.weather_cloudScale;
+        WeatherModule.weather_cloudSpeed = Weather.weather_cloudSpeed;
+        WeatherModule.weather_OvercastDarkeningAmt = Weather.weather_OvercastDarkeningAmt;
+        WeatherModule.weather_OvercastAmt = Weather.weather_OvercastAmt;
+        WeatherModule.weather_RainAmt = Weather.weather_RainAmt;
+        WeatherModule.weather_lightning = Weather.weather_lightning;
+        WeatherModule.weather_SnowAmt = Weather.weather_SnowAmt;
+        WeatherModule.weather_WindAmt = Weather.weather_WindAmt;
+        WeatherModule.weather_WindDir = Weather.weather_WindDir;
+        WeatherModule.weather_FogAmt = Weather.weather_FogAmt;
+        WeatherModule.weather_FogHeight = Weather.weather_FogHeight;
+        WeatherModule.weather_temperature = Weather.weather_temperature;
+        WeatherModule.weather_humidity = Weather.weather_humidity;
+        WeatherModule.weather_rainbow = Weather.weather_rainbow;
     }
 }
