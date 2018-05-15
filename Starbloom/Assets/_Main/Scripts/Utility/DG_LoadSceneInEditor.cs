@@ -62,7 +62,10 @@ public class DG_LoadSceneInEditor : MonoBehaviour
                 {
                     Scene SC = EditorSceneManager.GetSceneAt(i);
                     if (SC.name == AdditiveScene.SceneName)
+                    {
                         loadScene = false;
+                        break;
+                    }
                 }
                 if (loadScene)
                     EditorSceneManager.OpenScene(AdditiveScene.EditorSceneFolderPath + AdditiveScene.SceneName + ".unity", OpenSceneMode.Additive);
@@ -86,7 +89,10 @@ public class DG_LoadSceneInEditor : MonoBehaviour
                 {
                     Scene SC = SceneManager.GetSceneAt(i);
                     if (SC.name == AdditiveScene.SceneName)
+                    {
                         loadScene = false;
+                        break;
+                    }
                 }
                 if (loadScene)
                     SceneManager.LoadScene(AdditiveScene.SceneName, LoadSceneMode.Additive);

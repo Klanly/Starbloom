@@ -54,6 +54,30 @@ public class WeatherHandler : MonoBehaviour
         public float weather_humidity = 0.25f;
         [Header("Rainbow")]
         public float weather_rainbow = 0.0f;
+
+
+        public WaterSettings Water;
+
+
+        [System.Serializable]
+        public class WaterSettings
+        {
+            [Header("Waves")]
+            public float beaufortScale;
+            public float flowSpeed;
+            public float waveScale;
+            public float heightProjection;
+            [Header("Bright")]
+            public float overallBright;
+            public float overallTransparency;
+            [Header("Reflect")]
+            public float reflectTerm;
+            public float reflectSharpen;
+            [Header("Specular")]
+            public float roughness;
+            public float roughness2;
+            public Color specularColor;
+        }
     }
 
 
@@ -156,5 +180,19 @@ public class WeatherHandler : MonoBehaviour
         WeatherModule.weather_temperature = Weather.weather_temperature;
         WeatherModule.weather_humidity = Weather.weather_humidity;
         WeatherModule.weather_rainbow = Weather.weather_rainbow;
+
+        Suimono.Core.SuimonoObject Suimono = QuickFind.WaterObject;
+
+        Suimono.beaufortScale = Weather.Water.beaufortScale;
+        Suimono.flowSpeed = Weather.Water.flowSpeed;
+        Suimono.waveScale = Weather.Water.waveScale;
+        Suimono.heightProjection = Weather.Water.heightProjection;
+        Suimono.overallBright = Weather.Water.overallBright;
+        Suimono.overallTransparency = Weather.Water.overallTransparency;
+        Suimono.reflectTerm = Weather.Water.reflectTerm;
+        Suimono.reflectSharpen = Weather.Water.reflectSharpen;
+        Suimono.roughness = Weather.Water.roughness;
+        Suimono.roughness2 = Weather.Water.roughness2;
+        Suimono.specularColor = Weather.Water.specularColor;      
     }
 }
