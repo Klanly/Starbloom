@@ -351,7 +351,12 @@ namespace Suimono.Core
 		private static bool reloadData = false;
 
 
-		void Start(){
+        private void Awake()
+        {
+            QuickFind.WaterObject = this;
+        }
+
+        void Start(){
 
 			//DISCONNECT FROM PREFAB
 			#if UNITY_EDITOR

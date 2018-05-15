@@ -425,7 +425,7 @@ MonoBehaviour:
   resolution: 128
   cameraOffset: 0
   reflectionOffset: 0
-  renderTexDiff: {fileID: 2021232851}
+  renderTexDiff: {fileID: 1148634768}
   renderShader: {fileID: 0}
   executeInEditMode: 0
   isUnderwater: 0
@@ -548,7 +548,7 @@ MonoBehaviour:
   resolution: 512
   cameraOffset: 0
   reflectionOffset: 0
-  renderTexDiff: {fileID: 748764190}
+  renderTexDiff: {fileID: 613494559}
   renderShader: {fileID: 0}
   executeInEditMode: 0
   isUnderwater: 0
@@ -630,6 +630,37 @@ Transform:
   m_Father: {fileID: 583508113}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!84 &176910147
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
+  m_Width: 512
+  m_Height: 512
+  m_AntiAliasing: 1
+  m_DepthFormat: 2
+  m_ColorFormat: 11
+  m_MipMap: 0
+  m_GenerateMips: 0
+  m_SRGB: 0
+  m_UseDynamicScale: 0
+  m_BindMS: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 2
+    m_Aniso: 0
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1 &201403734
 GameObject:
   m_ObjectHideFlags: 0
@@ -696,7 +727,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   suimonoVersionNumber: 2.1.5
-  systemTime: 5006.7505
+  systemTime: 5227.1562
   autoSetLayers: 1
   layerWater: Suimono_Water
   layerWaterNum: 8
@@ -750,9 +781,9 @@ MonoBehaviour:
   maxSounds: 10
   defaultSplashSound: []
   currentObjectIsOver: 1
-  currentObjectDepth: -3.7746205
-  currentTransitionDepth: -3.7746205
-  currentSurfaceLevel: 0.09001492
+  currentObjectDepth: -3.685294
+  currentTransitionDepth: -3.685294
+  currentSurfaceLevel: 0.17934145
   underwaterThreshold: 0.1
   suimonoObject: {fileID: 785522128}
   suimonoModuleLibrary: {fileID: 274068549}
@@ -764,16 +795,16 @@ MonoBehaviour:
   showTenkoku: 1
   tenkokuUseReflect: 1
   heightValues:
-  - 0.09001492
-  - 0.09001492
+  - 0.17934145
+  - 0.17934145
   - 0
-  - -3.7746205
+  - -3.685294
   - 1
   - 0
   - 180
   - 0.05
-  - 1.9288902
-  - -3.7746205
+  - 3.8430293
+  - -3.685294
   - 1
   - 1
   isForward: 0
@@ -786,32 +817,32 @@ MonoBehaviour:
   heightTexR: {fileID: 2800000, guid: fb77700eb10ac344db495df815b29823, type: 3}
   heightObject: {fileID: 785522129}
   relativePos: {x: 25, y: 25.148039}
-  texCoord: {x: 12800.011, y: 0, z: -115294.18}
-  texCoord1: {x: 9599.997, y: 0, z: 41699.34}
-  texCoordT: {x: 12800.011, y: 0, z: -115294.18}
-  texCoordT1: {x: 6399.997, y: 0, z: 38480.39}
-  texCoordR: {x: 400.0007, y: 0, z: -7608.255}
-  texCoordR1: {x: 400.0014, y: 0, z: -15618.879}
-  heightVal0: {r: 0.36862746, g: 0.4627451, b: 1, a: 0.061509807}
-  heightVal1: {r: 0.28235295, g: 0.6, b: 1, a: 0.088784315}
-  heightValT0: {r: 0.4392157, g: 0.17254902, b: 0.87058824, a: 0.1307451}
-  heightValT1: {r: 0.77254903, g: 0.36078432, b: 0.8784314, a: 0.39719608}
-  heightValR0: {r: 0.53333336, g: 0.8352941, b: 0.94509804, a: 0.0048627467}
-  heightValR1: {r: 0.4, g: 0.47058824, b: 1, a: 0.040529415}
+  texCoord: {x: 12800.012, y: 0, z: -120938.89}
+  texCoord1: {x: 9599.997, y: 0, z: 43110.52}
+  texCoordT: {x: 12800.012, y: 0, z: -120938.89}
+  texCoordT1: {x: 6399.997, y: 0, z: 39891.57}
+  texCoordR: {x: 400.00073, y: 0, z: -7961.0493}
+  texCoordR1: {x: 400.00146, y: 0, z: -16324.468}
+  heightVal0: {r: 0.54509807, g: 0.5019608, b: 1, a: 0.08458824}
+  heightVal1: {r: 0.32941177, g: 0.5647059, b: 1, a: 0.17270589}
+  heightValT0: {r: 0.45490196, g: 0.44313726, b: 0.9764706, a: 0.12864706}
+  heightValT1: {r: 0.43137255, g: 0.5882353, b: 0.98039216, a: 0.2377451}
+  heightValR0: {r: 0.52156866, g: 0.6666667, b: 0.99215686, a: 0.088784315}
+  heightValR1: {r: 0.47058824, g: 0.32156864, b: 0.9843137, a: 0.179}
   localTime: 0
-  row: 3
-  pixIndex: 64912
-  pixCol: {r: 0.4, g: 0.47058824, b: 1, a: 0.040529415}
+  row: 197
+  pixIndex: 15248
+  pixCol: {r: 0.47058824, g: 0.32156864, b: 0.9843137, a: 0.179}
   t: 32
   y: 32
   dir: {x: 0, y: 0, z: 0}
   pivotPoint: {x: 0, y: 0, z: 0}
-  useLocalTime: 500.66397
+  useLocalTime: 522.7136
   flow_dirC: {x: 0.00000008742278, y: -1}
-  flowSpeed0: {x: 0.000043769436, y: -500.66397}
-  flowSpeed1: {x: 0.000010942359, y: -125.16599}
-  flowSpeed2: {x: 0.0000027355898, y: -31.291498}
-  flowSpeed3: {x: 0.0000054711795, y: -62.582996}
+  flowSpeed0: {x: 0.000045697077, y: -522.7136}
+  flowSpeed1: {x: 0.000011424269, y: -130.6784}
+  flowSpeed2: {x: 0.0000028560673, y: -32.6696}
+  flowSpeed3: {x: 0.0000057121347, y: -65.3392}
   tScale: 2
   oPos: {x: 0, y: 0}
 --- !u!114 &274068549
@@ -14874,6 +14905,37 @@ MonoBehaviour:
   planetColor: {r: 0.9960785, g: 0.6117647, b: 0.32156864, a: 0.77254903}
   planetSize: 0.25
   planetOffset: {x: 0, y: 0, z: 0}
+--- !u!84 &367743660
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
+  m_Width: 512
+  m_Height: 512
+  m_AntiAliasing: 1
+  m_DepthFormat: 2
+  m_ColorFormat: 11
+  m_MipMap: 0
+  m_GenerateMips: 0
+  m_SRGB: 0
+  m_UseDynamicScale: 0
+  m_BindMS: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 2
+    m_Aniso: 0
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1 &375627022
 GameObject:
   m_ObjectHideFlags: 0
@@ -14929,246 +14991,6 @@ Transform:
   m_Father: {fileID: 1909880379}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!21 &418045521
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: mat_water_surface
-  m_Shader: {fileID: 4800000, guid: 5af3fd41baf694e4db80b54ea540749f, type: 3}
-  m_ShaderKeywords: SUIMONO_CAUST_ON SUIMONO_DYNREFL_ON SUIMONO_REFL_OFF SUIMONO_TESS_ON
-    SUIMONO_TRANS_ON
-  m_LightmapFlags: 5
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _BlurRamp:
-        m_Texture: {fileID: 2800000, guid: e607ea0d8431dc64c8f345a02a1028e9, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _CubeBDRF:
-        m_Texture: {fileID: 8900000, guid: 01c62ce94e46dcf4ea217e771c6da1b2, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _CubeMobile:
-        m_Texture: {fileID: 8900000, guid: c27d2f9a7fe1df7448a59cd7e8306390, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _CubeTex:
-        m_Texture: {fileID: 8900000, guid: c27d2f9a7fe1df7448a59cd7e8306390, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _DepthRamp:
-        m_Texture: {fileID: 2800000, guid: aa1f666bea9a5b2409ff3dcfc008a57c, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _FlowMap:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _FoamOverlay:
-        m_Texture: {fileID: 2800000, guid: dd5f830482b013a43b967ea68de614d7, type: 3}
-        m_Scale: {x: 0.781425, y: 0.781425}
-        m_Offset: {x: 0, y: 0}
-    - _FoamRamp:
-        m_Texture: {fileID: 2800000, guid: 01757909dcbf805408fe7867004a31a3, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _FoamTex:
-        m_Texture: {fileID: 2800000, guid: 14c55ed649175884784db6c178f4e654, type: 3}
-        m_Scale: {x: 50, y: 50}
-        m_Offset: {x: 0, y: 0}
-    - _HeightTex:
-        m_Texture: {fileID: 2800000, guid: 51323bc64857e644fac7400eb7305b36, type: 3}
-        m_Scale: {x: 2, y: 2}
-        m_Offset: {x: 0, y: 0}
-    - _HeightTexD:
-        m_Texture: {fileID: 2800000, guid: 5068c41d8b2d8474a855de152aea3721, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _HeightTexR:
-        m_Texture: {fileID: 2800000, guid: 17e80c508914f384083dc7e9d438652f, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _MaskTex:
-        m_Texture: {fileID: 2800000, guid: e18972d51c4910d499b05f09d48dc145, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _NormalTex:
-        m_Texture: {fileID: 2800000, guid: 48e29dc2e9488474081bc20a42a364b9, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _NormalTexD:
-        m_Texture: {fileID: 2800000, guid: fdd39131993ce804da86a2e71c17a742, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _NormalTexR:
-        m_Texture: {fileID: 2800000, guid: fb77700eb10ac344db495df815b29823, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _NormalTexS:
-        m_Texture: {fileID: 2800000, guid: 48e29dc2e9488474081bc20a42a364b9, type: 3}
-        m_Scale: {x: 100, y: 100}
-        m_Offset: {x: 0, y: 0}
-    - _OceanBlendTex:
-        m_Texture: {fileID: 2800000, guid: e18972d51c4910d499b05f09d48dc145, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _Ramp2D:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _ReflectionTex:
-        m_Texture: {fileID: 2133499830}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _Surface1:
-        m_Texture: {fileID: 2800000, guid: 51323bc64857e644fac7400eb7305b36, type: 3}
-        m_Scale: {x: 4.62, y: 4.62}
-        m_Offset: {x: 0, y: 0.038000003}
-    - _Surface2:
-        m_Texture: {fileID: 2800000, guid: 51323bc64857e644fac7400eb7305b36, type: 3}
-        m_Scale: {x: 5.25, y: 5.25}
-        m_Offset: {x: 0, y: 0}
-    - _WaveLargeTex:
-        m_Texture: {fileID: 2800000, guid: 48e29dc2e9488474081bc20a42a364b9, type: 3}
-        m_Scale: {x: 5.25, y: 5.25}
-        m_Offset: {x: 0, y: 1}
-    - _WaveMap:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _WaveRamp:
-        m_Texture: {fileID: 2800000, guid: 7d47d30a7e6fff544a72f826670ef31b, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _WaveTex:
-        m_Texture: {fileID: 2800000, guid: 9e0b039b60bba5c4ea73849d69af386a, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _testTransTex:
-        m_Texture: {fileID: 8400000, guid: 4cbb053dd78893346b31535310230dc4, type: 2}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - _AnimSpeed: 1
-    - _BlurSpread: 0
-    - _BumpStrength: 0.084
-    - _CausticsFade: 61.878002
-    - _CenterHeight: 1
-    - _DepthAmt: 45
-    - _DepthFade: 12.8936
-    - _DetailHeight: 1.63
-    - _Displacement: 1
-    - _EdgeBlend: 1
-    - _EdgeFade: 73.36
-    - _EdgeFoamFade: 105.164955
-    - _EdgeSpread: 0.02
-    - _FlowScale: 6.0895004
-    - _FoamFade: 1
-    - _FoamHeight: 0
-    - _FoamSpread: 0.85
-    - _HeightFoamAmount: 0
-    - _HeightFoamAmt: 0.85
-    - _HeightFoamHeight: 0.65
-    - _HeightFoamSpread: 0.276
-    - _MaskAmt: 8
-    - _MasterScale: 2.25
-    - _MaxVariance: 8.299999
-    - _NormalStrength: 1
-    - _ReflBlend: 0.015
-    - _ReflBlur: 0.01
-    - _ReflDist: 200
-    - _ReflectStrength: 1
-    - _RefrScale: 2.25
-    - _RefrSpeed: 15.2
-    - _RefrStrength: 0
-    - _RefractFade: 1
-    - _RefractStrength: 0.5
-    - _RimPower: 1
-    - _ShallowFade: 45.6943
-    - _ShallowFoamAmt: 1
-    - _ShoreAmt: -3.5
-    - _ShoreAmtDk: 1
-    - _SpecScatterAmt: 0.5
-    - _SpecScatterWidth: 0.1
-    - _Tess: 8
-    - _TideAmount: 0.3
-    - _TideSpread: 0.513
-    - _UnderFogDist: -0.054
-    - _UnderReflDist: -4.28
-    - _WaveHeight: 0.63
-    - _WaveScale: 0.605
-    - _WaveShoreHeight: 0
-    - _castshadowEnabled: 1
-    - _castshadowFade: 1
-    - _castshadowStrength: 1
-    - _foamScale: 10.54
-    - _maxDist: 58.399998
-    - _minDist: -180
-    - _reflecTerm: 0
-    - _shorelineFrequency: 0.5
-    - _shorelineHeight: 0.397
-    - _shorelineScale: 0.1
-    - _shorelineSpeed: 4
-    - _suimono_DeepWaveHeight: 0.945
-    - _suimono_DetailHeight: 1.63
-    - _suimono_detScale: 0.19
-    - _suimono_uv2x: 0
-    - _suimono_uv2y: 0
-    - _suimono_uv3x: 0
-    - _suimono_uv3y: 0
-    - _suimono_uv4x: 0
-    - _suimono_uv4y: 0
-    - _suimono_uv5x: 0
-    - _suimono_uv5y: 0
-    - _suimono_uv6x: 0
-    - _suimono_uv6y: 0
-    - _suimono_uv7x: 0
-    - _suimono_uv7y: 0
-    - _suimono_uv8x: 1
-    - _suimono_uv8y: 1
-    - _suimono_uvx: 0
-    - _suimono_uvy: 0
-    - _temp: 1
-    - _useDynamicReflections: 1
-    - normalShore: 1
-    m_Colors:
-    - _BlendColor: {r: 0.36, g: 1, b: 0.867, a: 0.22}
-    - _CausticsColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _DepthColor: {r: 0, g: 0, b: 0, a: 0}
-    - _DepthColorB: {r: 1, g: 0.44, b: 0, a: 1}
-    - _DepthColorG: {r: 1, g: 1, b: 1, a: 0}
-    - _DepthColorR: {r: 1, g: 1, b: 1, a: 0}
-    - _DynReflColor: {r: 1, g: 1, b: 1, a: 0.5}
-    - _EdgeColor: {r: 0.73, g: 1, b: 0.94, a: 0}
-    - _FoamColor: {r: 0.912, g: 0.874, b: 0.791, a: 1}
-    - _HighColor: {r: 0, g: 0, b: 0, a: 0.9}
-    - _LowColor: {r: 0.34, g: 0.26, b: 0.18, a: 0.15}
-    - _OverlayColor: {r: 0, g: 0, b: 0, a: 0}
-    - _ReflectionColor: {r: 1, g: 1, b: 1, a: 0.376}
-    - _SSSColor: {r: 0, g: 0.324, b: 0.015, a: 0.239}
-    - _SpecColorH: {r: 1, g: 0.48, b: 0, a: 1}
-    - _SpecColorL: {r: 1, g: 0, b: 0, a: 1}
-    - _SpecularColor: {r: 0.063, g: 0.326, b: 0.375, a: 0.161}
-    - _TideColor: {r: 0.24, g: 0.34, b: 0.32, a: 0}
-    - _TintColor: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}
-    - _UnderColor: {r: 1, g: 0.62, b: 0.17, a: 1}
-    - _UnderwaterColor: {r: 0.034, g: 0.102, b: 0.154, a: 0.404}
-    - _castshadowColor: {r: 0, g: 1, b: 0.79, a: 0.18}
-    - _depthColor: {r: 0.16, g: 0.281, b: 0.382, a: 1}
-    - _shallowColor: {r: 0.208, g: 0.373, b: 0.441, a: 0.784}
 --- !u!1 &433579097
 GameObject:
   m_ObjectHideFlags: 0
@@ -29004,37 +28826,6 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
---- !u!84 &525278495
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_ForcedFallbackFormat: 4
-  m_DownscaleFallback: 0
-  m_Width: 128
-  m_Height: 128
-  m_AntiAliasing: 1
-  m_DepthFormat: 2
-  m_ColorFormat: 11
-  m_MipMap: 0
-  m_GenerateMips: 0
-  m_SRGB: 0
-  m_UseDynamicScale: 0
-  m_BindMS: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 2
-    m_Aniso: 0
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!1 &539218595
 GameObject:
   m_ObjectHideFlags: 0
@@ -33936,6 +33727,37 @@ MonoBehaviour:
   lightningLineTrans: {fileID: 512556442}
   fogCameraCam: {fileID: 1208474224}
   fogCameraBlur: {fileID: 1208474222}
+--- !u!84 &613494559
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
+  m_Width: 512
+  m_Height: 512
+  m_AntiAliasing: 1
+  m_DepthFormat: 2
+  m_ColorFormat: 11
+  m_MipMap: 0
+  m_GenerateMips: 0
+  m_SRGB: 0
+  m_UseDynamicScale: 0
+  m_BindMS: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 2
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1 &613884828
 GameObject:
   m_ObjectHideFlags: 0
@@ -38809,37 +38631,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 831fc30dbd5721644bb40e62a6d2338b, type: 3}
   - {fileID: 8300000, guid: 486cdcdaf39e07f4686d2f5d84054b70, type: 3}
   - {fileID: 8300000, guid: 952453ae2ff2c8b499b58a459b8ea343, type: 3}
---- !u!84 &748764190
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_ForcedFallbackFormat: 4
-  m_DownscaleFallback: 0
-  m_Width: 512
-  m_Height: 512
-  m_AntiAliasing: 1
-  m_DepthFormat: 2
-  m_ColorFormat: 11
-  m_MipMap: 0
-  m_GenerateMips: 0
-  m_SRGB: 0
-  m_UseDynamicScale: 0
-  m_BindMS: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 2
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!1 &785522127
 GameObject:
   m_ObjectHideFlags: 0
@@ -38869,7 +38660,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   systemTime: 0
-  systemLocalTime: 5006.7505
+  systemLocalTime: 5227.1562
   flowSpeed: 0.05
   flowDirection: 180
   useBeaufortScale: 1
@@ -38940,7 +38731,7 @@ MonoBehaviour:
   useTexNormal3: {fileID: 2800000, guid: fb77700eb10ac344db495df815b29823, type: 3}
   showWaves: 0
   customWaves: 0
-  localTime: 500.67505
+  localTime: 522.71564
   beaufortVal: 0.16666667
   showShore: 0
   shorelineHeight: 0.397
@@ -39694,10 +39485,10 @@ MonoBehaviour:
   colorSkyBase: {r: 0.1122328, g: 0.13118118, b: 0.15304472, a: 0.8}
   colorSkyBaseLow: {r: 0.14029099, g: 0.16397648, b: 0.19130589, a: 1}
   colorHorizon: {r: 0.5112072, g: 0.5233436, b: 0.5112072, a: 1.2}
-  colorHorizonLow: {r: 0.5112072, g: 0.5233436, b: 0.5112072, a: 1.2}
+  colorHorizonLow: {r: 0.12235295, g: 0.2964706, b: 0.36705884, a: 1.2}
   colorSkyAmbient: {r: 0.94840014, g: 0.94840014, b: 0.94840014, a: 1}
   colorClouds: {r: 0.012590237, g: 0.016511805, b: 0.015686275, a: 1}
-  colorHighlightClouds: {r: 0.5024851, g: 0.026034513, b: 0, a: 1}
+  colorHighlightClouds: {r: 0, g: 0, b: 0, a: 1}
   colorSkyboxGround: {r: 0.1102941, g: 0.08836951, b: 0.06487888, a: 1}
   colorSkyboxMie: {r: 1, g: 1, b: 1, a: 1}
   displayTime: '[ 06:00:00 AM] [ 3/6/2015 ad]'
@@ -40036,7 +39827,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  randSeed: 43402500
+  randSeed: 52482000
   isDoingTransition: 0
   minimumHeight: 0
 --- !u!114 &976736276
@@ -40070,6 +39861,37 @@ MonoBehaviour:
   altitude: 5.2947702
   moonApogee: 1
   ecl: 23.437325
+--- !u!84 &1002374877
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
+  m_Width: 128
+  m_Height: 128
+  m_AntiAliasing: 1
+  m_DepthFormat: 2
+  m_ColorFormat: 11
+  m_MipMap: 0
+  m_GenerateMips: 0
+  m_SRGB: 0
+  m_UseDynamicScale: 0
+  m_BindMS: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 2
+    m_Aniso: 0
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1 &1030350295
 GameObject:
   m_ObjectHideFlags: 0
@@ -44765,7 +44587,7 @@ Camera:
     serializedVersion: 2
     m_Bits: 1024
   m_RenderingPath: 3
-  m_TargetTexture: {fileID: 525278495}
+  m_TargetTexture: {fileID: 1002374877}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 1
@@ -44793,7 +44615,7 @@ MonoBehaviour:
   resolution: 128
   cameraOffset: 0
   reflectionOffset: 0
-  renderTexDiff: {fileID: 525278495}
+  renderTexDiff: {fileID: 1002374877}
   renderShader: {fileID: 0}
   executeInEditMode: 0
   isUnderwater: 0
@@ -44839,6 +44661,37 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1104016546}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!84 &1148634768
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
+  m_Width: 128
+  m_Height: 128
+  m_AntiAliasing: 1
+  m_DepthFormat: 2
+  m_ColorFormat: 11
+  m_MipMap: 0
+  m_GenerateMips: 0
+  m_SRGB: 0
+  m_UseDynamicScale: 0
+  m_BindMS: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 2
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1 &1170379275
 GameObject:
   m_ObjectHideFlags: 0
@@ -44897,37 +44750,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!84 &1189951610
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_ForcedFallbackFormat: 4
-  m_DownscaleFallback: 0
-  m_Width: 512
-  m_Height: 512
-  m_AntiAliasing: 1
-  m_DepthFormat: 2
-  m_ColorFormat: 11
-  m_MipMap: 0
-  m_GenerateMips: 0
-  m_SRGB: 0
-  m_UseDynamicScale: 0
-  m_BindMS: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 2
-    m_Aniso: 0
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!1 &1194361140
 GameObject:
   m_ObjectHideFlags: 0
@@ -54224,6 +54046,37 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!84 &1402975608
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
+  m_Width: 512
+  m_Height: 512
+  m_AntiAliasing: 1
+  m_DepthFormat: 2
+  m_ColorFormat: 11
+  m_MipMap: 0
+  m_GenerateMips: 0
+  m_SRGB: 0
+  m_UseDynamicScale: 0
+  m_BindMS: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 2
+    m_Aniso: 0
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1 &1409379940
 GameObject:
   m_ObjectHideFlags: 0
@@ -54283,6 +54136,18 @@ MonoBehaviour:
     weather_temperature: 75
     weather_humidity: 0.25
     weather_rainbow: 0
+    Water:
+      beaufortScale: 2
+      flowSpeed: 0.05
+      waveScale: 0.5
+      heightProjection: 1
+      overallBright: 1
+      overallTransparency: 1
+      reflectTerm: 0
+      reflectSharpen: 0
+      roughness: 0.025
+      roughness2: 0.45
+      specularColor: {r: 0.063, g: 0.326, b: 0.375, a: 0.161}
   - Weather: 1
     weather_cloudAltoStratusAmt: 0.8
     weather_cloudCirrusAmt: 0.8
@@ -54301,6 +54166,18 @@ MonoBehaviour:
     weather_temperature: 75
     weather_humidity: 0.25
     weather_rainbow: 0
+    Water:
+      beaufortScale: 5.3
+      flowSpeed: 0.08
+      waveScale: 3.04
+      heightProjection: 0.26
+      overallBright: 0.8
+      overallTransparency: 0.8
+      reflectTerm: 0.36
+      reflectSharpen: 0
+      roughness: 0.11
+      roughness2: 0.45
+      specularColor: {r: 0.063, g: 0.326, b: 0.375, a: 0.161}
   - Weather: 2
     weather_cloudAltoStratusAmt: 0.7
     weather_cloudCirrusAmt: 0.7
@@ -54319,6 +54196,18 @@ MonoBehaviour:
     weather_temperature: 75
     weather_humidity: 0.25
     weather_rainbow: 0
+    Water:
+      beaufortScale: 5.3
+      flowSpeed: 0.08
+      waveScale: 3.21
+      heightProjection: 0.27
+      overallBright: 0.5
+      overallTransparency: 0.82
+      reflectTerm: 0.84
+      reflectSharpen: 0.68
+      roughness: 0.14
+      roughness2: 0.63
+      specularColor: {r: 0.063, g: 0.326, b: 0.375, a: 0.161}
   - Weather: 3
     weather_cloudAltoStratusAmt: 0
     weather_cloudCirrusAmt: 0
@@ -54337,6 +54226,18 @@ MonoBehaviour:
     weather_temperature: 75
     weather_humidity: 0.25
     weather_rainbow: 0
+    Water:
+      beaufortScale: 5.3
+      flowSpeed: 0.1
+      waveScale: 2.87
+      heightProjection: 0.13
+      overallBright: 0.3
+      overallTransparency: 0.82
+      reflectTerm: 0.84
+      reflectSharpen: 0.68
+      roughness: 0.38
+      roughness2: 0.63
+      specularColor: {r: 0.063, g: 0.326, b: 0.375, a: 0.161}
   SummerWeather:
   - Weather: 0
     weather_cloudAltoStratusAmt: 0.4
@@ -54356,6 +54257,18 @@ MonoBehaviour:
     weather_temperature: 90
     weather_humidity: 0.5
     weather_rainbow: 0
+    Water:
+      beaufortScale: 2
+      flowSpeed: 0.05
+      waveScale: 0.5
+      heightProjection: 1
+      overallBright: 1
+      overallTransparency: 1
+      reflectTerm: 0
+      reflectSharpen: 0
+      roughness: 0.025
+      roughness2: 0.45
+      specularColor: {r: 0.7921569, g: 0.326, b: 0.375, a: 0.161}
   - Weather: 1
     weather_cloudAltoStratusAmt: 0.7
     weather_cloudCirrusAmt: 0.7
@@ -54374,6 +54287,18 @@ MonoBehaviour:
     weather_temperature: 90
     weather_humidity: 0.7
     weather_rainbow: 0
+    Water:
+      beaufortScale: 5.3
+      flowSpeed: 0.08
+      waveScale: 3.04
+      heightProjection: 0.26
+      overallBright: 0.8
+      overallTransparency: 0.8
+      reflectTerm: 0.36
+      reflectSharpen: 0
+      roughness: 0.11
+      roughness2: 0.45
+      specularColor: {r: 0.7921569, g: 0.326, b: 0.375, a: 0.161}
   - Weather: 2
     weather_cloudAltoStratusAmt: 0.3
     weather_cloudCirrusAmt: 0.3
@@ -54392,6 +54317,18 @@ MonoBehaviour:
     weather_temperature: 90
     weather_humidity: 0.5
     weather_rainbow: 0
+    Water:
+      beaufortScale: 5.3
+      flowSpeed: 0.08
+      waveScale: 3.21
+      heightProjection: 0.27
+      overallBright: 0.5
+      overallTransparency: 0.82
+      reflectTerm: 0.84
+      reflectSharpen: 0.68
+      roughness: 0.14
+      roughness2: 0.63
+      specularColor: {r: 0.7921569, g: 0.326, b: 0.375, a: 0.161}
   - Weather: 3
     weather_cloudAltoStratusAmt: 0
     weather_cloudCirrusAmt: 0
@@ -54410,6 +54347,18 @@ MonoBehaviour:
     weather_temperature: 75
     weather_humidity: 0.25
     weather_rainbow: 0
+    Water:
+      beaufortScale: 5.3
+      flowSpeed: 0.1
+      waveScale: 2.87
+      heightProjection: 0.13
+      overallBright: 0.3
+      overallTransparency: 0.82
+      reflectTerm: 0.84
+      reflectSharpen: 0.68
+      roughness: 0.38
+      roughness2: 0.63
+      specularColor: {r: 0.7921569, g: 0.326, b: 0.375, a: 0.161}
   FallWeather:
   - Weather: 0
     weather_cloudAltoStratusAmt: 0.7
@@ -54429,6 +54378,18 @@ MonoBehaviour:
     weather_temperature: 50
     weather_humidity: 0.1
     weather_rainbow: 0
+    Water:
+      beaufortScale: 2
+      flowSpeed: 0.05
+      waveScale: 0.5
+      heightProjection: 1
+      overallBright: 1
+      overallTransparency: 1
+      reflectTerm: 0
+      reflectSharpen: 0
+      roughness: 0.025
+      roughness2: 0.45
+      specularColor: {r: 0.3764706, g: 0.17305076, b: 0.06274509, a: 0.161}
   - Weather: 1
     weather_cloudAltoStratusAmt: 0.8
     weather_cloudCirrusAmt: 0.8
@@ -54447,6 +54408,18 @@ MonoBehaviour:
     weather_temperature: 50
     weather_humidity: 0.15
     weather_rainbow: 0
+    Water:
+      beaufortScale: 5.3
+      flowSpeed: 0.08
+      waveScale: 3.04
+      heightProjection: 0.26
+      overallBright: 0.8
+      overallTransparency: 0.8
+      reflectTerm: 0.36
+      reflectSharpen: 0
+      roughness: 0.11
+      roughness2: 0.45
+      specularColor: {r: 0.3764706, g: 0.17305076, b: 0.06274509, a: 0.161}
   - Weather: 2
     weather_cloudAltoStratusAmt: 0.6
     weather_cloudCirrusAmt: 0.6
@@ -54465,6 +54438,18 @@ MonoBehaviour:
     weather_temperature: 50
     weather_humidity: 0.1
     weather_rainbow: 0
+    Water:
+      beaufortScale: 5.3
+      flowSpeed: 0.08
+      waveScale: 3.21
+      heightProjection: 0.27
+      overallBright: 0.5
+      overallTransparency: 0.82
+      reflectTerm: 0.84
+      reflectSharpen: 0.68
+      roughness: 0.14
+      roughness2: 0.63
+      specularColor: {r: 0.3764706, g: 0.17305076, b: 0.06274509, a: 0.161}
   - Weather: 3
     weather_cloudAltoStratusAmt: 0
     weather_cloudCirrusAmt: 0
@@ -54483,6 +54468,18 @@ MonoBehaviour:
     weather_temperature: 50
     weather_humidity: 0.1
     weather_rainbow: 0
+    Water:
+      beaufortScale: 5.3
+      flowSpeed: 0.1
+      waveScale: 2.87
+      heightProjection: 0.13
+      overallBright: 0.3
+      overallTransparency: 0.82
+      reflectTerm: 0.84
+      reflectSharpen: 0.68
+      roughness: 0.38
+      roughness2: 0.63
+      specularColor: {r: 0.3764706, g: 0.17305076, b: 0.06274509, a: 0.161}
   WinterWeather:
   - Weather: 0
     weather_cloudAltoStratusAmt: 0.2
@@ -54502,6 +54499,18 @@ MonoBehaviour:
     weather_temperature: 75
     weather_humidity: 0.25
     weather_rainbow: 0
+    Water:
+      beaufortScale: 2
+      flowSpeed: 0.05
+      waveScale: 0.5
+      heightProjection: 1
+      overallBright: 1
+      overallTransparency: 1
+      reflectTerm: 0
+      reflectSharpen: 0
+      roughness: 0.3
+      roughness2: 0.76
+      specularColor: {r: 0.06657174, g: 0.706101, b: 0.8301887, a: 0.161}
   - Weather: 1
     weather_cloudAltoStratusAmt: 0.5
     weather_cloudCirrusAmt: 0.5
@@ -54520,6 +54529,18 @@ MonoBehaviour:
     weather_temperature: 75
     weather_humidity: 0.25
     weather_rainbow: 0
+    Water:
+      beaufortScale: 5.3
+      flowSpeed: 0.08
+      waveScale: 3.04
+      heightProjection: 0.26
+      overallBright: 0.8
+      overallTransparency: 0.8
+      reflectTerm: 0.36
+      reflectSharpen: 0
+      roughness: 0.45
+      roughness2: 1
+      specularColor: {r: 0.06657174, g: 0.706101, b: 0.8301887, a: 0.161}
   - Weather: 4
     weather_cloudAltoStratusAmt: 0.8
     weather_cloudCirrusAmt: 0.8
@@ -54538,8 +54559,260 @@ MonoBehaviour:
     weather_temperature: 75
     weather_humidity: 0.25
     weather_rainbow: 0
+    Water:
+      beaufortScale: 5.3
+      flowSpeed: 0.08
+      waveScale: 3.21
+      heightProjection: 0.27
+      overallBright: 0.5
+      overallTransparency: 0.82
+      reflectTerm: 0.84
+      reflectSharpen: 0.68
+      roughness: 0.75
+      roughness2: 1
+      specularColor: {r: 0.06657174, g: 0.706101, b: 0.8301887, a: 0.161}
   DebugSeason: 3
   DebugWeather: 4
+--- !u!21 &1445015387
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: mat_water_surface
+  m_Shader: {fileID: 4800000, guid: 5af3fd41baf694e4db80b54ea540749f, type: 3}
+  m_ShaderKeywords: SUIMONO_CAUST_ON SUIMONO_DYNREFL_ON SUIMONO_REFL_OFF SUIMONO_TESS_ON
+    SUIMONO_TRANS_ON
+  m_LightmapFlags: 5
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BlurRamp:
+        m_Texture: {fileID: 2800000, guid: e607ea0d8431dc64c8f345a02a1028e9, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _CubeBDRF:
+        m_Texture: {fileID: 8900000, guid: 01c62ce94e46dcf4ea217e771c6da1b2, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _CubeMobile:
+        m_Texture: {fileID: 8900000, guid: c27d2f9a7fe1df7448a59cd7e8306390, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _CubeTex:
+        m_Texture: {fileID: 8900000, guid: c27d2f9a7fe1df7448a59cd7e8306390, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DepthRamp:
+        m_Texture: {fileID: 2800000, guid: aa1f666bea9a5b2409ff3dcfc008a57c, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _FlowMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _FoamOverlay:
+        m_Texture: {fileID: 2800000, guid: dd5f830482b013a43b967ea68de614d7, type: 3}
+        m_Scale: {x: 0.781425, y: 0.781425}
+        m_Offset: {x: 0, y: 0}
+    - _FoamRamp:
+        m_Texture: {fileID: 2800000, guid: 01757909dcbf805408fe7867004a31a3, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _FoamTex:
+        m_Texture: {fileID: 2800000, guid: 14c55ed649175884784db6c178f4e654, type: 3}
+        m_Scale: {x: 50, y: 50}
+        m_Offset: {x: 0, y: 0}
+    - _HeightTex:
+        m_Texture: {fileID: 2800000, guid: 51323bc64857e644fac7400eb7305b36, type: 3}
+        m_Scale: {x: 2, y: 2}
+        m_Offset: {x: 0, y: 0}
+    - _HeightTexD:
+        m_Texture: {fileID: 2800000, guid: 5068c41d8b2d8474a855de152aea3721, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _HeightTexR:
+        m_Texture: {fileID: 2800000, guid: 17e80c508914f384083dc7e9d438652f, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MaskTex:
+        m_Texture: {fileID: 2800000, guid: e18972d51c4910d499b05f09d48dc145, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NormalTex:
+        m_Texture: {fileID: 2800000, guid: 48e29dc2e9488474081bc20a42a364b9, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NormalTexD:
+        m_Texture: {fileID: 2800000, guid: fdd39131993ce804da86a2e71c17a742, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NormalTexR:
+        m_Texture: {fileID: 2800000, guid: fb77700eb10ac344db495df815b29823, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NormalTexS:
+        m_Texture: {fileID: 2800000, guid: 48e29dc2e9488474081bc20a42a364b9, type: 3}
+        m_Scale: {x: 100, y: 100}
+        m_Offset: {x: 0, y: 0}
+    - _OceanBlendTex:
+        m_Texture: {fileID: 2800000, guid: e18972d51c4910d499b05f09d48dc145, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Ramp2D:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ReflectionTex:
+        m_Texture: {fileID: 367743660}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Surface1:
+        m_Texture: {fileID: 2800000, guid: 51323bc64857e644fac7400eb7305b36, type: 3}
+        m_Scale: {x: 4.62, y: 4.62}
+        m_Offset: {x: 0, y: 0.038000003}
+    - _Surface2:
+        m_Texture: {fileID: 2800000, guid: 51323bc64857e644fac7400eb7305b36, type: 3}
+        m_Scale: {x: 5.25, y: 5.25}
+        m_Offset: {x: 0, y: 0}
+    - _WaveLargeTex:
+        m_Texture: {fileID: 2800000, guid: 48e29dc2e9488474081bc20a42a364b9, type: 3}
+        m_Scale: {x: 5.25, y: 5.25}
+        m_Offset: {x: 0, y: 1}
+    - _WaveMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _WaveRamp:
+        m_Texture: {fileID: 2800000, guid: 7d47d30a7e6fff544a72f826670ef31b, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _WaveTex:
+        m_Texture: {fileID: 2800000, guid: 9e0b039b60bba5c4ea73849d69af386a, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _testTransTex:
+        m_Texture: {fileID: 8400000, guid: 4cbb053dd78893346b31535310230dc4, type: 2}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _AnimSpeed: 1
+    - _BlurSpread: 0
+    - _BumpStrength: 0.084
+    - _CausticsFade: 61.878002
+    - _CenterHeight: 1
+    - _DepthAmt: 45
+    - _DepthFade: 12.8936
+    - _DetailHeight: 1.63
+    - _Displacement: 1
+    - _EdgeBlend: 1
+    - _EdgeFade: 73.36
+    - _EdgeFoamFade: 105.164955
+    - _EdgeSpread: 0.02
+    - _FlowScale: 6.0895004
+    - _FoamFade: 1
+    - _FoamHeight: 0
+    - _FoamSpread: 0.85
+    - _HeightFoamAmount: 0
+    - _HeightFoamAmt: 0.85
+    - _HeightFoamHeight: 0.65
+    - _HeightFoamSpread: 0.276
+    - _MaskAmt: 8
+    - _MasterScale: 2.25
+    - _MaxVariance: 8.299999
+    - _NormalStrength: 1
+    - _ReflBlend: 0.015
+    - _ReflBlur: 0.01
+    - _ReflDist: 200
+    - _ReflectStrength: 1
+    - _RefrScale: 2.25
+    - _RefrSpeed: 15.2
+    - _RefrStrength: 0
+    - _RefractFade: 1
+    - _RefractStrength: 0.5
+    - _RimPower: 1
+    - _ShallowFade: 45.6943
+    - _ShallowFoamAmt: 1
+    - _ShoreAmt: -3.5
+    - _ShoreAmtDk: 1
+    - _SpecScatterAmt: 0.5
+    - _SpecScatterWidth: 0.1
+    - _Tess: 8
+    - _TideAmount: 0.3
+    - _TideSpread: 0.513
+    - _UnderFogDist: -0.054
+    - _UnderReflDist: -4.28
+    - _WaveHeight: 0.63
+    - _WaveScale: 0.605
+    - _WaveShoreHeight: 0
+    - _castshadowEnabled: 1
+    - _castshadowFade: 1
+    - _castshadowStrength: 1
+    - _foamScale: 10.54
+    - _maxDist: 58.399998
+    - _minDist: -180
+    - _reflecTerm: 0
+    - _shorelineFrequency: 0.5
+    - _shorelineHeight: 0.397
+    - _shorelineScale: 0.1
+    - _shorelineSpeed: 4
+    - _suimono_DeepWaveHeight: 0.945
+    - _suimono_DetailHeight: 1.63
+    - _suimono_detScale: 0.19
+    - _suimono_uv2x: 0
+    - _suimono_uv2y: 0
+    - _suimono_uv3x: 0
+    - _suimono_uv3y: 0
+    - _suimono_uv4x: 0
+    - _suimono_uv4y: 0
+    - _suimono_uv5x: 0
+    - _suimono_uv5y: 0
+    - _suimono_uv6x: 0
+    - _suimono_uv6y: 0
+    - _suimono_uv7x: 0
+    - _suimono_uv7y: 0
+    - _suimono_uv8x: 1
+    - _suimono_uv8y: 1
+    - _suimono_uvx: 0
+    - _suimono_uvy: 0
+    - _temp: 1
+    - _useDynamicReflections: 1
+    - normalShore: 1
+    m_Colors:
+    - _BlendColor: {r: 0.36, g: 1, b: 0.867, a: 0.22}
+    - _CausticsColor: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _DepthColor: {r: 0, g: 0, b: 0, a: 0}
+    - _DepthColorB: {r: 1, g: 0.44, b: 0, a: 1}
+    - _DepthColorG: {r: 1, g: 1, b: 1, a: 0}
+    - _DepthColorR: {r: 1, g: 1, b: 1, a: 0}
+    - _DynReflColor: {r: 1, g: 1, b: 1, a: 0.5}
+    - _EdgeColor: {r: 0.73, g: 1, b: 0.94, a: 0}
+    - _FoamColor: {r: 0.912, g: 0.874, b: 0.791, a: 1}
+    - _HighColor: {r: 0, g: 0, b: 0, a: 0.9}
+    - _LowColor: {r: 0.34, g: 0.26, b: 0.18, a: 0.15}
+    - _OverlayColor: {r: 0, g: 0, b: 0, a: 0}
+    - _ReflectionColor: {r: 1, g: 1, b: 1, a: 0.376}
+    - _SSSColor: {r: 0, g: 0.324, b: 0.015, a: 0.239}
+    - _SpecColorH: {r: 1, g: 0.48, b: 0, a: 1}
+    - _SpecColorL: {r: 1, g: 0, b: 0, a: 1}
+    - _SpecularColor: {r: 0.063, g: 0.326, b: 0.375, a: 0.161}
+    - _TideColor: {r: 0.24, g: 0.34, b: 0.32, a: 0}
+    - _TintColor: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}
+    - _UnderColor: {r: 1, g: 0.62, b: 0.17, a: 1}
+    - _UnderwaterColor: {r: 0.034, g: 0.102, b: 0.154, a: 0.404}
+    - _castshadowColor: {r: 0, g: 1, b: 0.79, a: 0.18}
+    - _depthColor: {r: 0.16, g: 0.281, b: 0.382, a: 1}
+    - _shallowColor: {r: 0.208, g: 0.373, b: 0.441, a: 0.784}
 --- !u!1 &1452937895
 GameObject:
   m_ObjectHideFlags: 0
@@ -54654,7 +54927,7 @@ MonoBehaviour:
   resolution: 512
   cameraOffset: 0
   reflectionOffset: 0
-  renderTexDiff: {fileID: 1530278419}
+  renderTexDiff: {fileID: 1402975608}
   renderShader: {fileID: 0}
   executeInEditMode: 0
   isUnderwater: 0
@@ -54689,7 +54962,7 @@ Camera:
     serializedVersion: 2
     m_Bits: 512
   m_RenderingPath: 3
-  m_TargetTexture: {fileID: 1530278419}
+  m_TargetTexture: {fileID: 1402975608}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 1
@@ -54934,37 +55207,6 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!84 &1530278419
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_ForcedFallbackFormat: 4
-  m_DownscaleFallback: 0
-  m_Width: 512
-  m_Height: 512
-  m_AntiAliasing: 1
-  m_DepthFormat: 2
-  m_ColorFormat: 11
-  m_MipMap: 0
-  m_GenerateMips: 0
-  m_SRGB: 0
-  m_UseDynamicScale: 0
-  m_BindMS: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 2
-    m_Aniso: 0
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!1 &1554139190
 GameObject:
   m_ObjectHideFlags: 0
@@ -55235,7 +55477,7 @@ Camera:
     serializedVersion: 2
     m_Bits: 268433663
   m_RenderingPath: 3
-  m_TargetTexture: {fileID: 1189951610}
+  m_TargetTexture: {fileID: 176910147}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 1
@@ -55263,7 +55505,7 @@ MonoBehaviour:
   resolution: 512
   cameraOffset: 0
   reflectionOffset: 0
-  renderTexDiff: {fileID: 1189951610}
+  renderTexDiff: {fileID: 176910147}
   renderShader: {fileID: 0}
   executeInEditMode: 0
   isUnderwater: 0
@@ -59977,7 +60219,7 @@ MonoBehaviour:
   resolution: 512
   cameraOffset: 0
   reflectionOffset: 0
-  renderTexDiff: {fileID: 2133499830}
+  renderTexDiff: {fileID: 367743660}
   renderShader: {fileID: 0}
   executeInEditMode: 0
   isUnderwater: 0
@@ -60012,7 +60254,7 @@ Camera:
     serializedVersion: 2
     m_Bits: 1
   m_RenderingPath: 3
-  m_TargetTexture: {fileID: 2133499830}
+  m_TargetTexture: {fileID: 367743660}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 0
@@ -64804,7 +65046,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 418045521}
+  - {fileID: 1445015387}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -64860,37 +65102,6 @@ Transform:
   m_Father: {fileID: 785522129}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!84 &2021232851
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_ForcedFallbackFormat: 4
-  m_DownscaleFallback: 0
-  m_Width: 128
-  m_Height: 128
-  m_AntiAliasing: 1
-  m_DepthFormat: 2
-  m_ColorFormat: 11
-  m_MipMap: 0
-  m_GenerateMips: 0
-  m_SRGB: 0
-  m_UseDynamicScale: 0
-  m_BindMS: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 2
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!1 &2131697982
 GameObject:
   m_ObjectHideFlags: 0
@@ -64957,37 +65168,6 @@ Transform:
   m_Father: {fileID: 1909880379}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!84 &2133499830
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_ForcedFallbackFormat: 4
-  m_DownscaleFallback: 0
-  m_Width: 512
-  m_Height: 512
-  m_AntiAliasing: 1
-  m_DepthFormat: 2
-  m_ColorFormat: 11
-  m_MipMap: 0
-  m_GenerateMips: 0
-  m_SRGB: 0
-  m_UseDynamicScale: 0
-  m_BindMS: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 2
-    m_Aniso: 0
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!1 &2135265522
 GameObject:
   m_ObjectHideFlags: 0
