@@ -187,7 +187,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-351404
+  m_Name: pb_Mesh22474
   serializedVersion: 8
   m_SubMeshes: []
   m_Shapes:
@@ -483,7 +483,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 127
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!64 &2128557267
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -618,7 +618,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 127
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!64 &2141138188
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6054,10 +6054,8 @@ MonoBehaviour:
     areaError: 15
   dontDestroyMeshOnDelete: 0
   m_selectedFaces: 
-  m_SelectedEdges:
-  - x: 329
-    y: 331
-  m_selectedTriangles: 490100004b010000
+  m_SelectedEdges: []
+  m_selectedTriangles: 
 --- !u!33 &2141138190
 MeshFilter:
   m_ObjectHideFlags: 0
