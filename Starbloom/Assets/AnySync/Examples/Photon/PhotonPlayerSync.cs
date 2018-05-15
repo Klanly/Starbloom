@@ -6,7 +6,7 @@ public class PhotonPlayerSync : PunBehaviour, IPunObservable
     const float MovementAcceleration = 13f;
 
     bool _teleportOnNextSync;
-    Vector2 _input;
+    //Vector2 _input;
 
     Rigidbody _rigidbody;
     SyncBuffer _syncBuffer;
@@ -42,7 +42,7 @@ public class PhotonPlayerSync : PunBehaviour, IPunObservable
         if (PV.isMine)
         {
             // control the rigidbody locally
-            _rigidbody.AddForce(new Vector3(-_input.x, 0f, -_input.y) * MovementAcceleration * Time.deltaTime, ForceMode.VelocityChange);
+            //_rigidbody.AddForce(new Vector3(-_input.x, 0f, -_input.y) * MovementAcceleration * Time.deltaTime, ForceMode.VelocityChange);
             _timeSinceLastSync += Time.deltaTime;
         }
     }
