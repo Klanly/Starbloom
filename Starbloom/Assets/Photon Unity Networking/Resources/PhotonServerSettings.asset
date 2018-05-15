@@ -44,4 +44,5 @@ MonoBehaviour:
   - SendOutIDList
   - SetNewID
   - TaggedPlayer
+  - SendOutWeatherChange
   DisableAutoOpenWizard: 1

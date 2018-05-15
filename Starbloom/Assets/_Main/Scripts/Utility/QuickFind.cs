@@ -92,6 +92,9 @@ public static class QuickFind
     public static UserSettings UserSettings = null;
 
 
+    //Environment
+    public static WeatherHandler WeatherHandler = null;
+
     //Serialization
     public static DG_LocalDataHandler SaveHandler;
 

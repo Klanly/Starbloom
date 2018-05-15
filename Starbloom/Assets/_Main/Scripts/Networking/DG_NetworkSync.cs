@@ -51,4 +51,25 @@ public class DG_NetworkSync : Photon.MonoBehaviour
             Debug.Log("UserID == " + UserID.ToString());
         }
     }
+
+
+
+
+    //Network Messages
+
+
+    public void AdjustWeather(int Season, int Weather)
+    {
+        List<int> WeatherNums = new List<int>();
+        WeatherNums.Add(Season);
+        WeatherNums.Add(Weather);
+        PV.RPC("SendOutWeatherChange", PhotonTargets.All, WeatherNums.ToArray());
+    }
+    [PunRPC]
+    void SendOutWeatherChange(int[] WeatherNums)
+    {
+        int Season = WeatherNums[0];
+        int Weather = WeatherNums[1];
+        QuickFind.WeatherHandler.AdjustSeason(Season, Weather);
+    }
 }
