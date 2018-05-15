@@ -45,4 +45,9 @@ MonoBehaviour:
   - SetNewID
   - TaggedPlayer
   - SendOutWeatherChange
+  - MasterSendForthTimes
+  - MasterSendForthWeather
+  - SendOutTimeByMaster
+  - SendOutTimeByPreset
+  - SendOutWeatherByMaster
   DisableAutoOpenWizard: 1

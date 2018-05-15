@@ -713,8 +713,10 @@ bool totalEclipse = false;
 
 	void Awake(){
 
-		//set custom random generator instance
-		randSeed = System.Environment.TickCount;
+            QuickFind.WeatherModule = this;
+
+        //set custom random generator instance
+        randSeed = System.Environment.TickCount;
 		TenRandom = new Tenkoku.Core.Random(randSeed);
 
 		// Manually Set Execution Order

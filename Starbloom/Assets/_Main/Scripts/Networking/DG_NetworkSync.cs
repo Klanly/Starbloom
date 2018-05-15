@@ -19,6 +19,12 @@ public class DG_NetworkSync : Photon.MonoBehaviour
             transform.SetParent(QuickFind.NetworkMaster.transform);
             QuickFind.IDMaster = this;
             PV.RPC("SetNewID", PhotonTargets.MasterClient);
+
+            if (!PhotonNetwork.isMasterClient)
+            {
+                QuickFind.WeatherHandler.RequestMasterWeather();
+                QuickFind.TimeHandler.RequestMasterTimes();
+            }
         }
     }
 
@@ -55,9 +61,20 @@ public class DG_NetworkSync : Photon.MonoBehaviour
 
 
 
+
+
+
+
+
+
+
     //Network Messages
+    //////////////////////////////////////////////////////////////////////////////////////////////////
 
 
+
+    //Weather
+    //////////////////////////////////////////////////////
     public void AdjustWeather(int Season, int Weather)
     {
         List<int> WeatherNums = new List<int>();
@@ -72,4 +89,39 @@ public class DG_NetworkSync : Photon.MonoBehaviour
         int Weather = WeatherNums[1];
         QuickFind.WeatherHandler.AdjustSeason(Season, Weather);
     }
+    //////////////////////////////////////////////////////
+    public void RequestMasterWeather()
+    { PV.RPC("MasterSendForthWeather", PhotonTargets.All); }
+
+    [PunRPC] void MasterSendForthWeather()
+    { if (PhotonNetwork.isMasterClient) QuickFind.WeatherHandler.SyncWeatherToMaster(); }
+    //////////////////////////////////////////////////////
+    public void SyncWeatherToMaster(int[] WeatherValues)
+    { PV.RPC("SendOutWeatherByMaster", PhotonTargets.All, WeatherValues); }
+
+    [PunRPC] void SendOutWeatherByMaster(int[] WeatherValues)
+    { QuickFind.WeatherHandler.GetMasterWeather(WeatherValues); }
+
+
+    //Time
+    //////////////////////////////////////////////////////
+    public void AdjustTimeByPreset(int Time)
+    { PV.RPC("SendOutTimeByPreset", PhotonTargets.All, Time); }
+
+    [PunRPC] void SendOutTimeByPreset(int Time)
+    {  QuickFind.TimeHandler.AdjustTimeByPreset(Time); }
+
+    //////////////////////////////////////////////////////
+    public void RequestMasterTime()
+    { PV.RPC("MasterSendForthTimes", PhotonTargets.All); }
+
+    [PunRPC] void MasterSendForthTimes()
+    { if(PhotonNetwork.isMasterClient) QuickFind.TimeHandler.SyncTimeToMaster(); }
+
+    //////////////////////////////////////////////////////
+    public void SyncTimeToMaster(float[] TimeValues)
+    { PV.RPC("SendOutTimeByMaster", PhotonTargets.All, TimeValues); }
+
+    [PunRPC] void SendOutTimeByMaster(float[] TimeValues)
+    { QuickFind.TimeHandler.GetMasterTimes(TimeValues); }
 }
