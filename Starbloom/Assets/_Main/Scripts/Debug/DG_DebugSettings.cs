@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class DG_DebugSettings : MonoBehaviour {
 
     [Header("Network")]
@@ -10,6 +11,7 @@ public class DG_DebugSettings : MonoBehaviour {
     public bool DisableAudio = false;
     public bool BypassMainMenu = false;
 
+    [HideInInspector] public GameObject LastSelected;
 
     private void Awake()
     {

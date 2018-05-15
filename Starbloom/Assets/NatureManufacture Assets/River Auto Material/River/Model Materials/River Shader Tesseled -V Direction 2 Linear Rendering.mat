@@ -124,11 +124,13 @@ Material:
     - _BigCascadeAngleFalloff: 1.5
     - _BigCascadeFalloff: 80
     - _BigCascadeFoamFalloff: 0.6
+    - _BigCascadeNoisePower: 2.71
     - _BigCascadeNormalInfluence: 0
     - _BigCascadeNormalScale: 2
     - _BigCascadeSmoothness: 0
     - _BigCascadeSpecular: 0.84
     - _BigCascadeSpeed: 4
+    - _BigCascadeTransparency: 0
     - _BigCascadeWaterNormalScale: 0.9
     - _BigCascadeWaterTessScale: 0.2
     - _CascadeFalloff: 0.84
@@ -149,6 +151,7 @@ Material:
     - _Depth: 0.98
     - _DepthFalloff: -13
     - _Distortion: 0.03
+    - _EdgeLength: 25
     - _FastCascadeAngle: 90
     - _FastCascadeFalloff: 80
     - _FastCascadeNormalInfluence: 0
@@ -184,6 +187,7 @@ Material:
     - _SmallCascadeAngleFalloff: 0.8
     - _SmallCascadeFalloff: 80
     - _SmallCascadeFoamFalloff: 1.87
+    - _SmallCascadeNoisePower: 2.71
     - _SmallCascadeNormalInfluence: 20
     - _SmallCascadeNormalScale: 1
     - _SmallCascadeSmoothness: 0
@@ -194,6 +198,7 @@ Material:
     - _Smoothness: 0.9
     - _Specular: 0.1
     - _TessMax: 11
+    - _TessMaxDisp: 20
     - _TessMin: 0
     - _TessPhongStrength: 0.5
     - _TessValue: 20
@@ -237,5 +242,5 @@ Material:
     - _SmallCascadeMainSpeed: {r: 0, g: -0.16, b: 0, a: 0}
     - _SmallCascadeMixSpeed: {r: -0.04, g: -0.08, b: 0, a: 0}
     - _SpecColor: {r: 1, g: 1, b: 1, a: 1}
-    - _WaterMainSpeed: {r: -0.01, g: 0, b: 0, a: 0}
+    - _WaterMainSpeed: {r: 0, g: 0, b: 0, a: 0}
     - _WaterMixSpeed: {r: -0.007, g: -0.05, b: 0, a: 0}
