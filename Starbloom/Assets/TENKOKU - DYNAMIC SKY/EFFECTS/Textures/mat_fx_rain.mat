@@ -30,4 +30,4 @@ Material:
     - _OverBright: 3
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _TintColor: {r: 0.6147654, g: 0.7093447, b: 0.7093447, a: 0.11597521}
+    - _TintColor: {r: 0.7072, g: 0.81600004, b: 0.81600004, a: 0.12}
