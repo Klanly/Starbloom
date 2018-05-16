@@ -4,3 +4,9 @@ Starbloom/Temp/
 *.sln
 Starbloom/.vs/
 Starbloom/Assets/TENKOKU - DYNAMIC SKY/TEXTURES/mat_cloudSphere.mat
+Starbloom/Assets/TENKOKU - DYNAMIC SKY/TEXTURES/mat_moon.mat
+Starbloom/Assets/TENKOKU - DYNAMIC SKY/EFFECTS/Textures/mat_fx_fog.mat
+Starbloom/Assets/TENKOKU - DYNAMIC SKY/EFFECTS/Textures/mat_fx_rain.mat
+Starbloom/Assets/TENKOKU - DYNAMIC SKY/EFFECTS/Textures/mat_fx_rainFog.mat
+Starbloom/Assets/TENKOKU - DYNAMIC SKY/EFFECTS/Textures/mat_fx_rainSplash.mat
+Starbloom/Assets/TENKOKU - DYNAMIC SKY/EFFECTS/Textures/mat_fx_snow.mat
