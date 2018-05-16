@@ -96,7 +96,7 @@ public class WeatherHandler : MonoBehaviour
     public WeatherTyps DebugWeather;
     [ButtonGroup]
     public void ChangeSeason()
-    { QuickFind.IDMaster.AdjustWeather((int)DebugSeason, (int)DebugWeather); }
+    { QuickFind.NetworkSync.AdjustWeather((int)DebugSeason, (int)DebugWeather); }
 
 
     Seasons CurrentSeason;
@@ -117,7 +117,7 @@ public class WeatherHandler : MonoBehaviour
 
     public void RequestMasterWeather()
     {
-        QuickFind.IDMaster.RequestMasterWeather();
+        QuickFind.NetworkSync.RequestMasterWeather();
     }
     public void SyncWeatherToMaster()
     {
@@ -126,7 +126,7 @@ public class WeatherHandler : MonoBehaviour
         WeatherValues.Add((int)CurrentSeason);
         WeatherValues.Add((int)CurrentWeather);
 
-        QuickFind.IDMaster.SyncWeatherToMaster(WeatherValues.ToArray());
+        QuickFind.NetworkSync.SyncWeatherToMaster(WeatherValues.ToArray());
     }
     public void GetMasterWeather(int[] Weather)
     {

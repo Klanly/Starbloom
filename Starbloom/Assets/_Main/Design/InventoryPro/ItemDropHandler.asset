@@ -16,5 +16,5 @@ MonoBehaviour:
   maxDropDistance: 10
   layersWhenDropping:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 1847
   dropItemRaycastToGround: 0

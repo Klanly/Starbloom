@@ -11,9 +11,14 @@ public class DG_GUIContextHandler : MonoBehaviour {
     [HideInInspector] public Image CurrentSelectedObject;
     [HideInInspector] public Image[] CurrentSelectableObjects;
 
+    public CanvasGroup InventoryProCanvasGroup;
+
     private void Awake()
     {
         QuickFind.GUIContextHandler = this;
+
+        QuickFind.EnableCanvas(InventoryProCanvasGroup, false);
+        InventoryProCanvasGroup.transform.localPosition = Vector3.zero;
     }
     public void OpenNewContextMenuSelectionState(Image[] NewSelectionOptions)
     {

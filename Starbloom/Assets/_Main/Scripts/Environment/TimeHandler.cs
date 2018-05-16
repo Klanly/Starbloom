@@ -39,7 +39,7 @@ public class TimeHandler : MonoBehaviour {
     [ButtonGroup]
     public void ChangeTime()
     {
-        QuickFind.IDMaster.AdjustTimeByPreset((int)DebugTime);
+        QuickFind.NetworkSync.AdjustTimeByPreset((int)DebugTime);
     }
 
 
@@ -55,7 +55,7 @@ public class TimeHandler : MonoBehaviour {
 
     public void RequestMasterTimes()
     {
-        QuickFind.IDMaster.RequestMasterTime();
+        QuickFind.NetworkSync.RequestMasterTime();
     }
     public void SyncTimeToMaster()
     {
@@ -72,7 +72,7 @@ public class TimeHandler : MonoBehaviour {
         TimeValues.Add(TimeModule.setLongitude);
         TimeValues.Add(TimeModule.timeCompression);
 
-        QuickFind.IDMaster.SyncTimeToMaster(TimeValues.ToArray());
+        QuickFind.NetworkSync.SyncTimeToMaster(TimeValues.ToArray());
     }
     public void GetMasterTimes(float[] Times)
     {

@@ -213,7 +213,7 @@ MonoBehaviour:
   _isDroppable: 1
   _isSellable: 1
   _isStorable: 1
-  _maxStackSize: 1
+  _maxStackSize: 5
   _cooldownTime: 0
   audioClipWhenUsed:
     audioClip: {fileID: 8300000, guid: d4117cb62c39c5543951841b2000f6b2, type: 3}
