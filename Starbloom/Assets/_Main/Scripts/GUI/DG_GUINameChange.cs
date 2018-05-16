@@ -322,7 +322,7 @@ public class DG_GUINameChange : MonoBehaviour {
     void Select()
     {
         DG_CharacterObject CharacterObject = QuickFind.CharacterDatabase.GetItemFromID(DefaultCharID);
-        QuickFind.DataStrings.GetStringFromID(CharacterObject.SaveStringID).StringValue = BuildNameString();
+        //QuickFind.DataStrings.GetStringFromID(CharacterObject.SaveStringID).StringValue = BuildNameString();
         CloseNameChangeUI();
     }
     void Space()

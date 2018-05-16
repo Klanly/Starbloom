@@ -271,10 +271,7 @@ public class NA_DialogueGUIController : MonoBehaviour
         {
             DG_CharacterObject Char = QuickFind.CharacterDatabase.GetItemFromID(ActiveDialogue.Current.ContextInt);
             //
-            if (Char.NameEditableByUser)
-                Name = QuickFind.DataStrings.GetStringFromID(Char.SaveStringID).StringValue;
-            else
-                Name = QuickFind.WordDatabase.GetItemFromID(Char.DefaultNameWordID, Char.DefaultNameCatagoryID).TextValues[(int)QuickFind.UserSettings.CurrentLanguage].stringEntry;
+            Name = QuickFind.WordDatabase.GetItemFromID(Char.DefaultNameWordID, Char.DefaultNameCatagoryID).TextValues[(int)QuickFind.UserSettings.CurrentLanguage].stringEntry;
         }
         //
         TextDisplay = QuickFind.WordDatabase.GetItemFromID(DisplayWindow.ContextInt2, DisplayWindow.ContextInt4).TextValues[(int)QuickFind.UserSettings.CurrentLanguage].stringEntry;

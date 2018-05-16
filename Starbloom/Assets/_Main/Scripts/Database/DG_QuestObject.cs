@@ -23,11 +23,6 @@ class DG_QuestObjectEditor : Editor
             if (myScript.DatabaseID == 0)
                 myScript.FindNextAvailableDatabaseID();
             string QuestName = "Quest - " + myScript.DatabaseID.ToString();
-            DG_DataBoolManager Manager = QuickFindInEditor.GetEditorDataBools();
-            int BoolID = Manager.GenerateNewDatabaseItem("Quest", QuestName);
-            myScript.BoolSaveLocation = BoolID;
-            DG_DataBoolItem BoolItem = Manager.GetBoolFromIDInEditor(BoolID);
-            BoolItem.Description = QuestName;
         }
     }
 }
@@ -80,7 +75,7 @@ public class DG_QuestObject : MonoBehaviour {
 
     public bool QuestIsComplete()
     {
-        return QuickFind.DataBools.GetBoolFromID(BoolSaveLocation).BoolValue;
+        return false;
     }
 
     public bool QuestRequirementsAreMet()
@@ -91,7 +86,7 @@ public class DG_QuestObject : MonoBehaviour {
             if(Req.RequireQuestValue)
             {
                 int boolDatabaseLocation = QuickFind.QuestDatabase.GetItemFromID(Req.QuestDatabaseID).BoolSaveLocation;
-                bool QuestComplete = QuickFind.DataBools.GetBoolFromID(boolDatabaseLocation).BoolValue;
+                bool QuestComplete = false;
 
                 if (Req.QuestShouldBeComplete && !QuestComplete)
                 {
@@ -131,7 +126,6 @@ public class DG_QuestObject : MonoBehaviour {
     }
     public void CompleteQuest()
     {
-        QuickFind.DataBools.GetBoolFromID(BoolSaveLocation).BoolValue = true;
         //Quest Rewards
         for(int i = 0; i < QuestRewards.Length; i++)
         {

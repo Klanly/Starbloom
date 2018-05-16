@@ -39,11 +39,6 @@ class DG_CharacterDatabaseEditor : Editor
 
                 NewPlayabledCharactersList[i] = new DG_CharacterDatabase.UnlockableCharacter();
                 NewPlayabledCharactersList[i].CharacterDatabaseID = CO.DatabaseID;
-
-                DG_DataBoolManager Manager = QuickFindInEditor.GetEditorDataBools();
-                string CharacterName = QuickFindInEditor.GetEditorDataStrings().GetStringFromIDInEditor(CO.SaveStringID).StringValue;
-                NewPlayabledCharactersList[i].UnlockedBoolSaveLocation = Manager.GenerateNewDatabaseItem("Unlockable Chars", CharacterName);
-                NewPlayabledCharactersList[i].EditorNote = CharacterName;
             }
             myScript.PlayabledCharactersList = NewPlayabledCharactersList;
         }

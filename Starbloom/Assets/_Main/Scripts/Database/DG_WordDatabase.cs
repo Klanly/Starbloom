@@ -89,12 +89,7 @@ public class DG_WordDatabase : MonoBehaviour {
         }
         else
         {
-#if UNITY_EDITOR
-            if (!Application.isPlaying)
-                ReturnString = QuickFindInEditor.GetEditorDataStrings().GetStringFromIDInEditor(CharacterObject.SaveStringID).StringValue;
-            else
-#endif
-                ReturnString = QuickFind.DataStrings.GetStringFromID(CharacterObject.SaveStringID).StringValue;
+
         }
 
         return ReturnString;
