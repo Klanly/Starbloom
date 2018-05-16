@@ -10,113 +10,93 @@ using System.IO;
 
 public class DG_LocalDataHandler : MonoBehaviour {
 
+
+    public string SaveFileName;
+
     string CacheDirectory;
 
     private void Awake()
     {
         QuickFind.SaveHandler = this;
-        CacheDirectory = Environment.CurrentDirectory + "\\Cache/";
+        CacheDirectory = Environment.CurrentDirectory + "\\SaveFiles/";
     }
 
 
     ///////////////////////////////////////////////////////////////////////
-    public void SaveBoolTracker(bool[] Data)
+    public void SaveBools(bool[] Data, string Catagory)
     {
         BinaryFormatter bf = new BinaryFormatter();
-        FileStream file = File.Create(CacheDirectory + "SaveData/Bool");
+        FileStream file = File.Create(CacheDirectory + Catagory);
         bf.Serialize(file, Data);
         file.Close();
     }
-    public bool[] LoadBoolTracker()
+    public bool[] LoadBools(string Catagory)
     {
         bool[] ReturnArray = null;
-        if (File.Exists(CacheDirectory + "SaveData/Bool"))
+        if (File.Exists(CacheDirectory + Catagory))
         {
             BinaryFormatter bf = new BinaryFormatter();
-            FileStream file = File.Open(CacheDirectory + "SaveData/Bool", FileMode.Open);
+            FileStream file = File.Open(CacheDirectory + Catagory, FileMode.Open);
             ReturnArray = (bool[])bf.Deserialize(file);
             file.Close();
         }
         return ReturnArray;
     }
     ///////////////////////////////////////////////////////////////////////
-    public void SaveIntTracker(int[] Data)
+    public void SaveInts(int[] Data, string Catagory)
     {
         BinaryFormatter bf = new BinaryFormatter();
-        FileStream file = File.Create(CacheDirectory + "SaveData/Int");
+        FileStream file = File.Create(CacheDirectory + Catagory);
         bf.Serialize(file, Data);
         file.Close();
     }
-    public int[] LoadIntTracker()
+    public int[] LoadInts(string Catagory)
     {
         int[] ReturnArray = null;
         if (File.Exists(CacheDirectory + "SaveData/Int"))
         {
             BinaryFormatter bf = new BinaryFormatter();
-            FileStream file = File.Open(CacheDirectory + "SaveData/Int", FileMode.Open);
+            FileStream file = File.Open(CacheDirectory + Catagory, FileMode.Open);
             ReturnArray = (int[])bf.Deserialize(file);
             file.Close();
         }
         return ReturnArray;
     }
     ///////////////////////////////////////////////////////////////////////
-    public void SaveFloatTracker(float[] Data)
+    public void SaveFloats(float[] Data, string Catagory)
     {
         BinaryFormatter bf = new BinaryFormatter();
-        FileStream file = File.Create(CacheDirectory + "SaveData/Float");
+        FileStream file = File.Create(CacheDirectory + Catagory);
         bf.Serialize(file, Data);
         file.Close();
     }
-    public float[] LoadFloatTracker()
+    public float[] LoadFloats(string Catagory)
     {
         float[] ReturnArray = null;
-        if (File.Exists(CacheDirectory + "SaveData/Float"))
+        if (File.Exists(CacheDirectory + Catagory))
         {
             BinaryFormatter bf = new BinaryFormatter();
-            FileStream file = File.Open(CacheDirectory + "SaveData/Float", FileMode.Open);
+            FileStream file = File.Open(CacheDirectory + Catagory, FileMode.Open);
             ReturnArray = (float[])bf.Deserialize(file);
             file.Close();
         }
         return ReturnArray;
     }
     ///////////////////////////////////////////////////////////////////////
-    public void SaveStringTracker(string[] Data)
+    public void SaveStrings(string[] Data, string Catagory)
     {
         BinaryFormatter bf = new BinaryFormatter();
-        FileStream file = File.Create(CacheDirectory + "SaveData/String");
+        FileStream file = File.Create(CacheDirectory + Catagory);
         bf.Serialize(file, Data);
         file.Close();
     }
-    public string[] LoadStringTracker()
+    public string[] LoadStrings(string Catagory)
     {
         string[] ReturnArray = null;
-        if (File.Exists(CacheDirectory + "SaveData/String"))
+        if (File.Exists(CacheDirectory + Catagory))
         {
             BinaryFormatter bf = new BinaryFormatter();
-            FileStream file = File.Open(CacheDirectory + "SaveData/String", FileMode.Open);
-            ReturnArray = (string[])bf.Deserialize(file);
-            file.Close();
-        }
-        return ReturnArray;
-    }
-
-
-
-    ///////////////////////////////////////////////////////////////////////
-    public void SaveControls(string[] Data)
-    {
-        BinaryFormatter bf = new BinaryFormatter();
-        FileStream file = File.Create(CacheDirectory + "SaveData/Controls");
-        bf.Serialize(file, Data);
-        file.Close();
-    }
-    public string[] LoadControls()
-    {
-        string[] ReturnArray = null;
-        if (File.Exists(CacheDirectory + "SaveData/Controls"))
-        {
-            BinaryFormatter bf = new BinaryFormatter();
-            FileStream file = File.Open(CacheDirectory  + "SaveData/Controls", FileMode.Open);
+            FileStream file = File.Open(CacheDirectory + Catagory, FileMode.Open);
             ReturnArray = (string[])bf.Deserialize(file);
             file.Close();
         }

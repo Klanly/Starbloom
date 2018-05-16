@@ -21,8 +21,6 @@ public static class QuickFindInEditor
             return GameObject.Find("NodeViewerOptions").GetComponent<NodeViewOptions>();
         }
     }
-
-
     //Database
     public static DG_DialogueManager GetEditorDialogueManager() { return GameObject.Find("Dialogue Database").GetComponent<DG_DialogueManager>(); }
     public static DG_WordDatabase GetEditorWordDatabase() { return GameObject.Find("Word Database").GetComponent<DG_WordDatabase>(); }
@@ -30,12 +28,7 @@ public static class QuickFindInEditor
     public static DG_ItemsDatabase GetEditorItemDatabase() { return GameObject.Find("Item Database").GetComponent<DG_ItemsDatabase>(); }
     public static DG_CharacterDatabase GetEditorCharacterDatabase() { return GameObject.Find("Character Database").GetComponent<DG_CharacterDatabase>(); }
     public static DG_ColorCodes GetEditorColorCodes() { return GameObject.Find("Color Database").GetComponent<DG_ColorCodes>(); }
-
     //Save Data
-    public static DG_DataBoolManager GetEditorDataBools() { return GameObject.Find("Bool Tracker").GetComponent<DG_DataBoolManager>(); }
-    public static DG_DataIntManager GetEditorDataInts() { return GameObject.Find("Int Tracker").GetComponent<DG_DataIntManager>(); }
-    public static DG_DataFloatManager GetEditorDataFloats() { return GameObject.Find("Float Tracker").GetComponent<DG_DataFloatManager>(); }
-    public static DG_DataStringManager GetEditorDataStrings() { return GameObject.Find("String Tracker").GetComponent<DG_DataStringManager>(); }
     public static UserSettings GetEditorUserSettings() { return GameObject.Find("Player Settings").GetComponent<UserSettings>(); }
 
 }
@@ -85,10 +78,6 @@ public static class QuickFind
 
 
     //Save Data
-    public static DG_DataBoolManager DataBools = null;
-    public static DG_DataIntManager DataInts = null;
-    public static DG_DataFloatManager DataFloats = null;
-    public static DG_DataStringManager DataStrings = null;
     public static UserSettings UserSettings = null;
 
 

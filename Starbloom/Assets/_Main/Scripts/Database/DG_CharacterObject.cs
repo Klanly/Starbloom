@@ -34,15 +34,9 @@ class DG_CharacterObjectEditor : Editor
             if (myScript.DatabaseID == 0)
                 myScript.FindNextAvailableDatabaseID();
             string CharName = "CharacterName - " + myScript.DatabaseID.ToString();
-            DG_DataStringManager Manager = QuickFindInEditor.GetEditorDataStrings();
-            int StringID = Manager.GenerateNewDatabaseItem("CharacterName", CharName);
-            myScript.SaveStringID = StringID;
             myScript.EquipmentDatabaseID = myScript.SaveStringID;
-            DG_DataStringItem StringItem = Manager.GetStringFromIDInEditor(StringID);
-            StringItem.Description = CharName;
 
             CharName = myScript.DatabaseID.ToString() + " - CharacterName - ";
-            StringItem.gameObject.name = CharName;
         }
     }
 }
