@@ -69,7 +69,7 @@ public static class QuickFind
 
     //Network
     public static ConnectAndJoinRandom NetworkMaster = null;
-    public static DG_NetworkSync IDMaster = null;
+    public static DG_NetworkSync NetworkSync = null;
 
 
     //Database

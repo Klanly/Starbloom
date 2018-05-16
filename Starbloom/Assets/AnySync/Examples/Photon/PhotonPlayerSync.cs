@@ -13,8 +13,8 @@ public class PhotonPlayerSync : PunBehaviour, IPunObservable
     Transform _transform;
 
     PhotonView PV;
+    DG_NetworkSync.Users UserOwner = null;
 
-    
     private void Awake()
     {
         PV = transform.parent.GetComponent<PhotonView>();
@@ -27,7 +27,9 @@ public class PhotonPlayerSync : PunBehaviour, IPunObservable
     {
         if (!PV.isMine)
         {
-            if (_syncBuffer.HasKeyframes)
+            if (HaveUserOwner() && UserOwner.SceneID != QuickFind.NetworkSync.CurrentScene)
+                transform.position = new Vector3(0, 10000, 0);
+            else if (_syncBuffer.HasKeyframes)
             {
                 _syncBuffer.UpdatePlayback(Time.deltaTime);
                 _transform.position = _syncBuffer.Position;
@@ -92,6 +94,24 @@ public class PhotonPlayerSync : PunBehaviour, IPunObservable
                 {
                     _syncBuffer.AddKeyframe(interpolationTime, position, rotation, velocity);
                 }
+            }
+        }
+    }
+    bool HaveUserOwner()
+    {
+        if (UserOwner != null)
+            return true;
+        else
+        {
+            if (QuickFind.NetworkSync == null)
+                return false;
+            DG_NetworkSync.Users User = QuickFind.NetworkSync.GetUserByPhotonViewID(PV.viewID);
+            if (User == null)
+                return false;
+            else
+            {
+                UserOwner = User;
+                return true;
             }
         }
     }

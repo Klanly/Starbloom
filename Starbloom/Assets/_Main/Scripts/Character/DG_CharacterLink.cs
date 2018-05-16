@@ -40,7 +40,7 @@ public class DG_CharacterLink : MonoBehaviour {
     }
     private void Update()
     {
-        if (QuickFind.IDMaster == null || QuickFind.IDMaster.UserID == 0)
+        if (QuickFind.NetworkSync == null || QuickFind.NetworkSync.UserID == 0)
             return;
 
         if(!Allow)
@@ -57,6 +57,11 @@ public class DG_CharacterLink : MonoBehaviour {
 
         QuickFind.InputController.MainPlayer.CharLink = this;
         QuickFind.PlayerCam.CharTrans = PlayerChar.transform;
+        QuickFind.NetworkSync.SetPhotonViewID(transform.GetComponent<PhotonView>().viewID);
+        if(QuickFind.GameSettings.BypassMainMenu)
+            QuickFind.FadeScreen.FadeIn(DG_GUI_FadeScreen.FadeInSpeeds.QuickFade);
+        else
+            QuickFind.FadeScreen.FadeIn(DG_GUI_FadeScreen.FadeInSpeeds.SlowFade);
 
         this.enabled = false;
     }

@@ -50,4 +50,6 @@ MonoBehaviour:
   - SendOutTimeByMaster
   - SendOutTimeByPreset
   - SendOutWeatherByMaster
+  - SendUserInScene
+  - SendUserPhoton
   DisableAutoOpenWizard: 1

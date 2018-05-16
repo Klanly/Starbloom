@@ -12,7 +12,7 @@ public class ConnectAndJoinRandom : Photon.MonoBehaviour
     public int Version = 1;
     private bool ConnectInUpdate = true;
 
-
+    bool GameStart = true;
 
 
 
@@ -25,11 +25,16 @@ public class ConnectAndJoinRandom : Photon.MonoBehaviour
     public void StartGame()
     {
         PhotonNetwork.autoJoinLobby = false;
+        PhotonNetwork.offlineMode = !QuickFind.GameSettings.PlayOnline;
+        GameStart = false;
     }
 
 
     public virtual void Update()
     {
+        if (GameStart)
+            return;
+
         if (ConnectInUpdate && AutoConnect && !PhotonNetwork.connected)
         {
             ConnectInUpdate = false;

@@ -39,10 +39,15 @@ public class DG_GUI_FadeScreen : MonoBehaviour {
     private void Awake()
     {
         QuickFind.FadeScreen = this;
+        Color C = FadeImage.color;
+        C.a = 1;
+        FadeImage.color = C;
     }
     private void Start()
     {
         this.enabled = false;
+        if (!QuickFind.GameSettings.BypassMainMenu)
+            FadeIn(FadeInSpeeds.SlowFade);
     }
 
 

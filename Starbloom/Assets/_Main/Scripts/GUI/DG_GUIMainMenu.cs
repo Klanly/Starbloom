@@ -40,8 +40,14 @@ public class DG_GUIMainMenu : MonoBehaviour {
 
     private void Start()
     {
-        if(!QuickFind.GameSettings.BypassMainMenu)
+        if (!QuickFind.GameSettings.BypassMainMenu)
+        {
+            MainMenuCam.enabled = true;
+            MainMenuCam.gameObject.SetActive(true);
+            QuickFind.PlayerCam.MainCam.enabled = false;
             QuickFind.EnableCanvas(UICanvas, true);
+        }
+            
         QuickFind.EnableCanvas(CharUICanvas, false);
 
         transform.localPosition = Vector3.zero;
@@ -50,7 +56,7 @@ public class DG_GUIMainMenu : MonoBehaviour {
             TS.ManualLoad();
 
         if (QuickFind.GameSettings.BypassMainMenu)
-            GameStart();
+            FadeComplete();
     }
 
 
@@ -70,7 +76,8 @@ public class DG_GUIMainMenu : MonoBehaviour {
 
     void NewGameMenu()
     {
-        QuickFind.EnableCanvas(UICanvas, false);
+        TriggerFade();
+        //QuickFind.EnableCanvas(UICanvas, false);
     }
 
     void LoadGameMenu()
@@ -95,11 +102,16 @@ public class DG_GUIMainMenu : MonoBehaviour {
 
 
 
-    void GameStart()
+    void TriggerFade()
+    {
+        QuickFind.FadeScreen.FadeOut(DG_GUI_FadeScreen.FadeInSpeeds.QuickFade, this.gameObject, "FadeComplete");
+    }
+
+    public void FadeComplete()
     {
         MainMenuCam.enabled = false;
+        QuickFind.PlayerCam.MainCam.enabled = true;
         QuickFind.EnableCanvas(UICanvas, false);
         QuickFind.NetworkMaster.StartGame();
     }
-
 }
