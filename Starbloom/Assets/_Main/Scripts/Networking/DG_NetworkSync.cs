@@ -176,6 +176,10 @@ public class DG_NetworkSync : Photon.MonoBehaviour
         DG_PlayerCharacters PlayerData = QuickFind.Farm;
 
         StringData.Add(PlayerData.FarmName);
+        IntData.Add(PlayerData.SharedMoney);
+        IntData.Add(PlayerData.Year);
+        IntData.Add(PlayerData.Month);
+        IntData.Add(PlayerData.Day);
 
         IntData.Add(PlayerData.PlayerCharacters.Count);
         StringData.Add(PlayerData.PlayerCharacters.Count.ToString());
@@ -216,9 +220,9 @@ public class DG_NetworkSync : Photon.MonoBehaviour
     void GetPlayerStringValues(string[] StringValues)
     {
         DG_PlayerCharacters PlayerData = QuickFind.Farm;
-        PlayerData.FarmName = StringValues[0];
-        int count = int.Parse(StringValues[1]);
-        int Index = 2;
+        int Index = 0;
+        PlayerData.FarmName = StringValues[Index]; Index++;
+        int count = int.Parse(StringValues[Index]); Index++;
 
         for (int i = 0; i < count; i++)
         {
@@ -230,9 +234,13 @@ public class DG_NetworkSync : Photon.MonoBehaviour
     void GetPlayerIntValues(int[] IntValues)
     {
         DG_PlayerCharacters PlayerData = QuickFind.Farm;
-        int Count = IntValues[0];
-        int Index = 1;
+        int Index = 0;
+        PlayerData.SharedMoney = IntValues[Index]; Index++;
+        PlayerData.Year = IntValues[Index]; Index++;
+        PlayerData.Month = IntValues[Index]; Index++;
+        PlayerData.Day = IntValues[Index]; Index++;
 
+        int Count = IntValues[Index]; Index++;
         for (int i = 0; i < Count; i++)
         {
             DG_PlayerCharacters.PlayerCharacter PC = PlayerData.PlayerCharacters[i];

@@ -63,6 +63,9 @@ public class DG_GUICharacterCreation : MonoBehaviour {
         if (QuickFind.Farm.FarmName == string.Empty)
             QuickFind.Farm.FarmName = "Default Farm Name";
 
+        if (PhotonNetwork.isMasterClient)
+            QuickFind.SaveHandler.SaveFileName = QuickFind.Farm.FarmName;
+
         QuickFind.EnableCanvas(UICanvas, false);
         QuickFind.MainMenuUI.TriggerGameStart();
     }

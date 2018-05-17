@@ -157,7 +157,48 @@ Transform:
   m_Children:
   - {fileID: 1776617527}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &155133445
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 155133447}
+  - component: {fileID: 155133446}
+  m_Layer: 0
+  m_Name: Save Handler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &155133446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 155133445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: add66526b7ced5d4d9a53eb2349c9c00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SaveFileName: Debug
+--- !u!4 &155133447
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 155133445}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1118935757}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &438454040
 GameObject:
@@ -203,8 +244,375 @@ Transform:
   m_Children:
   - {fileID: 1836453462}
   m_Father: {fileID: 0}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1118935756
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1118935757}
+  - component: {fileID: 1118935758}
+  m_Layer: 0
+  m_Name: PlayerData
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1118935757
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1118935756}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 155133447}
+  m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1118935758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1118935756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 471a2cc814fb1fa4b894840aa0fd4d70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FarmName: 
+  SharedMoney: 500
+  Year: 1
+  Month: 1
+  Day: 1
+  PlayerCharacters:
+  - Name: 
+    Equipment:
+      HatId: 0
+      Ring1: 0
+      Ring2: 0
+      Boots: 0
+      RuckSackUnlockedSize: 12
+      RucksackSlots:
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+  - Name: 
+    Equipment:
+      HatId: 0
+      Ring1: 0
+      Ring2: 0
+      Boots: 0
+      RuckSackUnlockedSize: 12
+      RucksackSlots:
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+  - Name: 
+    Equipment:
+      HatId: 0
+      Ring1: 0
+      Ring2: 0
+      Boots: 0
+      RuckSackUnlockedSize: 12
+      RucksackSlots:
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+  - Name: 
+    Equipment:
+      HatId: 0
+      Ring1: 0
+      Ring2: 0
+      Boots: 0
+      RuckSackUnlockedSize: 12
+      RucksackSlots:
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
 --- !u!1 &1776617526 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1488329588103022, guid: c54e8c395b0069c40803538e94abf712,

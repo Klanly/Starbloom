@@ -7,6 +7,13 @@ public class DG_PlayerCharacters : MonoBehaviour {
 
 
     public string FarmName;
+    public int SharedMoney;
+    public int Year;
+    public int Month;
+    public int Day;
+
+
+
     [ListDrawerSettings(NumberOfItemsPerPage = 1, Expanded = false)]
     public List<PlayerCharacter> PlayerCharacters;
 
@@ -21,18 +28,13 @@ public class DG_PlayerCharacters : MonoBehaviour {
     [System.Serializable]
     public class CharacterEquipment
     {
-        public int ActiveRucksackSlotId;
-
         [Header("Equipment Slots -------------------------------------------------------------------------------")]
         public int HatId;
         public int Ring1;
         public int Ring2;
         public int Boots;
 
-        [Header("Cosmetic")]
-        public int HairID;
-        public int ShirtId;
-        public int PantsID;
+        //[Header("Cosmetic")]
 
         [Header("Rucksack")]
         public int RuckSackUnlockedSize = 12;
