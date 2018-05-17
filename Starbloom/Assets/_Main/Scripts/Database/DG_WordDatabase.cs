@@ -69,29 +69,20 @@ public class DG_WordDatabase : MonoBehaviour {
             return GetWordByLanguage((QuickFind.WordDatabase.GetItemFromID(ID, CatID).TextValues));
     }
 
-    public string GetNameFromID(int ID = 0, bool FirstTimeNameShown = false)
+    public string GetNameFromID(int CatID = 0, int ID = 0, bool FirstTimeNameShown = false)
     {
         string ReturnString = string.Empty;
         DG_CharacterObject CharacterObject;
 
 #if UNITY_EDITOR
         if (!Application.isPlaying)
-            CharacterObject = QuickFindInEditor.GetEditorCharacterDatabase().GetItemFromIDInEditor(ID);
+            CharacterObject = QuickFindInEditor.GetEditorCharacterDatabase().GetItemFromIDInEditor(CatID, ID);
         else
 #endif
-            CharacterObject = QuickFind.CharacterDatabase.GetItemFromID(ID);
+            CharacterObject = QuickFind.CharacterDatabase.GetItemFromID(CatID, ID);
 
-        DG_WordObject WO;
-        if (!CharacterObject.NameEditableByUser || FirstTimeNameShown)
-        {
-            WO = QuickFind.WordDatabase.GetItemFromID(CharacterObject.DefaultNameWordID, CharacterObject.DefaultNameCatagoryID);
-            ReturnString = GetWordByLanguage(WO.TextValues);
-        }
-        else
-        {
-
-        }
-
+        DG_WordObject WO = QuickFind.WordDatabase.GetItemFromID(CharacterObject.NameWordID, CharacterObject.NameWordCatID);
+        ReturnString = GetWordByLanguage(WO.TextValues);
         return ReturnString;
     }
 

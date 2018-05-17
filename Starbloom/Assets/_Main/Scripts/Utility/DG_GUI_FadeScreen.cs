@@ -61,9 +61,9 @@ public class DG_GUI_FadeScreen : MonoBehaviour {
 
         if (Timer < 0)
         {
-            if(ReturnO != null)
-                ReturnO.SendMessage(ReturnM);
             this.enabled = false;
+            if (ReturnO != null)
+                ReturnO.SendMessage(ReturnM);
         }
     }
 

@@ -1534,9 +1534,6 @@ bool totalEclipse = false;
 	    if (Application.isPlaying){
 	    	libComponent.renderObjectMoon.material.SetColor("_Color", Color.Lerp(mDCol,(ambientCol*colorSun),ambientCol.r)*mDCol);
 			libComponent.renderObjectMoon.material.SetColor("_AmbientTint",ambientCol);
-		} else {
-	    	libComponent.renderObjectMoon.sharedMaterial.SetColor("_Color", Color.Lerp(mDCol,(ambientCol*colorSun),ambientCol.r)*mDCol);
-			libComponent.renderObjectMoon.sharedMaterial.SetColor("_AmbientTint",ambientCol);
 		}
 		//set moon face light color
 		moonFaceCol = colorMoon*(1.0f-decodeColorAmbientcolor.r);
@@ -2147,12 +2144,6 @@ bool totalEclipse = false;
 			libComponent.renderObjectRainFog.material.SetColor("_TintColor", rainfogCol);
 			libComponent.renderObjectFog.material.SetColor("_TintColor",fogCol);
 			libComponent.renderObjectSnow.material.SetColor("_TintColor",snowCol);
-		} else {
-			libComponent.renderObjectRain.sharedMaterial.SetColor("_TintColor", rainCol * Mathf.Lerp(0.35f,1.0f,ambientCol.r));
-			libComponent.renderObjectRainSplash.sharedMaterial.SetColor("_TintColor", splashCol);    
-			libComponent.renderObjectRainFog.sharedMaterial.SetColor("_TintColor", rainfogCol);
-			libComponent.renderObjectFog.sharedMaterial.SetColor("_TintColor",fogCol);
-			libComponent.renderObjectSnow.sharedMaterial.SetColor("_TintColor",snowCol);
 		}
 
 	    //clamp weather systems

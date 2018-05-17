@@ -12,7 +12,6 @@ public class DG_LocalDataHandler : MonoBehaviour {
 
 
     public string SaveFileName;
-
     string CacheDirectory;
 
     private void Awake()
@@ -26,7 +25,7 @@ public class DG_LocalDataHandler : MonoBehaviour {
     public void SaveBools(bool[] Data, string Catagory)
     {
         BinaryFormatter bf = new BinaryFormatter();
-        FileStream file = File.Create(CacheDirectory + Catagory);
+        FileStream file = File.Create(CacheDirectory + SaveFileName + Catagory);
         bf.Serialize(file, Data);
         file.Close();
     }
@@ -36,7 +35,7 @@ public class DG_LocalDataHandler : MonoBehaviour {
         if (File.Exists(CacheDirectory + Catagory))
         {
             BinaryFormatter bf = new BinaryFormatter();
-            FileStream file = File.Open(CacheDirectory + Catagory, FileMode.Open);
+            FileStream file = File.Open(CacheDirectory + SaveFileName + Catagory, FileMode.Open);
             ReturnArray = (bool[])bf.Deserialize(file);
             file.Close();
         }
@@ -46,7 +45,7 @@ public class DG_LocalDataHandler : MonoBehaviour {
     public void SaveInts(int[] Data, string Catagory)
     {
         BinaryFormatter bf = new BinaryFormatter();
-        FileStream file = File.Create(CacheDirectory + Catagory);
+        FileStream file = File.Create(CacheDirectory + SaveFileName + Catagory);
         bf.Serialize(file, Data);
         file.Close();
     }
@@ -56,7 +55,7 @@ public class DG_LocalDataHandler : MonoBehaviour {
         if (File.Exists(CacheDirectory + "SaveData/Int"))
         {
             BinaryFormatter bf = new BinaryFormatter();
-            FileStream file = File.Open(CacheDirectory + Catagory, FileMode.Open);
+            FileStream file = File.Open(CacheDirectory + SaveFileName + Catagory, FileMode.Open);
             ReturnArray = (int[])bf.Deserialize(file);
             file.Close();
         }
@@ -66,7 +65,7 @@ public class DG_LocalDataHandler : MonoBehaviour {
     public void SaveFloats(float[] Data, string Catagory)
     {
         BinaryFormatter bf = new BinaryFormatter();
-        FileStream file = File.Create(CacheDirectory + Catagory);
+        FileStream file = File.Create(CacheDirectory + SaveFileName + Catagory);
         bf.Serialize(file, Data);
         file.Close();
     }
@@ -76,7 +75,7 @@ public class DG_LocalDataHandler : MonoBehaviour {
         if (File.Exists(CacheDirectory + Catagory))
         {
             BinaryFormatter bf = new BinaryFormatter();
-            FileStream file = File.Open(CacheDirectory + Catagory, FileMode.Open);
+            FileStream file = File.Open(CacheDirectory + SaveFileName + Catagory, FileMode.Open);
             ReturnArray = (float[])bf.Deserialize(file);
             file.Close();
         }
@@ -86,7 +85,7 @@ public class DG_LocalDataHandler : MonoBehaviour {
     public void SaveStrings(string[] Data, string Catagory)
     {
         BinaryFormatter bf = new BinaryFormatter();
-        FileStream file = File.Create(CacheDirectory + Catagory);
+        FileStream file = File.Create(CacheDirectory + SaveFileName + Catagory);
         bf.Serialize(file, Data);
         file.Close();
     }
@@ -96,7 +95,7 @@ public class DG_LocalDataHandler : MonoBehaviour {
         if (File.Exists(CacheDirectory + Catagory))
         {
             BinaryFormatter bf = new BinaryFormatter();
-            FileStream file = File.Open(CacheDirectory + Catagory, FileMode.Open);
+            FileStream file = File.Open(CacheDirectory + SaveFileName + Catagory, FileMode.Open);
             ReturnArray = (string[])bf.Deserialize(file);
             file.Close();
         }

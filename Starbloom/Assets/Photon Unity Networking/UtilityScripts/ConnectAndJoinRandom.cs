@@ -1,12 +1,13 @@
-using System;
 using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
 
 
 
 public class ConnectAndJoinRandom : Photon.MonoBehaviour
 {
+    public string GameID = "DefaultRoomName";
+    [HideInInspector] public int RequestedCharacterNum = -1;
+    [HideInInspector] public bool CreateNewRoom;
+
     [Header("Variables")]
     public bool AutoConnect = true;
     public int Version = 1;
@@ -50,22 +51,20 @@ public class ConnectAndJoinRandom : Photon.MonoBehaviour
 
     public virtual void OnConnectedToMaster()
     {
-        PhotonNetwork.JoinRandomRoom();
+        if (CreateNewRoom)
+            PhotonNetwork.CreateRoom(GameID, new RoomOptions() { MaxPlayers = 4 }, null);
+        else
+        {
+            if (QuickFind.GameSettings.BypassMainMenu)
+                PhotonNetwork.JoinRandomRoom();
+            else
+                PhotonNetwork.JoinRoom(GameID);
+        }
     }
     public virtual void OnJoinedLobby()
     {
-        PhotonNetwork.JoinRandomRoom();
+        //We do not have a lobby atm.
     }
-    public virtual void OnPhotonRandomJoinFailed()
-    {
-        Debug.Log("Creating New Room");
-        PhotonNetwork.CreateRoom(null, new RoomOptions() { MaxPlayers = 4 }, null);
-    }
-    public virtual void OnFailedToConnectToPhoton(DisconnectCause cause)
-    {
-        Debug.LogError("Cause: " + cause);
-    }
-
 
 
 
@@ -74,4 +73,15 @@ public class ConnectAndJoinRandom : Photon.MonoBehaviour
         if (PhotonNetwork.isMasterClient)
             PhotonNetwork.InstantiateSceneObject("NetworkSync", Vector3.zero, Quaternion.identity, 0, null);
     }
+
+
+
+
+
+
+
+    public virtual void OnPhotonRandomJoinFailed()
+    { PhotonNetwork.CreateRoom(null, new RoomOptions() { MaxPlayers = 4 }, null); }
+    public virtual void OnFailedToConnectToPhoton(DisconnectCause cause)
+    { Debug.LogError("Cause: " + cause); }
 }

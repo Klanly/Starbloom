@@ -60,7 +60,7 @@ public class DG_TextLetterGroup : MonoBehaviour {
         FirstDisplay = FirstTimeDisplay;
         string WordVal = string.Empty;
         if (CharDis)
-            WordVal = QuickFind.WordDatabase.GetNameFromID(IDVal, FirstDisplay);
+            WordVal = QuickFind.WordDatabase.GetNameFromID(1, IDVal, FirstDisplay);
         else
             WordVal = QuickFind.WordDatabase.GetWordFromID(IDVal, CatVal);
         GenerateTextRegion(WordVal);

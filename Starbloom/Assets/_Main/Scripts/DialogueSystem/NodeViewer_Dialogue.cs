@@ -226,7 +226,7 @@ public class NodeViewer_Dialogue
         {
             GUI.Label(new Rect(5, 60, 120, 15), "Char ID");
             if (GUI.Button(new Rect(12, 95, 40, 15), "Goto"))
-                Selection.activeGameObject = QuickFindInEditor.GetEditorCharacterDatabase().GetItemFromIDInEditor(CurrentViewedWindow.ContextInt).gameObject;
+                Selection.activeGameObject = QuickFindInEditor.GetEditorCharacterDatabase().GetItemFromIDInEditor(1, CurrentViewedWindow.ContextInt).gameObject;
             CurrentViewedWindow.ContextInt = EditorGUI.IntField(new Rect(5, 75, 55, 18), CurrentViewedWindow.ContextInt);
 
             GUI.Label(new Rect(75, 60, 75, 15), "Cam ID");
