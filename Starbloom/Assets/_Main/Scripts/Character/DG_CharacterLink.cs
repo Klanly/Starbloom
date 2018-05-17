@@ -28,7 +28,7 @@ public class DG_CharacterLink : MonoBehaviour {
 
     private void Start()
     {
-        transform.SetParent(QuickFind.CharacterManager.transform);   
+        transform.SetParent(QuickFind.CharacterManager.transform);
     }
 
 
@@ -58,10 +58,6 @@ public class DG_CharacterLink : MonoBehaviour {
         QuickFind.InputController.MainPlayer.CharLink = this;
         QuickFind.PlayerCam.CharTrans = PlayerChar.transform;
         QuickFind.NetworkSync.SetPhotonViewID(transform.GetComponent<PhotonView>().viewID);
-        if(QuickFind.GameSettings.BypassMainMenu)
-            QuickFind.FadeScreen.FadeIn(DG_GUI_FadeScreen.FadeInSpeeds.QuickFade);
-        else
-            QuickFind.FadeScreen.FadeIn(DG_GUI_FadeScreen.FadeInSpeeds.SlowFade);
 
         this.enabled = false;
     }

@@ -21,7 +21,7 @@ public class MoveInput : MonoBehaviour
 		if (inputVec.magnitude > 1f)
 			inputVec.Normalize();
 
-		inputVec = Quaternion.Euler(0f, Camera.main.transform.rotation.eulerAngles.y, 0f) * inputVec; 
+		inputVec = Quaternion.Euler(0f, QuickFind.PlayerCam.MainCam.transform.rotation.eulerAngles.y, 0f) * inputVec; 
 
 		MoveController.SetInput( inputVec );
 	}

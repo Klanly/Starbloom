@@ -5,10 +5,10 @@ using Sirenix.OdinInspector;
 
 public class DG_PlayerCharacters : MonoBehaviour {
 
+
+    public string FarmName;
+    [ListDrawerSettings(NumberOfItemsPerPage = 1, Expanded = false)]
     public List<PlayerCharacter> PlayerCharacters;
-
-
-
 
 
     [System.Serializable]
@@ -21,8 +21,9 @@ public class DG_PlayerCharacters : MonoBehaviour {
     [System.Serializable]
     public class CharacterEquipment
     {
-        [Header("Equipment Slot -------------------------------------------------------------------------------")]
-        public int WeaponDatabaseId;
+        public int ActiveRucksackSlotId;
+
+        [Header("Equipment Slots -------------------------------------------------------------------------------")]
         public int HatId;
         public int Ring1;
         public int Ring2;
@@ -33,6 +34,8 @@ public class DG_PlayerCharacters : MonoBehaviour {
         public int ShirtId;
         public int PantsID;
 
+        [Header("Rucksack")]
+        public int RuckSackUnlockedSize = 12;
         [ListDrawerSettings(NumberOfItemsPerPage = 12, Expanded = false)]
         public RucksackSlot[] RucksackSlots;
     }
@@ -40,9 +43,17 @@ public class DG_PlayerCharacters : MonoBehaviour {
     [System.Serializable]
     public class RucksackSlot
     {
-        public bool Unlocked;
         public int ContainedItem;
         public int StackValue;
+    }
+
+
+
+
+
+    private void Awake()
+    {
+        QuickFind.Farm = this;
     }
 
 

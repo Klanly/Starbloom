@@ -6,9 +6,8 @@ using UnityEngine;
 using UnityEditor;
 #endif
 
-public class DG_GUIMainMenu : MonoBehaviour {
-
-
+public class DG_GUIMainMenu : Photon.MonoBehaviour
+{
     public enum MainMenuButtons
     {
         New,
@@ -20,16 +19,14 @@ public class DG_GUIMainMenu : MonoBehaviour {
 
     public Camera MainMenuCam = null;
 
-
     [Header("Canvases")]
     public CanvasGroup UICanvas = null;
-    public CanvasGroup CharUICanvas = null;
-
 
     [Header("Static Text")]
     public DG_TextStatic[] StaticTextArray;
 
 
+    bool AwaitingResponse = true;
 
 
 
@@ -47,8 +44,6 @@ public class DG_GUIMainMenu : MonoBehaviour {
             QuickFind.PlayerCam.MainCam.enabled = false;
             QuickFind.EnableCanvas(UICanvas, true);
         }
-            
-        QuickFind.EnableCanvas(CharUICanvas, false);
 
         transform.localPosition = Vector3.zero;
 
@@ -56,7 +51,7 @@ public class DG_GUIMainMenu : MonoBehaviour {
             TS.ManualLoad();
 
         if (QuickFind.GameSettings.BypassMainMenu)
-            FadeComplete();
+            QuickFind.NetworkMaster.StartGame();
     }
 
 
@@ -68,16 +63,25 @@ public class DG_GUIMainMenu : MonoBehaviour {
         {
             case MainMenuButtons.New: NewGameMenu(); break;
             case MainMenuButtons.Load: break;
-            case MainMenuButtons.Mulitplayer: break;
+            case MainMenuButtons.Mulitplayer: JoinGameMultiplayer(); break;
             case MainMenuButtons.Quit: Quit(); break;
         }
+    }
+    public void ToggleOnline(UnityEngine.UI.Toggle Tog)
+    {
+        QuickFind.GameSettings.PlayOnline = Tog.isOn;
     }
 
 
     void NewGameMenu()
     {
-        TriggerFade();
-        //QuickFind.EnableCanvas(UICanvas, false);
+        QuickFind.EnableCanvas(UICanvas, false);
+        QuickFind.NetworkMaster.CreateNewRoom = true;
+        QuickFind.NetworkMaster.StartGame();
+    }
+    public void OpenCharacterCreationScreen()
+    {
+        QuickFind.CharacterCreation.OpenCharacterCreation(true);
     }
 
     void LoadGameMenu()
@@ -85,9 +89,11 @@ public class DG_GUIMainMenu : MonoBehaviour {
 
     }
 
-    void MultiplayerMenu()
+    void JoinGameMultiplayer()
     {
-
+        QuickFind.EnableCanvas(UICanvas, false);
+        QuickFind.NetworkMaster.CreateNewRoom = false;
+        QuickFind.NetworkMaster.StartGame();
     }
 
     void Quit()
@@ -102,16 +108,55 @@ public class DG_GUIMainMenu : MonoBehaviour {
 
 
 
-    void TriggerFade()
+    public void TriggerGameStart()
     {
-        QuickFind.FadeScreen.FadeOut(DG_GUI_FadeScreen.FadeInSpeeds.QuickFade, this.gameObject, "FadeComplete");
+        QuickFind.FadeScreen.FadeOut(DG_GUI_FadeScreen.FadeInSpeeds.QuickFade, this.gameObject, "GameStart");
     }
 
-    public void FadeComplete()
+    public void GameStart()
     {
+        GameObject newPlayerObject = PhotonNetwork.Instantiate("MainPlayer", Vector3.zero, Quaternion.identity, 0);
+        DG_CharacterLink CL = newPlayerObject.GetComponent<DG_CharacterLink>();
+        CL.ActivatePlayer();
+
+
         MainMenuCam.enabled = false;
         QuickFind.PlayerCam.MainCam.enabled = true;
         QuickFind.EnableCanvas(UICanvas, false);
-        QuickFind.NetworkMaster.StartGame();
+
+        if (!PhotonNetwork.isMasterClient)
+        {
+            QuickFind.WeatherHandler.RequestMasterWeather();
+            QuickFind.TimeHandler.RequestMasterTimes();
+        }
+
+
+        //Load Farmhouse Here.
+
+        QuickFind.FadeScreen.FadeIn(DG_GUI_FadeScreen.FadeInSpeeds.NormalFade);
+    }
+
+
+
+
+    //Network Call
+    public void Connected()
+    {
+        if (!AwaitingResponse)
+            return;
+
+        AwaitingResponse = false;
+
+
+        if (QuickFind.CharacterManager.DebugCharacter != null)
+        {
+            for (int i = 0; i < transform.childCount; i++)
+                Destroy(QuickFind.CharacterManager.DebugCharacter);
+        }
+
+        if (QuickFind.GameSettings.BypassMainMenu)
+            GameStart();
+        else
+            OpenCharacterCreationScreen();
     }
 }

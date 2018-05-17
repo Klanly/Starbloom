@@ -52,4 +52,8 @@ MonoBehaviour:
   - SendOutWeatherByMaster
   - SendUserInScene
   - SendUserPhoton
+  - GatherPlayerData
+  - GetPlayerIntValues
+  - GetPlayerStringValues
+  - NewRucksackValue
   DisableAutoOpenWizard: 1

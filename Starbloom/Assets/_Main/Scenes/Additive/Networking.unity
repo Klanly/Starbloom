@@ -186,6 +186,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c1b84a427010e0469ce0df07ab64dbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GameID: DefaultRoom
+  RequestedCharacterNum: -1
+  CreateNewRoom: 0
   AutoConnect: 1
   Version: 1
 --- !u!4 &438454042

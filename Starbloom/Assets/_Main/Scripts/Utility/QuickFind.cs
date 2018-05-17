@@ -53,6 +53,7 @@ public static class QuickFind
     public static DG_GUINameChange NameChangeUI = null;
     public static DG_GUIControllerGhange ControllerChange = null;
     public static DG_GUIContextHandler GUIContextHandler = null;
+    public static DG_GUICharacterCreation CharacterCreation = null;
 
 
     //Cameras
@@ -72,6 +73,7 @@ public static class QuickFind
     public static DG_ItemsDatabase ItemDatabase = null;
     public static DG_CharacterDatabase CharacterDatabase = null;
     public static DG_ColorCodes ColorDatabase = null;
+    public static DG_PlayerCharacters Farm = null;
 
     //To Be removed
     public static DG_PlayerInventory PlayerInventory = null;

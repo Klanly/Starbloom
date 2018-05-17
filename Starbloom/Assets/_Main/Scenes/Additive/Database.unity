@@ -1046,37 +1046,6 @@ Transform:
   m_Father: {fileID: 31339075}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &284160334
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 284160335}
-  m_Layer: 0
-  m_Name: Catagory - Playable Characters
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &284160335
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 284160334}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1365025760}
-  - {fileID: 1898499290}
-  - {fileID: 589658158}
-  m_Father: {fileID: 1939056530}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &319871989
 GameObject:
   m_ObjectHideFlags: 0
@@ -1315,7 +1284,7 @@ GameObject:
   - component: {fileID: 447920606}
   - component: {fileID: 447920607}
   m_Layer: 0
-  m_Name: 4 - Jethro
+  m_Name: 1 - Jethro
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1345,15 +1314,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9029922c72861b4fb9768783d6447c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DatabaseID: 4
+  DatabaseID: 1
   DevNotes: Jethro
-  DefaultNameCatagoryID: 2
-  DefaultNameWordID: 4
-  NameEditableByUser: 0
-  SaveStringID: 0
-  EquipmentDatabaseID: 0
-  CharacterHasStats: 0
-  CharacterStat: []
+  NameWordCatID: 2
+  NameWordID: 4
 --- !u!1 &496052511
 GameObject:
   m_ObjectHideFlags: 0
@@ -1452,7 +1416,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DatabaseID: 4
-  DevNotes: 
+  DevNotes: Jethro
   TextValues:
   - Language: 0
     stringEntry: Jethro
@@ -1530,55 +1494,6 @@ MonoBehaviour:
   - RewardItem: 1
     RewardItemDatabaseID: 2
     RewardItemValue: 1
---- !u!1 &589658157
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 589658158}
-  - component: {fileID: 589658159}
-  m_Layer: 0
-  m_Name: 3 - Player 3
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &589658158
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 589658157}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 284160335}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &589658159
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 589658157}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9029922c72861b4fb9768783d6447c0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DatabaseID: 3
-  DevNotes: Player 3
-  DefaultNameCatagoryID: 2
-  DefaultNameWordID: 3
-  NameEditableByUser: 1
-  SaveStringID: 3
-  EquipmentDatabaseID: 3
-  CharacterHasStats: 1
-  CharacterStat: []
 --- !u!1 &604142826
 GameObject:
   m_ObjectHideFlags: 0
@@ -1773,6 +1688,63 @@ Transform:
   m_Father: {fileID: 1337974348}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &678994096
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 678994097}
+  - component: {fileID: 678994098}
+  m_Layer: 0
+  m_Name: 23
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &678994097
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 678994096}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1647176683}
+  m_RootOrder: 22
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &678994098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 678994096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 766834c6f2c9cf243ab3296f4a43ade1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DatabaseID: 23
+  DevNotes: 
+  TextValues:
+  - Language: 0
+    stringEntry: Character Name..............
+  - Language: 1
+    stringEntry: 
+  - Language: 2
+    stringEntry: 
+  - Language: 3
+    stringEntry: 
+  - Language: 4
+    stringEntry: 
+  - Language: 5
+    stringEntry: 
+  - Language: 6
+    stringEntry: 
 --- !u!1 &690700742
 GameObject:
   m_ObjectHideFlags: 0
@@ -1818,6 +1790,63 @@ MonoBehaviour:
     DevNotes: Highlighted Text
     DatabaseID: 1
     Color: {r: 0, g: 1, b: 1, a: 1}
+--- !u!1 &737240873
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 737240874}
+  - component: {fileID: 737240875}
+  m_Layer: 0
+  m_Name: 24
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &737240874
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 737240873}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1647176683}
+  m_RootOrder: 23
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &737240875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 737240873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 766834c6f2c9cf243ab3296f4a43ade1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DatabaseID: 24
+  DevNotes: 
+  TextValues:
+  - Language: 0
+    stringEntry: Farm Name..............
+  - Language: 1
+    stringEntry: 
+  - Language: 2
+    stringEntry: 
+  - Language: 3
+    stringEntry: 
+  - Language: 4
+    stringEntry: 
+  - Language: 5
+    stringEntry: 
+  - Language: 6
+    stringEntry: 
 --- !u!1 &792145132
 GameObject:
   m_ObjectHideFlags: 0
@@ -2172,6 +2201,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1118935757}
+  - component: {fileID: 1118935758}
   m_Layer: 0
   m_Name: PlayerData
   m_TagString: Untagged
@@ -2191,10 +2221,358 @@ Transform:
   m_Children:
   - {fileID: 155133447}
   - {fileID: 1978687870}
-  - {fileID: 1425548763}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1118935758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1118935756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 471a2cc814fb1fa4b894840aa0fd4d70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FarmName: 
+  PlayerCharacters:
+  - Name: 
+    Equipment:
+      ActiveRucksackSlotId: 0
+      HatId: 0
+      Ring1: 0
+      Ring2: 0
+      Boots: 0
+      HairID: 0
+      ShirtId: 0
+      PantsID: 0
+      RuckSackUnlockedSize: 12
+      RucksackSlots:
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+  - Name: 
+    Equipment:
+      ActiveRucksackSlotId: 0
+      HatId: 0
+      Ring1: 0
+      Ring2: 0
+      Boots: 0
+      HairID: 0
+      ShirtId: 0
+      PantsID: 0
+      RuckSackUnlockedSize: 12
+      RucksackSlots:
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+  - Name: 
+    Equipment:
+      ActiveRucksackSlotId: 0
+      HatId: 0
+      Ring1: 0
+      Ring2: 0
+      Boots: 0
+      HairID: 0
+      ShirtId: 0
+      PantsID: 0
+      RuckSackUnlockedSize: 12
+      RucksackSlots:
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+  - Name: 
+    Equipment:
+      ActiveRucksackSlotId: 0
+      HatId: 0
+      Ring1: 0
+      Ring2: 0
+      Boots: 0
+      HairID: 0
+      ShirtId: 0
+      PantsID: 0
+      RuckSackUnlockedSize: 12
+      RucksackSlots:
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
+      - ContainedItem: 0
+        StackValue: 0
 --- !u!1 &1124956840
 GameObject:
   m_ObjectHideFlags: 0
@@ -2296,7 +2674,7 @@ MonoBehaviour:
   DevNotes: 
   TextValues:
   - Language: 0
-    stringEntry: Multiplayer
+    stringEntry: Join Game
   - Language: 1
     stringEntry: 
   - Language: 2
@@ -2524,215 +2902,6 @@ MonoBehaviour:
     stringEntry: 
   - Language: 6
     stringEntry: 
---- !u!1 &1365025759
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1365025760}
-  - component: {fileID: 1365025761}
-  m_Layer: 0
-  m_Name: 1 - Player 1
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1365025760
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1365025759}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 284160335}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1365025761
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1365025759}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9029922c72861b4fb9768783d6447c0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DatabaseID: 1
-  DevNotes: Player 1
-  DefaultNameCatagoryID: 2
-  DefaultNameWordID: 1
-  NameEditableByUser: 1
-  SaveStringID: 1
-  EquipmentDatabaseID: 1
-  CharacterHasStats: 1
-  CharacterStat: []
---- !u!1 &1425548762
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1425548763}
-  - component: {fileID: 1425548764}
-  m_Layer: 0
-  m_Name: Player Characters
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1425548763
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1425548762}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1118935757}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1425548764
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1425548762}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 471a2cc814fb1fa4b894840aa0fd4d70, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PlayerCharacters:
-  - Name: Player 1
-    Equipment:
-      WeaponDatabaseId: 0
-      HatId: 0
-      Ring1: 0
-      Ring2: 0
-      Boots: 0
-      HairID: 0
-      ShirtId: 0
-      PantsID: 0
-      RucksackSlots:
-      - Unlocked: 1
-        ContainedItem: 0
-        StackValue: 0
-      - Unlocked: 1
-        ContainedItem: 0
-        StackValue: 0
-      - Unlocked: 1
-        ContainedItem: 0
-        StackValue: 0
-      - Unlocked: 1
-        ContainedItem: 0
-        StackValue: 0
-      - Unlocked: 1
-        ContainedItem: 0
-        StackValue: 0
-      - Unlocked: 1
-        ContainedItem: 0
-        StackValue: 0
-      - Unlocked: 1
-        ContainedItem: 0
-        StackValue: 0
-      - Unlocked: 1
-        ContainedItem: 0
-        StackValue: 0
-      - Unlocked: 1
-        ContainedItem: 0
-        StackValue: 0
-      - Unlocked: 1
-        ContainedItem: 0
-        StackValue: 0
-      - Unlocked: 1
-        ContainedItem: 0
-        StackValue: 0
-      - Unlocked: 1
-        ContainedItem: 0
-        StackValue: 0
-      - Unlocked: 0
-        ContainedItem: 0
-        StackValue: 0
-      - Unlocked: 0
-        ContainedItem: 0
-        StackValue: 0
-      - Unlocked: 0
-        ContainedItem: 0
-        StackValue: 0
-      - Unlocked: 0
-        ContainedItem: 0
-        StackValue: 0
-      - Unlocked: 0
-        ContainedItem: 0
-        StackValue: 0
-      - Unlocked: 0
-        ContainedItem: 0
-        StackValue: 0
-      - Unlocked: 0
-        ContainedItem: 0
-        StackValue: 0
-      - Unlocked: 0
-        ContainedItem: 0
-        StackValue: 0
-      - Unlocked: 0
-        ContainedItem: 0
-        StackValue: 0
-      - Unlocked: 0
-        ContainedItem: 0
-        StackValue: 0
-      - Unlocked: 0
-        ContainedItem: 0
-        StackValue: 0
-      - Unlocked: 0
-        ContainedItem: 0
-        StackValue: 0
-      - Unlocked: 0
-        ContainedItem: 0
-        StackValue: 0
-      - Unlocked: 0
-        ContainedItem: 0
-        StackValue: 0
-      - Unlocked: 0
-        ContainedItem: 0
-        StackValue: 0
-      - Unlocked: 0
-        ContainedItem: 0
-        StackValue: 0
-      - Unlocked: 0
-        ContainedItem: 0
-        StackValue: 0
-      - Unlocked: 0
-        ContainedItem: 0
-        StackValue: 0
-      - Unlocked: 0
-        ContainedItem: 0
-        StackValue: 0
-      - Unlocked: 0
-        ContainedItem: 0
-        StackValue: 0
-      - Unlocked: 0
-        ContainedItem: 0
-        StackValue: 0
-      - Unlocked: 0
-        ContainedItem: 0
-        StackValue: 0
-      - Unlocked: 0
-        ContainedItem: 0
-        StackValue: 0
-      - Unlocked: 0
-        ContainedItem: 0
-        StackValue: 0
 --- !u!1 &1440713918
 GameObject:
   m_ObjectHideFlags: 0
@@ -2950,8 +3119,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1524751961}
+  - component: {fileID: 1524751962}
   m_Layer: 0
-  m_Name: Catagory - Named NPC
+  m_Name: Catagory 1 - Everyone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2969,8 +3139,20 @@ Transform:
   m_Children:
   - {fileID: 447920606}
   m_Father: {fileID: 1939056530}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1524751962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1524751960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f80c7deb03d5814449b703682dfcf97b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DatabaseID: 1
 --- !u!1 &1629799013
 GameObject:
   m_ObjectHideFlags: 0
@@ -3064,6 +3246,8 @@ Transform:
   - {fileID: 1329798023}
   - {fileID: 1282855178}
   - {fileID: 393570844}
+  - {fileID: 678994097}
+  - {fileID: 737240874}
   m_Father: {fileID: 1337974348}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3736,55 +3920,6 @@ MonoBehaviour:
     stringEntry: 
   - Language: 6
     stringEntry: 
---- !u!1 &1898499289
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1898499290}
-  - component: {fileID: 1898499291}
-  m_Layer: 0
-  m_Name: 2 - Player 2
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1898499290
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1898499289}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 284160335}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1898499291
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1898499289}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9029922c72861b4fb9768783d6447c0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DatabaseID: 2
-  DevNotes: Player 2
-  DefaultNameCatagoryID: 2
-  DefaultNameWordID: 2
-  NameEditableByUser: 1
-  SaveStringID: 2
-  EquipmentDatabaseID: 2
-  CharacterHasStats: 1
-  CharacterStat: []
 --- !u!1 &1939056529
 GameObject:
   m_ObjectHideFlags: 0
@@ -3811,7 +3946,6 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 284160335}
   - {fileID: 1524751961}
   m_Father: {fileID: 1843631469}
   m_RootOrder: 0
@@ -3827,16 +3961,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdeb9194430a89d49aefc9f75974b7d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayabledCharactersList:
-  - EditorNote: Cloud
-    CharacterDatabaseID: 1
-    UnlockedBoolSaveLocation: 3
-  - EditorNote: Tifa
-    CharacterDatabaseID: 2
-    UnlockedBoolSaveLocation: 4
-  - EditorNote: Freddy
-    CharacterDatabaseID: 3
-    UnlockedBoolSaveLocation: 5
 --- !u!1 &1978687869
 GameObject:
   m_ObjectHideFlags: 0

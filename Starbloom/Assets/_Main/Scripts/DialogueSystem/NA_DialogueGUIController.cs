@@ -269,9 +269,9 @@ public class NA_DialogueGUIController : MonoBehaviour
 
         if (ActiveDialogue.Current.ContextInt != 0)
         {
-            DG_CharacterObject Char = QuickFind.CharacterDatabase.GetItemFromID(ActiveDialogue.Current.ContextInt);
+            DG_CharacterObject Char = QuickFind.CharacterDatabase.GetItemFromID(1, ActiveDialogue.Current.ContextInt);
             //
-            Name = QuickFind.WordDatabase.GetItemFromID(Char.DefaultNameWordID, Char.DefaultNameCatagoryID).TextValues[(int)QuickFind.UserSettings.CurrentLanguage].stringEntry;
+            Name = QuickFind.WordDatabase.GetItemFromID(Char.NameWordID, Char.NameWordCatID).TextValues[(int)QuickFind.UserSettings.CurrentLanguage].stringEntry;
         }
         //
         TextDisplay = QuickFind.WordDatabase.GetItemFromID(DisplayWindow.ContextInt2, DisplayWindow.ContextInt4).TextValues[(int)QuickFind.UserSettings.CurrentLanguage].stringEntry;
@@ -322,7 +322,7 @@ public class NA_DialogueGUIController : MonoBehaviour
                             //Color Code 
                             case "D": DatabaseColumn = QuickFind.ColorDatabase.GetTextColorByID(CodeValue(CodeS)); break;
                             //Character
-                            case "C": DatabaseColumn = QuickFind.WordDatabase.GetNameFromID(CodeValue(CodeS), false); break;
+                            case "C": DatabaseColumn = QuickFind.WordDatabase.GetNameFromID(1, CodeValue(CodeS), false); break;
                             //PartyMember
                             case "P": 
                                 {
@@ -351,7 +351,7 @@ public class NA_DialogueGUIController : MonoBehaviour
                             //Color Code
                             case "D": DatabaseColumn = QuickFindInEditor.GetEditorColorCodes().GetTextColorByID(CodeValue(CodeS)); break;
                             //Character
-                            case "C": DatabaseColumn = QuickFind.WordDatabase.GetNameFromID(CodeValue(CodeS), false); break;
+                            case "C": DatabaseColumn = QuickFind.WordDatabase.GetNameFromID(1, CodeValue(CodeS), false); break;
                             //PartyMember
                             case "P":
                                 {

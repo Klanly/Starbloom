@@ -667,6 +667,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayOnline: 1
-  DisableAudio: 1
   BypassMainMenu: 1
+  DisableAudio: 1
+  EnableDebugKeycodes: 1
   LastSelected: {fileID: 0}
