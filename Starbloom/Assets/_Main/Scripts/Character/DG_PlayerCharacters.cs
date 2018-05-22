@@ -18,10 +18,24 @@ public class DG_PlayerCharacters : MonoBehaviour {
     public List<PlayerCharacter> PlayerCharacters;
 
 
+
+
+
+
+
+
     [System.Serializable]
     public class PlayerCharacter
     {
         public string Name;
+
+        [Header("Stats")]
+        public int CurrentEnergy;
+        public int MaxEnergy;
+        public int CurrentHealth;
+        public int MaxHealth;
+
+        [Header("Equipment")]
         public CharacterEquipment Equipment;
     }
 
@@ -45,10 +59,33 @@ public class DG_PlayerCharacters : MonoBehaviour {
     [System.Serializable]
     public class RucksackSlot
     {
+        [Header("Slot")]
         public int ContainedItem;
-        public int StackValue;
-    }
+        public int CurrentStackActive;
+        public int LowValue;
+        public int NormalValue;
+        public int HighValue;
+        public int MaximumValue;
 
+        public int GetStackValue()
+        { return LowValue + NormalValue + HighValue + MaximumValue; }
+
+        public void AddStackQualityValue(DG_ItemObject.ItemQualityLevels QualityLevel, int AdjustValue)
+        {
+            if (QualityLevel == DG_ItemObject.ItemQualityLevels.Low) LowValue += AdjustValue;
+            if (QualityLevel == DG_ItemObject.ItemQualityLevels.Normal) NormalValue += AdjustValue;
+            if (QualityLevel == DG_ItemObject.ItemQualityLevels.High) HighValue += AdjustValue;
+            if (QualityLevel == DG_ItemObject.ItemQualityLevels.Max) MaximumValue += AdjustValue;
+        }
+        public bool CheckifStackHasQualityLevel(DG_ItemObject.ItemQualityLevels QualityLevel)
+        {
+            if (QualityLevel == DG_ItemObject.ItemQualityLevels.Low && LowValue > 0) return true;
+            if (QualityLevel == DG_ItemObject.ItemQualityLevels.Normal && NormalValue > 0) return true;
+            if (QualityLevel == DG_ItemObject.ItemQualityLevels.High && HighValue > 0) return true;
+            if (QualityLevel == DG_ItemObject.ItemQualityLevels.Max && MaximumValue > 0) return true;
+            return false;
+        }
+    }
 
 
 
@@ -57,6 +94,4 @@ public class DG_PlayerCharacters : MonoBehaviour {
     {
         QuickFind.Farm = this;
     }
-
-
 }

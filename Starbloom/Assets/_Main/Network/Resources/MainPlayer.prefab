@@ -4185,7 +4185,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Mover: {fileID: 54293750097057858}
   MaxSpeed: 5
-  TurnSpeed: 360
+  TurnSpeed: 800
 --- !u!114 &114598686693888630
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4228,11 +4228,10 @@ MonoBehaviour:
   CharacterLink: {fileID: 114598686693888630}
   ContextMask:
     serializedVersion: 2
-    m_Bits: 311
-  SphereCastRadius: 5
-  SphereCastMaxLength: 10
-  MouseCastRadius: 1.5
-  MouseCastLength: 100
+    m_Bits: 8192
+  SphereCastRadius: 0.2
+  SphereCastMaxLength: 0.7
+  MouseDistance: 1.3
 --- !u!114 &114844400468305594
 MonoBehaviour:
   m_ObjectHideFlags: 1

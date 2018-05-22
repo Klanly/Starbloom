@@ -56,4 +56,9 @@ MonoBehaviour:
   - GetPlayerIntValues
   - GetPlayerStringValues
   - NewRucksackValue
+  - GatherWorldObjects
+  - SendOutWorldObjects
+  - SendOutWorldObjectFloats
+  - SendOutWorldObjectInts
+  - CreateSceneObject
   DisableAutoOpenWizard: 1

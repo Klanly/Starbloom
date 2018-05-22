@@ -3,34 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-#if UNITY_EDITOR
-using UnityEditor;
-/////////////////////////////////////////////////////////////////////////////////Editor Extension Buttons
-[CustomEditor(typeof(DG_QuestObject))]
-class DG_QuestObjectEditor : Editor
-{
-    public override void OnInspectorGUI()
-    {
-        DrawDefaultInspector();
-
-        //Buttons
-
-        DG_QuestObject myScript = (DG_QuestObject)target;
-        if (GUILayout.Button("FindNextAvailableDatabaseID"))
-            myScript.FindNextAvailableDatabaseID();
-        if (GUILayout.Button("GenerateNewSaveLocation"))
-        {
-            if (myScript.DatabaseID == 0)
-                myScript.FindNextAvailableDatabaseID();
-            string QuestName = "Quest - " + myScript.DatabaseID.ToString();
-        }
-    }
-}
-//////////////////////////////////////////////////////////////////////////////////
-#endif
-
-
-
 
 public class DG_QuestObject : MonoBehaviour {
 
@@ -63,9 +35,11 @@ public class DG_QuestObject : MonoBehaviour {
         public int RewardItemValue;
     }
 
-    public int DatabaseID;
+    [HideInInspector] public int DatabaseID;
+    [HideInInspector] public bool LockItem;
+    public string ObjectName;
+
     public int BoolSaveLocation;
-    public string DevNotes;
 
 
     public Requirements[] QuestRequirements;
@@ -75,6 +49,7 @@ public class DG_QuestObject : MonoBehaviour {
 
     public bool QuestIsComplete()
     {
+        Debug.Log("This Has been removed, to be fixed");
         return false;
     }
 
@@ -104,7 +79,7 @@ public class DG_QuestObject : MonoBehaviour {
                 switch (Req.MathCond)
                 {   //Less Than
                     case Requirements.MathConditions.LessThan:
-                        if (QuickFind.PlayerInventory.TotalInventoryCountOfItem(Req.ReqItemDatabaseID) >= Req.ReqItemValue)
+                        if (QuickFind.GUI_Inventory.TotalInventoryCountOfItem(Req.ReqItemDatabaseID) >= Req.ReqItemValue)
                         {
                             Debug.Log("Quest Not Met");
                             return false;
@@ -112,7 +87,7 @@ public class DG_QuestObject : MonoBehaviour {
                         break;
                     //Greater Than
                     case Requirements.MathConditions.GreaterOrEqual:
-                        if (QuickFind.PlayerInventory.TotalInventoryCountOfItem(Req.ReqItemDatabaseID) < Req.ReqItemValue)
+                        if (QuickFind.GUI_Inventory.TotalInventoryCountOfItem(Req.ReqItemDatabaseID) < Req.ReqItemValue)
                         {
                             Debug.Log("Quest Not Met");
                             return false;
@@ -130,39 +105,12 @@ public class DG_QuestObject : MonoBehaviour {
         for(int i = 0; i < QuestRewards.Length; i++)
         {
             Rewards Rew = QuestRewards[i];
-            if(Rew.RewardItem) //Quest Rewards an Item
+            if (Rew.RewardItem) //Quest Rewards an Item
             {
-                DG_ItemObject Item = QuickFind.ItemDatabase.GetItemFromID(Rew.RewardItemDatabaseID);
-                QuickFind.PlayerInventory.ChangeItemInventorySlot(Item.DatabaseID, Rew.RewardItemValue, true);
+                Debug.Log("Quality Level Not set dynamically");
+                QuickFind.GUI_Inventory.AddItemToRucksack(QuickFind.NetworkSync.PlayerCharacterID, Rew.RewardItemDatabaseID, DG_ItemObject.ItemQualityLevels.Normal);
             }
         }
         Debug.Log("Quest " + BoolSaveLocation.ToString() + " Completed: Rewards Adjusted");
-    }
-
-
-    public void FindNextAvailableDatabaseID()
-    {
-        Transform Cat = transform.parent;
-        Transform Tracker = Cat.parent;
-
-        int HighestNumber = 0;
-
-        for (int i = 0; i < Tracker.childCount; i++)
-        {
-            Transform Child = Tracker.GetChild(i);
-            for (int iN = 0; iN < Child.childCount; iN++)
-            {
-                DG_QuestObject Item = Child.GetChild(iN).GetComponent<DG_QuestObject>();
-                if (Item.DatabaseID != 0)
-                {
-                    Debug.Log("This Object Already Has a Database ID");
-                    return;
-                }
-                if (Item.DatabaseID > HighestNumber)
-                    HighestNumber = Item.DatabaseID;
-            }
-        }
-        DatabaseID = HighestNumber + 1;
-        transform.gameObject.name = DatabaseID.ToString() + " - ";
     }
 }

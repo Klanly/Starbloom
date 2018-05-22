@@ -141,7 +141,7 @@ Transform:
   m_Children:
   - {fileID: 272504729}
   m_Father: {fileID: 1843631469}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &31339076
 MonoBehaviour:
@@ -154,6 +154,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c115a085760baa4c8054d2d6dc394a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ItemCatagoryList:
+  - {fileID: 61341393}
+  - {fileID: 558162532}
+  ListCount: 2
 --- !u!1 &37325301
 GameObject:
   m_ObjectHideFlags: 0
@@ -162,9 +166,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 37325302}
+  - component: {fileID: 37325304}
   - component: {fileID: 37325303}
   m_Layer: 0
-  m_Name: 6
+  m_Name: 5 - *"Hey I re
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -194,8 +199,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 766834c6f2c9cf243ab3296f4a43ade1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DatabaseID: 6
-  DevNotes: 
+  DatabaseID: 5
+  LockItem: 1
+  ObjectName: 
   TextValues:
   - Language: 0
     stringEntry: '*"Hey I remember when you gave me that 70 *I1*.  Thanks again!"'
@@ -213,6 +219,19 @@ MonoBehaviour:
     stringEntry: 
   - Language: 6
     stringEntry: 
+--- !u!114 &37325304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 37325301}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 3
+  instanceID: 582332
 --- !u!1 &50282250
 GameObject:
   m_ObjectHideFlags: 0
@@ -221,9 +240,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 50282251}
+  - component: {fileID: 50282253}
   - component: {fileID: 50282252}
   m_Layer: 0
-  m_Name: 5
+  m_Name: 19 - Select
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -253,8 +273,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 766834c6f2c9cf243ab3296f4a43ade1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DatabaseID: 5
-  DevNotes: 
+  DatabaseID: 19
+  LockItem: 1
+  ObjectName: 
   TextValues:
   - Language: 0
     stringEntry: Select
@@ -270,6 +291,19 @@ MonoBehaviour:
     stringEntry: 
   - Language: 6
     stringEntry: 
+--- !u!114 &50282253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 50282250}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 3
+  instanceID: 582340
 --- !u!1 &61341391
 GameObject:
   m_ObjectHideFlags: 0
@@ -278,9 +312,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 61341392}
+  - component: {fileID: 61341394}
   - component: {fileID: 61341393}
   m_Layer: 0
-  m_Name: 1 - Test Quest
+  m_Name: 0 - Test Quest 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -310,9 +345,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 227f4ee56a43edf4ca1e4af19ef34dc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DatabaseID: 1
+  DatabaseID: 0
+  LockItem: 1
+  ObjectName: Test Quest 1
   BoolSaveLocation: 1
-  DevNotes: Talk to Guy to Get Money
   QuestRequirements:
   - RequireQuestValue: 1
     QuestDatabaseID: 1
@@ -332,6 +368,19 @@ MonoBehaviour:
   - RewardItem: 1
     RewardItemDatabaseID: 1
     RewardItemValue: 70
+--- !u!114 &61341394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 61341391}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 4
+  instanceID: 582348
 --- !u!1 &76152370
 GameObject:
   m_ObjectHideFlags: 0
@@ -340,9 +389,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 76152371}
+  - component: {fileID: 76152373}
   - component: {fileID: 76152372}
   m_Layer: 0
-  m_Name: 8
+  m_Name: 7 - *"I am sud
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -372,8 +422,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 766834c6f2c9cf243ab3296f4a43ade1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DatabaseID: 8
-  DevNotes: 
+  DatabaseID: 7
+  LockItem: 1
+  ObjectName: 
   TextValues:
   - Language: 0
     stringEntry: '*"I am suddenly confused, here is 70 *I1* for you"'
@@ -390,6 +441,19 @@ MonoBehaviour:
     stringEntry: 
   - Language: 6
     stringEntry: 
+--- !u!114 &76152373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 76152370}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 3
+  instanceID: 582356
 --- !u!1 &81693793
 GameObject:
   m_ObjectHideFlags: 0
@@ -398,9 +462,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 81693794}
+  - component: {fileID: 81693796}
   - component: {fileID: 81693795}
   m_Layer: 0
-  m_Name: 16
+  m_Name: 30 - Right Dire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -430,8 +495,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 766834c6f2c9cf243ab3296f4a43ade1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DatabaseID: 16
-  DevNotes: 
+  DatabaseID: 30
+  LockItem: 1
+  ObjectName: 
   TextValues:
   - Language: 0
     stringEntry: Right Direction
@@ -447,47 +513,19 @@ MonoBehaviour:
     stringEntry: 
   - Language: 6
     stringEntry: 
---- !u!1 &98179530
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 98179532}
-  - component: {fileID: 98179531}
-  m_Layer: 0
-  m_Name: Item Database
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &98179531
+--- !u!114 &81693796
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 98179530}
-  m_Enabled: 1
+  m_GameObject: {fileID: 81693793}
+  m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e912048688d860542a9350c51c1de6e4, type: 3}
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &98179532
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 98179530}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1815548899}
-  m_Father: {fileID: 1843631469}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  DBType: 3
+  instanceID: 582364
 --- !u!1 &109069266
 GameObject:
   m_ObjectHideFlags: 0
@@ -496,9 +534,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 109069267}
+  - component: {fileID: 109069269}
   - component: {fileID: 109069268}
   m_Layer: 0
-  m_Name: 6
+  m_Name: 20 - Default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -528,8 +567,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 766834c6f2c9cf243ab3296f4a43ade1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DatabaseID: 6
-  DevNotes: 
+  DatabaseID: 20
+  LockItem: 1
+  ObjectName: 
   TextValues:
   - Language: 0
     stringEntry: Default
@@ -545,6 +585,19 @@ MonoBehaviour:
     stringEntry: 
   - Language: 6
     stringEntry: 
+--- !u!114 &109069269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 109069266}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 3
+  instanceID: 582372
 --- !u!1 &111903024
 GameObject:
   m_ObjectHideFlags: 0
@@ -553,9 +606,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 111903025}
+  - component: {fileID: 111903027}
   - component: {fileID: 111903026}
   m_Layer: 0
-  m_Name: 3
+  m_Name: 17 - Space
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -585,8 +639,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 766834c6f2c9cf243ab3296f4a43ade1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DatabaseID: 3
-  DevNotes: 
+  DatabaseID: 17
+  LockItem: 1
+  ObjectName: 
   TextValues:
   - Language: 0
     stringEntry: Space
@@ -602,6 +657,19 @@ MonoBehaviour:
     stringEntry: 
   - Language: 6
     stringEntry: 
+--- !u!114 &111903027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 111903024}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 3
+  instanceID: 582380
 --- !u!1 &118947720
 GameObject:
   m_ObjectHideFlags: 0
@@ -610,9 +678,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 118947721}
+  - component: {fileID: 118947723}
   - component: {fileID: 118947722}
   m_Layer: 0
-  m_Name: 7
+  m_Name: 6 - *"Come bac
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -642,8 +711,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 766834c6f2c9cf243ab3296f4a43ade1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DatabaseID: 7
-  DevNotes: 
+  DatabaseID: 6
+  LockItem: 1
+  ObjectName: 
   TextValues:
   - Language: 0
     stringEntry: '*"Come back when you have the *I1*"'
@@ -661,6 +731,19 @@ MonoBehaviour:
     stringEntry: 
   - Language: 6
     stringEntry: 
+--- !u!114 &118947723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 118947720}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 3
+  instanceID: 582388
 --- !u!1 &146695317
 GameObject:
   m_ObjectHideFlags: 0
@@ -669,9 +752,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 146695318}
+  - component: {fileID: 146695320}
   - component: {fileID: 146695319}
   m_Layer: 0
-  m_Name: 4
+  m_Name: 3 - *Ask for 7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -701,8 +785,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 766834c6f2c9cf243ab3296f4a43ade1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DatabaseID: 4
-  DevNotes: 
+  DatabaseID: 3
+  LockItem: 1
+  ObjectName: 
   TextValues:
   - Language: 0
     stringEntry: '*Ask for 70 *I1*'
@@ -718,6 +803,19 @@ MonoBehaviour:
     stringEntry: 
   - Language: 6
     stringEntry: 
+--- !u!114 &146695320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 146695317}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 3
+  instanceID: 582396
 --- !u!1 &206279743
 GameObject:
   m_ObjectHideFlags: 0
@@ -726,9 +824,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 206279744}
+  - component: {fileID: 206279746}
   - component: {fileID: 206279745}
   m_Layer: 0
-  m_Name: 12
+  m_Name: 26 - Keyboard O
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -758,8 +857,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 766834c6f2c9cf243ab3296f4a43ade1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DatabaseID: 12
-  DevNotes: 
+  DatabaseID: 26
+  LockItem: 1
+  ObjectName: 
   TextValues:
   - Language: 0
     stringEntry: Keyboard Only
@@ -775,6 +875,19 @@ MonoBehaviour:
     stringEntry: 
   - Language: 6
     stringEntry: 
+--- !u!114 &206279746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 206279743}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 3
+  instanceID: 582404
 --- !u!1 &207424871
 GameObject:
   m_ObjectHideFlags: 0
@@ -783,9 +896,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 207424872}
+  - component: {fileID: 207424874}
   - component: {fileID: 207424873}
   m_Layer: 0
-  m_Name: 4
+  m_Name: 18 - Delete
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -815,8 +929,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 766834c6f2c9cf243ab3296f4a43ade1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DatabaseID: 4
-  DevNotes: 
+  DatabaseID: 18
+  LockItem: 1
+  ObjectName: 
   TextValues:
   - Language: 0
     stringEntry: Delete
@@ -832,63 +947,19 @@ MonoBehaviour:
     stringEntry: 
   - Language: 6
     stringEntry: 
---- !u!1 &225094763
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 225094764}
-  - component: {fileID: 225094765}
-  m_Layer: 0
-  m_Name: 2
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &225094764
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 225094763}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 919782885}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &225094765
+--- !u!114 &207424874
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 225094763}
-  m_Enabled: 1
+  m_GameObject: {fileID: 207424871}
+  m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 766834c6f2c9cf243ab3296f4a43ade1, type: 3}
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DatabaseID: 2
-  DevNotes: 
-  TextValues:
-  - Language: 0
-    stringEntry: Potion
-  - Language: 1
-    stringEntry: 
-  - Language: 2
-    stringEntry: 
-  - Language: 3
-    stringEntry: 
-  - Language: 4
-    stringEntry: 
-  - Language: 5
-    stringEntry: 
-  - Language: 6
-    stringEntry: 
+  DBType: 3
+  instanceID: 582412
 --- !u!1 &229269929
 GameObject:
   m_ObjectHideFlags: 0
@@ -898,7 +969,7 @@ GameObject:
   m_Component:
   - component: {fileID: 229269930}
   m_Layer: 0
-  m_Name: Catagory - Testing
+  m_Name: Testing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -926,9 +997,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 233886829}
+  - component: {fileID: 233886831}
   - component: {fileID: 233886830}
   m_Layer: 0
-  m_Name: 14
+  m_Name: 28 - Down Direc
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -958,8 +1030,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 766834c6f2c9cf243ab3296f4a43ade1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DatabaseID: 14
-  DevNotes: 
+  DatabaseID: 28
+  LockItem: 1
+  ObjectName: 
   TextValues:
   - Language: 0
     stringEntry: Down Direction
@@ -975,6 +1048,19 @@ MonoBehaviour:
     stringEntry: 
   - Language: 6
     stringEntry: 
+--- !u!114 &233886831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 233886828}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 3
+  instanceID: 582424
 --- !u!1 &272504728
 GameObject:
   m_ObjectHideFlags: 0
@@ -984,7 +1070,7 @@ GameObject:
   m_Component:
   - component: {fileID: 272504729}
   m_Layer: 0
-  m_Name: Catagory - Testing
+  m_Name: Testing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1005,63 +1091,6 @@ Transform:
   m_Father: {fileID: 31339075}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &319871989
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 319871990}
-  - component: {fileID: 319871991}
-  m_Layer: 0
-  m_Name: 3
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &319871990
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 319871989}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 919782885}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &319871991
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 319871989}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 766834c6f2c9cf243ab3296f4a43ade1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DatabaseID: 3
-  DevNotes: 
-  TextValues:
-  - Language: 0
-    stringEntry: High Potion
-  - Language: 1
-    stringEntry: 
-  - Language: 2
-    stringEntry: 
-  - Language: 3
-    stringEntry: 
-  - Language: 4
-    stringEntry: 
-  - Language: 5
-    stringEntry: 
-  - Language: 6
-    stringEntry: 
 --- !u!1 &337637629
 GameObject:
   m_ObjectHideFlags: 0
@@ -1070,9 +1099,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 337637630}
+  - component: {fileID: 337637632}
   - component: {fileID: 337637631}
   m_Layer: 0
-  m_Name: 11
+  m_Name: 25 - Menu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1102,8 +1132,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 766834c6f2c9cf243ab3296f4a43ade1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DatabaseID: 11
-  DevNotes: 
+  DatabaseID: 25
+  LockItem: 1
+  ObjectName: 
   TextValues:
   - Language: 0
     stringEntry: Menu
@@ -1119,6 +1150,19 @@ MonoBehaviour:
     stringEntry: 
   - Language: 6
     stringEntry: 
+--- !u!114 &337637632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 337637629}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 3
+  instanceID: 582436
 --- !u!1 &393570843
 GameObject:
   m_ObjectHideFlags: 0
@@ -1127,9 +1171,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 393570844}
+  - component: {fileID: 393570846}
   - component: {fileID: 393570845}
   m_Layer: 0
-  m_Name: 22
+  m_Name: 36 - Quit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1159,8 +1204,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 766834c6f2c9cf243ab3296f4a43ade1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DatabaseID: 22
-  DevNotes: 
+  DatabaseID: 36
+  LockItem: 1
+  ObjectName: 
   TextValues:
   - Language: 0
     stringEntry: Quit
@@ -1176,6 +1222,19 @@ MonoBehaviour:
     stringEntry: 
   - Language: 6
     stringEntry: 
+--- !u!114 &393570846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 393570843}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 3
+  instanceID: 582444
 --- !u!1 &412881067
 GameObject:
   m_ObjectHideFlags: 0
@@ -1184,9 +1243,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 412881068}
+  - component: {fileID: 412881070}
   - component: {fileID: 412881069}
   m_Layer: 0
-  m_Name: 19
+  m_Name: 33 - New
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1216,8 +1276,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 766834c6f2c9cf243ab3296f4a43ade1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DatabaseID: 19
-  DevNotes: 
+  DatabaseID: 33
+  LockItem: 1
+  ObjectName: 
   TextValues:
   - Language: 0
     stringEntry: New
@@ -1233,6 +1294,19 @@ MonoBehaviour:
     stringEntry: 
   - Language: 6
     stringEntry: 
+--- !u!114 &412881070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 412881067}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 3
+  instanceID: 582452
 --- !u!1 &447920605
 GameObject:
   m_ObjectHideFlags: 0
@@ -1241,9 +1315,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 447920606}
+  - component: {fileID: 447920608}
   - component: {fileID: 447920607}
   m_Layer: 0
-  m_Name: 1 - Jethro
+  m_Name: 0 - Leave This Empty
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1273,10 +1348,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9029922c72861b4fb9768783d6447c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DatabaseID: 1
-  DevNotes: Jethro
-  NameWordCatID: 2
-  NameWordID: 4
+  DatabaseID: 0
+  LockItem: 1
+  ObjectName: Leave This Empty
+  NameWordID: 0
+--- !u!114 &447920608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 447920605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 1
+  instanceID: 582460
 --- !u!1 &496052511
 GameObject:
   m_ObjectHideFlags: 0
@@ -1285,9 +1373,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 496052512}
+  - component: {fileID: 496052514}
   - component: {fileID: 496052513}
   m_Layer: 0
-  m_Name: 1
+  m_Name: 11 - Cloud
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1317,8 +1406,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 766834c6f2c9cf243ab3296f4a43ade1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DatabaseID: 1
-  DevNotes: 
+  DatabaseID: 11
+  LockItem: 1
+  ObjectName: 
   TextValues:
   - Language: 0
     stringEntry: Cloud
@@ -1334,6 +1424,19 @@ MonoBehaviour:
     stringEntry: 
   - Language: 6
     stringEntry: "\r\u092C\u093E\u0926\u0932"
+--- !u!114 &496052514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 496052511}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 3
+  instanceID: 582468
 --- !u!1 &527002840
 GameObject:
   m_ObjectHideFlags: 0
@@ -1342,9 +1445,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 527002841}
+  - component: {fileID: 527002843}
   - component: {fileID: 527002842}
   m_Layer: 0
-  m_Name: 4
+  m_Name: 14 - Jethro
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1374,8 +1478,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 766834c6f2c9cf243ab3296f4a43ade1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DatabaseID: 4
-  DevNotes: Jethro
+  DatabaseID: 14
+  LockItem: 1
+  ObjectName: 
   TextValues:
   - Language: 0
     stringEntry: Jethro
@@ -1391,6 +1496,19 @@ MonoBehaviour:
     stringEntry: 
   - Language: 6
     stringEntry: 
+--- !u!114 &527002843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 527002840}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 3
+  instanceID: 582476
 --- !u!1 &558162530
 GameObject:
   m_ObjectHideFlags: 0
@@ -1399,9 +1517,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 558162531}
+  - component: {fileID: 558162533}
   - component: {fileID: 558162532}
   m_Layer: 0
-  m_Name: 2 - Test Quest 2
+  m_Name: 1 - Test Quest 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1431,9 +1550,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 227f4ee56a43edf4ca1e4af19ef34dc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DatabaseID: 2
+  DatabaseID: 1
+  LockItem: 1
+  ObjectName: Test Quest 2
   BoolSaveLocation: 2
-  DevNotes: Turn in Money
   QuestRequirements:
   - RequireQuestValue: 1
     QuestDatabaseID: 2
@@ -1453,6 +1573,19 @@ MonoBehaviour:
   - RewardItem: 1
     RewardItemDatabaseID: 2
     RewardItemValue: 1
+--- !u!114 &558162533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 558162530}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 4
+  instanceID: 582484
 --- !u!1 &604142826
 GameObject:
   m_ObjectHideFlags: 0
@@ -1461,9 +1594,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 604142827}
+  - component: {fileID: 604142829}
   - component: {fileID: 604142828}
   m_Layer: 0
-  m_Name: 1
+  m_Name: 0 - *"Hello Th
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1493,8 +1627,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 766834c6f2c9cf243ab3296f4a43ade1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DatabaseID: 1
-  DevNotes: 
+  DatabaseID: 0
+  LockItem: 1
+  ObjectName: 
   TextValues:
   - Language: 0
     stringEntry: '*"Hello There, you must be *P1* i''ve heard about"'
@@ -1512,52 +1647,19 @@ MonoBehaviour:
     stringEntry: 
   - Language: 6
     stringEntry: 
---- !u!1 &630922423
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 630922424}
-  - component: {fileID: 630922425}
-  m_Layer: 0
-  m_Name: 1 - Gold
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &630922424
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 630922423}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1815548899}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &630922425
+--- !u!114 &604142829
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 630922423}
-  m_Enabled: 1
+  m_GameObject: {fileID: 604142826}
+  m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc1a46eca4a35e5498f3df297015210f, type: 3}
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DatabaseID: 1
-  DevNotes: Gold
-  WordCatagory: 1
-  WordValue: 1
-  ItemHasStats: 0
-  ItemStat: []
+  DBType: 3
+  instanceID: 582492
 --- !u!1 &642408099
 GameObject:
   m_ObjectHideFlags: 0
@@ -1566,9 +1668,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 642408100}
+  - component: {fileID: 642408102}
   - component: {fileID: 642408101}
   m_Layer: 0
-  m_Name: 17
+  m_Name: 31 - Set New Bu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1598,8 +1701,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 766834c6f2c9cf243ab3296f4a43ade1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DatabaseID: 17
-  DevNotes: 
+  DatabaseID: 31
+  LockItem: 1
+  ObjectName: 
   TextValues:
   - Language: 0
     stringEntry: Set New Button.....
@@ -1615,6 +1719,19 @@ MonoBehaviour:
     stringEntry: 
   - Language: 6
     stringEntry: 
+--- !u!114 &642408102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 642408099}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 3
+  instanceID: 582500
 --- !u!1 &672129052
 GameObject:
   m_ObjectHideFlags: 0
@@ -1624,7 +1741,7 @@ GameObject:
   m_Component:
   - component: {fileID: 672129053}
   m_Layer: 0
-  m_Name: Catagory - 2 - Characters
+  m_Name: Characters
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1655,9 +1772,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 678994097}
+  - component: {fileID: 678994099}
   - component: {fileID: 678994098}
   m_Layer: 0
-  m_Name: 23
+  m_Name: '37 - Character '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1687,8 +1805,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 766834c6f2c9cf243ab3296f4a43ade1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DatabaseID: 23
-  DevNotes: 
+  DatabaseID: 37
+  LockItem: 1
+  ObjectName: 
   TextValues:
   - Language: 0
     stringEntry: Character Name..............
@@ -1704,6 +1823,19 @@ MonoBehaviour:
     stringEntry: 
   - Language: 6
     stringEntry: 
+--- !u!114 &678994099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 678994096}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 3
+  instanceID: 582512
 --- !u!1 &690700742
 GameObject:
   m_ObjectHideFlags: 0
@@ -1731,7 +1863,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1843631469}
-  m_RootOrder: 5
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &690700744
 MonoBehaviour:
@@ -1757,9 +1889,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 737240874}
+  - component: {fileID: 737240876}
   - component: {fileID: 737240875}
   m_Layer: 0
-  m_Name: 24
+  m_Name: 38 - Farm Name.
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1789,8 +1922,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 766834c6f2c9cf243ab3296f4a43ade1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DatabaseID: 24
-  DevNotes: 
+  DatabaseID: 38
+  LockItem: 1
+  ObjectName: 
   TextValues:
   - Language: 0
     stringEntry: Farm Name..............
@@ -1806,6 +1940,19 @@ MonoBehaviour:
     stringEntry: 
   - Language: 6
     stringEntry: 
+--- !u!114 &737240876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 737240873}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 3
+  instanceID: 582526
 --- !u!1 &792145132
 GameObject:
   m_ObjectHideFlags: 0
@@ -1816,7 +1963,7 @@ GameObject:
   - component: {fileID: 792145134}
   - component: {fileID: 792145133}
   m_Layer: 0
-  m_Name: Dialogue Database
+  m_Name: Dialogue Tree Database
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1833,6 +1980,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52bb2aa7fb5dd9f488a235cf0b4602bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ItemCatagoryList:
+  - {fileID: 1680479773}
+  ListCount: 1
 --- !u!4 &792145134
 Transform:
   m_ObjectHideFlags: 0
@@ -1845,7 +1995,7 @@ Transform:
   m_Children:
   - {fileID: 229269930}
   m_Father: {fileID: 1843631469}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &919782884
 GameObject:
@@ -1856,7 +2006,7 @@ GameObject:
   m_Component:
   - component: {fileID: 919782885}
   m_Layer: 0
-  m_Name: Catagory - 1 - Items
+  m_Name: Items
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1873,8 +2023,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1440713919}
-  - {fileID: 225094764}
-  - {fileID: 319871990}
   m_Father: {fileID: 1337974348}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1886,9 +2034,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 946086070}
+  - component: {fileID: 946086072}
   - component: {fileID: 946086071}
   m_Layer: 0
-  m_Name: 3
+  m_Name: '2 - Walk Away '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1918,8 +2067,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 766834c6f2c9cf243ab3296f4a43ade1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DatabaseID: 3
-  DevNotes: 
+  DatabaseID: 2
+  LockItem: 1
+  ObjectName: 
   TextValues:
   - Language: 0
     stringEntry: Walk Away Frustrated
@@ -1935,6 +2085,19 @@ MonoBehaviour:
     stringEntry: 
   - Language: 6
     stringEntry: 
+--- !u!114 &946086072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 946086069}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 3
+  instanceID: 582544
 --- !u!1 &946834387
 GameObject:
   m_ObjectHideFlags: 0
@@ -1943,9 +2106,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 946834388}
+  - component: {fileID: 946834390}
   - component: {fileID: 946834389}
   m_Layer: 0
-  m_Name: 15
+  m_Name: 29 - Left Direc
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1975,8 +2139,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 766834c6f2c9cf243ab3296f4a43ade1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DatabaseID: 15
-  DevNotes: 
+  DatabaseID: 29
+  LockItem: 1
+  ObjectName: 
   TextValues:
   - Language: 0
     stringEntry: Left Direction
@@ -1992,52 +2157,19 @@ MonoBehaviour:
     stringEntry: 
   - Language: 6
     stringEntry: 
---- !u!1 &960307264
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 960307265}
-  - component: {fileID: 960307266}
-  m_Layer: 0
-  m_Name: 3 - High Potion
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &960307265
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 960307264}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1815548899}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &960307266
+--- !u!114 &946834390
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 960307264}
-  m_Enabled: 1
+  m_GameObject: {fileID: 946834387}
+  m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc1a46eca4a35e5498f3df297015210f, type: 3}
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DatabaseID: 3
-  DevNotes: High Potion
-  WordCatagory: 1
-  WordValue: 3
-  ItemHasStats: 0
-  ItemStat: []
+  DBType: 3
+  instanceID: 582552
 --- !u!1 &996406040
 GameObject:
   m_ObjectHideFlags: 0
@@ -2046,9 +2178,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 996406041}
+  - component: {fileID: 996406043}
   - component: {fileID: 996406042}
   m_Layer: 0
-  m_Name: 8
+  m_Name: 22 - Action
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2078,8 +2211,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 766834c6f2c9cf243ab3296f4a43ade1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DatabaseID: 8
-  DevNotes: 
+  DatabaseID: 22
+  LockItem: 1
+  ObjectName: 
   TextValues:
   - Language: 0
     stringEntry: Action
@@ -2095,6 +2229,19 @@ MonoBehaviour:
     stringEntry: 
   - Language: 6
     stringEntry: 
+--- !u!114 &996406043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 996406040}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 3
+  instanceID: 582560
 --- !u!1 &1087104903
 GameObject:
   m_ObjectHideFlags: 0
@@ -2103,9 +2250,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1087104904}
+  - component: {fileID: 1087104906}
   - component: {fileID: 1087104905}
   m_Layer: 0
-  m_Name: 13
+  m_Name: 27 - Up Directi
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2135,8 +2283,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 766834c6f2c9cf243ab3296f4a43ade1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DatabaseID: 13
-  DevNotes: 
+  DatabaseID: 27
+  LockItem: 1
+  ObjectName: 
   TextValues:
   - Language: 0
     stringEntry: Up Direction
@@ -2152,6 +2301,19 @@ MonoBehaviour:
     stringEntry: 
   - Language: 6
     stringEntry: 
+--- !u!114 &1087104906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1087104903}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 3
+  instanceID: 582568
 --- !u!1 &1124956840
 GameObject:
   m_ObjectHideFlags: 0
@@ -2160,9 +2322,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1124956841}
+  - component: {fileID: 1124956843}
   - component: {fileID: 1124956842}
   m_Layer: 0
-  m_Name: 5
+  m_Name: 4 - *Give 70 *
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2192,8 +2355,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 766834c6f2c9cf243ab3296f4a43ade1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DatabaseID: 5
-  DevNotes: 
+  DatabaseID: 4
+  LockItem: 1
+  ObjectName: 
   TextValues:
   - Language: 0
     stringEntry: '*Give 70 *I1*'
@@ -2209,6 +2373,19 @@ MonoBehaviour:
     stringEntry: 
   - Language: 6
     stringEntry: 
+--- !u!114 &1124956843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1124956840}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 3
+  instanceID: 582576
 --- !u!1 &1282855177
 GameObject:
   m_ObjectHideFlags: 0
@@ -2217,9 +2394,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1282855178}
+  - component: {fileID: 1282855180}
   - component: {fileID: 1282855179}
   m_Layer: 0
-  m_Name: 21
+  m_Name: 35 - Join Game
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2249,8 +2427,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 766834c6f2c9cf243ab3296f4a43ade1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DatabaseID: 21
-  DevNotes: 
+  DatabaseID: 35
+  LockItem: 1
+  ObjectName: 
   TextValues:
   - Language: 0
     stringEntry: Join Game
@@ -2266,6 +2445,19 @@ MonoBehaviour:
     stringEntry: 
   - Language: 6
     stringEntry: 
+--- !u!114 &1282855180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1282855177}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 3
+  instanceID: 582584
 --- !u!1 &1290746968
 GameObject:
   m_ObjectHideFlags: 0
@@ -2274,9 +2466,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1290746969}
+  - component: {fileID: 1290746971}
   - component: {fileID: 1290746970}
   m_Layer: 0
-  m_Name: 9
+  m_Name: 23 - Interact
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2306,8 +2499,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 766834c6f2c9cf243ab3296f4a43ade1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DatabaseID: 9
-  DevNotes: 
+  DatabaseID: 23
+  LockItem: 1
+  ObjectName: 
   TextValues:
   - Language: 0
     stringEntry: Interact
@@ -2323,6 +2517,19 @@ MonoBehaviour:
     stringEntry: 
   - Language: 6
     stringEntry: 
+--- !u!114 &1290746971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1290746968}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 3
+  instanceID: 582592
 --- !u!1 &1329798022
 GameObject:
   m_ObjectHideFlags: 0
@@ -2331,9 +2538,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1329798023}
+  - component: {fileID: 1329798025}
   - component: {fileID: 1329798024}
   m_Layer: 0
-  m_Name: 20
+  m_Name: 34 - Load
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2363,8 +2571,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 766834c6f2c9cf243ab3296f4a43ade1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DatabaseID: 20
-  DevNotes: 
+  DatabaseID: 34
+  LockItem: 1
+  ObjectName: 
   TextValues:
   - Language: 0
     stringEntry: Load
@@ -2380,6 +2589,19 @@ MonoBehaviour:
     stringEntry: 
   - Language: 6
     stringEntry: 
+--- !u!114 &1329798025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1329798022}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 3
+  instanceID: 582600
 --- !u!1 &1337974347
 GameObject:
   m_ObjectHideFlags: 0
@@ -2410,8 +2632,9 @@ Transform:
   - {fileID: 919782885}
   - {fileID: 672129053}
   - {fileID: 1647176683}
+  - {fileID: 1929439631}
   m_Father: {fileID: 1843631469}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1337974349
 MonoBehaviour:
@@ -2424,6 +2647,48 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c209f5b8656188344b8afd7448019e4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ItemCatagoryList:
+  - {fileID: 604142828}
+  - {fileID: 2026458755}
+  - {fileID: 946086071}
+  - {fileID: 146695319}
+  - {fileID: 1124956842}
+  - {fileID: 37325303}
+  - {fileID: 118947722}
+  - {fileID: 76152372}
+  - {fileID: 1782937102}
+  - {fileID: 1670173909}
+  - {fileID: 1440713920}
+  - {fileID: 496052513}
+  - {fileID: 1985819920}
+  - {fileID: 1690898330}
+  - {fileID: 527002842}
+  - {fileID: 1457304303}
+  - {fileID: 1854295030}
+  - {fileID: 111903026}
+  - {fileID: 207424873}
+  - {fileID: 50282252}
+  - {fileID: 109069268}
+  - {fileID: 1345319861}
+  - {fileID: 996406042}
+  - {fileID: 1290746970}
+  - {fileID: 1490872497}
+  - {fileID: 337637631}
+  - {fileID: 206279745}
+  - {fileID: 1087104905}
+  - {fileID: 233886830}
+  - {fileID: 946834389}
+  - {fileID: 81693795}
+  - {fileID: 642408101}
+  - {fileID: 1686792872}
+  - {fileID: 412881069}
+  - {fileID: 1329798024}
+  - {fileID: 1282855179}
+  - {fileID: 393570845}
+  - {fileID: 678994098}
+  - {fileID: 737240875}
+  - {fileID: 2063523898}
+  ListCount: 40
 --- !u!1 &1345319859
 GameObject:
   m_ObjectHideFlags: 0
@@ -2432,9 +2697,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1345319860}
+  - component: {fileID: 1345319862}
   - component: {fileID: 1345319861}
   m_Layer: 0
-  m_Name: 7
+  m_Name: 21 - Controller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2464,8 +2730,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 766834c6f2c9cf243ab3296f4a43ade1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DatabaseID: 7
-  DevNotes: 
+  DatabaseID: 21
+  LockItem: 1
+  ObjectName: 
   TextValues:
   - Language: 0
     stringEntry: Controller Settings
@@ -2481,6 +2748,19 @@ MonoBehaviour:
     stringEntry: 
   - Language: 6
     stringEntry: 
+--- !u!114 &1345319862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1345319859}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 3
+  instanceID: 582614
 --- !u!1 &1440713918
 GameObject:
   m_ObjectHideFlags: 0
@@ -2489,9 +2769,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1440713919}
+  - component: {fileID: 1440713921}
   - component: {fileID: 1440713920}
   m_Layer: 0
-  m_Name: 1
+  m_Name: 10 - Cabbage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2521,11 +2802,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 766834c6f2c9cf243ab3296f4a43ade1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DatabaseID: 1
-  DevNotes: 
+  DatabaseID: 10
+  LockItem: 1
+  ObjectName: 
   TextValues:
   - Language: 0
-    stringEntry: Gold
+    stringEntry: Cabbage
   - Language: 1
     stringEntry: 
   - Language: 2
@@ -2538,6 +2820,19 @@ MonoBehaviour:
     stringEntry: 
   - Language: 6
     stringEntry: 
+--- !u!114 &1440713921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1440713918}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 3
+  instanceID: 582622
 --- !u!1 &1456541170
 GameObject:
   m_ObjectHideFlags: 0
@@ -2547,7 +2842,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1456541171}
   m_Layer: 0
-  m_Name: Catagory - 0 - Testing
+  m_Name: Testing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2584,9 +2879,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1457304302}
+  - component: {fileID: 1457304304}
   - component: {fileID: 1457304303}
   m_Layer: 0
-  m_Name: 1
+  m_Name: 15 - ABCDEFGHIJ
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2616,8 +2912,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 766834c6f2c9cf243ab3296f4a43ade1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DatabaseID: 1
-  DevNotes: Player Input Field
+  DatabaseID: 15
+  LockItem: 1
+  ObjectName: 
   TextValues:
   - Language: 0
     stringEntry: ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz,.+-:;!@#$
@@ -2633,6 +2930,19 @@ MonoBehaviour:
     stringEntry: "\r\uD55C\uAD6D\uC5B4 \uC2DC\uD5D8"
   - Language: 6
     stringEntry: "\r\u0939\u093F\u0902\u0926\u0940 \u091F\u0947\u0938\u094D\u091F"
+--- !u!114 &1457304304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1457304301}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 3
+  instanceID: 582634
 --- !u!1 &1490872495
 GameObject:
   m_ObjectHideFlags: 0
@@ -2641,9 +2951,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1490872496}
+  - component: {fileID: 1490872498}
   - component: {fileID: 1490872497}
   m_Layer: 0
-  m_Name: 10
+  m_Name: 24 - Skill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2673,8 +2984,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 766834c6f2c9cf243ab3296f4a43ade1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DatabaseID: 10
-  DevNotes: 
+  DatabaseID: 24
+  LockItem: 1
+  ObjectName: 
   TextValues:
   - Language: 0
     stringEntry: Skill
@@ -2690,6 +3002,19 @@ MonoBehaviour:
     stringEntry: 
   - Language: 6
     stringEntry: 
+--- !u!114 &1490872498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1490872495}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 3
+  instanceID: 582642
 --- !u!1 &1524751960
 GameObject:
   m_ObjectHideFlags: 0
@@ -2700,7 +3025,7 @@ GameObject:
   - component: {fileID: 1524751961}
   - component: {fileID: 1524751962}
   m_Layer: 0
-  m_Name: Catagory 1 - Everyone
+  m_Name: Everyone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2717,6 +3042,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 447920606}
+  - {fileID: 1822878650}
   m_Father: {fileID: 1939056530}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2732,52 +3058,48 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DatabaseID: 1
---- !u!1 &1629799013
+--- !u!1 &1535058563
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 1629799014}
-  - component: {fileID: 1629799015}
+  - component: {fileID: 1535058565}
+  - component: {fileID: 1535058564}
   m_Layer: 0
-  m_Name: 2 - Potion
+  m_Name: Scene ID List
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1629799014
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1629799013}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1815548899}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1629799015
+--- !u!114 &1535058564
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1629799013}
+  m_GameObject: {fileID: 1535058563}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc1a46eca4a35e5498f3df297015210f, type: 3}
+  m_Script: {fileID: 11500000, guid: 7df83536e2dbf494c8b8f32d480f5bf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DatabaseID: 2
-  DevNotes: Potion
-  WordCatagory: 1
-  WordValue: 2
-  ItemHasStats: 0
-  ItemStat: []
+  SceneList:
+  - Farm
+--- !u!4 &1535058565
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1535058563}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1843631469}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1647176682
 GameObject:
   m_ObjectHideFlags: 0
@@ -2787,7 +3109,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1647176683}
   m_Layer: 0
-  m_Name: Catagory - 3 - GUI - Name Change
+  m_Name: GUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2838,9 +3160,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1670173908}
+  - component: {fileID: 1670173910}
   - component: {fileID: 1670173909}
   m_Layer: 0
-  m_Name: 10
+  m_Name: 9 - **D1*Recei
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2870,8 +3193,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 766834c6f2c9cf243ab3296f4a43ade1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DatabaseID: 10
-  DevNotes: 
+  DatabaseID: 9
+  LockItem: 1
+  ObjectName: 
   TextValues:
   - Language: 0
     stringEntry: '**D1*Received 70 *I1*'
@@ -2888,6 +3212,19 @@ MonoBehaviour:
     stringEntry: 
   - Language: 6
     stringEntry: 
+--- !u!114 &1670173910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1670173907}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 3
+  instanceID: 582660
 --- !u!1 &1680479771
 GameObject:
   m_ObjectHideFlags: 0
@@ -2896,9 +3233,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1680479772}
+  - component: {fileID: 1680479774}
   - component: {fileID: 1680479773}
   m_Layer: 0
-  m_Name: 1 - Testing
+  m_Name: 0 - Jethro Dialogue Tree
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2928,7 +3266,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54c2fab1b5af4f54793639c64b30d0bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DatabaseID: 1
+  DatabaseID: 0
+  LockItem: 1
+  TreeName: Jethro Dialogue Tree
   NodeWindowType: 0
   CurrentId: 19
   FirstWindow: 0
@@ -2965,8 +3305,8 @@ MonoBehaviour:
     ContextBool: 0
     ContextBool2: 0
     ContextBool3: 0
-    ContextInt: 4
-    ContextInt2: 1
+    ContextInt: 1
+    ContextInt2: 0
     ContextInt3: 0
     ContextInt4: 0
   - Size:
@@ -3001,8 +3341,8 @@ MonoBehaviour:
     ContextBool: 0
     ContextBool2: 0
     ContextBool3: 1
-    ContextInt: 4
-    ContextInt2: 2
+    ContextInt: 1
+    ContextInt2: 1
     ContextInt3: 0
     ContextInt4: 0
   - Size:
@@ -3019,8 +3359,8 @@ MonoBehaviour:
     ContextBool: 0
     ContextBool2: 0
     ContextBool3: 0
-    ContextInt: 4
-    ContextInt2: 6
+    ContextInt: 1
+    ContextInt2: 5
     ContextInt3: 0
     ContextInt4: 0
   - Size:
@@ -3056,7 +3396,7 @@ MonoBehaviour:
     ContextBool2: 0
     ContextBool3: 0
     ContextInt: 0
-    ContextInt2: 3
+    ContextInt2: 2
     ContextInt3: 0
     ContextInt4: 0
   - Size:
@@ -3074,7 +3414,7 @@ MonoBehaviour:
     ContextBool2: 0
     ContextBool3: 0
     ContextInt: 1
-    ContextInt2: 4
+    ContextInt2: 3
     ContextInt3: 0
     ContextInt4: 0
   - Size:
@@ -3092,7 +3432,7 @@ MonoBehaviour:
     ContextBool2: 0
     ContextBool3: 0
     ContextInt: 2
-    ContextInt2: 5
+    ContextInt2: 4
     ContextInt3: 0
     ContextInt4: 0
   - Size:
@@ -3109,8 +3449,8 @@ MonoBehaviour:
     ContextBool: 0
     ContextBool2: 0
     ContextBool3: 0
-    ContextInt: 4
-    ContextInt2: 9
+    ContextInt: 1
+    ContextInt2: 8
     ContextInt3: 0
     ContextInt4: 0
   - Size:
@@ -3127,8 +3467,8 @@ MonoBehaviour:
     ContextBool: 0
     ContextBool2: 0
     ContextBool3: 0
-    ContextInt: 4
-    ContextInt2: 8
+    ContextInt: 1
+    ContextInt2: 7
     ContextInt3: 0
     ContextInt4: 0
   - Size:
@@ -3182,7 +3522,7 @@ MonoBehaviour:
     ContextBool2: 0
     ContextBool3: 0
     ContextInt: 0
-    ContextInt2: 10
+    ContextInt2: 9
     ContextInt3: 0
     ContextInt4: 0
   Current:
@@ -3205,6 +3545,19 @@ MonoBehaviour:
     ContextInt3: 0
     ContextInt4: 0
   EndTree: 0
+--- !u!114 &1680479774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1680479771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 2
+  instanceID: 582668
 --- !u!1 &1686792870
 GameObject:
   m_ObjectHideFlags: 0
@@ -3213,9 +3566,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1686792871}
+  - component: {fileID: 1686792873}
   - component: {fileID: 1686792872}
   m_Layer: 0
-  m_Name: 18
+  m_Name: 32 - Close
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3245,8 +3599,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 766834c6f2c9cf243ab3296f4a43ade1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DatabaseID: 18
-  DevNotes: 
+  DatabaseID: 32
+  LockItem: 1
+  ObjectName: 
   TextValues:
   - Language: 0
     stringEntry: Close
@@ -3262,6 +3617,19 @@ MonoBehaviour:
     stringEntry: 
   - Language: 6
     stringEntry: 
+--- !u!114 &1686792873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1686792870}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 3
+  instanceID: 582676
 --- !u!1 &1690898328
 GameObject:
   m_ObjectHideFlags: 0
@@ -3270,9 +3638,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1690898329}
+  - component: {fileID: 1690898331}
   - component: {fileID: 1690898330}
   m_Layer: 0
-  m_Name: 3
+  m_Name: 13 - Freddy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3302,8 +3671,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 766834c6f2c9cf243ab3296f4a43ade1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DatabaseID: 3
-  DevNotes: Freddy
+  DatabaseID: 13
+  LockItem: 1
+  ObjectName: 
   TextValues:
   - Language: 0
     stringEntry: Freddy
@@ -3319,6 +3689,19 @@ MonoBehaviour:
     stringEntry: 
   - Language: 6
     stringEntry: 
+--- !u!114 &1690898331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1690898328}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 3
+  instanceID: 582684
 --- !u!1 &1782937100
 GameObject:
   m_ObjectHideFlags: 0
@@ -3327,9 +3710,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1782937101}
+  - component: {fileID: 1782937103}
   - component: {fileID: 1782937102}
   m_Layer: 0
-  m_Name: 9
+  m_Name: 8 - *"Ah *I1*,
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3359,8 +3743,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 766834c6f2c9cf243ab3296f4a43ade1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DatabaseID: 9
-  DevNotes: 
+  DatabaseID: 8
+  LockItem: 1
+  ObjectName: 
   TextValues:
   - Language: 0
     stringEntry: '*"Ah *I1*, just what I was looking for!"'
@@ -3377,37 +3762,77 @@ MonoBehaviour:
     stringEntry: 
   - Language: 6
     stringEntry: 
---- !u!1 &1815548898
+--- !u!114 &1782937103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1782937100}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 3
+  instanceID: 582692
+--- !u!1 &1822878649
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 1815548899}
+  - component: {fileID: 1822878650}
+  - component: {fileID: 1822878652}
+  - component: {fileID: 1822878651}
   m_Layer: 0
-  m_Name: Catagory - Generic
+  m_Name: 1 - Jethro
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1815548899
+--- !u!4 &1822878650
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1815548898}
+  m_GameObject: {fileID: 1822878649}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 630922424}
-  - {fileID: 1629799014}
-  - {fileID: 960307265}
-  m_Father: {fileID: 98179532}
-  m_RootOrder: 0
+  m_Children: []
+  m_Father: {fileID: 1524751961}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1822878651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1822878649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9029922c72861b4fb9768783d6447c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DatabaseID: 1
+  LockItem: 1
+  ObjectName: Jethro
+  NameWordID: 14
+--- !u!114 &1822878652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1822878649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 1
+  instanceID: 582700
 --- !u!1 &1843631468
 GameObject:
   m_ObjectHideFlags: 0
@@ -3433,12 +3858,12 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1535058565}
+  - {fileID: 690700743}
   - {fileID: 1939056530}
   - {fileID: 792145134}
   - {fileID: 1337974348}
   - {fileID: 31339075}
-  - {fileID: 98179532}
-  - {fileID: 690700743}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3450,9 +3875,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1854295029}
+  - component: {fileID: 1854295031}
   - component: {fileID: 1854295030}
   m_Layer: 0
-  m_Name: 2
+  m_Name: 16 - Please ent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3482,8 +3908,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 766834c6f2c9cf243ab3296f4a43ade1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DatabaseID: 2
-  DevNotes: 
+  DatabaseID: 16
+  LockItem: 1
+  ObjectName: 
   TextValues:
   - Language: 0
     stringEntry: Please enter a name
@@ -3499,6 +3926,48 @@ MonoBehaviour:
     stringEntry: 
   - Language: 6
     stringEntry: 
+--- !u!114 &1854295031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1854295028}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 3
+  instanceID: 582712
+--- !u!1 &1929439630
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1929439631}
+  m_Layer: 0
+  m_Name: Tools
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1929439631
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1929439630}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 2063523897}
+  m_Father: {fileID: 1337974348}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1939056529
 GameObject:
   m_ObjectHideFlags: 0
@@ -3527,7 +3996,7 @@ Transform:
   m_Children:
   - {fileID: 1524751961}
   m_Father: {fileID: 1843631469}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1939056531
 MonoBehaviour:
@@ -3540,6 +4009,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdeb9194430a89d49aefc9f75974b7d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ItemCatagoryList:
+  - {fileID: 447920607}
+  - {fileID: 1822878651}
+  ListCount: 2
 --- !u!1 &1985819918
 GameObject:
   m_ObjectHideFlags: 0
@@ -3548,9 +4021,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1985819919}
+  - component: {fileID: 1985819921}
   - component: {fileID: 1985819920}
   m_Layer: 0
-  m_Name: 2
+  m_Name: 12 - Tifa
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3580,8 +4054,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 766834c6f2c9cf243ab3296f4a43ade1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DatabaseID: 2
-  DevNotes: Tifa
+  DatabaseID: 12
+  LockItem: 1
+  ObjectName: 
   TextValues:
   - Language: 0
     stringEntry: Tifa
@@ -3597,6 +4072,19 @@ MonoBehaviour:
     stringEntry: 
   - Language: 6
     stringEntry: 
+--- !u!114 &1985819921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1985819918}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 3
+  instanceID: 582730
 --- !u!1 &2026458753
 GameObject:
   m_ObjectHideFlags: 0
@@ -3605,9 +4093,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 2026458754}
+  - component: {fileID: 2026458756}
   - component: {fileID: 2026458755}
   m_Layer: 0
-  m_Name: 2
+  m_Name: 1 - *"You need
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3637,8 +4126,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 766834c6f2c9cf243ab3296f4a43ade1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DatabaseID: 2
-  DevNotes: 
+  DatabaseID: 1
+  LockItem: 1
+  ObjectName: 
   TextValues:
   - Language: 0
     stringEntry: '*"You need 70 *I1* to continue this mission"'
@@ -3656,3 +4146,92 @@ MonoBehaviour:
     stringEntry: 
   - Language: 6
     stringEntry: 
+--- !u!114 &2026458756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2026458753}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 3
+  instanceID: 582738
+--- !u!1 &2063523896
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 2063523897}
+  - component: {fileID: 2063523899}
+  - component: {fileID: 2063523898}
+  m_Layer: 0
+  m_Name: '39 - Hammer
+
+'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2063523897
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2063523896}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1929439631}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2063523898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2063523896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 766834c6f2c9cf243ab3296f4a43ade1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DatabaseID: 39
+  LockItem: 1
+  ObjectName: 
+  TextValues:
+  - Language: 0
+    stringEntry: 'Hammer
+
+'
+  - Language: 1
+    stringEntry: 
+  - Language: 2
+    stringEntry: 
+  - Language: 3
+    stringEntry: 
+  - Language: 4
+    stringEntry: 
+  - Language: 5
+    stringEntry: 
+  - Language: 6
+    stringEntry: 
+--- !u!114 &2063523899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2063523896}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 3
+  instanceID: 582746

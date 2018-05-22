@@ -114,6 +114,50 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &100433157
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 100433158}
+  - component: {fileID: 100433159}
+  m_Layer: 0
+  m_Name: Herb_PoisifferousRoiler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &100433158
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 100433157}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 2, y: 2.31, z: -11}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2110302582}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &100433159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 100433157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ItemRefID: 8
+  ItemGrowthLevel: 2
+  Position: {x: 2, y: 2.31, z: -11}
+  YFacing: 0
 --- !u!1 &106225851
 GameObject:
   m_ObjectHideFlags: 0
@@ -157,8 +201,52 @@ Transform:
   m_Children:
   - {fileID: 1776617527}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &120504155
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 120504156}
+  - component: {fileID: 120504157}
+  m_Layer: 0
+  m_Name: Herb_FireWort
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &120504156
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 120504155}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 2, y: 2.31, z: -10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2110302582}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &120504157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 120504155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ItemRefID: 7
+  ItemGrowthLevel: 2
+  Position: {x: 2, y: 2.31, z: -10}
+  YFacing: 0
 --- !u!1 &155133445
 GameObject:
   m_ObjectHideFlags: 0
@@ -200,6 +288,138 @@ Transform:
   m_Father: {fileID: 1118935757}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &189548472
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 189548473}
+  - component: {fileID: 189548474}
+  m_Layer: 0
+  m_Name: Herb_DervishRoot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &189548473
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 189548472}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 2.31, z: -9}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2110302582}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &189548474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 189548472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ItemRefID: 6
+  ItemGrowthLevel: 2
+  Position: {x: 0, y: 2.31, z: -9}
+  YFacing: 0
+--- !u!1 &254734150
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 254734151}
+  - component: {fileID: 254734152}
+  m_Layer: 0
+  m_Name: Herb_FireWort
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &254734151
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 254734150}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 2.31, z: -10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2110302582}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &254734152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 254734150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ItemRefID: 7
+  ItemGrowthLevel: 2
+  Position: {x: 0, y: 2.31, z: -10}
+  YFacing: 0
+--- !u!1 &296848411
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 296848412}
+  - component: {fileID: 296848413}
+  m_Layer: 0
+  m_Name: Herb_CrispinsGlove
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &296848412
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 296848411}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1, y: 2.31, z: -8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2110302582}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &296848413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 296848411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ItemRefID: 5
+  ItemGrowthLevel: 2
+  Position: {x: 1, y: 2.31, z: -8}
+  YFacing: 0
 --- !u!1 &438454040
 GameObject:
   m_ObjectHideFlags: 0
@@ -244,8 +464,184 @@ Transform:
   m_Children:
   - {fileID: 1836453462}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &459666886
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 459666887}
+  - component: {fileID: 459666888}
+  m_Layer: 0
+  m_Name: Herb_FireWort
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &459666887
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 459666886}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1, y: 2.31, z: -10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2110302582}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &459666888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 459666886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ItemRefID: 7
+  ItemGrowthLevel: 2
+  Position: {x: 1, y: 2.31, z: -10}
+  YFacing: 0
+--- !u!1 &507107464
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 507107465}
+  - component: {fileID: 507107466}
+  m_Layer: 0
+  m_Name: Herb_CrispinsGlove
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &507107465
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 507107464}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 2.31, z: -8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2110302582}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &507107466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 507107464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ItemRefID: 5
+  ItemGrowthLevel: 2
+  Position: {x: 0, y: 2.31, z: -8}
+  YFacing: 0
+--- !u!1 &534079694
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 534079695}
+  - component: {fileID: 534079696}
+  m_Layer: 0
+  m_Name: Herb_PoisifferousRoiler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &534079695
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 534079694}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 2.31, z: -11}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2110302582}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &534079696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 534079694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ItemRefID: 8
+  ItemGrowthLevel: 2
+  Position: {x: 0, y: 2.31, z: -11}
+  YFacing: 0
+--- !u!1 &1068715597
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1068715598}
+  - component: {fileID: 1068715599}
+  m_Layer: 0
+  m_Name: Herb_DervishRoot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1068715598
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1068715597}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1, y: 2.31, z: -9}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2110302582}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1068715599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1068715597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ItemRefID: 6
+  ItemGrowthLevel: 2
+  Position: {x: 1, y: 2.31, z: -9}
+  YFacing: 0
 --- !u!1 &1118935756
 GameObject:
   m_ObjectHideFlags: 0
@@ -274,7 +670,7 @@ Transform:
   m_Children:
   - {fileID: 155133447}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1118935758
 MonoBehaviour:
@@ -294,6 +690,10 @@ MonoBehaviour:
   Day: 1
   PlayerCharacters:
   - Name: 
+    CurrentEnergy: 0
+    MaxEnergy: 0
+    CurrentHealth: 0
+    MaxHealth: 0
     Equipment:
       HatId: 0
       Ring1: 0
@@ -301,79 +701,227 @@ MonoBehaviour:
       Boots: 0
       RuckSackUnlockedSize: 12
       RucksackSlots:
+      - ContainedItem: 1
+        CurrentStackActive: 1
+        LowValue: 1
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 2
+        CurrentStackActive: 1
+        LowValue: 1
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 3
+        CurrentStackActive: 1
+        LowValue: 1
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
-      - ContainedItem: 0
-        StackValue: 0
-      - ContainedItem: 0
-        StackValue: 0
-      - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
   - Name: 
+    CurrentEnergy: 0
+    MaxEnergy: 0
+    CurrentHealth: 0
+    MaxHealth: 0
     Equipment:
       HatId: 0
       Ring1: 0
@@ -381,79 +929,227 @@ MonoBehaviour:
       Boots: 0
       RuckSackUnlockedSize: 12
       RucksackSlots:
+      - ContainedItem: 1
+        CurrentStackActive: 1
+        LowValue: 1
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 2
+        CurrentStackActive: 1
+        LowValue: 1
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 3
+        CurrentStackActive: 1
+        LowValue: 1
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
-      - ContainedItem: 0
-        StackValue: 0
-      - ContainedItem: 0
-        StackValue: 0
-      - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
   - Name: 
+    CurrentEnergy: 0
+    MaxEnergy: 0
+    CurrentHealth: 0
+    MaxHealth: 0
     Equipment:
       HatId: 0
       Ring1: 0
@@ -461,79 +1157,227 @@ MonoBehaviour:
       Boots: 0
       RuckSackUnlockedSize: 12
       RucksackSlots:
+      - ContainedItem: 1
+        CurrentStackActive: 1
+        LowValue: 1
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 2
+        CurrentStackActive: 1
+        LowValue: 1
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 3
+        CurrentStackActive: 1
+        LowValue: 1
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
-      - ContainedItem: 0
-        StackValue: 0
-      - ContainedItem: 0
-        StackValue: 0
-      - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
   - Name: 
+    CurrentEnergy: 0
+    MaxEnergy: 0
+    CurrentHealth: 0
+    MaxHealth: 0
     Equipment:
       HatId: 0
       Ring1: 0
@@ -541,78 +1385,310 @@ MonoBehaviour:
       Boots: 0
       RuckSackUnlockedSize: 12
       RucksackSlots:
+      - ContainedItem: 1
+        CurrentStackActive: 1
+        LowValue: 1
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 2
+        CurrentStackActive: 1
+        LowValue: 1
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 3
+        CurrentStackActive: 1
+        LowValue: 1
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
-        StackValue: 0
-      - ContainedItem: 0
-        StackValue: 0
-      - ContainedItem: 0
-        StackValue: 0
-      - ContainedItem: 0
-        StackValue: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+--- !u!1 &1151290200
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1151290201}
+  - component: {fileID: 1151290202}
+  m_Layer: 0
+  m_Name: Herb_PoisifferousRoiler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1151290201
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1151290200}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1, y: 2.31, z: -11}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2110302582}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1151290202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1151290200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ItemRefID: 8
+  ItemGrowthLevel: 2
+  Position: {x: 1, y: 2.31, z: -11}
+  YFacing: 0
+--- !u!1 &1301669059
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1301669060}
+  - component: {fileID: 1301669061}
+  m_Layer: 0
+  m_Name: Herb_DervishRoot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1301669060
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1301669059}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 2, y: 2.31, z: -9}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2110302582}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1301669061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1301669059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ItemRefID: 6
+  ItemGrowthLevel: 2
+  Position: {x: 2, y: 2.31, z: -9}
+  YFacing: 0
 --- !u!1 &1776617526 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1488329588103022, guid: c54e8c395b0069c40803538e94abf712,
@@ -732,3 +1808,142 @@ Transform:
   m_PrefabParentObject: {fileID: 4559278183740994, guid: fb9fb017398351b44b9429ac9b574522,
     type: 2}
   m_PrefabInternal: {fileID: 1836453460}
+--- !u!1 &1904530055
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1904530056}
+  - component: {fileID: 1904530057}
+  m_Layer: 0
+  m_Name: NetworkObjectData
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1904530056
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1904530055}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 2110302582}
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1904530057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1904530055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e7c746c18695294bbb0f6cb60271f10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DisplayPreviewsInSceneView: 1
+--- !u!1 &1935723848
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1935723849}
+  - component: {fileID: 1935723850}
+  m_Layer: 0
+  m_Name: Herb_CrispinsGlove
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1935723849
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1935723848}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 2, y: 2.31, z: -8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2110302582}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1935723850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1935723848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ItemRefID: 5
+  ItemGrowthLevel: 2
+  Position: {x: 2, y: 2.31, z: -8}
+  YFacing: 0
+--- !u!1 &2110302581
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 2110302582}
+  - component: {fileID: 2110302583}
+  m_Layer: 0
+  m_Name: Farm
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2110302582
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2110302581}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 507107465}
+  - {fileID: 296848412}
+  - {fileID: 1935723849}
+  - {fileID: 189548473}
+  - {fileID: 1068715598}
+  - {fileID: 1301669060}
+  - {fileID: 254734151}
+  - {fileID: 459666887}
+  - {fileID: 120504156}
+  - {fileID: 534079695}
+  - {fileID: 1151290201}
+  - {fileID: 100433158}
+  m_Father: {fileID: 1904530056}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2110302583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2110302581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a562cd3399a376a45937a1b625a2d029, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SceneID: 0

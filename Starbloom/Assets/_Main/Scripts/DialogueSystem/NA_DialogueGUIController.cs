@@ -59,7 +59,7 @@ public class NA_DialogueGUIController : MonoBehaviour
 
         if (GUIState == GUIStates.NotInConversatation && Char.CharLink.ContextCheck.ContextHit)
         {
-            NA_ContextObject CO = Char.CharLink.ContextCheck.LastEncounteredContext.GetComponent<NA_ContextObject>();
+            DG_ContextObject CO = Char.CharLink.ContextCheck.LastEncounteredContext.GetComponent<DG_ContextObject>();
             TriggerEvent(CO.ContextID);
         }
         else if (GUIState == GUIStates.TextTyping)
@@ -81,7 +81,7 @@ public class NA_DialogueGUIController : MonoBehaviour
         }
         Debug.Log("New Context Event Started");
 
-        ActiveDialogue = QuickFind.DialogueManager.GetDialogueFromID(ContextID);
+        ActiveDialogue = QuickFind.DialogueManager.GetItemFromID(ContextID);
         ActiveDialogue.Reset();
         NextTrigger();
     }
@@ -227,7 +227,7 @@ public class NA_DialogueGUIController : MonoBehaviour
             if (DisplayTrue)
             {
                 DescisionArray[i].transform.parent.gameObject.SetActive(true);
-                string Display = QuickFind.WordDatabase.GetItemFromID(WindowOption.ContextInt2, WindowOption.ContextInt4).TextValues[(int)QuickFind.UserSettings.CurrentLanguage].stringEntry;
+                string Display = QuickFind.WordDatabase.GetItemFromID(WindowOption.ContextInt2).TextValues[(int)QuickFind.UserSettings.CurrentLanguage].stringEntry;
                 string ScanedString = ScanForContext(Display, false);
                 QuickFind.TextPrintout.AddNewDisplayText(ScanedString, DescisionArray[i]);
 
@@ -269,12 +269,12 @@ public class NA_DialogueGUIController : MonoBehaviour
 
         if (ActiveDialogue.Current.ContextInt != 0)
         {
-            DG_CharacterObject Char = QuickFind.CharacterDatabase.GetItemFromID(1, ActiveDialogue.Current.ContextInt);
+            DG_CharacterObject Char = QuickFind.CharacterDatabase.GetItemFromID(ActiveDialogue.Current.ContextInt);
             //
-            Name = QuickFind.WordDatabase.GetItemFromID(Char.NameWordID, Char.NameWordCatID).TextValues[(int)QuickFind.UserSettings.CurrentLanguage].stringEntry;
+            Name = QuickFind.WordDatabase.GetItemFromID(Char.NameWordID).TextValues[(int)QuickFind.UserSettings.CurrentLanguage].stringEntry;
         }
         //
-        TextDisplay = QuickFind.WordDatabase.GetItemFromID(DisplayWindow.ContextInt2, DisplayWindow.ContextInt4).TextValues[(int)QuickFind.UserSettings.CurrentLanguage].stringEntry;
+        TextDisplay = QuickFind.WordDatabase.GetItemFromID(DisplayWindow.ContextInt2).TextValues[(int)QuickFind.UserSettings.CurrentLanguage].stringEntry;
         string ScanedString = ScanForContext(TextDisplay, false);
 
         FinalDisplay = string.Format("{0}{1}{2}", Name, "\n", ScanedString);
@@ -337,7 +337,7 @@ public class NA_DialogueGUIController : MonoBehaviour
                             case "I": 
                                 {
                                     DG_ItemObject ItemObject = QuickFind.ItemDatabase.GetItemFromID(CodeValue(CodeS));
-                                    DatabaseColumn = QuickFind.WordDatabase.GetItemFromID(ItemObject.WordValue, ItemObject.WordCatagory).TextValues[(int)QuickFind.UserSettings.CurrentLanguage].stringEntry;
+                                    DatabaseColumn = QuickFind.WordDatabase.GetItemFromID(ItemObject.WordValue).TextValues[(int)QuickFind.UserSettings.CurrentLanguage].stringEntry;
                                 }
                                 break;
                         }
@@ -367,12 +367,12 @@ public class NA_DialogueGUIController : MonoBehaviour
                             //Items
                             case "I": 
                                 {
-                                    DG_ItemObject ItemObject = QuickFindInEditor.GetEditorItemDatabase().GetItemFromIDInEditor(CodeValue(CodeS));
+                                    DG_ItemObject ItemObject = QuickFindInEditor.GetEditorItemDatabase().GetItemFromID(CodeValue(CodeS));
 
                                     if (!Editor)
-                                        DatabaseColumn = QuickFind.WordDatabase.GetItemFromID(ItemObject.WordValue, ItemObject.WordCatagory).TextValues[(int)QuickFind.UserSettings.CurrentLanguage].stringEntry;
+                                        DatabaseColumn = QuickFind.WordDatabase.GetItemFromID(ItemObject.WordValue).TextValues[(int)QuickFind.UserSettings.CurrentLanguage].stringEntry;
                                     else
-                                        DatabaseColumn = QuickFindInEditor.GetEditorWordDatabase().GetItemFromIDInEditor(ItemObject.WordValue, ItemObject.WordCatagory).TextValues[(int)QuickFindInEditor.GetEditorUserSettings().CurrentLanguage].stringEntry;
+                                        DatabaseColumn = QuickFindInEditor.GetEditorWordDatabase().GetItemFromID(ItemObject.WordValue).TextValues[(int)QuickFindInEditor.GetEditorUserSettings().CurrentLanguage].stringEntry;
                                 }
                                 break;
                         }
@@ -396,7 +396,7 @@ public class NA_DialogueGUIController : MonoBehaviour
     }
     public static string GetStaticText(int TextWordID, int TextCatID)
     {
-        DG_WordObject WO = QuickFind.WordDatabase.GetItemFromID(TextWordID, TextCatID);
+        DG_WordObject WO = QuickFind.WordDatabase.GetItemFromID(TextWordID);
         string DatabaseString = QuickFind.WordDatabase.GetWordByLanguage(WO.TextValues);
         return NA_DialogueGUIController.ScanForContext(DatabaseString, false);
     }

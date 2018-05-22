@@ -6,9 +6,10 @@ using UnityEngine;
 
 public class DG_CharacterObject : MonoBehaviour {
 
-    public int DatabaseID;
-    public string DevNotes;
-    [Header("Name")]
-    public int NameWordCatID;
+    [HideInInspector] public int DatabaseID;
+    [HideInInspector] public bool LockItem;
+
+    public string ObjectName;
+    [Header("Localization")]
     public int NameWordID;
 }

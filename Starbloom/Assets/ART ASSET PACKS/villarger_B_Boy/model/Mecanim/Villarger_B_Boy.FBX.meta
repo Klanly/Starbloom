@@ -1,0 +1,1634 @@
+fileFormatVersion: 2
+guid: 9df8701b1d67ea04582a26fc6dfc3abc
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Boy
+    100002: Boy Footsteps
+    100004: Boy Head
+    100006: Boy HeadNub
+    100008: Boy L Calf
+    100010: Boy L Clavicle
+    100012: Boy L Finger0
+    100014: Boy L Finger01
+    100016: Boy L Finger0Nub
+    100018: Boy L Finger1
+    100020: Boy L Finger11
+    100022: Boy L Finger1Nub
+    100024: Boy L Finger2
+    100026: Boy L Finger21
+    100028: Boy L Finger2Nub
+    100030: Boy L Foot
+    100032: Boy L Forearm
+    100034: Boy L Hand
+    100036: Boy L Thigh
+    100038: Boy L Toe0
+    100040: Boy L Toe0Nub
+    100042: Boy L UpperArm
+    100044: Boy Neck
+    100046: Boy Pelvis
+    100048: Boy R Calf
+    100050: Boy R Clavicle
+    100052: Boy R Finger0
+    100054: Boy R Finger01
+    100056: Boy R Finger0Nub
+    100058: Boy R Finger1
+    100060: Boy R Finger11
+    100062: Boy R Finger1Nub
+    100064: Boy R Finger2
+    100066: Boy R Finger21
+    100068: Boy R Finger2Nub
+    100070: Boy R Foot
+    100072: Boy R Forearm
+    100074: Boy R Hand
+    100076: Boy R Thigh
+    100078: Boy R Toe0
+    100080: Boy R Toe0Nub
+    100082: Boy R UpperArm
+    100084: Boy Spine
+    100086: Boy Spine1
+    100088: Boy Spine2
+    100090: boy_body
+    100092: Darger
+    100094: Object004
+    100096: Object005
+    100098: scff
+    100100: Scult_01
+    100102: Scult_02
+    100104: Scult_03
+    100106: Scult_End
+    100108: Side_Bag01
+    100110: Side_Bag_End
+    100112: //RootNode
+    100114: Weapon
+    100116: Boy_Weapon_Ctl
+    100118: Falcon001
+    100120: Falcon_ Tail
+    100122: Falcon_Bip001
+    100124: Falcon_Bip001 Footsteps
+    100126: Falcon_Bip001 Head
+    100128: Falcon_Bip001 HeadNub
+    100130: Falcon_Bip001 L Calf
+    100132: Falcon_Bip001 L Foot
+    100134: Falcon_Bip001 L HorseLink
+    100136: Falcon_Bip001 L Thigh
+    100138: Falcon_Bip001 L Toe0
+    100140: Falcon_Bip001 L Toe01
+    100142: Falcon_Bip001 L Toe02
+    100144: Falcon_Bip001 L Toe0Nub
+    100146: Falcon_Bip001 L Toe1
+    100148: Falcon_Bip001 L Toe11
+    100150: Falcon_Bip001 L Toe12
+    100152: Falcon_Bip001 L Toe1Nub
+    100154: Falcon_Bip001 Neck
+    100156: Falcon_Bip001 Pelvis
+    100158: Falcon_Bip001 R Calf
+    100160: Falcon_Bip001 R Foot
+    100162: Falcon_Bip001 R HorseLink
+    100164: Falcon_Bip001 R Thigh
+    100166: Falcon_Bip001 R Toe0
+    100168: Falcon_Bip001 R Toe01
+    100170: Falcon_Bip001 R Toe02
+    100172: Falcon_Bip001 R Toe0Nub
+    100174: Falcon_Bip001 R Toe1
+    100176: Falcon_Bip001 R Toe11
+    100178: Falcon_Bip001 R Toe12
+    100180: Falcon_Bip001 R Toe1Nub
+    100182: Falcon_Bip001 Spine
+    100184: Falcon_Bip001 Spine1
+    100186: Falcon_Bip001_Jaw_Bone001
+    100188: Falcon_L_Wing01
+    100190: Falcon_L_Wing01_01
+    100192: Falcon_L_Wing01_02
+    100194: Falcon_L_Wing02
+    100196: Falcon_L_Wing02_01
+    100198: Falcon_L_Wing02_02
+    100200: Falcon_L_Wing03
+    100202: Falcon_L_Wing03_01
+    100204: Falcon_L_Wing03_02
+    100206: Falcon_L_Wing04
+    100208: Falcon_L_Wing04_01
+    100210: Falcon_L_Wing04_02
+    100212: Falcon_L_Wing05
+    100214: Falcon_R_Wing01
+    100216: Falcon_R_Wing01_01
+    100218: Falcon_R_Wing01_02
+    100220: Falcon_R_Wing02
+    100222: Falcon_R_Wing02_01
+    100224: Falcon_R_Wing02_02
+    100226: Falcon_R_Wing03
+    100228: Falcon_R_Wing03_01
+    100230: Falcon_R_Wing03_02
+    100232: Falcon_R_Wing04
+    100234: Falcon_R_Wing04_01
+    100236: Falcon_R_Wing04_02
+    100238: Falcon_R_Wing05
+    100240: Falcon_Tail_L_Bone001
+    100242: Falcon_Tail_R_Bone001
+    400000: Boy
+    400002: Boy Footsteps
+    400004: Boy Head
+    400006: Boy HeadNub
+    400008: Boy L Calf
+    400010: Boy L Clavicle
+    400012: Boy L Finger0
+    400014: Boy L Finger01
+    400016: Boy L Finger0Nub
+    400018: Boy L Finger1
+    400020: Boy L Finger11
+    400022: Boy L Finger1Nub
+    400024: Boy L Finger2
+    400026: Boy L Finger21
+    400028: Boy L Finger2Nub
+    400030: Boy L Foot
+    400032: Boy L Forearm
+    400034: Boy L Hand
+    400036: Boy L Thigh
+    400038: Boy L Toe0
+    400040: Boy L Toe0Nub
+    400042: Boy L UpperArm
+    400044: Boy Neck
+    400046: Boy Pelvis
+    400048: Boy R Calf
+    400050: Boy R Clavicle
+    400052: Boy R Finger0
+    400054: Boy R Finger01
+    400056: Boy R Finger0Nub
+    400058: Boy R Finger1
+    400060: Boy R Finger11
+    400062: Boy R Finger1Nub
+    400064: Boy R Finger2
+    400066: Boy R Finger21
+    400068: Boy R Finger2Nub
+    400070: Boy R Foot
+    400072: Boy R Forearm
+    400074: Boy R Hand
+    400076: Boy R Thigh
+    400078: Boy R Toe0
+    400080: Boy R Toe0Nub
+    400082: Boy R UpperArm
+    400084: Boy Spine
+    400086: Boy Spine1
+    400088: Boy Spine2
+    400090: boy_body
+    400092: Darger
+    400094: Object004
+    400096: Object005
+    400098: scff
+    400100: Scult_01
+    400102: Scult_02
+    400104: Scult_03
+    400106: Scult_End
+    400108: Side_Bag01
+    400110: Side_Bag_End
+    400112: //RootNode
+    400114: Weapon
+    400116: Boy_Weapon_Ctl
+    400118: Falcon001
+    400120: Falcon_ Tail
+    400122: Falcon_Bip001
+    400124: Falcon_Bip001 Footsteps
+    400126: Falcon_Bip001 Head
+    400128: Falcon_Bip001 HeadNub
+    400130: Falcon_Bip001 L Calf
+    400132: Falcon_Bip001 L Foot
+    400134: Falcon_Bip001 L HorseLink
+    400136: Falcon_Bip001 L Thigh
+    400138: Falcon_Bip001 L Toe0
+    400140: Falcon_Bip001 L Toe01
+    400142: Falcon_Bip001 L Toe02
+    400144: Falcon_Bip001 L Toe0Nub
+    400146: Falcon_Bip001 L Toe1
+    400148: Falcon_Bip001 L Toe11
+    400150: Falcon_Bip001 L Toe12
+    400152: Falcon_Bip001 L Toe1Nub
+    400154: Falcon_Bip001 Neck
+    400156: Falcon_Bip001 Pelvis
+    400158: Falcon_Bip001 R Calf
+    400160: Falcon_Bip001 R Foot
+    400162: Falcon_Bip001 R HorseLink
+    400164: Falcon_Bip001 R Thigh
+    400166: Falcon_Bip001 R Toe0
+    400168: Falcon_Bip001 R Toe01
+    400170: Falcon_Bip001 R Toe02
+    400172: Falcon_Bip001 R Toe0Nub
+    400174: Falcon_Bip001 R Toe1
+    400176: Falcon_Bip001 R Toe11
+    400178: Falcon_Bip001 R Toe12
+    400180: Falcon_Bip001 R Toe1Nub
+    400182: Falcon_Bip001 Spine
+    400184: Falcon_Bip001 Spine1
+    400186: Falcon_Bip001_Jaw_Bone001
+    400188: Falcon_L_Wing01
+    400190: Falcon_L_Wing01_01
+    400192: Falcon_L_Wing01_02
+    400194: Falcon_L_Wing02
+    400196: Falcon_L_Wing02_01
+    400198: Falcon_L_Wing02_02
+    400200: Falcon_L_Wing03
+    400202: Falcon_L_Wing03_01
+    400204: Falcon_L_Wing03_02
+    400206: Falcon_L_Wing04
+    400208: Falcon_L_Wing04_01
+    400210: Falcon_L_Wing04_02
+    400212: Falcon_L_Wing05
+    400214: Falcon_R_Wing01
+    400216: Falcon_R_Wing01_01
+    400218: Falcon_R_Wing01_02
+    400220: Falcon_R_Wing02
+    400222: Falcon_R_Wing02_01
+    400224: Falcon_R_Wing02_02
+    400226: Falcon_R_Wing03
+    400228: Falcon_R_Wing03_01
+    400230: Falcon_R_Wing03_02
+    400232: Falcon_R_Wing04
+    400234: Falcon_R_Wing04_01
+    400236: Falcon_R_Wing04_02
+    400238: Falcon_R_Wing05
+    400240: Falcon_Tail_L_Bone001
+    400242: Falcon_Tail_R_Bone001
+    4300000: boy_body
+    4300002: scff
+    4300004: Object004
+    4300006: Object005
+    4300008: Darger
+    4300010: Falcon001
+    7400000: Take 001
+    9500000: //RootNode
+    11100000: //RootNode
+    13700000: boy_body
+    13700002: Darger
+    13700004: Object004
+    13700006: Object005
+    13700008: scff
+    13700010: Falcon001
+    2186277476908879412: ImportLogs
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 02 - Default
+    second: {fileID: 2100000, guid: f2edf1b689822a445a02d7ca266243db, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: default
+    second: {fileID: 2100000, guid: 3959159ff19d44c499e590d95aff23ca, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: "\uC5BC\uAD74"
+    second: {fileID: 2100000, guid: e22e285cb5ba4ca479e282f59f034396, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: "\nClip 'Take 001' has import animation warnings that
+      might lower retargeting quality:\nNote: Activate translation DOF on avatar to
+      improve retargeting quality.\n\t'Boy Spine2' is inbetween humanoid transforms
+      and has rotation animation that will be discarded.\n\t'Boy L Thigh' has translation
+      animation that will be discarded.\n\t'Boy R Thigh' has translation animation
+      that will be discarded.\n"
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Take 001
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 100
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Boy
+        weight: 1
+      - path: Boy/Boy Footsteps
+        weight: 0
+      - path: Boy/Boy Pelvis
+        weight: 1
+      - path: Boy/Boy Pelvis/Boy Spine
+        weight: 1
+      - path: Boy/Boy Pelvis/Boy Spine/Boy L Thigh
+        weight: 1
+      - path: Boy/Boy Pelvis/Boy Spine/Boy L Thigh/Boy L Calf
+        weight: 1
+      - path: Boy/Boy Pelvis/Boy Spine/Boy L Thigh/Boy L Calf/Boy L Foot
+        weight: 1
+      - path: Boy/Boy Pelvis/Boy Spine/Boy L Thigh/Boy L Calf/Boy L Foot/Boy L Toe0
+        weight: 1
+      - path: Boy/Boy Pelvis/Boy Spine/Boy L Thigh/Boy L Calf/Boy L Foot/Boy L Toe0/Boy
+          L Toe0Nub
+        weight: 0
+      - path: Boy/Boy Pelvis/Boy Spine/Boy R Thigh
+        weight: 1
+      - path: Boy/Boy Pelvis/Boy Spine/Boy R Thigh/Boy R Calf
+        weight: 1
+      - path: Boy/Boy Pelvis/Boy Spine/Boy R Thigh/Boy R Calf/Boy R Foot
+        weight: 1
+      - path: Boy/Boy Pelvis/Boy Spine/Boy R Thigh/Boy R Calf/Boy R Foot/Boy R Toe0
+        weight: 1
+      - path: Boy/Boy Pelvis/Boy Spine/Boy R Thigh/Boy R Calf/Boy R Foot/Boy R Toe0/Boy
+          R Toe0Nub
+        weight: 0
+      - path: Boy/Boy Pelvis/Boy Spine/Boy Spine1
+        weight: 1
+      - path: Boy/Boy Pelvis/Boy Spine/Boy Spine1/Boy Spine2
+        weight: 1
+      - path: Boy/Boy Pelvis/Boy Spine/Boy Spine1/Boy Spine2/Boy Neck
+        weight: 1
+      - path: Boy/Boy Pelvis/Boy Spine/Boy Spine1/Boy Spine2/Boy Neck/Boy Head
+        weight: 1
+      - path: Boy/Boy Pelvis/Boy Spine/Boy Spine1/Boy Spine2/Boy Neck/Boy Head/Boy
+          HeadNub
+        weight: 0
+      - path: Boy/Boy Pelvis/Boy Spine/Boy Spine1/Boy Spine2/Boy Neck/Boy L Clavicle
+        weight: 1
+      - path: Boy/Boy Pelvis/Boy Spine/Boy Spine1/Boy Spine2/Boy Neck/Boy L Clavicle/Boy
+          L UpperArm
+        weight: 1
+      - path: Boy/Boy Pelvis/Boy Spine/Boy Spine1/Boy Spine2/Boy Neck/Boy L Clavicle/Boy
+          L UpperArm/Boy L Forearm
+        weight: 1
+      - path: Boy/Boy Pelvis/Boy Spine/Boy Spine1/Boy Spine2/Boy Neck/Boy L Clavicle/Boy
+          L UpperArm/Boy L Forearm/Boy L Hand
+        weight: 1
+      - path: Boy/Boy Pelvis/Boy Spine/Boy Spine1/Boy Spine2/Boy Neck/Boy L Clavicle/Boy
+          L UpperArm/Boy L Forearm/Boy L Hand/Boy L Finger0
+        weight: 1
+      - path: Boy/Boy Pelvis/Boy Spine/Boy Spine1/Boy Spine2/Boy Neck/Boy L Clavicle/Boy
+          L UpperArm/Boy L Forearm/Boy L Hand/Boy L Finger0/Boy L Finger01
+        weight: 1
+      - path: Boy/Boy Pelvis/Boy Spine/Boy Spine1/Boy Spine2/Boy Neck/Boy L Clavicle/Boy
+          L UpperArm/Boy L Forearm/Boy L Hand/Boy L Finger0/Boy L Finger01/Boy L Finger0Nub
+        weight: 1
+      - path: Boy/Boy Pelvis/Boy Spine/Boy Spine1/Boy Spine2/Boy Neck/Boy L Clavicle/Boy
+          L UpperArm/Boy L Forearm/Boy L Hand/Boy L Finger1
+        weight: 1
+      - path: Boy/Boy Pelvis/Boy Spine/Boy Spine1/Boy Spine2/Boy Neck/Boy L Clavicle/Boy
+          L UpperArm/Boy L Forearm/Boy L Hand/Boy L Finger1/Boy L Finger11
+        weight: 1
+      - path: Boy/Boy Pelvis/Boy Spine/Boy Spine1/Boy Spine2/Boy Neck/Boy L Clavicle/Boy
+          L UpperArm/Boy L Forearm/Boy L Hand/Boy L Finger1/Boy L Finger11/Boy L Finger1Nub
+        weight: 1
+      - path: Boy/Boy Pelvis/Boy Spine/Boy Spine1/Boy Spine2/Boy Neck/Boy L Clavicle/Boy
+          L UpperArm/Boy L Forearm/Boy L Hand/Boy L Finger2
+        weight: 1
+      - path: Boy/Boy Pelvis/Boy Spine/Boy Spine1/Boy Spine2/Boy Neck/Boy L Clavicle/Boy
+          L UpperArm/Boy L Forearm/Boy L Hand/Boy L Finger2/Boy L Finger21
+        weight: 1
+      - path: Boy/Boy Pelvis/Boy Spine/Boy Spine1/Boy Spine2/Boy Neck/Boy L Clavicle/Boy
+          L UpperArm/Boy L Forearm/Boy L Hand/Boy L Finger2/Boy L Finger21/Boy L Finger2Nub
+        weight: 1
+      - path: Boy/Boy Pelvis/Boy Spine/Boy Spine1/Boy Spine2/Boy Neck/Boy R Clavicle
+        weight: 1
+      - path: Boy/Boy Pelvis/Boy Spine/Boy Spine1/Boy Spine2/Boy Neck/Boy R Clavicle/Boy
+          R UpperArm
+        weight: 1
+      - path: Boy/Boy Pelvis/Boy Spine/Boy Spine1/Boy Spine2/Boy Neck/Boy R Clavicle/Boy
+          R UpperArm/Boy R Forearm
+        weight: 1
+      - path: Boy/Boy Pelvis/Boy Spine/Boy Spine1/Boy Spine2/Boy Neck/Boy R Clavicle/Boy
+          R UpperArm/Boy R Forearm/Boy R Hand
+        weight: 1
+      - path: Boy/Boy Pelvis/Boy Spine/Boy Spine1/Boy Spine2/Boy Neck/Boy R Clavicle/Boy
+          R UpperArm/Boy R Forearm/Boy R Hand/Boy R Finger0
+        weight: 1
+      - path: Boy/Boy Pelvis/Boy Spine/Boy Spine1/Boy Spine2/Boy Neck/Boy R Clavicle/Boy
+          R UpperArm/Boy R Forearm/Boy R Hand/Boy R Finger0/Boy R Finger01
+        weight: 1
+      - path: Boy/Boy Pelvis/Boy Spine/Boy Spine1/Boy Spine2/Boy Neck/Boy R Clavicle/Boy
+          R UpperArm/Boy R Forearm/Boy R Hand/Boy R Finger0/Boy R Finger01/Boy R Finger0Nub
+        weight: 1
+      - path: Boy/Boy Pelvis/Boy Spine/Boy Spine1/Boy Spine2/Boy Neck/Boy R Clavicle/Boy
+          R UpperArm/Boy R Forearm/Boy R Hand/Boy R Finger1
+        weight: 1
+      - path: Boy/Boy Pelvis/Boy Spine/Boy Spine1/Boy Spine2/Boy Neck/Boy R Clavicle/Boy
+          R UpperArm/Boy R Forearm/Boy R Hand/Boy R Finger1/Boy R Finger11
+        weight: 1
+      - path: Boy/Boy Pelvis/Boy Spine/Boy Spine1/Boy Spine2/Boy Neck/Boy R Clavicle/Boy
+          R UpperArm/Boy R Forearm/Boy R Hand/Boy R Finger1/Boy R Finger11/Boy R Finger1Nub
+        weight: 1
+      - path: Boy/Boy Pelvis/Boy Spine/Boy Spine1/Boy Spine2/Boy Neck/Boy R Clavicle/Boy
+          R UpperArm/Boy R Forearm/Boy R Hand/Boy R Finger2
+        weight: 1
+      - path: Boy/Boy Pelvis/Boy Spine/Boy Spine1/Boy Spine2/Boy Neck/Boy R Clavicle/Boy
+          R UpperArm/Boy R Forearm/Boy R Hand/Boy R Finger2/Boy R Finger21
+        weight: 1
+      - path: Boy/Boy Pelvis/Boy Spine/Boy Spine1/Boy Spine2/Boy Neck/Boy R Clavicle/Boy
+          R UpperArm/Boy R Forearm/Boy R Hand/Boy R Finger2/Boy R Finger21/Boy R Finger2Nub
+        weight: 1
+      - path: Boy/Boy Pelvis/Boy Spine/Boy Spine1/Boy Spine2/Boy Neck/Boy R Clavicle/Boy
+          R UpperArm/Boy R Forearm/Boy R Hand/Boy_Weapon_Ctl
+        weight: 1
+      - path: Boy/Boy Pelvis/Boy Spine/Boy Spine1/Boy Spine2/Boy Neck/Boy R Clavicle/Boy
+          R UpperArm/Boy R Forearm/Boy R Hand/Boy_Weapon_Ctl/Weapon
+        weight: 1
+      - path: Boy/Boy Pelvis/Boy Spine/Boy Spine1/Boy Spine2/Scult_01
+        weight: 1
+      - path: Boy/Boy Pelvis/Boy Spine/Boy Spine1/Boy Spine2/Scult_01/Scult_02
+        weight: 1
+      - path: Boy/Boy Pelvis/Boy Spine/Boy Spine1/Boy Spine2/Scult_01/Scult_02/Scult_03
+        weight: 1
+      - path: Boy/Boy Pelvis/Boy Spine/Boy Spine1/Boy Spine2/Scult_01/Scult_02/Scult_03/Scult_End
+        weight: 1
+      - path: Boy/Boy Pelvis/Side_Bag01
+        weight: 1
+      - path: Boy/Boy Pelvis/Side_Bag01/Side_Bag_End
+        weight: 1
+      - path: boy_body
+        weight: 1
+      - path: Darger
+        weight: 1
+      - path: Falcon001
+        weight: 1
+      - path: Falcon_Bip001
+        weight: 1
+      - path: Falcon_Bip001/Falcon_Bip001 Footsteps
+        weight: 1
+      - path: Falcon_Bip001/Falcon_Bip001 Pelvis
+        weight: 1
+      - path: Falcon_Bip001/Falcon_Bip001 Pelvis/Falcon_ Tail
+        weight: 1
+      - path: Falcon_Bip001/Falcon_Bip001 Pelvis/Falcon_ Tail/Falcon_Tail_L_Bone001
+        weight: 1
+      - path: Falcon_Bip001/Falcon_Bip001 Pelvis/Falcon_ Tail/Falcon_Tail_R_Bone001
+        weight: 1
+      - path: Falcon_Bip001/Falcon_Bip001 Pelvis/Falcon_Bip001 Spine
+        weight: 1
+      - path: Falcon_Bip001/Falcon_Bip001 Pelvis/Falcon_Bip001 Spine/Falcon_Bip001
+          L Thigh
+        weight: 1
+      - path: Falcon_Bip001/Falcon_Bip001 Pelvis/Falcon_Bip001 Spine/Falcon_Bip001
+          L Thigh/Falcon_Bip001 L Calf
+        weight: 1
+      - path: Falcon_Bip001/Falcon_Bip001 Pelvis/Falcon_Bip001 Spine/Falcon_Bip001
+          L Thigh/Falcon_Bip001 L Calf/Falcon_Bip001 L HorseLink
+        weight: 1
+      - path: Falcon_Bip001/Falcon_Bip001 Pelvis/Falcon_Bip001 Spine/Falcon_Bip001
+          L Thigh/Falcon_Bip001 L Calf/Falcon_Bip001 L HorseLink/Falcon_Bip001 L Foot
+        weight: 1
+      - path: Falcon_Bip001/Falcon_Bip001 Pelvis/Falcon_Bip001 Spine/Falcon_Bip001
+          L Thigh/Falcon_Bip001 L Calf/Falcon_Bip001 L HorseLink/Falcon_Bip001 L Foot/Falcon_Bip001
+          L Toe0
+        weight: 1
+      - path: Falcon_Bip001/Falcon_Bip001 Pelvis/Falcon_Bip001 Spine/Falcon_Bip001
+          L Thigh/Falcon_Bip001 L Calf/Falcon_Bip001 L HorseLink/Falcon_Bip001 L Foot/Falcon_Bip001
+          L Toe0/Falcon_Bip001 L Toe01
+        weight: 1
+      - path: Falcon_Bip001/Falcon_Bip001 Pelvis/Falcon_Bip001 Spine/Falcon_Bip001
+          L Thigh/Falcon_Bip001 L Calf/Falcon_Bip001 L HorseLink/Falcon_Bip001 L Foot/Falcon_Bip001
+          L Toe0/Falcon_Bip001 L Toe01/Falcon_Bip001 L Toe02
+        weight: 1
+      - path: Falcon_Bip001/Falcon_Bip001 Pelvis/Falcon_Bip001 Spine/Falcon_Bip001
+          L Thigh/Falcon_Bip001 L Calf/Falcon_Bip001 L HorseLink/Falcon_Bip001 L Foot/Falcon_Bip001
+          L Toe0/Falcon_Bip001 L Toe01/Falcon_Bip001 L Toe02/Falcon_Bip001 L Toe0Nub
+        weight: 1
+      - path: Falcon_Bip001/Falcon_Bip001 Pelvis/Falcon_Bip001 Spine/Falcon_Bip001
+          L Thigh/Falcon_Bip001 L Calf/Falcon_Bip001 L HorseLink/Falcon_Bip001 L Foot/Falcon_Bip001
+          L Toe1
+        weight: 1
+      - path: Falcon_Bip001/Falcon_Bip001 Pelvis/Falcon_Bip001 Spine/Falcon_Bip001
+          L Thigh/Falcon_Bip001 L Calf/Falcon_Bip001 L HorseLink/Falcon_Bip001 L Foot/Falcon_Bip001
+          L Toe1/Falcon_Bip001 L Toe11
+        weight: 1
+      - path: Falcon_Bip001/Falcon_Bip001 Pelvis/Falcon_Bip001 Spine/Falcon_Bip001
+          L Thigh/Falcon_Bip001 L Calf/Falcon_Bip001 L HorseLink/Falcon_Bip001 L Foot/Falcon_Bip001
+          L Toe1/Falcon_Bip001 L Toe11/Falcon_Bip001 L Toe12
+        weight: 1
+      - path: Falcon_Bip001/Falcon_Bip001 Pelvis/Falcon_Bip001 Spine/Falcon_Bip001
+          L Thigh/Falcon_Bip001 L Calf/Falcon_Bip001 L HorseLink/Falcon_Bip001 L Foot/Falcon_Bip001
+          L Toe1/Falcon_Bip001 L Toe11/Falcon_Bip001 L Toe12/Falcon_Bip001 L Toe1Nub
+        weight: 1
+      - path: Falcon_Bip001/Falcon_Bip001 Pelvis/Falcon_Bip001 Spine/Falcon_Bip001
+          R Thigh
+        weight: 1
+      - path: Falcon_Bip001/Falcon_Bip001 Pelvis/Falcon_Bip001 Spine/Falcon_Bip001
+          R Thigh/Falcon_Bip001 R Calf
+        weight: 1
+      - path: Falcon_Bip001/Falcon_Bip001 Pelvis/Falcon_Bip001 Spine/Falcon_Bip001
+          R Thigh/Falcon_Bip001 R Calf/Falcon_Bip001 R HorseLink
+        weight: 1
+      - path: Falcon_Bip001/Falcon_Bip001 Pelvis/Falcon_Bip001 Spine/Falcon_Bip001
+          R Thigh/Falcon_Bip001 R Calf/Falcon_Bip001 R HorseLink/Falcon_Bip001 R Foot
+        weight: 1
+      - path: Falcon_Bip001/Falcon_Bip001 Pelvis/Falcon_Bip001 Spine/Falcon_Bip001
+          R Thigh/Falcon_Bip001 R Calf/Falcon_Bip001 R HorseLink/Falcon_Bip001 R Foot/Falcon_Bip001
+          R Toe0
+        weight: 1
+      - path: Falcon_Bip001/Falcon_Bip001 Pelvis/Falcon_Bip001 Spine/Falcon_Bip001
+          R Thigh/Falcon_Bip001 R Calf/Falcon_Bip001 R HorseLink/Falcon_Bip001 R Foot/Falcon_Bip001
+          R Toe0/Falcon_Bip001 R Toe01
+        weight: 1
+      - path: Falcon_Bip001/Falcon_Bip001 Pelvis/Falcon_Bip001 Spine/Falcon_Bip001
+          R Thigh/Falcon_Bip001 R Calf/Falcon_Bip001 R HorseLink/Falcon_Bip001 R Foot/Falcon_Bip001
+          R Toe0/Falcon_Bip001 R Toe01/Falcon_Bip001 R Toe02
+        weight: 1
+      - path: Falcon_Bip001/Falcon_Bip001 Pelvis/Falcon_Bip001 Spine/Falcon_Bip001
+          R Thigh/Falcon_Bip001 R Calf/Falcon_Bip001 R HorseLink/Falcon_Bip001 R Foot/Falcon_Bip001
+          R Toe0/Falcon_Bip001 R Toe01/Falcon_Bip001 R Toe02/Falcon_Bip001 R Toe0Nub
+        weight: 1
+      - path: Falcon_Bip001/Falcon_Bip001 Pelvis/Falcon_Bip001 Spine/Falcon_Bip001
+          R Thigh/Falcon_Bip001 R Calf/Falcon_Bip001 R HorseLink/Falcon_Bip001 R Foot/Falcon_Bip001
+          R Toe1
+        weight: 1
+      - path: Falcon_Bip001/Falcon_Bip001 Pelvis/Falcon_Bip001 Spine/Falcon_Bip001
+          R Thigh/Falcon_Bip001 R Calf/Falcon_Bip001 R HorseLink/Falcon_Bip001 R Foot/Falcon_Bip001
+          R Toe1/Falcon_Bip001 R Toe11
+        weight: 1
+      - path: Falcon_Bip001/Falcon_Bip001 Pelvis/Falcon_Bip001 Spine/Falcon_Bip001
+          R Thigh/Falcon_Bip001 R Calf/Falcon_Bip001 R HorseLink/Falcon_Bip001 R Foot/Falcon_Bip001
+          R Toe1/Falcon_Bip001 R Toe11/Falcon_Bip001 R Toe12
+        weight: 1
+      - path: Falcon_Bip001/Falcon_Bip001 Pelvis/Falcon_Bip001 Spine/Falcon_Bip001
+          R Thigh/Falcon_Bip001 R Calf/Falcon_Bip001 R HorseLink/Falcon_Bip001 R Foot/Falcon_Bip001
+          R Toe1/Falcon_Bip001 R Toe11/Falcon_Bip001 R Toe12/Falcon_Bip001 R Toe1Nub
+        weight: 1
+      - path: Falcon_Bip001/Falcon_Bip001 Pelvis/Falcon_Bip001 Spine/Falcon_Bip001
+          Spine1
+        weight: 1
+      - path: Falcon_Bip001/Falcon_Bip001 Pelvis/Falcon_Bip001 Spine/Falcon_Bip001
+          Spine1/Falcon_Bip001 Neck
+        weight: 1
+      - path: Falcon_Bip001/Falcon_Bip001 Pelvis/Falcon_Bip001 Spine/Falcon_Bip001
+          Spine1/Falcon_Bip001 Neck/Falcon_Bip001 Head
+        weight: 1
+      - path: Falcon_Bip001/Falcon_Bip001 Pelvis/Falcon_Bip001 Spine/Falcon_Bip001
+          Spine1/Falcon_Bip001 Neck/Falcon_Bip001 Head/Falcon_Bip001 HeadNub
+        weight: 1
+      - path: Falcon_Bip001/Falcon_Bip001 Pelvis/Falcon_Bip001 Spine/Falcon_Bip001
+          Spine1/Falcon_Bip001 Neck/Falcon_Bip001 Head/Falcon_Bip001_Jaw_Bone001
+        weight: 1
+      - path: Falcon_Bip001/Falcon_Bip001 Pelvis/Falcon_Bip001 Spine/Falcon_L_Wing01
+        weight: 1
+      - path: Falcon_Bip001/Falcon_Bip001 Pelvis/Falcon_Bip001 Spine/Falcon_L_Wing01/Falcon_L_Wing01_01
+        weight: 1
+      - path: Falcon_Bip001/Falcon_Bip001 Pelvis/Falcon_Bip001 Spine/Falcon_L_Wing01/Falcon_L_Wing01_01/Falcon_L_Wing01_02
+        weight: 1
+      - path: Falcon_Bip001/Falcon_Bip001 Pelvis/Falcon_Bip001 Spine/Falcon_L_Wing01/Falcon_L_Wing02
+        weight: 1
+      - path: Falcon_Bip001/Falcon_Bip001 Pelvis/Falcon_Bip001 Spine/Falcon_L_Wing01/Falcon_L_Wing02/Falcon_L_Wing02_01
+        weight: 1
+      - path: Falcon_Bip001/Falcon_Bip001 Pelvis/Falcon_Bip001 Spine/Falcon_L_Wing01/Falcon_L_Wing02/Falcon_L_Wing02_01/Falcon_L_Wing02_02
+        weight: 1
+      - path: Falcon_Bip001/Falcon_Bip001 Pelvis/Falcon_Bip001 Spine/Falcon_L_Wing01/Falcon_L_Wing02/Falcon_L_Wing03
+        weight: 1
+      - path: Falcon_Bip001/Falcon_Bip001 Pelvis/Falcon_Bip001 Spine/Falcon_L_Wing01/Falcon_L_Wing02/Falcon_L_Wing03/Falcon_L_Wing04
+        weight: 1
+      - path: Falcon_Bip001/Falcon_Bip001 Pelvis/Falcon_Bip001 Spine/Falcon_L_Wing01/Falcon_L_Wing02/Falcon_L_Wing03/Falcon_L_Wing04/Falcon_L_Wing03_01
+        weight: 1
+      - path: Falcon_Bip001/Falcon_Bip001 Pelvis/Falcon_Bip001 Spine/Falcon_L_Wing01/Falcon_L_Wing02/Falcon_L_Wing03/Falcon_L_Wing04/Falcon_L_Wing03_01/Falcon_L_Wing03_02
+        weight: 1
+      - path: Falcon_Bip001/Falcon_Bip001 Pelvis/Falcon_Bip001 Spine/Falcon_L_Wing01/Falcon_L_Wing02/Falcon_L_Wing03/Falcon_L_Wing04/Falcon_L_Wing04_01
+        weight: 1
+      - path: Falcon_Bip001/Falcon_Bip001 Pelvis/Falcon_Bip001 Spine/Falcon_L_Wing01/Falcon_L_Wing02/Falcon_L_Wing03/Falcon_L_Wing04/Falcon_L_Wing04_01/Falcon_L_Wing04_02
+        weight: 1
+      - path: Falcon_Bip001/Falcon_Bip001 Pelvis/Falcon_Bip001 Spine/Falcon_L_Wing01/Falcon_L_Wing02/Falcon_L_Wing03/Falcon_L_Wing04/Falcon_L_Wing05
+        weight: 1
+      - path: Falcon_Bip001/Falcon_Bip001 Pelvis/Falcon_Bip001 Spine/Falcon_R_Wing01
+        weight: 1
+      - path: Falcon_Bip001/Falcon_Bip001 Pelvis/Falcon_Bip001 Spine/Falcon_R_Wing01/Falcon_R_Wing01_01
+        weight: 1
+      - path: Falcon_Bip001/Falcon_Bip001 Pelvis/Falcon_Bip001 Spine/Falcon_R_Wing01/Falcon_R_Wing01_01/Falcon_R_Wing01_02
+        weight: 1
+      - path: Falcon_Bip001/Falcon_Bip001 Pelvis/Falcon_Bip001 Spine/Falcon_R_Wing01/Falcon_R_Wing02
+        weight: 1
+      - path: Falcon_Bip001/Falcon_Bip001 Pelvis/Falcon_Bip001 Spine/Falcon_R_Wing01/Falcon_R_Wing02/Falcon_R_Wing02_01
+        weight: 1
+      - path: Falcon_Bip001/Falcon_Bip001 Pelvis/Falcon_Bip001 Spine/Falcon_R_Wing01/Falcon_R_Wing02/Falcon_R_Wing02_01/Falcon_R_Wing02_02
+        weight: 1
+      - path: Falcon_Bip001/Falcon_Bip001 Pelvis/Falcon_Bip001 Spine/Falcon_R_Wing01/Falcon_R_Wing02/Falcon_R_Wing03
+        weight: 1
+      - path: Falcon_Bip001/Falcon_Bip001 Pelvis/Falcon_Bip001 Spine/Falcon_R_Wing01/Falcon_R_Wing02/Falcon_R_Wing03/Falcon_R_Wing04
+        weight: 1
+      - path: Falcon_Bip001/Falcon_Bip001 Pelvis/Falcon_Bip001 Spine/Falcon_R_Wing01/Falcon_R_Wing02/Falcon_R_Wing03/Falcon_R_Wing04/Falcon_R_Wing03_01
+        weight: 1
+      - path: Falcon_Bip001/Falcon_Bip001 Pelvis/Falcon_Bip001 Spine/Falcon_R_Wing01/Falcon_R_Wing02/Falcon_R_Wing03/Falcon_R_Wing04/Falcon_R_Wing03_01/Falcon_R_Wing03_02
+        weight: 1
+      - path: Falcon_Bip001/Falcon_Bip001 Pelvis/Falcon_Bip001 Spine/Falcon_R_Wing01/Falcon_R_Wing02/Falcon_R_Wing03/Falcon_R_Wing04/Falcon_R_Wing04_01
+        weight: 1
+      - path: Falcon_Bip001/Falcon_Bip001 Pelvis/Falcon_Bip001 Spine/Falcon_R_Wing01/Falcon_R_Wing02/Falcon_R_Wing03/Falcon_R_Wing04/Falcon_R_Wing04_01/Falcon_R_Wing04_02
+        weight: 1
+      - path: Falcon_Bip001/Falcon_Bip001 Pelvis/Falcon_Bip001 Spine/Falcon_R_Wing01/Falcon_R_Wing02/Falcon_R_Wing03/Falcon_R_Wing04/Falcon_R_Wing05
+        weight: 1
+      - path: Object004
+        weight: 1
+      - path: Object005
+        weight: 1
+      - path: scff
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.01
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 0
+    importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 4
+    normalCalculationMode: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human:
+    - boneName: Boy Pelvis
+      humanName: Hips
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Boy L Thigh
+      humanName: LeftUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Boy R Thigh
+      humanName: RightUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Boy L Calf
+      humanName: LeftLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Boy R Calf
+      humanName: RightLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Boy L Foot
+      humanName: LeftFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Boy R Foot
+      humanName: RightFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Boy Spine
+      humanName: Spine
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Boy Spine1
+      humanName: Chest
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Boy Head
+      humanName: Head
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Boy L Clavicle
+      humanName: LeftShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Boy R Clavicle
+      humanName: RightShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Boy L UpperArm
+      humanName: LeftUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Boy R UpperArm
+      humanName: RightUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Boy L Forearm
+      humanName: LeftLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Boy R Forearm
+      humanName: RightLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Boy L Hand
+      humanName: LeftHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Boy R Hand
+      humanName: RightHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Boy L Toe0
+      humanName: LeftToes
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Boy R Toe0
+      humanName: RightToes
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Boy L Finger1
+      humanName: Left Index Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Boy L Finger11
+      humanName: Left Index Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Boy L Finger2
+      humanName: Left Middle Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Boy L Finger21
+      humanName: Left Middle Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Boy R Finger1
+      humanName: Right Index Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Boy R Finger11
+      humanName: Right Index Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Boy R Finger2
+      humanName: Right Middle Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Boy R Finger21
+      humanName: Right Middle Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Boy Neck
+      humanName: Neck
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Boy L Finger0
+      humanName: Left Thumb Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Boy L Finger01
+      humanName: Left Thumb Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Boy L Finger0Nub
+      humanName: Left Thumb Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Boy L Finger1Nub
+      humanName: Left Index Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Boy L Finger2Nub
+      humanName: Left Middle Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Boy R Finger0
+      humanName: Right Thumb Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Boy R Finger01
+      humanName: Right Thumb Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Boy R Finger0Nub
+      humanName: Right Thumb Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Boy R Finger1Nub
+      humanName: Right Index Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Boy R Finger2Nub
+      humanName: Right Middle Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    skeleton:
+    - name: Villarger_B_Boy(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: boy_body
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Darger
+      parentName: 
+      position: {x: -0.7030931, y: 0.9523795, z: -0.10360934}
+      rotation: {x: -0.7071051, y: 0.0015637734, z: -0.0015637734, w: 0.7071051}
+      scale: {x: 0.30102348, y: 0.30102348, z: 0.30102348}
+    - name: Falcon001
+      parentName: 
+      position: {x: 0, y: 0, z: -0.00012580155}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Object004
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Object005
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+    - name: scff
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Boy
+      parentName: 
+      position: {x: 0, y: 0.837525, z: -0.062229842}
+      rotation: {x: -0.5, y: 0.5, z: 0.5, w: 0.5}
+      scale: {x: 0.99999994, y: 0.99999994, z: 1}
+    - name: Boy Footsteps
+      parentName: 
+      position: {x: -0, y: 0, z: -0.83169335}
+      rotation: {x: 0, y: 0, z: -0.70710635, w: 0.7071073}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Boy Pelvis
+      parentName: 
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -0.49999964, y: 0.50000036, z: 0.49999964, w: 0.50000036}
+      scale: {x: 1, y: 0.99999994, z: 0.99999994}
+    - name: Side_Bag01
+      parentName: 
+      position: {x: -0.06942314, y: -0.00000020503997, z: 0.017552566}
+      rotation: {x: -0.33489522, y: 0.6227741, z: 0.6227725, w: 0.33489096}
+      scale: {x: 0.9283058, y: 1.6529722, z: 3.1900964}
+    - name: Side_Bag_End
+      parentName: 
+      position: {x: -0.19999973, y: 0, z: -0.00000000834465}
+      rotation: {x: 6.2211324e-14, y: 5.3463978e-14, z: -3.326065e-27, w: 1}
+      scale: {x: 2.1264193, y: 1.82743, z: 1.0000001}
+    - name: Boy Spine
+      parentName: 
+      position: {x: -0.086651154, y: -0.00007202148, z: 0.0000001202678}
+      rotation: {x: -0.000002080476, y: 0.000000693676, z: -0.000398159, w: 0.99999994}
+      scale: {x: 1, y: 0.99999994, z: 0.99999994}
+    - name: Boy Spine1
+      parentName: 
+      position: {x: -0.09048615, y: -0.00008990765, z: -2.4936525e-10}
+      rotation: {x: -7.753467e-14, y: -0.00000015835795, z: 0.057094727, w: 0.9983688}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Boy Spine2
+      parentName: 
+      position: {x: -0.11364502, y: -0.00008519172, z: -2.362867e-10}
+      rotation: {x: -3.3432285e-14, y: -0.00000007069005, z: 0.02548675, w: 0.99967515}
+      scale: {x: 1, y: 1, z: 0.99999994}
+    - name: Scult_01
+      parentName: 
+      position: {x: -0.13046883, y: -0.05498497, z: 0.06473754}
+      rotation: {x: 0.27706972, y: 0.65056306, z: 0.6505635, w: 0.27706903}
+      scale: {x: 1.0000002, y: 3.5361283, z: 1.2954767}
+    - name: Scult_02
+      parentName: 
+      position: {x: -0.19999984, y: 0.000000017881392, z: -0.00000015258789}
+      rotation: {x: 0.00000008388053, y: 0.014414064, z: -0.00000011584382, w: 0.9998961}
+      scale: {x: 1, y: 1, z: 0.9999998}
+    - name: Scult_03
+      parentName: 
+      position: {x: -0.19999999, y: 0.0000000011920929, z: 0}
+      rotation: {x: -0.0000001735407, y: 0.014595304, z: -0.00000036253635, w: 0.9998935}
+      scale: {x: 1.0000001, y: 0.9999999, z: 1}
+    - name: Scult_End
+      parentName: 
+      position: {x: -0.20000008, y: 0.0000000011920929, z: 0}
+      rotation: {x: -0.00000043892632, y: 0.000000014901163, z: 6.5405127e-15, w: 1}
+      scale: {x: 0.9999999, y: 0.99999994, z: 0.9999999}
+    - name: Boy Neck
+      parentName: 
+      position: {x: -0.14263129, y: -0.00006459236, z: -1.790977e-10}
+      rotation: {x: 2.2526413e-14, y: 0.00000033154564, z: -0.119536206, w: 0.99282986}
+      scale: {x: 1.0000001, y: 1, z: 0.99999994}
+    - name: Boy Head
+      parentName: 
+      position: {x: -0.08349853, y: 0, z: 0}
+      rotation: {x: 4.6648967e-14, y: 0.00000005057898, z: -0.018235166, w: 0.99983376}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Boy HeadNub
+      parentName: 
+      position: {x: -0.25973922, y: 0, z: 3.6379787e-14}
+      rotation: {x: 3.0198066e-14, y: -1.4210855e-14, z: 4.2914033e-28, w: 1}
+      scale: {x: 1, y: 1, z: 0.99999994}
+    - name: Boy R Clavicle
+      parentName: 
+      position: {x: 0.034469526, y: 0.008488884, z: -0.027632536}
+      rotation: {x: 0.5765046, y: 0.06964269, z: 0.80824435, w: -0.097639486}
+      scale: {x: 1.0000001, y: 1, z: 1}
+    - name: Boy R UpperArm
+      parentName: 
+      position: {x: -0.09527378, y: 0.000000009536743, z: 0}
+      rotation: {x: -0.140165, y: -0.14481334, z: -0.026901213, w: 0.9791115}
+      scale: {x: 0.99999994, y: 1, z: 1}
+    - name: Boy R Forearm
+      parentName: 
+      position: {x: -0.16671203, y: 0.000000038146972, z: 0}
+      rotation: {x: 0.0007356904, y: -0.009494506, z: 0.03920753, w: 0.99918574}
+      scale: {x: 0.9999999, y: 0.9999999, z: 0.99999994}
+    - name: Boy R Hand
+      parentName: 
+      position: {x: -0.19615623, y: -0.000000009536743, z: 0}
+      rotation: {x: 0.7068235, y: -0.0015834541, z: -0.02069425, w: 0.7070854}
+      scale: {x: 1, y: 1, z: 1.0000001}
+    - name: Boy_Weapon_Ctl
+      parentName: 
+      position: {x: 0.578398, y: 0.83280593, z: 0.04438613}
+      rotation: {x: 0.010754157, y: -0.0253791, z: 0.9630551, w: 0.2678903}
+      scale: {x: 2.9640248, y: 2.9640238, z: 2.9640248}
+    - name: Weapon
+      parentName: 
+      position: {x: -0, y: 0.000000019073486, z: 0}
+      rotation: {x: -8.651559e-15, y: -1.9878078e-14, z: -6.2118993e-16, w: 1}
+      scale: {x: 0.35745043, y: 1.5149246, z: 0.3373791}
+    - name: Boy R Finger1
+      parentName: 
+      position: {x: -0.09868759, y: -0.01410759, z: 0.045396786}
+      rotation: {x: 0.012163879, y: 0.15287673, z: 0.022261992, w: 0.9879197}
+      scale: {x: 0.99999994, y: 0.9999999, z: 0.99999994}
+    - name: Boy R Finger11
+      parentName: 
+      position: {x: -0.063102685, y: 0.000000076293944, z: -0.000000009536743}
+      rotation: {x: 0.000000028229913, y: -0.00000021277252, z: -0.039736018, w: 0.9992103}
+      scale: {x: 1, y: 0.99999994, z: 1}
+    - name: Boy R Finger1Nub
+      parentName: 
+      position: {x: -0.055782318, y: 0.000000038146972, z: 0}
+      rotation: {x: 3.4694465e-18, y: 4.656613e-10, z: 1, w: 0.0000000074505797}
+      scale: {x: -1.0000001, y: -1, z: -1.0000001}
+    - name: Boy R Finger2
+      parentName: 
+      position: {x: -0.09874015, y: -0.0055889892, z: -0.0040437505}
+      rotation: {x: 0.11702283, y: 0.15437736, z: 0.0071917907, w: 0.9810309}
+      scale: {x: 0.9999999, y: 0.99999994, z: 0.9999998}
+    - name: Boy R Finger21
+      parentName: 
+      position: {x: -0.06057373, y: 0, z: -0.000000009536743}
+      rotation: {x: -0.007165393, y: 0.00057508925, z: -0.037929554, w: 0.9992546}
+      scale: {x: 0.99999994, y: 1.0000001, z: 0.99999994}
+    - name: Boy R Finger2Nub
+      parentName: 
+      position: {x: -0.0538253, y: 0.000000038146972, z: 0.0000000023841857}
+      rotation: {x: -9.3132246e-10, y: -0.0000000055879354, z: 1, w: 5.602817e-17}
+      scale: {x: -1.0000001, y: -1, z: -1.0000001}
+    - name: Boy R Finger0
+      parentName: 
+      position: {x: -0.03044033, y: 0.0013344574, z: 0.058268737}
+      rotation: {x: -0.64623755, y: 0.16708358, z: 0.12824373, w: 0.7334942}
+      scale: {x: 0.99999994, y: 0.99999976, z: 0.9999999}
+    - name: Boy R Finger01
+      parentName: 
+      position: {x: -0.06325081, y: -0.000000019073486, z: 0}
+      rotation: {x: 0.000000064224515, y: -0.000000037028546, z: -0.03346862, w: 0.99943984}
+      scale: {x: 1.0000001, y: 1, z: 1.0000001}
+    - name: Boy R Finger0Nub
+      parentName: 
+      position: {x: -0.0668573, y: -0.0000000047683715, z: 0}
+      rotation: {x: -0.000000014901161, y: 0.0000000011641532, z: 1, w: 7.857958e-17}
+      scale: {x: -1, y: -1, z: -1.0000001}
+    - name: Boy L Clavicle
+      parentName: 
+      position: {x: 0.034469526, y: 0.008488731, z: 0.027632585}
+      rotation: {x: -0.57650656, y: -0.069645025, z: 0.8082429, w: -0.09763777}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Boy L UpperArm
+      parentName: 
+      position: {x: -0.0952738, y: 0, z: 0}
+      rotation: {x: 0.14016496, y: 0.14481254, z: -0.026900947, w: 0.97911155}
+      scale: {x: 0.99999994, y: 1, z: 1}
+    - name: Boy L Forearm
+      parentName: 
+      position: {x: -0.16671203, y: 0.000000038146972, z: 0}
+      rotation: {x: -0.0007357306, y: 0.0094947815, z: 0.039207518, w: 0.9991857}
+      scale: {x: 1, y: 0.9999999, z: 1.0000001}
+    - name: Boy L Hand
+      parentName: 
+      position: {x: -0.19615631, y: -0.000000019073486, z: 0}
+      rotation: {x: -0.7068235, y: 0.0015834332, z: -0.020694273, w: 0.7070854}
+      scale: {x: 0.9999999, y: 1, z: 1.0000001}
+    - name: Boy L Finger1
+      parentName: 
+      position: {x: -0.09868759, y: -0.01410759, z: -0.045396794}
+      rotation: {x: -0.012163713, y: -0.1528763, z: 0.022261238, w: 0.98791975}
+      scale: {x: 0.99999994, y: 0.99999994, z: 0.9999999}
+    - name: Boy L Finger11
+      parentName: 
+      position: {x: -0.063102685, y: 0, z: 0}
+      rotation: {x: -0.00000004142483, y: -0.00000034345848, z: -0.03973626, w: 0.9992102}
+      scale: {x: 1, y: 0.99999994, z: 1.0000001}
+    - name: Boy L Finger1Nub
+      parentName: 
+      position: {x: -0.055782355, y: 0, z: 0}
+      rotation: {x: -4.656613e-10, y: 3.4694465e-18, z: -0.0000000074505797, w: 1}
+      scale: {x: 1.0000001, y: 1, z: 1.0000001}
+    - name: Boy L Finger2
+      parentName: 
+      position: {x: -0.098740235, y: -0.0055890656, z: 0.0040437505}
+      rotation: {x: -0.117022894, y: -0.15437704, z: 0.0071916287, w: 0.98103094}
+      scale: {x: 0.9999999, y: 1, z: 0.9999998}
+    - name: Boy L Finger21
+      parentName: 
+      position: {x: -0.06057369, y: 0, z: 0.000000014305114}
+      rotation: {x: 0.007165385, y: -0.00057514105, z: -0.037929587, w: 0.99925464}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1.0000001}
+    - name: Boy L Finger2Nub
+      parentName: 
+      position: {x: -0.053825226, y: -0.000000038146972, z: 0}
+      rotation: {x: 0.0000000023283064, y: 0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Boy L Finger0
+      parentName: 
+      position: {x: -0.030440368, y: 0.001334381, z: -0.058268726}
+      rotation: {x: 0.6462377, y: -0.16708362, z: 0.12824307, w: 0.7334942}
+      scale: {x: 0.99999994, y: 0.99999976, z: 0.99999994}
+    - name: Boy L Finger01
+      parentName: 
+      position: {x: -0.06325065, y: -0.000000057220458, z: 0}
+      rotation: {x: 0.00000009625551, y: 0.00000030708824, z: -0.03346894, w: 0.9994398}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Boy L Finger0Nub
+      parentName: 
+      position: {x: -0.06685726, y: 0, z: 0.000000038146972}
+      rotation: {x: -2.3283062e-10, y: 0.000000029802319, z: 6.9388922e-18, w: 1}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1}
+    - name: Boy R Thigh
+      parentName: 
+      position: {x: 0.08665107, y: 0.00014128209, z: -0.08002666}
+      rotation: {x: -0.0008754697, y: 0.9959965, z: -0.0027925828, w: -0.08934483}
+      scale: {x: 1, y: 1.0000001, z: 1}
+    - name: Boy R Calf
+      parentName: 
+      position: {x: -0.30608544, y: -0.0000000047683715, z: 0}
+      rotation: {x: 0.0000000018979036, y: -0.0000000148091175, z: 0.06499832, w: 0.9978854}
+      scale: {x: 1, y: 1, z: 0.99999994}
+    - name: Boy R Foot
+      parentName: 
+      position: {x: -0.39475074, y: 0.000000009536743, z: -0.000000019073486}
+      rotation: {x: -0.008559896, y: -0.08897772, z: -0.064260304, w: 0.9939217}
+      scale: {x: 1, y: 0.99999994, z: 1}
+    - name: Boy R Toe0
+      parentName: 
+      position: {x: -0.14525464, y: 0.13930966, z: 0}
+      rotation: {x: 0.000000015454312, y: -0.000000015454312, z: -0.7071068, w: 0.7071068}
+      scale: {x: 0.99999994, y: 1, z: 0.99999994}
+    - name: Boy R Toe0Nub
+      parentName: 
+      position: {x: -0.10791329, y: 0, z: 0}
+      rotation: {x: -1.697032e-30, y: 9.553441e-16, z: 1.776357e-15, w: 1}
+      scale: {x: 0.99999994, y: 1, z: 0.99999994}
+    - name: Boy L Thigh
+      parentName: 
+      position: {x: 0.08665107, y: 0.00014083386, z: 0.08002666}
+      rotation: {x: -0.00087522157, y: 0.9959965, z: 0.002795345, w: 0.08934474}
+      scale: {x: 1, y: 1.0000001, z: 1}
+    - name: Boy L Calf
+      parentName: 
+      position: {x: -0.30608547, y: 0, z: 0}
+      rotation: {x: -0.0000000023429816, y: 0.0000000073137563, z: 0.06499832, w: 0.9978854}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1.0000001}
+    - name: Boy L Foot
+      parentName: 
+      position: {x: -0.3947507, y: 0, z: -0.000000019073486}
+      rotation: {x: 0.008559891, y: 0.08897763, z: -0.06426032, w: 0.9939217}
+      scale: {x: 0.9999999, y: 0.99999994, z: 1}
+    - name: Boy L Toe0
+      parentName: 
+      position: {x: -0.14525464, y: 0.13930966, z: 0}
+      rotation: {x: -0.00000001545431, y: 0.00000001545431, z: -0.7071068, w: 0.7071068}
+      scale: {x: 0.99999994, y: 1, z: 0.99999994}
+    - name: Boy L Toe0Nub
+      parentName: 
+      position: {x: -0.10791329, y: 0, z: 0}
+      rotation: {x: -9.553415e-16, y: -1.755525e-30, z: 1, w: -1.8375893e-15}
+      scale: {x: -0.99999994, y: -1, z: -0.99999994}
+    - name: Falcon_Bip001
+      parentName: 
+      position: {x: -0.03186157, y: 2.4600918, z: 0.08627178}
+      rotation: {x: 0.006415108, y: -0.0064139785, z: 0.70707715, w: 0.7070782}
+      scale: {x: 1, y: 1, z: 0.99999994}
+    - name: Falcon_Bip001 Footsteps
+      parentName: 
+      position: {x: -0.5613164, y: -0.0000008034706, z: 0.01018527}
+      rotation: {x: 0.5045155, y: -0.5045149, z: 0.49544328, w: -0.49544403}
+      scale: {x: 1, y: 1.0000001, z: 1.0000001}
+    - name: Falcon_Bip001 Pelvis
+      parentName: 
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -0.49890858, y: 0.50108874, z: 0.50108826, w: 0.4989097}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1}
+    - name: Falcon_Bip001 Spine
+      parentName: 
+      position: {x: -0.18558212, y: 0.00062561035, z: 0.00000011920929}
+      rotation: {x: -0.0000021865658, y: 0.0000003096722, z: 0.020480767, w: 0.99979025}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1}
+    - name: Falcon_Bip001 L Thigh
+      parentName: 
+      position: {x: 0.18540078, y: -0.008225403, z: 0.1627008}
+      rotation: {x: 0.98885566, y: 0.03022183, z: 0.047406018, w: 0.13785453}
+      scale: {x: 0.99999994, y: 0.99999994, z: 1}
+    - name: Falcon_Bip001 L Calf
+      parentName: 
+      position: {x: -0.022818565, y: -0.00000015258789, z: 0.000000038146972}
+      rotation: {x: -0.0000000052139564, y: -0.000000030273814, z: 0.9149017, w: 0.4036768}
+      scale: {x: 1.0000001, y: 1.0000002, z: 1}
+    - name: Falcon_Bip001 L HorseLink
+      parentName: 
+      position: {x: -0.27388442, y: -0.00000015258789, z: 0.000000038146972}
+      rotation: {x: -0.000000007026572, y: -0.00000001314047, z: -0.47154522, w: 0.8818419}
+      scale: {x: 0.9999999, y: 1, z: 1}
+    - name: Falcon_Bip001 L Foot
+      parentName: 
+      position: {x: -0.30946395, y: -0.000000076293944, z: 0}
+      rotation: {x: -0.093295544, y: -0.11201573, z: 0.5877693, w: 0.7957862}
+      scale: {x: 1, y: 1, z: 1.0000001}
+    - name: Falcon_Bip001 L Toe0
+      parentName: 
+      position: {x: -0.056887053, y: 0.04548523, z: 0.0090314}
+      rotation: {x: -0.000000010405821, y: 0.0000000192196, z: -0.47611567, w: 0.87938267}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1}
+    - name: Falcon_Bip001 L Toe01
+      parentName: 
+      position: {x: -0.06987793, y: 0, z: 0}
+      rotation: {x: -1.413849e-13, y: 7.654868e-14, z: 0.28515276, w: 0.9584821}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1}
+    - name: Falcon_Bip001 L Toe02
+      parentName: 
+      position: {x: -0.050679777, y: 0, z: -0.0000000047683715}
+      rotation: {x: 5.4483395e-14, y: 1.6209056e-14, z: 0.28515276, w: 0.9584821}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1}
+    - name: Falcon_Bip001 L Toe0Nub
+      parentName: 
+      position: {x: -0.087167434, y: 0, z: 0}
+      rotation: {x: 5.684342e-14, y: -3.4806557e-30, z: 1, w: 6.123234e-17}
+      scale: {x: -1, y: -1, z: -1}
+    - name: Falcon_Bip001 L Toe1
+      parentName: 
+      position: {x: -0.058185883, y: -0.024360657, z: 0.02046288}
+      rotation: {x: 0.9140155, y: 0.40567935, z: -0.000000050604438, w: 0.000000060139755}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1}
+    - name: Falcon_Bip001 L Toe11
+      parentName: 
+      position: {x: -0.03560295, y: -0.00000015258789, z: 0.0000000047683715}
+      rotation: {x: -4.0864498e-14, y: 1.060886e-13, z: 0.35944793, w: 0.9331652}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Falcon_Bip001 L Toe12
+      parentName: 
+      position: {x: -0.05465263, y: 0, z: -0.0000000047683715}
+      rotation: {x: -1.7347523e-13, y: 5.500796e-14, z: 0.359448, w: 0.93316513}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Falcon_Bip001 L Toe1Nub
+      parentName: 
+      position: {x: -0.050762787, y: 0, z: 0.0000000047683715}
+      rotation: {x: 0, y: -0, z: 1, w: 6.123234e-17}
+      scale: {x: -1, y: -1, z: -1}
+    - name: Falcon_Bip001 R Thigh
+      parentName: 
+      position: {x: 0.18540055, y: -0.00822464, z: -0.16270085}
+      rotation: {x: 0.98846203, y: -0.0033958184, z: -0.0513268, w: -0.142467}
+      scale: {x: 0.9999999, y: 0.9999999, z: 1}
+    - name: Falcon_Bip001 R Calf
+      parentName: 
+      position: {x: -0.022818556, y: 0, z: 0.000000038146972}
+      rotation: {x: 0.000000003242493, y: 0.000000006708009, z: 0.90033376, w: 0.4352001}
+      scale: {x: 1, y: 1.0000001, z: 1}
+    - name: Falcon_Bip001 R HorseLink
+      parentName: 
+      position: {x: -0.27388442, y: 0, z: -0.000000038146972}
+      rotation: {x: -0.000000003727874, y: -0.000000014900516, z: -0.47074118, w: 0.88227135}
+      scale: {x: 0.9999999, y: 1, z: 1}
+    - name: Falcon_Bip001 R Foot
+      parentName: 
+      position: {x: -0.30946395, y: -0.000000076293944, z: 0.000000076293944}
+      rotation: {x: 0.055716462, y: 0.14080694, z: 0.32735166, w: 0.93268967}
+      scale: {x: 1.0000001, y: 1, z: 1}
+    - name: Falcon_Bip001 R Toe0
+      parentName: 
+      position: {x: -0.056887053, y: 0.045485076, z: -0.0090314}
+      rotation: {x: 0.000000010405846, y: -0.000000019219549, z: -0.47611567, w: 0.87938267}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Falcon_Bip001 R Toe01
+      parentName: 
+      position: {x: -0.06987808, y: -0.000000076293944, z: 0}
+      rotation: {x: -1.2941034e-15, y: 2.9267828e-14, z: 0.28515276, w: 0.9584821}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1}
+    - name: Falcon_Bip001 R Toe02
+      parentName: 
+      position: {x: -0.05067993, y: 0.000000019073486, z: 0}
+      rotation: {x: 2.72417e-14, y: 8.104528e-15, z: 0.2851527, w: 0.9584821}
+      scale: {x: 0.99999994, y: 1, z: 1}
+    - name: Falcon_Bip001 R Toe0Nub
+      parentName: 
+      position: {x: -0.08716751, y: 0, z: 0}
+      rotation: {x: -5.684342e-14, y: -8.4703295e-22, z: 0.000000014901161, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Falcon_Bip001 R Toe1
+      parentName: 
+      position: {x: -0.058185883, y: -0.024360694, z: -0.020462872}
+      rotation: {x: 0.9140155, y: 0.40567935, z: 0.000000050604367, w: -0.00000006013982}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Falcon_Bip001 R Toe11
+      parentName: 
+      position: {x: -0.03560295, y: 0, z: 0}
+      rotation: {x: -3.978323e-14, y: -1.5324188e-14, z: 0.35944793, w: 0.9331652}
+      scale: {x: 1, y: 0.99999994, z: 1}
+    - name: Falcon_Bip001 R Toe12
+      parentName: 
+      position: {x: -0.054652862, y: 0, z: 0.0000000023841857}
+      rotation: {x: 6.0899018e-15, y: 6.326043e-14, z: 0.35944793, w: 0.9331652}
+      scale: {x: 0.99999994, y: 0.99999994, z: 1}
+    - name: Falcon_Bip001 R Toe1Nub
+      parentName: 
+      position: {x: -0.050762635, y: -0.000000038146972, z: -0.0000000023841857}
+      rotation: {x: 8.4703275e-22, y: -5.6843412e-14, z: 0.000000014901159, w: 1}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1}
+    - name: Falcon_Bip001 Spine1
+      parentName: 
+      position: {x: -0.23037204, y: -0.00018173218, z: -0.0000000047683715}
+      rotation: {x: -4.9043912e-14, y: 0.00000017562782, z: -0.06332123, w: 0.99799323}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Falcon_Bip001 Neck
+      parentName: 
+      position: {x: -0.24340977, y: -0.11693512, z: -0.00000017881393}
+      rotation: {x: 1.5413282e-14, y: -0.00000036955404, z: 0.13323985, w: 0.99108386}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Falcon_Bip001 Head
+      parentName: 
+      position: {x: -0.18452133, y: 0, z: 0}
+      rotation: {x: -7.0732884e-13, y: -0.0000010902817, z: 0.3930932, w: 0.9194987}
+      scale: {x: 0.99999994, y: 0.99999994, z: 1}
+    - name: Falcon_Bip001 HeadNub
+      parentName: 
+      position: {x: -0.2238269, y: -0.000000076293944, z: 0.0000000023841857}
+      rotation: {x: 1.0658141e-14, y: 2.1316282e-14, z: -2.2719194e-28, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Falcon_Bip001_Jaw_Bone001
+      parentName: 
+      position: {x: -0.074251704, y: 0.100337595, z: 0.0000009155273}
+      rotation: {x: 0.7532002, y: -0.6577914, z: -0.0000011844529, w: -0.0000004577296}
+      scale: {x: 1.0000002, y: 1.0000001, z: 1.0000001}
+    - name: Falcon_L_Wing01
+      parentName: 
+      position: {x: -0.20732921, y: -0.21123825, z: 0.14660358}
+      rotation: {x: -0.6340738, y: -0.27885008, z: 0.64334047, w: 0.32604614}
+      scale: {x: 0.99999994, y: 1.0000001, z: 1.0000001}
+    - name: Falcon_L_Wing01_01
+      parentName: 
+      position: {x: -0.21382567, y: 0.010766144, z: -0.033778343}
+      rotation: {x: -0.04771805, y: -0.69423234, z: 0.06806727, w: 0.71493447}
+      scale: {x: 0.99999994, y: 0.9999999, z: 1}
+    - name: Falcon_L_Wing01_02
+      parentName: 
+      position: {x: -0.25623205, y: 0, z: 0.00000015258789}
+      rotation: {x: -0.00045271392, y: -0.010038368, z: 0.045018345, w: 0.99893564}
+      scale: {x: 1, y: 1.0000001, z: 1.0000001}
+    - name: Falcon_L_Wing02
+      parentName: 
+      position: {x: -0.21535094, y: 0.00000015258789, z: -0.00000015258789}
+      rotation: {x: -0.0045496337, y: 0.12567726, z: -0.035888262, w: 0.9914114}
+      scale: {x: 0.9999999, y: 0.99999976, z: 0.99999976}
+    - name: Falcon_L_Wing03
+      parentName: 
+      position: {x: -0.30712524, y: 0, z: -0.000000076293944}
+      rotation: {x: -0.10889443, y: -0.09958393, z: 0.026496785, w: 0.98869765}
+      scale: {x: 1, y: 1, z: 0.99999994}
+    - name: Falcon_L_Wing04
+      parentName: 
+      position: {x: -0.27470368, y: -0.00000015258789, z: 0}
+      rotation: {x: 0.034904744, y: -0.06835851, z: 0.005690051, w: 0.99703383}
+      scale: {x: 0.99999994, y: 1, z: 1}
+    - name: Falcon_L_Wing03_01
+      parentName: 
+      position: {x: -0.07714142, y: -0.0070651243, z: -0.08862053}
+      rotation: {x: 0.0009591031, y: -0.5847772, z: 0.041420087, w: 0.81013525}
+      scale: {x: 1.0000002, y: 1, z: 1}
+    - name: Falcon_L_Wing03_02
+      parentName: 
+      position: {x: -0.197482, y: 0, z: 0}
+      rotation: {x: 0.000000014844173, y: 0.017028306, z: 0.0000000034730228, w: 0.99985504}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1}
+    - name: Falcon_L_Wing04_01
+      parentName: 
+      position: {x: -0.24719787, y: -0.0027886962, z: -0.08060936}
+      rotation: {x: -0.051495567, y: -0.48693505, z: 0.074284725, w: 0.8687487}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1.0000001}
+    - name: Falcon_L_Wing04_02
+      parentName: 
+      position: {x: -0.23134708, y: -0.00000015258789, z: 0}
+      rotation: {x: -0.000000014551617, y: -0.019194268, z: 0.000000018350525, w: 0.99981576}
+      scale: {x: 1, y: 1, z: 1.0000001}
+    - name: Falcon_L_Wing05
+      parentName: 
+      position: {x: -0.37660307, y: 0, z: 0}
+      rotation: {x: -0.08496793, y: -0.35575864, z: 0.15943404, w: 0.91694987}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1.0000001}
+    - name: Falcon_L_Wing02_01
+      parentName: 
+      position: {x: -0.31045592, y: -0.033245087, z: -0.0458646}
+      rotation: {x: -0.018527117, y: -0.73770136, z: 0.12263101, w: 0.66363776}
+      scale: {x: 1.0000001, y: 1, z: 0.99999994}
+    - name: Falcon_L_Wing02_02
+      parentName: 
+      position: {x: -0.2853556, y: -0.00000015258789, z: 0}
+      rotation: {x: -0.08505635, y: -0.03436578, z: -0.03512252, w: 0.99516374}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Falcon_R_Wing01
+      parentName: 
+      position: {x: -0.20732936, y: -0.21123794, z: -0.14770576}
+      rotation: {x: -0.274315, y: -0.6452052, z: 0.32531947, w: 0.63453037}
+      scale: {x: 1.0000001, y: 1.0000002, z: 1.0000002}
+    - name: Falcon_R_Wing01_01
+      parentName: 
+      position: {x: -0.21382552, y: 0.011794433, z: -0.033778306}
+      rotation: {x: -0.09701705, y: -0.7102846, z: -0.10581767, w: 0.6891198}
+      scale: {x: 1.0000001, y: 1.0000002, z: 1.0000001}
+    - name: Falcon_R_Wing01_02
+      parentName: 
+      position: {x: -0.25623184, y: -0.00000015258789, z: 0}
+      rotation: {x: 0.0000688607, y: -0.010048565, z: -0.006827602, w: 0.9999262}
+      scale: {x: 1, y: 0.9999999, z: 0.9999999}
+    - name: Falcon_R_Wing02
+      parentName: 
+      position: {x: -0.21535079, y: 0.00000015258789, z: -0.00000015258789}
+      rotation: {x: 0.0022929972, y: 0.1257394, z: 0.018086849, w: 0.9918958}
+      scale: {x: 1.0000001, y: 0.9999998, z: 0.9999999}
+    - name: Falcon_R_Wing03
+      parentName: 
+      position: {x: -0.30712524, y: 0.00000015258789, z: -0.00000017166137}
+      rotation: {x: 0.005100742, y: -0.08491848, z: -0.059740663, w: 0.9945823}
+      scale: {x: 1.0000001, y: 1, z: 1.0000001}
+    - name: Falcon_R_Wing04
+      parentName: 
+      position: {x: -0.27470368, y: 0.00000015258789, z: 0.00000015258789}
+      rotation: {x: 0.0025022863, y: 0.062475134, z: 0.03994065, w: 0.9972439}
+      scale: {x: 0.9999999, y: 0.9999999, z: 0.9999999}
+    - name: Falcon_R_Wing03_01
+      parentName: 
+      position: {x: -0.077141725, y: -0.01663742, z: -0.08862047}
+      rotation: {x: 0.023480158, y: -0.6592742, z: -0.026749507, w: 0.7510597}
+      scale: {x: 1.0000001, y: 0.9999998, z: 1.0000001}
+    - name: Falcon_R_Wing03_02
+      parentName: 
+      position: {x: -0.19748199, y: -0.00000015258789, z: 0.00000030517577}
+      rotation: {x: 0.027776284, y: 0.037809707, z: -0.0036481787, w: 0.9988922}
+      scale: {x: 0.99999976, y: 1, z: 0.9999997}
+    - name: Falcon_R_Wing04_01
+      parentName: 
+      position: {x: -0.2364389, y: -0.0015335083, z: -0.08012478}
+      rotation: {x: 0.030870926, y: -0.51515144, z: -0.04765038, w: 0.8552166}
+      scale: {x: 0.99999994, y: 1.0000001, z: 0.9999998}
+    - name: Falcon_R_Wing04_02
+      parentName: 
+      position: {x: -0.23134711, y: 0, z: 0}
+      rotation: {x: 0.0005352211, y: -0.019186946, z: -0.027879078, w: 0.999427}
+      scale: {x: 1, y: 1.0000001, z: 1.0000001}
+    - name: Falcon_R_Wing05
+      parentName: 
+      position: {x: -0.3766034, y: 0, z: 0}
+      rotation: {x: 0.06318055, y: -0.41193822, z: -0.13780773, w: 0.8985122}
+      scale: {x: 0.99999994, y: 1.0000001, z: 1}
+    - name: Falcon_R_Wing02_01
+      parentName: 
+      position: {x: -0.31045592, y: 0.0031057738, z: -0.045864504}
+      rotation: {x: -0.029012907, y: -0.7617833, z: -0.11768947, w: 0.6363911}
+      scale: {x: 1.0000001, y: 1.0000002, z: 1.0000002}
+    - name: Falcon_R_Wing02_02
+      parentName: 
+      position: {x: -0.2853553, y: 0.00000015258789, z: 0.00000015258789}
+      rotation: {x: -0.00029290724, y: 0.011975018, z: -0.024451086, w: 0.99962926}
+      scale: {x: 0.9999999, y: 0.9999998, z: 0.9999999}
+    - name: Falcon_ Tail
+      parentName: 
+      position: {x: 0.42553124, y: -0.19794112, z: -0.00000015497207}
+      rotation: {x: 0.000000696902, y: 0.0000015862777, z: 0.9952548, w: 0.09730278}
+      scale: {x: 1.0000002, y: 1, z: 0.99999994}
+    - name: Falcon_Tail_L_Bone001
+      parentName: 
+      position: {x: -0.004079666, y: -0.043927457, z: 0.11981431}
+      rotation: {x: 0.061343122, y: 0.22852197, z: 0.05020311, w: 0.97030634}
+      scale: {x: 1.0000004, y: 1.0000002, z: 0.99999994}
+    - name: Falcon_Tail_R_Bone001
+      parentName: 
+      position: {x: -0.0012598418, y: -0.04435562, z: -0.119316906}
+      rotation: {x: -0.061344057, y: -0.212779, z: 0.049342528, w: 0.9739237}
+      scale: {x: 1, y: 1.0000004, z: 1.0000004}
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 3
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

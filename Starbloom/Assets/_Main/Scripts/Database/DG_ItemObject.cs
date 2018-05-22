@@ -1,68 +1,147 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using Sirenix.OdinInspector;
 
 
-#if UNITY_EDITOR
-using UnityEditor;
-/////////////////////////////////////////////////////////////////////////////////Editor Extension Buttons
-[CustomEditor(typeof(DG_ItemObject))]
-class DG_ItemObjectEditor : Editor
+public class DG_ItemObject : MonoBehaviour
 {
-    public override void OnInspectorGUI()
+    public enum ItemQualityLevels
     {
-        DrawDefaultInspector();
-
-        //Buttons
-
-        DG_ItemObject myScript = (DG_ItemObject)target;
-        if (GUILayout.Button("FindNextAvailableDatabaseID"))
-            myScript.FindNextAvailableDatabaseID();
+        Low,
+        Normal,
+        High,
+        Max
     }
-}
-//////////////////////////////////////////////////////////////////////////////////
-#endif
+
+    public enum ItemCatagory
+    {
+        Vegetable,
+        Herb
+    }
 
 
-public class DG_ItemObject : MonoBehaviour {
+    public string Name;
+    public int MaxStackSize;
+    public HotbarItemHandler.ActivateableTypes ActivateableType;
 
-    public int DatabaseID;
-    public string DevNotes;
+    [HideInInspector] public int DatabaseID;
+    [HideInInspector] public bool LockItem;
+
+
+    [Header("Default Visuals")]
+    public Sprite Icon;
+    public GameObject ModelPrefab;
+    public float DefaultScale = 1;
+
+    [Header("Localization")]
     public int WordCatagory;
     public int WordValue;
-    [Header("Item Stats")]
-    public bool ItemHasStats;
-    public ItemStats[] ItemStat;
+
+
+    #region Tool
+    public bool isTool = false;
+    [Header("Tool")]
+    [ShowIf("isTool")]
+    public Tool[] ToolQualityLevels;
 
     [System.Serializable]
-    public class ItemStats
+    public class Tool
     {
+        [Header("------------------------------------------------------")]
+        public ItemQualityLevels Quality;
+        [Header("Energy")]
+        public int EnergyUsageValue;
 
+        [Header("Shop")]
+        public int BuyPrice;
+        public int SellPrice;
+
+        [Header("Visuals")]
+        public bool HasCustomSprite;
+        [ShowIf("HasCustomSprite")]
+        public Sprite Icon;
+        public bool HasCustomModel;
+        [ShowIf("HasCustomModel")]
+        public GameObject ModelPrefab;
+    }
+    #endregion
+
+
+    #region Growable Item
+    public bool isGrowableItem = false;
+    [ShowIf("isGrowableItem")]
+    public GrowableItem[] GrowableItemStages;
+
+    [System.Serializable]
+    public class GrowableItem
+    {
+        public GameObject ModelPrefab;
+    }
+    #endregion
+
+
+    #region Item
+    public bool isItem = false;
+    [ShowIf("isItem")]
+    [Header("Item")]
+    public ItemCatagory ItemCat;
+    [ShowIf("isItem")]
+    public Item[] ItemQualities;
+
+    [System.Serializable]
+    public class Item
+    {
+        public ItemQualityLevels Quality;
+
+        [Header("Health")]
+        public bool AdjustsHealth;
+        [ShowIf("AdjustsHealth")]
+        public int HealthAdjustValue;
+
+        [Header("Energy")]
+        public bool AdjustsEnergy;
+        [ShowIf("AdjustsEnergy")]
+        public int EnergyAdjustValue;
+
+        [Header("Shop")]
+        public int BuyPrice;
+        public int SellPrice;
+    }
+    #endregion
+
+
+
+
+
+
+
+    public int GetMax()
+    {
+        if (isTool)
+            return ToolQualityLevels.Length;
+        else if (isGrowableItem)
+            return GrowableItemStages.Length;
+        else if (isItem)
+            return ItemQualities.Length;
+
+        return 0;
     }
 
-    public void FindNextAvailableDatabaseID()
+    public GameObject GetPrefabReferenceByQuality(int IQL)
     {
-        Transform Cat = transform.parent;
-        Transform Tracker = Cat.parent;
-
-        int HighestNumber = 0;
-
-        for (int i = 0; i < Tracker.childCount; i++)
+        if (isTool)
         {
-            Transform Child = Tracker.GetChild(i);
-            for (int iN = 0; iN < Child.childCount; iN++)
-            {
-                DG_ItemObject Item = Child.GetChild(iN).GetComponent<DG_ItemObject>();
-                if (Item.DatabaseID != 0)
-                {
-                    Debug.Log("This Object Already Has a Database ID");
-                    return;
-                }
-                if (Item.DatabaseID > HighestNumber)
-                    HighestNumber = Item.DatabaseID;
-            }
+            if (ToolQualityLevels[IQL].HasCustomModel) return ToolQualityLevels[IQL].ModelPrefab;
+            else return ModelPrefab;
         }
-        DatabaseID = HighestNumber + 1;
-        transform.gameObject.name = DatabaseID.ToString() + " - ";
+        else if (isGrowableItem)
+        {
+            if (IQL >= GrowableItemStages.Length) return GrowableItemStages[GrowableItemStages.Length - 1].ModelPrefab;
+            else return GrowableItemStages[IQL].ModelPrefab;
+        }
+        else
+            return ModelPrefab;
     }
 }

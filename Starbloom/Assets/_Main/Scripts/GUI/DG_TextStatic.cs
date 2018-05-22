@@ -16,7 +16,7 @@ class DG_TextStaticEditor : Editor
         DG_TextStatic myScript = (DG_TextStatic)target;
         if (GUILayout.Button("GotoTextInEditor"))
         {
-            Selection.activeGameObject = QuickFindInEditor.GetEditorWordDatabase().GetItemFromIDInEditor(myScript.TextWordID, myScript.TextCatID).gameObject;
+            Selection.activeGameObject = QuickFindInEditor.GetEditorWordDatabase().GetItemFromID(myScript.TextWordID).gameObject;
         }
 
         DrawDefaultInspector();

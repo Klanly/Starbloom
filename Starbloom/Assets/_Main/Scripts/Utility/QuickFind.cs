@@ -22,12 +22,13 @@ public static class QuickFindInEditor
         }
     }
     //Database
-    public static DG_DialogueManager GetEditorDialogueManager() { return GameObject.Find("Dialogue Database").GetComponent<DG_DialogueManager>(); }
+    public static DG_DialogueManager GetEditorDialogueManager() { return GameObject.Find("Dialogue Tree Database").GetComponent<DG_DialogueManager>(); }
     public static DG_WordDatabase GetEditorWordDatabase() { return GameObject.Find("Word Database").GetComponent<DG_WordDatabase>(); }
     public static DG_QuestDatabase GetEditorQuestDatabase() { return GameObject.Find("Quest Database").GetComponent<DG_QuestDatabase>(); }
     public static DG_ItemsDatabase GetEditorItemDatabase() { return GameObject.Find("Item Database").GetComponent<DG_ItemsDatabase>(); }
     public static DG_CharacterDatabase GetEditorCharacterDatabase() { return GameObject.Find("Character Database").GetComponent<DG_CharacterDatabase>(); }
     public static DG_ColorCodes GetEditorColorCodes() { return GameObject.Find("Color Database").GetComponent<DG_ColorCodes>(); }
+    public static SceneIDList GetEditorSceneList() { return GameObject.Find("Scene ID List").GetComponent<SceneIDList>(); }
     //Save Data
     public static UserSettings GetEditorUserSettings() { return GameObject.Find("Player Settings").GetComponent<UserSettings>(); }
 
@@ -40,6 +41,13 @@ public static class QuickFindInEditor
 
 public static class QuickFind
 {
+
+    //GAME
+    public static DG_PlayerCharacters Farm = null;
+    public static DG_DebugSettings GameSettings = null;
+    public static UserSettings UserSettings = null;
+
+
     //InputController
     public static DG_PlayerInput InputController = null;
     public static DG_CharacterControllers CharacterManager = null;
@@ -55,6 +63,16 @@ public static class QuickFind
     public static DG_GUIContextHandler GUIContextHandler = null;
     public static DG_GUICharacterCreation CharacterCreation = null;
 
+    //GUI - Main Overview
+    public static GuiMainGameplay GUI_MainOverview = null;
+    public static DG_OverviewTabsGUI GUI_OverviewTabs = null;
+    public static DG_InventoryGUI GUI_Inventory = null;
+    public static DG_SkillsGUI GUI_Skills = null;
+
+
+    //Actions
+    public static HotbarItemHandler ItemActivateableHandler = null;
+
 
     //Cameras
     public static CameraLogic PlayerCam;
@@ -64,6 +82,7 @@ public static class QuickFind
     //Network
     public static ConnectAndJoinRandom NetworkMaster = null;
     public static DG_NetworkSync NetworkSync = null;
+    public static NetworkObjectManager NetworkObjectManager = null;
 
 
     //Database
@@ -73,14 +92,8 @@ public static class QuickFind
     public static DG_ItemsDatabase ItemDatabase = null;
     public static DG_CharacterDatabase CharacterDatabase = null;
     public static DG_ColorCodes ColorDatabase = null;
-    public static DG_PlayerCharacters Farm = null;
+    public static SceneIDList SceneList = null;
 
-    //To Be removed
-    public static DG_PlayerInventory PlayerInventory = null;
-
-
-    //Save Data
-    public static UserSettings UserSettings = null;
 
 
     //Environment
@@ -89,13 +102,9 @@ public static class QuickFind
     public static Suimono.Core.SuimonoObject WaterObject = null;
     public static TimeHandler TimeHandler = null;
 
+
     //Serialization
     public static DG_LocalDataHandler SaveHandler;
-
-
-    //Debug
-    public static DG_DebugSettings GameSettings = null;
-
 
 
 
@@ -171,5 +180,11 @@ public static class QuickFind
         C.alpha = value;
         C.interactable = isTrue;
         C.blocksRaycasts = isTrue;
+    }
+    public static int GetIfWithinBounds(int IncomingValue, int Min, int ArrayLength)
+    {
+        if (IncomingValue < Min) return Min;
+        if (IncomingValue >= ArrayLength) return ArrayLength - 1;
+        return IncomingValue;
     }
 }

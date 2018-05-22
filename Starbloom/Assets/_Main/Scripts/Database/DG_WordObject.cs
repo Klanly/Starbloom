@@ -16,10 +16,6 @@ class DG_WordObjectEditor : Editor
         //Buttons
 
         DG_WordObject myScript = (DG_WordObject)target;
-        if (GUILayout.Button("FindNextAvailableDatabaseID"))
-            myScript.FindNextAvailableDatabaseID();
-        if (GUILayout.Button("MakeNewObject"))
-            myScript.MakeNewObject();
         if (GUILayout.Button("UpdateLanguages"))
             myScript.UpdateLanguages();
     }
@@ -40,44 +36,14 @@ public class DG_WordObject : MonoBehaviour {
         public string stringEntry;
     }
 
-    public int DatabaseID;
-    public string DevNotes;
+    [HideInInspector] public int DatabaseID;
+    [HideInInspector] public bool LockItem;
+    public string ObjectName;
+
     public TextEntry[] TextValues;
 
 
 
-
-    public void FindNextAvailableDatabaseID()
-    {
-        int HighestNumber = 0;
-
-        Transform Child = transform.parent;
-        for (int iN = 0; iN < Child.childCount; iN++)
-        {
-            DG_WordObject BoolItem = Child.GetChild(iN).GetComponent<DG_WordObject>();
-            if (BoolItem == this && BoolItem.DatabaseID != 0)
-            {
-                Debug.Log("This Object Already Has a Database ID");
-                return;
-            }
-            if (BoolItem.DatabaseID > HighestNumber)
-                HighestNumber = BoolItem.DatabaseID;
-        }
-        DatabaseID = HighestNumber + 1;
-        transform.gameObject.name = DatabaseID.ToString();
-    }
-    public void MakeNewObject()
-    {
-        GameObject NewClone = GameObject.Instantiate(transform.gameObject);
-        NewClone.transform.SetParent(transform.parent);
-
-        DG_WordObject CloneScript = NewClone.GetComponent<DG_WordObject>();
-        CloneScript.DatabaseID = 0;
-        CloneScript.FindNextAvailableDatabaseID();
-
-        CloneScript.DevNotes = string.Empty;
-        PopulateLanguageOptions(CloneScript);
-    }
     public void UpdateLanguages()
     {
         PopulateLanguageOptions(this);

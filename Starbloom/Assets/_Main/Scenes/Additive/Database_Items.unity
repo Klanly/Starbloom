@@ -1,0 +1,1303 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!29 &1
+OcclusionCullingSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_OcclusionBakeSettings:
+    smallestOccluder: 5
+    smallestHole: 0.25
+    backfaceThreshold: 100
+  m_SceneGUID: 00000000000000000000000000000000
+  m_OcclusionCullingData: {fileID: 0}
+--- !u!104 &2
+RenderSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 9
+  m_Fog: 0
+  m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  m_FogMode: 3
+  m_FogDensity: 0.01
+  m_LinearFogStart: 0
+  m_LinearFogEnd: 300
+  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
+  m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
+  m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
+  m_AmbientIntensity: 1
+  m_AmbientMode: 0
+  m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
+  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_HaloStrength: 0.5
+  m_FlareStrength: 1
+  m_FlareFadeSpeed: 3
+  m_HaloTexture: {fileID: 0}
+  m_SpotCookie: {fileID: 10001, guid: 0000000000000000e000000000000000, type: 0}
+  m_DefaultReflectionMode: 0
+  m_DefaultReflectionResolution: 128
+  m_ReflectionBounces: 1
+  m_ReflectionIntensity: 1
+  m_CustomReflection: {fileID: 0}
+  m_Sun: {fileID: 0}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_UseRadianceAmbientProbe: 0
+--- !u!157 &3
+LightmapSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 11
+  m_GIWorkflowMode: 0
+  m_GISettings:
+    serializedVersion: 2
+    m_BounceScale: 1
+    m_IndirectOutputScale: 1
+    m_AlbedoBoost: 1
+    m_TemporalCoherenceThreshold: 1
+    m_EnvironmentLightingMode: 0
+    m_EnableBakedLightmaps: 1
+    m_EnableRealtimeLightmaps: 1
+  m_LightmapEditorSettings:
+    serializedVersion: 10
+    m_Resolution: 2
+    m_BakeResolution: 40
+    m_AtlasSize: 1024
+    m_AO: 0
+    m_AOMaxDistance: 1
+    m_CompAOExponent: 1
+    m_CompAOExponentDirect: 0
+    m_Padding: 2
+    m_LightmapParameters: {fileID: 0}
+    m_LightmapsBakeMode: 1
+    m_TextureCompression: 1
+    m_FinalGather: 0
+    m_FinalGatherFiltering: 1
+    m_FinalGatherRayCount: 256
+    m_ReflectionCompression: 2
+    m_MixedBakeMode: 2
+    m_BakeBackend: 1
+    m_PVRSampling: 1
+    m_PVRDirectSampleCount: 32
+    m_PVRSampleCount: 500
+    m_PVRBounces: 2
+    m_PVRFilterTypeDirect: 0
+    m_PVRFilterTypeIndirect: 0
+    m_PVRFilterTypeAO: 0
+    m_PVRFilteringMode: 1
+    m_PVRCulling: 1
+    m_PVRFilteringGaussRadiusDirect: 1
+    m_PVRFilteringGaussRadiusIndirect: 5
+    m_PVRFilteringGaussRadiusAO: 2
+    m_PVRFilteringAtrousPositionSigmaDirect: 0.5
+    m_PVRFilteringAtrousPositionSigmaIndirect: 2
+    m_PVRFilteringAtrousPositionSigmaAO: 1
+    m_ShowResolutionOverlay: 1
+  m_LightingDataAsset: {fileID: 0}
+  m_UseShadowmask: 1
+--- !u!196 &4
+NavMeshSettings:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_BuildSettings:
+    serializedVersion: 2
+    agentTypeID: 0
+    agentRadius: 0.5
+    agentHeight: 2
+    agentSlope: 45
+    agentClimb: 0.4
+    ledgeDropHeight: 0
+    maxJumpAcrossDistance: 0
+    minRegionArea: 2
+    manualCellSize: 0
+    cellSize: 0.16666667
+    manualTileSize: 0
+    tileSize: 256
+    accuratePlacement: 0
+    debug:
+      m_Flags: 0
+  m_NavMeshData: {fileID: 0}
+--- !u!1 &98179530
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 98179532}
+  - component: {fileID: 98179531}
+  m_Layer: 0
+  m_Name: Item Database
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &98179531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 98179530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e912048688d860542a9350c51c1de6e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ItemCatagoryList:
+  - {fileID: 523401140}
+  - {fileID: 769028654}
+  - {fileID: 1825876184}
+  - {fileID: 1429960796}
+  - {fileID: 1714828756}
+  - {fileID: 1511745340}
+  - {fileID: 1328181118}
+  - {fileID: 1696380316}
+  - {fileID: 619036615}
+  - {fileID: 630922425}
+  ListCount: 10
+--- !u!4 &98179532
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 98179530}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 289748391}
+  - {fileID: 1330787845}
+  - {fileID: 1215626843}
+  - {fileID: 1815548899}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &289748390
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 289748391}
+  m_Layer: 0
+  m_Name: Tools
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &289748391
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 289748390}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 523401139}
+  - {fileID: 769028653}
+  - {fileID: 1825876183}
+  - {fileID: 1429960795}
+  m_Father: {fileID: 98179532}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &523401138
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 523401139}
+  - component: {fileID: 523401141}
+  - component: {fileID: 523401140}
+  m_Layer: 0
+  m_Name: 0 - pickaxe02_blue
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &523401139
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 523401138}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 289748391}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &523401140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 523401138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc1a46eca4a35e5498f3df297015210f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Pickaxe
+  MaxStackSize: 1
+  ActivateableType: 0
+  DefaultScale: 2.47
+  DatabaseID: 0
+  LockItem: 1
+  Icon: {fileID: 21300000, guid: bf8be130f9a05104d9f0cff89c2d85e8, type: 3}
+  ModelPrefab: {fileID: 159918, guid: 783b79588429e03439c659aba7f08d22, type: 2}
+  WordCatagory: 4
+  WordValue: 1
+  isTool: 1
+  ToolQualityLevels:
+  - Quality: 0
+    EnergyUsageValue: 10
+    BuyPrice: 0
+    SellPrice: 0
+    HasCustomSprite: 0
+    Icon: {fileID: 0}
+    HasCustomModel: 0
+    ModelPrefab: {fileID: 0}
+  - Quality: 1
+    EnergyUsageValue: 8
+    BuyPrice: 0
+    SellPrice: 0
+    HasCustomSprite: 1
+    Icon: {fileID: 21300000, guid: b43fa9b335c6cae439dc6d6a925ba8b3, type: 3}
+    HasCustomModel: 1
+    ModelPrefab: {fileID: 167010, guid: 8e8266b18e8c7c344a45f29ed8365c52, type: 2}
+  - Quality: 2
+    EnergyUsageValue: 6
+    BuyPrice: 0
+    SellPrice: 0
+    HasCustomSprite: 1
+    Icon: {fileID: 21300000, guid: bf4c007c30961654e8e8a891646ba6c4, type: 3}
+    HasCustomModel: 1
+    ModelPrefab: {fileID: 136270, guid: ef86a25ab048e3e44a7525d80a26c1e8, type: 2}
+  - Quality: 3
+    EnergyUsageValue: 4
+    BuyPrice: 0
+    SellPrice: 0
+    HasCustomSprite: 1
+    Icon: {fileID: 21300000, guid: 02959f34b8badaa4ba8eef7ed142b55b, type: 3}
+    HasCustomModel: 1
+    ModelPrefab: {fileID: 183114, guid: a1c14717f64068a46bbbc6c69b642173, type: 2}
+  isGrowableItem: 0
+  GrowableItemStages: []
+  isItem: 0
+  ItemCat: 0
+  ItemQualities: []
+--- !u!114 &523401141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 523401138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 0
+  instanceID: 582772
+--- !u!1 &619036614
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 619036617}
+  - component: {fileID: 619036616}
+  - component: {fileID: 619036615}
+  m_Layer: 0
+  m_Name: 8 - Herb_PoisifferousRoiler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &619036615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 619036614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc1a46eca4a35e5498f3df297015210f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Poisifferous Roiler
+  MaxStackSize: 999
+  ActivateableType: 4
+  DefaultScale: 0.2
+  DatabaseID: 8
+  LockItem: 1
+  Icon: {fileID: 21300000, guid: d02bb51b54abbd44baa8e486cc1bd2b1, type: 3}
+  ModelPrefab: {fileID: 100000, guid: cbefcad246b2dad4f86f353bc33f4782, type: 2}
+  WordCatagory: 1
+  WordValue: 1
+  isTool: 0
+  ToolQualityLevels: []
+  isGrowableItem: 0
+  GrowableItemStages: []
+  isItem: 1
+  ItemCat: 1
+  ItemQualities:
+  - Quality: 0
+    AdjustsHealth: 1
+    HealthAdjustValue: 15
+    AdjustsEnergy: 1
+    EnergyAdjustValue: 35
+    BuyPrice: 45
+    SellPrice: 15
+  - Quality: 1
+    AdjustsHealth: 1
+    HealthAdjustValue: 25
+    AdjustsEnergy: 1
+    EnergyAdjustValue: 45
+    BuyPrice: 75
+    SellPrice: 25
+  - Quality: 2
+    AdjustsHealth: 1
+    HealthAdjustValue: 35
+    AdjustsEnergy: 1
+    EnergyAdjustValue: 55
+    BuyPrice: 105
+    SellPrice: 35
+  - Quality: 3
+    AdjustsHealth: 1
+    HealthAdjustValue: 45
+    AdjustsEnergy: 1
+    EnergyAdjustValue: 65
+    BuyPrice: 135
+    SellPrice: 45
+--- !u!114 &619036616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 619036614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 0
+  instanceID: -55486388
+--- !u!4 &619036617
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 619036614}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1215626843}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &630922423
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 630922424}
+  - component: {fileID: 630922426}
+  - component: {fileID: 630922425}
+  m_Layer: 0
+  m_Name: 9 - Veg_Cabbage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &630922424
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 630922423}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1815548899}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &630922425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 630922423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc1a46eca4a35e5498f3df297015210f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Cabbage
+  MaxStackSize: 999
+  ActivateableType: 4
+  DefaultScale: 1
+  DatabaseID: 9
+  LockItem: 1
+  Icon: {fileID: 21300000, guid: 70a97278c74a1d14591a9955e9aedb20, type: 3}
+  ModelPrefab: {fileID: 1684895273158528, guid: 36aa4160ecd6c924cad392476a22a265,
+    type: 2}
+  WordCatagory: 1
+  WordValue: 1
+  isTool: 0
+  ToolQualityLevels: []
+  isGrowableItem: 0
+  GrowableItemStages: []
+  isItem: 1
+  ItemCat: 0
+  ItemQualities:
+  - Quality: 0
+    AdjustsHealth: 1
+    HealthAdjustValue: 15
+    AdjustsEnergy: 1
+    EnergyAdjustValue: 35
+    BuyPrice: 45
+    SellPrice: 15
+  - Quality: 1
+    AdjustsHealth: 1
+    HealthAdjustValue: 25
+    AdjustsEnergy: 1
+    EnergyAdjustValue: 45
+    BuyPrice: 75
+    SellPrice: 25
+  - Quality: 2
+    AdjustsHealth: 1
+    HealthAdjustValue: 35
+    AdjustsEnergy: 1
+    EnergyAdjustValue: 55
+    BuyPrice: 105
+    SellPrice: 35
+  - Quality: 3
+    AdjustsHealth: 1
+    HealthAdjustValue: 45
+    AdjustsEnergy: 1
+    EnergyAdjustValue: 65
+    BuyPrice: 135
+    SellPrice: 45
+--- !u!114 &630922426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 630922423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 0
+  instanceID: 582780
+--- !u!1 &769028652
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 769028653}
+  - component: {fileID: 769028655}
+  - component: {fileID: 769028654}
+  m_Layer: 0
+  m_Name: 1 - axe01_blue
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &769028653
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 769028652}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 289748391}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &769028654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 769028652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc1a46eca4a35e5498f3df297015210f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Axe
+  MaxStackSize: 1
+  ActivateableType: 1
+  DefaultScale: 2.61
+  DatabaseID: 1
+  LockItem: 1
+  Icon: {fileID: 21300000, guid: 4d3d0c036615f7446b966de21b95520a, type: 3}
+  ModelPrefab: {fileID: 117796, guid: 243f97bf320ac514b8bb4939d4c8f2e8, type: 2}
+  WordCatagory: 4
+  WordValue: 1
+  isTool: 1
+  ToolQualityLevels:
+  - Quality: 0
+    EnergyUsageValue: 10
+    BuyPrice: 0
+    SellPrice: 0
+    HasCustomSprite: 0
+    Icon: {fileID: 0}
+    HasCustomModel: 0
+    ModelPrefab: {fileID: 0}
+  - Quality: 1
+    EnergyUsageValue: 8
+    BuyPrice: 0
+    SellPrice: 0
+    HasCustomSprite: 1
+    Icon: {fileID: 21300000, guid: 1e766dbeb6e4d3f4d946d59451548532, type: 3}
+    HasCustomModel: 1
+    ModelPrefab: {fileID: 119264, guid: 8edea92d5798f7444aba757305994b08, type: 2}
+  - Quality: 2
+    EnergyUsageValue: 6
+    BuyPrice: 0
+    SellPrice: 0
+    HasCustomSprite: 1
+    Icon: {fileID: 21300000, guid: dad684b2612a3f74d9f269c431d89935, type: 3}
+    HasCustomModel: 1
+    ModelPrefab: {fileID: 126376, guid: d5151014d1950474d82e344b22cb6e71, type: 2}
+  - Quality: 3
+    EnergyUsageValue: 4
+    BuyPrice: 0
+    SellPrice: 0
+    HasCustomSprite: 1
+    Icon: {fileID: 21300000, guid: 13c689d9086ba9046871c537e0fe0d42, type: 3}
+    HasCustomModel: 1
+    ModelPrefab: {fileID: 186260, guid: 73d91079f8379b14aab7efb95a19e7d2, type: 2}
+  isGrowableItem: 0
+  GrowableItemStages: []
+  isItem: 0
+  ItemCat: 0
+  ItemQualities: []
+--- !u!114 &769028655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 769028652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 0
+  instanceID: 582788
+--- !u!1 &1215626842
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1215626843}
+  m_Layer: 0
+  m_Name: Forage Items
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1215626843
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1215626842}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1511745342}
+  - {fileID: 1328181117}
+  - {fileID: 1696380315}
+  - {fileID: 619036617}
+  m_Father: {fileID: 98179532}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1328181116
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1328181117}
+  - component: {fileID: 1328181119}
+  - component: {fileID: 1328181118}
+  m_Layer: 0
+  m_Name: 6 - Herb_DervishRoot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1328181117
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1328181116}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1215626843}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1328181118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1328181116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc1a46eca4a35e5498f3df297015210f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Dervish Root
+  MaxStackSize: 999
+  ActivateableType: 4
+  DefaultScale: 0.14
+  DatabaseID: 6
+  LockItem: 1
+  Icon: {fileID: 21300000, guid: e4a5a7646dbc3e34e822f12e2c91507a, type: 3}
+  ModelPrefab: {fileID: 100000, guid: 622d49063c3277a4f9713bc1a514df6e, type: 2}
+  WordCatagory: 1
+  WordValue: 1
+  isTool: 0
+  ToolQualityLevels: []
+  isGrowableItem: 0
+  GrowableItemStages: []
+  isItem: 1
+  ItemCat: 1
+  ItemQualities:
+  - Quality: 0
+    AdjustsHealth: 1
+    HealthAdjustValue: 15
+    AdjustsEnergy: 1
+    EnergyAdjustValue: 35
+    BuyPrice: 45
+    SellPrice: 15
+  - Quality: 1
+    AdjustsHealth: 1
+    HealthAdjustValue: 25
+    AdjustsEnergy: 1
+    EnergyAdjustValue: 45
+    BuyPrice: 75
+    SellPrice: 25
+  - Quality: 2
+    AdjustsHealth: 1
+    HealthAdjustValue: 35
+    AdjustsEnergy: 1
+    EnergyAdjustValue: 55
+    BuyPrice: 105
+    SellPrice: 35
+  - Quality: 3
+    AdjustsHealth: 1
+    HealthAdjustValue: 45
+    AdjustsEnergy: 1
+    EnergyAdjustValue: 65
+    BuyPrice: 135
+    SellPrice: 45
+--- !u!114 &1328181119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1328181116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 0
+  instanceID: -55443150
+--- !u!1 &1330787844
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1330787845}
+  m_Layer: 0
+  m_Name: Growable Objects
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1330787845
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1330787844}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1714828755}
+  m_Father: {fileID: 98179532}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1429960794
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1429960795}
+  - component: {fileID: 1429960797}
+  - component: {fileID: 1429960796}
+  m_Layer: 0
+  m_Name: 3 - fishingpole01_blue
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1429960795
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1429960794}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 289748391}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1429960796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1429960794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc1a46eca4a35e5498f3df297015210f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: FishingPol
+  MaxStackSize: 1
+  ActivateableType: 3
+  DefaultScale: 3.37
+  DatabaseID: 3
+  LockItem: 1
+  Icon: {fileID: 21300000, guid: d250ab380cef54d4f98943dd133f375d, type: 3}
+  ModelPrefab: {fileID: 110500, guid: ba8e9d5015d16cf48ab4906769308762, type: 2}
+  WordCatagory: 4
+  WordValue: 1
+  isTool: 1
+  ToolQualityLevels:
+  - Quality: 0
+    EnergyUsageValue: 10
+    BuyPrice: 0
+    SellPrice: 0
+    HasCustomSprite: 0
+    Icon: {fileID: 0}
+    HasCustomModel: 0
+    ModelPrefab: {fileID: 0}
+  - Quality: 1
+    EnergyUsageValue: 8
+    BuyPrice: 0
+    SellPrice: 0
+    HasCustomSprite: 1
+    Icon: {fileID: 21300000, guid: dc62ba5621378904e81b486b19d2ae5e, type: 3}
+    HasCustomModel: 1
+    ModelPrefab: {fileID: 109878, guid: a59646a936abc3444b7575eb22569d6f, type: 2}
+  - Quality: 2
+    EnergyUsageValue: 6
+    BuyPrice: 0
+    SellPrice: 0
+    HasCustomSprite: 1
+    Icon: {fileID: 21300000, guid: 2858bdf66d6667b4994731f799ba07d3, type: 3}
+    HasCustomModel: 1
+    ModelPrefab: {fileID: 167600, guid: 62fd021cc3e86864e91169626a771b28, type: 2}
+  - Quality: 3
+    EnergyUsageValue: 4
+    BuyPrice: 0
+    SellPrice: 0
+    HasCustomSprite: 1
+    Icon: {fileID: 21300000, guid: d1efae79809d6f94bb829362c7cae141, type: 3}
+    HasCustomModel: 1
+    ModelPrefab: {fileID: 149808, guid: 562e6d006e191b640b85f5f26201b3e2, type: 2}
+  isGrowableItem: 0
+  GrowableItemStages: []
+  isItem: 0
+  ItemCat: 0
+  ItemQualities: []
+--- !u!114 &1429960797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1429960794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 0
+  instanceID: 582804
+--- !u!1 &1511745339
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1511745342}
+  - component: {fileID: 1511745341}
+  - component: {fileID: 1511745340}
+  m_Layer: 0
+  m_Name: 5 - Herb_CrispinsGlove
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1511745340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1511745339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc1a46eca4a35e5498f3df297015210f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Crispins Glove
+  MaxStackSize: 999
+  ActivateableType: 4
+  DefaultScale: 0.38
+  DatabaseID: 5
+  LockItem: 1
+  Icon: {fileID: 21300000, guid: 3ea22d1cd3497994182977cc2c388505, type: 3}
+  ModelPrefab: {fileID: 100000, guid: bb6a0bce8109f3e4f992e36fac33aa11, type: 2}
+  WordCatagory: 1
+  WordValue: 1
+  isTool: 0
+  ToolQualityLevels: []
+  isGrowableItem: 0
+  GrowableItemStages: []
+  isItem: 1
+  ItemCat: 1
+  ItemQualities:
+  - Quality: 0
+    AdjustsHealth: 1
+    HealthAdjustValue: 15
+    AdjustsEnergy: 1
+    EnergyAdjustValue: 35
+    BuyPrice: 45
+    SellPrice: 15
+  - Quality: 1
+    AdjustsHealth: 1
+    HealthAdjustValue: 25
+    AdjustsEnergy: 1
+    EnergyAdjustValue: 45
+    BuyPrice: 75
+    SellPrice: 25
+  - Quality: 2
+    AdjustsHealth: 1
+    HealthAdjustValue: 35
+    AdjustsEnergy: 1
+    EnergyAdjustValue: 55
+    BuyPrice: 105
+    SellPrice: 35
+  - Quality: 3
+    AdjustsHealth: 1
+    HealthAdjustValue: 45
+    AdjustsEnergy: 1
+    EnergyAdjustValue: 65
+    BuyPrice: 135
+    SellPrice: 45
+--- !u!114 &1511745341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1511745339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 0
+  instanceID: 582810
+--- !u!4 &1511745342
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1511745339}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1215626843}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1696380314
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1696380315}
+  - component: {fileID: 1696380317}
+  - component: {fileID: 1696380316}
+  m_Layer: 0
+  m_Name: 7 - Herb_FireWort
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1696380315
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1696380314}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1215626843}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1696380316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1696380314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc1a46eca4a35e5498f3df297015210f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Fire Wort
+  MaxStackSize: 999
+  ActivateableType: 4
+  DefaultScale: 0.28
+  DatabaseID: 7
+  LockItem: 1
+  Icon: {fileID: 21300000, guid: 229ea83b2432ff244ac5171efd858266, type: 3}
+  ModelPrefab: {fileID: 100000, guid: 525e259d13a05fa4fbb2d0e105b70875, type: 2}
+  WordCatagory: 1
+  WordValue: 1
+  isTool: 0
+  ToolQualityLevels: []
+  isGrowableItem: 0
+  GrowableItemStages: []
+  isItem: 1
+  ItemCat: 1
+  ItemQualities:
+  - Quality: 0
+    AdjustsHealth: 1
+    HealthAdjustValue: 15
+    AdjustsEnergy: 1
+    EnergyAdjustValue: 35
+    BuyPrice: 45
+    SellPrice: 15
+  - Quality: 1
+    AdjustsHealth: 1
+    HealthAdjustValue: 25
+    AdjustsEnergy: 1
+    EnergyAdjustValue: 45
+    BuyPrice: 75
+    SellPrice: 25
+  - Quality: 2
+    AdjustsHealth: 1
+    HealthAdjustValue: 35
+    AdjustsEnergy: 1
+    EnergyAdjustValue: 55
+    BuyPrice: 105
+    SellPrice: 35
+  - Quality: 3
+    AdjustsHealth: 1
+    HealthAdjustValue: 45
+    AdjustsEnergy: 1
+    EnergyAdjustValue: 65
+    BuyPrice: 135
+    SellPrice: 45
+--- !u!114 &1696380317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1696380314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 0
+  instanceID: -55463780
+--- !u!1 &1714828754
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1714828755}
+  - component: {fileID: 1714828757}
+  - component: {fileID: 1714828756}
+  m_Layer: 0
+  m_Name: 4 - Cabbage_Green_Lv1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1714828755
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1714828754}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1330787845}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1714828756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1714828754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc1a46eca4a35e5498f3df297015210f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Cabbage Stages
+  MaxStackSize: 999
+  ActivateableType: 4
+  DefaultScale: 1
+  DatabaseID: 4
+  LockItem: 1
+  Icon: {fileID: 0}
+  ModelPrefab: {fileID: 100000, guid: 22060f3d67f76de47972326b7a125453, type: 2}
+  WordCatagory: 1
+  WordValue: 1
+  isTool: 0
+  ToolQualityLevels: []
+  isGrowableItem: 1
+  GrowableItemStages:
+  - ModelPrefab: {fileID: 100000, guid: 22060f3d67f76de47972326b7a125453, type: 2}
+  - ModelPrefab: {fileID: 100000, guid: b3883730055123f47b515dcb4b5ca6c2, type: 2}
+  - ModelPrefab: {fileID: 100000, guid: 3f66019c1dcbc574c8a3379ae734b601, type: 2}
+  isItem: 0
+  ItemCat: 0
+  ItemQualities:
+  - Quality: 0
+    AdjustsHealth: 1
+    HealthAdjustValue: 15
+    AdjustsEnergy: 1
+    EnergyAdjustValue: 35
+    BuyPrice: 45
+    SellPrice: 15
+  - Quality: 1
+    AdjustsHealth: 1
+    HealthAdjustValue: 25
+    AdjustsEnergy: 1
+    EnergyAdjustValue: 45
+    BuyPrice: 75
+    SellPrice: 25
+  - Quality: 2
+    AdjustsHealth: 1
+    HealthAdjustValue: 35
+    AdjustsEnergy: 1
+    EnergyAdjustValue: 55
+    BuyPrice: 105
+    SellPrice: 35
+  - Quality: 3
+    AdjustsHealth: 1
+    HealthAdjustValue: 45
+    AdjustsEnergy: 1
+    EnergyAdjustValue: 65
+    BuyPrice: 135
+    SellPrice: 45
+--- !u!114 &1714828757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1714828754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 0
+  instanceID: 582820
+--- !u!1 &1815548898
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1815548899}
+  m_Layer: 0
+  m_Name: Vegetables
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1815548899
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1815548898}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 630922424}
+  m_Father: {fileID: 98179532}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1825876182
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1825876183}
+  - component: {fileID: 1825876185}
+  - component: {fileID: 1825876184}
+  m_Layer: 0
+  m_Name: 2 - hoe02_blue
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1825876183
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1825876182}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 289748391}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1825876184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1825876182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc1a46eca4a35e5498f3df297015210f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Hoe
+  MaxStackSize: 1
+  ActivateableType: 2
+  DefaultScale: 2.47
+  DatabaseID: 2
+  LockItem: 1
+  Icon: {fileID: 21300000, guid: 7e26e3ac98a522e458000d236987a2db, type: 3}
+  ModelPrefab: {fileID: 152736, guid: 9f25e2bb9cca15947ab2c3ad4301931a, type: 2}
+  WordCatagory: 4
+  WordValue: 1
+  isTool: 1
+  ToolQualityLevels:
+  - Quality: 0
+    EnergyUsageValue: 10
+    BuyPrice: 0
+    SellPrice: 0
+    HasCustomSprite: 0
+    Icon: {fileID: 0}
+    HasCustomModel: 0
+    ModelPrefab: {fileID: 0}
+  - Quality: 1
+    EnergyUsageValue: 8
+    BuyPrice: 0
+    SellPrice: 0
+    HasCustomSprite: 1
+    Icon: {fileID: 21300000, guid: 0ed3f7b52e37b3f42a9bcc6a8cdcf1a1, type: 3}
+    HasCustomModel: 1
+    ModelPrefab: {fileID: 178106, guid: e38b8352182f02a49a21d41c1f0a46b6, type: 2}
+  - Quality: 2
+    EnergyUsageValue: 6
+    BuyPrice: 0
+    SellPrice: 0
+    HasCustomSprite: 1
+    Icon: {fileID: 21300000, guid: bf1166d57f9aaaf4caaaa133c2cbee6b, type: 3}
+    HasCustomModel: 1
+    ModelPrefab: {fileID: 124992, guid: 60d4633ce6e2ba147a1f298eba5254b8, type: 2}
+  - Quality: 3
+    EnergyUsageValue: 4
+    BuyPrice: 0
+    SellPrice: 0
+    HasCustomSprite: 1
+    Icon: {fileID: 21300000, guid: e22c9c5ef141a72498062c0513cbc414, type: 3}
+    HasCustomModel: 1
+    ModelPrefab: {fileID: 112078, guid: 44bf930909cf66844a3ab16619af193e, type: 2}
+  isGrowableItem: 0
+  GrowableItemStages: []
+  isItem: 0
+  ItemCat: 0
+  ItemQualities: []
+--- !u!114 &1825876185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1825876182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 0
+  instanceID: 582832

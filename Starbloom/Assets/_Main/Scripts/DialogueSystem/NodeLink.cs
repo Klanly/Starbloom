@@ -4,31 +4,6 @@ using UnityEngine;
 
 
 
-#if UNITY_EDITOR
-using UnityEditor;
-/////////////////////////////////////////////////////////////////////////////////Editor Extension Buttons
-[CustomEditor(typeof(NodeLink))]
-class NodeLinkEditor : Editor
-{
-    public override void OnInspectorGUI()
-    {
-        DrawDefaultInspector();
-
-        //Buttons
-
-        NodeLink myScript = (NodeLink)target;
-        if (GUILayout.Button("FindNextAvailableDatabaseID"))
-            myScript.FindNextAvailableDatabaseID();
-    }
-}
-//////////////////////////////////////////////////////////////////////////////////
-#endif
-
-
-
-
-
-
 
 public class NodeLink : MonoBehaviour
 {
@@ -70,8 +45,12 @@ public class NodeLink : MonoBehaviour
 
 
 
-    public int DatabaseID;
-    public NodeWindowtype NodeWindowType;
+    [HideInInspector] public int DatabaseID;
+    [HideInInspector] public bool LockItem;
+    public string TreeName;
+
+    //For future Expansions to node editor
+    [HideInInspector] public NodeWindowtype NodeWindowType;
 
     [HideInInspector] public int CurrentId;
     [HideInInspector] public int FirstWindow = -562;
@@ -174,37 +153,6 @@ public class NodeLink : MonoBehaviour
             return true;
         else
             return false;
-    }
-
-
-
-
-
-
-    public void FindNextAvailableDatabaseID()
-    {
-        Transform Cat = transform.parent;
-        Transform Tracker = Cat.parent;
-
-        int HighestNumber = 0;
-
-        for (int i = 0; i < Tracker.childCount; i++)
-        {
-            Transform Child = Tracker.GetChild(i);
-            for (int iN = 0; iN < Child.childCount; iN++)
-            {
-                NodeLink DialogueItem = Child.GetChild(iN).GetComponent<NodeLink>();
-                if (DialogueItem.DatabaseID != 0)
-                {
-                    Debug.Log("This Object Already Has a Database ID");
-                    return;
-                }
-                if (DialogueItem.DatabaseID > HighestNumber)
-                    HighestNumber = DialogueItem.DatabaseID;
-            }
-        }
-        DatabaseID = HighestNumber + 1;
-        transform.gameObject.name = DatabaseID.ToString() + " - ";
     }
 }
 

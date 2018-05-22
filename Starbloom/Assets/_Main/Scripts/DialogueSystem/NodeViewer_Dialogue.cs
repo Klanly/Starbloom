@@ -80,7 +80,7 @@ public class NodeViewer_Dialogue
             DG_WordObject WO = null;
             string Preview = string.Empty;
             if (WindowList.Type == NodeLink.WindowTypes.Text && WindowList.NodeType == NodeLink.NodeType.Default)
-                WO = WDB.GetItemFromIDInEditor(WindowList.ContextInt2, WindowList.ContextInt4);
+                WO = WDB.GetItemFromID(WindowList.ContextInt2);
             else if (WindowList.Type == NodeLink.WindowTypes.ChoiceAnswer)
             {
                 NodeLink.Window PrevWindow = NodeViewer.FindPreviousWindow(WindowList, CurrentNode);
@@ -89,7 +89,7 @@ public class NodeViewer_Dialogue
                     if (WindowList.ContextBool)
                         Preview += "<b>Need Qst " + WindowList.ContextInt.ToString() + " Requiremets</b>       ";
                 }
-                WO = WDB.GetItemFromIDInEditor(WindowList.ContextInt2, WindowList.ContextInt4);
+                WO = WDB.GetItemFromID(WindowList.ContextInt2);
             }
             else if (WindowList.Type == NodeLink.WindowTypes.Choice)
             {
@@ -137,7 +137,7 @@ public class NodeViewer_Dialogue
 
                     GUI.Label(new Rect(5, 60, 120, 15), "Quest ID");
                     if (GUI.Button(new Rect(95, 60, 40, 15), "Goto"))
-                        Selection.activeGameObject = QuickFindInEditor.GetEditorQuestDatabase().GetItemFromIDInEditor(CurrentViewedWindow.ContextInt).gameObject;
+                        Selection.activeGameObject = QuickFindInEditor.GetEditorQuestDatabase().GetItemFromID(CurrentViewedWindow.ContextInt).gameObject;
                     CurrentViewedWindow.ContextInt = EditorGUI.IntField(new Rect(5, 75, 130, 18), CurrentViewedWindow.ContextInt);
                 }
                 else if (PrevWindow.ContextBool2)
@@ -170,7 +170,7 @@ public class NodeViewer_Dialogue
                     CurrentViewedWindow.ContextBool2 = GUI.Toggle(new Rect(1, 50, 150, 15), CurrentViewedWindow.ContextBool2, "Quest Check");
                     GUI.Label(new Rect(1, 70, 77, 15), "Quest ID");
                     if (GUI.Button(new Rect(95, 70, 40, 15), "Goto"))
-                        Selection.activeGameObject = QuickFindInEditor.GetEditorQuestDatabase().GetItemFromIDInEditor(CurrentViewedWindow.ContextInt).gameObject;
+                        Selection.activeGameObject = QuickFindInEditor.GetEditorQuestDatabase().GetItemFromID(CurrentViewedWindow.ContextInt).gameObject;
                     CurrentViewedWindow.ContextInt = EditorGUI.IntField(new Rect(3, 85, 130, 15), CurrentViewedWindow.ContextInt);
 
                 }
@@ -179,7 +179,7 @@ public class NodeViewer_Dialogue
                     CurrentViewedWindow.ContextBool3 = GUI.Toggle(new Rect(1, 55, 150, 15), CurrentViewedWindow.ContextBool3, "Complete Quest");
                     GUI.Label(new Rect(1, 75, 77, 15), "Quest ID");
                     if (GUI.Button(new Rect(95, 75, 40, 15), "Goto"))
-                        Selection.activeGameObject = QuickFindInEditor.GetEditorQuestDatabase().GetItemFromIDInEditor(CurrentViewedWindow.ContextInt).gameObject;
+                        Selection.activeGameObject = QuickFindInEditor.GetEditorQuestDatabase().GetItemFromID(CurrentViewedWindow.ContextInt).gameObject;
                     CurrentViewedWindow.ContextInt = EditorGUI.IntField(new Rect(3, 95, 130, 15), CurrentViewedWindow.ContextInt);
                 }
             }
@@ -218,7 +218,7 @@ public class NodeViewer_Dialogue
 
         GUI.Label(new Rect(80, 110, 75, 15), "Text ID");
         if (GUI.Button(new Rect(80, 145, 40, 15), "Goto"))
-            Selection.activeGameObject = QuickFindInEditor.GetEditorWordDatabase().GetItemFromIDInEditor(CurrentViewedWindow.ContextInt2, CurrentViewedWindow.ContextInt4).gameObject;
+            Selection.activeGameObject = QuickFindInEditor.GetEditorWordDatabase().GetItemFromID(CurrentViewedWindow.ContextInt2).gameObject;
         CurrentViewedWindow.ContextInt2 = EditorGUI.IntField(new Rect(65, 125, 75, 18), CurrentViewedWindow.ContextInt2);
 
 
@@ -226,7 +226,7 @@ public class NodeViewer_Dialogue
         {
             GUI.Label(new Rect(5, 60, 120, 15), "Char ID");
             if (GUI.Button(new Rect(12, 95, 40, 15), "Goto"))
-                Selection.activeGameObject = QuickFindInEditor.GetEditorCharacterDatabase().GetItemFromIDInEditor(1, CurrentViewedWindow.ContextInt).gameObject;
+                Selection.activeGameObject = QuickFindInEditor.GetEditorCharacterDatabase().GetItemFromID(CurrentViewedWindow.ContextInt).gameObject;
             CurrentViewedWindow.ContextInt = EditorGUI.IntField(new Rect(5, 75, 55, 18), CurrentViewedWindow.ContextInt);
 
             GUI.Label(new Rect(75, 60, 75, 15), "Cam ID");
@@ -238,7 +238,7 @@ public class NodeViewer_Dialogue
 
         //DisplayText
         DG_WordDatabase WDB = QuickFindInEditor.GetEditorWordDatabase();
-        DG_WordObject WO = WDB.GetItemFromIDInEditor(CurrentViewedWindow.ContextInt2, CurrentViewedWindow.ContextInt4);
+        DG_WordObject WO = WDB.GetItemFromID(CurrentViewedWindow.ContextInt2);
         UserSettings US = QuickFindInEditor.GetEditorUserSettings();
         GUIStyle DisplayStyle = new GUIStyle();
         DisplayStyle.wordWrap = true;

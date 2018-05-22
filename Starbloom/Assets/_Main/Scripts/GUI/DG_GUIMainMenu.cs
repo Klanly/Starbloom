@@ -123,6 +123,7 @@ public class DG_GUIMainMenu : Photon.MonoBehaviour
         MainMenuCam.enabled = false;
         QuickFind.PlayerCam.MainCam.enabled = true;
         QuickFind.EnableCanvas(UICanvas, false);
+        QuickFind.GUI_MainOverview.OpenUI(true);
 
         if (!PhotonNetwork.isMasterClient)
         {
@@ -130,8 +131,14 @@ public class DG_GUIMainMenu : Photon.MonoBehaviour
             QuickFind.TimeHandler.RequestMasterTimes();
         }
 
+        QuickFind.GUI_Inventory.UpdateInventoryVisuals();
+        QuickFind.GUI_Inventory.SetHotbarSlot(QuickFind.GUI_Inventory.HotbarSlots[0]);
 
-        //Load Farmhouse Here.
+        if (QuickFind.GameSettings.BypassMainMenu)
+            QuickFind.NetworkSync.PlayerCharacterID = QuickFind.CharacterManager.transform.childCount - 1;
+
+
+        QuickFind.NetworkObjectManager.GenerateObjectData();
 
         QuickFind.FadeScreen.FadeIn(DG_GUI_FadeScreen.FadeInSpeeds.NormalFade);
     }
