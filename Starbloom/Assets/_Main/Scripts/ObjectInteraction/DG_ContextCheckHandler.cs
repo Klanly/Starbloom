@@ -24,7 +24,6 @@ public class DG_ContextCheckHandler : MonoBehaviour {
 
     private void Awake()
     {
-        QuickFind.ContextDetectionHandler = this;
         DetectionPoint = transform.GetChild(0);
     }
 
