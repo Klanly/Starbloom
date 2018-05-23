@@ -145,7 +145,6 @@ public class DG_InventoryGUI : MonoBehaviour
 
 
 
-
     public void AddItemToRucksack(int PlayerID, int ItemID, DG_ItemObject.ItemQualityLevels QualityLevel)
     {
         DG_PlayerCharacters.CharacterEquipment Equipment = QuickFind.Farm.PlayerCharacters[PlayerID].Equipment;

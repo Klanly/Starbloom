@@ -322,7 +322,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CharTrans: {fileID: 0}
   MainCam: {fileID: 1253344215}
-  AllowCameraPanning: 0
+  AllowCameraPanning: 1
   MousePanHorSpeed: 0.002
   MousePanVertSpeed: 0.002
   JoyPanHorSpeed: 1

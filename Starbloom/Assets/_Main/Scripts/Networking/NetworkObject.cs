@@ -12,6 +12,8 @@ using UnityEditor;
 
 public class NetworkObject : MonoBehaviour {
 
+    [HideInInspector] public int NetworkObjectID;
+
     public int ItemRefID;
     [Range(0,5)]
     public int ItemGrowthLevel;

@@ -466,5 +466,20 @@ public class DG_NetworkSync : Photon.MonoBehaviour
     }
 
 
+    public void RemoveNetworkSceneObject(int Scene, int ItemIndex)
+    {
+        int[] Sent = new int[2];
+        Sent[0] = Scene;
+        Sent[1] = ItemIndex;
+
+        PV.RPC("RemoveSceneObject", PhotonTargets.All, Sent);
+    }
+    [PunRPC]
+    void RemoveSceneObject(int[] Received)
+    {
+        Destroy(QuickFind.NetworkObjectManager.FindObject(Received[0], Received[1]));   
+    }
+
+
     #endregion
 }

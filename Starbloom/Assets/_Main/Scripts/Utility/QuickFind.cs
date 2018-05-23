@@ -51,6 +51,9 @@ public static class QuickFind
     //InputController
     public static DG_PlayerInput InputController = null;
     public static DG_CharacterControllers CharacterManager = null;
+    public static DG_InteractHandler InteractHandler = null;
+    public static HotbarItemHandler ItemActivateableHandler = null;
+    public static DG_ContextCheckHandler ContextDetectionHandler = null;
 
 
     //GUI
@@ -69,9 +72,6 @@ public static class QuickFind
     public static DG_InventoryGUI GUI_Inventory = null;
     public static DG_SkillsGUI GUI_Skills = null;
 
-
-    //Actions
-    public static HotbarItemHandler ItemActivateableHandler = null;
 
 
     //Cameras

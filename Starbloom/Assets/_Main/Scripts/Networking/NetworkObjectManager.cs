@@ -54,6 +54,17 @@ public class NetworkObjectManager : MonoBehaviour {
             }
         }
     }
+    public GameObject FindObject(int Scene, int index)
+    {
+        for(int i = 0; i < transform.childCount; i++)
+        {
+            Transform Child = transform.GetChild(i);
+            NetworkScene NS = Child.GetComponent<NetworkScene>();
+            if (NS.SceneID == Scene)
+                return Child.GetChild(index).gameObject;
+        }
+        return null;
+    }
 
 
 

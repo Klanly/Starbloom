@@ -24,6 +24,7 @@ public class DG_ContextCheckHandler : MonoBehaviour {
 
     private void Awake()
     {
+        QuickFind.ContextDetectionHandler = this;
         DetectionPoint = transform.GetChild(0);
     }
 
@@ -70,7 +71,7 @@ public class DG_ContextCheckHandler : MonoBehaviour {
 
     void OnDrawGizmos() //Draw Gizmo in Scene view
     {
-        if (ContextHit)
+        if (ContextHit && LastEncounteredContext != null)
         {
             Vector3 Pos = LastEncounteredContext.position;
             Gizmos.color = Color.yellow;
