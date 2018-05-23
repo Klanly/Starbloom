@@ -245,11 +245,11 @@ MonoBehaviour:
   Name: Pickaxe
   MaxStackSize: 1
   ActivateableType: 0
-  DefaultScale: 2.47
   DatabaseID: 0
   LockItem: 1
   Icon: {fileID: 21300000, guid: bf8be130f9a05104d9f0cff89c2d85e8, type: 3}
   ModelPrefab: {fileID: 159918, guid: 783b79588429e03439c659aba7f08d22, type: 2}
+  DefaultScale: 2.47
   WordCatagory: 4
   WordValue: 1
   isTool: 1
@@ -303,7 +303,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 582772
+  instanceID: 47610
 --- !u!1 &619036614
 GameObject:
   m_ObjectHideFlags: 0
@@ -335,11 +335,11 @@ MonoBehaviour:
   Name: Poisifferous Roiler
   MaxStackSize: 999
   ActivateableType: 4
-  DefaultScale: 0.2
   DatabaseID: 8
   LockItem: 1
   Icon: {fileID: 21300000, guid: d02bb51b54abbd44baa8e486cc1bd2b1, type: 3}
   ModelPrefab: {fileID: 100000, guid: cbefcad246b2dad4f86f353bc33f4782, type: 2}
+  DefaultScale: 0.2
   WordCatagory: 1
   WordValue: 1
   isTool: 0
@@ -389,7 +389,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: -55486388
+  instanceID: 47616
 --- !u!4 &619036617
 Transform:
   m_ObjectHideFlags: 0
@@ -447,12 +447,12 @@ MonoBehaviour:
   Name: Cabbage
   MaxStackSize: 999
   ActivateableType: 4
-  DefaultScale: 1
   DatabaseID: 9
   LockItem: 1
   Icon: {fileID: 21300000, guid: 70a97278c74a1d14591a9955e9aedb20, type: 3}
   ModelPrefab: {fileID: 1684895273158528, guid: 36aa4160ecd6c924cad392476a22a265,
     type: 2}
+  DefaultScale: 1
   WordCatagory: 1
   WordValue: 1
   isTool: 0
@@ -502,7 +502,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 582780
+  instanceID: 47626
 --- !u!1 &769028652
 GameObject:
   m_ObjectHideFlags: 0
@@ -547,11 +547,11 @@ MonoBehaviour:
   Name: Axe
   MaxStackSize: 1
   ActivateableType: 1
-  DefaultScale: 2.61
   DatabaseID: 1
   LockItem: 1
   Icon: {fileID: 21300000, guid: 4d3d0c036615f7446b966de21b95520a, type: 3}
   ModelPrefab: {fileID: 117796, guid: 243f97bf320ac514b8bb4939d4c8f2e8, type: 2}
+  DefaultScale: 2.61
   WordCatagory: 4
   WordValue: 1
   isTool: 1
@@ -605,7 +605,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 582788
+  instanceID: 47634
 --- !u!1 &1215626842
 GameObject:
   m_ObjectHideFlags: 0
@@ -682,11 +682,11 @@ MonoBehaviour:
   Name: Dervish Root
   MaxStackSize: 999
   ActivateableType: 4
-  DefaultScale: 0.14
   DatabaseID: 6
   LockItem: 1
   Icon: {fileID: 21300000, guid: e4a5a7646dbc3e34e822f12e2c91507a, type: 3}
   ModelPrefab: {fileID: 100000, guid: 622d49063c3277a4f9713bc1a514df6e, type: 2}
+  DefaultScale: 0.14
   WordCatagory: 1
   WordValue: 1
   isTool: 0
@@ -736,7 +736,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: -55443150
+  instanceID: 47646
 --- !u!1 &1330787844
 GameObject:
   m_ObjectHideFlags: 0
@@ -810,11 +810,11 @@ MonoBehaviour:
   Name: FishingPol
   MaxStackSize: 1
   ActivateableType: 3
-  DefaultScale: 3.37
   DatabaseID: 3
   LockItem: 1
   Icon: {fileID: 21300000, guid: d250ab380cef54d4f98943dd133f375d, type: 3}
   ModelPrefab: {fileID: 110500, guid: ba8e9d5015d16cf48ab4906769308762, type: 2}
+  DefaultScale: 3.37
   WordCatagory: 4
   WordValue: 1
   isTool: 1
@@ -868,7 +868,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 582804
+  instanceID: 47658
 --- !u!1 &1511745339
 GameObject:
   m_ObjectHideFlags: 0
@@ -900,11 +900,11 @@ MonoBehaviour:
   Name: Crispins Glove
   MaxStackSize: 999
   ActivateableType: 4
-  DefaultScale: 0.38
   DatabaseID: 5
   LockItem: 1
   Icon: {fileID: 21300000, guid: 3ea22d1cd3497994182977cc2c388505, type: 3}
   ModelPrefab: {fileID: 100000, guid: bb6a0bce8109f3e4f992e36fac33aa11, type: 2}
+  DefaultScale: 0.38
   WordCatagory: 1
   WordValue: 1
   isTool: 0
@@ -954,7 +954,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 582810
+  instanceID: 47664
 --- !u!4 &1511745342
 Transform:
   m_ObjectHideFlags: 0
@@ -1012,11 +1012,11 @@ MonoBehaviour:
   Name: Fire Wort
   MaxStackSize: 999
   ActivateableType: 4
-  DefaultScale: 0.28
   DatabaseID: 7
   LockItem: 1
   Icon: {fileID: 21300000, guid: 229ea83b2432ff244ac5171efd858266, type: 3}
   ModelPrefab: {fileID: 100000, guid: 525e259d13a05fa4fbb2d0e105b70875, type: 2}
+  DefaultScale: 0.28
   WordCatagory: 1
   WordValue: 1
   isTool: 0
@@ -1066,7 +1066,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: -55463780
+  instanceID: 47674
 --- !u!1 &1714828754
 GameObject:
   m_ObjectHideFlags: 0
@@ -1111,11 +1111,11 @@ MonoBehaviour:
   Name: Cabbage Stages
   MaxStackSize: 999
   ActivateableType: 4
-  DefaultScale: 1
   DatabaseID: 4
   LockItem: 1
   Icon: {fileID: 0}
   ModelPrefab: {fileID: 100000, guid: 22060f3d67f76de47972326b7a125453, type: 2}
+  DefaultScale: 1
   WordCatagory: 1
   WordValue: 1
   isTool: 0
@@ -1168,7 +1168,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 582820
+  instanceID: 47682
 --- !u!1 &1815548898
 GameObject:
   m_ObjectHideFlags: 0
@@ -1242,11 +1242,11 @@ MonoBehaviour:
   Name: Hoe
   MaxStackSize: 1
   ActivateableType: 2
-  DefaultScale: 2.47
   DatabaseID: 2
   LockItem: 1
   Icon: {fileID: 21300000, guid: 7e26e3ac98a522e458000d236987a2db, type: 3}
   ModelPrefab: {fileID: 152736, guid: 9f25e2bb9cca15947ab2c3ad4301931a, type: 2}
+  DefaultScale: 2.47
   WordCatagory: 4
   WordValue: 1
   isTool: 1
@@ -1300,4 +1300,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 582832
+  instanceID: 47694
