@@ -131,11 +131,11 @@ public class DG_GUIMainMenu : Photon.MonoBehaviour
             QuickFind.TimeHandler.RequestMasterTimes();
         }
 
-        QuickFind.GUI_Inventory.UpdateInventoryVisuals();
-        QuickFind.GUI_Inventory.SetHotbarSlot(QuickFind.GUI_Inventory.HotbarSlots[0]);
-
         if (QuickFind.GameSettings.BypassMainMenu)
             QuickFind.NetworkSync.PlayerCharacterID = QuickFind.CharacterManager.transform.childCount - 1;
+
+        QuickFind.GUI_Inventory.UpdateInventoryVisuals();
+        QuickFind.GUI_Inventory.SetHotbarSlot(QuickFind.GUI_Inventory.HotbarSlots[0]);
 
 
         QuickFind.NetworkObjectManager.GenerateObjectData();

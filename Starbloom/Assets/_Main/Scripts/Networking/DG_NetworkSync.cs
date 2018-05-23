@@ -168,104 +168,20 @@ public class DG_NetworkSync : Photon.MonoBehaviour
     [PunRPC]
     void GatherPlayerData(int PhotonOwnerID)
     {
-        List<string> StringData = new List<string>();
-        List<int> IntData = new List<int>();
-        DG_PlayerCharacters PlayerData = QuickFind.Farm;
-
-        StringData.Add(PlayerData.FarmName);
-        IntData.Add(PlayerData.SharedMoney);
-        IntData.Add(PlayerData.Year);
-        IntData.Add(PlayerData.Month);
-        IntData.Add(PlayerData.Day);
-
-        IntData.Add(PlayerData.PlayerCharacters.Count);
-        StringData.Add(PlayerData.PlayerCharacters.Count.ToString());
-
-        for (int i = 0; i < PlayerData.PlayerCharacters.Count; i++)
-        {
-            //STRINGS
-            DG_PlayerCharacters.PlayerCharacter PC = PlayerData.PlayerCharacters[i];
-            StringData.Add(PC.Name);
-
-            //Equipment
-
-            DG_PlayerCharacters.CharacterEquipment CE = PC.Equipment;
-            IntData.Add(CE.HatId);
-            IntData.Add(CE.Ring1);
-            IntData.Add(CE.Ring2);
-            IntData.Add(CE.Boots);
-
-            //Cosmetics
-
-            //Rucksack
-            IntData.Add(CE.RuckSackUnlockedSize);
-            DG_PlayerCharacters.RucksackSlot[] RS = CE.RucksackSlots;
-            for(int iN = 0; iN < CE.RuckSackUnlockedSize; iN++)
-            {
-                DG_PlayerCharacters.RucksackSlot RSlot = RS[iN];
-                IntData.Add(RSlot.ContainedItem);
-                IntData.Add(RSlot.CurrentStackActive);
-                IntData.Add(RSlot.LowValue);
-                IntData.Add(RSlot.NormalValue);
-                IntData.Add(RSlot.HighValue);
-                IntData.Add(RSlot.MaximumValue);
-            }
-        }
-
         PhotonPlayer PP = PhotonPlayer.Find(PhotonOwnerID);
-        PV.RPC("GetPlayerStringValues", PP, StringData.ToArray());
-        PV.RPC("GetPlayerIntValues", PP, IntData.ToArray());
+        PV.RPC("GetPlayerStringValues", PP, QuickFind.SaveHandler.GatherPlayerDataStrings(false).ToArray());
+        PV.RPC("GetPlayerIntValues", PP, QuickFind.SaveHandler.GatherPlayerDataInts(false).ToArray());
     }
 
     [PunRPC]
     void GetPlayerStringValues(string[] StringValues)
     {
-        DG_PlayerCharacters PlayerData = QuickFind.Farm;
-        int Index = 0;
-        PlayerData.FarmName = StringValues[Index]; Index++;
-        int count = int.Parse(StringValues[Index]); Index++;
-
-        for (int i = 0; i < count; i++)
-        {
-            DG_PlayerCharacters.PlayerCharacter PC = PlayerData.PlayerCharacters[i];
-            PC.Name = StringValues[Index];  Index++;
-        }
+        QuickFind.SaveHandler.GetStringValues(StringValues, false);
     }
     [PunRPC]
     void GetPlayerIntValues(int[] IntValues)
     {
-        DG_PlayerCharacters PlayerData = QuickFind.Farm;
-        int Index = 0;
-        PlayerData.SharedMoney = IntValues[Index]; Index++;
-        PlayerData.Year = IntValues[Index]; Index++;
-        PlayerData.Month = IntValues[Index]; Index++;
-        PlayerData.Day = IntValues[Index]; Index++;
-
-        int Count = IntValues[Index]; Index++;
-        for (int i = 0; i < Count; i++)
-        {
-            DG_PlayerCharacters.PlayerCharacter PC = PlayerData.PlayerCharacters[i];
-            DG_PlayerCharacters.CharacterEquipment CE = PC.Equipment;
-            //Equipment
-            CE.HatId = IntValues[Index]; Index++;
-            CE.Ring1 = IntValues[Index]; Index++;
-            CE.Ring2 = IntValues[Index]; Index++;
-            CE.Boots = IntValues[Index]; Index++;
-            //Cosmetics
-            //Rucksack
-            CE.RuckSackUnlockedSize = IntValues[Index]; Index++;
-            DG_PlayerCharacters.RucksackSlot[] RS = CE.RucksackSlots;
-            for (int iN = 0; iN < CE.RuckSackUnlockedSize; iN++)
-            {
-                DG_PlayerCharacters.RucksackSlot RSlot = RS[iN];
-                RSlot.ContainedItem = IntValues[Index]; Index++;
-                RSlot.CurrentStackActive = IntValues[Index]; Index++;
-                RSlot.LowValue = IntValues[Index]; Index++;
-                RSlot.NormalValue = IntValues[Index]; Index++;
-                RSlot.HighValue = IntValues[Index]; Index++;
-                RSlot.MaximumValue = IntValues[Index]; Index++;
-            }
-        }
+        QuickFind.SaveHandler.GetIntValues(IntValues, false);
 
         if (!PhotonNetwork.isMasterClient)
             QuickFind.MainMenuUI.Connected();
