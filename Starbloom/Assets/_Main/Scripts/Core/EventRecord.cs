@@ -19,6 +19,68 @@ public class EventRecord : SerializedMonoBehaviour
 
 		[SerializeField]
 		public AttributeMap Attributes = new AttributeMap();
+
+		public List<object> AddAttribute( string _name, object _value = null)
+		{
+			if (null == Attributes)
+				Attributes = new AttributeMap();
+
+			List<object> attrValues = null;
+			if (Attributes.ContainsKey(_name))
+				attrValues = Attributes[_name];
+
+			if( null == attrValues )
+			{
+				attrValues = new List<object>();
+				Attributes[_name] = attrValues;
+			}
+
+			AddValue(attrValues, _value);
+
+			return attrValues;
+		}
+
+		public bool HasAttribute( string _name )
+		{
+			if (null == Attributes)
+				return false;
+
+			if (!Attributes.ContainsKey(_name))
+				return false;
+
+			return true;
+		}
+
+		public List<object> GetAttributeValues( string _name )
+		{
+			if (!HasAttribute(_name))
+				return null;
+
+			return Attributes[_name];
+		}
+
+		public void AddValue<T>( string _attributeName, T _value )
+		{
+			AddValue(AddAttribute(_attributeName), _value);
+		}
+
+		protected void AddValue<T>( List<object> _attrValues, T _value )
+		{
+			if (null != _value)
+				_attrValues.Add(_value);
+		}
+
+		public void AddAttributes( AttributeMap _attributes )
+		{
+			foreach (string key in _attributes.Keys)
+			{
+				List<object> attrVals = AddAttribute(key);
+				List<object> addVals = _attributes[key];
+				if (null != addVals)
+					foreach (object val in addVals)
+						AddValue(attrVals, val);
+			}
+		}
 	}
 
 	[Serializable]
@@ -27,66 +89,66 @@ public class EventRecord : SerializedMonoBehaviour
 	[Serializable]
 	public class DailyRecord : Dictionary<int, ActionMap> { }
 
-	[DictionaryDrawerSettings(DisplayMode = DictionaryDisplayOptions.ExpandedFoldout, KeyLabel = "Day", ValueLabel = "Record")]
+	[DictionaryDrawerSettings(DisplayMode = DictionaryDisplayOptions.OneLine, KeyLabel = "Day", ValueLabel = "Record")]
 	public Dictionary<int, DailyRecord> Log = new Dictionary<int, DailyRecord>();
-
-	public void OnEnable()
-	{
-		AttributeMap attributes = new AttributeMap();
-		attributes.Add("Water", new List<object> { 1 });
-		AddAction("water", 0, 1, attributes );
-	}
-
-	public void AddAction(string _action, int _day, int _playerID, AttributeMap _attributes = null)
+	
+	public ActionData AddAction(string _action, int _day, int _playerID)
 	{
 		DailyRecord dr = null;
-		if (!Log.ContainsKey(_day))
+		if (Log.ContainsKey(_day))
+			dr = Log[_day];
+
+		if( null == dr )
 		{
 			dr = new DailyRecord();
 			Log[_day] = dr;
 		}
-		else
-			dr = Log[_day];
 
 		ActionMap am = null;
-		if (!dr.ContainsKey(_playerID))
+		if( dr.ContainsKey(_playerID) )
+			am = dr[_playerID];
+
+		if( null == am )
 		{
 			am = new ActionMap();
 			dr[_playerID] = am;
 		}
-		else
-			am = dr[_playerID];
 
 		ActionData ad = null;
-		if (!am.ContainsKey(_action))
-		{
-			ad = new ActionData();
-			am[_action] = ad;
-		}
-		else
+		if (am.ContainsKey(_action))
 			ad = am[_action];
 
-		if (null != _attributes)
-			foreach (string key in _attributes.Keys)
-			{
-				if (null == ad.Attributes)
-					ad.Attributes = new AttributeMap();
+		if( null == ad )
+		{
+			ad = new ActionData();
+			ad.Attributes = new AttributeMap();
+			am[_action] = ad;
+		}
+			
+		return ad;
+	}
 
-				List<object> attrValues;
-				if (!ad.Attributes.ContainsKey(key))
-				{
-					attrValues = new List<object>();
-					ad.Attributes[key] = attrValues;
-				}
-				else
-					attrValues = ad.Attributes[key];
+	public ActionData GetAction(string _action, int _day, int _playerID)
+	{
+		DailyRecord dr = null;
+		if (!Log.ContainsKey(_day))
+			return null;
 
-				List<object> addVals = _attributes[key];
-				if( null != addVals )
-					foreach (object val in addVals)
-						if( null != val )
-							attrValues.Add(val);
-			}
+		dr = Log[_day];
+		ActionMap am = null;
+		if (!dr.ContainsKey(_playerID))
+			return null;
+
+		am = dr[_playerID];
+		if (!am.ContainsKey(_action))
+			return null;
+
+		return am[_action];
+	}
+
+	public bool HasAction(string _action, int _day, int _playerID)
+	{
+		return null != GetAction(_action, _day, _playerID);
 	}
 	
 	public string Serialize()
