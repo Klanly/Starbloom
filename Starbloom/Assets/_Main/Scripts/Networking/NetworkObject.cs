@@ -22,7 +22,6 @@ public class NetworkObject : MonoBehaviour {
 
 
 
-
     public void SpawnNetworkObject()
     {
         DG_ItemsDatabase IDB = QuickFind.ItemDatabase;
@@ -37,8 +36,6 @@ public class NetworkObject : MonoBehaviour {
         float Scale = IO.DefaultScale;
         T.localScale = new Vector3(Scale, Scale, Scale);
     }
-
-
 
 
 

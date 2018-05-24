@@ -14,7 +14,73 @@ public class NetworkScene : MonoBehaviour {
 
 
     public int SceneID;
+    public List<NetworkObject> NetworkObjectList;
 
+    int wait1 = 0;
+
+    private void Awake()
+    {
+        NetworkObjectList = new List<NetworkObject>();
+        this.enabled = false;
+    }
+
+    private void Update()
+    {
+        wait1 = wait1 - 1;
+        if(wait1 < 0)
+        {
+            LoadAfterFrame();
+            this.enabled = false;
+        }
+    }
+
+    public void LoadSceneObjects()
+    {
+        wait1 = 2;
+        this.enabled = true;
+    }
+    void LoadAfterFrame()
+    {
+        for (int i = 0; i < NetworkObjectList.Count; i++)
+        {
+            GameObject GO = new GameObject();
+            GO.transform.SetParent(transform);
+            NetworkObject NO = GO.AddComponent<NetworkObject>();
+            NetworkObject ListNO = NetworkObjectList[i];
+            Clone(NO, ListNO);
+
+            NO.transform.position = NO.Position;
+            NO.transform.eulerAngles = new Vector3(0, NO.YFacing, 0);
+
+            NO.SpawnNetworkObject();      
+            //
+        }
+        DestroyObjects();
+    }
+    void Clone(NetworkObject NO, NetworkObject ListNO)
+    {
+        NO.ItemRefID = ListNO.ItemRefID;
+        NO.ItemGrowthLevel = ListNO.ItemGrowthLevel;
+        NO.Position = ListNO.Position;
+        NO.YFacing = ListNO.YFacing;
+    }
+    public void DestroyObjects()
+    {
+        for (int i = 0; i < NetworkObjectList.Count; i++)
+            Destroy(NetworkObjectList[i]);
+        NetworkObjectList.Clear();
+    }
+    public void AddInitialPlacedObjectsIntoList()
+    {
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            NetworkObject NO = transform.GetChild(i).GetComponent<NetworkObject>();
+            NetworkObject NOT = transform.gameObject.AddComponent<NetworkObject>();
+            Clone(NOT, NO);
+            NetworkObjectList.Add(NO);
+            Destroy(transform.GetChild(i).gameObject);
+        }
+    }
 
 
 

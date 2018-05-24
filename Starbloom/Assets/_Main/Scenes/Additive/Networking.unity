@@ -322,6 +322,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SaveFileName: Debug
+  DataChild: {fileID: 0}
 --- !u!4 &155133447
 Transform:
   m_ObjectHideFlags: 0
@@ -2511,3 +2512,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SceneID: 0
+  NetworkObjectList: []

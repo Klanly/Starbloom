@@ -24,18 +24,25 @@ public class NetworkObjectManager : MonoBehaviour {
             //Check if Save File Available.
 
             //if not, keep all things as they are.
+
+            for (int i = 0; i < transform.childCount; i++)
+                transform.GetChild(i).GetComponent<NetworkScene>().AddInitialPlacedObjectsIntoList();
             GenerateSceneObjects(QuickFind.NetworkSync.CurrentScene);
         }
         else
         {
-            for(int i = 0; i < transform.childCount; i++)
-            {
-                Transform Child = transform.GetChild(i);
-                for(int iN = 0; iN < Child.childCount; iN++)
-                    Destroy(Child.GetChild(iN).gameObject);
-            }
-
+            ClearObjects();
             QuickFind.NetworkSync.RequestWorldObjects();
+        }
+    }
+    public void ClearObjects()
+    {
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            Transform Child = transform.GetChild(i);
+            Child.GetComponent<NetworkScene>().DestroyObjects();
+            for (int iN = 0; iN < Child.childCount; iN++)
+                Destroy(Child.GetChild(iN).gameObject);
         }
     }
 
@@ -47,9 +54,8 @@ public class NetworkObjectManager : MonoBehaviour {
             Transform Child = transform.GetChild(i);
             NetworkScene NS = Child.GetComponent<NetworkScene>();
             if (NS.SceneID == Scene)
-            {      
-                for(int iN = 0; iN < Child.childCount; iN++)
-                    Child.GetChild(iN).GetComponent<NetworkObject>().SpawnNetworkObject();
+            {
+                NS.LoadSceneObjects();
                 return;
             }
         }
@@ -65,7 +71,17 @@ public class NetworkObjectManager : MonoBehaviour {
         }
         return null;
     }
-
+    public NetworkScene GetSceneByID(int index)
+    {
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            Transform Child = transform.GetChild(i);
+            NetworkScene NS = Child.GetComponent<NetworkScene>();
+            if (NS.SceneID == index)
+                return NS;
+        }
+        return null;
+    }
 
 
 

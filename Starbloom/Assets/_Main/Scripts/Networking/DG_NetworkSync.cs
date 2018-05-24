@@ -291,79 +291,19 @@ public class DG_NetworkSync : Photon.MonoBehaviour
     [PunRPC]
     void GatherWorldObjects(int ReturnPhotonOwner)
     {
-        List<int> OutgoingInts = new List<int>();
-        List<float> OutgoingFloats = new List<float>();
-
-        Transform NOM = QuickFind.NetworkObjectManager.transform;
-        for (int i = 0; i < NOM.childCount; i++)
-        {
-            Transform Child = NOM.GetChild(i);
-            NetworkScene NS = Child.GetComponent<NetworkScene>();
-            OutgoingInts.Add(NS.SceneID);
-            OutgoingInts.Add(Child.childCount);
-            OutgoingFloats.Add(Child.childCount);
-            for (int iN = 0; iN < Child.childCount; iN++)
-            {
-                NetworkObject NO = Child.GetChild(iN).GetComponent<NetworkObject>();
-                OutgoingInts.Add(NO.ItemRefID);
-                OutgoingInts.Add(NO.ItemGrowthLevel);
-
-                OutgoingFloats.Add(NO.Position.x);
-                OutgoingFloats.Add(NO.Position.y);
-                OutgoingFloats.Add(NO.Position.z);
-                OutgoingFloats.Add(NO.YFacing);
-            }
-        }
-
         PhotonPlayer PP = PhotonPlayer.Find(ReturnPhotonOwner);
-        PV.RPC("SendOutWorldObjectInts", PP, OutgoingInts.ToArray());
-        PV.RPC("SendOutWorldObjectFloats", PP, OutgoingFloats.ToArray());
+        PV.RPC("SendOutWorldObjectInts", PP, QuickFind.SaveHandler.GatherWorldInts(false).ToArray());
+        PV.RPC("SendOutWorldObjectFloats", PP, QuickFind.SaveHandler.GatherWorldFloats(false).ToArray());
     }
     [PunRPC]
-    void SendOutWorldObjectInts(int[] Incoming)
+    void SendOutWorldObjectInts(int[] IntValues)
     {
-        Transform NOM = QuickFind.NetworkObjectManager.transform;
-        int index = 0;    
-        for (int i = 0; i < NOM.childCount; i++)
-        {
-            Transform Child = NOM.GetChild(i);
-            NetworkScene NS = Child.GetComponent<NetworkScene>();
-            NS.SceneID = Incoming[index]; index++;
-            int count = Incoming[index]; index++;
-            for (int iN = 0; iN < count; iN++)
-            {
-                GameObject GO = new GameObject();
-                GO.transform.SetParent(Child);
-                NetworkObject NO = GO.AddComponent<NetworkObject>();
-                NO.ItemRefID = Incoming[index]; index++;
-                NO.ItemGrowthLevel = Incoming[index]; index++;
-            }
-        }
+        QuickFind.SaveHandler.GetWorldInts(IntValues, false);
     }
     [PunRPC]
-    void SendOutWorldObjectFloats(float[] Incoming)
+    void SendOutWorldObjectFloats(float[] FloatValues)
     {
-        Transform NOM = QuickFind.NetworkObjectManager.transform;
-        int index = 0;
-        for (int i = 0; i < NOM.childCount; i++)
-        {
-            Transform Child = NOM.GetChild(i);
-            NetworkScene NS = Child.GetComponent<NetworkScene>();
-            int count = (int)Incoming[index]; index++;
-            for (int iN = 0; iN < count; iN++)
-            {
-                NetworkObject NO = Child.GetChild(iN).GetComponent<NetworkObject>();
-
-                float x = Incoming[index]; index++;
-                float y = Incoming[index]; index++;
-                float z = Incoming[index]; index++;
-                NO.Position = new Vector3(x, y, z);
-                NO.YFacing = Incoming[index]; index++;
-
-                NO.transform.position = NO.Position;
-                NO.transform.eulerAngles = new Vector3(0, NO.YFacing, 0);
-            }
-        }
+        QuickFind.SaveHandler.GetWorldFloats(FloatValues, false);
         QuickFind.NetworkObjectManager.GenerateSceneObjects(CurrentScene);
     }
 
