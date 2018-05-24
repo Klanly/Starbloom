@@ -12,6 +12,7 @@ public class DG_NetworkSync : Photon.MonoBehaviour
         public int PlayerCharacterID;
         public int SceneID;
         public int PhotonViewID;
+        public Transform PhotonClone;
     }
 
     public int UserID = 0;
@@ -67,8 +68,18 @@ public class DG_NetworkSync : Photon.MonoBehaviour
         for (int i = 0; i < UserList.Count; i++)
         { if (UserList[i].PhotonViewID == ID) return UserList[i]; }
         return null;
-
     }
+    public Transform GetCharacterTransformByPhotonViewID(int ViewID)
+    {
+        for (int i = 0; i < QuickFind.CharacterManager.transform.childCount; i++)
+        {
+            Transform T = QuickFind.CharacterManager.transform.GetChild(i);
+            PhotonView PV = T.GetComponent<PhotonView>();
+            if (PV.viewID == ViewID) return T;
+        }
+        return null;
+    }
+
 
 
     #region Users
@@ -113,6 +124,8 @@ public class DG_NetworkSync : Photon.MonoBehaviour
             NewUser.SceneID = TransferedIn[index]; index++;
             NewUser.PhotonViewID = TransferedIn[index]; index++;
 
+            NewUser.PhotonClone = GetCharacterTransformByPhotonViewID(NewUser.PhotonViewID);
+
             UserList.Add(NewUser);
         }
         if (UserID == 0)
@@ -127,9 +140,10 @@ public class DG_NetworkSync : Photon.MonoBehaviour
     public void SetPhotonViewID(int PhotonID)
     {
         PhotonViewID = PhotonID;
-        int[] IntGroup = new int[2];
+        int[] IntGroup = new int[3];
         IntGroup[0] = UserID;
         IntGroup[1] = PhotonID;
+        IntGroup[2] = PlayerCharacterID;
         PV.RPC("SendUserPhoton", PhotonTargets.All, IntGroup);
     }
     [PunRPC]
@@ -137,6 +151,8 @@ public class DG_NetworkSync : Photon.MonoBehaviour
     {
         Users U = GetUserByID(IntGroup[0]);
         U.PhotonViewID = IntGroup[1];
+        U.PlayerCharacterID = IntGroup[2];
+        U.PhotonClone = GetCharacterTransformByPhotonViewID(IntGroup[1]);
     }
 
 

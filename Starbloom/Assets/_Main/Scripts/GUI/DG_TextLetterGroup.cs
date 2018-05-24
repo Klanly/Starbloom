@@ -162,7 +162,7 @@ public class DG_TextLetterGroup : MonoBehaviour {
                 int indexVal = Index - 1;
 
 
-                QuickFind.UserSettings.SetTMProLanguage(LR.Column[iN].TextLetter);
+                QuickFind.LanguageFonts.SetTMProLanguage(LR.Column[iN].TextLetter);
 
 
                 if (AdaptiveToString && indexVal < CharCount.Length)

@@ -1022,7 +1022,7 @@ GameObject:
   - component: {fileID: 1118935757}
   - component: {fileID: 1118935758}
   m_Layer: 0
-  m_Name: PlayerData
+  m_Name: Farm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2220,6 +2220,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 438454042}
     m_Modifications:
+    - target: {fileID: 114217362261212476, guid: fb9fb017398351b44b9429ac9b574522,
+        type: 2}
+      propertyPath: UserList.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4559278183740994, guid: fb9fb017398351b44b9429ac9b574522, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0

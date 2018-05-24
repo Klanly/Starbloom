@@ -47,13 +47,13 @@ public class DG_LocalDataHandler : MonoBehaviour {
     public void SaveGame(bool FirstEverSave)
     {
         //Change Save Name if Farm Name is duplicate.
-        if (FirstEverSave = CheckIfOverwritingPreviousFile(CacheDirectory, SaveFileName))
+        if (FirstEverSave = CheckIfOverwritingPreviousDirectory(CacheDirectory, SaveFileName))
         {
             string KnownFileRequested = SaveFileName;
             for(int i = 2; i < int.MaxValue; i++)
             {
                 SaveFileName = KnownFileRequested + i.ToString();
-                if(!CheckIfOverwritingPreviousFile(CacheDirectory, SaveFileName))
+                if(!CheckIfOverwritingPreviousDirectory(CacheDirectory, SaveFileName))
                     break;
             }     
         }
@@ -383,20 +383,26 @@ public class DG_LocalDataHandler : MonoBehaviour {
 
     #region Util
     //Util///////////////////////////////
-    public bool CheckIfOverwritingPreviousFile(string KnownDirectory, string SubFolder)
+    //Directory
+    public static bool CheckIfOverwritingPreviousDirectory(string KnownDirectory, string SubFolder)
     {
         string SaveFileBaseLocation = KnownDirectory + "/" + SubFolder;
-        if (Directory.Exists(SaveFileBaseLocation))
-            return true;
-        else
-            return false;
+        if (Directory.Exists(SaveFileBaseLocation)) return true;
+        else return false;
     }
-    public string FindOrCreateSaveDirectory(string KnownDirectory, string SubFolder)
+    public static string FindOrCreateSaveDirectory(string KnownDirectory, string SubFolder)
     {
         string SaveFileBaseLocation = KnownDirectory + "/" + SubFolder;
         if (!Directory.Exists(SaveFileBaseLocation))
             Directory.CreateDirectory(SaveFileBaseLocation);
         return SaveFileBaseLocation;
+    }
+    //File
+    public static bool CheckIfOverwritingPreviousFile(string KnownDirectory, string FileName)
+    {
+        string SaveFileBaseLocation = KnownDirectory + FileName;
+        if (File.Exists(SaveFileBaseLocation)) return true;
+        else return false;
     }
     #endregion
 
@@ -405,14 +411,33 @@ public class DG_LocalDataHandler : MonoBehaviour {
 
     #region Save Utilities
     ///////////////////////////////////////////////////////////////////////
-    public void SaveInt(int Data, string FileName)
+    public static void SaveBool(bool Data, string FileName)
     {
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file = File.Create(FileName);
         bf.Serialize(file, Data);
         file.Close();
     }
-    public int LoadInt(string FileName)
+    public static bool LoadBool(string FileName)
+    {
+        bool ReturnArray = false;
+        if (File.Exists(FileName))
+        {
+            BinaryFormatter bf = new BinaryFormatter();
+            FileStream file = File.Open(FileName, FileMode.Open);
+            ReturnArray = (bool)bf.Deserialize(file);
+            file.Close();
+        }
+        return ReturnArray;
+    }
+    public static void SaveInt(int Data, string FileName)
+    {
+        BinaryFormatter bf = new BinaryFormatter();
+        FileStream file = File.Create(FileName);
+        bf.Serialize(file, Data);
+        file.Close();
+    }
+    public static int LoadInt(string FileName)
     {
         int ReturnArray = 0;
         if (File.Exists(FileName))
@@ -424,14 +449,14 @@ public class DG_LocalDataHandler : MonoBehaviour {
         }
         return ReturnArray;
     }
-    public void SaveInts(int[] Data, string FileName)
+    public static void SaveInts(int[] Data, string FileName)
     {
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file = File.Create(FileName);
         bf.Serialize(file, Data);
         file.Close();
     }
-    public int[] LoadInts(string FileName)
+    public static int[] LoadInts(string FileName)
     {
         int[] ReturnArray = null;
         if (File.Exists(FileName))
@@ -444,14 +469,14 @@ public class DG_LocalDataHandler : MonoBehaviour {
         return ReturnArray;
     }
     ///////////////////////////////////////////////////////////////////////
-    public void SaveFloat(float Data, string FileName)
+    public static void SaveFloat(float Data, string FileName)
     {
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file = File.Create(FileName);
         bf.Serialize(file, Data);
         file.Close();
     }
-    public float LoadFloat(string FileName)
+    public static float LoadFloat(string FileName)
     {
         float ReturnArray = 0;
         if (File.Exists(FileName))
@@ -463,14 +488,14 @@ public class DG_LocalDataHandler : MonoBehaviour {
         }
         return ReturnArray;
     }
-    public void SaveFloats(float[] Data, string FileName)
+    public static void SaveFloats(float[] Data, string FileName)
     {
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file = File.Create(FileName);
         bf.Serialize(file, Data);
         file.Close();
     }
-    public float[] LoadFloats(string FileName)
+    public static float[] LoadFloats(string FileName)
     {
         float[] ReturnArray = null;
         if (File.Exists(FileName))
@@ -483,14 +508,14 @@ public class DG_LocalDataHandler : MonoBehaviour {
         return ReturnArray;
     }
     ///////////////////////////////////////////////////////////////////////
-    public void SaveString(string Data, string FileName)
+    public static void SaveString(string Data, string FileName)
     {
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file = File.Create(FileName);
         bf.Serialize(file, Data);
         file.Close();
     }
-    public string LoadString(string FileName)
+    public static string LoadString(string FileName)
     {
         string ReturnArray = string.Empty;
         if (File.Exists(FileName))
@@ -502,14 +527,14 @@ public class DG_LocalDataHandler : MonoBehaviour {
         }
         return ReturnArray;
     }
-    public void SaveStrings(string[] Data, string FileName)
+    public static void SaveStrings(string[] Data, string FileName)
     {
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file = File.Create(FileName);
         bf.Serialize(file, Data);
         file.Close();
     }
-    public string[] LoadStrings(string FileName)
+    public static string[] LoadStrings(string FileName)
     {
         string[] ReturnArray = null;
         if (File.Exists(FileName))

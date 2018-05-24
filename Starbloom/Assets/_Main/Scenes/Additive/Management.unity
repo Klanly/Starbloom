@@ -249,7 +249,7 @@ Transform:
   - {fileID: 519852982}
   - {fileID: 1569164465}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519852981
 GameObject:
@@ -334,14 +334,14 @@ Transform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1076293939}
-  m_LocalRotation: {x: 0.2588191, y: 0, z: 0, w: 0.9659258}
+  m_LocalRotation: {x: 0.17364816, y: 0, z: 0, w: 0.9848078}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1307435960}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 30, y: 0, z: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 20, y: 0, z: 0}
 --- !u!1 &1253344214
 GameObject:
   m_ObjectHideFlags: 0
@@ -670,6 +670,48 @@ MonoBehaviour:
     DistanceNearValue: 0
     DistanceMaxValue: 0
   PrintDistanceValues: 0
+--- !u!1 &1535058563
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1535058565}
+  - component: {fileID: 1535058564}
+  m_Layer: 0
+  m_Name: Scene ID List
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1535058564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1535058563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7df83536e2dbf494c8b8f32d480f5bf5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SceneList:
+  - Farm
+--- !u!4 &1535058565
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1535058563}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1569164464
 GameObject:
   m_ObjectHideFlags: 0
@@ -827,18 +869,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TextSpeed: 0.04
   CurrentLanguage: 0
-  LanguageFonts:
-  - LanguageSetting: 0
-    FontAsset: {fileID: 11400000, guid: 826e6aa4d5c44c44fa8cf4ce71437626, type: 2}
-  - LanguageSetting: 1
-    FontAsset: {fileID: 11400000, guid: 9c60d354979611e48b3776b03d319e28, type: 2}
-  - LanguageSetting: 2
-    FontAsset: {fileID: 11400000, guid: 9c60d354979611e48b3776b03d319e28, type: 2}
-  - LanguageSetting: 3
-    FontAsset: {fileID: 11400000, guid: 9c60d354979611e48b3776b03d319e28, type: 2}
-  - LanguageSetting: 4
-    FontAsset: {fileID: 11400000, guid: 9c60d354979611e48b3776b03d319e28, type: 2}
-  - LanguageSetting: 5
-    FontAsset: {fileID: 11400000, guid: 26f94da789f9e66428de519846d10eed, type: 2}
-  - LanguageSetting: 6
-    FontAsset: {fileID: 11400000, guid: e648fa9e27987db448ffd76a7e65825f, type: 2}

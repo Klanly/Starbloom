@@ -31,7 +31,7 @@ public class DG_WordObject : MonoBehaviour {
     [System.Serializable]
     public class TextEntry
     {
-        public UserSettings.Languages Language;
+        public DG_TextLanguageFonts.Languages Language;
         [TextArea(4, 10)]
         public string stringEntry;
     }
@@ -51,7 +51,7 @@ public class DG_WordObject : MonoBehaviour {
 
     public void PopulateLanguageOptions(DG_WordObject CloneScript)
     {
-        int languageCount = System.Enum.GetValues(typeof(UserSettings.Languages)).Length;
+        int languageCount = System.Enum.GetValues(typeof(DG_TextLanguageFonts.Languages)).Length;
         if(TextValues == null || TextValues.Length < languageCount)
         {
             TextEntry[] NewArray = new TextEntry[languageCount];
@@ -65,13 +65,13 @@ public class DG_WordObject : MonoBehaviour {
                         NewArray[i].stringEntry = TextValues[i].stringEntry;
                 }
 
-                NewArray[i].Language = (UserSettings.Languages)i;
+                NewArray[i].Language = (DG_TextLanguageFonts.Languages)i;
             }
             TextValues = NewArray;
         }
     }
 
-    public TextEntry GetTextEntryByLanguage(UserSettings.Languages Language)
+    public TextEntry GetTextEntryByLanguage(DG_TextLanguageFonts.Languages Language)
     {
         for(int i = 0; i < TextValues.Length; i++)
         {

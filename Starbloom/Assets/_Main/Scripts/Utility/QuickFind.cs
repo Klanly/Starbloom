@@ -93,6 +93,7 @@ public static class QuickFind
     public static DG_CharacterDatabase CharacterDatabase = null;
     public static DG_ColorCodes ColorDatabase = null;
     public static SceneIDList SceneList = null;
+    public static DG_TextLanguageFonts LanguageFonts = null;
 
 
 

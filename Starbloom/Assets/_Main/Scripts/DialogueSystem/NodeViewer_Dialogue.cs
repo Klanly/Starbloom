@@ -247,7 +247,7 @@ public class NodeViewer_Dialogue
         {
             GUI.Label(new Rect(5, 190, 138, 100), NA_DialogueGUIController.ScanForContext(WO.TextValues[(int)US.CurrentLanguage].stringEntry, true), DisplayStyle);
             WO.TextValues[0].stringEntry = GUI.TextArea(new Rect(5, 240, 138, 60), WO.TextValues[0].stringEntry);
-            NodeViewOptions.GetOptions().ExtraLanguage = (UserSettings.Languages)EditorGUI.EnumPopup(new Rect(5, 305, 138, 60), NodeViewOptions.GetOptions().ExtraLanguage);
+            NodeViewOptions.GetOptions().ExtraLanguage = (DG_TextLanguageFonts.Languages)EditorGUI.EnumPopup(new Rect(5, 305, 138, 60), NodeViewOptions.GetOptions().ExtraLanguage);
             WO.GetTextEntryByLanguage(NodeViewOptions.GetOptions().ExtraLanguage).stringEntry = GUI.TextArea(new Rect(5, 325, 138, 60), WO.GetTextEntryByLanguage(NodeViewOptions.GetOptions().ExtraLanguage).stringEntry);
         }
     }

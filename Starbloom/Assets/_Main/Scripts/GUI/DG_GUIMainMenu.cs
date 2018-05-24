@@ -132,7 +132,7 @@ public class DG_GUIMainMenu : Photon.MonoBehaviour
         }
 
         if (QuickFind.GameSettings.BypassMainMenu)
-            QuickFind.NetworkSync.PlayerCharacterID = QuickFind.CharacterManager.transform.childCount - 1;
+            QuickFind.NetworkSync.PlayerCharacterID = QuickFind.CharacterManager.GetAvailablePlayerID();
 
         QuickFind.GUI_Inventory.UpdateInventoryVisuals();
         QuickFind.GUI_Inventory.SetHotbarSlot(QuickFind.GUI_Inventory.HotbarSlots[0]);

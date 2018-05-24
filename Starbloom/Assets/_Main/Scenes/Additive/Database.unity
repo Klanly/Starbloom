@@ -141,7 +141,7 @@ Transform:
   m_Children:
   - {fileID: 272504729}
   m_Father: {fileID: 1843631469}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &31339076
 MonoBehaviour:
@@ -231,7 +231,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 47164
+  instanceID: 1851884
 --- !u!1 &50282250
 GameObject:
   m_ObjectHideFlags: 0
@@ -303,7 +303,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 47172
+  instanceID: 1851892
 --- !u!1 &61341391
 GameObject:
   m_ObjectHideFlags: 0
@@ -380,7 +380,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 4
-  instanceID: 47180
+  instanceID: 1851900
 --- !u!1 &76152370
 GameObject:
   m_ObjectHideFlags: 0
@@ -453,7 +453,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 47188
+  instanceID: 1851908
 --- !u!1 &81693793
 GameObject:
   m_ObjectHideFlags: 0
@@ -525,7 +525,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 47196
+  instanceID: 1851916
 --- !u!1 &109069266
 GameObject:
   m_ObjectHideFlags: 0
@@ -597,7 +597,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 47204
+  instanceID: 1851924
 --- !u!1 &111903024
 GameObject:
   m_ObjectHideFlags: 0
@@ -669,7 +669,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 47212
+  instanceID: 1851932
 --- !u!1 &118947720
 GameObject:
   m_ObjectHideFlags: 0
@@ -743,7 +743,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 47220
+  instanceID: 1851940
 --- !u!1 &146695317
 GameObject:
   m_ObjectHideFlags: 0
@@ -815,7 +815,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 47228
+  instanceID: 1851948
 --- !u!1 &206279743
 GameObject:
   m_ObjectHideFlags: 0
@@ -887,7 +887,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 47236
+  instanceID: 1851956
 --- !u!1 &207424871
 GameObject:
   m_ObjectHideFlags: 0
@@ -959,7 +959,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 47244
+  instanceID: 1851964
 --- !u!1 &229269929
 GameObject:
   m_ObjectHideFlags: 0
@@ -1060,7 +1060,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 47256
+  instanceID: 1851976
 --- !u!1 &272504728
 GameObject:
   m_ObjectHideFlags: 0
@@ -1162,7 +1162,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 47268
+  instanceID: 1851988
 --- !u!1 &393570843
 GameObject:
   m_ObjectHideFlags: 0
@@ -1234,7 +1234,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 47276
+  instanceID: 1851996
 --- !u!1 &412881067
 GameObject:
   m_ObjectHideFlags: 0
@@ -1306,65 +1306,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 47284
---- !u!1 &447920605
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 447920606}
-  - component: {fileID: 447920608}
-  - component: {fileID: 447920607}
-  m_Layer: 0
-  m_Name: 0 - Leave This Empty
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &447920606
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 447920605}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1524751961}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &447920607
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 447920605}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9029922c72861b4fb9768783d6447c0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DatabaseID: 0
-  LockItem: 1
-  ObjectName: Leave This Empty
-  NameWordID: 0
---- !u!114 &447920608
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 447920605}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DBType: 1
-  instanceID: 47292
+  instanceID: 1852004
 --- !u!1 &496052511
 GameObject:
   m_ObjectHideFlags: 0
@@ -1436,7 +1378,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 47300
+  instanceID: 1852012
 --- !u!1 &527002840
 GameObject:
   m_ObjectHideFlags: 0
@@ -1508,7 +1450,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 47308
+  instanceID: 1852020
 --- !u!1 &558162530
 GameObject:
   m_ObjectHideFlags: 0
@@ -1585,7 +1527,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 4
-  instanceID: 47316
+  instanceID: 1852028
 --- !u!1 &604142826
 GameObject:
   m_ObjectHideFlags: 0
@@ -1659,7 +1601,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 47324
+  instanceID: 1852036
 --- !u!1 &642408099
 GameObject:
   m_ObjectHideFlags: 0
@@ -1731,7 +1673,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 47332
+  instanceID: 1852044
 --- !u!1 &672129052
 GameObject:
   m_ObjectHideFlags: 0
@@ -1835,7 +1777,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 47344
+  instanceID: 1852056
 --- !u!1 &690700742
 GameObject:
   m_ObjectHideFlags: 0
@@ -1863,7 +1805,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1843631469}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &690700744
 MonoBehaviour:
@@ -1952,7 +1894,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 47358
+  instanceID: 1852070
 --- !u!1 &792145132
 GameObject:
   m_ObjectHideFlags: 0
@@ -1995,7 +1937,7 @@ Transform:
   m_Children:
   - {fileID: 229269930}
   m_Father: {fileID: 1843631469}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &919782884
 GameObject:
@@ -2097,7 +2039,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 47376
+  instanceID: 1852088
 --- !u!1 &946834387
 GameObject:
   m_ObjectHideFlags: 0
@@ -2169,7 +2111,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 47384
+  instanceID: 1852096
 --- !u!1 &996406040
 GameObject:
   m_ObjectHideFlags: 0
@@ -2241,7 +2183,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 47392
+  instanceID: 1852104
 --- !u!1 &1087104903
 GameObject:
   m_ObjectHideFlags: 0
@@ -2313,7 +2255,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 47400
+  instanceID: 1852112
 --- !u!1 &1124956840
 GameObject:
   m_ObjectHideFlags: 0
@@ -2385,7 +2327,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 47408
+  instanceID: 1852120
 --- !u!1 &1282855177
 GameObject:
   m_ObjectHideFlags: 0
@@ -2457,7 +2399,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 47416
+  instanceID: 1852128
 --- !u!1 &1290746968
 GameObject:
   m_ObjectHideFlags: 0
@@ -2529,7 +2471,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 47424
+  instanceID: 1852136
 --- !u!1 &1329798022
 GameObject:
   m_ObjectHideFlags: 0
@@ -2601,7 +2543,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 47432
+  instanceID: 1852144
 --- !u!1 &1337974347
 GameObject:
   m_ObjectHideFlags: 0
@@ -2611,6 +2553,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1337974348}
   - component: {fileID: 1337974349}
+  - component: {fileID: 1337974351}
+  - component: {fileID: 1337974350}
   m_Layer: 0
   m_Name: Word Database
   m_TagString: Untagged
@@ -2634,7 +2578,7 @@ Transform:
   - {fileID: 1647176683}
   - {fileID: 1929439631}
   m_Father: {fileID: 1843631469}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1337974349
 MonoBehaviour:
@@ -2689,6 +2633,43 @@ MonoBehaviour:
   - {fileID: 737240875}
   - {fileID: 2063523898}
   ListCount: 40
+--- !u!114 &1337974350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1337974347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35c6aac35f65c9e4d881c1633214c088, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LanguageFonts:
+  - LanguageSetting: 0
+    FontAsset: {fileID: 11400000, guid: 826e6aa4d5c44c44fa8cf4ce71437626, type: 2}
+  - LanguageSetting: 1
+    FontAsset: {fileID: 11400000, guid: 9c60d354979611e48b3776b03d319e28, type: 2}
+  - LanguageSetting: 2
+    FontAsset: {fileID: 0}
+  - LanguageSetting: 3
+    FontAsset: {fileID: 0}
+  - LanguageSetting: 4
+    FontAsset: {fileID: 0}
+  - LanguageSetting: 5
+    FontAsset: {fileID: 11400000, guid: 26f94da789f9e66428de519846d10eed, type: 2}
+  - LanguageSetting: 6
+    FontAsset: {fileID: 11400000, guid: e648fa9e27987db448ffd76a7e65825f, type: 2}
+--- !u!114 &1337974351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1337974347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b732a12d62dccc44c97a2f7eedd66355, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1345319859
 GameObject:
   m_ObjectHideFlags: 0
@@ -2760,7 +2741,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 47446
+  instanceID: 1852158
 --- !u!1 &1440713918
 GameObject:
   m_ObjectHideFlags: 0
@@ -2832,7 +2813,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 47454
+  instanceID: 1852166
 --- !u!1 &1456541170
 GameObject:
   m_ObjectHideFlags: 0
@@ -2942,7 +2923,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 47466
+  instanceID: 1852178
 --- !u!1 &1490872495
 GameObject:
   m_ObjectHideFlags: 0
@@ -3014,92 +2995,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 47474
---- !u!1 &1524751960
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1524751961}
-  - component: {fileID: 1524751962}
-  m_Layer: 0
-  m_Name: Everyone
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1524751961
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1524751960}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 447920606}
-  - {fileID: 1822878650}
-  m_Father: {fileID: 1939056530}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1524751962
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1524751960}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f80c7deb03d5814449b703682dfcf97b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DatabaseID: 1
---- !u!1 &1535058563
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1535058565}
-  - component: {fileID: 1535058564}
-  m_Layer: 0
-  m_Name: Scene ID List
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1535058564
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1535058563}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7df83536e2dbf494c8b8f32d480f5bf5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SceneList:
-  - Farm
---- !u!4 &1535058565
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1535058563}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1843631469}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  instanceID: 1852186
 --- !u!1 &1647176682
 GameObject:
   m_ObjectHideFlags: 0
@@ -3224,7 +3120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 47498
+  instanceID: 1852198
 --- !u!1 &1680479771
 GameObject:
   m_ObjectHideFlags: 0
@@ -3557,7 +3453,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 2
-  instanceID: 47506
+  instanceID: 1852206
 --- !u!1 &1686792870
 GameObject:
   m_ObjectHideFlags: 0
@@ -3629,7 +3525,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 47514
+  instanceID: 1852214
 --- !u!1 &1690898328
 GameObject:
   m_ObjectHideFlags: 0
@@ -3701,7 +3597,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 47522
+  instanceID: 1852222
 --- !u!1 &1782937100
 GameObject:
   m_ObjectHideFlags: 0
@@ -3774,65 +3670,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 47530
---- !u!1 &1822878649
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1822878650}
-  - component: {fileID: 1822878652}
-  - component: {fileID: 1822878651}
-  m_Layer: 0
-  m_Name: 1 - Jethro
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1822878650
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1822878649}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1524751961}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1822878651
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1822878649}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9029922c72861b4fb9768783d6447c0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DatabaseID: 1
-  LockItem: 1
-  ObjectName: Jethro
-  NameWordID: 14
---- !u!114 &1822878652
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1822878649}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DBType: 1
-  instanceID: 47538
+  instanceID: 1852230
 --- !u!1 &1843631468
 GameObject:
   m_ObjectHideFlags: 0
@@ -3858,9 +3696,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1535058565}
   - {fileID: 690700743}
-  - {fileID: 1939056530}
   - {fileID: 792145134}
   - {fileID: 1337974348}
   - {fileID: 31339075}
@@ -3938,7 +3774,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 47550
+  instanceID: 1852242
 --- !u!1 &1929439630
 GameObject:
   m_ObjectHideFlags: 0
@@ -3968,51 +3804,6 @@ Transform:
   m_Father: {fileID: 1337974348}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1939056529
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1939056530}
-  - component: {fileID: 1939056531}
-  m_Layer: 0
-  m_Name: Character Database
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1939056530
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1939056529}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1524751961}
-  m_Father: {fileID: 1843631469}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1939056531
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1939056529}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fdeb9194430a89d49aefc9f75974b7d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ItemCatagoryList:
-  - {fileID: 447920607}
-  - {fileID: 1822878651}
-  ListCount: 2
 --- !u!1 &1985819918
 GameObject:
   m_ObjectHideFlags: 0
@@ -4084,7 +3875,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 47568
+  instanceID: 1852254
 --- !u!1 &2026458753
 GameObject:
   m_ObjectHideFlags: 0
@@ -4158,7 +3949,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 47576
+  instanceID: 1852262
 --- !u!1 &2063523896
 GameObject:
   m_ObjectHideFlags: 0
@@ -4234,4 +4025,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 47584
+  instanceID: 1852270

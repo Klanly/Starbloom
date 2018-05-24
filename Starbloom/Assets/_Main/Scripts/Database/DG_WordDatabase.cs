@@ -47,15 +47,15 @@ public class DG_WordDatabase : MonoBehaviour {
 
     public string GetWordByLanguage(DG_WordObject.TextEntry[] TextArray)
     {
-        UserSettings.Languages CurrentLanguage;
-        CurrentLanguage = QuickFind.UserSettings.CurrentLanguage;
+        DG_TextLanguageFonts.Languages CurrentLanguage;
+        CurrentLanguage = (DG_TextLanguageFonts.Languages)QuickFind.UserSettings.CurrentLanguage;
 
         for (int i = 0; i < TextArray.Length; i++)
         {
             DG_WordObject.TextEntry TE = TextArray[i];
             if (TE.Language == CurrentLanguage)
             {
-                if(CurrentLanguage != UserSettings.Languages.English)
+                if(CurrentLanguage != DG_TextLanguageFonts.Languages.English)
                 {
                     char[] StringChar = TextArray[i].stringEntry.ToCharArray();
                     System.Text.StringBuilder SB = new System.Text.StringBuilder();

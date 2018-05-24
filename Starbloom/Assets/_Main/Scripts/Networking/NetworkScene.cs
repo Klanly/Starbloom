@@ -14,7 +14,7 @@ public class NetworkScene : MonoBehaviour {
 
 
     public int SceneID;
-    public List<NetworkObject> NetworkObjectList;
+    [HideInInspector] public List<NetworkObject> NetworkObjectList;
 
     int wait1 = 0;
 
