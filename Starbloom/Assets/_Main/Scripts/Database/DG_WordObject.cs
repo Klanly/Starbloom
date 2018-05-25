@@ -38,8 +38,9 @@ public class DG_WordObject : MonoBehaviour {
 
     [HideInInspector] public int DatabaseID;
     [HideInInspector] public bool LockItem;
-    public string ObjectName;
 
+    public string DevNotes;
+    [Header("Values")]
     public TextEntry[] TextValues;
 
 

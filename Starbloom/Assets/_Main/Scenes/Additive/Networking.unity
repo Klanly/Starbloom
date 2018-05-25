@@ -1089,9 +1089,9 @@ MonoBehaviour:
         NormalValue: 0
         HighValue: 0
         MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
+      - ContainedItem: 5
+        CurrentStackActive: 1
+        LowValue: 1
         NormalValue: 0
         HighValue: 0
         MaximumValue: 0

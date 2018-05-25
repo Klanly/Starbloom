@@ -25,6 +25,9 @@ public class DG_ItemObject : MonoBehaviour
     public string Name;
     public int MaxStackSize;
     public HotbarItemHandler.ActivateableTypes ActivateableType;
+    
+    [Header("ToolTip Data")]
+    public DG_TooltipGUI.ToolTipContainerItem ToolTipType;
 
     [HideInInspector] public int DatabaseID;
     [HideInInspector] public bool LockItem;
@@ -35,12 +38,10 @@ public class DG_ItemObject : MonoBehaviour
     public GameObject ModelPrefab;
     public float DefaultScale = 1;
 
-    [Header("Localization")]
-    public int WordCatagory;
-    public int WordValue;
 
 
     #region Tool
+    [Header("----------------------------------")]
     public bool isTool = false;
     [Header("Tool")]
     [ShowIf("isTool")]
@@ -70,6 +71,7 @@ public class DG_ItemObject : MonoBehaviour
 
 
     #region Growable Item
+    [Header("----------------------------------")]
     public bool isGrowableItem = false;
     [ShowIf("isGrowableItem")]
     public GrowableItem[] GrowableItemStages;
@@ -83,6 +85,7 @@ public class DG_ItemObject : MonoBehaviour
 
 
     #region Item
+    [Header("----------------------------------")]
     public bool isItem = false;
     [ShowIf("isItem")]
     [Header("Item")]

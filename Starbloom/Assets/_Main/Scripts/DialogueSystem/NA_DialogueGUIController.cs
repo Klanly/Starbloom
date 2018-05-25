@@ -337,7 +337,7 @@ public class NA_DialogueGUIController : MonoBehaviour
                             case "I": 
                                 {
                                     DG_ItemObject ItemObject = QuickFind.ItemDatabase.GetItemFromID(CodeValue(CodeS));
-                                    DatabaseColumn = QuickFind.WordDatabase.GetItemFromID(ItemObject.WordValue).TextValues[(int)QuickFind.UserSettings.CurrentLanguage].stringEntry;
+                                    DatabaseColumn = QuickFind.WordDatabase.GetItemFromID(ItemObject.ToolTipType.MainLocalizationID).TextValues[(int)QuickFind.UserSettings.CurrentLanguage].stringEntry;
                                 }
                                 break;
                         }
@@ -370,9 +370,9 @@ public class NA_DialogueGUIController : MonoBehaviour
                                     DG_ItemObject ItemObject = QuickFindInEditor.GetEditorItemDatabase().GetItemFromID(CodeValue(CodeS));
 
                                     if (!Editor)
-                                        DatabaseColumn = QuickFind.WordDatabase.GetItemFromID(ItemObject.WordValue).TextValues[(int)QuickFind.UserSettings.CurrentLanguage].stringEntry;
+                                        DatabaseColumn = QuickFind.WordDatabase.GetItemFromID(ItemObject.ToolTipType.MainLocalizationID).TextValues[(int)QuickFind.UserSettings.CurrentLanguage].stringEntry;
                                     else
-                                        DatabaseColumn = QuickFindInEditor.GetEditorWordDatabase().GetItemFromID(ItemObject.WordValue).TextValues[(int)QuickFindInEditor.GetEditorUserSettings().CurrentLanguage].stringEntry;
+                                        DatabaseColumn = QuickFindInEditor.GetEditorWordDatabase().GetItemFromID(ItemObject.ToolTipType.MainLocalizationID).TextValues[(int)QuickFindInEditor.GetEditorUserSettings().CurrentLanguage].stringEntry;
                                 }
                                 break;
                         }

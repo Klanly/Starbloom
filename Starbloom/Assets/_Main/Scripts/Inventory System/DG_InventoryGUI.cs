@@ -2,6 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+//This Script should probably be split, since it is acting as both a inventory Manager, and GUI Manager.
+
+
+
+
 public class DG_InventoryGUI : MonoBehaviour
 {
 
@@ -116,10 +122,14 @@ public class DG_InventoryGUI : MonoBehaviour
 
                 GuiSlot.Disabled.enabled = false;
                 if (RucksackSlot.GetStackValue() == 0)
+                {
+                    GuiSlot.ContainsItem = false;
                     GuiSlot.Icon.sprite = DefaultNullSprite;
+                }
                 else
                 {
                     DG_ItemObject Object = QuickFind.ItemDatabase.GetItemFromID(RucksackSlot.ContainedItem);
+                    GuiSlot.ContainsItem = true;
                     GuiSlot.Icon.sprite = Object.Icon;
                     if (RucksackSlot.GetStackValue() > 1)
                         GuiSlot.AmountText.text = RucksackSlot.GetStackValue().ToString();
@@ -140,6 +150,7 @@ public class DG_InventoryGUI : MonoBehaviour
             DG_InventoryItem Mirror = HotbarMirrorGrid.GetChild(i).GetComponent<DG_InventoryItem>();
             Mirror.Icon.sprite = Main.Icon.sprite;
             Mirror.AmountText.text = Main.AmountText.text;
+            Mirror.ContainsItem = Main.ContainsItem;
         }
     }
 
@@ -302,12 +313,19 @@ public class DG_InventoryGUI : MonoBehaviour
 
 
 
-
-
-
-
     public int TotalInventoryCountOfItem(int ItemID)
     {
         return 0;
+    }
+
+
+
+
+
+    public DG_ItemObject GetItemByInventoryItem(DG_InventoryItem II)
+    {
+        DG_PlayerCharacters.CharacterEquipment Equipment = QuickFind.Farm.PlayerCharacters[QuickFind.NetworkSync.PlayerCharacterID].Equipment;
+        DG_PlayerCharacters.RucksackSlot RucksackSlot = Equipment.RucksackSlots[II.SlotID];
+        return QuickFind.ItemDatabase.GetItemFromID(RucksackSlot.ContainedItem);
     }
 }

@@ -201,7 +201,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DatabaseID: 5
   LockItem: 1
-  ObjectName: 
+  DevNotes: 
   TextValues:
   - Language: 0
     stringEntry: '*"Hey I remember when you gave me that 70 *I1*.  Thanks again!"'
@@ -275,7 +275,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DatabaseID: 19
   LockItem: 1
-  ObjectName: 
+  DevNotes: 
   TextValues:
   - Language: 0
     stringEntry: Select
@@ -424,7 +424,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DatabaseID: 7
   LockItem: 1
-  ObjectName: 
+  DevNotes: 
   TextValues:
   - Language: 0
     stringEntry: '*"I am suddenly confused, here is 70 *I1* for you"'
@@ -497,7 +497,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DatabaseID: 30
   LockItem: 1
-  ObjectName: 
+  DevNotes: 
   TextValues:
   - Language: 0
     stringEntry: Right Direction
@@ -526,6 +526,78 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DBType: 3
   instanceID: 1851916
+--- !u!1 &108958417
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 108958418}
+  - component: {fileID: 108958420}
+  - component: {fileID: 108958419}
+  m_Layer: 0
+  m_Name: 47 - Poisiffero
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &108958418
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 108958417}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 919782885}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &108958419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 108958417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 766834c6f2c9cf243ab3296f4a43ade1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DatabaseID: 47
+  LockItem: 1
+  DevNotes: 8 - Herb_PoisifferousRoiler
+  TextValues:
+  - Language: 0
+    stringEntry: Poisifferous Roiler
+  - Language: 1
+    stringEntry: 
+  - Language: 2
+    stringEntry: 
+  - Language: 3
+    stringEntry: 
+  - Language: 4
+    stringEntry: 
+  - Language: 5
+    stringEntry: 
+  - Language: 6
+    stringEntry: 
+--- !u!114 &108958420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 108958417}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 3
+  instanceID: -123925728
 --- !u!1 &109069266
 GameObject:
   m_ObjectHideFlags: 0
@@ -569,7 +641,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DatabaseID: 20
   LockItem: 1
-  ObjectName: 
+  DevNotes: 
   TextValues:
   - Language: 0
     stringEntry: Default
@@ -641,7 +713,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DatabaseID: 17
   LockItem: 1
-  ObjectName: 
+  DevNotes: 
   TextValues:
   - Language: 0
     stringEntry: Space
@@ -670,6 +742,78 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DBType: 3
   instanceID: 1851932
+--- !u!1 &113280555
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 113280556}
+  - component: {fileID: 113280558}
+  - component: {fileID: 113280557}
+  m_Layer: 0
+  m_Name: 57 - Thick skin
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &113280556
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 113280555}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1297176233}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &113280557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 113280555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 766834c6f2c9cf243ab3296f4a43ade1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DatabaseID: 57
+  LockItem: 1
+  DevNotes: 5 - Herb_CrispinsGlove
+  TextValues:
+  - Language: 0
+    stringEntry: Thick skinned flower, which can grow in most places easily.
+  - Language: 1
+    stringEntry: 
+  - Language: 2
+    stringEntry: 
+  - Language: 3
+    stringEntry: 
+  - Language: 4
+    stringEntry: 
+  - Language: 5
+    stringEntry: 
+  - Language: 6
+    stringEntry: 
+--- !u!114 &113280558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 113280555}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 3
+  instanceID: -125146254
 --- !u!1 &118947720
 GameObject:
   m_ObjectHideFlags: 0
@@ -713,7 +857,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DatabaseID: 6
   LockItem: 1
-  ObjectName: 
+  DevNotes: 
   TextValues:
   - Language: 0
     stringEntry: '*"Come back when you have the *I1*"'
@@ -787,7 +931,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DatabaseID: 3
   LockItem: 1
-  ObjectName: 
+  DevNotes: 
   TextValues:
   - Language: 0
     stringEntry: '*Ask for 70 *I1*'
@@ -816,6 +960,39 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DBType: 3
   instanceID: 1851948
+--- !u!1 &187649276
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 187649277}
+  m_Layer: 0
+  m_Name: Tool Descriptions
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &187649277
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 187649276}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1753353421}
+  - {fileID: 828965506}
+  - {fileID: 455383456}
+  - {fileID: 486141673}
+  - {fileID: 839248948}
+  m_Father: {fileID: 1337974348}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &206279743
 GameObject:
   m_ObjectHideFlags: 0
@@ -859,7 +1036,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DatabaseID: 26
   LockItem: 1
-  ObjectName: 
+  DevNotes: 
   TextValues:
   - Language: 0
     stringEntry: Keyboard Only
@@ -931,7 +1108,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DatabaseID: 18
   LockItem: 1
-  ObjectName: 
+  DevNotes: 
   TextValues:
   - Language: 0
     stringEntry: Delete
@@ -1032,7 +1209,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DatabaseID: 28
   LockItem: 1
-  ObjectName: 
+  DevNotes: 
   TextValues:
   - Language: 0
     stringEntry: Down Direction
@@ -1091,6 +1268,78 @@ Transform:
   m_Father: {fileID: 31339075}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &307170510
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 307170511}
+  - component: {fileID: 307170513}
+  - component: {fileID: 307170512}
+  m_Layer: 0
+  m_Name: 60 - Mushroom w
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &307170511
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 307170510}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1297176233}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &307170512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 307170510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 766834c6f2c9cf243ab3296f4a43ade1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DatabaseID: 60
+  LockItem: 1
+  DevNotes: 8 - Herb_PoisifferousRoiler
+  TextValues:
+  - Language: 0
+    stringEntry: Mushroom which forms a living shell to protect it's inner seeds.
+  - Language: 1
+    stringEntry: 
+  - Language: 2
+    stringEntry: 
+  - Language: 3
+    stringEntry: 
+  - Language: 4
+    stringEntry: 
+  - Language: 5
+    stringEntry: 
+  - Language: 6
+    stringEntry: 
+--- !u!114 &307170513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 307170510}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 3
+  instanceID: -125306616
 --- !u!1 &337637629
 GameObject:
   m_ObjectHideFlags: 0
@@ -1134,7 +1383,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DatabaseID: 25
   LockItem: 1
-  ObjectName: 
+  DevNotes: 
   TextValues:
   - Language: 0
     stringEntry: Menu
@@ -1163,6 +1412,78 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DBType: 3
   instanceID: 1851988
+--- !u!1 &386247815
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 386247816}
+  - component: {fileID: 386247818}
+  - component: {fileID: 386247817}
+  m_Layer: 0
+  m_Name: 42 - FishingPol
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &386247816
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 386247815}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1929439631}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &386247817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 386247815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 766834c6f2c9cf243ab3296f4a43ade1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DatabaseID: 42
+  LockItem: 1
+  DevNotes: 
+  TextValues:
+  - Language: 0
+    stringEntry: FishingPole
+  - Language: 1
+    stringEntry: 
+  - Language: 2
+    stringEntry: 
+  - Language: 3
+    stringEntry: 
+  - Language: 4
+    stringEntry: 
+  - Language: 5
+    stringEntry: 
+  - Language: 6
+    stringEntry: 
+--- !u!114 &386247818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 386247815}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 3
+  instanceID: -123772416
 --- !u!1 &393570843
 GameObject:
   m_ObjectHideFlags: 0
@@ -1206,7 +1527,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DatabaseID: 36
   LockItem: 1
-  ObjectName: 
+  DevNotes: 
   TextValues:
   - Language: 0
     stringEntry: Quit
@@ -1278,7 +1599,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DatabaseID: 33
   LockItem: 1
-  ObjectName: 
+  DevNotes: 
   TextValues:
   - Language: 0
     stringEntry: New
@@ -1307,6 +1628,222 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DBType: 3
   instanceID: 1852004
+--- !u!1 &454701155
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 454701156}
+  - component: {fileID: 454701158}
+  - component: {fileID: 454701157}
+  m_Layer: 0
+  m_Name: 46 - Fire Wort
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &454701156
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 454701155}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 919782885}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &454701157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 454701155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 766834c6f2c9cf243ab3296f4a43ade1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DatabaseID: 46
+  LockItem: 1
+  DevNotes: 7 - Herb_FireWort
+  TextValues:
+  - Language: 0
+    stringEntry: Fire Wort
+  - Language: 1
+    stringEntry: 
+  - Language: 2
+    stringEntry: 
+  - Language: 3
+    stringEntry: 
+  - Language: 4
+    stringEntry: 
+  - Language: 5
+    stringEntry: 
+  - Language: 6
+    stringEntry: 
+--- !u!114 &454701158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 454701155}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 3
+  instanceID: -123914900
+--- !u!1 &455383455
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 455383456}
+  - component: {fileID: 455383458}
+  - component: {fileID: 455383457}
+  m_Layer: 0
+  m_Name: 53 - Used to ch
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &455383456
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 455383455}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 187649277}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &455383457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 455383455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 766834c6f2c9cf243ab3296f4a43ade1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DatabaseID: 53
+  LockItem: 1
+  DevNotes: 1 - axe01_blue
+  TextValues:
+  - Language: 0
+    stringEntry: Used to chop wood.
+  - Language: 1
+    stringEntry: 
+  - Language: 2
+    stringEntry: 
+  - Language: 3
+    stringEntry: 
+  - Language: 4
+    stringEntry: 
+  - Language: 5
+    stringEntry: 
+  - Language: 6
+    stringEntry: 
+--- !u!114 &455383458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 455383455}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 3
+  instanceID: -124836166
+--- !u!1 &486141672
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 486141673}
+  - component: {fileID: 486141675}
+  - component: {fileID: 486141674}
+  m_Layer: 0
+  m_Name: 54 - Used to di
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &486141673
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 486141672}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 187649277}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &486141674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 486141672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 766834c6f2c9cf243ab3296f4a43ade1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DatabaseID: 54
+  LockItem: 1
+  DevNotes: 2 - hoe02_blue
+  TextValues:
+  - Language: 0
+    stringEntry: Used to dig and till soil.
+  - Language: 1
+    stringEntry: 
+  - Language: 2
+    stringEntry: 
+  - Language: 3
+    stringEntry: 
+  - Language: 4
+    stringEntry: 
+  - Language: 5
+    stringEntry: 
+  - Language: 6
+    stringEntry: 
+--- !u!114 &486141675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 486141672}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 3
+  instanceID: -124844782
 --- !u!1 &496052511
 GameObject:
   m_ObjectHideFlags: 0
@@ -1350,7 +1887,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DatabaseID: 11
   LockItem: 1
-  ObjectName: 
+  DevNotes: 
   TextValues:
   - Language: 0
     stringEntry: Cloud
@@ -1422,7 +1959,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DatabaseID: 14
   LockItem: 1
-  ObjectName: 
+  DevNotes: 
   TextValues:
   - Language: 0
     stringEntry: Jethro
@@ -1571,7 +2108,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DatabaseID: 0
   LockItem: 1
-  ObjectName: 
+  DevNotes: 
   TextValues:
   - Language: 0
     stringEntry: '*"Hello There, you must be *P1* i''ve heard about"'
@@ -1645,7 +2182,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DatabaseID: 31
   LockItem: 1
-  ObjectName: 
+  DevNotes: 
   TextValues:
   - Language: 0
     stringEntry: Set New Button.....
@@ -1749,7 +2286,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DatabaseID: 37
   LockItem: 1
-  ObjectName: 
+  DevNotes: 
   TextValues:
   - Language: 0
     stringEntry: Character Name..............
@@ -1823,6 +2360,78 @@ MonoBehaviour:
     DevNotes: Highlighted Text
     DatabaseID: 1
     Color: {r: 0, g: 1, b: 1, a: 1}
+--- !u!1 &694112714
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 694112715}
+  - component: {fileID: 694112717}
+  - component: {fileID: 694112716}
+  m_Layer: 0
+  m_Name: 56 - Forage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &694112715
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 694112714}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1302384510}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &694112716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 694112714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 766834c6f2c9cf243ab3296f4a43ade1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DatabaseID: 56
+  LockItem: 1
+  DevNotes: 
+  TextValues:
+  - Language: 0
+    stringEntry: Forage
+  - Language: 1
+    stringEntry: 
+  - Language: 2
+    stringEntry: 
+  - Language: 3
+    stringEntry: 
+  - Language: 4
+    stringEntry: 
+  - Language: 5
+    stringEntry: 
+  - Language: 6
+    stringEntry: 
+--- !u!114 &694112717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 694112714}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 3
+  instanceID: -124998384
 --- !u!1 &737240873
 GameObject:
   m_ObjectHideFlags: 0
@@ -1866,7 +2475,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DatabaseID: 38
   LockItem: 1
-  ObjectName: 
+  DevNotes: 
   TextValues:
   - Language: 0
     stringEntry: Farm Name..............
@@ -1939,6 +2548,294 @@ Transform:
   m_Father: {fileID: 1843631469}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &828965505
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 828965506}
+  - component: {fileID: 828965508}
+  - component: {fileID: 828965507}
+  m_Layer: 0
+  m_Name: 52 - Used to wa
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &828965506
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 828965505}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 187649277}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &828965507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 828965505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 766834c6f2c9cf243ab3296f4a43ade1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DatabaseID: 52
+  LockItem: 1
+  DevNotes: 
+  TextValues:
+  - Language: 0
+    stringEntry: Used to water crops.  It can be refilled at any water source.
+  - Language: 1
+    stringEntry: 
+  - Language: 2
+    stringEntry: 
+  - Language: 3
+    stringEntry: 
+  - Language: 4
+    stringEntry: 
+  - Language: 5
+    stringEntry: 
+  - Language: 6
+    stringEntry: 
+--- !u!114 &828965508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 828965505}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 3
+  instanceID: -124710402
+--- !u!1 &839248947
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 839248948}
+  - component: {fileID: 839248950}
+  - component: {fileID: 839248949}
+  m_Layer: 0
+  m_Name: 55 - Use in the
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &839248948
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 839248947}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 187649277}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &839248949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 839248947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 766834c6f2c9cf243ab3296f4a43ade1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DatabaseID: 55
+  LockItem: 1
+  DevNotes: 3 - fishingpole01_blue
+  TextValues:
+  - Language: 0
+    stringEntry: Use in the water to catch fish.
+  - Language: 1
+    stringEntry: 
+  - Language: 2
+    stringEntry: 
+  - Language: 3
+    stringEntry: 
+  - Language: 4
+    stringEntry: 
+  - Language: 5
+    stringEntry: 
+  - Language: 6
+    stringEntry: 
+--- !u!114 &839248950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 839248947}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 3
+  instanceID: -124860442
+--- !u!1 &880333927
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 880333928}
+  - component: {fileID: 880333930}
+  - component: {fileID: 880333929}
+  m_Layer: 0
+  m_Name: 50 - Resource
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &880333928
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 880333927}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1302384510}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &880333929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 880333927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 766834c6f2c9cf243ab3296f4a43ade1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DatabaseID: 50
+  LockItem: 1
+  DevNotes: 
+  TextValues:
+  - Language: 0
+    stringEntry: Resource
+  - Language: 1
+    stringEntry: 
+  - Language: 2
+    stringEntry: 
+  - Language: 3
+    stringEntry: 
+  - Language: 4
+    stringEntry: 
+  - Language: 5
+    stringEntry: 
+  - Language: 6
+    stringEntry: 
+--- !u!114 &880333930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 880333927}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 3
+  instanceID: -124648562
+--- !u!1 &903885948
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 903885949}
+  - component: {fileID: 903885951}
+  - component: {fileID: 903885950}
+  m_Layer: 0
+  m_Name: 48 - Tool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &903885949
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 903885948}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1302384510}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &903885950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 903885948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 766834c6f2c9cf243ab3296f4a43ade1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DatabaseID: 48
+  LockItem: 1
+  DevNotes: 
+  TextValues:
+  - Language: 0
+    stringEntry: Tool
+  - Language: 1
+    stringEntry: 
+  - Language: 2
+    stringEntry: 
+  - Language: 3
+    stringEntry: 
+  - Language: 4
+    stringEntry: 
+  - Language: 5
+    stringEntry: 
+  - Language: 6
+    stringEntry: 
+--- !u!114 &903885951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 903885948}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 3
+  instanceID: -124617912
 --- !u!1 &919782884
 GameObject:
   m_ObjectHideFlags: 0
@@ -1965,6 +2862,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1440713919}
+  - {fileID: 1351259151}
+  - {fileID: 1367582964}
+  - {fileID: 454701156}
+  - {fileID: 108958418}
   m_Father: {fileID: 1337974348}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2011,7 +2912,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DatabaseID: 2
   LockItem: 1
-  ObjectName: 
+  DevNotes: 
   TextValues:
   - Language: 0
     stringEntry: Walk Away Frustrated
@@ -2083,7 +2984,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DatabaseID: 29
   LockItem: 1
-  ObjectName: 
+  DevNotes: 
   TextValues:
   - Language: 0
     stringEntry: Left Direction
@@ -2155,7 +3056,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DatabaseID: 22
   LockItem: 1
-  ObjectName: 
+  DevNotes: 
   TextValues:
   - Language: 0
     stringEntry: Action
@@ -2227,7 +3128,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DatabaseID: 27
   LockItem: 1
-  ObjectName: 
+  DevNotes: 
   TextValues:
   - Language: 0
     stringEntry: Up Direction
@@ -2299,7 +3200,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DatabaseID: 4
   LockItem: 1
-  ObjectName: 
+  DevNotes: 
   TextValues:
   - Language: 0
     stringEntry: '*Give 70 *I1*'
@@ -2371,7 +3272,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DatabaseID: 35
   LockItem: 1
-  ObjectName: 
+  DevNotes: 
   TextValues:
   - Language: 0
     stringEntry: Join Game
@@ -2443,7 +3344,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DatabaseID: 23
   LockItem: 1
-  ObjectName: 
+  DevNotes: 
   TextValues:
   - Language: 0
     stringEntry: Interact
@@ -2472,6 +3373,214 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DBType: 3
   instanceID: 1852136
+--- !u!1 &1297176232
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1297176233}
+  m_Layer: 0
+  m_Name: Forage Descriptions
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1297176233
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1297176232}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 113280556}
+  - {fileID: 1369702742}
+  - {fileID: 1997068650}
+  - {fileID: 307170511}
+  m_Father: {fileID: 1337974348}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1302384509
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1302384510}
+  m_Layer: 0
+  m_Name: Catagory Descriptions
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1302384510
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1302384509}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 903885949}
+  - {fileID: 1308403044}
+  - {fileID: 880333928}
+  - {fileID: 694112715}
+  m_Father: {fileID: 1337974348}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1308403043
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1308403044}
+  - component: {fileID: 1308403046}
+  - component: {fileID: 1308403045}
+  m_Layer: 0
+  m_Name: 49 - Vegetable
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1308403044
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1308403043}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1302384510}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1308403045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1308403043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 766834c6f2c9cf243ab3296f4a43ade1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DatabaseID: 49
+  LockItem: 1
+  DevNotes: 
+  TextValues:
+  - Language: 0
+    stringEntry: Vegetable
+  - Language: 1
+    stringEntry: 
+  - Language: 2
+    stringEntry: 
+  - Language: 3
+    stringEntry: 
+  - Language: 4
+    stringEntry: 
+  - Language: 5
+    stringEntry: 
+  - Language: 6
+    stringEntry: 
+--- !u!114 &1308403046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1308403043}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 3
+  instanceID: -124638190
+--- !u!1 &1315412316
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1315412317}
+  - component: {fileID: 1315412319}
+  - component: {fileID: 1315412318}
+  m_Layer: 0
+  m_Name: 41 - Hoe
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1315412317
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1315412316}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1929439631}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1315412318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1315412316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 766834c6f2c9cf243ab3296f4a43ade1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DatabaseID: 41
+  LockItem: 1
+  DevNotes: 
+  TextValues:
+  - Language: 0
+    stringEntry: Hoe
+  - Language: 1
+    stringEntry: 
+  - Language: 2
+    stringEntry: 
+  - Language: 3
+    stringEntry: 
+  - Language: 4
+    stringEntry: 
+  - Language: 5
+    stringEntry: 
+  - Language: 6
+    stringEntry: 
+--- !u!114 &1315412319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1315412316}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 3
+  instanceID: -123764934
 --- !u!1 &1329798022
 GameObject:
   m_ObjectHideFlags: 0
@@ -2515,7 +3624,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DatabaseID: 34
   LockItem: 1
-  ObjectName: 
+  DevNotes: 
   TextValues:
   - Language: 0
     stringEntry: Load
@@ -2577,6 +3686,10 @@ Transform:
   - {fileID: 672129053}
   - {fileID: 1647176683}
   - {fileID: 1929439631}
+  - {fileID: 1488660084}
+  - {fileID: 1302384510}
+  - {fileID: 187649277}
+  - {fileID: 1297176233}
   m_Father: {fileID: 1843631469}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2632,7 +3745,28 @@ MonoBehaviour:
   - {fileID: 678994098}
   - {fileID: 737240875}
   - {fileID: 2063523898}
-  ListCount: 40
+  - {fileID: 1613849537}
+  - {fileID: 1315412318}
+  - {fileID: 386247817}
+  - {fileID: 1582465069}
+  - {fileID: 1351259152}
+  - {fileID: 1367582965}
+  - {fileID: 454701157}
+  - {fileID: 108958419}
+  - {fileID: 903885950}
+  - {fileID: 1308403045}
+  - {fileID: 880333929}
+  - {fileID: 1753353422}
+  - {fileID: 828965507}
+  - {fileID: 455383457}
+  - {fileID: 486141674}
+  - {fileID: 839248949}
+  - {fileID: 694112716}
+  - {fileID: 113280557}
+  - {fileID: 1369702743}
+  - {fileID: 1997068651}
+  - {fileID: 307170512}
+  ListCount: 61
 --- !u!114 &1337974350
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2713,7 +3847,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DatabaseID: 21
   LockItem: 1
-  ObjectName: 
+  DevNotes: 
   TextValues:
   - Language: 0
     stringEntry: Controller Settings
@@ -2742,6 +3876,222 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DBType: 3
   instanceID: 1852158
+--- !u!1 &1351259150
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1351259151}
+  - component: {fileID: 1351259153}
+  - component: {fileID: 1351259152}
+  m_Layer: 0
+  m_Name: 44 - Crispins G
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1351259151
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1351259150}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 919782885}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1351259152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1351259150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 766834c6f2c9cf243ab3296f4a43ade1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DatabaseID: 44
+  LockItem: 1
+  DevNotes: 5 - Herb_CrispinsGlove
+  TextValues:
+  - Language: 0
+    stringEntry: Crispins Glove
+  - Language: 1
+    stringEntry: 
+  - Language: 2
+    stringEntry: 
+  - Language: 3
+    stringEntry: 
+  - Language: 4
+    stringEntry: 
+  - Language: 5
+    stringEntry: 
+  - Language: 6
+    stringEntry: 
+--- !u!114 &1351259153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1351259150}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 3
+  instanceID: -123880694
+--- !u!1 &1367582963
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1367582964}
+  - component: {fileID: 1367582966}
+  - component: {fileID: 1367582965}
+  m_Layer: 0
+  m_Name: 45 - Dervish Ro
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1367582964
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1367582963}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 919782885}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1367582965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1367582963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 766834c6f2c9cf243ab3296f4a43ade1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DatabaseID: 45
+  LockItem: 1
+  DevNotes: 6 - Herb_DervishRoot
+  TextValues:
+  - Language: 0
+    stringEntry: Dervish Root
+  - Language: 1
+    stringEntry: 
+  - Language: 2
+    stringEntry: 
+  - Language: 3
+    stringEntry: 
+  - Language: 4
+    stringEntry: 
+  - Language: 5
+    stringEntry: 
+  - Language: 6
+    stringEntry: 
+--- !u!114 &1367582966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1367582963}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 3
+  instanceID: -123907722
+--- !u!1 &1369702741
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1369702742}
+  - component: {fileID: 1369702744}
+  - component: {fileID: 1369702743}
+  m_Layer: 0
+  m_Name: 58 - Long windi
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1369702742
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1369702741}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1297176233}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1369702743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1369702741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 766834c6f2c9cf243ab3296f4a43ade1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DatabaseID: 58
+  LockItem: 1
+  DevNotes: 6 - Herb_DervishRoot
+  TextValues:
+  - Language: 0
+    stringEntry: Long winding root, which often trips unsuspecting travelers.
+  - Language: 1
+    stringEntry: 
+  - Language: 2
+    stringEntry: 
+  - Language: 3
+    stringEntry: 
+  - Language: 4
+    stringEntry: 
+  - Language: 5
+    stringEntry: 
+  - Language: 6
+    stringEntry: 
+--- !u!114 &1369702744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1369702741}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 3
+  instanceID: -125256146
 --- !u!1 &1440713918
 GameObject:
   m_ObjectHideFlags: 0
@@ -2785,7 +4135,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DatabaseID: 10
   LockItem: 1
-  ObjectName: 
+  DevNotes: 
   TextValues:
   - Language: 0
     stringEntry: Cabbage
@@ -2895,7 +4245,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DatabaseID: 15
   LockItem: 1
-  ObjectName: 
+  DevNotes: 
   TextValues:
   - Language: 0
     stringEntry: ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz,.+-:;!@#$
@@ -2924,6 +4274,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DBType: 3
   instanceID: 1852178
+--- !u!1 &1488660083
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1488660084}
+  m_Layer: 0
+  m_Name: Growables
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1488660084
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1488660083}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1582465068}
+  m_Father: {fileID: 1337974348}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1490872495
 GameObject:
   m_ObjectHideFlags: 0
@@ -2967,7 +4346,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DatabaseID: 24
   LockItem: 1
-  ObjectName: 
+  DevNotes: 
   TextValues:
   - Language: 0
     stringEntry: Skill
@@ -2996,6 +4375,150 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DBType: 3
   instanceID: 1852186
+--- !u!1 &1582465067
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1582465068}
+  - component: {fileID: 1582465070}
+  - component: {fileID: 1582465069}
+  m_Layer: 0
+  m_Name: 43 - Cabbage Se
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1582465068
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1582465067}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1488660084}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1582465069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1582465067}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 766834c6f2c9cf243ab3296f4a43ade1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DatabaseID: 43
+  LockItem: 1
+  DevNotes: 
+  TextValues:
+  - Language: 0
+    stringEntry: Cabbage Seeds
+  - Language: 1
+    stringEntry: 
+  - Language: 2
+    stringEntry: 
+  - Language: 3
+    stringEntry: 
+  - Language: 4
+    stringEntry: 
+  - Language: 5
+    stringEntry: 
+  - Language: 6
+    stringEntry: 
+--- !u!114 &1582465070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1582465067}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 3
+  instanceID: -123852318
+--- !u!1 &1613849535
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1613849536}
+  - component: {fileID: 1613849538}
+  - component: {fileID: 1613849537}
+  m_Layer: 0
+  m_Name: 40 - Pickaxe
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1613849536
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1613849535}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1929439631}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1613849537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1613849535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 766834c6f2c9cf243ab3296f4a43ade1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DatabaseID: 40
+  LockItem: 1
+  DevNotes: 
+  TextValues:
+  - Language: 0
+    stringEntry: Pickaxe
+  - Language: 1
+    stringEntry: 
+  - Language: 2
+    stringEntry: 
+  - Language: 3
+    stringEntry: 
+  - Language: 4
+    stringEntry: 
+  - Language: 5
+    stringEntry: 
+  - Language: 6
+    stringEntry: 
+--- !u!114 &1613849538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1613849535}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 3
+  instanceID: -123692674
 --- !u!1 &1647176682
 GameObject:
   m_ObjectHideFlags: 0
@@ -3091,7 +4614,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DatabaseID: 9
   LockItem: 1
-  ObjectName: 
+  DevNotes: 
   TextValues:
   - Language: 0
     stringEntry: '**D1*Received 70 *I1*'
@@ -3497,7 +5020,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DatabaseID: 32
   LockItem: 1
-  ObjectName: 
+  DevNotes: 
   TextValues:
   - Language: 0
     stringEntry: Close
@@ -3569,7 +5092,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DatabaseID: 13
   LockItem: 1
-  ObjectName: 
+  DevNotes: 
   TextValues:
   - Language: 0
     stringEntry: Freddy
@@ -3598,6 +5121,78 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DBType: 3
   instanceID: 1852222
+--- !u!1 &1753353420
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1753353421}
+  - component: {fileID: 1753353423}
+  - component: {fileID: 1753353422}
+  m_Layer: 0
+  m_Name: 51 - Used to br
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1753353421
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1753353420}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 187649277}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1753353422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1753353420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 766834c6f2c9cf243ab3296f4a43ade1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DatabaseID: 51
+  LockItem: 1
+  DevNotes: 0 - pickaxe02_blue
+  TextValues:
+  - Language: 0
+    stringEntry: Used to break stones.
+  - Language: 1
+    stringEntry: 
+  - Language: 2
+    stringEntry: 
+  - Language: 3
+    stringEntry: 
+  - Language: 4
+    stringEntry: 
+  - Language: 5
+    stringEntry: 
+  - Language: 6
+    stringEntry: 
+--- !u!114 &1753353423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1753353420}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 3
+  instanceID: -124680326
 --- !u!1 &1782937100
 GameObject:
   m_ObjectHideFlags: 0
@@ -3641,7 +5236,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DatabaseID: 8
   LockItem: 1
-  ObjectName: 
+  DevNotes: 
   TextValues:
   - Language: 0
     stringEntry: '*"Ah *I1*, just what I was looking for!"'
@@ -3746,7 +5341,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DatabaseID: 16
   LockItem: 1
-  ObjectName: 
+  DevNotes: 
   TextValues:
   - Language: 0
     stringEntry: Please enter a name
@@ -3801,6 +5396,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2063523897}
+  - {fileID: 1613849536}
+  - {fileID: 1315412317}
+  - {fileID: 386247816}
   m_Father: {fileID: 1337974348}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3847,7 +5445,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DatabaseID: 12
   LockItem: 1
-  ObjectName: 
+  DevNotes: 
   TextValues:
   - Language: 0
     stringEntry: Tifa
@@ -3876,6 +5474,78 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DBType: 3
   instanceID: 1852254
+--- !u!1 &1997068649
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1997068650}
+  - component: {fileID: 1997068652}
+  - component: {fileID: 1997068651}
+  m_Layer: 0
+  m_Name: 59 - Form of mu
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1997068650
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1997068649}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1297176233}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1997068651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1997068649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 766834c6f2c9cf243ab3296f4a43ade1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DatabaseID: 59
+  LockItem: 1
+  DevNotes: 7 - Herb_FireWort
+  TextValues:
+  - Language: 0
+    stringEntry: Form of mushroom, which color can sometimes appear to be on fire.
+  - Language: 1
+    stringEntry: 
+  - Language: 2
+    stringEntry: 
+  - Language: 3
+    stringEntry: 
+  - Language: 4
+    stringEntry: 
+  - Language: 5
+    stringEntry: 
+  - Language: 6
+    stringEntry: 
+--- !u!114 &1997068652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1997068649}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 3
+  instanceID: -125305724
 --- !u!1 &2026458753
 GameObject:
   m_ObjectHideFlags: 0
@@ -3919,7 +5589,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DatabaseID: 1
   LockItem: 1
-  ObjectName: 
+  DevNotes: 
   TextValues:
   - Language: 0
     stringEntry: '*"You need 70 *I1* to continue this mission"'
@@ -3961,9 +5631,7 @@ GameObject:
   - component: {fileID: 2063523899}
   - component: {fileID: 2063523898}
   m_Layer: 0
-  m_Name: '39 - Hammer
-
-'
+  m_Name: 39 - Axe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3995,12 +5663,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DatabaseID: 39
   LockItem: 1
-  ObjectName: 
+  DevNotes: 
   TextValues:
   - Language: 0
-    stringEntry: 'Hammer
-
-'
+    stringEntry: Axe
   - Language: 1
     stringEntry: 
   - Language: 2

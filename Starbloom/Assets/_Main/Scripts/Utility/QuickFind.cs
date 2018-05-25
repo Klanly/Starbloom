@@ -65,6 +65,8 @@ public static class QuickFind
     public static DG_GUIControllerGhange ControllerChange = null;
     public static DG_GUIContextHandler GUIContextHandler = null;
     public static DG_GUICharacterCreation CharacterCreation = null;
+    public static DG_TooltipGUI TooltipHandler = null;
+
 
     //GUI - Main Overview
     public static GuiMainGameplay GUI_MainOverview = null;

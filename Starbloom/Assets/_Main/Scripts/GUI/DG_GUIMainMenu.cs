@@ -131,7 +131,7 @@ public class DG_GUIMainMenu : Photon.MonoBehaviour
             QuickFind.TimeHandler.RequestMasterTimes();
         }
 
-        if (QuickFind.GameSettings.BypassMainMenu)
+        if (QuickFind.GameSettings.BypassMainMenu && !PhotonNetwork.isMasterClient)
             QuickFind.NetworkSync.PlayerCharacterID = QuickFind.CharacterManager.GetAvailablePlayerID();
 
         QuickFind.GUI_Inventory.UpdateInventoryVisuals();

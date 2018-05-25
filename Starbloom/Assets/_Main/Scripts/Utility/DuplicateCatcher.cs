@@ -226,7 +226,7 @@ public class DuplicateCatcher : MonoBehaviour
     #region Words
     void AssignNewDatabaseWordID()
     {
-        transform.GetComponent<NodeLink>().LockItem = false;
+        transform.GetComponent<DG_WordObject>().LockItem = false;
         GiveAllWordDatabaseID();
     }
     public void GiveAllWordDatabaseID()
@@ -285,7 +285,7 @@ public class DuplicateCatcher : MonoBehaviour
     #region Quest
     void AssignNewDatabaseQuestID()
     {
-        transform.GetComponent<NodeLink>().LockItem = false;
+        transform.GetComponent<DG_QuestObject>().LockItem = false;
         GiveAllQuestDatabaseID();
     }
     public void GiveAllQuestDatabaseID()

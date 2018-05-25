@@ -21,6 +21,7 @@ public class DG_InventoryItem : MonoBehaviour {
 
     [HideInInspector] public bool isMirror;
     [HideInInspector] public int SlotID;
+    [HideInInspector] public bool ContainsItem = false;
 
     float Timer;
     bool ScaleUp = true;
@@ -49,6 +50,9 @@ public class DG_InventoryItem : MonoBehaviour {
         this.enabled = true;
 
         QuickFind.GUI_Inventory.CurrentHoverItem = this;
+
+        if(ContainsItem)
+            QuickFind.TooltipHandler.ShowToolTip(QuickFind.GUI_Inventory.GetItemByInventoryItem(this).ToolTipType);
     }
     public void ItemHoverOut()
     {
@@ -57,6 +61,7 @@ public class DG_InventoryItem : MonoBehaviour {
         HoverOverImage.enabled = false;
         this.enabled = true;
 
+        QuickFind.TooltipHandler.HideToolTip();
     }
 
     public void ItemPressed()
