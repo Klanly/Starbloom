@@ -57,9 +57,9 @@ public class NA_DialogueGUIController : MonoBehaviour
 
         DG_PlayerInput.Player Char = QuickFind.InputController.MainPlayer;
 
-        if (GUIState == GUIStates.NotInConversatation && Char.CharLink.ContextCheck.ContextHit)
+        if (GUIState == GUIStates.NotInConversatation && QuickFind.ContextDetectionHandler.ContextHit)
         {
-            DG_ContextObject CO = Char.CharLink.ContextCheck.LastEncounteredContext.GetComponent<DG_ContextObject>();
+            DG_ContextObject CO = QuickFind.ContextDetectionHandler.LastEncounteredContext.GetComponent<DG_ContextObject>();
             TriggerEvent(CO.ContextID);
         }
         else if (GUIState == GUIStates.TextTyping)

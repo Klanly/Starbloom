@@ -156,9 +156,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NetworkObjectID: 0
   ItemRefID: 5
-  ItemGrowthLevel: 2
+  ItemGrowthLevel: 1
   Position: {x: 3.9009998, y: 2.31, z: -8}
   YFacing: 0
+  isStorageContainer: 0
+  StorageSlots: []
 --- !u!1 &100433157
 GameObject:
   m_ObjectHideFlags: 0
@@ -201,9 +203,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NetworkObjectID: 0
   ItemRefID: 8
-  ItemGrowthLevel: 2
+  ItemGrowthLevel: 3
   Position: {x: 2, y: 2.31, z: -11}
   YFacing: 0
+  isStorageContainer: 0
+  StorageSlots: []
 --- !u!1 &106225851
 GameObject:
   m_ObjectHideFlags: 0
@@ -291,9 +295,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NetworkObjectID: 0
   ItemRefID: 7
-  ItemGrowthLevel: 2
+  ItemGrowthLevel: 3
   Position: {x: 2, y: 2.31, z: -10}
   YFacing: 0
+  isStorageContainer: 0
+  StorageSlots: []
 --- !u!1 &155133445
 GameObject:
   m_ObjectHideFlags: 0
@@ -378,9 +384,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NetworkObjectID: 0
   ItemRefID: 6
-  ItemGrowthLevel: 2
+  ItemGrowthLevel: 0
   Position: {x: 0, y: 2.31, z: -9}
   YFacing: 0
+  isStorageContainer: 0
+  StorageSlots: []
 --- !u!1 &237370268
 GameObject:
   m_ObjectHideFlags: 0
@@ -423,9 +431,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NetworkObjectID: 0
   ItemRefID: 8
-  ItemGrowthLevel: 2
+  ItemGrowthLevel: 1
   Position: {x: 4.901, y: 2.31, z: -11}
   YFacing: 0
+  isStorageContainer: 0
+  StorageSlots: []
 --- !u!1 &254734150
 GameObject:
   m_ObjectHideFlags: 0
@@ -468,9 +478,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NetworkObjectID: 0
   ItemRefID: 7
-  ItemGrowthLevel: 2
+  ItemGrowthLevel: 0
   Position: {x: 0, y: 2.31, z: -10}
   YFacing: 0
+  isStorageContainer: 0
+  StorageSlots: []
 --- !u!1 &296848411
 GameObject:
   m_ObjectHideFlags: 0
@@ -516,6 +528,8 @@ MonoBehaviour:
   ItemGrowthLevel: 2
   Position: {x: 1, y: 2.31, z: -8}
   YFacing: 0
+  isStorageContainer: 0
+  StorageSlots: []
 --- !u!1 &310481876
 GameObject:
   m_ObjectHideFlags: 0
@@ -558,9 +572,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NetworkObjectID: 0
   ItemRefID: 7
-  ItemGrowthLevel: 2
+  ItemGrowthLevel: 1
   Position: {x: 4.901, y: 2.31, z: -10}
   YFacing: 0
+  isStorageContainer: 0
+  StorageSlots: []
 --- !u!1 &373058246
 GameObject:
   m_ObjectHideFlags: 0
@@ -603,9 +619,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NetworkObjectID: 0
   ItemRefID: 6
-  ItemGrowthLevel: 2
+  ItemGrowthLevel: 1
   Position: {x: 2.901, y: 2.31, z: -9}
   YFacing: 0
+  isStorageContainer: 0
+  StorageSlots: []
 --- !u!1 &438454040
 GameObject:
   m_ObjectHideFlags: 0
@@ -697,6 +715,8 @@ MonoBehaviour:
   ItemGrowthLevel: 2
   Position: {x: 1, y: 2.31, z: -10}
   YFacing: 0
+  isStorageContainer: 0
+  StorageSlots: []
 --- !u!1 &507107464
 GameObject:
   m_ObjectHideFlags: 0
@@ -739,9 +759,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NetworkObjectID: 0
   ItemRefID: 5
-  ItemGrowthLevel: 2
+  ItemGrowthLevel: 0
   Position: {x: 0, y: 2.31, z: -8}
   YFacing: 0
+  isStorageContainer: 0
+  StorageSlots: []
 --- !u!1 &534079694
 GameObject:
   m_ObjectHideFlags: 0
@@ -784,9 +806,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NetworkObjectID: 0
   ItemRefID: 8
-  ItemGrowthLevel: 2
+  ItemGrowthLevel: 0
   Position: {x: 0, y: 2.31, z: -11}
   YFacing: 0
+  isStorageContainer: 0
+  StorageSlots: []
 --- !u!1 &831408948
 GameObject:
   m_ObjectHideFlags: 0
@@ -829,9 +853,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NetworkObjectID: 0
   ItemRefID: 7
-  ItemGrowthLevel: 2
+  ItemGrowthLevel: 1
   Position: {x: 2.901, y: 2.31, z: -10}
   YFacing: 0
+  isStorageContainer: 0
+  StorageSlots: []
 --- !u!1 &869884675
 GameObject:
   m_ObjectHideFlags: 0
@@ -874,9 +900,274 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NetworkObjectID: 0
   ItemRefID: 7
-  ItemGrowthLevel: 2
+  ItemGrowthLevel: 1
   Position: {x: 3.9009998, y: 2.31, z: -10}
   YFacing: 0
+  isStorageContainer: 0
+  StorageSlots: []
+--- !u!1 &1065796223
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1065796224}
+  - component: {fileID: 1065796225}
+  m_Layer: 0
+  m_Name: Storage Chest
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1065796224
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1065796223}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 7, y: 2.31, z: -8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2110302582}
+  m_RootOrder: 24
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1065796225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1065796223}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NetworkObjectID: 0
+  ItemRefID: 10
+  ItemGrowthLevel: -1
+  Position: {x: 7, y: 2.31, z: -8}
+  YFacing: 0
+  isStorageContainer: 1
+  StorageSlots:
+  - ContainedItem: 5
+    CurrentStackActive: 0
+    LowValue: 1
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 0
+    CurrentStackActive: 0
+    LowValue: 0
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 0
+    CurrentStackActive: 0
+    LowValue: 0
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 0
+    CurrentStackActive: 0
+    LowValue: 0
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 0
+    CurrentStackActive: 0
+    LowValue: 0
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 0
+    CurrentStackActive: 0
+    LowValue: 0
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 0
+    CurrentStackActive: 0
+    LowValue: 0
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 0
+    CurrentStackActive: 0
+    LowValue: 0
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 0
+    CurrentStackActive: 0
+    LowValue: 0
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 0
+    CurrentStackActive: 0
+    LowValue: 0
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 0
+    CurrentStackActive: 0
+    LowValue: 0
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 0
+    CurrentStackActive: 0
+    LowValue: 0
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 0
+    CurrentStackActive: 0
+    LowValue: 0
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 0
+    CurrentStackActive: 0
+    LowValue: 0
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 0
+    CurrentStackActive: 0
+    LowValue: 0
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 0
+    CurrentStackActive: 0
+    LowValue: 0
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 0
+    CurrentStackActive: 0
+    LowValue: 0
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 0
+    CurrentStackActive: 0
+    LowValue: 0
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 0
+    CurrentStackActive: 0
+    LowValue: 0
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 0
+    CurrentStackActive: 0
+    LowValue: 0
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 0
+    CurrentStackActive: 0
+    LowValue: 0
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 0
+    CurrentStackActive: 0
+    LowValue: 0
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 0
+    CurrentStackActive: 0
+    LowValue: 0
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 0
+    CurrentStackActive: 0
+    LowValue: 0
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 0
+    CurrentStackActive: 0
+    LowValue: 0
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 0
+    CurrentStackActive: 0
+    LowValue: 0
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 0
+    CurrentStackActive: 0
+    LowValue: 0
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 0
+    CurrentStackActive: 0
+    LowValue: 0
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 0
+    CurrentStackActive: 0
+    LowValue: 0
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 0
+    CurrentStackActive: 0
+    LowValue: 0
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 0
+    CurrentStackActive: 0
+    LowValue: 0
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 0
+    CurrentStackActive: 0
+    LowValue: 0
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 0
+    CurrentStackActive: 0
+    LowValue: 0
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 0
+    CurrentStackActive: 0
+    LowValue: 0
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 0
+    CurrentStackActive: 0
+    LowValue: 0
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 0
+    CurrentStackActive: 0
+    LowValue: 0
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
 --- !u!1 &1068715597
 GameObject:
   m_ObjectHideFlags: 0
@@ -922,6 +1213,8 @@ MonoBehaviour:
   ItemGrowthLevel: 2
   Position: {x: 1, y: 2.31, z: -9}
   YFacing: 0
+  isStorageContainer: 0
+  StorageSlots: []
 --- !u!1 &1086866359
 GameObject:
   m_ObjectHideFlags: 0
@@ -964,9 +1257,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NetworkObjectID: 0
   ItemRefID: 8
-  ItemGrowthLevel: 2
+  ItemGrowthLevel: 1
   Position: {x: 3.9009998, y: 2.31, z: -11}
   YFacing: 0
+  isStorageContainer: 0
+  StorageSlots: []
 --- !u!1 &1118421574
 GameObject:
   m_ObjectHideFlags: 0
@@ -1009,9 +1304,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NetworkObjectID: 0
   ItemRefID: 5
-  ItemGrowthLevel: 2
+  ItemGrowthLevel: 1
   Position: {x: 2.901, y: 2.31, z: -8}
   YFacing: 0
+  isStorageContainer: 0
+  StorageSlots: []
 --- !u!1 &1118935756
 GameObject:
   m_ObjectHideFlags: 0
@@ -1072,44 +1369,44 @@ MonoBehaviour:
       RuckSackUnlockedSize: 12
       RucksackSlots:
       - ContainedItem: 1
-        CurrentStackActive: 1
+        CurrentStackActive: 0
         LowValue: 1
         NormalValue: 0
         HighValue: 0
         MaximumValue: 0
       - ContainedItem: 2
-        CurrentStackActive: 1
+        CurrentStackActive: 0
         LowValue: 1
         NormalValue: 0
         HighValue: 0
         MaximumValue: 0
       - ContainedItem: 3
-        CurrentStackActive: 1
+        CurrentStackActive: 0
         LowValue: 1
         NormalValue: 0
         HighValue: 0
         MaximumValue: 0
       - ContainedItem: 5
-        CurrentStackActive: 1
+        CurrentStackActive: 0
+        LowValue: 999
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 5
+        CurrentStackActive: 0
         LowValue: 1
         NormalValue: 0
         HighValue: 0
         MaximumValue: 0
-      - ContainedItem: 0
+      - ContainedItem: 6
         CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
+        LowValue: 3
+        NormalValue: 3
+        HighValue: 3
+        MaximumValue: 3
+      - ContainedItem: 10
         CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
+        LowValue: 1
         NormalValue: 0
         HighValue: 0
         MaximumValue: 0
@@ -2013,9 +2310,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NetworkObjectID: 0
   ItemRefID: 8
-  ItemGrowthLevel: 2
+  ItemGrowthLevel: 1
   Position: {x: 2.901, y: 2.31, z: -11}
   YFacing: 0
+  isStorageContainer: 0
+  StorageSlots: []
 --- !u!1 &1151290200
 GameObject:
   m_ObjectHideFlags: 0
@@ -2061,6 +2360,8 @@ MonoBehaviour:
   ItemGrowthLevel: 2
   Position: {x: 1, y: 2.31, z: -11}
   YFacing: 0
+  isStorageContainer: 0
+  StorageSlots: []
 --- !u!1 &1301669059
 GameObject:
   m_ObjectHideFlags: 0
@@ -2103,9 +2404,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NetworkObjectID: 0
   ItemRefID: 6
-  ItemGrowthLevel: 2
+  ItemGrowthLevel: 3
   Position: {x: 2, y: 2.31, z: -9}
   YFacing: 0
+  isStorageContainer: 0
+  StorageSlots: []
 --- !u!1 &1428702430
 GameObject:
   m_ObjectHideFlags: 0
@@ -2148,20 +2451,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NetworkObjectID: 0
   ItemRefID: 5
-  ItemGrowthLevel: 2
+  ItemGrowthLevel: 1
   Position: {x: 4.901, y: 2.31, z: -8}
   YFacing: 0
---- !u!1 &1776617526 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1488329588103022, guid: c54e8c395b0069c40803538e94abf712,
-    type: 2}
-  m_PrefabInternal: {fileID: 1829886564}
---- !u!4 &1776617527 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4004003030072494, guid: c54e8c395b0069c40803538e94abf712,
-    type: 2}
-  m_PrefabInternal: {fileID: 1829886564}
---- !u!1001 &1829886564
+  isStorageContainer: 0
+  StorageSlots: []
+--- !u!1001 &1528084741
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -2200,6 +2495,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114598686693888630, guid: c54e8c395b0069c40803538e94abf712,
+        type: 2}
+      propertyPath: ContextCheck
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 114082914115579604, guid: c54e8c395b0069c40803538e94abf712,
         type: 2}
       propertyPath: viewIdField
@@ -2213,6 +2513,16 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c54e8c395b0069c40803538e94abf712, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1776617526 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1488329588103022, guid: c54e8c395b0069c40803538e94abf712,
+    type: 2}
+  m_PrefabInternal: {fileID: 1528084741}
+--- !u!4 &1776617527 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4004003030072494, guid: c54e8c395b0069c40803538e94abf712,
+    type: 2}
+  m_PrefabInternal: {fileID: 1528084741}
 --- !u!1001 &1836453460
 Prefab:
   m_ObjectHideFlags: 0
@@ -2317,9 +2627,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NetworkObjectID: 0
   ItemRefID: 6
-  ItemGrowthLevel: 2
+  ItemGrowthLevel: 1
   Position: {x: 3.9009998, y: 2.31, z: -9}
   YFacing: 0
+  isStorageContainer: 0
+  StorageSlots: []
 --- !u!1 &1887760265
 GameObject:
   m_ObjectHideFlags: 0
@@ -2362,9 +2674,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NetworkObjectID: 0
   ItemRefID: 6
-  ItemGrowthLevel: 2
+  ItemGrowthLevel: 1
   Position: {x: 4.901, y: 2.31, z: -9}
   YFacing: 0
+  isStorageContainer: 0
+  StorageSlots: []
 --- !u!1 &1904530055
 GameObject:
   m_ObjectHideFlags: 0
@@ -2449,9 +2763,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NetworkObjectID: 0
   ItemRefID: 5
-  ItemGrowthLevel: 2
+  ItemGrowthLevel: 3
   Position: {x: 2, y: 2.31, z: -8}
   YFacing: 0
+  isStorageContainer: 0
+  StorageSlots: []
 --- !u!1 &2110302581
 GameObject:
   m_ObjectHideFlags: 0
@@ -2502,6 +2818,7 @@ Transform:
   - {fileID: 1136677238}
   - {fileID: 1086866360}
   - {fileID: 237370269}
+  - {fileID: 1065796224}
   m_Father: {fileID: 1904530056}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

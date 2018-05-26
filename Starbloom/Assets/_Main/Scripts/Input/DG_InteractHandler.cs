@@ -27,6 +27,7 @@ public class DG_InteractHandler : MonoBehaviour
                     case DG_ContextObject.ContextTypes.Conversation: break;
                     case DG_ContextObject.ContextTypes.Growable: break;
                     case DG_ContextObject.ContextTypes.Treasure: break;
+                    case DG_ContextObject.ContextTypes.MoveableStorage: HandleMoveableStorage(CO); break;
                 }
             }
         }
@@ -42,5 +43,9 @@ public class DG_InteractHandler : MonoBehaviour
         int ItemID = NO.ItemRefID;
         int ItemQuality = NO.ItemGrowthLevel;
         QuickFind.GUI_Inventory.AddItemToRucksack(QuickFind.NetworkSync.PlayerCharacterID, ItemID, (DG_ItemObject.ItemQualityLevels)ItemQuality);
+    }
+    void HandleMoveableStorage(DG_ContextObject CO)
+    {
+        Debug.Log("Handle Moveable Storage");
     }
 }

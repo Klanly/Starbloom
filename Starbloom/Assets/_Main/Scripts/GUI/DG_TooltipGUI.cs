@@ -88,8 +88,9 @@ public class DG_TooltipGUI : MonoBehaviour {
 
 
 
-
-
+    [Header("Floating QualitySelection")]
+    public RectTransform FloatingQualitySelect;
+    public RectTransform FloatingQualityGrid;
     [Header("Floating Inventory Item")]
     public RectTransform FloatingRect;
     public RectTransform VerticalGridRect;
@@ -103,9 +104,14 @@ public class DG_TooltipGUI : MonoBehaviour {
 
 
 
-    bool DisplayTooltip = false;
+    [HideInInspector] public bool DisplayTooltip = false;
+    [HideInInspector] public bool IsQualitySelection = false;
     float DefaultX;
     List<DG_TooltipModule> Modules;
+
+    //Context Per UI Type
+    [HideInInspector] public DG_InventoryItem HoveredInventoryItem;
+    [HideInInspector] public DG_PlayerCharacters.RucksackSlot ActiveRucksackSlot;
     ToolTipGroup ActiveToolTipGroup;
     ToolTipContainerItem ActiveItemObject;
 
@@ -122,8 +128,13 @@ public class DG_TooltipGUI : MonoBehaviour {
         Modules = new List<DG_TooltipModule>();
         for (int i = 0; i < VerticalGridRect.childCount; i++)
             Modules.Add(VerticalGridRect.GetChild(i).GetComponent<DG_TooltipModule>());
+        FloatingQualitySelect.position = new Vector3(8000, 0, 0);
         FloatingRect.position = new Vector3(8000, 0, 0);
         this.enabled = false;
+    }
+    private void Start()
+    {
+        SetQualityLevelStars();
     }
     public void ShowToolTip(ToolTipContainerItem TTContainer)
     {
@@ -131,13 +142,40 @@ public class DG_TooltipGUI : MonoBehaviour {
         ActiveItemObject = TTContainer;
         ActiveToolTipGroup = GetGroupByEnum(TTContainer.GroupType);
         GenerateToolTip();
+        GenerateQualitySelectionGrid();
         DisplayTooltip = true;
         this.enabled = true;
     }
     public void HideToolTip()
     {
+        HoveredInventoryItem = null;
         if (QuickFind.GUI_Inventory.isFloatingInventoryItem) return;
+        FloatingQualitySelect.position = new Vector3(8000, 0, 0);
+        IsQualitySelection = false;
         DisplayTooltip = false;
+    }
+
+    public void UpdateEquippedNum(int isUP, bool CanLoop)
+    {
+        AddRucksack(isUP, CanLoop, ActiveRucksackSlot.CurrentStackActive);
+
+        DG_PlayerCharacters.CharacterEquipment Equipment = QuickFind.Farm.PlayerCharacters[QuickFind.NetworkSync.PlayerCharacterID].Equipment;
+        QuickFind.GUI_Inventory.UpdateRucksackSlotVisual(Equipment, HoveredInventoryItem.SlotID);
+        GenerateQualitySelectionGrid();
+        GenerateToolTip();
+        if (HoveredInventoryItem.SlotID < 12)
+            QuickFind.GUI_Inventory.UpdateMirrorSlot(HoveredInventoryItem.SlotID);
+    }
+    void AddRucksack(int isUP, bool CanLoop, int OriginalValue)
+    {
+        bool PreventInfinite = true;
+        ActiveRucksackSlot.CurrentStackActive += isUP;
+        if (ActiveRucksackSlot.CurrentStackActive > 3)
+            { if (CanLoop) ActiveRucksackSlot.CurrentStackActive = 0; else { ActiveRucksackSlot.CurrentStackActive = OriginalValue; PreventInfinite = false; } }
+        if (ActiveRucksackSlot.CurrentStackActive < 0)
+            { if (CanLoop) ActiveRucksackSlot.CurrentStackActive = 3; else { ActiveRucksackSlot.CurrentStackActive = OriginalValue; PreventInfinite = false; } }
+        if (ActiveRucksackSlot.GetNumberOfQuality((DG_ItemObject.ItemQualityLevels)ActiveRucksackSlot.CurrentStackActive) == 0 && PreventInfinite)
+            AddRucksack(isUP, CanLoop, OriginalValue);
     }
 
 
@@ -155,11 +193,7 @@ public class DG_TooltipGUI : MonoBehaviour {
             for (int i = 0; i < Modules.Count; i++)
             {
                 DG_TooltipModule Module = Modules[i];
-                if (Module.isActive)
-                {
-                    Height = Height + Module.GetComponent<RectTransform>().rect.height;
-                    Module.StretchHeightToBounds();
-                }
+                if (Module.isActive) { Height = Height + Module.GetComponent<RectTransform>().rect.height; Module.StretchHeightToBounds(); }
             }
             float OffsetHeight = 0 - (Height / 2); if (!TooltipBelow) OffsetHeight = -OffsetHeight;
             float OffsetWidth = DefaultX; if (MouseRightSide) OffsetWidth = -DefaultX;
@@ -170,11 +204,10 @@ public class DG_TooltipGUI : MonoBehaviour {
             CSF.enabled = false; CSF.enabled = true;
         }
         else
-            { FloatingRect.position = new Vector3(8000, 0, 0); this.enabled = false; }
+        { this.enabled = false; FloatingRect.position = new Vector3(8000, 0, 0); }
+
+        SetQualityHotbarPosition();
     }
-
-
-
 
 
 
@@ -226,9 +259,34 @@ public class DG_TooltipGUI : MonoBehaviour {
     void SetUpInventoryStats()
     {
         DG_TooltipModule Desc = GetModuleByType(ToolTipModules.InventoryStat);
-        
+        Desc.TurnOFFSubs();
 
-        //Desc.TextObject.text = QuickFind.WordDatabase.GetWordFromID(ActiveItemObject.DescriptionID);
+        DG_ItemObject IO = QuickFind.ItemDatabase.GetItemFromID(ActiveItemObject.ContextID);
+        DG_ItemObject.Item Item = IO.GetItemByQuality(ActiveRucksackSlot.CurrentStackActive);
+
+        int index = 0;
+        if (Item.AdjustsHealth)
+        {
+            int HealthAdjust = Item.HealthAdjustValue;
+            DG_TooltipSubItem Sub = Desc.GetSubItem(index); index++;
+            DG_ItemsDatabase.GenericIconDatabaseItem ICD = QuickFind.ItemDatabase.GenericIconList[0];
+            Sub.DisplayImage.sprite = ICD.Icon;
+            Sub.TextObject.text = HealthAdjust.ToString() + " " + QuickFind.WordDatabase.GetWordFromID(61);
+
+            Color C = ICD.ColorVariations[0];
+            Sub.DisplayImage.color = C;
+        }
+        if (Item.AdjustsEnergy)
+        {
+            int EnergyAdjust = Item.EnergyAdjustValue;
+            DG_TooltipSubItem Sub = Desc.GetSubItem(index); index++;
+            DG_ItemsDatabase.GenericIconDatabaseItem ICD = QuickFind.ItemDatabase.GenericIconList[1];
+            Sub.DisplayImage.sprite = ICD.Icon;
+            Sub.TextObject.text = EnergyAdjust.ToString() + " " + QuickFind.WordDatabase.GetWordFromID(62);
+
+            Color C = ICD.ColorVariations[0];
+            Sub.DisplayImage.color = C;
+        }
     }
 
 
@@ -249,4 +307,65 @@ public class DG_TooltipGUI : MonoBehaviour {
 
     ToolTipGroup GetGroupByEnum(ToolTipGroups ToolTipType)
     { for(int i = 0; i < ToolTipTypes.Length; i++) { if(ToolTipTypes[i].GroupType == ToolTipType) return ToolTipTypes[i];} return null; }
+
+
+
+
+
+
+
+    void SetQualityHotbarPosition()
+    {
+        if (DisplayTooltip && HoveredInventoryItem != null)
+        {
+            DG_ItemObject IO = QuickFind.ItemDatabase.GetItemFromID(ActiveRucksackSlot.ContainedItem);
+            if(QuickFind.GUI_Inventory.isFloatingInventoryItem)
+                IsQualitySelection = false;
+            if (IO.MaxStackSize < 2 || QuickFind.GUI_Inventory.isFloatingInventoryItem)
+            { FloatingQualitySelect.position = new Vector3(8000, 0, 0);  return; }
+
+            IsQualitySelection = true;
+            RectTransform InventoryItem = HoveredInventoryItem.GetComponent<RectTransform>();
+            FloatingQualitySelect.position = InventoryItem.position;
+        }
+    }
+
+    void SetQualityLevelStars()
+    {
+        for (int i = 0; i < FloatingQualityGrid.childCount; i++)
+        {
+            DG_InventoryItem GuiSlot = FloatingQualityGrid.GetChild(i).GetComponent<DG_InventoryItem>();
+            GuiSlot.QualityLevelOverlay.enabled = true;
+            GuiSlot.QualityLevelOverlay.sprite = QuickFind.ItemDatabase.GenericIconList[2].Icon;
+            GuiSlot.QualityLevelOverlay.color = QuickFind.ItemDatabase.GenericIconList[2].ColorVariations[i];
+        }
+    }
+
+    void GenerateQualitySelectionGrid()
+    {
+        if (HoveredInventoryItem == null) return;
+
+        for (int i = 0; i < FloatingQualityGrid.childCount; i++)
+        {
+            DG_InventoryItem GuiSlot = FloatingQualityGrid.GetChild(i).GetComponent<DG_InventoryItem>();
+            SetValue(GuiSlot, ActiveRucksackSlot.GetNumberOfQuality((DG_ItemObject.ItemQualityLevels)i));
+            if (ActiveRucksackSlot.CurrentStackActive == i)
+                GuiSlot.ActiveHotbarItem.enabled = true;
+            else
+                GuiSlot.ActiveHotbarItem.enabled = false;
+        }
+    }
+    void SetValue(DG_InventoryItem GuiSlot, int Amount)
+    {
+        if (Amount == 0)
+        {
+            GuiSlot.Icon.sprite = QuickFind.GUI_Inventory.DefaultNullSprite;
+            GuiSlot.QualityAmountText.text = string.Empty;
+        }
+            else
+        {
+            GuiSlot.Icon.sprite = HoveredInventoryItem.Icon.sprite;
+            GuiSlot.QualityAmountText.text = Amount.ToString();
+        }
+    }
 }

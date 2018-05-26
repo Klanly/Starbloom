@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class DG_CharacterLink : MonoBehaviour {
 
-    public DG_ContextCheckHandler ContextCheck = null;
 
     public MoveInput CharInput = null;
     public Locomotion PlayerChar = null;
@@ -18,8 +17,6 @@ public class DG_CharacterLink : MonoBehaviour {
 
     private void Awake()
     {
-        ContextCheck.enabled = false;
-
         CharInput.enabled = false;
         PlayerChar.enabled = false;
         CharAnim.enabled = false;
@@ -49,7 +46,6 @@ public class DG_CharacterLink : MonoBehaviour {
             return;
         }
 
-        ContextCheck.enabled = true;
 
         CharInput.enabled = true;
         PlayerChar.enabled = true;
@@ -58,7 +54,7 @@ public class DG_CharacterLink : MonoBehaviour {
         QuickFind.InputController.MainPlayer.CharLink = this;
         QuickFind.PlayerCam.CharTrans = PlayerChar.transform;
         QuickFind.NetworkSync.SetPhotonViewID(transform.GetComponent<PhotonView>().viewID);
-        QuickFind.ContextDetectionHandler = ContextCheck;
+        QuickFind.ContextDetectionHandler.CharacterLink = this;
 
         this.enabled = false;
     }

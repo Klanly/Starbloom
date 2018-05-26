@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 
 
@@ -19,6 +20,9 @@ public class NetworkObject : MonoBehaviour {
     public int ItemGrowthLevel;
     public Vector3 Position;
     public float YFacing;
+    public bool isStorageContainer = false;
+    [ShowIf("isStorageContainer")]
+    public DG_PlayerCharacters.RucksackSlot[] StorageSlots;
 
 
 

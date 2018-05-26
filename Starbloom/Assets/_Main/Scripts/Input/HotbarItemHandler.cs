@@ -12,7 +12,8 @@ public class HotbarItemHandler : MonoBehaviour {
         Hoe,
         FishingPole,
 
-        RegularItem, 
+        RegularItem,
+        PlaceableItem
     }
 
 
@@ -47,6 +48,7 @@ public class HotbarItemHandler : MonoBehaviour {
                 case ActivateableTypes.Hoe: HoeEvent(UpEvent); break;
                 case ActivateableTypes.Pickaxe: PickaxeEvent(UpEvent); break;
                 case ActivateableTypes.RegularItem: RegularItemEvent(UpEvent); break;
+                case ActivateableTypes.PlaceableItem: PlaceableItemEvent(UpEvent); break;
 
             }
         }
@@ -87,6 +89,13 @@ public class HotbarItemHandler : MonoBehaviour {
             Debug.Log("Active RegularItem UP Event");
         else
             Debug.Log("Active RegularItem HELD Event");
+    }
+    void PlaceableItemEvent(bool isUP)
+    {
+        if (isUP)
+            Debug.Log("Placeable Item UP Event");
+        else
+            Debug.Log("Placeable Item HELD Event");
     }
 
 

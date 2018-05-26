@@ -4,13 +4,6 @@ using UnityEngine;
 
 public class DG_TooltipSubItem : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public UnityEngine.UI.Image DisplayImage;
+    public TMPro.TextMeshProUGUI TextObject;
 }

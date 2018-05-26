@@ -111,11 +111,7 @@ public class DG_PlayerInput : MonoBehaviour {
             MainPlayer.CamHorizontalAxis = JoystickHorizontal;
 
 
-            //Fix Later for Controller Input
-            MainPlayer.CamZoomAxis = 0;
-            float ScrollAxis = Input.GetAxis("Mouse ScrollWheel");
-            if (ScrollAxis > 0) MainPlayer.CamZoomAxis = 1;
-            if (ScrollAxis < 0) MainPlayer.CamZoomAxis = -1;
+
         }
 
 
@@ -125,6 +121,12 @@ public class DG_PlayerInput : MonoBehaviour {
             if (QuickFind.PlayerCam.MainCam.isActiveAndEnabled && InputState != CurrentInputState.InCinema)
                 QuickFind.GUI_OverviewTabs.OpenUI();
         }
+
+        //Fix Later for Controller Input
+        MainPlayer.CamZoomAxis = 0;
+        float ScrollAxis = Input.GetAxis("Mouse ScrollWheel");
+        if (ScrollAxis > 0) MainPlayer.CamZoomAxis = 1;
+        if (ScrollAxis < 0) MainPlayer.CamZoomAxis = -1;
     }
 
 

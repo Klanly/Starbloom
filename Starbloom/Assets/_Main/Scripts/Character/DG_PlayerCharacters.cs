@@ -67,6 +67,10 @@ public class DG_PlayerCharacters : MonoBehaviour {
         public int HighValue;
         public int MaximumValue;
 
+
+
+
+
         public int GetStackValue()
         { return LowValue + NormalValue + HighValue + MaximumValue; }
 
@@ -84,6 +88,14 @@ public class DG_PlayerCharacters : MonoBehaviour {
             if (QualityLevel == DG_ItemObject.ItemQualityLevels.High && HighValue > 0) return true;
             if (QualityLevel == DG_ItemObject.ItemQualityLevels.Max && MaximumValue > 0) return true;
             return false;
+        }
+        public int GetNumberOfQuality(DG_ItemObject.ItemQualityLevels QualityLevel)
+        {
+            if (QualityLevel == DG_ItemObject.ItemQualityLevels.Low) return LowValue;
+            if (QualityLevel == DG_ItemObject.ItemQualityLevels.Normal) return NormalValue;
+            if (QualityLevel == DG_ItemObject.ItemQualityLevels.High) return HighValue;
+            if (QualityLevel == DG_ItemObject.ItemQualityLevels.Max) return MaximumValue;
+            return 0;
         }
     }
 
