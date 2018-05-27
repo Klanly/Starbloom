@@ -24,6 +24,7 @@ public class DG_InventoryItem : MonoBehaviour {
     [HideInInspector] public bool isMirror;
     [HideInInspector] public int SlotID;
     [HideInInspector] public bool ContainsItem = false;
+    [HideInInspector] public bool IsStorageSlot = false;
 
     float Timer;
     bool ScaleUp = true;
@@ -61,7 +62,7 @@ public class DG_InventoryItem : MonoBehaviour {
         {
             if(!isMirror)
                 QuickFind.TooltipHandler.HoveredInventoryItem = this;
-            DG_PlayerCharacters.RucksackSlot RSS = QuickFind.GUI_Inventory.GetRuckSackSlotInventoryItem(this);
+            DG_PlayerCharacters.RucksackSlot RSS = QuickFind.InventoryManager.GetRuckSackSlotInventoryItem(this);
             QuickFind.TooltipHandler.ActiveRucksackSlot = RSS;
             QuickFind.TooltipHandler.ShowToolTip(QuickFind.ItemDatabase.GetItemFromID(RSS.ContainedItem).ToolTipType);
         }

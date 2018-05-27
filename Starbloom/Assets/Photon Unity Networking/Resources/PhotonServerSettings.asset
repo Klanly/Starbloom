@@ -62,4 +62,6 @@ MonoBehaviour:
   - SendOutWorldObjectInts
   - CreateSceneObject
   - RemoveSceneObject
+  - NewStorageValue
+  - UpdateLoadedGame
   DisableAutoOpenWizard: 1

@@ -65,6 +65,8 @@ public class DG_LocalDataHandler : MonoBehaviour {
 
         GatherWorldInts(true);
         GatherWorldFloats(true);
+
+        Debug.Log("Game Saved");
     }
     [Button(ButtonSizes.Medium)]
     public void LoadGame()
@@ -79,6 +81,9 @@ public class DG_LocalDataHandler : MonoBehaviour {
         GetWorldInts(null, true);
         GetWorldFloats(null, true);
         QuickFind.NetworkObjectManager.GenerateSceneObjects(QuickFind.NetworkSync.CurrentScene);
+
+        QuickFind.NetworkSync.GameWasLoaded();
+        Debug.Log("Game Loaded");
     }
 
 
@@ -122,7 +127,7 @@ public class DG_LocalDataHandler : MonoBehaviour {
                 DG_PlayerCharacters.RucksackSlot RSlot = RS[iN];
                 string RuckSackSlot = iN.ToString();
                 //
-                if (ToDisk) Directory = FindOrCreateSaveDirectory(KnownDirectory, "RS" + RuckSackSlot.ToString() + "/");
+                if (ToDisk) Directory = FindOrCreateSaveDirectory(KnownDirectory, "RS" + RuckSackSlot + "/");
                 if (!ToDisk) IntData.Add(RSlot.ContainedItem);        else SaveInt(RSlot.ContainedItem, Directory + "ContainedItem");
                 if (!ToDisk) IntData.Add(RSlot.CurrentStackActive);   else SaveInt(RSlot.CurrentStackActive, Directory + "CurrentStackActive");
                 if (!ToDisk) IntData.Add(RSlot.LowValue);             else SaveInt(RSlot.LowValue, Directory + "LowValue");
@@ -169,7 +174,7 @@ public class DG_LocalDataHandler : MonoBehaviour {
                 DG_PlayerCharacters.RucksackSlot RSlot = RS[iN];
                 string RuckSackSlot = iN.ToString();
                 //
-                if (FromDisk) Directory = FindOrCreateSaveDirectory(KnownDirectory, "RS" + RuckSackSlot.ToString() + "/");
+                if (FromDisk) Directory = FindOrCreateSaveDirectory(KnownDirectory, "RS" + RuckSackSlot + "/");
                 if (!FromDisk) RSlot.ContainedItem = IntValues[Index]; else RSlot.ContainedItem = LoadInt(Directory + "ContainedItem"); Index++;
                 if (!FromDisk) RSlot.CurrentStackActive = IntValues[Index]; else RSlot.CurrentStackActive = LoadInt(Directory + "CurrentStackActive"); Index++;
                 if (!FromDisk) RSlot.LowValue = IntValues[Index]; else RSlot.LowValue = LoadInt(Directory + "LowValue"); Index++;
@@ -259,7 +264,31 @@ public class DG_LocalDataHandler : MonoBehaviour {
                 if (ToDisk) Directory = FindOrCreateSaveDirectory(KnownDirectory, "CC" + ChildChild.ToString() + "/");
                 if (!ToDisk) IntData.Add(NO.ItemRefID); else SaveInt(NO.ItemRefID, Directory + "ItemRefID");
                 if (!ToDisk) IntData.Add(NO.ItemGrowthLevel); else SaveInt(NO.ItemGrowthLevel, Directory + "ItemGrowthLevel");
-                //
+
+
+
+                int isTrue = NO.isStorageContainer ? 1 : 0;
+                if (!ToDisk) IntData.Add(isTrue); else SaveInt(isTrue, Directory + "IsStorageContainer");
+                if (isTrue == 1)
+                {
+                    DG_PlayerCharacters.RucksackSlot[] RS = NO.StorageSlots;
+                    if (!ToDisk) IntData.Add(NO.StorageSlots.Length); else SaveInt(NO.StorageSlots.Length, Directory + "StorageContainerCount");
+
+                    string SubKnownDirectory = Directory;
+                    for (int iR = 0; iR < NO.StorageSlots.Length; iR++)
+                    {
+                        DG_PlayerCharacters.RucksackSlot RSlot = NO.StorageSlots[iR];
+                        string RuckSackSlot = iR.ToString();
+                        //
+                        if (ToDisk) Directory = FindOrCreateSaveDirectory(SubKnownDirectory, "RS" + RuckSackSlot + "/");
+                        if (!ToDisk) IntData.Add(RSlot.ContainedItem); else SaveInt(RSlot.ContainedItem, Directory + "ContainedItem");
+                        if (!ToDisk) IntData.Add(RSlot.CurrentStackActive); else SaveInt(RSlot.CurrentStackActive, Directory + "CurrentStackActive");
+                        if (!ToDisk) IntData.Add(RSlot.LowValue); else SaveInt(RSlot.LowValue, Directory + "LowValue");
+                        if (!ToDisk) IntData.Add(RSlot.NormalValue); else SaveInt(RSlot.NormalValue, Directory + "NormalValue");
+                        if (!ToDisk) IntData.Add(RSlot.HighValue); else SaveInt(RSlot.HighValue, Directory + "HighValue");
+                        if (!ToDisk) IntData.Add(RSlot.MaximumValue); else SaveInt(RSlot.MaximumValue, Directory + "MaximumValue");
+                    }
+                }
             }
         }
         return IntData;
@@ -294,10 +323,39 @@ public class DG_LocalDataHandler : MonoBehaviour {
 
                 string ChildChild = iN.ToString();
                 //
-                if (FromDisk) Directory = FindOrCreateSaveDirectory(KnownDirectory, "CC" + ChildChild.ToString() + "/");
+                if (FromDisk) Directory = FindOrCreateSaveDirectory(KnownDirectory, "CC" + ChildChild + "/");
                 if (!FromDisk) NO.ItemRefID = IntValues[Index];     else NO.ItemRefID = LoadInt(Directory + "ItemRefID"); Index++;
                 if (!FromDisk) NO.ItemGrowthLevel = IntValues[Index]; else NO.ItemGrowthLevel = LoadInt(Directory + "ItemGrowthLevel"); Index++;
                 //
+
+                int StorageValue;
+                if (!FromDisk) StorageValue = IntValues[Index]; else StorageValue = LoadInt(Directory + "IsStorageContainer"); Index++;
+                bool isTrue = false;
+                if (StorageValue == 1) isTrue = true;
+                NO.isStorageContainer = isTrue;
+                if (isTrue)
+                {
+                    int Count = 0;
+                    if (!FromDisk) Count = IntValues[Index]; else Count = LoadInt(Directory + "StorageContainerCount"); Index++;
+                    NO.StorageSlots = new DG_PlayerCharacters.RucksackSlot[Count];
+
+                    string SubKnownDirectory = Directory;
+                    DG_PlayerCharacters.RucksackSlot[] RS = NO.StorageSlots;
+                    for (int iR = 0; iR < Count; iR++)
+                    {
+                        RS[iR] = new DG_PlayerCharacters.RucksackSlot();
+                        DG_PlayerCharacters.RucksackSlot RSlot = RS[iR];
+                        string RuckSackSlot = iR.ToString();
+                        //
+                        if (FromDisk) Directory = FindOrCreateSaveDirectory(SubKnownDirectory, "RS" + RuckSackSlot + "/");
+                        if (!FromDisk) RSlot.ContainedItem = IntValues[Index]; else RSlot.ContainedItem = LoadInt(Directory + "ContainedItem"); Index++;
+                        if (!FromDisk) RSlot.CurrentStackActive = IntValues[Index]; else RSlot.CurrentStackActive = LoadInt(Directory + "CurrentStackActive"); Index++;
+                        if (!FromDisk) RSlot.LowValue = IntValues[Index]; else RSlot.LowValue = LoadInt(Directory + "LowValue"); Index++;
+                        if (!FromDisk) RSlot.NormalValue = IntValues[Index]; else RSlot.NormalValue = LoadInt(Directory + "NormalValue"); Index++;
+                        if (!FromDisk) RSlot.HighValue = IntValues[Index]; else RSlot.HighValue = LoadInt(Directory + "HighValue"); Index++;
+                        if (!FromDisk) RSlot.MaximumValue = IntValues[Index]; else RSlot.MaximumValue = LoadInt(Directory + "MaximumValue"); Index++;
+                    }
+                }
             }
         }
     }
@@ -323,7 +381,7 @@ public class DG_LocalDataHandler : MonoBehaviour {
                 NetworkObject NO = Child.GetChild(iN).GetComponent<NetworkObject>();
                 string ChildChild = iN.ToString();
                 //
-                if (ToDisk) Directory = FindOrCreateSaveDirectory(KnownDirectory, "CC" + ChildChild.ToString() + "/");
+                if (ToDisk) Directory = FindOrCreateSaveDirectory(KnownDirectory, "CC" + ChildChild + "/");
                 if (!ToDisk) OutgoingFloats.Add(NO.Position.x); else SaveFloat(NO.Position.x, Directory + "x");
                 if (!ToDisk) OutgoingFloats.Add(NO.Position.y); else SaveFloat(NO.Position.y, Directory + "y");
                 if (!ToDisk) OutgoingFloats.Add(NO.Position.z); else SaveFloat(NO.Position.z, Directory + "z");
@@ -358,7 +416,7 @@ public class DG_LocalDataHandler : MonoBehaviour {
                 NetworkObject NO = NS.NetworkObjectList[iN];
                 string ChildChild = iN.ToString();
                 //
-                if (FromDisk) Directory = FindOrCreateSaveDirectory(KnownDirectory, "CC" + ChildChild.ToString() + "/");
+                if (FromDisk) Directory = FindOrCreateSaveDirectory(KnownDirectory, "CC" + ChildChild + "/");
 
                 float x = 0; if (!FromDisk) x = FloatValues[Index]; else x = LoadFloat(Directory + "x"); Index++;
                 float y = 0; if (!FromDisk) y = FloatValues[Index]; else y = LoadFloat(Directory + "y"); Index++;

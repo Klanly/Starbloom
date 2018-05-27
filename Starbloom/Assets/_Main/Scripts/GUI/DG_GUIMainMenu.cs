@@ -25,6 +25,9 @@ public class DG_GUIMainMenu : Photon.MonoBehaviour
     [Header("Static Text")]
     public DG_TextStatic[] StaticTextArray;
 
+    [Header("Online Toggle")]
+    public UnityEngine.UI.Toggle OnlineToggle;
+
 
     bool AwaitingResponse = true;
 
@@ -52,6 +55,8 @@ public class DG_GUIMainMenu : Photon.MonoBehaviour
 
         if (QuickFind.GameSettings.BypassMainMenu)
             QuickFind.NetworkMaster.StartGame();
+
+        OnlineToggle.isOn = QuickFind.GameSettings.PlayOnline;
     }
 
 

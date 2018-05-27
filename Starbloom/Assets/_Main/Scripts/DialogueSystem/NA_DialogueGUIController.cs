@@ -394,7 +394,7 @@ public class NA_DialogueGUIController : MonoBehaviour
         int.TryParse(NewString.ToString(), out OutVal);
         return OutVal;
     }
-    public static string GetStaticText(int TextWordID, int TextCatID)
+    public static string GetStaticText(int TextWordID)
     {
         DG_WordObject WO = QuickFind.WordDatabase.GetItemFromID(TextWordID);
         string DatabaseString = QuickFind.WordDatabase.GetWordByLanguage(WO.TextValues);

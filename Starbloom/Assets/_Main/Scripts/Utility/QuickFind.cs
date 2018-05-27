@@ -66,6 +66,7 @@ public static class QuickFind
     public static DG_GUIContextHandler GUIContextHandler = null;
     public static DG_GUICharacterCreation CharacterCreation = null;
     public static DG_TooltipGUI TooltipHandler = null;
+    public static DG_StorageGUI StorageUI = null;
 
 
     //GUI - Main Overview
@@ -74,6 +75,10 @@ public static class QuickFind
     public static DG_InventoryGUI GUI_Inventory = null;
     public static DG_SkillsGUI GUI_Skills = null;
 
+
+    //Managers
+    public static DG_Inventory InventoryManager = null;
+    public static DG_TreasureSelection TreasureManager = null;
 
 
     //Cameras

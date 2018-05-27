@@ -357,8 +357,6 @@ MonoBehaviour:
   DetectionMeshTrans: {fileID: 1403033708}
   DetectionMesh: {fileID: 1403033711}
   DetectionRenderer: {fileID: 1403033710}
-  ScaleSize: 1.3
-  ScaleTime: 0.4
 --- !u!4 &1017073428
 Transform:
   m_ObjectHideFlags: 0

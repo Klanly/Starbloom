@@ -160,6 +160,7 @@ MonoBehaviour:
   Position: {x: 3.9009998, y: 2.31, z: -8}
   YFacing: 0
   isStorageContainer: 0
+  isTreasureList: 0
   StorageSlots: []
 --- !u!1 &100433157
 GameObject:
@@ -207,6 +208,7 @@ MonoBehaviour:
   Position: {x: 2, y: 2.31, z: -11}
   YFacing: 0
   isStorageContainer: 0
+  isTreasureList: 0
   StorageSlots: []
 --- !u!1 &106225851
 GameObject:
@@ -299,6 +301,7 @@ MonoBehaviour:
   Position: {x: 2, y: 2.31, z: -10}
   YFacing: 0
   isStorageContainer: 0
+  isTreasureList: 0
   StorageSlots: []
 --- !u!1 &155133445
 GameObject:
@@ -388,6 +391,7 @@ MonoBehaviour:
   Position: {x: 0, y: 2.31, z: -9}
   YFacing: 0
   isStorageContainer: 0
+  isTreasureList: 0
   StorageSlots: []
 --- !u!1 &237370268
 GameObject:
@@ -435,6 +439,7 @@ MonoBehaviour:
   Position: {x: 4.901, y: 2.31, z: -11}
   YFacing: 0
   isStorageContainer: 0
+  isTreasureList: 0
   StorageSlots: []
 --- !u!1 &254734150
 GameObject:
@@ -482,6 +487,7 @@ MonoBehaviour:
   Position: {x: 0, y: 2.31, z: -10}
   YFacing: 0
   isStorageContainer: 0
+  isTreasureList: 0
   StorageSlots: []
 --- !u!1 &296848411
 GameObject:
@@ -529,6 +535,7 @@ MonoBehaviour:
   Position: {x: 1, y: 2.31, z: -8}
   YFacing: 0
   isStorageContainer: 0
+  isTreasureList: 0
   StorageSlots: []
 --- !u!1 &310481876
 GameObject:
@@ -576,6 +583,7 @@ MonoBehaviour:
   Position: {x: 4.901, y: 2.31, z: -10}
   YFacing: 0
   isStorageContainer: 0
+  isTreasureList: 0
   StorageSlots: []
 --- !u!1 &373058246
 GameObject:
@@ -623,6 +631,7 @@ MonoBehaviour:
   Position: {x: 2.901, y: 2.31, z: -9}
   YFacing: 0
   isStorageContainer: 0
+  isTreasureList: 0
   StorageSlots: []
 --- !u!1 &438454040
 GameObject:
@@ -716,6 +725,7 @@ MonoBehaviour:
   Position: {x: 1, y: 2.31, z: -10}
   YFacing: 0
   isStorageContainer: 0
+  isTreasureList: 0
   StorageSlots: []
 --- !u!1 &507107464
 GameObject:
@@ -763,6 +773,7 @@ MonoBehaviour:
   Position: {x: 0, y: 2.31, z: -8}
   YFacing: 0
   isStorageContainer: 0
+  isTreasureList: 0
   StorageSlots: []
 --- !u!1 &534079694
 GameObject:
@@ -810,6 +821,7 @@ MonoBehaviour:
   Position: {x: 0, y: 2.31, z: -11}
   YFacing: 0
   isStorageContainer: 0
+  isTreasureList: 0
   StorageSlots: []
 --- !u!1 &831408948
 GameObject:
@@ -857,6 +869,7 @@ MonoBehaviour:
   Position: {x: 2.901, y: 2.31, z: -10}
   YFacing: 0
   isStorageContainer: 0
+  isTreasureList: 0
   StorageSlots: []
 --- !u!1 &869884675
 GameObject:
@@ -904,6 +917,7 @@ MonoBehaviour:
   Position: {x: 3.9009998, y: 2.31, z: -10}
   YFacing: 0
   isStorageContainer: 0
+  isTreasureList: 0
   StorageSlots: []
 --- !u!1 &1065796223
 GameObject:
@@ -928,7 +942,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1065796223}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7, y: 2.31, z: -8}
+  m_LocalPosition: {x: 1, y: 2.31, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2110302582}
@@ -948,9 +962,10 @@ MonoBehaviour:
   NetworkObjectID: 0
   ItemRefID: 10
   ItemGrowthLevel: -1
-  Position: {x: 7, y: 2.31, z: -8}
+  Position: {x: 1, y: 2.31, z: 0}
   YFacing: 0
   isStorageContainer: 1
+  isTreasureList: 0
   StorageSlots:
   - ContainedItem: 5
     CurrentStackActive: 0
@@ -1214,6 +1229,7 @@ MonoBehaviour:
   Position: {x: 1, y: 2.31, z: -9}
   YFacing: 0
   isStorageContainer: 0
+  isTreasureList: 0
   StorageSlots: []
 --- !u!1 &1086866359
 GameObject:
@@ -1261,6 +1277,7 @@ MonoBehaviour:
   Position: {x: 3.9009998, y: 2.31, z: -11}
   YFacing: 0
   isStorageContainer: 0
+  isTreasureList: 0
   StorageSlots: []
 --- !u!1 &1118421574
 GameObject:
@@ -1308,6 +1325,7 @@ MonoBehaviour:
   Position: {x: 2.901, y: 2.31, z: -8}
   YFacing: 0
   isStorageContainer: 0
+  isTreasureList: 0
   StorageSlots: []
 --- !u!1 &1118935756
 GameObject:
@@ -1336,6 +1354,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 155133447}
+  - {fileID: 1352009373}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1400,16 +1419,16 @@ MonoBehaviour:
         MaximumValue: 0
       - ContainedItem: 6
         CurrentStackActive: 0
-        LowValue: 3
-        NormalValue: 3
-        HighValue: 3
-        MaximumValue: 3
-      - ContainedItem: 10
+        LowValue: 50
+        NormalValue: 50
+        HighValue: 50
+        MaximumValue: 50
+      - ContainedItem: 6
         CurrentStackActive: 0
-        LowValue: 1
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
+        LowValue: 50
+        NormalValue: 50
+        HighValue: 50
+        MaximumValue: 50
       - ContainedItem: 0
         CurrentStackActive: 0
         LowValue: 0
@@ -2314,6 +2333,7 @@ MonoBehaviour:
   Position: {x: 2.901, y: 2.31, z: -11}
   YFacing: 0
   isStorageContainer: 0
+  isTreasureList: 0
   StorageSlots: []
 --- !u!1 &1151290200
 GameObject:
@@ -2361,6 +2381,7 @@ MonoBehaviour:
   Position: {x: 1, y: 2.31, z: -11}
   YFacing: 0
   isStorageContainer: 0
+  isTreasureList: 0
   StorageSlots: []
 --- !u!1 &1301669059
 GameObject:
@@ -2408,7 +2429,285 @@ MonoBehaviour:
   Position: {x: 2, y: 2.31, z: -9}
   YFacing: 0
   isStorageContainer: 0
+  isTreasureList: 0
   StorageSlots: []
+--- !u!1 &1352009372
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1352009373}
+  - component: {fileID: 1352009374}
+  - component: {fileID: 1352009375}
+  m_Layer: 0
+  m_Name: Treasure Select
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1352009373
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1352009372}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1118935757}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1352009374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1352009372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e805d8795b53af441b23cb6344ddd866, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TreasureObject: {fileID: 1352009375}
+--- !u!114 &1352009375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1352009372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NetworkObjectID: 0
+  ItemRefID: 0
+  ItemGrowthLevel: 0
+  Position: {x: 0, y: 0, z: 0}
+  YFacing: 0
+  isStorageContainer: 1
+  isTreasureList: 0
+  StorageSlots:
+  - ContainedItem: 0
+    CurrentStackActive: 0
+    LowValue: 0
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 0
+    CurrentStackActive: 0
+    LowValue: 0
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 0
+    CurrentStackActive: 0
+    LowValue: 0
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 0
+    CurrentStackActive: 0
+    LowValue: 0
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 0
+    CurrentStackActive: 0
+    LowValue: 0
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 0
+    CurrentStackActive: 0
+    LowValue: 0
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 0
+    CurrentStackActive: 0
+    LowValue: 0
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 0
+    CurrentStackActive: 0
+    LowValue: 0
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 0
+    CurrentStackActive: 0
+    LowValue: 0
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 0
+    CurrentStackActive: 0
+    LowValue: 0
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 0
+    CurrentStackActive: 0
+    LowValue: 0
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 0
+    CurrentStackActive: 0
+    LowValue: 0
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 0
+    CurrentStackActive: 0
+    LowValue: 0
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 0
+    CurrentStackActive: 0
+    LowValue: 0
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 0
+    CurrentStackActive: 0
+    LowValue: 0
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 0
+    CurrentStackActive: 0
+    LowValue: 0
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 0
+    CurrentStackActive: 0
+    LowValue: 0
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 0
+    CurrentStackActive: 0
+    LowValue: 0
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 0
+    CurrentStackActive: 0
+    LowValue: 0
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 0
+    CurrentStackActive: 0
+    LowValue: 0
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 0
+    CurrentStackActive: 0
+    LowValue: 0
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 0
+    CurrentStackActive: 0
+    LowValue: 0
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 0
+    CurrentStackActive: 0
+    LowValue: 0
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 0
+    CurrentStackActive: 0
+    LowValue: 0
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 0
+    CurrentStackActive: 0
+    LowValue: 0
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 0
+    CurrentStackActive: 0
+    LowValue: 0
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 0
+    CurrentStackActive: 0
+    LowValue: 0
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 0
+    CurrentStackActive: 0
+    LowValue: 0
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 0
+    CurrentStackActive: 0
+    LowValue: 0
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 0
+    CurrentStackActive: 0
+    LowValue: 0
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 0
+    CurrentStackActive: 0
+    LowValue: 0
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 0
+    CurrentStackActive: 0
+    LowValue: 0
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 0
+    CurrentStackActive: 0
+    LowValue: 0
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 0
+    CurrentStackActive: 0
+    LowValue: 0
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 0
+    CurrentStackActive: 0
+    LowValue: 0
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 0
+    CurrentStackActive: 0
+    LowValue: 0
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
 --- !u!1 &1428702430
 GameObject:
   m_ObjectHideFlags: 0
@@ -2455,6 +2754,7 @@ MonoBehaviour:
   Position: {x: 4.901, y: 2.31, z: -8}
   YFacing: 0
   isStorageContainer: 0
+  isTreasureList: 0
   StorageSlots: []
 --- !u!1001 &1528084741
 Prefab:
@@ -2631,6 +2931,7 @@ MonoBehaviour:
   Position: {x: 3.9009998, y: 2.31, z: -9}
   YFacing: 0
   isStorageContainer: 0
+  isTreasureList: 0
   StorageSlots: []
 --- !u!1 &1887760265
 GameObject:
@@ -2678,6 +2979,7 @@ MonoBehaviour:
   Position: {x: 4.901, y: 2.31, z: -9}
   YFacing: 0
   isStorageContainer: 0
+  isTreasureList: 0
   StorageSlots: []
 --- !u!1 &1904530055
 GameObject:
@@ -2767,6 +3069,7 @@ MonoBehaviour:
   Position: {x: 2, y: 2.31, z: -8}
   YFacing: 0
   isStorageContainer: 0
+  isTreasureList: 0
   StorageSlots: []
 --- !u!1 &2110302581
 GameObject:

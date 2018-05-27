@@ -26,18 +26,22 @@ public class DG_InventoryGUI : MonoBehaviour
     public RectTransform FloatingRect;
     public DG_InventoryItem FloatingItem;
 
+    [Header("Shifing UI Position")]
+    public RectTransform InventoryFrame;
+    public Vector3 StoragePosition;
+    Vector3 StartingPosition;
+
 
     bool InventoryIsOpen;
-    //RuckSack Check Stuff
-    DG_PlayerCharacters.RucksackSlot FirstAvailableRucksackSlot;
-    int ItemAddSlotPosition;
-    DG_InventoryItem[] GuiItemSlots;
+
+
+    [HideInInspector] public DG_InventoryItem[] GuiItemSlots;
     [HideInInspector] public DG_InventoryItem[] HotbarSlots;
 
     //InventorySwap Stuff
     [HideInInspector] public DG_InventoryItem CurrentHoverItem;
     [HideInInspector] public bool isFloatingInventoryItem;
-    int PickedUpItemSlot;
+    DG_InventoryItem PickedUpItemSlot;
 
     //Equiped Hotbar Slot
     [HideInInspector] public int EquippedHotbarSlot = 0;
@@ -59,6 +63,8 @@ public class DG_InventoryGUI : MonoBehaviour
         HotbarSlots = new DG_InventoryItem[HotbarMirrorGrid.childCount];
         for (int i = 0; i < HotbarSlots.Length; i++)
         { HotbarSlots[i] = HotbarMirrorGrid.GetChild(i).GetComponent<DG_InventoryItem>(); HotbarSlots[i].isMirror = true; HotbarSlots[i].SlotID = i; HotbarSlots[i].Disabled.enabled = false; }
+
+        StartingPosition = InventoryFrame.localPosition;
     }
 
 
@@ -96,8 +102,27 @@ public class DG_InventoryGUI : MonoBehaviour
                     float ZoomAxis = QuickFind.InputController.MainPlayer.CamZoomAxis;
                     if (ZoomAxis != 0)
                         QuickFind.TooltipHandler.UpdateEquippedNum(-(int)ZoomAxis, false);
-                    if(QuickFind.InputController.MainPlayer.ButtonSet.Interact.Up)
-                        QuickFind.TooltipHandler.UpdateEquippedNum(1, true);
+                    if (QuickFind.InputController.MainPlayer.ButtonSet.Interact.Up)
+                    {
+                        if (isFloatingInventoryItem)
+                        {
+                            DG_Inventory I = QuickFind.InventoryManager;
+                            int ContainedItem = I.GetRuckSackSlotInventoryItem(CurrentHoverItem).ContainedItem;
+                            if (ContainedItem == 0)
+                            {
+
+                            }
+                            if (ContainedItem == I.GetRuckSackSlotInventoryItem(PickedUpItemSlot).ContainedItem)
+                            {
+
+                            }
+                        }
+                        else
+                        {
+                            if (!QuickFind.StorageUI.StorageUIOpen)
+                                QuickFind.TooltipHandler.UpdateEquippedNum(1, true);
+                        }
+                    }
                 }
             }
         }
@@ -119,6 +144,21 @@ public class DG_InventoryGUI : MonoBehaviour
 
 
 
+    public void OpenStorageUI()
+    {
+        InventoryFrame.localPosition = StoragePosition;
+        QuickFind.EnableCanvas(UICanvas, true);
+        UpdateInventoryVisuals();
+        InventoryIsOpen = true;
+    }
+    public void CloseStorageUI()
+    {
+        InventoryFrame.localPosition = StartingPosition;
+        InventoryIsOpen = false;
+        QuickFind.EnableCanvas(UICanvas, false);
+    }
+
+
 
 
 
@@ -130,22 +170,22 @@ public class DG_InventoryGUI : MonoBehaviour
         for (int i = 0; i < Equipment.RucksackSlots.Length; i++)
         {
             if (i < Equipment.RuckSackUnlockedSize)
-                UpdateRucksackSlotVisual(Equipment, i);
+                UpdateRucksackSlotVisual(GuiItemSlots[i], Equipment.RucksackSlots[i]);
             else //Disable Locked Rucksack Slots
                 GuiItemSlots[i].Disabled.enabled = true;
         }
         UpdateMirrorGrid();
     }
-    public void UpdateRucksackSlotVisual(DG_PlayerCharacters.CharacterEquipment Equipment, int i)
+    public void UpdateRucksackSlotVisual(DG_InventoryItem GuiSlot, DG_PlayerCharacters.RucksackSlot RucksackSlot)
     {
-        DG_PlayerCharacters.RucksackSlot RucksackSlot = Equipment.RucksackSlots[i];
-        DG_InventoryItem GuiSlot = GuiItemSlots[i];
-
         GuiSlot.Disabled.enabled = false;
         if (RucksackSlot.GetStackValue() == 0)
         {
             GuiSlot.ContainsItem = false;
             GuiSlot.Icon.sprite = DefaultNullSprite;
+            GuiSlot.AmountText.text = string.Empty;
+            GuiSlot.QualityAmountText.text = string.Empty;
+            GuiSlot.QualityLevelOverlay.enabled = false;
         }
         else
         {
@@ -195,93 +235,6 @@ public class DG_InventoryGUI : MonoBehaviour
 
 
 
-    public void AddItemToRucksack(int PlayerID, int ItemID, DG_ItemObject.ItemQualityLevels QualityLevel)
-    {
-        DG_PlayerCharacters.CharacterEquipment Equipment = QuickFind.Farm.PlayerCharacters[PlayerID].Equipment;
-        DG_ItemObject Object = QuickFind.ItemDatabase.GetItemFromID(ItemID);
-        DG_PlayerCharacters.RucksackSlot RucksackSlot = RucksackSlotContainingID(Equipment, Object);
-
-        bool TrashSwap = false;
-
-        if (RucksackSlot == null) //Item Does Not Exist in Bag Yet.
-        {
-            if (FirstAvailableRucksackSlot == null) // There is no Available Room in Bag.
-            {
-                TrashSwap = true;
-                Debug.Log("Trigger Trash Select GUI");
-            }
-            else //Add Item to First Available Rucksack Slot
-            {
-                FirstAvailableRucksackSlot.ContainedItem = Object.DatabaseID;
-                FirstAvailableRucksackSlot.AddStackQualityValue(QualityLevel, 1);
-                RucksackSlot = FirstAvailableRucksackSlot;
-                RucksackSlot.CurrentStackActive = (int)QualityLevel;
-            }
-        }
-        else //Add Item to Rucksack Slot
-        { RucksackSlot.AddStackQualityValue(QualityLevel, 1); }
-
-        if (!TrashSwap)
-            QuickFind.NetworkSync.SetRucksackValue(PlayerID, ItemAddSlotPosition, RucksackSlot.ContainedItem, RucksackSlot.CurrentStackActive,
-            RucksackSlot.LowValue, RucksackSlot.NormalValue, RucksackSlot.HighValue, RucksackSlot.MaximumValue);
-    }
-
-    DG_PlayerCharacters.RucksackSlot RucksackSlotContainingID(DG_PlayerCharacters.CharacterEquipment Equipment, DG_ItemObject Object)
-    {
-        FirstAvailableRucksackSlot = null;
-        ItemAddSlotPosition = 0;
-        int ObjectID = Object.DatabaseID;
-        int count = Equipment.RuckSackUnlockedSize;
-        for (int i = 0; i < count; i++)
-        {
-            DG_PlayerCharacters.RucksackSlot RS = Equipment.RucksackSlots[i];
-            if (RS.ContainedItem == ObjectID)
-            {
-                if (RS.GetStackValue() < Object.MaxStackSize)
-                { ItemAddSlotPosition = i; return RS; }
-            }
-            else if (FirstAvailableRucksackSlot == null && RS.ContainedItem == 0)
-            { FirstAvailableRucksackSlot = RS; ItemAddSlotPosition = i; }
-        }
-        return null;
-    }
-
-
-
-    void SwapInventoryItems(int SlotA, int SlotB, int PlayerIDA, int PlayerIDB)
-    {
-        DG_PlayerCharacters.CharacterEquipment EquipmentA = QuickFind.Farm.PlayerCharacters[PlayerIDA].Equipment;
-        DG_PlayerCharacters.CharacterEquipment EquipmentB = QuickFind.Farm.PlayerCharacters[PlayerIDB].Equipment;
-
-        DG_PlayerCharacters.RucksackSlot RucksackSlotA = EquipmentA.RucksackSlots[SlotA];
-        DG_PlayerCharacters.RucksackSlot RucksackSlotB = EquipmentB.RucksackSlots[SlotB];
-
-        int ContainedItem = RucksackSlotA.ContainedItem;
-        int CurrentStackActive = RucksackSlotA.CurrentStackActive;
-        int LowValue = RucksackSlotA.LowValue;
-        int NormalValue = RucksackSlotA.NormalValue;
-        int HighValue = RucksackSlotA.HighValue;
-        int MaximumValue = RucksackSlotA.MaximumValue;
-
-        SetItemValueInRucksack(RucksackSlotA, PlayerIDA, SlotA, RucksackSlotB.ContainedItem, RucksackSlotB.CurrentStackActive,
-            RucksackSlotB.LowValue, RucksackSlotB.NormalValue, RucksackSlotB.HighValue, RucksackSlotB.MaximumValue);
-        SetItemValueInRucksack(RucksackSlotB, PlayerIDB, SlotB, ContainedItem, CurrentStackActive, LowValue, NormalValue, HighValue, MaximumValue);
-    }
-
-    public void SetItemValueInRucksack(DG_PlayerCharacters.RucksackSlot RucksackSlot, int PlayerID, int Slot,
-        int ContainedItem, int CurrentStackActive, int LowValue, int NormalValue, int HighValue, int MaximumValue)
-    {
-        RucksackSlot.ContainedItem = ContainedItem;
-        RucksackSlot.CurrentStackActive = CurrentStackActive;
-        RucksackSlot.LowValue = LowValue;
-        RucksackSlot.NormalValue = NormalValue;
-        RucksackSlot.HighValue = HighValue;
-        RucksackSlot.MaximumValue = MaximumValue;
-
-        QuickFind.NetworkSync.SetRucksackValue(PlayerID, Slot, ContainedItem, CurrentStackActive, LowValue, NormalValue, HighValue, MaximumValue);
-    }
-
-
 
 
 
@@ -299,7 +252,19 @@ public class DG_InventoryGUI : MonoBehaviour
             {
                 int ID = QuickFind.NetworkSync.PlayerCharacterID;
                 AdjustFloatingInventoryUI(false);
-                SwapInventoryItems(PickedUpItemSlot, PressedItem.SlotID, ID, ID);
+
+                DG_PlayerCharacters.RucksackSlot RucksackSlotA = QuickFind.InventoryManager.GetRuckSackSlotInventoryItem(PickedUpItemSlot);
+                DG_PlayerCharacters.RucksackSlot RucksackSlotB = QuickFind.InventoryManager.GetRuckSackSlotInventoryItem(PressedItem);
+                int IndexA = ID;
+                int IndexB = ID;
+                if (PickedUpItemSlot.IsStorageSlot) IndexA = QuickFind.StorageUI.ActiveStorage.transform.GetSiblingIndex();
+                if (PressedItem.IsStorageSlot) IndexB = QuickFind.StorageUI.ActiveStorage.transform.GetSiblingIndex();
+
+                if(RucksackSlotA.ContainedItem != RucksackSlotB.ContainedItem)
+                    QuickFind.InventoryManager.SwapInventoryItems(RucksackSlotA, RucksackSlotB, PickedUpItemSlot, PressedItem, IndexA, IndexB);
+                else
+                    QuickFind.InventoryManager.DropStackOntoStack(RucksackSlotA, RucksackSlotB, PickedUpItemSlot, PressedItem, IndexA, IndexB);
+
                 PressedItem.ItemHoverIn();
             }
             else { AdjustFloatingInventoryUI(true); PickupItem(PressedItem); }
@@ -308,7 +273,7 @@ public class DG_InventoryGUI : MonoBehaviour
 
     void PickupItem(DG_InventoryItem PressedItem)
     {
-        PickedUpItemSlot = PressedItem.SlotID;
+        PickedUpItemSlot = PressedItem;
         FloatingItem.AmountText.text = PressedItem.AmountText.text;
         FloatingItem.Icon.sprite = PressedItem.Icon.sprite;
         PressedItem.AmountText.text = string.Empty;
@@ -349,30 +314,5 @@ public class DG_InventoryGUI : MonoBehaviour
             DG_ItemObject Object = QuickFind.ItemDatabase.GetItemFromID(Equipment.RucksackSlots[EquippedHotbarSlot].ContainedItem);
             QuickFind.ItemActivateableHandler.SetCurrentActiveItem(Equipment.RucksackSlots[EquippedHotbarSlot], Object);
         }
-    }
-
-
-
-
-
-
-    public int TotalInventoryCountOfItem(int ItemID)
-    {
-        return 0;
-    }
-
-
-
-
-    public DG_PlayerCharacters.RucksackSlot GetRuckSackSlotInventoryItem(DG_InventoryItem II)
-    {
-        DG_PlayerCharacters.CharacterEquipment Equipment = QuickFind.Farm.PlayerCharacters[QuickFind.NetworkSync.PlayerCharacterID].Equipment;
-        return Equipment.RucksackSlots[II.SlotID];
-    }
-    public DG_ItemObject GetItemByInventoryItem(DG_InventoryItem II)
-    {
-        DG_PlayerCharacters.CharacterEquipment Equipment = QuickFind.Farm.PlayerCharacters[QuickFind.NetworkSync.PlayerCharacterID].Equipment;
-        DG_PlayerCharacters.RucksackSlot RucksackSlot = Equipment.RucksackSlots[II.SlotID];
-        return QuickFind.ItemDatabase.GetItemFromID(RucksackSlot.ContainedItem);
     }
 }

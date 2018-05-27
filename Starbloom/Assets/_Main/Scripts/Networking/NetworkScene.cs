@@ -47,7 +47,7 @@ public class NetworkScene : MonoBehaviour {
             GO.transform.SetParent(transform);
             NetworkObject NO = GO.AddComponent<NetworkObject>();
             NetworkObject ListNO = NetworkObjectList[i];
-            Clone(NO, ListNO);
+            NO.Clone(NO, ListNO);
 
             NO.transform.position = NO.Position;
             NO.transform.eulerAngles = new Vector3(0, NO.YFacing, 0);
@@ -56,13 +56,6 @@ public class NetworkScene : MonoBehaviour {
             //
         }
         DestroyObjects();
-    }
-    void Clone(NetworkObject NO, NetworkObject ListNO)
-    {
-        NO.ItemRefID = ListNO.ItemRefID;
-        NO.ItemGrowthLevel = ListNO.ItemGrowthLevel;
-        NO.Position = ListNO.Position;
-        NO.YFacing = ListNO.YFacing;
     }
     public void DestroyObjects()
     {
@@ -76,7 +69,7 @@ public class NetworkScene : MonoBehaviour {
         {
             NetworkObject NO = transform.GetChild(i).GetComponent<NetworkObject>();
             NetworkObject NOT = transform.gameObject.AddComponent<NetworkObject>();
-            Clone(NOT, NO);
+            NO.Clone(NOT, NO);
             NetworkObjectList.Add(NO);
             Destroy(transform.GetChild(i).gameObject);
         }

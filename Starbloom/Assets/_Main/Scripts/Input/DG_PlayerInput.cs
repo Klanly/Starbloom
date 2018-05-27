@@ -119,7 +119,12 @@ public class DG_PlayerInput : MonoBehaviour {
         if (MainPlayer.ButtonSet.StartBut.Up) //Menu Button
         {
             if (QuickFind.PlayerCam.MainCam.isActiveAndEnabled && InputState != CurrentInputState.InCinema)
-                QuickFind.GUI_OverviewTabs.OpenUI();
+            {
+                if (QuickFind.StorageUI.StorageUIOpen)
+                    QuickFind.StorageUI.CloseStorageUI();
+                else
+                    QuickFind.GUI_OverviewTabs.OpenUI();
+            }
         }
 
         //Fix Later for Controller Input

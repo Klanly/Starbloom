@@ -30,7 +30,6 @@ class DG_TextStaticEditor : Editor
 
 public class DG_TextStatic : MonoBehaviour {
 
-    public int TextCatID;
     public int TextWordID;
 
 
@@ -48,6 +47,6 @@ public class DG_TextStatic : MonoBehaviour {
         if (QuickFind.WordDatabase == null)
             return;
 
-        transform.GetComponent<TMPro.TextMeshProUGUI>().text = NA_DialogueGUIController.GetStaticText(TextWordID, TextCatID);
+        transform.GetComponent<TMPro.TextMeshProUGUI>().text = NA_DialogueGUIController.GetStaticText(TextWordID);
     }
 }

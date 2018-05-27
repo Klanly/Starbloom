@@ -91,7 +91,6 @@ public class NetworkObjectManager : MonoBehaviour {
 
 
 
-
 #if UNITY_EDITOR
     [Header("Editor Debug")]
     public bool DisplayPreviewsInSceneView = true;

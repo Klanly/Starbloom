@@ -160,7 +160,7 @@ public class DG_TooltipGUI : MonoBehaviour {
         AddRucksack(isUP, CanLoop, ActiveRucksackSlot.CurrentStackActive);
 
         DG_PlayerCharacters.CharacterEquipment Equipment = QuickFind.Farm.PlayerCharacters[QuickFind.NetworkSync.PlayerCharacterID].Equipment;
-        QuickFind.GUI_Inventory.UpdateRucksackSlotVisual(Equipment, HoveredInventoryItem.SlotID);
+        QuickFind.GUI_Inventory.UpdateRucksackSlotVisual(HoveredInventoryItem, ActiveRucksackSlot);
         GenerateQualitySelectionGrid();
         GenerateToolTip();
         if (HoveredInventoryItem.SlotID < 12)

@@ -39,15 +39,25 @@ public class DG_NetworkSync : Photon.MonoBehaviour
             Destroy(this.gameObject);
         else
         {
-            PV = transform.GetComponent<PhotonView>();
-            transform.SetParent(QuickFind.NetworkMaster.transform);
-            QuickFind.NetworkSync = this;
-            PV.RPC("SetNewID", PhotonTargets.MasterClient);
-            if (!PhotonNetwork.isMasterClient)
-                QuickFind.NetworkSync.RequestPlayerDataSync();
-            else
-                QuickFind.MainMenuUI.Connected();               
+            if (!PhotonNetwork.offlineMode)
+                QueueNetConnected();
         }
+    }
+    private void Start()
+    {
+        if (PhotonNetwork.offlineMode)
+            QueueNetConnected();
+    }
+    void QueueNetConnected()
+    {
+        PV = transform.GetComponent<PhotonView>();
+        transform.SetParent(QuickFind.NetworkMaster.transform);
+        QuickFind.NetworkSync = this;
+        PV.RPC("SetNewID", PhotonTargets.MasterClient);
+        if (!PhotonNetwork.isMasterClient)
+            QuickFind.NetworkSync.RequestPlayerDataSync();
+        else
+            QuickFind.MainMenuUI.Connected();
     }
 
 
@@ -237,6 +247,38 @@ public class DG_NetworkSync : Photon.MonoBehaviour
         if(info[0] == QuickFind.NetworkSync.PlayerCharacterID)
             QuickFind.GUI_Inventory.UpdateInventoryVisuals();
     }
+
+    public void SetStorageValue(int Scene, int NetObjectIndex, int Slot, int ContainedItem, int CurrentStackActive, int LowValue, int NormalValue, int HighValue, int MaximumValue)
+    {
+        List<int> IntData = new List<int>();
+        IntData.Add(Scene);
+        IntData.Add(NetObjectIndex);
+        IntData.Add(Slot);
+        IntData.Add(ContainedItem);
+        IntData.Add(CurrentStackActive);
+        IntData.Add(LowValue);
+        IntData.Add(NormalValue);
+        IntData.Add(HighValue);
+        IntData.Add(MaximumValue);
+
+        PV.RPC("NewStorageValue", PhotonTargets.All, IntData.ToArray());
+    }
+    [PunRPC]
+    void NewStorageValue(int[] info)
+    {
+        int index = 0;
+        NetworkScene NS = QuickFind.NetworkObjectManager.GetSceneByID(info[index]); index++;
+        NetworkObject NO = NS.transform.GetChild(info[index]).GetComponent<NetworkObject>(); index++;
+        DG_PlayerCharacters.RucksackSlot RS = NO.StorageSlots[info[index]]; index++;
+        RS.ContainedItem = info[index]; index++;
+        RS.CurrentStackActive = info[index]; index++;
+        RS.LowValue = info[index]; index++;
+        RS.NormalValue = info[index]; index++;
+        RS.HighValue = info[index]; index++;
+        RS.MaximumValue = info[index]; index++;
+
+        if (info[0] == QuickFind.NetworkSync.PlayerCharacterID) QuickFind.StorageUI.UpdateStorageVisuals();
+    }
     #endregion
 
 
@@ -352,6 +394,23 @@ public class DG_NetworkSync : Photon.MonoBehaviour
         Destroy(QuickFind.NetworkObjectManager.FindObject(Received[0], Received[1]));   
     }
 
+
+    #endregion
+
+
+
+    #region Events
+    /////////////////////////////////////////////////////
+    public void GameWasLoaded()
+    {
+        PV.RPC("UpdateLoadedGame", PhotonTargets.Others);
+    }
+    [PunRPC]
+    void UpdateLoadedGame()
+    {
+        RequestPlayerDataSync();
+        RequestWorldObjects();
+    }
 
     #endregion
 }

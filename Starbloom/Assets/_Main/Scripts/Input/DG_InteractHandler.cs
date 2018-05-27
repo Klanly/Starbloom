@@ -37,15 +37,17 @@ public class DG_InteractHandler : MonoBehaviour
     {
         NetworkObject NO = CO.transform.parent.GetComponent<NetworkObject>();
         int Scene = NO.transform.parent.GetComponent<NetworkScene>().SceneID;
-
-        QuickFind.NetworkSync.RemoveNetworkSceneObject(Scene, NO.transform.GetSiblingIndex());
-
         int ItemID = NO.ItemRefID;
         int ItemQuality = NO.ItemGrowthLevel;
-        QuickFind.GUI_Inventory.AddItemToRucksack(QuickFind.NetworkSync.PlayerCharacterID, ItemID, (DG_ItemObject.ItemQualityLevels)ItemQuality);
+
+        if (QuickFind.InventoryManager.AddItemToRucksack(QuickFind.NetworkSync.PlayerCharacterID, ItemID, (DG_ItemObject.ItemQualityLevels)ItemQuality))
+            Debug.Log("Send Inventory Full Message");
+        else
+            QuickFind.NetworkSync.RemoveNetworkSceneObject(Scene, NO.transform.GetSiblingIndex());
     }
     void HandleMoveableStorage(DG_ContextObject CO)
     {
-        Debug.Log("Handle Moveable Storage");
+        NetworkObject NO = CO.transform.parent.GetComponent<NetworkObject>();
+        QuickFind.StorageUI.OpenStorageUI(NO, false);
     }
 }
