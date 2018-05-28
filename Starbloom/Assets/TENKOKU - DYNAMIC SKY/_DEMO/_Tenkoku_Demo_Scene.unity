@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.024510534, g: 0.028419923, b: 0.028117333, a: 1}
+  m_IndirectSpecularColor: {r: 0.024510534, g: 0.028419927, b: 0.028117338, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &4
 LightmapSettings:
@@ -1585,7 +1585,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  randSeed: 44518375
+  randSeed: 1124001046
   isDoingTransition: 0
   minimumHeight: 0
 --- !u!114 &76575456

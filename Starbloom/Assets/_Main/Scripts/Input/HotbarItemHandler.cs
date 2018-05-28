@@ -35,6 +35,9 @@ public class HotbarItemHandler : MonoBehaviour {
         bool AllowSent = false;
         bool UpEvent = false;
 
+        if (QuickFind.GUI_OverviewTabs.UIisOpen || QuickFind.StorageUI.StorageUIOpen)
+            return;
+
         if (QuickFind.InputController.MainPlayer.ButtonSet.Action.Held) AllowSent = true;
         if (QuickFind.InputController.MainPlayer.ButtonSet.Action.Up) { AllowSent = true; UpEvent = true; }
 
@@ -55,6 +58,13 @@ public class HotbarItemHandler : MonoBehaviour {
     }
 
 
+
+    //Fishing Rod
+    void FishingPoleEvent(bool isUp) { QuickFind.FishingHandler.ExternalUpdate(isUp); }
+
+
+
+
     void AxeEvent(bool isUp)
     {
         if(isUp)
@@ -62,13 +72,7 @@ public class HotbarItemHandler : MonoBehaviour {
         else
             Debug.Log("Active Axe HELD Event");
     }
-    void FishingPoleEvent(bool isUp)
-    {
-        if (isUp)
-            Debug.Log("Active FishingPole UP Event");
-        else
-            Debug.Log("Active FishingPole HELD Event");
-    }
+
     void HoeEvent(bool isUp)
     {
         if (isUp)

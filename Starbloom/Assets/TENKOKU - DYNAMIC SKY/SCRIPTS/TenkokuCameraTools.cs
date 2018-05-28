@@ -41,8 +41,8 @@ namespace Tenkoku.Core
 			cam = gameObject.GetComponent<Camera>() as Camera;
 			camTrans = gameObject.GetComponent<Transform>() as Transform;
 			if (tenkokuModuleObject != null){
-				copyCam = QuickFind.PlayerCam.MainCam;
-				copyCamTrans = copyCam.transform;
+                    copyCam = QuickFind.PlayerCam.MainCam;
+				copyCamTrans = copyCam.GetComponent<Transform>();
 			}
 		}
 

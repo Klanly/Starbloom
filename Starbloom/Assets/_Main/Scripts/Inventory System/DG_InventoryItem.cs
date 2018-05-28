@@ -20,6 +20,8 @@ public class DG_InventoryItem : MonoBehaviour {
 
     [Header("Drag Item")]
     public bool isDragDisplay;
+    [Header("Trash")]
+    public bool isTrash = false;
 
     [HideInInspector] public bool isMirror;
     [HideInInspector] public int SlotID;
@@ -45,7 +47,8 @@ public class DG_InventoryItem : MonoBehaviour {
     {
         if(!isDragDisplay)
             this.enabled = false;
-        Icon.sprite = QuickFind.GUI_Inventory.DefaultNullSprite;
+        if (!isTrash)
+            Icon.sprite = QuickFind.GUI_Inventory.DefaultNullSprite;
     }
 
     public void ItemHoverIn()

@@ -97,32 +97,19 @@ public class DG_InventoryGUI : MonoBehaviour
             }
             else 
             {
-                if (QuickFind.TooltipHandler.IsQualitySelection)
+                bool Quality = QuickFind.TooltipHandler.IsQualitySelection;
+                if (Quality)
                 {
                     float ZoomAxis = QuickFind.InputController.MainPlayer.CamZoomAxis;
                     if (ZoomAxis != 0)
                         QuickFind.TooltipHandler.UpdateEquippedNum(-(int)ZoomAxis, false);
-                    if (QuickFind.InputController.MainPlayer.ButtonSet.Interact.Up)
-                    {
-                        if (isFloatingInventoryItem)
-                        {
-                            DG_Inventory I = QuickFind.InventoryManager;
-                            int ContainedItem = I.GetRuckSackSlotInventoryItem(CurrentHoverItem).ContainedItem;
-                            if (ContainedItem == 0)
-                            {
-
-                            }
-                            if (ContainedItem == I.GetRuckSackSlotInventoryItem(PickedUpItemSlot).ContainedItem)
-                            {
-
-                            }
-                        }
-                        else
-                        {
-                            if (!QuickFind.StorageUI.StorageUIOpen)
-                                QuickFind.TooltipHandler.UpdateEquippedNum(1, true);
-                        }
-                    }
+                }
+                if (QuickFind.InputController.MainPlayer.ButtonSet.Interact.Up)
+                {
+                    if (isFloatingInventoryItem)
+                        QuickFind.InventoryManager.DropOne(PickedUpItemSlot, CurrentHoverItem);
+                    else if (!QuickFind.StorageUI.StorageUIOpen && Quality)
+                        QuickFind.TooltipHandler.UpdateEquippedNum(1, true);
                 }
             }
         }

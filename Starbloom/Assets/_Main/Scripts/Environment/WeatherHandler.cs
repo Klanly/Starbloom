@@ -181,6 +181,13 @@ public class WeatherHandler : MonoBehaviour
         WeatherModule.weather_humidity = Weather.weather_humidity;
         WeatherModule.weather_rainbow = Weather.weather_rainbow;
 
+
+        if (WeatherModule.weather_RainAmt > 0)
+            QuickFind.RainDropHandler.IsRaining = true;
+        else
+            QuickFind.RainDropHandler.IsRaining = false;
+
+
         Suimono.Core.SuimonoObject Suimono = QuickFind.WaterObject;
 
         Suimono.beaufortScale = Weather.Water.beaufortScale;

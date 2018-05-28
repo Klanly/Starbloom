@@ -51,10 +51,12 @@ public class DG_CharacterLink : MonoBehaviour {
         PlayerChar.enabled = true;
         CharAnim.enabled = true;
 
+        QuickFind.PlayerTrans = PlayerChar.transform;
         QuickFind.InputController.MainPlayer.CharLink = this;
         QuickFind.PlayerCam.CharTrans = PlayerChar.transform;
         QuickFind.NetworkSync.SetPhotonViewID(transform.GetComponent<PhotonView>().viewID);
         QuickFind.ContextDetectionHandler.CharacterLink = this;
+        QuickFind.RainDropHandler.Player = PlayerChar.transform;
 
         this.enabled = false;
     }

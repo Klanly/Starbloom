@@ -49,6 +49,7 @@ public static class QuickFind
 
 
     //InputController
+    public static Transform PlayerTrans = null;
     public static DG_PlayerInput InputController = null;
     public static DG_CharacterControllers CharacterManager = null;
     public static DG_InteractHandler InteractHandler = null;
@@ -79,6 +80,7 @@ public static class QuickFind
     //Managers
     public static DG_Inventory InventoryManager = null;
     public static DG_TreasureSelection TreasureManager = null;
+    public static Fishing_MasterHandler FishingHandler = null;
 
 
     //Cameras
@@ -107,8 +109,10 @@ public static class QuickFind
     //Environment
     public static WeatherHandler WeatherHandler = null;
     public static Tenkoku.Core.TenkokuModule WeatherModule = null;
+    public static Suimono.Core.SuimonoModule WaterModule = null;
     public static Suimono.Core.SuimonoObject WaterObject = null;
     public static TimeHandler TimeHandler = null;
+    public static FakeRainDropCollision RainDropHandler = null;
 
 
     //Serialization

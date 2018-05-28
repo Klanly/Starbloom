@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Cam
+  - River
+  - Lake
+  - Ocean
   layers:
   - Default
   - TransparentFX
@@ -21,8 +24,8 @@ TagManager:
   - 
   - InteractableObject
   - 
-  - 
-  - 
+  - Tillable Terrain
+  - Water
   - 
   - 
   - 
