@@ -68,6 +68,7 @@ public static class QuickFind
     public static DG_GUICharacterCreation CharacterCreation = null;
     public static DG_TooltipGUI TooltipHandler = null;
     public static DG_StorageGUI StorageUI = null;
+    public static DG_FishingGUI FishingGUI = null;
 
 
     //GUI - Main Overview
@@ -130,24 +131,11 @@ public static class QuickFind
 
 
 
-    //Reference Utilities
-    public static Transform FindTransform(Transform parent, string name)
-    {
-        Transform[] children = parent.GetComponentsInChildren<Transform>();
-        foreach (Transform child in children)
-        {
-            if (child.name == name)
-                return child;
-        }
-        return null;
-    }
-    public static bool WithinDistance(Transform Object, Transform Target, float MasterMinDistance)
-    {
-        if (Vector3.Distance(Object.position, Target.position) < MasterMinDistance)
-            return true;
-        else
-            return false;
-    }
+    //Utilities
+
+    public static Transform FindTransform(Transform parent, string name) { Transform[] children = parent.GetComponentsInChildren<Transform>(); foreach (Transform child in children) { if (child.name == name) return child; } return null; }
+    public static bool WithinDistance(Transform Object, Transform Target, float MasterMinDistance) { if (Vector3.Distance(Object.position, Target.position) < MasterMinDistance) return true; else return false; }
+
     public static Vector3 AngleLerp(Vector3 StartAngle, Vector3 FinishAngle, float t)
     {
         float xLerp = Mathf.LerpAngle(StartAngle.x, FinishAngle.x, t);
@@ -156,43 +144,17 @@ public static class QuickFind
         Vector3 Lerped = new Vector3(xLerp, yLerp, zLerp);
         return Lerped;
     }
+
     public static int GetNextValueInArray(int current, int ArrayLength, bool Add, bool CanLoop)
     {
         int Return = current;
-        if(Add)
-        {
-            Return++;
-            if (Return == ArrayLength)
-            {
-                if (CanLoop)
-                    Return = 0;
-                else
-                    Return--;
-            }
-        }
-        else
-        {
-            Return--;
-            if (Return < 0)
-            {
-                if (CanLoop)
-                    Return = ArrayLength - 1;
-                else
-                    Return++;
-            }
-        }
-
+        if(Add) { Return++; if (Return == ArrayLength) { if (CanLoop) Return = 0; else Return--; } }
+        else { Return--; if (Return < 0) { if (CanLoop) Return = ArrayLength - 1; else Return++; } }
         return Return;
     }
     public static void EnableCanvas(CanvasGroup C, bool isTrue)
-    {
-        float value = 0;
-        if (isTrue)
-            value = 1;
-        C.alpha = value;
-        C.interactable = isTrue;
-        C.blocksRaycasts = isTrue;
-    }
+    { float value = 0; if (isTrue) value = 1; C.alpha = value; C.interactable = isTrue; C.blocksRaycasts = isTrue; }
+
     public static int GetIfWithinBounds(int IncomingValue, int Min, int ArrayLength)
     {
         if (IncomingValue < Min) return Min;

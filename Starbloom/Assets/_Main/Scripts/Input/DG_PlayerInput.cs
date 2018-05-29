@@ -20,7 +20,8 @@ public class DG_PlayerInput : MonoBehaviour {
     {
         Default,
         InMenu,
-        InCinema
+        InCinema,
+        PerformingAction
     }
 
     [System.Serializable]
@@ -53,8 +54,16 @@ public class DG_PlayerInput : MonoBehaviour {
         [Header("Button Set")] public DG_GameButtons ButtonSet;
     }
 
+
+
     [Header("Debug")]
     public bool PrintButtonPressed;
+    public bool EnableMoveTowardsMouse;
+    LazyWalking LazyWalker() { if (LW == null) LW = new LazyWalking(); return LW; }
+    LazyWalking LW;
+
+
+
     [Header("Players")]
     public Player MainPlayer;
 
@@ -97,6 +106,7 @@ public class DG_PlayerInput : MonoBehaviour {
             MainPlayer.VerticalAxis = JoystickVertical;
             MainPlayer.HorizontalAxis = JoystickHorizontal;
 
+            if (EnableMoveTowardsMouse) { LazyWalker().InternalUpdate(); if (LazyWalker().isFound) { MainPlayer.VerticalAxis = LazyWalker().Z; MainPlayer.HorizontalAxis = LazyWalker().X; } }
 
             JoystickVertical = 0;
             JoystickHorizontal = 0;
@@ -109,8 +119,6 @@ public class DG_PlayerInput : MonoBehaviour {
             //Set Values
             MainPlayer.CamVerticalAxis = JoystickVertical;
             MainPlayer.CamHorizontalAxis = JoystickHorizontal;
-
-
 
         }
 
@@ -127,11 +135,14 @@ public class DG_PlayerInput : MonoBehaviour {
             }
         }
 
-        //Fix Later for Controller Input
-        MainPlayer.CamZoomAxis = 0;
-        float ScrollAxis = Input.GetAxis("Mouse ScrollWheel");
-        if (ScrollAxis > 0) MainPlayer.CamZoomAxis = 1;
-        if (ScrollAxis < 0) MainPlayer.CamZoomAxis = -1;
+        if (InputState == CurrentInputState.Default || InputState == CurrentInputState.InMenu)
+        {
+            //Fix Later for Controller Input
+            MainPlayer.CamZoomAxis = 0;
+            float ScrollAxis = Input.GetAxis("Mouse ScrollWheel");
+            if (ScrollAxis > 0) MainPlayer.CamZoomAxis = 1;
+            if (ScrollAxis < 0) MainPlayer.CamZoomAxis = -1;
+        }
     }
 
 

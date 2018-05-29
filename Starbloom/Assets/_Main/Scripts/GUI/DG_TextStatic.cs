@@ -34,10 +34,6 @@ public class DG_TextStatic : MonoBehaviour {
 
 
 
-    public void OnEnable()
-    {
-        Load();
-    }
     public void ManualLoad()
     {
         Load();

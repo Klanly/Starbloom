@@ -15,6 +15,8 @@ public class DG_InteractHandler : MonoBehaviour
     private void Update()
     {
 
+        if (QuickFind.InputController.InputState != DG_PlayerInput.CurrentInputState.Default) return;
+
 
         if (QuickFind.InputController.MainPlayer.ButtonSet.Interact.Up)
         {

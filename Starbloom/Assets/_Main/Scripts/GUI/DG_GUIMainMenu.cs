@@ -50,9 +50,6 @@ public class DG_GUIMainMenu : Photon.MonoBehaviour
 
         transform.localPosition = Vector3.zero;
 
-        foreach (DG_TextStatic TS in StaticTextArray)
-            TS.ManualLoad();
-
         if (QuickFind.GameSettings.BypassMainMenu)
             QuickFind.NetworkMaster.StartGame();
 
@@ -80,6 +77,9 @@ public class DG_GUIMainMenu : Photon.MonoBehaviour
 
     void NewGameMenu()
     {
+        foreach (DG_TextStatic TS in StaticTextArray)
+            TS.ManualLoad();
+
         QuickFind.EnableCanvas(UICanvas, false);
         QuickFind.NetworkMaster.CreateNewRoom = true;
         QuickFind.NetworkMaster.StartGame();

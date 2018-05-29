@@ -23,7 +23,6 @@ public class HotbarItemHandler : MonoBehaviour {
 
 
 
-
     private void Awake()
     {
         QuickFind.ItemActivateableHandler = this;

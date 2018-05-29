@@ -18,7 +18,8 @@ public class Fishing_MasterHandler : MonoBehaviour
         HitDisplay,
         Reeling,
         PullingInBobber,
-        BobberPulledIn
+        BobberPulledIn,
+        WaitForUpTrigger
     }
 
     public enum WaterTypes
@@ -77,6 +78,11 @@ public class Fishing_MasterHandler : MonoBehaviour
     float CurrentFishCaughtValue;
     bool ReelingHeld;
 
+    [Header("Reeling Minigame Values")]
+    public float RegionMoveSpeed;
+    float MaxFishHeight;
+    float MaxRegionHeight;
+
     ////////////////////////////////////////////////////////////////////////////////////////////////////
     [Header("Bobber Pull In")]
     public float PullInTime;
@@ -87,6 +93,10 @@ public class Fishing_MasterHandler : MonoBehaviour
     public GameObject FishingLine;
     public GameObject BobberModel;
 
+    [Header("Camera")]
+    public float CameraHeight;
+    public float CameraSpeed;
+
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////
     [Header("Debug Print-----------------------------------------------------")]
@@ -95,14 +105,13 @@ public class Fishing_MasterHandler : MonoBehaviour
     public bool GizmoFishingDetection;
     public bool GizmoCasterRange;
     [Header("Debug Values")]
-    public bool UseDebugValues;
-    public float DebugAwaitingFishTime;
+    public bool QuickCatchFish;
+    public float DebugFishMoveUpSpeed;
 
 
 
     [Button(ButtonSizes.Small)] public void ResetFishingState() { CurrentState = FishingStates.Idle; }
-    bool Wait1 = false;
-
+    float CameraInitialPosition;
 
 
 
@@ -112,6 +121,10 @@ public class Fishing_MasterHandler : MonoBehaviour
         QuickFind.FishingHandler = this;
         CastDetectionHelper = new GameObject().transform;
         CastDetectionHelper.SetParent(transform);
+    }
+    private void Start()
+    {
+        CameraInitialPosition = QuickFind.PlayerCam.transform.localEulerAngles.x;
     }
     void OnDrawGizmosSelected()
     {
@@ -136,24 +149,24 @@ public class Fishing_MasterHandler : MonoBehaviour
     //Input Reactions
     public void ExternalUpdate(bool isUp)
     {
-        if (Wait1) { Wait1 = false; return; }
-        if (CurrentState == FishingStates.Idle) { SetAnimationState("Casting"); CurrentState = FishingStates.SearchingForCast; }
-        if (CurrentState == FishingStates.SearchingForCast) { if (FishableAreaIsPossible()){ CastPower = 0; isUP = true; CurrentState = FishingStates.CastCharging; } else if (isUp) { SetAnimationState("Idle"); CurrentState = FishingStates.Idle; } }
-        if (CurrentState == FishingStates.CastCharging) { CastPower = CalculateCastPower(); if (isUp) { if (CastPower > MaxCastMinimum) PlayMaxCastEffect(); EndPoint = CalcEndPoint();  CastTimer = CastTime; CurrentState = FishingStates.Casting; } }
-        if (CurrentState == FishingStates.AwaitingFish) { SetAnimationState("PullingInBobber"); CurrentState = FishingStates.PullingInBobber; }
-        if (CurrentState == FishingStates.FishEventTriggered) { if (PrintDebug) Debug.Log("Fish Hook Successful"); SetAnimationState("Reeling"); HookedSuccessfulDisplayTimer = HookedSuccessfulDisplayTime;  CurrentState = FishingStates.HitDisplay; }
+        if (CurrentState == FishingStates.Idle) { SetAnimationState("Casting"); CurrentState = FishingStates.SearchingForCast; QuickFind.InputController.InputState = DG_PlayerInput.CurrentInputState.PerformingAction; }
+        if (CurrentState == FishingStates.SearchingForCast) { if (FishableAreaIsPossible()) { AdjustCamera(true); CastPower = 0; CurrentState = FishingStates.CastCharging; } else if (isUp) { SetAnimationState("Idle"); CurrentState = FishingStates.Idle; QuickFind.InputController.InputState = DG_PlayerInput.CurrentInputState.Default; } }
+        if (CurrentState == FishingStates.CastCharging) { CastPower = CalculateCastPower(); if (isUp) { PlayCastEffect(); EndPoint = CalcEndPoint();  CastTimer = CastTime; CurrentState = FishingStates.Casting; } }
+        if (CurrentState == FishingStates.AwaitingFish) { SetAnimationState("PullingInBobber"); CurrentState = FishingStates.PullingInBobber; AdjustCamera(false); }
+        if (CurrentState == FishingStates.FishEventTriggered) { if (PrintDebug) Debug.Log("Fish Hook Successful"); SetAnimationState("Reeling"); HookedSuccessfulDisplayTimer = HookedSuccessfulDisplayTime; QuickFind.FishingGUI.DisplayHookedText(BobberModel.transform); CurrentState = FishingStates.HitDisplay; }
         if (CurrentState == FishingStates.Reeling) ReelingHeld = true;
+        if(CurrentState == FishingStates.WaitForUpTrigger) { if (isUp) CurrentState = FishingStates.Idle; }
     }
 
     //Internal Responses
     private void Update()
     {
-        if (CurrentState == FishingStates.Casting) { if (isCastComplete()) { SetAnimationState("AwaitingFish"); CalculateNextFishEvent(); CurrentState = FishingStates.AwaitingFish; } }
-        if (CurrentState == FishingStates.AwaitingFish) { if(DoWeTriggerFishEvent()) CurrentState = FishingStates.FishEventTriggered; }
+        if (CurrentState == FishingStates.Casting) { if (isCastComplete()) { SetAnimationState("AwaitingFish"); QuickFind.FishingGUI.DisableEnergyBar(); CalculateNextFishEvent(); CurrentState = FishingStates.AwaitingFish; } }
+        if (CurrentState == FishingStates.AwaitingFish) { if (DoWeTriggerFishEvent()) { QuickFind.FishingGUI.DisplayFishEventAlert(); CurrentState = FishingStates.FishEventTriggered; } }
         if (CurrentState == FishingStates.FishEventTriggered) { if (FishEventTimerRanTooLong()) CurrentState = FishingStates.Casting; }
         if (CurrentState == FishingStates.HitDisplay) { if (HitDisplayFinished()) { OpenFishingGUI(); CurrentState = FishingStates.Reeling; } }
-        if (CurrentState == FishingStates.Reeling) { float Progress = ReelProgressBar(); if (Progress < 0 || Progress > 1) { PullInTimer = PullInTime; SetAnimationState("PullingInBobber"); CurrentState = FishingStates.PullingInBobber; } }
-        if (CurrentState == FishingStates.PullingInBobber) { if (BobberPulledIn()) { Wait1 = true;  SetAnimationState("Idle"); CurrentState = FishingStates.Idle; } }
+        if (CurrentState == FishingStates.Reeling) { float Progress = ReelProgressBar(); if (Progress < 0 || Progress > 1) { PullInTimer = PullInTime; SetAnimationState("PullingInBobber"); CurrentState = FishingStates.PullingInBobber; AdjustCamera(false); } }
+        if (CurrentState == FishingStates.PullingInBobber) { if (BobberPulledIn()) { SetAnimationState("Idle"); CurrentState = FishingStates.WaitForUpTrigger; QuickFind.InputController.InputState = DG_PlayerInput.CurrentInputState.Default; } }
     }
 
 
@@ -193,11 +206,22 @@ public class Fishing_MasterHandler : MonoBehaviour
         if (CastPower < 0) { CastPower = 0; isUP = true; }
 
         if (PrintDebug) Debug.Log("Detecting Cast Power, Send Message to GUI here.");
+        QuickFind.FishingGUI.SetEnergyBar(CastPower);
         return CastPower;
     }
-    void PlayMaxCastEffect()
+    void AdjustCamera(bool isUP)
     {
-        if (PrintDebug) Debug.Log("Max Cast Effect");
+        if(isUP) QuickFind.PlayerCam.SetNewVerticalPanPosition(CameraHeight, CameraSpeed);
+        else QuickFind.PlayerCam.SetNewVerticalPanPosition(CameraInitialPosition, CameraSpeed);
+    }
+
+    void PlayCastEffect()
+    {
+        if (CastPower > MaxCastMinimum)
+        {
+            if (PrintDebug) Debug.Log("Max Cast Effect");
+            QuickFind.FishingGUI.DisplayMaxText();
+        }
     }
 
     Vector3 CalcEndPoint()
@@ -244,11 +268,11 @@ public class Fishing_MasterHandler : MonoBehaviour
     }
     void CalculateNextFishEvent()
     {
-        if (UseDebugValues) AwaitingFishTimer = DebugAwaitingFishTime;
+        if (QuickCatchFish) AwaitingFishTimer = 1;
         else
         {
             AwaitingFishTimer = 2;
-            Debug.Log("Load Next Fish to be caught, and time till bite");
+            Debug.Log("TODO - Load Next Fish to be caught, and time till bite");
         }
     }
     bool DoWeTriggerFishEvent()
@@ -274,15 +298,26 @@ public class Fishing_MasterHandler : MonoBehaviour
     }
     void OpenFishingGUI()
     {
-        Debug.Log("Open Fishing Gui.");
+        Debug.Log("TODO - Get Fishing Strength Based on Fishing Level");
+        float FishingStrength = 200;
+        QuickFind.FishingGUI.SetCaptureZoneSize(FishingStrength);
+
+        MaxFishHeight = QuickFind.FishingGUI.FishRegionMain.rect.height;
+        MaxRegionHeight = MaxFishHeight - FishingStrength;
+
+        QuickFind.FishingGUI.EnableFishingGUI();
     }
     float ReelProgressBar()
     {
         CurrentReelValue = GetReelValueFactoringinReelHeight(ReelingHeld);
+        bool WithinReelBounds = FishWithinReelbarBounds(ReelingHeld);
         if (ReelingHeld) ReelingHeld = false;
 
-        if(FishWithinReelbarBounds()) CurrentFishCaughtValue = CurrentFishCaughtValue + (FishCaughtSpeed * Time.deltaTime);
+        if(WithinReelBounds) CurrentFishCaughtValue = CurrentFishCaughtValue + (FishCaughtSpeed * Time.deltaTime);
             else CurrentFishCaughtValue = CurrentFishCaughtValue - (FishCaughtSpeed * Time.deltaTime);
+
+        QuickFind.FishingGUI.SpinReel(WithinReelBounds);
+        QuickFind.FishingGUI.SetFishCaughtProgress(CurrentFishCaughtValue);
 
         return CurrentFishCaughtValue;
     }
@@ -299,10 +334,35 @@ public class Fishing_MasterHandler : MonoBehaviour
             return CurrentReelValue - (ReelMoveSpeed * Time.deltaTime);
         }
     }
-    bool FishWithinReelbarBounds()
+    bool FishWithinReelbarBounds(bool isHeld)
     {
-        Debug.Log("check if Fish Within Reel Bar Bounds");
-        return true;
+        float FishPosition = QuickFind.FishingGUI.Fish.anchoredPosition.y;
+
+        //Debug Move Fish
+        FishPosition += DebugFishMoveUpSpeed * Time.deltaTime;
+        QuickFind.FishingGUI.Fish.anchoredPosition = new Vector3(0, FishPosition, 0);
+        //
+
+        float SafeRegionAdditive = QuickFind.FishingGUI.CapturePosHeight.rect.height - 50;
+        float CurrentFishRegionPosition = QuickFind.FishingGUI.CaptureZonePos.anchoredPosition.y;
+        if (isHeld)
+        {
+            //Todo Factor In Gravity Inertia
+            CurrentFishRegionPosition += RegionMoveSpeed * Time.deltaTime;
+            if (CurrentFishRegionPosition > MaxRegionHeight) CurrentFishRegionPosition = MaxRegionHeight;
+        }
+        else
+        {
+            CurrentFishRegionPosition -= RegionMoveSpeed * Time.deltaTime;
+            if (CurrentFishRegionPosition < 0) CurrentFishRegionPosition = 0;
+        }
+
+        QuickFind.FishingGUI.CaptureZonePos.anchoredPosition = new Vector3(0, CurrentFishRegionPosition, 0);
+
+        if (FishPosition >= CurrentFishRegionPosition && FishPosition <= (CurrentFishRegionPosition + SafeRegionAdditive))
+            return true;
+        else
+            return false;
     }
     bool BobberPulledIn()
     {

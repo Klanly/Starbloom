@@ -144,6 +144,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PrintButtonPressed: 0
+  EnableMoveTowardsMouse: 1
   MainPlayer:
     CharLink: {fileID: 0}
     InputState: 0
@@ -711,6 +712,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1076293941}
   - component: {fileID: 1076293940}
+  - component: {fileID: 1076293942}
   m_Layer: 0
   m_Name: Main Camera Rigg
   m_TagString: Untagged
@@ -737,6 +739,8 @@ MonoBehaviour:
   MousePanVertSpeed: 0.002
   JoyPanHorSpeed: 1
   JoyPanVertSpeed: 1
+  DefaultVertSpeed: 10
+  DefaultHorSpeed: 10
 --- !u!4 &1076293941
 Transform:
   m_ObjectHideFlags: 0
@@ -752,6 +756,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 20, y: 0, z: 0}
+--- !u!114 &1076293942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1076293939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c13423dd545c35a40bd337e334d16aa8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NewRequestedXPosition: 0
+  XSpeed: 4
+  NewRequestedYPosition: 0
+  YSpeed: 4
 --- !u!1 &1241344529
 GameObject:
   m_ObjectHideFlags: 0
@@ -1165,6 +1184,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1318040821}
+  - component: {fileID: 1318040823}
   - component: {fileID: 1318040822}
   m_Layer: 0
   m_Name: Fishing
@@ -1202,25 +1222,45 @@ MonoBehaviour:
   WaterDetection:
     serializedVersion: 2
     m_Bits: 33041
-  DetectedWater: 0
+  DetectedWater: 2
   DetectionInterval: 3
   DetectionCount: 3
-  MaxCastMinimum: 0.85
-  CastAdjustSpeed: 0.05
+  MaxCastMinimum: 0.9
+  CastAdjustSpeed: 0.03
   MaxCastDistance: 9
   CastTime: 0.5
-  HookedEventTime: 2
-  HookedSuccessfulDisplayTime: 2
+  HookedEventTime: 1.5
+  HookedSuccessfulDisplayTime: 1
   ReelMoveSpeed: 0.05
-  FishCaughtSpeed: 0.05
+  FishCaughtSpeed: 0.15
+  RegionMoveSpeed: 200
   PullInTime: 1
   FishingLine: {fileID: 1819080178}
   BobberModel: {fileID: 105849465}
+  CameraHeight: 40
+  CameraSpeed: 4
   PrintDebug: 1
   GizmoFishingDetection: 1
   GizmoCasterRange: 1
-  UseDebugValues: 1
-  DebugAwaitingFishTime: 2
+  QuickCatchFish: 1
+  DebugFishMoveUpSpeed: 60
+--- !u!114 &1318040823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1318040820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec33325e95dbce94d902eec023df9ec6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FishingLevelStats:
+  - FishingStrength: 0
+  - FishingStrength: 0
+  - FishingStrength: 0
+  - FishingStrength: 0
+  - FishingStrength: 0
 --- !u!1 &1323542412
 GameObject:
   m_ObjectHideFlags: 0

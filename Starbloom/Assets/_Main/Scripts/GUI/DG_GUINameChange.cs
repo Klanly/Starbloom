@@ -82,7 +82,6 @@ public class DG_GUINameChange : MonoBehaviour {
     private void Start()
     {
         QuickFind.EnableCanvas(UICanvas, false);
-
         transform.localPosition = Vector3.zero;
     }
 
@@ -102,7 +101,7 @@ public class DG_GUINameChange : MonoBehaviour {
         LetterSelectRegion.OpenUI(false, LetterGridIDVal, LetterGridCatVal);
 
         //Populate Static Text Regions
-        TopText.OnEnable();
+        TopText.ManualLoad();
         ActivateTextButtons();
         LetterSelectRegion.Row[0].Column[0].QueueActivate(false);
         ActivateBlinkLetters();
@@ -132,7 +131,7 @@ public class DG_GUINameChange : MonoBehaviour {
     void ActivateTextButtons()
     {
         for (int i = 0; i < ButtonColumn.Length; i++)
-            ButtonColumn[i].TextScript.OnEnable();
+            ButtonColumn[i].TextScript.ManualLoad();
     }
     void ActivateBlinkLetters()
     {
