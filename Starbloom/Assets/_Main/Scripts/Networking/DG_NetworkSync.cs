@@ -313,6 +313,22 @@ public class DG_NetworkSync : Photon.MonoBehaviour
     [PunRPC] void SendOutWeatherByMaster(int[] WeatherValues)
     { QuickFind.WeatherHandler.GetMasterWeather(WeatherValues); }
 
+    public void AdjustFutureWeather(int T, int Weather)
+    {
+        List<int> WeatherNums = new List<int>();
+        WeatherNums.Add(QuickFind.Farm.Weather.TodayWeather);
+        WeatherNums.Add(QuickFind.Farm.Weather.TomorrowWeather);
+        WeatherNums.Add(QuickFind.Farm.Weather.TwoDayAwayWeather);
+        PV.RPC("SendOutWeatherChange", PhotonTargets.All, WeatherNums.ToArray());
+    }
+    [PunRPC]
+    void SendOutFutureWeather(int[] WeatherNums)
+    {
+        QuickFind.Farm.Weather.TodayWeather = WeatherNums[0];
+        QuickFind.Farm.Weather.TomorrowWeather = WeatherNums[1];
+        QuickFind.Farm.Weather.TwoDayAwayWeather = WeatherNums[2];
+    }
+
 
     //Time
     //////////////////////////////////////////////////////
@@ -321,6 +337,16 @@ public class DG_NetworkSync : Photon.MonoBehaviour
 
     [PunRPC] void SendOutTimeByPreset(int Time)
     {  QuickFind.TimeHandler.AdjustTimeByPreset(Time); }
+
+    public void AdjustTimeByValues(int Year, int Month, int Day, int Hour, int Minute)
+    {
+        int[] OutInts = new int[5]; OutInts[0] = Year;  OutInts[1] = Month; OutInts[2] = Day; OutInts[3] = Hour; OutInts[4] = Minute;
+        PV.RPC("SendOutTimeByValues", PhotonTargets.All, OutInts);
+    }
+
+    [PunRPC]
+    void SendOutTimeByValues(int[] inInts)
+    { QuickFind.TimeHandler.AdjustTimeByValues(inInts[0], inInts[1], inInts[2], inInts[3], inInts[4]);}
 
     //////////////////////////////////////////////////////
     public void RequestMasterTime()

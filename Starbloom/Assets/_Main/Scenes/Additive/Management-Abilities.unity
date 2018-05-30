@@ -686,8 +686,9 @@ MonoBehaviour:
   PrintDebug: 0
   GizmoFishingDetection: 1
   GizmoCasterRange: 1
+  QuickHookFish: 1
   QuickCatchFish: 1
-  DebugFishMoveUpSpeed: 60
+  MoveUpFish: 60
 --- !u!114 &1318040823
 MonoBehaviour:
   m_ObjectHideFlags: 0

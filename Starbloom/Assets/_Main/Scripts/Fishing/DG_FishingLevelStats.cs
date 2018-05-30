@@ -28,7 +28,10 @@ public class DG_FishingLevelStats : MonoBehaviour {
 
 
 
-
+    public int GetMyFishingLevelInt()
+    {
+        return GetIndexFromCurrentExp(QuickFind.Farm.PlayerCharacters[QuickFind.NetworkSync.PlayerCharacterID].NonCombatSkillEXP.Fishing);
+    }
     public FishingLevel GetMyFishingLevel()
     {
         return GetPlayersFishingLevel(QuickFind.NetworkSync.PlayerCharacterID);
@@ -42,7 +45,7 @@ public class DG_FishingLevelStats : MonoBehaviour {
         int AcceptableLevel = 0;
         for (int i = 0; i < FishingLevelStats.Length; i++)
         {
-            if (ExpAmount > FishingLevelStats[i].ExpMin)
+            if (ExpAmount >= FishingLevelStats[i].ExpMin)
                 AcceptableLevel = i;
             else
                 return AcceptableLevel;

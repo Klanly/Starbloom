@@ -904,7 +904,7 @@ MonoBehaviour:
       Farming: 0
       Mining: 0
       Foraging: 0
-      Fishing: 8000
+      Fishing: 0
     Equipment:
       HatId: 0
       Ring1: 0
@@ -1128,6 +1128,9 @@ MonoBehaviour:
         NormalValue: 0
         HighValue: 0
         MaximumValue: 0
+    Acheivements:
+      CurrentFishingAwards:
+        LargestFishCaught: 000000000000000000000000
   - Name: 
     CurrentEnergy: 0
     MaxEnergy: 0
@@ -1361,6 +1364,9 @@ MonoBehaviour:
         NormalValue: 0
         HighValue: 0
         MaximumValue: 0
+    Acheivements:
+      CurrentFishingAwards:
+        LargestFishCaught: 000000000000000000000000
   - Name: 
     CurrentEnergy: 0
     MaxEnergy: 0
@@ -1594,6 +1600,9 @@ MonoBehaviour:
         NormalValue: 0
         HighValue: 0
         MaximumValue: 0
+    Acheivements:
+      CurrentFishingAwards:
+        LargestFishCaught: 000000000000000000000000
   - Name: 
     CurrentEnergy: 0
     MaxEnergy: 0
@@ -1827,6 +1836,9 @@ MonoBehaviour:
         NormalValue: 0
         HighValue: 0
         MaximumValue: 0
+    Acheivements:
+      CurrentFishingAwards:
+        LargestFishCaught: 000000000000000000000000
 --- !u!1 &1136677237
 GameObject:
   m_ObjectHideFlags: 0

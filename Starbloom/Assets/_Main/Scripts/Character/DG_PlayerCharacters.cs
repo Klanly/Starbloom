@@ -17,10 +17,7 @@ public class DG_PlayerCharacters : MonoBehaviour {
     [ListDrawerSettings(NumberOfItemsPerPage = 1, Expanded = false)]
     public List<PlayerCharacter> PlayerCharacters;
 
-
-
-
-
+    public SavedWeather Weather;
 
 
 
@@ -40,7 +37,17 @@ public class DG_PlayerCharacters : MonoBehaviour {
 
         [Header("Equipment")]
         public CharacterEquipment Equipment;
+
+        [Header("Acheivements")]
+        public CharacterAchievements Acheivements;
     }
+
+
+
+
+
+
+
 
     [System.Serializable]
     public class CharacterEquipment
@@ -58,6 +65,13 @@ public class DG_PlayerCharacters : MonoBehaviour {
     }
 
 
+    [System.Serializable]
+    public class SavedWeather
+    {
+        public int TodayWeather;
+        public int TomorrowWeather;
+        public int TwoDayAwayWeather;
+    }
 
 
     [System.Serializable]
@@ -67,6 +81,8 @@ public class DG_PlayerCharacters : MonoBehaviour {
         public int Mining;
         public int Foraging;
         public int Fishing;
+
+        [Button(ButtonSizes.Small)]public void DebugIncreaseFishingLevel(){int FishingLevel = QuickFind.FishingStatsHandler.GetMyFishingLevelInt(); Fishing = QuickFind.FishingStatsHandler.FishingLevelStats[FishingLevel + 1].ExpMin;}
     }
 
     [System.Serializable]
@@ -111,6 +127,27 @@ public class DG_PlayerCharacters : MonoBehaviour {
             return 0;
         }
     }
+
+
+
+
+    [System.Serializable]
+    public class CharacterAchievements
+    {
+        public FishingAwards CurrentFishingAwards;
+    }
+    [System.Serializable]
+    public class FishingAwards
+    {
+        [ListDrawerSettings(NumberOfItemsPerPage = 5)]
+        public int[] LargestFishCaught;
+
+#if UNITY_EDITOR
+        [Button(ButtonSizes.Small)] public void SyncArraySizeToFishCompendiumSize() { LargestFishCaught = new int[QuickFindInEditor.GetEditorFishingCompendium().ItemCatagoryList.Length]; }
+#endif
+    }
+
+
 
 
 

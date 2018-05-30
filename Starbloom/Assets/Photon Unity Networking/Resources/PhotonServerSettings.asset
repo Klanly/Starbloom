@@ -64,4 +64,6 @@ MonoBehaviour:
   - RemoveSceneObject
   - NewStorageValue
   - UpdateLoadedGame
+  - SendOutTimeByValues
+  - SendOutFutureWeather
   DisableAutoOpenWizard: 1

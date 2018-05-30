@@ -144,7 +144,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PrintButtonPressed: 0
-  EnableMoveTowardsMouse: 1
+  EnableMoveTowardsMouse: 0
   MainPlayer:
     CharLink: {fileID: 0}
     InputState: 0
@@ -405,7 +405,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CharTrans: {fileID: 0}
   MainCam: {fileID: 1253344215}
-  AllowCameraPanning: 0
+  AllowCameraPanning: 1
   MousePanHorSpeed: 0.002
   MousePanVertSpeed: 0.002
   JoyPanHorSpeed: 1
@@ -925,6 +925,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90a6f0035aa726442a1999455b0f39ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CurrentRucksackSlot:
+    ContainedItem: 0
+    CurrentStackActive: 0
+    LowValue: 0
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  CurrentItemDatabaseReference: {fileID: 0}
 --- !u!1 &1620623743
 GameObject:
   m_ObjectHideFlags: 0
@@ -967,11 +975,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71db83065fb78444d8871f4fbc218db5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayOnline: 0
+  PlayOnline: 1
   BypassMainMenu: 1
   DisableAudio: 1
   EnableDebugKeycodes: 0
-  GiftedItemNumber: 1
   LastSelected: {fileID: 0}
 --- !u!114 &1620623746
 MonoBehaviour:

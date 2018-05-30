@@ -4829,7 +4829,8 @@ MonoBehaviour:
   - {fileID: 1673153793}
   - {fileID: 1151417059}
   - {fileID: 1117581185}
-  ListCount: 83
+  - {fileID: 1377290877}
+  ListCount: 84
 --- !u!114 &1337974350
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5299,6 +5300,78 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DBType: 3
   instanceID: 908470
+--- !u!1 &1377290875
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1377290876}
+  - component: {fileID: 1377290878}
+  - component: {fileID: 1377290877}
+  m_Layer: 0
+  m_Name: 83 - New Record
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1377290876
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1377290875}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2018851480}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1377290877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1377290875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 766834c6f2c9cf243ab3296f4a43ade1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DatabaseID: 83
+  LockItem: 1
+  DevNotes: 
+  TextValues:
+  - Language: 0
+    stringEntry: New Record!
+  - Language: 1
+    stringEntry: 
+  - Language: 2
+    stringEntry: 
+  - Language: 3
+    stringEntry: 
+  - Language: 4
+    stringEntry: 
+  - Language: 5
+    stringEntry: 
+  - Language: 6
+    stringEntry: 
+--- !u!114 &1377290878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1377290875}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 3
+  instanceID: -38430786
 --- !u!1 &1440713918
 GameObject:
   m_ObjectHideFlags: 0
@@ -7215,6 +7288,7 @@ Transform:
   - {fileID: 244803570}
   - {fileID: 97403836}
   - {fileID: 846776803}
+  - {fileID: 1377290876}
   m_Father: {fileID: 1337974348}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

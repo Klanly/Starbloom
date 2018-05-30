@@ -27,6 +27,7 @@ public class DG_FishingAtlasObject : MonoBehaviour
 
     public string Name;
     public int ItemObjectRefDatabaseID;
+    public int ExpGainPerCatch;
 
     public DG_ItemObject.ItemQualityLevels RodRequired;
     public TimeHandler.TimeOfDayPeriod CatchableTimes;
