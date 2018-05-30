@@ -14,7 +14,8 @@ public class DG_GiftPlayerItem : MonoBehaviour {
     [Button(ButtonSizes.Large)]
     public void GiftPlayerItem()
     {
-        QuickFind.GUI_Inventory.AddItemToRucksack(Player, ItemID, QualityLevel);
+        if(QuickFind.InventoryManager.AddItemToRucksack(Player, ItemID, QualityLevel))
+            QuickFind.TreasureManager.OpenTrashUI(ItemID, QualityLevel);
     }
 
     [Button(ButtonSizes.Large)]

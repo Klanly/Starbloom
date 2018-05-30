@@ -21,14 +21,14 @@ public class DG_GUICharacterCreation : MonoBehaviour {
     private void Start()
     {
         transform.localPosition = Vector3.zero;
-
-        foreach (DG_TextStatic TS in StaticTextArray)
-            TS.ManualLoad();
     }
 
 
     public void OpenCharacterCreation(bool InitialCreation)
     {
+        foreach (DG_TextStatic TS in StaticTextArray)
+            TS.ManualLoad();
+
         if (QuickFind.NetworkMaster.RequestedCharacterNum == -1)
             QuickFind.NetworkMaster.RequestedCharacterNum = QuickFind.NetworkSync.UserList.Count - 1;
 

@@ -20,7 +20,7 @@ public class DG_OverviewTabsGUI : MonoBehaviour {
     public Transform[] TabUIs;
 
 
-    bool UIisOpen = false;
+    [HideInInspector] public bool UIisOpen = false;
 
 
     private void Awake()

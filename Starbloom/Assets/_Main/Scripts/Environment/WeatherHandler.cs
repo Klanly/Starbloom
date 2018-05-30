@@ -11,7 +11,8 @@ public class WeatherHandler : MonoBehaviour
         Spring,
         Summer,
         Fall,
-        Winter
+        Winter,
+        All
     }
     public enum WeatherTyps
     {
@@ -19,7 +20,8 @@ public class WeatherHandler : MonoBehaviour
         Overcast,
         Raining,
         Thunderstorm,
-        Snowing
+        Snowing,
+        All
     }
 
     [System.Serializable]
@@ -81,6 +83,14 @@ public class WeatherHandler : MonoBehaviour
     }
 
 
+
+
+    [HideInInspector] public Seasons CurrentSeason = Seasons.Spring;
+    [HideInInspector] public WeatherTyps CurrentWeather = WeatherTyps.Clear;
+
+
+
+
     [ListDrawerSettings(ShowIndexLabels = true, ListElementLabelName = "Weather", NumberOfItemsPerPage = 8, Expanded = false)]
     public WeatherSetting[] SpringWeather;
     [ListDrawerSettings(ShowIndexLabels = true, ListElementLabelName = "Weather", NumberOfItemsPerPage = 8, Expanded = false)]
@@ -97,10 +107,6 @@ public class WeatherHandler : MonoBehaviour
     [ButtonGroup]
     public void ChangeSeason()
     { QuickFind.NetworkSync.AdjustWeather((int)DebugSeason, (int)DebugWeather); }
-
-
-    Seasons CurrentSeason;
-    WeatherTyps CurrentWeather;
 
 
 
@@ -180,6 +186,13 @@ public class WeatherHandler : MonoBehaviour
         WeatherModule.weather_temperature = Weather.weather_temperature;
         WeatherModule.weather_humidity = Weather.weather_humidity;
         WeatherModule.weather_rainbow = Weather.weather_rainbow;
+
+
+        if (WeatherModule.weather_RainAmt > 0)
+            QuickFind.RainDropHandler.IsRaining = true;
+        else
+            QuickFind.RainDropHandler.IsRaining = false;
+
 
         Suimono.Core.SuimonoObject Suimono = QuickFind.WaterObject;
 

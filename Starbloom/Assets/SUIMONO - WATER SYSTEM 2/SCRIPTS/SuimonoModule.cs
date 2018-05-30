@@ -269,6 +269,8 @@ namespace Suimono.Core
 
 		void Awake () {
 
+            QuickFind.WaterModule = this;
+
 			//###  SET CURRENT SUIMONO NUMBER   ###
 			suimonoVersionNumber = "2.1.5";
 			

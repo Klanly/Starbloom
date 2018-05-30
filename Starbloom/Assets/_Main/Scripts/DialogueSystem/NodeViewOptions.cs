@@ -33,7 +33,7 @@ public class NodeViewOptions : MonoBehaviour {
 
     public ColorOptions DialogueOptions;
     public ColorOptions BattleOptions;
-    public UserSettings.Languages ExtraLanguage;
+    public DG_TextLanguageFonts.Languages ExtraLanguage;
 
 
 

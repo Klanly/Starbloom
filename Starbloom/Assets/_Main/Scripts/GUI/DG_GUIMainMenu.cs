@@ -25,6 +25,9 @@ public class DG_GUIMainMenu : Photon.MonoBehaviour
     [Header("Static Text")]
     public DG_TextStatic[] StaticTextArray;
 
+    [Header("Online Toggle")]
+    public UnityEngine.UI.Toggle OnlineToggle;
+
 
     bool AwaitingResponse = true;
 
@@ -47,11 +50,10 @@ public class DG_GUIMainMenu : Photon.MonoBehaviour
 
         transform.localPosition = Vector3.zero;
 
-        foreach (DG_TextStatic TS in StaticTextArray)
-            TS.ManualLoad();
-
         if (QuickFind.GameSettings.BypassMainMenu)
             QuickFind.NetworkMaster.StartGame();
+
+        OnlineToggle.isOn = QuickFind.GameSettings.PlayOnline;
     }
 
 
@@ -75,6 +77,9 @@ public class DG_GUIMainMenu : Photon.MonoBehaviour
 
     void NewGameMenu()
     {
+        foreach (DG_TextStatic TS in StaticTextArray)
+            TS.ManualLoad();
+
         QuickFind.EnableCanvas(UICanvas, false);
         QuickFind.NetworkMaster.CreateNewRoom = true;
         QuickFind.NetworkMaster.StartGame();
@@ -131,8 +136,8 @@ public class DG_GUIMainMenu : Photon.MonoBehaviour
             QuickFind.TimeHandler.RequestMasterTimes();
         }
 
-        if (QuickFind.GameSettings.BypassMainMenu)
-            QuickFind.NetworkSync.PlayerCharacterID = QuickFind.CharacterManager.transform.childCount - 1;
+        if (QuickFind.GameSettings.BypassMainMenu && !PhotonNetwork.isMasterClient)
+            QuickFind.NetworkSync.PlayerCharacterID = QuickFind.CharacterManager.GetAvailablePlayerID();
 
         QuickFind.GUI_Inventory.UpdateInventoryVisuals();
         QuickFind.GUI_Inventory.SetHotbarSlot(QuickFind.GUI_Inventory.HotbarSlots[0]);

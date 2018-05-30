@@ -18,7 +18,8 @@ public class DuplicateCatcher : MonoBehaviour
         Character,
         DialogueTree,
         Word,
-        Quest
+        Quest,
+        FishingCompendium
     }
 
 
@@ -49,6 +50,7 @@ public class DuplicateCatcher : MonoBehaviour
                         case DatabaseType.DialogueTree: AssignNewDatabaseDialogueTreeID(); break;
                         case DatabaseType.Word: AssignNewDatabaseWordID(); break;
                         case DatabaseType.Quest: AssignNewDatabaseQuestID(); break;
+                        case DatabaseType.FishingCompendium: AssignNewFishingID(); break;
                     }
                 }
             }
@@ -69,9 +71,9 @@ public class DuplicateCatcher : MonoBehaviour
             case DatabaseType.DialogueTree: GiveAllDialogueTreeDatabaseID(); break;
             case DatabaseType.Word: GiveAllWordDatabaseID(); break;
             case DatabaseType.Quest: GiveAllQuestDatabaseID(); break;
+            case DatabaseType.FishingCompendium: GiveAllFishingID(); break;
         }
     }
-
 
 
 
@@ -226,7 +228,7 @@ public class DuplicateCatcher : MonoBehaviour
     #region Words
     void AssignNewDatabaseWordID()
     {
-        transform.GetComponent<NodeLink>().LockItem = false;
+        transform.GetComponent<DG_WordObject>().LockItem = false;
         GiveAllWordDatabaseID();
     }
     public void GiveAllWordDatabaseID()
@@ -285,7 +287,7 @@ public class DuplicateCatcher : MonoBehaviour
     #region Quest
     void AssignNewDatabaseQuestID()
     {
-        transform.GetComponent<NodeLink>().LockItem = false;
+        transform.GetComponent<DG_QuestObject>().LockItem = false;
         GiveAllQuestDatabaseID();
     }
     public void GiveAllQuestDatabaseID()
@@ -331,8 +333,54 @@ public class DuplicateCatcher : MonoBehaviour
     }
     #endregion
 
+    #region FishingCompendium
+    void AssignNewFishingID()
+    {
+        transform.GetComponent<DG_FishingAtlasObject>().LockItem = false;
+        GiveAllFishingID();
+    }
+    public void GiveAllFishingID()
+    {
+        DG_FishingCompendium ItemDB = QuickFindInEditor.GetEditorFishingCompendium();
+        Transform ItemDatabaseRoot = ItemDB.transform;
 
+        List<DG_FishingAtlasObject> AddObjects = new List<DG_FishingAtlasObject>();
 
+        for (int iN = 0; iN < ItemDatabaseRoot.childCount; iN++)
+        {
+            Transform Child = ItemDatabaseRoot.GetChild(iN);
+            for (int i = 0; i < Child.childCount; i++)
+            {
+                DG_FishingAtlasObject IO = Child.GetChild(i).GetComponent<DG_FishingAtlasObject>();
+                if (!IO.LockItem)
+                {
+                    IO.DatabaseID = ItemDB.ListCount;
+                    ItemDB.ListCount++;
+                    IO.LockItem = true;
+                    AddObjects.Add(IO);
+                }
+
+                IO.gameObject.name = IO.DatabaseID.ToString() + " - " + IO.Name;
+            }
+        }
+
+        if (AddObjects.Count == 0) { Debug.Log("All Items Accounted For. :)"); return; }
+
+        int Index = 0;
+        DG_FishingAtlasObject[] NewArray = new DG_FishingAtlasObject[ItemDB.ListCount];
+        for (int i = 0; i < ItemDB.ItemCatagoryList.Length; i++)
+        {
+            DG_FishingAtlasObject IO = ItemDB.ItemCatagoryList[i];
+            if (IO == null) continue;
+            NewArray[Index] = IO; Index++;
+        }
+        for (int i = 0; i < AddObjects.Count; i++)
+        { NewArray[Index] = AddObjects[i]; Index++; }
+
+        ItemDB.ItemCatagoryList = NewArray;
+        Debug.Log("Safely Added New Item to Database.");
+    }
+    #endregion
 
 
 
@@ -405,6 +453,18 @@ public class DuplicateCatcher : MonoBehaviour
                             ItemDB.transform.GetChild(i).GetChild(iN).GetComponent<DG_QuestObject>().LockItem = false;
                     }
                     GiveAllQuestDatabaseID(); break;
+                }
+            case DatabaseType.FishingCompendium:
+                {
+                    DG_FishingCompendium ItemDB = QuickFindInEditor.GetEditorFishingCompendium();
+                    ItemDB.ListCount = 0;
+                    ItemDB.ItemCatagoryList = new DG_FishingAtlasObject[0];
+                    for (int i = 0; i < ItemDB.transform.childCount; i++)
+                    {
+                        for (int iN = 0; iN < ItemDB.transform.GetChild(i).childCount; iN++)
+                            ItemDB.transform.GetChild(i).GetChild(iN).GetComponent<DG_FishingAtlasObject>().LockItem = false;
+                    }
+                    GiveAllFishingID(); break;
                 }
         }
     }

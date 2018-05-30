@@ -12,6 +12,7 @@ public class DG_NetworkSync : Photon.MonoBehaviour
         public int PlayerCharacterID;
         public int SceneID;
         public int PhotonViewID;
+        public Transform PhotonClone;
     }
 
     public int UserID = 0;
@@ -38,15 +39,25 @@ public class DG_NetworkSync : Photon.MonoBehaviour
             Destroy(this.gameObject);
         else
         {
-            PV = transform.GetComponent<PhotonView>();
-            transform.SetParent(QuickFind.NetworkMaster.transform);
-            QuickFind.NetworkSync = this;
-            PV.RPC("SetNewID", PhotonTargets.MasterClient);
-            if (!PhotonNetwork.isMasterClient)
-                QuickFind.NetworkSync.RequestPlayerDataSync();
-            else
-                QuickFind.MainMenuUI.Connected();               
+            if (!PhotonNetwork.offlineMode)
+                QueueNetConnected();
         }
+    }
+    private void Start()
+    {
+        if (PhotonNetwork.offlineMode)
+            QueueNetConnected();
+    }
+    void QueueNetConnected()
+    {
+        PV = transform.GetComponent<PhotonView>();
+        transform.SetParent(QuickFind.NetworkMaster.transform);
+        QuickFind.NetworkSync = this;
+        PV.RPC("SetNewID", PhotonTargets.MasterClient);
+        if (!PhotonNetwork.isMasterClient)
+            QuickFind.NetworkSync.RequestPlayerDataSync();
+        else
+            QuickFind.MainMenuUI.Connected();
     }
 
 
@@ -67,8 +78,18 @@ public class DG_NetworkSync : Photon.MonoBehaviour
         for (int i = 0; i < UserList.Count; i++)
         { if (UserList[i].PhotonViewID == ID) return UserList[i]; }
         return null;
-
     }
+    public Transform GetCharacterTransformByPhotonViewID(int ViewID)
+    {
+        for (int i = 0; i < QuickFind.CharacterManager.transform.childCount; i++)
+        {
+            Transform T = QuickFind.CharacterManager.transform.GetChild(i);
+            PhotonView PV = T.GetComponent<PhotonView>();
+            if (PV.viewID == ViewID) return T;
+        }
+        return null;
+    }
+
 
 
     #region Users
@@ -113,6 +134,8 @@ public class DG_NetworkSync : Photon.MonoBehaviour
             NewUser.SceneID = TransferedIn[index]; index++;
             NewUser.PhotonViewID = TransferedIn[index]; index++;
 
+            NewUser.PhotonClone = GetCharacterTransformByPhotonViewID(NewUser.PhotonViewID);
+
             UserList.Add(NewUser);
         }
         if (UserID == 0)
@@ -127,9 +150,10 @@ public class DG_NetworkSync : Photon.MonoBehaviour
     public void SetPhotonViewID(int PhotonID)
     {
         PhotonViewID = PhotonID;
-        int[] IntGroup = new int[2];
+        int[] IntGroup = new int[3];
         IntGroup[0] = UserID;
         IntGroup[1] = PhotonID;
+        IntGroup[2] = PlayerCharacterID;
         PV.RPC("SendUserPhoton", PhotonTargets.All, IntGroup);
     }
     [PunRPC]
@@ -137,6 +161,8 @@ public class DG_NetworkSync : Photon.MonoBehaviour
     {
         Users U = GetUserByID(IntGroup[0]);
         U.PhotonViewID = IntGroup[1];
+        U.PlayerCharacterID = IntGroup[2];
+        U.PhotonClone = GetCharacterTransformByPhotonViewID(IntGroup[1]);
     }
 
 
@@ -221,6 +247,38 @@ public class DG_NetworkSync : Photon.MonoBehaviour
         if(info[0] == QuickFind.NetworkSync.PlayerCharacterID)
             QuickFind.GUI_Inventory.UpdateInventoryVisuals();
     }
+
+    public void SetStorageValue(int Scene, int NetObjectIndex, int Slot, int ContainedItem, int CurrentStackActive, int LowValue, int NormalValue, int HighValue, int MaximumValue)
+    {
+        List<int> IntData = new List<int>();
+        IntData.Add(Scene);
+        IntData.Add(NetObjectIndex);
+        IntData.Add(Slot);
+        IntData.Add(ContainedItem);
+        IntData.Add(CurrentStackActive);
+        IntData.Add(LowValue);
+        IntData.Add(NormalValue);
+        IntData.Add(HighValue);
+        IntData.Add(MaximumValue);
+
+        PV.RPC("NewStorageValue", PhotonTargets.All, IntData.ToArray());
+    }
+    [PunRPC]
+    void NewStorageValue(int[] info)
+    {
+        int index = 0;
+        NetworkScene NS = QuickFind.NetworkObjectManager.GetSceneByID(info[index]); index++;
+        NetworkObject NO = NS.transform.GetChild(info[index]).GetComponent<NetworkObject>(); index++;
+        DG_PlayerCharacters.RucksackSlot RS = NO.StorageSlots[info[index]]; index++;
+        RS.ContainedItem = info[index]; index++;
+        RS.CurrentStackActive = info[index]; index++;
+        RS.LowValue = info[index]; index++;
+        RS.NormalValue = info[index]; index++;
+        RS.HighValue = info[index]; index++;
+        RS.MaximumValue = info[index]; index++;
+
+        if (info[0] == QuickFind.NetworkSync.PlayerCharacterID) QuickFind.StorageUI.UpdateStorageVisuals();
+    }
     #endregion
 
 
@@ -291,79 +349,19 @@ public class DG_NetworkSync : Photon.MonoBehaviour
     [PunRPC]
     void GatherWorldObjects(int ReturnPhotonOwner)
     {
-        List<int> OutgoingInts = new List<int>();
-        List<float> OutgoingFloats = new List<float>();
-
-        Transform NOM = QuickFind.NetworkObjectManager.transform;
-        for (int i = 0; i < NOM.childCount; i++)
-        {
-            Transform Child = NOM.GetChild(i);
-            NetworkScene NS = Child.GetComponent<NetworkScene>();
-            OutgoingInts.Add(NS.SceneID);
-            OutgoingInts.Add(Child.childCount);
-            OutgoingFloats.Add(Child.childCount);
-            for (int iN = 0; iN < Child.childCount; iN++)
-            {
-                NetworkObject NO = Child.GetChild(iN).GetComponent<NetworkObject>();
-                OutgoingInts.Add(NO.ItemRefID);
-                OutgoingInts.Add(NO.ItemGrowthLevel);
-
-                OutgoingFloats.Add(NO.Position.x);
-                OutgoingFloats.Add(NO.Position.y);
-                OutgoingFloats.Add(NO.Position.z);
-                OutgoingFloats.Add(NO.YFacing);
-            }
-        }
-
         PhotonPlayer PP = PhotonPlayer.Find(ReturnPhotonOwner);
-        PV.RPC("SendOutWorldObjectInts", PP, OutgoingInts.ToArray());
-        PV.RPC("SendOutWorldObjectFloats", PP, OutgoingFloats.ToArray());
+        PV.RPC("SendOutWorldObjectInts", PP, QuickFind.SaveHandler.GatherWorldInts(false).ToArray());
+        PV.RPC("SendOutWorldObjectFloats", PP, QuickFind.SaveHandler.GatherWorldFloats(false).ToArray());
     }
     [PunRPC]
-    void SendOutWorldObjectInts(int[] Incoming)
+    void SendOutWorldObjectInts(int[] IntValues)
     {
-        Transform NOM = QuickFind.NetworkObjectManager.transform;
-        int index = 0;    
-        for (int i = 0; i < NOM.childCount; i++)
-        {
-            Transform Child = NOM.GetChild(i);
-            NetworkScene NS = Child.GetComponent<NetworkScene>();
-            NS.SceneID = Incoming[index]; index++;
-            int count = Incoming[index]; index++;
-            for (int iN = 0; iN < count; iN++)
-            {
-                GameObject GO = new GameObject();
-                GO.transform.SetParent(Child);
-                NetworkObject NO = GO.AddComponent<NetworkObject>();
-                NO.ItemRefID = Incoming[index]; index++;
-                NO.ItemGrowthLevel = Incoming[index]; index++;
-            }
-        }
+        QuickFind.SaveHandler.GetWorldInts(IntValues, false);
     }
     [PunRPC]
-    void SendOutWorldObjectFloats(float[] Incoming)
+    void SendOutWorldObjectFloats(float[] FloatValues)
     {
-        Transform NOM = QuickFind.NetworkObjectManager.transform;
-        int index = 0;
-        for (int i = 0; i < NOM.childCount; i++)
-        {
-            Transform Child = NOM.GetChild(i);
-            NetworkScene NS = Child.GetComponent<NetworkScene>();
-            int count = (int)Incoming[index]; index++;
-            for (int iN = 0; iN < count; iN++)
-            {
-                NetworkObject NO = Child.GetChild(iN).GetComponent<NetworkObject>();
-
-                float x = Incoming[index]; index++;
-                float y = Incoming[index]; index++;
-                float z = Incoming[index]; index++;
-                NO.Position = new Vector3(x, y, z);
-                NO.YFacing = Incoming[index]; index++;
-
-                NO.transform.position = NO.Position;
-                NO.transform.eulerAngles = new Vector3(0, NO.YFacing, 0);
-            }
-        }
+        QuickFind.SaveHandler.GetWorldFloats(FloatValues, false);
         QuickFind.NetworkObjectManager.GenerateSceneObjects(CurrentScene);
     }
 
@@ -396,6 +394,23 @@ public class DG_NetworkSync : Photon.MonoBehaviour
         Destroy(QuickFind.NetworkObjectManager.FindObject(Received[0], Received[1]));   
     }
 
+
+    #endregion
+
+
+
+    #region Events
+    /////////////////////////////////////////////////////
+    public void GameWasLoaded()
+    {
+        PV.RPC("UpdateLoadedGame", PhotonTargets.Others);
+    }
+    [PunRPC]
+    void UpdateLoadedGame()
+    {
+        RequestPlayerDataSync();
+        RequestWorldObjects();
+    }
 
     #endregion
 }

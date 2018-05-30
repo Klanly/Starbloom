@@ -79,7 +79,7 @@ public class DG_QuestObject : MonoBehaviour {
                 switch (Req.MathCond)
                 {   //Less Than
                     case Requirements.MathConditions.LessThan:
-                        if (QuickFind.GUI_Inventory.TotalInventoryCountOfItem(Req.ReqItemDatabaseID) >= Req.ReqItemValue)
+                        if (QuickFind.InventoryManager.TotalInventoryCountOfItem(Req.ReqItemDatabaseID) >= Req.ReqItemValue)
                         {
                             Debug.Log("Quest Not Met");
                             return false;
@@ -87,7 +87,7 @@ public class DG_QuestObject : MonoBehaviour {
                         break;
                     //Greater Than
                     case Requirements.MathConditions.GreaterOrEqual:
-                        if (QuickFind.GUI_Inventory.TotalInventoryCountOfItem(Req.ReqItemDatabaseID) < Req.ReqItemValue)
+                        if (QuickFind.InventoryManager.TotalInventoryCountOfItem(Req.ReqItemDatabaseID) < Req.ReqItemValue)
                         {
                             Debug.Log("Quest Not Met");
                             return false;
@@ -108,7 +108,10 @@ public class DG_QuestObject : MonoBehaviour {
             if (Rew.RewardItem) //Quest Rewards an Item
             {
                 Debug.Log("Quality Level Not set dynamically");
-                QuickFind.GUI_Inventory.AddItemToRucksack(QuickFind.NetworkSync.PlayerCharacterID, Rew.RewardItemDatabaseID, DG_ItemObject.ItemQualityLevels.Normal);
+                DG_ItemObject.ItemQualityLevels RewardLevel = DG_ItemObject.ItemQualityLevels.Low;
+
+                if (QuickFind.InventoryManager.AddItemToRucksack(QuickFind.NetworkSync.PlayerCharacterID, Rew.RewardItemDatabaseID, RewardLevel))
+                    QuickFind.TreasureManager.OpenTrashUI(Rew.RewardItemDatabaseID, RewardLevel);
             }
         }
         Debug.Log("Quest " + BoolSaveLocation.ToString() + " Completed: Rewards Adjusted");

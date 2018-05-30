@@ -29,6 +29,7 @@ public static class QuickFindInEditor
     public static DG_CharacterDatabase GetEditorCharacterDatabase() { return GameObject.Find("Character Database").GetComponent<DG_CharacterDatabase>(); }
     public static DG_ColorCodes GetEditorColorCodes() { return GameObject.Find("Color Database").GetComponent<DG_ColorCodes>(); }
     public static SceneIDList GetEditorSceneList() { return GameObject.Find("Scene ID List").GetComponent<SceneIDList>(); }
+    public static DG_FishingCompendium GetEditorFishingCompendium() { return GameObject.Find("Fish Atlas").GetComponent<DG_FishingCompendium>(); }
     //Save Data
     public static UserSettings GetEditorUserSettings() { return GameObject.Find("Player Settings").GetComponent<UserSettings>(); }
 
@@ -49,6 +50,7 @@ public static class QuickFind
 
 
     //InputController
+    public static Transform PlayerTrans = null;
     public static DG_PlayerInput InputController = null;
     public static DG_CharacterControllers CharacterManager = null;
     public static DG_InteractHandler InteractHandler = null;
@@ -65,6 +67,10 @@ public static class QuickFind
     public static DG_GUIControllerGhange ControllerChange = null;
     public static DG_GUIContextHandler GUIContextHandler = null;
     public static DG_GUICharacterCreation CharacterCreation = null;
+    public static DG_TooltipGUI TooltipHandler = null;
+    public static DG_StorageGUI StorageUI = null;
+    public static DG_FishingGUI FishingGUI = null;
+
 
     //GUI - Main Overview
     public static GuiMainGameplay GUI_MainOverview = null;
@@ -72,6 +78,15 @@ public static class QuickFind
     public static DG_InventoryGUI GUI_Inventory = null;
     public static DG_SkillsGUI GUI_Skills = null;
 
+
+    //Managers
+    public static DG_Inventory InventoryManager = null;
+    public static DG_TreasureSelection TreasureManager = null;
+
+
+    //Fishing
+    public static Fishing_MasterHandler FishingHandler = null;
+    public static DG_FishingRoller FishingRoller = null;
 
 
     //Cameras
@@ -93,20 +108,26 @@ public static class QuickFind
     public static DG_CharacterDatabase CharacterDatabase = null;
     public static DG_ColorCodes ColorDatabase = null;
     public static SceneIDList SceneList = null;
+    public static DG_TextLanguageFonts LanguageFonts = null;
+    public static DG_FishingCompendium FishingCompendium = null;
 
 
 
     //Environment
     public static WeatherHandler WeatherHandler = null;
     public static Tenkoku.Core.TenkokuModule WeatherModule = null;
+    public static Suimono.Core.SuimonoModule WaterModule = null;
     public static Suimono.Core.SuimonoObject WaterObject = null;
     public static TimeHandler TimeHandler = null;
+    public static FakeRainDropCollision RainDropHandler = null;
 
 
     //Serialization
     public static DG_LocalDataHandler SaveHandler;
 
 
+    //Skill Data
+    public static DG_FishingLevelStats FishingStatsHandler = null;
 
 
 
@@ -118,24 +139,12 @@ public static class QuickFind
 
 
 
-    //Reference Utilities
-    public static Transform FindTransform(Transform parent, string name)
-    {
-        Transform[] children = parent.GetComponentsInChildren<Transform>();
-        foreach (Transform child in children)
-        {
-            if (child.name == name)
-                return child;
-        }
-        return null;
-    }
-    public static bool WithinDistance(Transform Object, Transform Target, float MasterMinDistance)
-    {
-        if (Vector3.Distance(Object.position, Target.position) < MasterMinDistance)
-            return true;
-        else
-            return false;
-    }
+
+    //Utilities
+
+    public static Transform FindTransform(Transform parent, string name) { Transform[] children = parent.GetComponentsInChildren<Transform>(); foreach (Transform child in children) { if (child.name == name) return child; } return null; }
+    public static bool WithinDistance(Transform Object, Transform Target, float MasterMinDistance) { if (Vector3.Distance(Object.position, Target.position) < MasterMinDistance) return true; else return false; }
+
     public static Vector3 AngleLerp(Vector3 StartAngle, Vector3 FinishAngle, float t)
     {
         float xLerp = Mathf.LerpAngle(StartAngle.x, FinishAngle.x, t);
@@ -144,43 +153,17 @@ public static class QuickFind
         Vector3 Lerped = new Vector3(xLerp, yLerp, zLerp);
         return Lerped;
     }
+
     public static int GetNextValueInArray(int current, int ArrayLength, bool Add, bool CanLoop)
     {
         int Return = current;
-        if(Add)
-        {
-            Return++;
-            if (Return == ArrayLength)
-            {
-                if (CanLoop)
-                    Return = 0;
-                else
-                    Return--;
-            }
-        }
-        else
-        {
-            Return--;
-            if (Return < 0)
-            {
-                if (CanLoop)
-                    Return = ArrayLength - 1;
-                else
-                    Return++;
-            }
-        }
-
+        if(Add) { Return++; if (Return == ArrayLength) { if (CanLoop) Return = 0; else Return--; } }
+        else { Return--; if (Return < 0) { if (CanLoop) Return = ArrayLength - 1; else Return++; } }
         return Return;
     }
     public static void EnableCanvas(CanvasGroup C, bool isTrue)
-    {
-        float value = 0;
-        if (isTrue)
-            value = 1;
-        C.alpha = value;
-        C.interactable = isTrue;
-        C.blocksRaycasts = isTrue;
-    }
+    { float value = 0; if (isTrue) value = 1; C.alpha = value; C.interactable = isTrue; C.blocksRaycasts = isTrue; }
+
     public static int GetIfWithinBounds(int IncomingValue, int Min, int ArrayLength)
     {
         if (IncomingValue < Min) return Min;

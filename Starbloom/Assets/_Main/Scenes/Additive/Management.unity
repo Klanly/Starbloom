@@ -144,6 +144,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PrintButtonPressed: 0
+  EnableMoveTowardsMouse: 1
   MainPlayer:
     CharLink: {fileID: 0}
     InputState: 0
@@ -248,8 +249,9 @@ Transform:
   m_Children:
   - {fileID: 519852982}
   - {fileID: 1569164465}
+  - {fileID: 1017073428}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519852981
 GameObject:
@@ -291,6 +293,86 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aeb13ce195055d348820fee007af47a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &916298284
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 916298285}
+  m_Layer: 0
+  m_Name: Detection Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &916298285
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 916298284}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1017073428}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1017073426
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1017073428}
+  - component: {fileID: 1017073427}
+  m_Layer: 0
+  m_Name: Context Detector
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1017073427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1017073426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c32925f2e3e61e445af2b549c9146fca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CharacterLink: {fileID: 0}
+  ContextMask:
+    serializedVersion: 2
+    m_Bits: 8192
+  SphereCastRadius: 0.2
+  SphereCastMaxLength: 0.7
+  MouseDistance: 1.7
+  DetectionMeshTrans: {fileID: 1403033708}
+  DetectionMesh: {fileID: 1403033711}
+  DetectionRenderer: {fileID: 1403033710}
+--- !u!4 &1017073428
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1017073426}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 916298285}
+  - {fileID: 1403033708}
+  m_Father: {fileID: 92244914}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1076293939
 GameObject:
   m_ObjectHideFlags: 0
@@ -301,6 +383,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1076293941}
   - component: {fileID: 1076293940}
+  - component: {fileID: 1076293942}
   m_Layer: 0
   m_Name: Main Camera Rigg
   m_TagString: Untagged
@@ -322,11 +405,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CharTrans: {fileID: 0}
   MainCam: {fileID: 1253344215}
-  AllowCameraPanning: 1
+  AllowCameraPanning: 0
   MousePanHorSpeed: 0.002
   MousePanVertSpeed: 0.002
   JoyPanHorSpeed: 1
   JoyPanVertSpeed: 1
+  DefaultVertSpeed: 10
+  DefaultHorSpeed: 10
 --- !u!4 &1076293941
 Transform:
   m_ObjectHideFlags: 0
@@ -334,14 +419,29 @@ Transform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1076293939}
-  m_LocalRotation: {x: 0.2588191, y: 0, z: 0, w: 0.9659258}
+  m_LocalRotation: {x: 0.17364816, y: 0, z: 0, w: 0.9848078}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1307435960}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 30, y: 0, z: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 20, y: 0, z: 0}
+--- !u!114 &1076293942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1076293939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c13423dd545c35a40bd337e334d16aa8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NewRequestedXPosition: 0
+  XSpeed: 4
+  NewRequestedYPosition: 0
+  YSpeed: 4
 --- !u!1 &1253344214
 GameObject:
   m_ObjectHideFlags: 0
@@ -381,7 +481,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.1
-  far clip plane: 1000
+  far clip plane: 5000
   field of view: 60
   orthographic: 0
   orthographic size: 5
@@ -596,7 +696,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1253344214}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -7}
+  m_LocalPosition: {x: 0, y: 0.5, z: -7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1307435960}
@@ -670,6 +770,121 @@ MonoBehaviour:
     DistanceNearValue: 0
     DistanceMaxValue: 0
   PrintDistanceValues: 0
+--- !u!1 &1403033707
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1403033708}
+  - component: {fileID: 1403033711}
+  - component: {fileID: 1403033710}
+  m_Layer: 0
+  m_Name: Detection Mesh
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1403033708
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1403033707}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1017073428}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &1403033710
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1403033707}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
+  m_Materials:
+  - {fileID: 2100000, guid: 588754ef038cd704ab5d347f7b7cc1bf, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &1403033711
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1403033707}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1535058563
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1535058565}
+  - component: {fileID: 1535058564}
+  m_Layer: 0
+  m_Name: Scene ID List
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1535058564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1535058563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7df83536e2dbf494c8b8f32d480f5bf5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SceneList:
+  - DebugFarm
+  - Farm
+--- !u!4 &1535058565
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1535058563}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1569164464
 GameObject:
   m_ObjectHideFlags: 0
@@ -720,6 +935,7 @@ GameObject:
   - component: {fileID: 1620623744}
   - component: {fileID: 1620623745}
   - component: {fileID: 1620623746}
+  - component: {fileID: 1620623747}
   m_Layer: 0
   m_Name: DEBUG
   m_TagString: Untagged
@@ -751,10 +967,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71db83065fb78444d8871f4fbc218db5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayOnline: 1
+  PlayOnline: 0
   BypassMainMenu: 1
   DisableAudio: 1
-  EnableDebugKeycodes: 1
+  EnableDebugKeycodes: 0
   GiftedItemNumber: 1
   LastSelected: {fileID: 0}
 --- !u!114 &1620623746
@@ -772,6 +988,18 @@ MonoBehaviour:
   ItemID: 1
   QualityLevel: 0
   GrowthLevel: 0
+--- !u!114 &1620623747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1620623743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 709447d26d21bdb4daedc7a8894e885f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TestSpeed: 0
 --- !u!1 &1978687869
 GameObject:
   m_ObjectHideFlags: 0
@@ -814,18 +1042,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TextSpeed: 0.04
   CurrentLanguage: 0
-  LanguageFonts:
-  - LanguageSetting: 0
-    FontAsset: {fileID: 11400000, guid: 826e6aa4d5c44c44fa8cf4ce71437626, type: 2}
-  - LanguageSetting: 1
-    FontAsset: {fileID: 11400000, guid: 9c60d354979611e48b3776b03d319e28, type: 2}
-  - LanguageSetting: 2
-    FontAsset: {fileID: 11400000, guid: 9c60d354979611e48b3776b03d319e28, type: 2}
-  - LanguageSetting: 3
-    FontAsset: {fileID: 11400000, guid: 9c60d354979611e48b3776b03d319e28, type: 2}
-  - LanguageSetting: 4
-    FontAsset: {fileID: 11400000, guid: 9c60d354979611e48b3776b03d319e28, type: 2}
-  - LanguageSetting: 5
-    FontAsset: {fileID: 11400000, guid: 26f94da789f9e66428de519846d10eed, type: 2}
-  - LanguageSetting: 6
-    FontAsset: {fileID: 11400000, guid: e648fa9e27987db448ffd76a7e65825f, type: 2}

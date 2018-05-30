@@ -21,6 +21,7 @@ public class DG_GUITab : MonoBehaviour {
 
     float Timer;
     bool ScaleUp = true;
+    bool EndLoop = false;
 
 
 
@@ -39,6 +40,7 @@ public class DG_GUITab : MonoBehaviour {
         ScaleUp = true;
         Timer = ScaleTime;
         HoverOverImage.enabled = true;
+        EndLoop = false;
         this.enabled = true;
     }
     public void ItemHoverOut()
@@ -46,6 +48,7 @@ public class DG_GUITab : MonoBehaviour {
         ScaleUp = false;
         Timer = ScaleTime;
         HoverOverImage.enabled = false;
+        EndLoop = true;
         this.enabled = true;
     }
     public void ItemTabHit()
@@ -61,8 +64,13 @@ public class DG_GUITab : MonoBehaviour {
 
         if (Timer < 0)
         {
-            Timer = 0;
-            this.enabled = false;
+            Timer = ScaleTime;
+            if (!ScaleUp && EndLoop)
+            {
+                Timer = ScaleTime;
+                this.enabled = false;
+            }
+            ScaleUp = !ScaleUp;
         }
 
         float TimerPercentage = Timer / ScaleTime;

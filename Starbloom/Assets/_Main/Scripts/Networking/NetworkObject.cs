@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 
 
@@ -19,7 +20,12 @@ public class NetworkObject : MonoBehaviour {
     public int ItemGrowthLevel;
     public Vector3 Position;
     public float YFacing;
-
+    public bool isStorageContainer = false;
+    [ShowIf("isStorageContainer")]
+    public bool isTreasureList;
+    [ShowIf("isStorageContainer")]
+    [ListDrawerSettings(NumberOfItemsPerPage = 12)]
+    public DG_PlayerCharacters.RucksackSlot[] StorageSlots;
 
 
 
@@ -38,6 +44,16 @@ public class NetworkObject : MonoBehaviour {
         T.localScale = new Vector3(Scale, Scale, Scale);
     }
 
+
+    public void Clone(NetworkObject NO, NetworkObject ListNO)
+    {
+        NO.ItemRefID = ListNO.ItemRefID;
+        NO.ItemGrowthLevel = ListNO.ItemGrowthLevel;
+        NO.Position = ListNO.Position;
+        NO.YFacing = ListNO.YFacing;
+        NO.isStorageContainer = ListNO.isStorageContainer;
+        NO.StorageSlots = ListNO.StorageSlots;
+    }
 
 
 

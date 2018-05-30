@@ -715,8 +715,9 @@ bool totalEclipse = false;
 
             QuickFind.WeatherModule = this;
 
-        //set custom random generator instance
-        randSeed = System.Environment.TickCount;
+
+		//set custom random generator instance
+		randSeed = System.Environment.TickCount;
 		TenRandom = new Tenkoku.Core.Random(randSeed);
 
 		// Manually Set Execution Order
@@ -751,18 +752,19 @@ bool totalEclipse = false;
 
 
 	void Start () {
-			//GET CAMERA OBJECT
-			if (Application.isPlaying)
-			{
-				if (mainCamera == null)
-				{
-					mainCamera = QuickFind.PlayerCam.MainCam.transform;
-				}
-			}
 
-			//disconnect object from prefab connection
+            //GET CAMERA OBJECT
+            if (Application.isPlaying)
+            {
+                if (mainCamera == null)
+                {
+                    mainCamera = QuickFind.PlayerCam.MainCam.transform;
+                }
+            }
+
+            //disconnect object from prefab connection
 #if UNITY_EDITOR
-			PrefabUtility.DisconnectPrefabInstance(this.gameObject);
+            PrefabUtility.DisconnectPrefabInstance(this.gameObject);
 		#endif
 
 
@@ -1534,6 +1536,9 @@ bool totalEclipse = false;
 	    if (Application.isPlaying){
 	    	libComponent.renderObjectMoon.material.SetColor("_Color", Color.Lerp(mDCol,(ambientCol*colorSun),ambientCol.r)*mDCol);
 			libComponent.renderObjectMoon.material.SetColor("_AmbientTint",ambientCol);
+		} else {
+	    	libComponent.renderObjectMoon.sharedMaterial.SetColor("_Color", Color.Lerp(mDCol,(ambientCol*colorSun),ambientCol.r)*mDCol);
+			libComponent.renderObjectMoon.sharedMaterial.SetColor("_AmbientTint",ambientCol);
 		}
 		//set moon face light color
 		moonFaceCol = colorMoon*(1.0f-decodeColorAmbientcolor.r);
@@ -2144,6 +2149,12 @@ bool totalEclipse = false;
 			libComponent.renderObjectRainFog.material.SetColor("_TintColor", rainfogCol);
 			libComponent.renderObjectFog.material.SetColor("_TintColor",fogCol);
 			libComponent.renderObjectSnow.material.SetColor("_TintColor",snowCol);
+		} else {
+			libComponent.renderObjectRain.sharedMaterial.SetColor("_TintColor", rainCol * Mathf.Lerp(0.35f,1.0f,ambientCol.r));
+			libComponent.renderObjectRainSplash.sharedMaterial.SetColor("_TintColor", splashCol);    
+			libComponent.renderObjectRainFog.sharedMaterial.SetColor("_TintColor", rainfogCol);
+			libComponent.renderObjectFog.sharedMaterial.SetColor("_TintColor",fogCol);
+			libComponent.renderObjectSnow.sharedMaterial.SetColor("_TintColor",snowCol);
 		}
 
 	    //clamp weather systems

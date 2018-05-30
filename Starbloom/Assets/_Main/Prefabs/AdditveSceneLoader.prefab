@@ -152,10 +152,16 @@ MonoBehaviour:
     SceneName: Management
     EditorSceneFolderPath: Assets/_Main/Scenes/Additive/
   - DebugDoNotLoad: 0
+    SceneName: Management-Abilities
+    EditorSceneFolderPath: Assets/_Main/Scenes/Additive/
+  - DebugDoNotLoad: 0
     SceneName: Database
     EditorSceneFolderPath: Assets/_Main/Scenes/Additive/
   - DebugDoNotLoad: 0
     SceneName: Database_Items
+    EditorSceneFolderPath: Assets/_Main/Scenes/Additive/
+  - DebugDoNotLoad: 0
+    SceneName: NPC
     EditorSceneFolderPath: Assets/_Main/Scenes/Additive/
   - DebugDoNotLoad: 0
     SceneName: Networking

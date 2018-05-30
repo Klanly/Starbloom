@@ -12,19 +12,24 @@ public class DG_ItemObject : MonoBehaviour
         Low,
         Normal,
         High,
-        Max
+        Max,
+        All
     }
 
     public enum ItemCatagory
     {
         Vegetable,
-        Herb
+        Herb,
+        Fish
     }
 
 
     public string Name;
     public int MaxStackSize;
     public HotbarItemHandler.ActivateableTypes ActivateableType;
+    
+    [Header("ToolTip Data")]
+    public DG_TooltipGUI.ToolTipContainerItem ToolTipType;
 
     [HideInInspector] public int DatabaseID;
     [HideInInspector] public bool LockItem;
@@ -35,12 +40,10 @@ public class DG_ItemObject : MonoBehaviour
     public GameObject ModelPrefab;
     public float DefaultScale = 1;
 
-    [Header("Localization")]
-    public int WordCatagory;
-    public int WordValue;
 
 
     #region Tool
+    [Header("----------------------------------")]
     public bool isTool = false;
     [Header("Tool")]
     [ShowIf("isTool")]
@@ -70,6 +73,7 @@ public class DG_ItemObject : MonoBehaviour
 
 
     #region Growable Item
+    [Header("----------------------------------")]
     public bool isGrowableItem = false;
     [ShowIf("isGrowableItem")]
     public GrowableItem[] GrowableItemStages;
@@ -83,6 +87,7 @@ public class DG_ItemObject : MonoBehaviour
 
 
     #region Item
+    [Header("----------------------------------")]
     public bool isItem = false;
     [ShowIf("isItem")]
     [Header("Item")]
@@ -112,7 +117,19 @@ public class DG_ItemObject : MonoBehaviour
     #endregion
 
 
+    #region Storage
+    [Header("----------------------------------")]
+    public bool isStorage = false;
+    [Header("Storage")]
+    [ShowIf("isStorage")]
+    public Storage[] StorageList;
 
+    [System.Serializable]
+    public class Storage
+    {
+        public int TotalStorageSlots;
+    }
+    #endregion
 
 
 
@@ -143,5 +160,25 @@ public class DG_ItemObject : MonoBehaviour
         }
         else
             return ModelPrefab;
+    }
+    public Item GetItemByQuality(int IQL)
+    {
+        ItemQualityLevels QualityNeeded = (ItemQualityLevels)IQL;
+        for (int i = 0; i < ItemQualities.Length; i++)
+        {
+            if (ItemQualities[i].Quality == QualityNeeded)
+                return ItemQualities[i];
+        }
+        return null;
+    }
+    public Tool GetToolByQuality(int IQL)
+    {
+        ItemQualityLevels QualityNeeded = (ItemQualityLevels)IQL;
+        for (int i = 0; i < ToolQualityLevels.Length; i++)
+        {
+            if(ToolQualityLevels[i].Quality == QualityNeeded)
+                return ToolQualityLevels[i];
+        }
+        return null;
     }
 }

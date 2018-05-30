@@ -12,14 +12,14 @@ public class HotbarItemHandler : MonoBehaviour {
         Hoe,
         FishingPole,
 
-        RegularItem, 
+        RegularItem,
+        PlaceableItem
     }
 
 
     bool AwaitingActivateable;
-    DG_PlayerCharacters.RucksackSlot CurrentRucksackSlot;
-    DG_ItemObject CurrentItemDatabaseReference;
-
+    [HideInInspector] public DG_PlayerCharacters.RucksackSlot CurrentRucksackSlot;
+    [HideInInspector] public DG_ItemObject CurrentItemDatabaseReference;
 
 
 
@@ -34,6 +34,9 @@ public class HotbarItemHandler : MonoBehaviour {
         bool AllowSent = false;
         bool UpEvent = false;
 
+        if (QuickFind.GUI_OverviewTabs.UIisOpen || QuickFind.StorageUI.StorageUIOpen)
+            return;
+
         if (QuickFind.InputController.MainPlayer.ButtonSet.Action.Held) AllowSent = true;
         if (QuickFind.InputController.MainPlayer.ButtonSet.Action.Up) { AllowSent = true; UpEvent = true; }
 
@@ -47,10 +50,18 @@ public class HotbarItemHandler : MonoBehaviour {
                 case ActivateableTypes.Hoe: HoeEvent(UpEvent); break;
                 case ActivateableTypes.Pickaxe: PickaxeEvent(UpEvent); break;
                 case ActivateableTypes.RegularItem: RegularItemEvent(UpEvent); break;
+                case ActivateableTypes.PlaceableItem: PlaceableItemEvent(UpEvent); break;
 
             }
         }
     }
+
+
+
+    //Fishing Rod
+    void FishingPoleEvent(bool isUp) { QuickFind.FishingHandler.ExternalUpdate(isUp); }
+
+
 
 
     void AxeEvent(bool isUp)
@@ -60,13 +71,7 @@ public class HotbarItemHandler : MonoBehaviour {
         else
             Debug.Log("Active Axe HELD Event");
     }
-    void FishingPoleEvent(bool isUp)
-    {
-        if (isUp)
-            Debug.Log("Active FishingPole UP Event");
-        else
-            Debug.Log("Active FishingPole HELD Event");
-    }
+
     void HoeEvent(bool isUp)
     {
         if (isUp)
@@ -87,6 +92,13 @@ public class HotbarItemHandler : MonoBehaviour {
             Debug.Log("Active RegularItem UP Event");
         else
             Debug.Log("Active RegularItem HELD Event");
+    }
+    void PlaceableItemEvent(bool isUP)
+    {
+        if (isUP)
+            Debug.Log("Placeable Item UP Event");
+        else
+            Debug.Log("Placeable Item HELD Event");
     }
 
 
