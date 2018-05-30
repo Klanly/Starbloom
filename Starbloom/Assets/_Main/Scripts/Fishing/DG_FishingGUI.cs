@@ -11,6 +11,7 @@ public class DG_FishingGUI : MonoBehaviour
     public CanvasGroup UICanvas = null;
     public CanvasGroup ChargeBarCanvas = null;
     public CanvasGroup FishingGUICanvas = null;
+    public CanvasGroup CaughtDisplay = null;
 
     [Header("Charge Bar")]
     public Image EnergyBar;
@@ -34,6 +35,11 @@ public class DG_FishingGUI : MonoBehaviour
     [Header("Catch Progress Bar")]
     public Image CaughtProgressBar = null;
 
+    [Header("Caught Display")]
+    public Image CaughtIcon = null;
+    public TMPro.TextMeshProUGUI FishName = null;
+    public TMPro.TextMeshProUGUI FishLength = null;
+
 
     private void Awake()
     {
@@ -45,6 +51,7 @@ public class DG_FishingGUI : MonoBehaviour
         QuickFind.EnableCanvas(UICanvas, false);
         QuickFind.EnableCanvas(ChargeBarCanvas, false);
         QuickFind.EnableCanvas(FishingGUICanvas, false);
+        QuickFind.EnableCanvas(CaughtDisplay, false);
         transform.localPosition = Vector3.zero;
     }
 
@@ -109,5 +116,19 @@ public class DG_FishingGUI : MonoBehaviour
     {
         CapturePosHeight.sizeDelta = new Vector2(CapturePosHeight.rect.width, CaptureSize);
         CapturePosHeight.localPosition = new Vector3(0, (CaptureSize / 2), 0);
+    }
+    public void OpenObjectCaughtGUI(Sprite ObjectSprite, string ObjectName, string ObjectLength)
+    {
+        QuickFind.EnableCanvas(FishingGUICanvas, false);
+        QuickFind.EnableCanvas(CaughtDisplay, true);
+
+
+        CaughtIcon.sprite = ObjectSprite;
+        FishName.text = ObjectName;
+        FishLength.text = ObjectLength;
+    }
+    public void CloseCaughtGui()
+    {
+        QuickFind.EnableCanvas(CaughtDisplay, false);
     }
 }

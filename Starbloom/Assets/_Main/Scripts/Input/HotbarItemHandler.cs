@@ -18,8 +18,8 @@ public class HotbarItemHandler : MonoBehaviour {
 
 
     bool AwaitingActivateable;
-    DG_PlayerCharacters.RucksackSlot CurrentRucksackSlot;
-    DG_ItemObject CurrentItemDatabaseReference;
+    [HideInInspector] public DG_PlayerCharacters.RucksackSlot CurrentRucksackSlot;
+    [HideInInspector] public DG_ItemObject CurrentItemDatabaseReference;
 
 
 

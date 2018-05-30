@@ -35,6 +35,9 @@ public class DG_PlayerCharacters : MonoBehaviour {
         public int CurrentHealth;
         public int MaxHealth;
 
+        [Header("Total Experience for Each Skill")]
+        public NonCombatSkills NonCombatSkillEXP;
+
         [Header("Equipment")]
         public CharacterEquipment Equipment;
     }
@@ -48,12 +51,22 @@ public class DG_PlayerCharacters : MonoBehaviour {
         public int Ring2;
         public int Boots;
 
-        //[Header("Cosmetic")]
-
         [Header("Rucksack")]
         public int RuckSackUnlockedSize = 12;
         [ListDrawerSettings(NumberOfItemsPerPage = 12, Expanded = false)]
         public RucksackSlot[] RucksackSlots;
+    }
+
+
+
+
+    [System.Serializable]
+    public class NonCombatSkills
+    {
+        public int Farming;
+        public int Mining;
+        public int Foraging;
+        public int Fishing;
     }
 
     [System.Serializable]

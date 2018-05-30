@@ -11,7 +11,6 @@ public class DG_DebugSettings : MonoBehaviour {
     [Header("Debug Tools")]
     public bool DisableAudio = false;
     public bool EnableDebugKeycodes = false;
-    public bool DebugFishing = false;
     [Header("Debug Values")]
     public int GiftedItemNumber = 1;
 
@@ -24,10 +23,6 @@ public class DG_DebugSettings : MonoBehaviour {
 
         if (DisableAudio)
             AudioListener.volume = 0;
-    }
-    private void Start()
-    {
-        if (DebugFishing) QuickFind.WaterObject.transform.position = new Vector3(0, 3, 0);
     }
 
 

@@ -113,6 +113,40 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &97753043
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 97753044}
+  m_Layer: 0
+  m_Name: Fish - Edible
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &97753044
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 97753043}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 631133484}
+  - {fileID: 1902128844}
+  - {fileID: 889436592}
+  - {fileID: 1345506625}
+  - {fileID: 911112102}
+  - {fileID: 1637135973}
+  m_Father: {fileID: 98179532}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &98179530
 GameObject:
   m_ObjectHideFlags: 0
@@ -153,7 +187,13 @@ MonoBehaviour:
   - {fileID: 619036615}
   - {fileID: 630922425}
   - {fileID: 676053777}
-  ListCount: 11
+  - {fileID: 631133482}
+  - {fileID: 1902128846}
+  - {fileID: 889436594}
+  - {fileID: 1345506627}
+  - {fileID: 911112104}
+  - {fileID: 1637135971}
+  ListCount: 17
   GenericIconList:
   - ItemName: Health
     Icon: {fileID: 21300000, guid: da59f902e286d81439e8e50352c6e57f, type: 3}
@@ -186,6 +226,7 @@ Transform:
   - {fileID: 1215626843}
   - {fileID: 1815548899}
   - {fileID: 1405183628}
+  - {fileID: 97753044}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -340,7 +381,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 484484
+  instanceID: 908678
 --- !u!1 &619036614
 GameObject:
   m_ObjectHideFlags: 0
@@ -432,7 +473,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 484490
+  instanceID: 908684
 --- !u!4 &619036617
 Transform:
   m_ObjectHideFlags: 0
@@ -551,7 +592,113 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 484500
+  instanceID: 908694
+--- !u!1 &631133481
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 631133484}
+  - component: {fileID: 631133483}
+  - component: {fileID: 631133482}
+  m_Layer: 0
+  m_Name: 11 - Blue_Fish
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &631133482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 631133481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc1a46eca4a35e5498f3df297015210f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Fish
+  MaxStackSize: 999
+  ActivateableType: 4
+  ToolTipType:
+    GroupType: 1
+    MainLocalizationID: 70
+    SubLocalizationID: 71
+    DescriptionID: 72
+    ContextID: 0
+  DatabaseID: 11
+  LockItem: 1
+  Icon: {fileID: 21300000, guid: fea8373730235b6489cdfaf7f1252d55, type: 3}
+  ModelPrefab: {fileID: 100014, guid: 1afcf7d7abc5e12489297243fe3a467d, type: 2}
+  DefaultScale: 0.5
+  isTool: 0
+  ToolQualityLevels: []
+  isGrowableItem: 0
+  GrowableItemStages: []
+  isItem: 1
+  ItemCat: 2
+  ItemQualities:
+  - Quality: 0
+    AdjustsHealth: 1
+    HealthAdjustValue: 15
+    AdjustsEnergy: 1
+    EnergyAdjustValue: 15
+    BuyPrice: 360
+    SellPrice: 120
+  - Quality: 1
+    AdjustsHealth: 1
+    HealthAdjustValue: 30
+    AdjustsEnergy: 1
+    EnergyAdjustValue: 30
+    BuyPrice: 480
+    SellPrice: 160
+  - Quality: 2
+    AdjustsHealth: 1
+    HealthAdjustValue: 45
+    AdjustsEnergy: 1
+    EnergyAdjustValue: 45
+    BuyPrice: 600
+    SellPrice: 200
+  - Quality: 3
+    AdjustsHealth: 1
+    HealthAdjustValue: 60
+    AdjustsEnergy: 1
+    EnergyAdjustValue: 60
+    BuyPrice: 720
+    SellPrice: 240
+  isStorage: 0
+  StorageList:
+  - TotalStorageSlots: 36
+--- !u!114 &631133483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 631133481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 0
+  instanceID: 908700
+--- !u!4 &631133484
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 631133481}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 97753044}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &676053776
 GameObject:
   m_ObjectHideFlags: 0
@@ -591,7 +738,7 @@ MonoBehaviour:
     ContextID: 0
   DatabaseID: 10
   LockItem: 1
-  Icon: {fileID: 21300000, guid: 9174947af31b6784abf58f5fa8478fba, type: 3}
+  Icon: {fileID: 21300000, guid: 35c2bbbf806f51b4b83e9e9be5928776, type: 3}
   ModelPrefab: {fileID: 1503624535019576, guid: fbe59f1f8e3f89d47ab980945c203618,
     type: 2}
   DefaultScale: 17
@@ -617,7 +764,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 484506
+  instanceID: 908708
 --- !u!4 &676053779
 Transform:
   m_ObjectHideFlags: 0
@@ -739,7 +886,219 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 484516
+  instanceID: 908718
+--- !u!1 &889436591
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 889436592}
+  - component: {fileID: 889436593}
+  - component: {fileID: 889436594}
+  m_Layer: 0
+  m_Name: 13 - Pink_Fish
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &889436592
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 889436591}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 97753044}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &889436593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 889436591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 0
+  instanceID: 908724
+--- !u!114 &889436594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 889436591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc1a46eca4a35e5498f3df297015210f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Fish
+  MaxStackSize: 999
+  ActivateableType: 4
+  ToolTipType:
+    GroupType: 1
+    MainLocalizationID: 74
+    SubLocalizationID: 71
+    DescriptionID: 79
+    ContextID: 0
+  DatabaseID: 13
+  LockItem: 1
+  Icon: {fileID: 21300000, guid: 8bb3b1158730c0643a7fee959be138a3, type: 3}
+  ModelPrefab: {fileID: 100006, guid: 6cadcc12b240aa847b1210dec6d112a0, type: 2}
+  DefaultScale: 0.5
+  isTool: 0
+  ToolQualityLevels: []
+  isGrowableItem: 0
+  GrowableItemStages: []
+  isItem: 1
+  ItemCat: 2
+  ItemQualities:
+  - Quality: 0
+    AdjustsHealth: 1
+    HealthAdjustValue: 15
+    AdjustsEnergy: 1
+    EnergyAdjustValue: 15
+    BuyPrice: 360
+    SellPrice: 120
+  - Quality: 1
+    AdjustsHealth: 1
+    HealthAdjustValue: 30
+    AdjustsEnergy: 1
+    EnergyAdjustValue: 30
+    BuyPrice: 480
+    SellPrice: 160
+  - Quality: 2
+    AdjustsHealth: 1
+    HealthAdjustValue: 45
+    AdjustsEnergy: 1
+    EnergyAdjustValue: 45
+    BuyPrice: 600
+    SellPrice: 200
+  - Quality: 3
+    AdjustsHealth: 1
+    HealthAdjustValue: 60
+    AdjustsEnergy: 1
+    EnergyAdjustValue: 60
+    BuyPrice: 720
+    SellPrice: 240
+  isStorage: 0
+  StorageList:
+  - TotalStorageSlots: 36
+--- !u!1 &911112101
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 911112102}
+  - component: {fileID: 911112103}
+  - component: {fileID: 911112104}
+  m_Layer: 0
+  m_Name: 15 - Violet_Fish
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &911112102
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 911112101}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 97753044}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &911112103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 911112101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 0
+  instanceID: 908732
+--- !u!114 &911112104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 911112101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc1a46eca4a35e5498f3df297015210f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Fish
+  MaxStackSize: 999
+  ActivateableType: 4
+  ToolTipType:
+    GroupType: 1
+    MainLocalizationID: 76
+    SubLocalizationID: 71
+    DescriptionID: 81
+    ContextID: 0
+  DatabaseID: 15
+  LockItem: 1
+  Icon: {fileID: 21300000, guid: 6492e1442d2bb704a90198439ddec511, type: 3}
+  ModelPrefab: {fileID: 100012, guid: 784589347d804e94f94328cad94ad4e2, type: 2}
+  DefaultScale: 0.5
+  isTool: 0
+  ToolQualityLevels: []
+  isGrowableItem: 0
+  GrowableItemStages: []
+  isItem: 1
+  ItemCat: 2
+  ItemQualities:
+  - Quality: 0
+    AdjustsHealth: 1
+    HealthAdjustValue: 15
+    AdjustsEnergy: 1
+    EnergyAdjustValue: 15
+    BuyPrice: 360
+    SellPrice: 120
+  - Quality: 1
+    AdjustsHealth: 1
+    HealthAdjustValue: 30
+    AdjustsEnergy: 1
+    EnergyAdjustValue: 30
+    BuyPrice: 480
+    SellPrice: 160
+  - Quality: 2
+    AdjustsHealth: 1
+    HealthAdjustValue: 45
+    AdjustsEnergy: 1
+    EnergyAdjustValue: 45
+    BuyPrice: 600
+    SellPrice: 200
+  - Quality: 3
+    AdjustsHealth: 1
+    HealthAdjustValue: 60
+    AdjustsEnergy: 1
+    EnergyAdjustValue: 60
+    BuyPrice: 720
+    SellPrice: 240
+  isStorage: 0
+  StorageList:
+  - TotalStorageSlots: 36
 --- !u!1 &1215626842
 GameObject:
   m_ObjectHideFlags: 0
@@ -771,6 +1130,54 @@ Transform:
   m_Father: {fileID: 98179532}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1322106185
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1322106186}
+  - component: {fileID: 1322106187}
+  m_Layer: 0
+  m_Name: Fish Atlas
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1322106186
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1322106185}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1701517456}
+  - {fileID: 1579001600}
+  - {fileID: 1837730740}
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1322106187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1322106185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 217f88dc007f2c24db2c94fae45f1e26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ItemCatagoryList:
+  - {fileID: 1677378389}
+  - {fileID: 1645614857}
+  - {fileID: 2041544710}
+  ListCount: 3
 --- !u!1 &1328181116
 GameObject:
   m_ObjectHideFlags: 0
@@ -875,7 +1282,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 484528
+  instanceID: 908746
 --- !u!1 &1330787844
 GameObject:
   m_ObjectHideFlags: 0
@@ -905,6 +1312,112 @@ Transform:
   m_Father: {fileID: 98179532}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1345506624
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1345506625}
+  - component: {fileID: 1345506626}
+  - component: {fileID: 1345506627}
+  m_Layer: 0
+  m_Name: 14 - Red_Fish
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1345506625
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1345506624}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 97753044}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1345506626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1345506624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 0
+  instanceID: 908756
+--- !u!114 &1345506627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1345506624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc1a46eca4a35e5498f3df297015210f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Fish
+  MaxStackSize: 999
+  ActivateableType: 4
+  ToolTipType:
+    GroupType: 1
+    MainLocalizationID: 75
+    SubLocalizationID: 71
+    DescriptionID: 80
+    ContextID: 0
+  DatabaseID: 14
+  LockItem: 1
+  Icon: {fileID: 21300000, guid: c74ae263b10014943bce00921d0dc699, type: 3}
+  ModelPrefab: {fileID: 100028, guid: 8e88ac2c81398c440b3628466720e02c, type: 2}
+  DefaultScale: 0.5
+  isTool: 0
+  ToolQualityLevels: []
+  isGrowableItem: 0
+  GrowableItemStages: []
+  isItem: 1
+  ItemCat: 2
+  ItemQualities:
+  - Quality: 0
+    AdjustsHealth: 1
+    HealthAdjustValue: 15
+    AdjustsEnergy: 1
+    EnergyAdjustValue: 15
+    BuyPrice: 360
+    SellPrice: 120
+  - Quality: 1
+    AdjustsHealth: 1
+    HealthAdjustValue: 30
+    AdjustsEnergy: 1
+    EnergyAdjustValue: 30
+    BuyPrice: 480
+    SellPrice: 160
+  - Quality: 2
+    AdjustsHealth: 1
+    HealthAdjustValue: 45
+    AdjustsEnergy: 1
+    EnergyAdjustValue: 45
+    BuyPrice: 600
+    SellPrice: 200
+  - Quality: 3
+    AdjustsHealth: 1
+    HealthAdjustValue: 60
+    AdjustsEnergy: 1
+    EnergyAdjustValue: 60
+    BuyPrice: 720
+    SellPrice: 240
+  isStorage: 0
+  StorageList:
+  - TotalStorageSlots: 36
 --- !u!1 &1405183627
 GameObject:
   m_ObjectHideFlags: 0
@@ -1042,7 +1555,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 484544
+  instanceID: 908770
 --- !u!1 &1450680409
 GameObject:
   m_ObjectHideFlags: 0
@@ -1163,7 +1676,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 484554
+  instanceID: 908780
 --- !u!4 &1511745342
 Transform:
   m_ObjectHideFlags: 0
@@ -1177,6 +1690,283 @@ Transform:
   m_Father: {fileID: 1450680410}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1579001599
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1579001600}
+  m_Layer: 0
+  m_Name: Lake Fish
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1579001600
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1579001599}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1645614859}
+  m_Father: {fileID: 1322106186}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1637135970
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1637135973}
+  - component: {fileID: 1637135972}
+  - component: {fileID: 1637135971}
+  m_Layer: 0
+  m_Name: 16 - Yellow_Fish
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1637135971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1637135970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc1a46eca4a35e5498f3df297015210f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Fish
+  MaxStackSize: 999
+  ActivateableType: 4
+  ToolTipType:
+    GroupType: 1
+    MainLocalizationID: 77
+    SubLocalizationID: 71
+    DescriptionID: 82
+    ContextID: 0
+  DatabaseID: 16
+  LockItem: 1
+  Icon: {fileID: 21300000, guid: f01de153d00729347a612d4e5e77b320, type: 3}
+  ModelPrefab: {fileID: 100010, guid: 63af61e6c1254a04494a58e84d437e5f, type: 2}
+  DefaultScale: 0.5
+  isTool: 0
+  ToolQualityLevels: []
+  isGrowableItem: 0
+  GrowableItemStages: []
+  isItem: 1
+  ItemCat: 2
+  ItemQualities:
+  - Quality: 0
+    AdjustsHealth: 1
+    HealthAdjustValue: 15
+    AdjustsEnergy: 1
+    EnergyAdjustValue: 15
+    BuyPrice: 360
+    SellPrice: 120
+  - Quality: 1
+    AdjustsHealth: 1
+    HealthAdjustValue: 30
+    AdjustsEnergy: 1
+    EnergyAdjustValue: 30
+    BuyPrice: 480
+    SellPrice: 160
+  - Quality: 2
+    AdjustsHealth: 1
+    HealthAdjustValue: 45
+    AdjustsEnergy: 1
+    EnergyAdjustValue: 45
+    BuyPrice: 600
+    SellPrice: 200
+  - Quality: 3
+    AdjustsHealth: 1
+    HealthAdjustValue: 60
+    AdjustsEnergy: 1
+    EnergyAdjustValue: 60
+    BuyPrice: 720
+    SellPrice: 240
+  isStorage: 0
+  StorageList:
+  - TotalStorageSlots: 36
+--- !u!114 &1637135972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1637135970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 0
+  instanceID: 908788
+--- !u!4 &1637135973
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1637135970}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 97753044}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1645614856
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1645614859}
+  - component: {fileID: 1645614858}
+  - component: {fileID: 1645614857}
+  m_Layer: 0
+  m_Name: 1 - Cyan Fish
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1645614857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1645614856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d74d6f3fce3fbff48a31c695bce8af02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DatabaseID: 1
+  LockItem: 1
+  Name: Cyan Fish
+  ItemObjectRefDatabaseID: 12
+  RodRequired: 0
+  CatchableTimes:
+    StartHour: 6
+    EndHour: 26
+  WaterTypes: 01000000
+  CatchableSeasons: 04000000
+  CatchableWeather: 05000000
+  WaitTimeRange:
+    MinTime: 3
+    MaxTime: 6
+  FishWeight:
+    MinWeight: 5
+    MaxWeight: 10
+--- !u!114 &1645614858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1645614856}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 5
+  instanceID: -24796852
+--- !u!4 &1645614859
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1645614856}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1579001600}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1677378387
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1677378388}
+  - component: {fileID: 1677378390}
+  - component: {fileID: 1677378389}
+  m_Layer: 0
+  m_Name: 0 - Blue Fish
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1677378388
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1677378387}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1701517456}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1677378389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1677378387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d74d6f3fce3fbff48a31c695bce8af02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DatabaseID: 0
+  LockItem: 1
+  Name: Blue Fish
+  ItemObjectRefDatabaseID: 11
+  RodRequired: 0
+  CatchableTimes:
+    StartHour: 6
+    EndHour: 26
+  WaterTypes: 00000000
+  CatchableSeasons: 04000000
+  CatchableWeather: 05000000
+  WaitTimeRange:
+    MinTime: 3
+    MaxTime: 6
+  FishWeight:
+    MinWeight: 5
+    MaxWeight: 10
+--- !u!114 &1677378390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1677378387}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 5
+  instanceID: -24481326
 --- !u!1 &1696380314
 GameObject:
   m_ObjectHideFlags: 0
@@ -1281,7 +2071,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 484564
+  instanceID: 908798
+--- !u!1 &1701517455
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1701517456}
+  m_Layer: 0
+  m_Name: River Fish
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1701517456
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1701517455}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1677378388}
+  m_Father: {fileID: 1322106186}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1714828754
 GameObject:
   m_ObjectHideFlags: 0
@@ -1389,7 +2208,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 484572
+  instanceID: 908806
 --- !u!1 &1815548898
 GameObject:
   m_ObjectHideFlags: 0
@@ -1527,4 +2346,210 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 484584
+  instanceID: 908818
+--- !u!1 &1837730739
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1837730740}
+  m_Layer: 0
+  m_Name: Ocean Fish
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1837730740
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1837730739}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 2041544712}
+  m_Father: {fileID: 1322106186}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1902128843
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1902128844}
+  - component: {fileID: 1902128845}
+  - component: {fileID: 1902128846}
+  m_Layer: 0
+  m_Name: 12 - Cyan_Fish
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1902128844
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1902128843}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 97753044}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1902128845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1902128843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 0
+  instanceID: 908824
+--- !u!114 &1902128846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1902128843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc1a46eca4a35e5498f3df297015210f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Fish
+  MaxStackSize: 999
+  ActivateableType: 4
+  ToolTipType:
+    GroupType: 1
+    MainLocalizationID: 73
+    SubLocalizationID: 71
+    DescriptionID: 78
+    ContextID: 0
+  DatabaseID: 12
+  LockItem: 1
+  Icon: {fileID: 21300000, guid: d6633a8e283b1524caf1c4ae84c07dcc, type: 3}
+  ModelPrefab: {fileID: 100012, guid: 1376d8317dcb8c04683783fce0b7de9a, type: 2}
+  DefaultScale: 0.5
+  isTool: 0
+  ToolQualityLevels: []
+  isGrowableItem: 0
+  GrowableItemStages: []
+  isItem: 1
+  ItemCat: 2
+  ItemQualities:
+  - Quality: 0
+    AdjustsHealth: 1
+    HealthAdjustValue: 15
+    AdjustsEnergy: 1
+    EnergyAdjustValue: 15
+    BuyPrice: 360
+    SellPrice: 120
+  - Quality: 1
+    AdjustsHealth: 1
+    HealthAdjustValue: 30
+    AdjustsEnergy: 1
+    EnergyAdjustValue: 30
+    BuyPrice: 480
+    SellPrice: 160
+  - Quality: 2
+    AdjustsHealth: 1
+    HealthAdjustValue: 45
+    AdjustsEnergy: 1
+    EnergyAdjustValue: 45
+    BuyPrice: 600
+    SellPrice: 200
+  - Quality: 3
+    AdjustsHealth: 1
+    HealthAdjustValue: 60
+    AdjustsEnergy: 1
+    EnergyAdjustValue: 60
+    BuyPrice: 720
+    SellPrice: 240
+  isStorage: 0
+  StorageList:
+  - TotalStorageSlots: 36
+--- !u!1 &2041544709
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 2041544712}
+  - component: {fileID: 2041544711}
+  - component: {fileID: 2041544710}
+  m_Layer: 0
+  m_Name: 2 - Pink Fish
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2041544710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2041544709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d74d6f3fce3fbff48a31c695bce8af02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DatabaseID: 2
+  LockItem: 1
+  Name: Pink Fish
+  ItemObjectRefDatabaseID: 13
+  RodRequired: 0
+  CatchableTimes:
+    StartHour: 6
+    EndHour: 26
+  WaterTypes: 02000000
+  CatchableSeasons: 04000000
+  CatchableWeather: 05000000
+  WaitTimeRange:
+    MinTime: 3
+    MaxTime: 6
+  FishWeight:
+    MinWeight: 5
+    MaxWeight: 10
+--- !u!114 &2041544711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2041544709}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 5
+  instanceID: -25042136
+--- !u!4 &2041544712
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2041544709}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1837730740}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

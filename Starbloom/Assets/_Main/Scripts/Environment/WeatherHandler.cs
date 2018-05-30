@@ -11,7 +11,8 @@ public class WeatherHandler : MonoBehaviour
         Spring,
         Summer,
         Fall,
-        Winter
+        Winter,
+        All
     }
     public enum WeatherTyps
     {
@@ -19,7 +20,8 @@ public class WeatherHandler : MonoBehaviour
         Overcast,
         Raining,
         Thunderstorm,
-        Snowing
+        Snowing,
+        All
     }
 
     [System.Serializable]
@@ -81,6 +83,14 @@ public class WeatherHandler : MonoBehaviour
     }
 
 
+
+
+    [HideInInspector] public Seasons CurrentSeason = Seasons.Spring;
+    [HideInInspector] public WeatherTyps CurrentWeather = WeatherTyps.Clear;
+
+
+
+
     [ListDrawerSettings(ShowIndexLabels = true, ListElementLabelName = "Weather", NumberOfItemsPerPage = 8, Expanded = false)]
     public WeatherSetting[] SpringWeather;
     [ListDrawerSettings(ShowIndexLabels = true, ListElementLabelName = "Weather", NumberOfItemsPerPage = 8, Expanded = false)]
@@ -97,10 +107,6 @@ public class WeatherHandler : MonoBehaviour
     [ButtonGroup]
     public void ChangeSeason()
     { QuickFind.NetworkSync.AdjustWeather((int)DebugSeason, (int)DebugWeather); }
-
-
-    Seasons CurrentSeason;
-    WeatherTyps CurrentWeather;
 
 
 

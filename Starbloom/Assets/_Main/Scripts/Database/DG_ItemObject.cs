@@ -12,13 +12,15 @@ public class DG_ItemObject : MonoBehaviour
         Low,
         Normal,
         High,
-        Max
+        Max,
+        All
     }
 
     public enum ItemCatagory
     {
         Vegetable,
-        Herb
+        Herb,
+        Fish
     }
 
 

@@ -7,6 +7,14 @@ using Sirenix.OdinInspector;
 
 public class TimeHandler : MonoBehaviour {
 
+
+    [System.Serializable]
+    public class TimeOfDayPeriod
+    {
+        public float StartHour;
+        public float EndHour;
+    }
+
     public enum TimePresetEnums
     {
         Morning,
@@ -47,6 +55,14 @@ public class TimeHandler : MonoBehaviour {
     private void Awake()
     {
         QuickFind.TimeHandler = this;
+    }
+
+
+
+
+    public int GetCurrentHour()
+    {
+        return QuickFind.WeatherModule.currentHour;
     }
 
 

@@ -577,7 +577,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NetworkObjectID: 0
   ItemRefID: 10
-  ItemGrowthLevel: 0
+  ItemGrowthLevel: -1
   Position: {x: 1, y: 1.66, z: 0}
   YFacing: 0
   isStorageContainer: 1
@@ -900,6 +900,11 @@ MonoBehaviour:
     MaxEnergy: 0
     CurrentHealth: 0
     MaxHealth: 0
+    NonCombatSkillEXP:
+      Farming: 0
+      Mining: 0
+      Foraging: 0
+      Fishing: 8000
     Equipment:
       HatId: 0
       Ring1: 0
@@ -1128,6 +1133,11 @@ MonoBehaviour:
     MaxEnergy: 0
     CurrentHealth: 0
     MaxHealth: 0
+    NonCombatSkillEXP:
+      Farming: 0
+      Mining: 0
+      Foraging: 0
+      Fishing: 0
     Equipment:
       HatId: 0
       Ring1: 0
@@ -1356,6 +1366,11 @@ MonoBehaviour:
     MaxEnergy: 0
     CurrentHealth: 0
     MaxHealth: 0
+    NonCombatSkillEXP:
+      Farming: 0
+      Mining: 0
+      Foraging: 0
+      Fishing: 0
     Equipment:
       HatId: 0
       Ring1: 0
@@ -1584,6 +1599,11 @@ MonoBehaviour:
     MaxEnergy: 0
     CurrentHealth: 0
     MaxHealth: 0
+    NonCombatSkillEXP:
+      Farming: 0
+      Mining: 0
+      Foraging: 0
+      Fishing: 0
     Equipment:
       HatId: 0
       Ring1: 0

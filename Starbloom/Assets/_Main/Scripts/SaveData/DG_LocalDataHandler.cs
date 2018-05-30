@@ -111,6 +111,13 @@ public class DG_LocalDataHandler : MonoBehaviour {
             DG_PlayerCharacters.PlayerCharacter PC = PlayerData.PlayerCharacters[i];
             DG_PlayerCharacters.CharacterEquipment CE = PC.Equipment;
             string PlayerNum = i.ToString();
+
+            if (ToDisk) Directory = FindOrCreateSaveDirectory(SaveDirectory, "PlayerNonCombatStats" + PlayerNum.ToString() + "/");
+            if (!ToDisk) IntData.Add(PC.NonCombatSkillEXP.Farming); else SaveInt(PC.NonCombatSkillEXP.Farming, Directory + "Farming");
+            if (!ToDisk) IntData.Add(PC.NonCombatSkillEXP.Mining); else SaveInt(PC.NonCombatSkillEXP.Mining, Directory + "Mining");
+            if (!ToDisk) IntData.Add(PC.NonCombatSkillEXP.Foraging); else SaveInt(PC.NonCombatSkillEXP.Foraging, Directory + "Foraging");
+            if (!ToDisk) IntData.Add(PC.NonCombatSkillEXP.Fishing); else SaveInt(PC.NonCombatSkillEXP.Fishing, Directory + "Fishing");
+
             //
             if (ToDisk) Directory = FindOrCreateSaveDirectory(SaveDirectory, "PlayerEquipment" + PlayerNum.ToString() + "/");
             if (!ToDisk) IntData.Add(CE.HatId); else SaveInt(CE.HatId, Directory + "HatId");
@@ -157,6 +164,13 @@ public class DG_LocalDataHandler : MonoBehaviour {
             DG_PlayerCharacters.PlayerCharacter PC = PlayerData.PlayerCharacters[i];
             DG_PlayerCharacters.CharacterEquipment CE = PC.Equipment;
             string PlayerNum = i.ToString();
+
+            if (FromDisk) Directory = FindOrCreateSaveDirectory(SaveDirectory, "PlayerNonCombatStats" + PlayerNum.ToString() + "/");
+            if (!FromDisk) PC.NonCombatSkillEXP.Farming = IntValues[Index]; else PC.NonCombatSkillEXP.Farming = LoadInt(Directory + "Farming"); Index++;
+            if (!FromDisk) PC.NonCombatSkillEXP.Mining = IntValues[Index]; else PC.NonCombatSkillEXP.Mining = LoadInt(Directory + "Mining"); Index++;
+            if (!FromDisk) PC.NonCombatSkillEXP.Foraging = IntValues[Index]; else PC.NonCombatSkillEXP.Foraging = LoadInt(Directory + "Foraging"); Index++;
+            if (!FromDisk) PC.NonCombatSkillEXP.Fishing = IntValues[Index]; else PC.NonCombatSkillEXP.Fishing = LoadInt(Directory + "Fishing"); Index++;
+
             //
             if (FromDisk) Directory = FindOrCreateSaveDirectory(SaveDirectory, "PlayerEquipment" + PlayerNum.ToString() + "/");
             if (!FromDisk) CE.HatId = IntValues[Index]; else CE.HatId = LoadInt(Directory + "HatId"); Index++;

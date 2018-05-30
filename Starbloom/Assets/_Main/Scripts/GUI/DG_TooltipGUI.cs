@@ -3,6 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
 
+
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
+
+
+
 //Stardew Valleys tooltip system.
 
 //Main Name
@@ -66,6 +73,12 @@ public class DG_TooltipGUI : MonoBehaviour {
         public int DescriptionID;
         [Header("Context Tooltip ID")]
         public int ContextID;
+
+#if UNITY_EDITOR
+        [Button(ButtonSizes.Small)] void GoToMainTextLocation(){Selection.activeGameObject = QuickFindInEditor.GetEditorWordDatabase().GetItemFromID(MainLocalizationID).gameObject;}
+        [Button(ButtonSizes.Small)] void GoToSubTextLocation(){Selection.activeGameObject = QuickFindInEditor.GetEditorWordDatabase().GetItemFromID(SubLocalizationID).gameObject;}
+        [Button(ButtonSizes.Small)] void GoToDescriptionLocation(){Selection.activeGameObject = QuickFindInEditor.GetEditorWordDatabase().GetItemFromID(DescriptionID).gameObject;}
+#endif
     }
 
 

@@ -29,6 +29,7 @@ public static class QuickFindInEditor
     public static DG_CharacterDatabase GetEditorCharacterDatabase() { return GameObject.Find("Character Database").GetComponent<DG_CharacterDatabase>(); }
     public static DG_ColorCodes GetEditorColorCodes() { return GameObject.Find("Color Database").GetComponent<DG_ColorCodes>(); }
     public static SceneIDList GetEditorSceneList() { return GameObject.Find("Scene ID List").GetComponent<SceneIDList>(); }
+    public static DG_FishingCompendium GetEditorFishingCompendium() { return GameObject.Find("Fish Atlas").GetComponent<DG_FishingCompendium>(); }
     //Save Data
     public static UserSettings GetEditorUserSettings() { return GameObject.Find("Player Settings").GetComponent<UserSettings>(); }
 
@@ -81,7 +82,11 @@ public static class QuickFind
     //Managers
     public static DG_Inventory InventoryManager = null;
     public static DG_TreasureSelection TreasureManager = null;
+
+
+    //Fishing
     public static Fishing_MasterHandler FishingHandler = null;
+    public static DG_FishingRoller FishingRoller = null;
 
 
     //Cameras
@@ -104,6 +109,7 @@ public static class QuickFind
     public static DG_ColorCodes ColorDatabase = null;
     public static SceneIDList SceneList = null;
     public static DG_TextLanguageFonts LanguageFonts = null;
+    public static DG_FishingCompendium FishingCompendium = null;
 
 
 
@@ -119,6 +125,9 @@ public static class QuickFind
     //Serialization
     public static DG_LocalDataHandler SaveHandler;
 
+
+    //Skill Data
+    public static DG_FishingLevelStats FishingStatsHandler = null;
 
 
 
