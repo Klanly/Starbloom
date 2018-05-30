@@ -5,8 +5,8 @@ using Sirenix.OdinInspector;
 
 
 
-public class TimeHandler : MonoBehaviour {
-
+public class TimeHandler : MonoBehaviour
+{
     public enum TimePresetEnums
     {
         Morning,
@@ -26,10 +26,16 @@ public class TimeHandler : MonoBehaviour {
         public int currentMinute = 45;
         public int currentHour = 5;
     }
-
+	
 
     [ListDrawerSettings(ShowIndexLabels = true, ListElementLabelName = "PresetTime", NumberOfItemsPerPage = 8, Expanded = false)]
     public TimePreset[] TimePresets;
+
+	protected int m_Minute = 0;
+	protected int m_Hour = 0;
+	protected int m_Day = 0;
+	protected int m_Month = 0;
+	protected int m_Year = 0;
 
 
 
@@ -41,19 +47,13 @@ public class TimeHandler : MonoBehaviour {
     {
         QuickFind.NetworkSync.AdjustTimeByPreset((int)DebugTime);
     }
-
-
-
+	
     private void Awake()
     {
         QuickFind.TimeHandler = this;
     }
 
-
-
-
-
-    public void RequestMasterTimes()
+	public void RequestMasterTimes()
     {
         QuickFind.NetworkSync.RequestMasterTime();
     }
@@ -62,7 +62,13 @@ public class TimeHandler : MonoBehaviour {
         List<float> TimeValues = new List<float>();
         Tenkoku.Core.TenkokuModule TimeModule = QuickFind.WeatherModule;
 
-        TimeValues.Add(TimeModule.currentSecond);
+		m_Minute = TimeModule.currentMinute;
+		m_Hour = TimeModule.currentHour;
+		m_Day = TimeModule.currentDay;
+		m_Month = TimeModule.currentMonth;
+		m_Year = TimeModule.currentYear;
+
+		TimeValues.Add(TimeModule.currentSecond);
         TimeValues.Add(TimeModule.currentMinute);
         TimeValues.Add(TimeModule.currentHour);
         TimeValues.Add(TimeModule.currentDay);
