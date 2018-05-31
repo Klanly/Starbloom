@@ -132,6 +132,12 @@ public class DG_ItemObject : MonoBehaviour
     #endregion
 
 
+    #region Environment
+    [Header("----------------------------------")]
+    public bool isEnvironment = false;
+    #endregion
+
+
 
 
     public int GetMax()

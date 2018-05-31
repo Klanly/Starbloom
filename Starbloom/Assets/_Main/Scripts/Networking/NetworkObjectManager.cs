@@ -87,6 +87,61 @@ public class NetworkObjectManager : MonoBehaviour {
 
 
 
+    public void CreateNetSceneObject(int SceneID, int ObjectID, int ItemLevel, Vector3 Position, float Facing)
+    {
+        List<int> IntData = new List<int>();
+
+        IntData.Add(SceneID);
+        IntData.Add(ObjectID);
+        IntData.Add(ItemLevel);
+
+        IntData.Add(QuickFind.ConvertFloatToInt(Position.x));
+        IntData.Add(QuickFind.ConvertFloatToInt(Position.y));
+        IntData.Add(QuickFind.ConvertFloatToInt(Position.z));
+        IntData.Add(QuickFind.ConvertFloatToInt(Facing));
+
+        DG_ItemObject IO = QuickFind.ItemDatabase.GetItemFromID(ObjectID);
+        if(IO.isStorage) IntData.Add(1);
+        else IntData.Add(0);
+
+        QuickFind.NetworkSync.AddNetworkSceneObject(IntData.ToArray());
+    }
+    public void CreateSceneObject(int[] IncomingData)
+    {
+        int index = 0;
+        NetworkScene NS = GetSceneByID(IncomingData[index]); index++;
+        Transform NewObject = new GameObject().transform;
+        NewObject.SetParent(NS.transform);
+        NetworkObject NO = NewObject.gameObject.AddComponent<NetworkObject>();
+
+        NO.ItemRefID = IncomingData[index]; index++;
+        NO.ItemGrowthLevel = IncomingData[index]; index++;
+        NO.PositionX = IncomingData[index]; index++;
+        NO.PositionY = IncomingData[index]; index++;
+        NO.PositionZ = IncomingData[index]; index++;
+        NO.YFacing = IncomingData[index]; index++;
+
+        int isStorage = IncomingData[index]; index++;
+        if (isStorage == 1)
+        {
+            NO.isStorageContainer = true;
+            NO.StorageSlots = new DG_PlayerCharacters.RucksackSlot[36];
+            for (int i = 0; i < 36; i++) NO.StorageSlots[i] = new DG_PlayerCharacters.RucksackSlot();
+        }
+
+        NewObject.position = QuickFind.ConvertIntsToPosition(NO.PositionX, NO.PositionY, NO.PositionZ);
+        NewObject.eulerAngles = new Vector3(0, QuickFind.ConvertIntToFloat(NO.YFacing), 0);
+
+        NO.SpawnNetworkObject();
+    }
+
+
+
+
+
+
+
+
 
 
 

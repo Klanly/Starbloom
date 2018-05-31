@@ -48,9 +48,8 @@ public class NetworkScene : MonoBehaviour {
             NetworkObject NO = GO.AddComponent<NetworkObject>();
             NetworkObject ListNO = NetworkObjectList[i];
             NO.Clone(NO, ListNO);
-
-            NO.transform.position = NO.Position;
-            NO.transform.eulerAngles = new Vector3(0, NO.YFacing, 0);
+            NO.transform.position = new Vector3(((float)NO.PositionX / 100), ((float)NO.PositionY / 100), ((float)NO.PositionZ / 100));
+            NO.transform.eulerAngles = new Vector3(0, ((float)NO.YFacing / 100), 0);
 
             NO.SpawnNetworkObject();      
             //
@@ -74,6 +73,16 @@ public class NetworkScene : MonoBehaviour {
             Destroy(transform.GetChild(i).gameObject);
         }
     }
+
+
+
+
+
+
+
+
+
+
 
 
 

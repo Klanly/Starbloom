@@ -161,7 +161,6 @@ public class DG_Inventory : MonoBehaviour {
 
 
 
-
     public int TotalInventoryCountOfItem(int ItemID)
     {
         return 0;
@@ -174,8 +173,9 @@ public class DG_Inventory : MonoBehaviour {
 
     public void DropOne(DG_InventoryItem FromItem, DG_InventoryItem ToItem)
     {
-        DG_PlayerCharacters.RucksackSlot From = QuickFind.InventoryManager.GetRuckSackSlotInventoryItem(FromItem);
-        DG_PlayerCharacters.RucksackSlot To = QuickFind.InventoryManager.GetRuckSackSlotInventoryItem(ToItem);
+        DG_PlayerCharacters.RucksackSlot From = GetRuckSackSlotInventoryItem(FromItem);
+        DG_PlayerCharacters.RucksackSlot To = GetRuckSackSlotInventoryItem(ToItem);
+
         int ID = QuickFind.NetworkSync.PlayerCharacterID;
         int IndexA = ID;
         int IndexB = ID;
@@ -195,7 +195,20 @@ public class DG_Inventory : MonoBehaviour {
             }
 
             SetItemValueInRucksack(From, IndexA, FromItem.SlotID, From.ContainedItem, From.CurrentStackActive, From.LowValue, From.NormalValue, From.HighValue, From.MaximumValue, FromItem.IsStorageSlot);
-            if (!ToItem.isTrash) SetItemValueInRucksack(To, IndexB, ToItem.SlotID, To.ContainedItem, To.CurrentStackActive, To.LowValue, To.NormalValue, To.HighValue, To.MaximumValue, ToItem.IsStorageSlot);
+            if (!ToItem.isTrash && To != null) SetItemValueInRucksack(To, IndexB, ToItem.SlotID, To.ContainedItem, To.CurrentStackActive, To.LowValue, To.NormalValue, To.HighValue, To.MaximumValue, ToItem.IsStorageSlot);
+        }
+    }
+
+    public void DestroyRucksackItem(DG_PlayerCharacters.RucksackSlot From, int SlotID)
+    {
+        int ID = QuickFind.NetworkSync.PlayerCharacterID;
+        int IndexA = ID;
+        //int ItemID = From.ContainedItem;
+        DG_ItemObject.ItemQualityLevels QualityLevel = (DG_ItemObject.ItemQualityLevels)From.CurrentStackActive;
+        if (From.GetNumberOfQuality(QualityLevel) > 0)
+        {
+            From.AddStackQualityValue(QualityLevel, -1);
+            SetItemValueInRucksack(From, IndexA, SlotID, From.ContainedItem, From.CurrentStackActive, From.LowValue, From.NormalValue, From.HighValue, From.MaximumValue, false);
         }
     }
 

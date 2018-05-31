@@ -11,9 +11,9 @@ public class HotbarItemHandler : MonoBehaviour {
         Axe,
         Hoe,
         FishingPole,
-
         RegularItem,
-        PlaceableItem
+        PlaceableItem,
+        WateringCan
     }
 
 
@@ -45,61 +45,19 @@ public class HotbarItemHandler : MonoBehaviour {
             switch(CurrentItemDatabaseReference.ActivateableType)
             {
 
-                case ActivateableTypes.Axe: AxeEvent(UpEvent); break;
-                case ActivateableTypes.FishingPole: FishingPoleEvent(UpEvent); break;
-                case ActivateableTypes.Hoe: HoeEvent(UpEvent); break;
-                case ActivateableTypes.Pickaxe: PickaxeEvent(UpEvent); break;
-                case ActivateableTypes.RegularItem: RegularItemEvent(UpEvent); break;
-                case ActivateableTypes.PlaceableItem: PlaceableItemEvent(UpEvent); break;
-
+                case ActivateableTypes.Axe: Debug.Log("Axe " + UpEvent.ToString()); break;
+                case ActivateableTypes.FishingPole: QuickFind.FishingHandler.ExternalUpdate(UpEvent); break;
+                case ActivateableTypes.Hoe: QuickFind.HoeHandler.InputDetected(UpEvent); break;
+                case ActivateableTypes.Pickaxe: Debug.Log("PickAxe " + UpEvent.ToString()); break;
+                case ActivateableTypes.RegularItem: Debug.Log("RegularItem " + UpEvent.ToString()); break;
+                case ActivateableTypes.PlaceableItem: QuickFind.ObjectPlacementManager.InputDetected(UpEvent); break;
+                case ActivateableTypes.WateringCan: Debug.Log("Watering Can " + UpEvent.ToString()); break;
             }
         }
     }
 
 
 
-    //Fishing Rod
-    void FishingPoleEvent(bool isUp) { QuickFind.FishingHandler.ExternalUpdate(isUp); }
-
-
-
-
-    void AxeEvent(bool isUp)
-    {
-        if(isUp)
-            Debug.Log("Active Axe UP Event");
-        else
-            Debug.Log("Active Axe HELD Event");
-    }
-
-    void HoeEvent(bool isUp)
-    {
-        if (isUp)
-            Debug.Log("Active Hoe UP Event");
-        else
-            Debug.Log("Active Hoe HELD Event");
-    }
-    void PickaxeEvent(bool isUp)
-    {
-        if (isUp)
-            Debug.Log("Active Pickaxe UP Event");
-        else
-            Debug.Log("Active Pickaxe HELD Event");
-    }
-    void RegularItemEvent(bool isUp)
-    {
-        if (isUp)
-            Debug.Log("Active RegularItem UP Event");
-        else
-            Debug.Log("Active RegularItem HELD Event");
-    }
-    void PlaceableItemEvent(bool isUP)
-    {
-        if (isUP)
-            Debug.Log("Placeable Item UP Event");
-        else
-            Debug.Log("Placeable Item HELD Event");
-    }
 
 
 
@@ -108,15 +66,23 @@ public class HotbarItemHandler : MonoBehaviour {
 
 
 
-
-
-
-
-    public void SetCurrentActiveItem(DG_PlayerCharacters.RucksackSlot RucksackSlot, DG_ItemObject ItemDatabaseReference)
+    public void SetCurrentActiveItem(DG_PlayerCharacters.RucksackSlot RucksackSlot, DG_ItemObject ItemDatabaseReference, int Slot)
     {
         AwaitingActivateable = true;
         CurrentRucksackSlot = RucksackSlot;
         CurrentItemDatabaseReference = ItemDatabaseReference;
+
+
+
+
+        if (QuickFind.ObjectPlacementManager.PlacementActive) QuickFind.ObjectPlacementManager.DestroyObjectGhost();
+        if (QuickFind.HoeHandler.PlacementActive) QuickFind.HoeHandler.CancelHoeing();
+
+        switch(ItemDatabaseReference.ActivateableType)
+        {
+            case ActivateableTypes.PlaceableItem: QuickFind.ObjectPlacementManager.SetupItemObjectGhost(DG_ObjectPlacement.PlacementType.ItemObject, RucksackSlot, ItemDatabaseReference, Slot); break;
+            case ActivateableTypes.Hoe: QuickFind.HoeHandler.SetupForHoeing(RucksackSlot, ItemDatabaseReference, Slot); break;
+        }
     }
     public void SetNoActiveItem()
     {

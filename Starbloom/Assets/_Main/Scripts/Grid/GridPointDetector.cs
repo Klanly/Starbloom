@@ -4,17 +4,8 @@ using UnityEngine;
 
 public class GridPointDetector : MonoBehaviour
 {
-    public enum GridDetectionMode
-    {
-        NotDetecting,
-        ByCharacterZ,
-        ByMousePoint,
-        ByMousePointLockDistance
-    }
 
 
-
-    public GridDetectionMode DetectionMode;
     public LayerMask DetectionMask;
 
     [Header("Max Distance From Player")]
@@ -25,69 +16,79 @@ public class GridPointDetector : MonoBehaviour
     public Transform GridDisplay;
 
 
-    Transform DetectionPoint;
+
+    Transform PlayerPointHelper;
+    Transform PlayerPointHelper2;
     bool GridPointSet;
-    Vector3 LastSafePoint;
+
+    [HideInInspector] public Transform DetectionPoint;
+    [HideInInspector] public bool ObjectIsPlacing = false;
+    [HideInInspector] public bool GlobalPositioning = false;
+
 
     private void Awake()
     {
         QuickFind.GridDetection = this;
         DetectionPoint = new GameObject().transform;
+        PlayerPointHelper = new GameObject().transform;
         DetectionPoint.SetParent(transform);
+        PlayerPointHelper.SetParent(transform);
+        GridDisplay.position = new Vector3(0, 10000, 0);
     }
 
 
 
     void Update()
     {
-        if (DetectionMode == GridDetectionMode.NotDetecting) return;
         GetDetectionPoint();
-        DetectClosestGridPoint();
     }
     void GetDetectionPoint()
     {
-        if (DetectionMode == GridDetectionMode.ByMousePoint || DetectionMode == GridDetectionMode.ByMousePointLockDistance)
+        if(QuickFind.PlayerTrans != null)
+            PlayerPointHelper.position = QuickFind.PlayerTrans.position;
+        AlignTransToClosestGridPoint(PlayerPointHelper);
+
+        if (QuickFind.InputController.MainPlayer.Context == DG_PlayerInput.ContextDetection.MousePosition)
         {
             RaycastHit hit;
             Ray ray = QuickFind.PlayerCam.MainCam.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray.origin, ray.direction, out hit, 200, DetectionMask))
             {
                 DetectionPoint.position = hit.point;
-                if (DetectionMode == GridDetectionMode.ByMousePointLockDistance && !QuickFind.WithinDistance(DetectionPoint, QuickFind.PlayerTrans, MaxDistance))
-                    DetectionPoint.position = LastSafePoint;
+                if (!GlobalPositioning)
+                {        
+                    PlayerPointHelper.LookAt(DetectionPoint);
+                    PlayerPointHelper.position += PlayerPointHelper.forward * MaxDistance;
+                    DetectionPoint.position = PlayerPointHelper.position;
+                }
             }
         }
-        if (DetectionMode == GridDetectionMode.ByCharacterZ)
+        else
         {
-            DetectionPoint.position = QuickFind.PlayerTrans.position;
+            DetectionPoint.position = PlayerPointHelper.position;
             DetectionPoint.rotation = QuickFind.PlayerTrans.rotation;
             DetectionPoint.position += DetectionPoint.forward * .8f;
         }
+        AlignTransToClosestGridPoint(DetectionPoint);
+        SetGridDisplay(DetectionPoint);
     }
-    void DetectClosestGridPoint()
-    {
-        Vector3 Pos = DetectionPoint.position;
-        DetectionPoint.position = new Vector3(Mathf.RoundToInt(Pos.x), Pos.y, Mathf.RoundToInt(Pos.z));
 
-        if (ShowGridDisplay)
+
+
+    void AlignTransToClosestGridPoint(Transform T)
+    {
+        Vector3 Pos = T.position;
+        T.position = new Vector3(Mathf.RoundToInt(Pos.x), Pos.y, Mathf.RoundToInt(Pos.z));
+    }
+    void SetGridDisplay(Transform T)
+    {
+        if (ShowGridDisplay || ObjectIsPlacing)
         {
-            Vector3 GridPoint = DetectionPoint.position;
+            Vector3 GridPoint = T.position;
             GridPoint.y = GridPoint.y - .45f;
             GridDisplay.position = GridPoint;
         }
         else
             GridDisplay.position = new Vector3(0, 10000, 0);
-
-        LastSafePoint = DetectionPoint.position;
-    }
-
-
-
-
-    void OnDrawGizmos() //Draw Gizmo in Scene view
-    {
-        if (!Application.isPlaying) return;
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawCube(DetectionPoint.position, new Vector3(1, .2f, 1));
     }
 }

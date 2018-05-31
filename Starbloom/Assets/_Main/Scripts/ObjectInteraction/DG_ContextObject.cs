@@ -14,7 +14,8 @@ public class DG_ContextObject : MonoBehaviour
         Vehicle,
         PickupItem,
         Growable,
-        MoveableStorage
+        MoveableStorage,
+        Soil
     }
 
 
