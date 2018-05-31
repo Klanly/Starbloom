@@ -904,7 +904,7 @@ MonoBehaviour:
       Farming: 0
       Mining: 0
       Foraging: 0
-      Fishing: 8000
+      Fishing: 0
     Equipment:
       HatId: 0
       Ring1: 0
@@ -1128,6 +1128,8 @@ MonoBehaviour:
         NormalValue: 0
         HighValue: 0
         MaximumValue: 0
+    Acheivements:
+      LargestFishCaught: 000000000000000000000000
   - Name: 
     CurrentEnergy: 0
     MaxEnergy: 0
@@ -1146,19 +1148,19 @@ MonoBehaviour:
       RuckSackUnlockedSize: 12
       RucksackSlots:
       - ContainedItem: 1
-        CurrentStackActive: 1
+        CurrentStackActive: 0
         LowValue: 1
         NormalValue: 0
         HighValue: 0
         MaximumValue: 0
       - ContainedItem: 2
-        CurrentStackActive: 1
+        CurrentStackActive: 0
         LowValue: 1
         NormalValue: 0
         HighValue: 0
         MaximumValue: 0
       - ContainedItem: 3
-        CurrentStackActive: 1
+        CurrentStackActive: 0
         LowValue: 1
         NormalValue: 0
         HighValue: 0
@@ -1361,6 +1363,8 @@ MonoBehaviour:
         NormalValue: 0
         HighValue: 0
         MaximumValue: 0
+    Acheivements:
+      LargestFishCaught: 000000000000000000000000
   - Name: 
     CurrentEnergy: 0
     MaxEnergy: 0
@@ -1379,19 +1383,19 @@ MonoBehaviour:
       RuckSackUnlockedSize: 12
       RucksackSlots:
       - ContainedItem: 1
-        CurrentStackActive: 1
+        CurrentStackActive: 0
         LowValue: 1
         NormalValue: 0
         HighValue: 0
         MaximumValue: 0
       - ContainedItem: 2
-        CurrentStackActive: 1
+        CurrentStackActive: 0
         LowValue: 1
         NormalValue: 0
         HighValue: 0
         MaximumValue: 0
       - ContainedItem: 3
-        CurrentStackActive: 1
+        CurrentStackActive: 0
         LowValue: 1
         NormalValue: 0
         HighValue: 0
@@ -1594,6 +1598,8 @@ MonoBehaviour:
         NormalValue: 0
         HighValue: 0
         MaximumValue: 0
+    Acheivements:
+      LargestFishCaught: 000000000000000000000000
   - Name: 
     CurrentEnergy: 0
     MaxEnergy: 0
@@ -1612,19 +1618,19 @@ MonoBehaviour:
       RuckSackUnlockedSize: 12
       RucksackSlots:
       - ContainedItem: 1
-        CurrentStackActive: 1
+        CurrentStackActive: 0
         LowValue: 1
         NormalValue: 0
         HighValue: 0
         MaximumValue: 0
       - ContainedItem: 2
-        CurrentStackActive: 1
+        CurrentStackActive: 0
         LowValue: 1
         NormalValue: 0
         HighValue: 0
         MaximumValue: 0
       - ContainedItem: 3
-        CurrentStackActive: 1
+        CurrentStackActive: 0
         LowValue: 1
         NormalValue: 0
         HighValue: 0
@@ -1827,6 +1833,12 @@ MonoBehaviour:
         NormalValue: 0
         HighValue: 0
         MaximumValue: 0
+    Acheivements:
+      LargestFishCaught: 000000000000000000000000
+  Weather:
+    TodayWeather: 0
+    TomorrowWeather: 0
+    TwoDayAwayWeather: 0
 --- !u!1 &1136677237
 GameObject:
   m_ObjectHideFlags: 0

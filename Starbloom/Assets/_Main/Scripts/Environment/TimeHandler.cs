@@ -7,7 +7,6 @@ using Sirenix.OdinInspector;
 
 public class TimeHandler : MonoBehaviour {
 
-
     [System.Serializable]
     public class TimeOfDayPeriod
     {
@@ -28,12 +27,15 @@ public class TimeHandler : MonoBehaviour {
     {
         [Header("Data")]
         public TimePresetEnums PresetTime;
-
-
         public int currentSecond = 0;
         public int currentMinute = 45;
         public int currentHour = 5;
     }
+
+
+
+
+
 
 
     [ListDrawerSettings(ShowIndexLabels = true, ListElementLabelName = "PresetTime", NumberOfItemsPerPage = 8, Expanded = false)]
@@ -41,38 +43,15 @@ public class TimeHandler : MonoBehaviour {
 
 
 
-    [Header("Debug")]
-    public TimePresetEnums DebugTime;
-
-    [ButtonGroup]
-    public void ChangeTime()
-    {
-        QuickFind.NetworkSync.AdjustTimeByPreset((int)DebugTime);
-    }
-
-
-
     private void Awake()
-    {
-        QuickFind.TimeHandler = this;
-    }
+    { QuickFind.TimeHandler = this;}
 
 
 
-
-    public int GetCurrentHour()
-    {
-        return QuickFind.WeatherModule.currentHour;
-    }
+    public int GetCurrentHour(){return QuickFind.WeatherModule.currentHour;}
+    public void RequestMasterTimes(){QuickFind.NetworkSync.RequestMasterTime();}
 
 
-
-
-
-    public void RequestMasterTimes()
-    {
-        QuickFind.NetworkSync.RequestMasterTime();
-    }
     public void SyncTimeToMaster()
     {
         List<float> TimeValues = new List<float>();
@@ -105,6 +84,59 @@ public class TimeHandler : MonoBehaviour {
     }
 
 
+
+
+    public void SetNewDay()
+    {
+        int year = QuickFind.Farm.Year;
+        int Month = QuickFind.Farm.Month;
+        int Day = QuickFind.Farm.Day;
+
+
+        Day++;
+        if (Day > 30) //NEW Month
+        {
+            Day = 1;
+            Month++;
+            if (Month > 4) //New Year;
+            {
+                Month = 1;
+                year++;
+            }
+        }
+
+        QuickFind.NetworkSync.AdjustTimeByValues(year, Month, Day, 6, 0);
+        QuickFind.WeatherHandler.SetNewDayWeather();
+    }
+
+
+
+
+
+    public void NewDayCalculationsComplete()
+    {
+        Debug.Log("New Day Times, and Weather are done loading.");
+    }
+
+
+
+
+
+
+
+
+    public void AdjustTimeByValues(int Year, int Month, int Day, int Hour, int Minute)
+    {
+        QuickFind.Farm.Year = Year;
+        QuickFind.Farm.Month = Month;
+        QuickFind.Farm.Day = Day;
+
+        Tenkoku.Core.TenkokuModule TimeModule = QuickFind.WeatherModule;
+
+        TimeModule.currentHour = Hour;
+        TimeModule.currentMinute = Minute;
+        TimeModule.currentSecond = 0;
+    }
 
     public void AdjustTimeByPreset(int TimePreset)
     {

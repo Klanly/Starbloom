@@ -629,7 +629,7 @@ MonoBehaviour:
     MainLocalizationID: 70
     SubLocalizationID: 71
     DescriptionID: 72
-    ContextID: 0
+    ContextID: 11
   DatabaseID: 11
   LockItem: 1
   Icon: {fileID: 21300000, guid: fea8373730235b6489cdfaf7f1252d55, type: 3}
@@ -949,7 +949,7 @@ MonoBehaviour:
     MainLocalizationID: 74
     SubLocalizationID: 71
     DescriptionID: 79
-    ContextID: 0
+    ContextID: 13
   DatabaseID: 13
   LockItem: 1
   Icon: {fileID: 21300000, guid: 8bb3b1158730c0643a7fee959be138a3, type: 3}
@@ -1055,7 +1055,7 @@ MonoBehaviour:
     MainLocalizationID: 76
     SubLocalizationID: 71
     DescriptionID: 81
-    ContextID: 0
+    ContextID: 15
   DatabaseID: 15
   LockItem: 1
   Icon: {fileID: 21300000, guid: 6492e1442d2bb704a90198439ddec511, type: 3}
@@ -1374,7 +1374,7 @@ MonoBehaviour:
     MainLocalizationID: 75
     SubLocalizationID: 71
     DescriptionID: 80
-    ContextID: 0
+    ContextID: 14
   DatabaseID: 14
   LockItem: 1
   Icon: {fileID: 21300000, guid: c74ae263b10014943bce00921d0dc699, type: 3}
@@ -1755,7 +1755,7 @@ MonoBehaviour:
     MainLocalizationID: 77
     SubLocalizationID: 71
     DescriptionID: 82
-    ContextID: 0
+    ContextID: 16
   DatabaseID: 16
   LockItem: 1
   Icon: {fileID: 21300000, guid: f01de153d00729347a612d4e5e77b320, type: 3}
@@ -1857,6 +1857,7 @@ MonoBehaviour:
   LockItem: 1
   Name: Cyan Fish
   ItemObjectRefDatabaseID: 12
+  ExpGainPerCatch: 2
   RodRequired: 0
   CatchableTimes:
     StartHour: 6
@@ -1941,6 +1942,7 @@ MonoBehaviour:
   LockItem: 1
   Name: Blue Fish
   ItemObjectRefDatabaseID: 11
+  ExpGainPerCatch: 2
   RodRequired: 0
   CatchableTimes:
     StartHour: 6
@@ -2438,7 +2440,7 @@ MonoBehaviour:
     MainLocalizationID: 73
     SubLocalizationID: 71
     DescriptionID: 78
-    ContextID: 0
+    ContextID: 12
   DatabaseID: 12
   LockItem: 1
   Icon: {fileID: 21300000, guid: d6633a8e283b1524caf1c4ae84c07dcc, type: 3}
@@ -2514,6 +2516,7 @@ MonoBehaviour:
   LockItem: 1
   Name: Pink Fish
   ItemObjectRefDatabaseID: 13
+  ExpGainPerCatch: 2
   RodRequired: 0
   CatchableTimes:
     StartHour: 6

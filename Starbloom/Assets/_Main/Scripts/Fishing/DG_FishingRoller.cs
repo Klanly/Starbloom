@@ -8,7 +8,7 @@ public class DG_FishingRoller : MonoBehaviour {
     {
         public DG_FishingAtlasObject AtlasObject;
         public float WaitTime;
-        public float Weight;
+        public int Weight;
         public DG_ItemObject.ItemQualityLevels QualityLevel;
     }
 
@@ -34,7 +34,7 @@ public class DG_FishingRoller : MonoBehaviour {
         ReturnFish.AtlasObject = RollForFish(AvailableFish);
         ReturnFish.WaitTime = GetFishWaitTime(ReturnFish.AtlasObject);
         ReturnFish.Weight = GetFishWeight(ReturnFish.AtlasObject);
-        ReturnFish.QualityLevel = GetQualityLevel(ReturnFish.AtlasObject);
+        ReturnFish.QualityLevel = GetQualityLevel(ReturnFish.AtlasObject, FishingRodQuality);
 
         return ReturnFish;
     }
@@ -50,14 +50,43 @@ public class DG_FishingRoller : MonoBehaviour {
         float RandomTimeFrame = Random.Range(AtlasObject.WaitTimeRange.MinTime, AtlasObject.WaitTimeRange.MaxTime);
         return RandomTimeFrame;
     }
-    public float GetFishWeight(DG_FishingAtlasObject AtlasObject)
+    public int GetFishWeight(DG_FishingAtlasObject AtlasObject)
     {
         float RandomFishWeight = Random.Range(AtlasObject.FishWeight.MinWeight, AtlasObject.FishWeight.MaxWeight);
-        return RandomFishWeight;
+        float UpOneDecimal = RandomFishWeight * 10;
+        return (int)UpOneDecimal;
     }
-    public DG_ItemObject.ItemQualityLevels GetQualityLevel(DG_FishingAtlasObject AtlasObject)
+    public DG_ItemObject.ItemQualityLevels GetQualityLevel(DG_FishingAtlasObject AtlasObject, DG_ItemObject.ItemQualityLevels FishingRodQuality)
     {
-        Debug.Log("TODO - Determine Fish Level Based On Rod Level, and Fishing Level");
+        int FishingLevel = QuickFind.FishingStatsHandler.GetMyFishingLevelInt();
+
+        if (FishingLevel == 9) return DG_ItemObject.ItemQualityLevels.Max;
+
+        switch(FishingRodQuality)
+        {
+            case DG_ItemObject.ItemQualityLevels.Low:
+                {
+                    if (FishingLevel == 0) return DG_ItemObject.ItemQualityLevels.Low;
+                    if (FishingLevel == 1) return DG_ItemObject.ItemQualityLevels.Normal;
+                    if (FishingLevel > 1) return DG_ItemObject.ItemQualityLevels.High;
+                }
+                break;
+            case DG_ItemObject.ItemQualityLevels.Normal:
+                {
+                    if (FishingLevel == 3) return DG_ItemObject.ItemQualityLevels.Low;
+                    if (FishingLevel == 4) return DG_ItemObject.ItemQualityLevels.Normal;
+                    if (FishingLevel > 4) return DG_ItemObject.ItemQualityLevels.High;
+                }
+                break;
+            case DG_ItemObject.ItemQualityLevels.High:
+                {
+                    if (FishingLevel == 6) return DG_ItemObject.ItemQualityLevels.Low;
+                    if (FishingLevel == 7) return DG_ItemObject.ItemQualityLevels.Normal;
+                    if (FishingLevel > 7) return DG_ItemObject.ItemQualityLevels.High;
+                }
+                break;
+        }
+
         return DG_ItemObject.ItemQualityLevels.Low;
     }
 }

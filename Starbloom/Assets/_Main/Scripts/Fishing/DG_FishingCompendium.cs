@@ -24,7 +24,6 @@ public class DG_FishingCompendium : MonoBehaviour
 
 
 
-
     public List<DG_FishingAtlasObject> FetchFishWithinCurrentCriteria(   DG_ItemObject.ItemQualityLevels EquippedRod, 
                                                             Fishing_MasterHandler.WaterTypes CurrentWater,
                                                             WeatherHandler.Seasons CurrentSeason,

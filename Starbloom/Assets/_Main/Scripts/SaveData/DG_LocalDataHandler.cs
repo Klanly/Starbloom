@@ -111,27 +111,28 @@ public class DG_LocalDataHandler : MonoBehaviour {
             DG_PlayerCharacters.PlayerCharacter PC = PlayerData.PlayerCharacters[i];
             DG_PlayerCharacters.CharacterEquipment CE = PC.Equipment;
             string PlayerNum = i.ToString();
+            string KnownDirectory;
 
-            if (ToDisk) Directory = FindOrCreateSaveDirectory(SaveDirectory, "PlayerNonCombatStats" + PlayerNum.ToString() + "/");
+            if (ToDisk) Directory = FindOrCreateSaveDirectory(SaveDirectory, "PlayerNonCombatStats" + PlayerNum + "/");
             if (!ToDisk) IntData.Add(PC.NonCombatSkillEXP.Farming); else SaveInt(PC.NonCombatSkillEXP.Farming, Directory + "Farming");
             if (!ToDisk) IntData.Add(PC.NonCombatSkillEXP.Mining); else SaveInt(PC.NonCombatSkillEXP.Mining, Directory + "Mining");
             if (!ToDisk) IntData.Add(PC.NonCombatSkillEXP.Foraging); else SaveInt(PC.NonCombatSkillEXP.Foraging, Directory + "Foraging");
             if (!ToDisk) IntData.Add(PC.NonCombatSkillEXP.Fishing); else SaveInt(PC.NonCombatSkillEXP.Fishing, Directory + "Fishing");
 
             //
-            if (ToDisk) Directory = FindOrCreateSaveDirectory(SaveDirectory, "PlayerEquipment" + PlayerNum.ToString() + "/");
+            if (ToDisk) Directory = FindOrCreateSaveDirectory(SaveDirectory, "PlayerEquipment" + PlayerNum + "/");
             if (!ToDisk) IntData.Add(CE.HatId); else SaveInt(CE.HatId, Directory + "HatId");
             if (!ToDisk) IntData.Add(CE.Ring1); else SaveInt(CE.Ring1, Directory + "Ring1");
             if (!ToDisk) IntData.Add(CE.Ring2); else SaveInt(CE.Ring2, Directory + "Ring2");
             if (!ToDisk) IntData.Add(CE.Boots); else SaveInt(CE.Boots, Directory + "Boots");
             //
-            if (ToDisk) Directory = FindOrCreateSaveDirectory(SaveDirectory, "Rucksack" + PlayerNum.ToString() + "/");
+            // Rucksack
+            if (ToDisk) Directory = FindOrCreateSaveDirectory(SaveDirectory, "Rucksack" + PlayerNum + "/");
             if (!ToDisk) IntData.Add(CE.RuckSackUnlockedSize); else SaveInt(CE.RuckSackUnlockedSize, Directory + "RuckSackUnlockedSize");
-            DG_PlayerCharacters.RucksackSlot[] RS = CE.RucksackSlots;
-            string KnownDirectory = Directory;
+            KnownDirectory = Directory;
             for (int iN = 0; iN < CE.RuckSackUnlockedSize; iN++)
             {
-                DG_PlayerCharacters.RucksackSlot RSlot = RS[iN];
+                DG_PlayerCharacters.RucksackSlot RSlot = CE.RucksackSlots[iN];
                 string RuckSackSlot = iN.ToString();
                 //
                 if (ToDisk) Directory = FindOrCreateSaveDirectory(KnownDirectory, "RS" + RuckSackSlot + "/");
@@ -141,6 +142,21 @@ public class DG_LocalDataHandler : MonoBehaviour {
                 if (!ToDisk) IntData.Add(RSlot.NormalValue);          else SaveInt(RSlot.NormalValue, Directory + "NormalValue");
                 if (!ToDisk) IntData.Add(RSlot.HighValue);            else SaveInt(RSlot.HighValue, Directory + "HighValue");
                 if (!ToDisk) IntData.Add(RSlot.MaximumValue); else SaveInt(RSlot.MaximumValue, Directory + "MaximumValue");
+            }
+
+            //Acheivements
+            DG_PlayerCharacters.CharacterAchievements Acheivements = PC.Acheivements;
+
+            if (ToDisk) Directory = FindOrCreateSaveDirectory(SaveDirectory, "FishLarge" + PlayerNum + "/");
+            if (!ToDisk) IntData.Add(Acheivements.LargestFishCaught.Length); else SaveInt(Acheivements.LargestFishCaught.Length, Directory + "FishAwardsSize");
+            KnownDirectory = Directory;
+            for (int iN = 0; iN < Acheivements.LargestFishCaught.Length; iN++)
+            {
+                int FishAward = Acheivements.LargestFishCaught[iN];
+                string FishAcheivementSlot = iN.ToString();
+                //
+                if (ToDisk) Directory = FindOrCreateSaveDirectory(KnownDirectory, "Fish" + FishAcheivementSlot + "/");
+                if (!ToDisk) IntData.Add(FishAward); else SaveInt(FishAward, Directory + "Largest");
             }
         }
         return IntData;
@@ -164,25 +180,28 @@ public class DG_LocalDataHandler : MonoBehaviour {
             DG_PlayerCharacters.PlayerCharacter PC = PlayerData.PlayerCharacters[i];
             DG_PlayerCharacters.CharacterEquipment CE = PC.Equipment;
             string PlayerNum = i.ToString();
+            string KnownDirectory;
 
-            if (FromDisk) Directory = FindOrCreateSaveDirectory(SaveDirectory, "PlayerNonCombatStats" + PlayerNum.ToString() + "/");
+            if (FromDisk) Directory = FindOrCreateSaveDirectory(SaveDirectory, "PlayerNonCombatStats" + PlayerNum + "/");
             if (!FromDisk) PC.NonCombatSkillEXP.Farming = IntValues[Index]; else PC.NonCombatSkillEXP.Farming = LoadInt(Directory + "Farming"); Index++;
             if (!FromDisk) PC.NonCombatSkillEXP.Mining = IntValues[Index]; else PC.NonCombatSkillEXP.Mining = LoadInt(Directory + "Mining"); Index++;
             if (!FromDisk) PC.NonCombatSkillEXP.Foraging = IntValues[Index]; else PC.NonCombatSkillEXP.Foraging = LoadInt(Directory + "Foraging"); Index++;
             if (!FromDisk) PC.NonCombatSkillEXP.Fishing = IntValues[Index]; else PC.NonCombatSkillEXP.Fishing = LoadInt(Directory + "Fishing"); Index++;
 
             //
-            if (FromDisk) Directory = FindOrCreateSaveDirectory(SaveDirectory, "PlayerEquipment" + PlayerNum.ToString() + "/");
+            if (FromDisk) Directory = FindOrCreateSaveDirectory(SaveDirectory, "PlayerEquipment" + PlayerNum + "/");
             if (!FromDisk) CE.HatId = IntValues[Index]; else CE.HatId = LoadInt(Directory + "HatId"); Index++;
             if (!FromDisk) CE.Ring1 = IntValues[Index]; else CE.Ring1 = LoadInt(Directory + "Ring1"); Index++;
             if (!FromDisk) CE.Ring2 = IntValues[Index]; else CE.Ring2 = LoadInt(Directory + "Ring2"); Index++;
             if (!FromDisk) CE.Boots = IntValues[Index]; else CE.Boots = LoadInt(Directory + "Boots"); Index++;
             //
-            if (FromDisk) Directory = FindOrCreateSaveDirectory(SaveDirectory, "Rucksack" + PlayerNum.ToString() + "/");
-            if (!FromDisk) CE.RuckSackUnlockedSize = IntValues[Index]; else LoadInt(Directory + "RuckSackUnlockedSize"); Index++;
+            if (FromDisk) Directory = FindOrCreateSaveDirectory(SaveDirectory, "Rucksack" + PlayerNum + "/");
+            if (!FromDisk) CE.RuckSackUnlockedSize = IntValues[Index]; else CE.RuckSackUnlockedSize = LoadInt(Directory + "RuckSackUnlockedSize"); Index++;
             //
+
+            //RuckSack
             DG_PlayerCharacters.RucksackSlot[] RS = CE.RucksackSlots;
-            string KnownDirectory = Directory;
+            KnownDirectory = Directory;
             for (int iN = 0; iN < CE.RuckSackUnlockedSize; iN++)
             {
                 DG_PlayerCharacters.RucksackSlot RSlot = RS[iN];
@@ -196,6 +215,22 @@ public class DG_LocalDataHandler : MonoBehaviour {
                 if (!FromDisk) RSlot.HighValue = IntValues[Index]; else RSlot.HighValue = LoadInt(Directory + "HighValue"); Index++;
                 if (!FromDisk) RSlot.MaximumValue = IntValues[Index]; else RSlot.MaximumValue = LoadInt(Directory + "MaximumValue"); Index++;
             }
+
+            //Acheivements
+            DG_PlayerCharacters.CharacterAchievements Acheivements = PC.Acheivements;
+
+            if (FromDisk) Directory = FindOrCreateSaveDirectory(SaveDirectory, "FishLarge" + PlayerNum + "/");
+            int count;
+            if (!FromDisk) count = IntValues[Index]; else count = LoadInt(Directory + "FishAwardsSize"); Index++;
+            KnownDirectory = Directory;
+            for (int iN = 0; iN < count; iN++)
+            {
+                string FishAcheivementSlot = iN.ToString();
+                if (FromDisk) Directory = FindOrCreateSaveDirectory(KnownDirectory, "Fish" + FishAcheivementSlot + "/");
+                if (!FromDisk) Acheivements.LargestFishCaught[iN] = IntValues[Index]; else Acheivements.LargestFishCaught[iN] = LoadInt(Directory + "Largest"); Index++;
+            }
+
+
         }
     }
 

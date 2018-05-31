@@ -275,6 +275,9 @@ public class DG_TooltipGUI : MonoBehaviour {
         Desc.TurnOFFSubs();
 
         DG_ItemObject IO = QuickFind.ItemDatabase.GetItemFromID(ActiveItemObject.ContextID);
+
+        if (IO == null) Debug.Log("trying to hoverover an edible item that has no context ID, be sure to set the context ID to the Item database ID");
+
         DG_ItemObject.Item Item = IO.GetItemByQuality(ActiveRucksackSlot.CurrentStackActive);
 
         int index = 0;

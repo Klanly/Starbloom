@@ -14,13 +14,6 @@ public class DG_GiftPlayerItem : MonoBehaviour {
     [Button(ButtonSizes.Large)]
     public void GiftPlayerItem()
     {
-        if(QuickFind.InventoryManager.AddItemToRucksack(Player, ItemID, QualityLevel))
-            QuickFind.TreasureManager.OpenTrashUI(ItemID, QualityLevel);
-    }
-
-    [Button(ButtonSizes.Large)]
-    public void SetItemOnGround()
-    {
-        QuickFind.NetworkSync.CreateNewNetworkSceneObject(ItemID, GrowthLevel, QuickFind.InputController.MainPlayer.CharLink.CharInput.transform.position, 0);
+        if(QuickFind.InventoryManager.AddItemToRucksack(Player, ItemID, QualityLevel)) QuickFind.TreasureManager.OpenTrashUI(ItemID, QualityLevel);
     }
 }

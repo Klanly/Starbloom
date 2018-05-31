@@ -83,14 +83,33 @@ public class WeatherHandler : MonoBehaviour
     }
 
 
+    [System.Serializable]
+    public class SeasonalWeatherRolls
+    {
+        public WeatherRoll[] Rolls;
+    }
+    [System.Serializable]
+    public class WeatherRoll
+    {
+        public WeatherTyps Type;
+        public float Percent;
+    }
+
+
 
 
     [HideInInspector] public Seasons CurrentSeason = Seasons.Spring;
     [HideInInspector] public WeatherTyps CurrentWeather = WeatherTyps.Clear;
 
 
+    [Header("Chance Rolls")]
+    public SeasonalWeatherRolls SpringChanceRolls;
+    public SeasonalWeatherRolls SummerChanceRolls;
+    public SeasonalWeatherRolls FallChanceRolls;
+    public SeasonalWeatherRolls WinterChanceRolls;
 
 
+    [Header("Presets")]
     [ListDrawerSettings(ShowIndexLabels = true, ListElementLabelName = "Weather", NumberOfItemsPerPage = 8, Expanded = false)]
     public WeatherSetting[] SpringWeather;
     [ListDrawerSettings(ShowIndexLabels = true, ListElementLabelName = "Weather", NumberOfItemsPerPage = 8, Expanded = false)]
@@ -118,6 +137,55 @@ public class WeatherHandler : MonoBehaviour
     }
 
 
+
+
+
+
+
+
+    public void SetNewDayWeather()
+    {
+        int Weather = QuickFind.Farm.Weather.TomorrowWeather;
+        int Season = QuickFind.Farm.Month;
+
+        AdjustSeason(Season, Weather);
+        QuickFind.NetworkSync.AdjustWeather(Season, Weather);
+
+        QuickFind.Farm.Weather.TodayWeather = Weather;
+        QuickFind.Farm.Weather.TomorrowWeather = QuickFind.Farm.Weather.TwoDayAwayWeather;
+        QuickFind.Farm.Weather.TwoDayAwayWeather = RollNewWeatherType();
+
+        QuickFind.NetworkSync.AdjustFutureWeather();
+    }
+
+    public int RollNewWeatherType()
+    {
+        int Month = QuickFind.Farm.Month;
+        if (QuickFind.Farm.Day > 28)
+        {
+            Month++;
+            if (Month > 4) //New Year;
+                Month = 1;
+        }
+        switch (Month)
+        {
+            case 1:return RollSeason(SpringChanceRolls);
+            case 2: return RollSeason(SummerChanceRolls);
+            case 3: return RollSeason(FallChanceRolls);
+            case 4: return RollSeason(WinterChanceRolls);
+        }
+        return 0;
+    }
+    public int RollSeason(SeasonalWeatherRolls SeasonChanceRolls)
+    {
+        float Roll = Random.Range(0f, 1f);
+        for(int i = 0; i < SeasonChanceRolls.Rolls.Length; i++)
+        {
+            if (Roll < SeasonChanceRolls.Rolls[i].Percent)
+                return (int)SeasonChanceRolls.Rolls[i].Type;
+        }
+        return 0;
+    }
 
 
 
