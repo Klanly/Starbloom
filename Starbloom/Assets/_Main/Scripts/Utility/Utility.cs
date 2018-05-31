@@ -1,5 +1,7 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public static class Utility
@@ -46,4 +48,16 @@ public static class Utility
 
 		return curvedPoints.ToArray();
 	}
+
+	#region Collection Extensions
+	public static T RandomItem<T>(this T[] array)
+	{
+		return array[UnityEngine.Random.Range(0, array.Length)];
+	}
+
+	public static KeyValuePair<K, V> Lower_Bound<K, V>(this SortedDictionary<K, V> _dict, K _find) where K : IComparable<K>
+	{
+		return _dict.FirstOrDefault(x => x.Key.CompareTo(_find) >= 0);
+	}
+	#endregion
 }
