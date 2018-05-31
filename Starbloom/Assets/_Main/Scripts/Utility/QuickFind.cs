@@ -55,7 +55,9 @@ public static class QuickFind
     public static DG_CharacterControllers CharacterManager = null;
     public static DG_InteractHandler InteractHandler = null;
     public static HotbarItemHandler ItemActivateableHandler = null;
+    //Detection
     public static DG_ContextCheckHandler ContextDetectionHandler = null;
+    public static GridPointDetector GridDetection = null;
 
 
     //GUI
