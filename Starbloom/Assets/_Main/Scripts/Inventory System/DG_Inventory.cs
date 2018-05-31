@@ -61,6 +61,8 @@ public class DG_Inventory : MonoBehaviour {
             QuickFind.NetworkSync.SetRucksackValue(PlayerID, ItemAddSlotPosition, RucksackSlot.ContainedItem, RucksackSlot.CurrentStackActive,
             RucksackSlot.LowValue, RucksackSlot.NormalValue, RucksackSlot.HighValue, RucksackSlot.MaximumValue);
 
+        QuickFind.SystemMessageGUI.GenerateSystemMessage(ItemID);
+
         return TrashSwap;
     }
 

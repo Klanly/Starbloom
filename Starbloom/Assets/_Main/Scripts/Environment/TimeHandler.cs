@@ -108,6 +108,23 @@ public class TimeHandler : MonoBehaviour {
         QuickFind.NetworkSync.AdjustTimeByValues(year, Month, Day, 6, 0);
         QuickFind.WeatherHandler.SetNewDayWeather();
     }
+
+
+
+
+
+    public void NewDayCalculationsComplete()
+    {
+        Debug.Log("New Day Times, and Weather are done loading.");
+    }
+
+
+
+
+
+
+
+
     public void AdjustTimeByValues(int Year, int Month, int Day, int Hour, int Minute)
     {
         QuickFind.Farm.Year = Year;

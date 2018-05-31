@@ -148,12 +148,16 @@ public class WeatherHandler : MonoBehaviour
         int Weather = QuickFind.Farm.Weather.TomorrowWeather;
         int Season = QuickFind.Farm.Month;
 
+        AdjustSeason(Season, Weather);
         QuickFind.NetworkSync.AdjustWeather(Season, Weather);
 
         QuickFind.Farm.Weather.TodayWeather = Weather;
         QuickFind.Farm.Weather.TomorrowWeather = QuickFind.Farm.Weather.TwoDayAwayWeather;
         QuickFind.Farm.Weather.TwoDayAwayWeather = RollNewWeatherType();
+
+        QuickFind.NetworkSync.AdjustFutureWeather();
     }
+
     public int RollNewWeatherType()
     {
         int Month = QuickFind.Farm.Month;
@@ -178,7 +182,7 @@ public class WeatherHandler : MonoBehaviour
         for(int i = 0; i < SeasonChanceRolls.Rolls.Length; i++)
         {
             if (Roll < SeasonChanceRolls.Rolls[i].Percent)
-                return i;
+                return (int)SeasonChanceRolls.Rolls[i].Type;
         }
         return 0;
     }

@@ -66,4 +66,5 @@ MonoBehaviour:
   - UpdateLoadedGame
   - SendOutTimeByValues
   - SendOutFutureWeather
+  - LoadPlayerStat
   DisableAutoOpenWizard: 1

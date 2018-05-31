@@ -308,18 +308,18 @@ public class DG_NetworkSync : Photon.MonoBehaviour
     { if (PhotonNetwork.isMasterClient) QuickFind.WeatherHandler.SyncWeatherToMaster(); }
     //////////////////////////////////////////////////////
     public void SyncWeatherToMaster(int[] WeatherValues)
-    { PV.RPC("SendOutWeatherByMaster", PhotonTargets.All, WeatherValues); }
+    { PV.RPC("SendOutWeatherByMaster", PhotonTargets.Others, WeatherValues); }
 
     [PunRPC] void SendOutWeatherByMaster(int[] WeatherValues)
     { QuickFind.WeatherHandler.GetMasterWeather(WeatherValues); }
 
-    public void AdjustFutureWeather(int T, int Weather)
+    public void AdjustFutureWeather()
     {
         List<int> WeatherNums = new List<int>();
         WeatherNums.Add(QuickFind.Farm.Weather.TodayWeather);
         WeatherNums.Add(QuickFind.Farm.Weather.TomorrowWeather);
         WeatherNums.Add(QuickFind.Farm.Weather.TwoDayAwayWeather);
-        PV.RPC("SendOutWeatherChange", PhotonTargets.All, WeatherNums.ToArray());
+        PV.RPC("SendOutWeatherChange", PhotonTargets.Others, WeatherNums.ToArray());
     }
     [PunRPC]
     void SendOutFutureWeather(int[] WeatherNums)
@@ -327,6 +327,7 @@ public class DG_NetworkSync : Photon.MonoBehaviour
         QuickFind.Farm.Weather.TodayWeather = WeatherNums[0];
         QuickFind.Farm.Weather.TomorrowWeather = WeatherNums[1];
         QuickFind.Farm.Weather.TwoDayAwayWeather = WeatherNums[2];
+        QuickFind.TimeHandler.NewDayCalculationsComplete();
     }
 
 
@@ -395,16 +396,6 @@ public class DG_NetworkSync : Photon.MonoBehaviour
 
 
 
-    public void CreateNewNetworkSceneObject(int ItemID, int GrowthLevel, Vector3 Position, float Direction)
-    {
-
-    }
-    [PunRPC]
-    void CreateSceneObject()
-    {
-
-    }
-
 
     public void RemoveNetworkSceneObject(int Scene, int ItemIndex)
     {
@@ -425,6 +416,7 @@ public class DG_NetworkSync : Photon.MonoBehaviour
 
 
 
+
     #region Events
     /////////////////////////////////////////////////////
     public void GameWasLoaded()
@@ -439,4 +431,28 @@ public class DG_NetworkSync : Photon.MonoBehaviour
     }
 
     #endregion
+
+
+
+
+    #region Player Stats
+    /////////////////////////////////////////////////////
+    public void UpdatePlayerStat(int Stat, int StatValue, int PlayerNum)
+    {
+        int[] SendInts = new int[3];
+        SendInts[0] = Stat;
+        SendInts[1] = StatValue;
+        SendInts[2] = PlayerNum;
+
+        PV.RPC("LoadPlayerStat", PhotonTargets.Others, SendInts);
+    }
+    [PunRPC]
+    void LoadPlayerStat(int[] ReceivedInts)
+    {
+        QuickFind.Farm.SetSkillInt(ReceivedInts[0], ReceivedInts[1], ReceivedInts[2]);
+    }
+    #endregion
+
+
+
 }

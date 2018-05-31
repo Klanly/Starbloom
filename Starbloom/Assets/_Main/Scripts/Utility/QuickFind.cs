@@ -70,6 +70,7 @@ public static class QuickFind
     public static DG_TooltipGUI TooltipHandler = null;
     public static DG_StorageGUI StorageUI = null;
     public static DG_FishingGUI FishingGUI = null;
+    public static DG_SystemMessageGUI SystemMessageGUI = null;
 
 
     //GUI - Main Overview

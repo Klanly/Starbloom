@@ -5,22 +5,6 @@ using Sirenix.OdinInspector;
 
 public class DG_PlayerCharacters : MonoBehaviour {
 
-
-    public string FarmName;
-    public int SharedMoney;
-    public int Year;
-    public int Month;
-    public int Day;
-
-
-
-    [ListDrawerSettings(NumberOfItemsPerPage = 1, Expanded = false)]
-    public List<PlayerCharacter> PlayerCharacters;
-
-    public SavedWeather Weather;
-
-
-
     [System.Serializable]
     public class PlayerCharacter
     {
@@ -41,13 +25,6 @@ public class DG_PlayerCharacters : MonoBehaviour {
         [Header("Acheivements")]
         public CharacterAchievements Acheivements;
     }
-
-
-
-
-
-
-
 
     [System.Serializable]
     public class CharacterEquipment
@@ -81,7 +58,6 @@ public class DG_PlayerCharacters : MonoBehaviour {
         public int Mining;
         public int Foraging;
         public int Fishing;
-
         [Button(ButtonSizes.Small)]public void DebugIncreaseFishingLevel(){int FishingLevel = QuickFind.FishingStatsHandler.GetMyFishingLevelInt(); Fishing = QuickFind.FishingStatsHandler.FishingLevelStats[FishingLevel + 1].ExpMin;}
     }
 
@@ -95,9 +71,6 @@ public class DG_PlayerCharacters : MonoBehaviour {
         public int NormalValue;
         public int HighValue;
         public int MaximumValue;
-
-
-
 
 
         public int GetStackValue()
@@ -128,16 +101,8 @@ public class DG_PlayerCharacters : MonoBehaviour {
         }
     }
 
-
-
-
     [System.Serializable]
     public class CharacterAchievements
-    {
-        public FishingAwards CurrentFishingAwards;
-    }
-    [System.Serializable]
-    public class FishingAwards
     {
         [ListDrawerSettings(NumberOfItemsPerPage = 5)]
         public int[] LargestFishCaught;
@@ -145,6 +110,7 @@ public class DG_PlayerCharacters : MonoBehaviour {
 #if UNITY_EDITOR
         [Button(ButtonSizes.Small)] public void SyncArraySizeToFishCompendiumSize() { LargestFishCaught = new int[QuickFindInEditor.GetEditorFishingCompendium().ItemCatagoryList.Length]; }
 #endif
+
     }
 
 
@@ -152,8 +118,47 @@ public class DG_PlayerCharacters : MonoBehaviour {
 
 
 
+
+
+
+
+
+
+    public string FarmName;
+    public int SharedMoney;
+    public int Year;
+    public int Month;
+    public int Day;
+
+
+
+    [ListDrawerSettings(NumberOfItemsPerPage = 1, Expanded = false)]
+    public List<PlayerCharacter> PlayerCharacters;
+
+    public SavedWeather Weather;
+
+
+
     private void Awake()
     {
         QuickFind.Farm = this;
+    }
+
+
+
+
+
+
+
+
+    public void SetSkillInt(int SkillName, int StatValue, int PlayerNum)
+    {
+        switch (SkillName)
+        {
+            case 1: PlayerCharacters[PlayerNum].NonCombatSkillEXP.Farming = StatValue; break;
+            case 2: PlayerCharacters[PlayerNum].NonCombatSkillEXP.Mining = StatValue; break;
+            case 3: PlayerCharacters[PlayerNum].NonCombatSkillEXP.Foraging = StatValue; break;
+            case 4: PlayerCharacters[PlayerNum].NonCombatSkillEXP.Fishing = StatValue; break;
+        }
     }
 }

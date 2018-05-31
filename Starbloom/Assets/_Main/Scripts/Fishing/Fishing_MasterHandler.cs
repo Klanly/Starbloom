@@ -396,14 +396,17 @@ public class Fishing_MasterHandler : MonoBehaviour
         CurrentFishCaughtValue = 0;
         CurrentReelValue = 0;
 
+        int PlayerCharID = QuickFind.NetworkSync.PlayerCharacterID;
+
         DG_ItemObject ItemRef = QuickFind.ItemDatabase.GetItemFromID(ActiveFishReference.AtlasObject.ItemObjectRefDatabaseID);
-        QuickFind.InventoryManager.AddItemToRucksack(QuickFind.NetworkSync.PlayerCharacterID, ItemRef.DatabaseID, ActiveFishReference.QualityLevel);
+        QuickFind.InventoryManager.AddItemToRucksack(PlayerCharID, ItemRef.DatabaseID, ActiveFishReference.QualityLevel);
         Sprite FishSprite = ItemRef.Icon;
         float DisplayWeight = (float)ActiveFishReference.Weight / 10;
         QuickFind.FishingGUI.OpenObjectCaughtGUI(FishSprite, QuickFind.WordDatabase.GetWordFromID(ItemRef.ToolTipType.MainLocalizationID), DisplayWeight.ToString());
 
         //Add EXP for Catch
-        QuickFind.Farm.PlayerCharacters[QuickFind.NetworkSync.PlayerCharacterID].NonCombatSkillEXP.Fishing += ActiveFishReference.AtlasObject.ExpGainPerCatch;
+        QuickFind.Farm.PlayerCharacters[PlayerCharID].NonCombatSkillEXP.Fishing += ActiveFishReference.AtlasObject.ExpGainPerCatch;
+        QuickFind.NetworkSync.UpdatePlayerStat(4, QuickFind.Farm.PlayerCharacters[PlayerCharID].NonCombatSkillEXP.Fishing, PlayerCharID);
 
         CheckifFishisRecord();
 
@@ -412,11 +415,11 @@ public class Fishing_MasterHandler : MonoBehaviour
     void CheckifFishisRecord()
     {
         DG_PlayerCharacters.CharacterAchievements Acheivements = QuickFind.Farm.PlayerCharacters[QuickFind.NetworkSync.PlayerCharacterID].Acheivements;
-        int CurrentFishMax = Acheivements.CurrentFishingAwards.LargestFishCaught[ActiveFishReference.AtlasObject.DatabaseID];
+        int CurrentFishMax = Acheivements.LargestFishCaught[ActiveFishReference.AtlasObject.DatabaseID];
         if (CurrentFishMax < ActiveFishReference.Weight)
         {
             QuickFind.FishingGUI.DisplayFishRecordText();
-            Acheivements.CurrentFishingAwards.LargestFishCaught[ActiveFishReference.AtlasObject.DatabaseID] = ActiveFishReference.Weight;
+            Acheivements.LargestFishCaught[ActiveFishReference.AtlasObject.DatabaseID] = ActiveFishReference.Weight;
         }
     }
 
