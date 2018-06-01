@@ -244,8 +244,7 @@ public class DG_NetworkSync : Photon.MonoBehaviour
         RS.HighValue = info[index]; index++;
         RS.MaximumValue = info[index]; index++;
 
-        if(info[0] == QuickFind.NetworkSync.PlayerCharacterID)
-            QuickFind.GUI_Inventory.UpdateInventoryVisuals();
+        QuickFind.GUI_Inventory.UpdateInventoryVisuals();
     }
 
     public void SetStorageValue(int Scene, int NetObjectIndex, int Slot, int ContainedItem, int CurrentStackActive, int LowValue, int NormalValue, int HighValue, int MaximumValue)
@@ -277,7 +276,7 @@ public class DG_NetworkSync : Photon.MonoBehaviour
         RS.HighValue = info[index]; index++;
         RS.MaximumValue = info[index]; index++;
 
-        if (info[0] == QuickFind.NetworkSync.PlayerCharacterID) QuickFind.StorageUI.UpdateStorageVisuals();
+        QuickFind.StorageUI.UpdateStorageVisuals();
     }
     #endregion
 
@@ -378,24 +377,13 @@ public class DG_NetworkSync : Photon.MonoBehaviour
     {
         PhotonPlayer PP = PhotonPlayer.Find(ReturnPhotonOwner);
         PV.RPC("SendOutWorldObjectInts", PP, QuickFind.SaveHandler.GatherWorldInts(false).ToArray());
-        PV.RPC("SendOutWorldObjectFloats", PP, QuickFind.SaveHandler.GatherWorldFloats(false).ToArray());
     }
     [PunRPC]
     void SendOutWorldObjectInts(int[] IntValues)
     {
         QuickFind.SaveHandler.GetWorldInts(IntValues, false);
-    }
-    [PunRPC]
-    void SendOutWorldObjectFloats(float[] FloatValues)
-    {
-        QuickFind.SaveHandler.GetWorldFloats(FloatValues, false);
         QuickFind.NetworkObjectManager.GenerateSceneObjects(CurrentScene);
     }
-
-
-
-
-
 
     public void RemoveNetworkSceneObject(int Scene, int ItemIndex)
     {
@@ -410,6 +398,30 @@ public class DG_NetworkSync : Photon.MonoBehaviour
     {
         Destroy(QuickFind.NetworkObjectManager.FindObject(Received[0], Received[1]));   
     }
+
+
+    public void AddNetworkSceneObject(int[] Data)
+    {  
+        PV.RPC("AddSceneObject", PhotonTargets.All, Data);
+    }
+    [PunRPC]
+    void AddSceneObject(int[] Data)
+    {
+        QuickFind.NetworkObjectManager.CreateSceneObject(Data);
+    }
+
+
+    public void WaterNetworkObject(int[] OutData)
+    {
+        PV.RPC("SendWatered", PhotonTargets.All, OutData);
+    }
+    [PunRPC]
+    void SendWatered(int[] Data)
+    {
+        QuickFind.WateringSystem.WaterOne(Data);
+    }
+
+
 
 
     #endregion

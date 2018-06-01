@@ -64,7 +64,6 @@ public class DG_LocalDataHandler : MonoBehaviour {
         GatherPlayerDataStrings(true);
 
         GatherWorldInts(true);
-        GatherWorldFloats(true);
 
         Debug.Log("Game Saved");
     }
@@ -79,7 +78,6 @@ public class DG_LocalDataHandler : MonoBehaviour {
 
         QuickFind.NetworkObjectManager.ClearObjects();
         GetWorldInts(null, true);
-        GetWorldFloats(null, true);
         QuickFind.NetworkObjectManager.GenerateSceneObjects(QuickFind.NetworkSync.CurrentScene);
 
         QuickFind.NetworkSync.GameWasLoaded();
@@ -313,7 +311,10 @@ public class DG_LocalDataHandler : MonoBehaviour {
                 if (ToDisk) Directory = FindOrCreateSaveDirectory(KnownDirectory, "CC" + ChildChild.ToString() + "/");
                 if (!ToDisk) IntData.Add(NO.ItemRefID); else SaveInt(NO.ItemRefID, Directory + "ItemRefID");
                 if (!ToDisk) IntData.Add(NO.ItemGrowthLevel); else SaveInt(NO.ItemGrowthLevel, Directory + "ItemGrowthLevel");
-
+                if (!ToDisk) IntData.Add(NO.PositionX); else SaveInt(NO.PositionX, Directory + "x");
+                if (!ToDisk) IntData.Add(NO.PositionY); else SaveInt(NO.PositionY, Directory + "y");
+                if (!ToDisk) IntData.Add(NO.PositionZ); else SaveInt(NO.PositionZ, Directory + "z");
+                if (!ToDisk) IntData.Add(NO.YFacing); else SaveInt(NO.YFacing, Directory + "YFacing");
 
 
                 int isTrue = NO.isStorageContainer ? 1 : 0;
@@ -375,6 +376,13 @@ public class DG_LocalDataHandler : MonoBehaviour {
                 if (FromDisk) Directory = FindOrCreateSaveDirectory(KnownDirectory, "CC" + ChildChild + "/");
                 if (!FromDisk) NO.ItemRefID = IntValues[Index];     else NO.ItemRefID = LoadInt(Directory + "ItemRefID"); Index++;
                 if (!FromDisk) NO.ItemGrowthLevel = IntValues[Index]; else NO.ItemGrowthLevel = LoadInt(Directory + "ItemGrowthLevel"); Index++;
+                if (!FromDisk) NO.PositionX = IntValues[Index]; else NO.PositionX = LoadInt(Directory + "x"); Index++;
+                if (!FromDisk) NO.PositionY = IntValues[Index]; else NO.PositionY = LoadInt(Directory + "y"); Index++;
+                if (!FromDisk) NO.PositionZ = IntValues[Index]; else NO.PositionZ = LoadInt(Directory + "z"); Index++;
+                if (!FromDisk) NO.YFacing = IntValues[Index]; else NO.YFacing = LoadInt(Directory + "YFacing"); Index++;
+
+                NO.transform.position = QuickFind.ConvertIntsToPosition(NO.PositionX, NO.PositionY, NO.PositionZ);
+                NO.transform.eulerAngles = new Vector3(0, QuickFind.ConvertIntToFloat(NO.YFacing), 0);
                 //
 
                 int StorageValue;
@@ -408,78 +416,6 @@ public class DG_LocalDataHandler : MonoBehaviour {
             }
         }
     }
-
-    public List<float> GatherWorldFloats(bool ToDisk)
-    {
-        string Directory = "";
-        List<float> OutgoingFloats = new List<float>();
-        Transform NOM = QuickFind.NetworkObjectManager.transform;
-        if (ToDisk) Directory = FindOrCreateSaveDirectory(SaveDirectory, "WorldFloatData") + "/";
-        if (!ToDisk) OutgoingFloats.Add(NOM.childCount); else SaveFloat(NOM.childCount, Directory + "Count");
-        //
-        for (int i = 0; i < NOM.childCount; i++)
-        {
-            Transform Child = NOM.GetChild(i);
-            NetworkScene NS = Child.GetComponent<NetworkScene>();
-            if (ToDisk) Directory = FindOrCreateSaveDirectory(SaveDirectory, "WorldFloatDataScene") + "/";
-            if (!ToDisk) OutgoingFloats.Add(NS.SceneID); else SaveFloat(NS.SceneID, Directory + "SceneID");
-            if (!ToDisk) OutgoingFloats.Add(Child.childCount); else SaveFloat(Child.childCount, Directory + "ChildCount");
-            string KnownDirectory = Directory;
-            for (int iN = 0; iN < Child.childCount; iN++)
-            {
-                NetworkObject NO = Child.GetChild(iN).GetComponent<NetworkObject>();
-                string ChildChild = iN.ToString();
-                //
-                if (ToDisk) Directory = FindOrCreateSaveDirectory(KnownDirectory, "CC" + ChildChild + "/");
-                if (!ToDisk) OutgoingFloats.Add(NO.Position.x); else SaveFloat(NO.Position.x, Directory + "x");
-                if (!ToDisk) OutgoingFloats.Add(NO.Position.y); else SaveFloat(NO.Position.y, Directory + "y");
-                if (!ToDisk) OutgoingFloats.Add(NO.Position.z); else SaveFloat(NO.Position.z, Directory + "z");
-                if (!ToDisk) OutgoingFloats.Add(NO.YFacing); else SaveFloat(NO.YFacing, Directory + "YFacing");
-            }
-        }
-        return OutgoingFloats;
-    }
-    public void GetWorldFloats(float[] FloatValues, bool FromDisk)
-    {
-        string Directory = "";
-        Transform NOM = QuickFind.NetworkObjectManager.transform;
-        int Index = 0;
-        int SceneCount = 0;
-        if (FromDisk) Directory = FindOrCreateSaveDirectory(SaveDirectory, "WorldFloatData") + "/";
-        if (!FromDisk) SceneCount = (int)FloatValues[Index]; else SceneCount = (int)LoadFloat(Directory + "Count"); Index++;
-        for (int i = 0; i < NOM.childCount; i++)
-        {
-            int SceneID;
-            if (FromDisk) Directory = FindOrCreateSaveDirectory(SaveDirectory, "WorldFloatDataScene") + "/";
-            if (!FromDisk) SceneID = (int)FloatValues[Index]; else SceneID = (int)LoadFloat(Directory + "SceneID"); Index++;
-            //
-            NetworkScene NS = QuickFind.NetworkObjectManager.GetSceneByID(SceneID);
-            Transform Child = NS.transform;
-            int count;
-            //
-            if (!FromDisk) count = (int)FloatValues[Index]; else count = (int)LoadFloat(Directory + "ChildCount"); Index++;
-            //
-            string KnownDirectory = Directory;
-            for (int iN = 0; iN < count; iN++)
-            {
-                NetworkObject NO = NS.NetworkObjectList[iN];
-                string ChildChild = iN.ToString();
-                //
-                if (FromDisk) Directory = FindOrCreateSaveDirectory(KnownDirectory, "CC" + ChildChild + "/");
-
-                float x = 0; if (!FromDisk) x = FloatValues[Index]; else x = LoadFloat(Directory + "x"); Index++;
-                float y = 0; if (!FromDisk) y = FloatValues[Index]; else y = LoadFloat(Directory + "y"); Index++;
-                float z = 0; if (!FromDisk) z = FloatValues[Index]; else z = LoadFloat(Directory + "z"); Index++;
-                NO.Position = new Vector3(x, y, z);
-                if (!FromDisk) NO.YFacing = FloatValues[Index]; else NO.YFacing = LoadFloat(Directory + "YFacing"); Index++;
-
-                NO.transform.position = NO.Position;
-                NO.transform.eulerAngles = new Vector3(0, NO.YFacing, 0);
-            }
-        }
-    }
-
-
 
 
 

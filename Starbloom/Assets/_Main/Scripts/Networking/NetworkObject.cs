@@ -18,14 +18,23 @@ public class NetworkObject : MonoBehaviour {
     public int ItemRefID;
     [Range(0,5)]
     public int ItemGrowthLevel;
-    public Vector3 Position;
-    public float YFacing;
+    public int PositionX;
+    public int PositionY;
+    public int PositionZ;
+    public int YFacing;
+
     public bool isStorageContainer = false;
     [ShowIf("isStorageContainer")]
     public bool isTreasureList;
     [ShowIf("isStorageContainer")]
     [ListDrawerSettings(NumberOfItemsPerPage = 12)]
     public DG_PlayerCharacters.RucksackSlot[] StorageSlots;
+
+    public bool isWaterable = false;
+    [ShowIf("isWaterable")]
+    public bool HasBeenWatered = false;
+
+
 
 
 
@@ -49,7 +58,9 @@ public class NetworkObject : MonoBehaviour {
     {
         NO.ItemRefID = ListNO.ItemRefID;
         NO.ItemGrowthLevel = ListNO.ItemGrowthLevel;
-        NO.Position = ListNO.Position;
+        NO.PositionX = ListNO.PositionX;
+        NO.PositionY = ListNO.PositionY;
+        NO.PositionZ = ListNO.PositionZ;
         NO.YFacing = ListNO.YFacing;
         NO.isStorageContainer = ListNO.isStorageContainer;
         NO.StorageSlots = ListNO.StorageSlots;
@@ -67,8 +78,11 @@ public class NetworkObject : MonoBehaviour {
         if (Application.isPlaying)
             return;
 
-        Position = transform.position;
-        YFacing = transform.eulerAngles.y;
+        Vector3 Pos = transform.position;
+        PositionX = QuickFind.ConvertFloatToInt(Pos.x);
+        PositionY = QuickFind.ConvertFloatToInt(Pos.y);
+        PositionZ = QuickFind.ConvertFloatToInt(Pos.z);
+        YFacing = QuickFind.ConvertFloatToInt(transform.eulerAngles.y);
     }
 
     public void DrawMesh(GameObject Prefab, Vector3 localScale)

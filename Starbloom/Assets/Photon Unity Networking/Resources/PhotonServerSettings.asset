@@ -67,4 +67,6 @@ MonoBehaviour:
   - SendOutTimeByValues
   - SendOutFutureWeather
   - LoadPlayerStat
+  - AddSceneObject
+  - SendWatered
   DisableAutoOpenWizard: 1

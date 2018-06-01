@@ -193,7 +193,9 @@ MonoBehaviour:
   - {fileID: 1345506627}
   - {fileID: 911112104}
   - {fileID: 1637135971}
-  ListCount: 17
+  - {fileID: 275336176}
+  - {fileID: 1502558390}
+  ListCount: 19
   GenericIconList:
   - ItemName: Health
     Icon: {fileID: 21300000, guid: da59f902e286d81439e8e50352c6e57f, type: 3}
@@ -227,6 +229,7 @@ Transform:
   - {fileID: 1815548899}
   - {fileID: 1405183628}
   - {fileID: 97753044}
+  - {fileID: 113020235}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -241,6 +244,114 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffc9342335b8d8643ba003362c9f5d6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &113020234
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 113020235}
+  m_Layer: 0
+  m_Name: Environment
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &113020235
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 113020234}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 275336178}
+  m_Father: {fileID: 98179532}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &275336175
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 275336178}
+  - component: {fileID: 275336177}
+  - component: {fileID: 275336176}
+  m_Layer: 0
+  m_Name: 17 - TilledArea1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &275336176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 275336175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc1a46eca4a35e5498f3df297015210f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: FishingPol
+  MaxStackSize: 1
+  ActivateableType: 5
+  ToolTipType:
+    GroupType: 7
+    MainLocalizationID: 0
+    SubLocalizationID: 0
+    DescriptionID: 0
+    ContextID: 0
+  DatabaseID: 17
+  LockItem: 1
+  Icon: {fileID: 0}
+  ModelPrefab: {fileID: 1295266464668808, guid: a54519a1f1eabfe47a583cefdf23e327,
+    type: 2}
+  DefaultScale: 0.9
+  isTool: 0
+  ToolQualityLevels: []
+  isGrowableItem: 0
+  GrowableItemStages: []
+  isItem: 0
+  ItemCat: 0
+  ItemQualities: []
+  isStorage: 0
+  StorageList: []
+  isEnvironment: 1
+--- !u!114 &275336177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 275336175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 0
+  instanceID: -17625716
+--- !u!4 &275336178
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 275336175}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 113020235}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &289748390
 GameObject:
   m_ObjectHideFlags: 0
@@ -270,6 +381,7 @@ Transform:
   - {fileID: 769028653}
   - {fileID: 1825876183}
   - {fileID: 1429960795}
+  - {fileID: 1502558392}
   m_Father: {fileID: 98179532}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -369,6 +481,7 @@ MonoBehaviour:
   ItemQualities: []
   isStorage: 0
   StorageList: []
+  isEnvironment: 0
 --- !u!114 &523401141
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -381,7 +494,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 103996
+  instanceID: 1108346
 --- !u!1 &619036614
 GameObject:
   m_ObjectHideFlags: 0
@@ -461,6 +574,7 @@ MonoBehaviour:
     SellPrice: 45
   isStorage: 0
   StorageList: []
+  isEnvironment: 0
 --- !u!114 &619036616
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -473,7 +587,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 104002
+  instanceID: 1108352
 --- !u!4 &619036617
 Transform:
   m_ObjectHideFlags: 0
@@ -580,6 +694,7 @@ MonoBehaviour:
     SellPrice: 45
   isStorage: 0
   StorageList: []
+  isEnvironment: 0
 --- !u!114 &630922426
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -592,7 +707,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 104012
+  instanceID: 1108362
 --- !u!1 &631133481
 GameObject:
   m_ObjectHideFlags: 0
@@ -673,6 +788,7 @@ MonoBehaviour:
   isStorage: 0
   StorageList:
   - TotalStorageSlots: 36
+  isEnvironment: 0
 --- !u!114 &631133483
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -685,7 +801,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 104018
+  instanceID: 1108368
 --- !u!4 &631133484
 Transform:
   m_ObjectHideFlags: 0
@@ -752,6 +868,7 @@ MonoBehaviour:
   isStorage: 1
   StorageList:
   - TotalStorageSlots: 36
+  isEnvironment: 0
 --- !u!114 &676053778
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -764,7 +881,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 104026
+  instanceID: 1108376
 --- !u!4 &676053779
 Transform:
   m_ObjectHideFlags: 0
@@ -874,6 +991,7 @@ MonoBehaviour:
   ItemQualities: []
   isStorage: 0
   StorageList: []
+  isEnvironment: 0
 --- !u!114 &769028655
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -886,7 +1004,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 104036
+  instanceID: 1108386
 --- !u!1 &889436591
 GameObject:
   m_ObjectHideFlags: 0
@@ -929,7 +1047,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 104042
+  instanceID: 1108392
 --- !u!114 &889436594
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -993,6 +1111,7 @@ MonoBehaviour:
   isStorage: 0
   StorageList:
   - TotalStorageSlots: 36
+  isEnvironment: 0
 --- !u!1 &911112101
 GameObject:
   m_ObjectHideFlags: 0
@@ -1035,7 +1154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 104050
+  instanceID: 1108400
 --- !u!114 &911112104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1099,6 +1218,7 @@ MonoBehaviour:
   isStorage: 0
   StorageList:
   - TotalStorageSlots: 36
+  isEnvironment: 0
 --- !u!1 &1215626842
 GameObject:
   m_ObjectHideFlags: 0
@@ -1270,6 +1390,7 @@ MonoBehaviour:
     SellPrice: 45
   isStorage: 0
   StorageList: []
+  isEnvironment: 0
 --- !u!114 &1328181119
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1282,7 +1403,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 104070
+  instanceID: 1108420
 --- !u!1 &1330787844
 GameObject:
   m_ObjectHideFlags: 0
@@ -1354,7 +1475,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 104080
+  instanceID: 1108430
 --- !u!114 &1345506627
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1418,6 +1539,7 @@ MonoBehaviour:
   isStorage: 0
   StorageList:
   - TotalStorageSlots: 36
+  isEnvironment: 0
 --- !u!1 &1405183627
 GameObject:
   m_ObjectHideFlags: 0
@@ -1543,6 +1665,7 @@ MonoBehaviour:
   ItemQualities: []
   isStorage: 0
   StorageList: []
+  isEnvironment: 0
 --- !u!114 &1429960797
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1555,7 +1678,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 104094
+  instanceID: 1108444
 --- !u!1 &1450680409
 GameObject:
   m_ObjectHideFlags: 0
@@ -1584,6 +1707,120 @@ Transform:
   - {fileID: 1511745342}
   m_Father: {fileID: 98179532}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1502558389
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1502558392}
+  - component: {fileID: 1502558391}
+  - component: {fileID: 1502558390}
+  m_Layer: 0
+  m_Name: 18 - SurvivalTools_WateringCan
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1502558390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1502558389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc1a46eca4a35e5498f3df297015210f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Watering Can
+  MaxStackSize: 1
+  ActivateableType: 6
+  ToolTipType:
+    GroupType: 2
+    MainLocalizationID: 84
+    SubLocalizationID: 48
+    DescriptionID: 85
+    ContextID: 0
+  DatabaseID: 18
+  LockItem: 1
+  Icon: {fileID: 21300000, guid: 60f95ef9f26dcac478bbcd247fdcac97, type: 3}
+  ModelPrefab: {fileID: 1711145811675354, guid: bb12d325a6db3154cb82ea05b52e030e,
+    type: 2}
+  DefaultScale: 5
+  isTool: 1
+  ToolQualityLevels:
+  - Quality: 0
+    EnergyUsageValue: 10
+    BuyPrice: 0
+    SellPrice: 0
+    HasCustomSprite: 0
+    Icon: {fileID: 0}
+    HasCustomModel: 0
+    ModelPrefab: {fileID: 0}
+  - Quality: 1
+    EnergyUsageValue: 8
+    BuyPrice: 0
+    SellPrice: 0
+    HasCustomSprite: 1
+    Icon: {fileID: 21300000, guid: e8cecf61b8bfbce4ea8bdaba4a4f88e1, type: 3}
+    HasCustomModel: 1
+    ModelPrefab: {fileID: 1711145811675354, guid: 0af3333a90c01b94790fe46f911b32da,
+      type: 2}
+  - Quality: 2
+    EnergyUsageValue: 6
+    BuyPrice: 0
+    SellPrice: 0
+    HasCustomSprite: 1
+    Icon: {fileID: 21300000, guid: 6c369b5a0b5c5d44cb8dc5964efe99fe, type: 3}
+    HasCustomModel: 1
+    ModelPrefab: {fileID: 1711145811675354, guid: 3b8301ebac212624dbdf46167c7f84b2,
+      type: 2}
+  - Quality: 3
+    EnergyUsageValue: 4
+    BuyPrice: 0
+    SellPrice: 0
+    HasCustomSprite: 1
+    Icon: {fileID: 21300000, guid: efa40010fb0b8bf47a7a21a34b7b0d7b, type: 3}
+    HasCustomModel: 1
+    ModelPrefab: {fileID: 1711145811675354, guid: 6880732484ef86b41a8e5b2d3783b9c4,
+      type: 2}
+  isGrowableItem: 0
+  GrowableItemStages: []
+  isItem: 0
+  ItemCat: 0
+  ItemQualities: []
+  isStorage: 0
+  StorageList: []
+  isEnvironment: 0
+--- !u!114 &1502558391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1502558389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 0
+  instanceID: -19856374
+--- !u!4 &1502558392
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1502558389}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 289748391}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1511745339
 GameObject:
@@ -1664,6 +1901,7 @@ MonoBehaviour:
     SellPrice: 45
   isStorage: 0
   StorageList: []
+  isEnvironment: 0
 --- !u!114 &1511745341
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1676,7 +1914,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 104104
+  instanceID: 1108454
 --- !u!4 &1511745342
 Transform:
   m_ObjectHideFlags: 0
@@ -1799,6 +2037,7 @@ MonoBehaviour:
   isStorage: 0
   StorageList:
   - TotalStorageSlots: 36
+  isEnvironment: 0
 --- !u!114 &1637135972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1811,7 +2050,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 104116
+  instanceID: 1108466
 --- !u!4 &1637135973
 Transform:
   m_ObjectHideFlags: 0
@@ -1883,7 +2122,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 5
-  instanceID: 104124
+  instanceID: 1108474
 --- !u!4 &1645614859
 Transform:
   m_ObjectHideFlags: 0
@@ -1968,7 +2207,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 5
-  instanceID: 104134
+  instanceID: 1108484
 --- !u!1 &1696380314
 GameObject:
   m_ObjectHideFlags: 0
@@ -2061,6 +2300,7 @@ MonoBehaviour:
     SellPrice: 45
   isStorage: 0
   StorageList: []
+  isEnvironment: 0
 --- !u!114 &1696380317
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2073,7 +2313,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 104142
+  instanceID: 1108492
 --- !u!1 &1701517455
 GameObject:
   m_ObjectHideFlags: 0
@@ -2198,6 +2438,7 @@ MonoBehaviour:
     SellPrice: 45
   isStorage: 0
   StorageList: []
+  isEnvironment: 0
 --- !u!114 &1714828757
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2210,7 +2451,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 104154
+  instanceID: 1108504
 --- !u!1 &1815548898
 GameObject:
   m_ObjectHideFlags: 0
@@ -2336,6 +2577,7 @@ MonoBehaviour:
   ItemQualities: []
   isStorage: 0
   StorageList: []
+  isEnvironment: 0
 --- !u!114 &1825876185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2348,7 +2590,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 104166
+  instanceID: 1108516
 --- !u!1 &1837730739
 GameObject:
   m_ObjectHideFlags: 0
@@ -2420,7 +2662,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 104176
+  instanceID: 1108526
 --- !u!114 &1902128846
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2484,6 +2726,7 @@ MonoBehaviour:
   isStorage: 0
   StorageList:
   - TotalStorageSlots: 36
+  isEnvironment: 0
 --- !u!1 &2041544709
 GameObject:
   m_ObjectHideFlags: 0
@@ -2542,7 +2785,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 5
-  instanceID: 104184
+  instanceID: 1108534
 --- !u!4 &2041544712
 Transform:
   m_ObjectHideFlags: 0

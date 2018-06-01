@@ -85,6 +85,17 @@ public static class QuickFind
     //Managers
     public static DG_Inventory InventoryManager = null;
     public static DG_TreasureSelection TreasureManager = null;
+    public static DG_WateringSystem WateringSystem = null;
+
+
+
+    //Object Placement
+    public static DG_ObjectPlacement ObjectPlacementManager = null;
+
+
+    //Tools
+    public static DG_HoeHandler HoeHandler = null;
+    public static DG_WateringCan WateringCanHandler = null;
 
 
     //Fishing
@@ -147,6 +158,10 @@ public static class QuickFind
 
     public static Transform FindTransform(Transform parent, string name) { Transform[] children = parent.GetComponentsInChildren<Transform>(); foreach (Transform child in children) { if (child.name == name) return child; } return null; }
     public static bool WithinDistance(Transform Object, Transform Target, float MasterMinDistance) { if (Vector3.Distance(Object.position, Target.position) < MasterMinDistance) return true; else return false; }
+    public static int ConvertFloatToInt(float Incoming) { return (int)(Incoming * 100); }
+    public static float ConvertIntToFloat(int Incoming) { return (float)Incoming / 100; }
+    public static Vector3 ConvertIntsToPosition(int IncomingX, int IncomingY, int IncomingZ) { return new Vector3(ConvertIntToFloat(IncomingX), ConvertIntToFloat(IncomingY), ConvertIntToFloat(IncomingZ)); }
+
 
     public static Vector3 AngleLerp(Vector3 StartAngle, Vector3 FinishAngle, float t)
     {
