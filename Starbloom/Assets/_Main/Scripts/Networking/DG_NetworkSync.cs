@@ -318,7 +318,7 @@ public class DG_NetworkSync : Photon.MonoBehaviour
         WeatherNums.Add(QuickFind.Farm.Weather.TodayWeather);
         WeatherNums.Add(QuickFind.Farm.Weather.TomorrowWeather);
         WeatherNums.Add(QuickFind.Farm.Weather.TwoDayAwayWeather);
-        PV.RPC("SendOutWeatherChange", PhotonTargets.Others, WeatherNums.ToArray());
+        PV.RPC("SendOutFutureWeather", PhotonTargets.Others, WeatherNums.ToArray());
     }
     [PunRPC]
     void SendOutFutureWeather(int[] WeatherNums)
