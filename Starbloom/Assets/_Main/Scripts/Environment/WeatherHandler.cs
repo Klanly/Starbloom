@@ -156,6 +156,7 @@ public class WeatherHandler : MonoBehaviour
         QuickFind.Farm.Weather.TwoDayAwayWeather = RollNewWeatherType();
 
         QuickFind.NetworkSync.AdjustFutureWeather();
+        QuickFind.TimeHandler.NewDayCalculationsComplete();
     }
 
     public int RollNewWeatherType()
