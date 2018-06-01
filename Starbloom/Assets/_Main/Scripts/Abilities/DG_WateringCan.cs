@@ -2,30 +2,35 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DG_HoeHandler : MonoBehaviour {
+public class DG_WateringCan : MonoBehaviour {
 
 
-    public LayerMask UnSafeGroundDetection;
+    public LayerMask WaterableObjectDetection;
 
 
     DG_PlayerCharacters.RucksackSlot RucksackSlotOpen;
     DG_ItemObject ItemDatabaseReference;
     int ActiveSlot;
+    GameObject HitObject;
+
     [HideInInspector] public bool PlacementActive;
     bool SafeToPlace = false;
 
 
 
+
+
     private void Awake()
     {
-        QuickFind.HoeHandler = this;
+        QuickFind.WateringCanHandler = this;
     }
+
 
 
     private void Update()
     {
         if (PlacementActive)
-        { if (ThisPlaceisSafeToPlaceObject()) { SafeToPlace = true; } else { SafeToPlace = false; } }
+        { if (WaterableObjectFound()) { SafeToPlace = true; } else { SafeToPlace = false; } }
         else SafeToPlace = false;
     }
 
@@ -34,13 +39,14 @@ public class DG_HoeHandler : MonoBehaviour {
     {
         if (isUP && SafeToPlace)
         {
-            //17 is Database item, this may need to be adjusted for different hoe events. Hardcoded for now.
-            QuickFind.NetworkObjectManager.CreateNetSceneObject(QuickFind.NetworkSync.CurrentScene, 17, 0, QuickFind.GridDetection.DetectionPoint.position, 0);
+            DG_ContextObject CO = HitObject.GetComponent<DG_ContextObject>();
+            if(CO.Type == DG_ContextObject.ContextTypes.Soil)
+                QuickFind.WateringSystem.WaterObject(CO);
         }
     }
 
 
-    public void SetupForHoeing(DG_PlayerCharacters.RucksackSlot Rucksack = null, DG_ItemObject Item = null, int slot = 0)
+    public void SetupForWatering(DG_PlayerCharacters.RucksackSlot Rucksack = null, DG_ItemObject Item = null, int slot = 0)
     {
         RucksackSlotOpen = Rucksack;
         ItemDatabaseReference = Item;
@@ -50,19 +56,19 @@ public class DG_HoeHandler : MonoBehaviour {
         PlacementActive = true;
     }
 
-    public void CancelHoeing()
+    public void CancelWatering()
     {
         QuickFind.GridDetection.ObjectIsPlacing = false;
         PlacementActive = false;
     }
 
-    public bool ThisPlaceisSafeToPlaceObject()
+    public bool WaterableObjectFound()
     {
         RaycastHit m_Hit;
         Vector3 CastPoint = QuickFind.GridDetection.DetectionPoint.position;
         CastPoint.y += 20;
 
-        if (Physics.BoxCast(CastPoint, new Vector3(.5f, .5f, .5f), Vector3.down, out m_Hit, transform.rotation, 21, UnSafeGroundDetection)) return false;
-        else return true;
+        if (Physics.BoxCast(CastPoint, new Vector3(.5f, .5f, .5f), Vector3.down, out m_Hit, transform.rotation, 21, WaterableObjectDetection)) { HitObject = m_Hit.collider.gameObject; return true; }
+        else return false;
     }
 }

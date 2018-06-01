@@ -117,15 +117,9 @@ public class DG_ObjectPlacement : MonoBehaviour {
         CastPoint.y += 20;
 
         if (Physics.BoxCast(CastPoint, new Vector3(.5f, .5f, .5f), Vector3.down, out m_Hit, transform.rotation, 21, BoxcastDetection))
-        {
-            Debug.Log("Something Hit");
             return false;
-        }
         else
-        {
-            Debug.Log("Good to Go");
             return true;
-        }
     }
 
 

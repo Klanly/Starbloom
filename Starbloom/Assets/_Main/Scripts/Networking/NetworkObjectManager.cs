@@ -7,9 +7,6 @@ public class NetworkObjectManager : MonoBehaviour {
 
 
 
-
-
-
     private void Awake()
     {
         QuickFind.NetworkObjectManager = this;
@@ -60,6 +57,11 @@ public class NetworkObjectManager : MonoBehaviour {
             }
         }
     }
+    public NetworkObject GetItemByID(int Scene, int index)
+    {
+        return FindObject(Scene, index).GetComponent<NetworkObject>();
+    }
+
     public GameObject FindObject(int Scene, int index)
     {
         for(int i = 0; i < transform.childCount; i++)

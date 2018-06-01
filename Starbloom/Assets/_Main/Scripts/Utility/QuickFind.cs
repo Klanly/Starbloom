@@ -85,6 +85,7 @@ public static class QuickFind
     //Managers
     public static DG_Inventory InventoryManager = null;
     public static DG_TreasureSelection TreasureManager = null;
+    public static DG_WateringSystem WateringSystem = null;
 
 
 
@@ -94,6 +95,7 @@ public static class QuickFind
 
     //Tools
     public static DG_HoeHandler HoeHandler = null;
+    public static DG_WateringCan WateringCanHandler = null;
 
 
     //Fishing

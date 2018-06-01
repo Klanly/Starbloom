@@ -51,15 +51,10 @@ public class HotbarItemHandler : MonoBehaviour {
                 case ActivateableTypes.Pickaxe: Debug.Log("PickAxe " + UpEvent.ToString()); break;
                 case ActivateableTypes.RegularItem: Debug.Log("RegularItem " + UpEvent.ToString()); break;
                 case ActivateableTypes.PlaceableItem: QuickFind.ObjectPlacementManager.InputDetected(UpEvent); break;
-                case ActivateableTypes.WateringCan: Debug.Log("Watering Can " + UpEvent.ToString()); break;
+                case ActivateableTypes.WateringCan: QuickFind.WateringCanHandler.InputDetected(UpEvent); break;
             }
         }
     }
-
-
-
-
-
 
 
 
@@ -73,16 +68,18 @@ public class HotbarItemHandler : MonoBehaviour {
         CurrentItemDatabaseReference = ItemDatabaseReference;
 
 
-
-
         if (QuickFind.ObjectPlacementManager.PlacementActive) QuickFind.ObjectPlacementManager.DestroyObjectGhost();
         if (QuickFind.HoeHandler.PlacementActive) QuickFind.HoeHandler.CancelHoeing();
+        if (QuickFind.WateringCanHandler.PlacementActive) QuickFind.WateringCanHandler.CancelWatering();
 
-        switch(ItemDatabaseReference.ActivateableType)
+        switch (ItemDatabaseReference.ActivateableType)
         {
             case ActivateableTypes.PlaceableItem: QuickFind.ObjectPlacementManager.SetupItemObjectGhost(DG_ObjectPlacement.PlacementType.ItemObject, RucksackSlot, ItemDatabaseReference, Slot); break;
             case ActivateableTypes.Hoe: QuickFind.HoeHandler.SetupForHoeing(RucksackSlot, ItemDatabaseReference, Slot); break;
+            case ActivateableTypes.WateringCan: QuickFind.WateringCanHandler.SetupForWatering(RucksackSlot, ItemDatabaseReference, Slot); break;
         }
+
+
     }
     public void SetNoActiveItem()
     {

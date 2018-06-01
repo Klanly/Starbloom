@@ -411,6 +411,17 @@ public class DG_NetworkSync : Photon.MonoBehaviour
     }
 
 
+    public void WaterNetworkObject(int[] OutData)
+    {
+        PV.RPC("SendWatered", PhotonTargets.All, OutData);
+    }
+    [PunRPC]
+    void SendWatered(int[] Data)
+    {
+        QuickFind.WateringSystem.WaterOne(Data);
+    }
+
+
 
 
     #endregion

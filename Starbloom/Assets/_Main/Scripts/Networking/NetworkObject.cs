@@ -22,12 +22,19 @@ public class NetworkObject : MonoBehaviour {
     public int PositionY;
     public int PositionZ;
     public int YFacing;
+
     public bool isStorageContainer = false;
     [ShowIf("isStorageContainer")]
     public bool isTreasureList;
     [ShowIf("isStorageContainer")]
     [ListDrawerSettings(NumberOfItemsPerPage = 12)]
     public DG_PlayerCharacters.RucksackSlot[] StorageSlots;
+
+    public bool isWaterable = false;
+    [ShowIf("isWaterable")]
+    public bool HasBeenWatered = false;
+
+
 
 
 
