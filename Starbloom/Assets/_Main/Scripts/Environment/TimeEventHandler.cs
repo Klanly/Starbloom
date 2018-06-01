@@ -2,8 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TimeEventHandler : ITimeEventHandler
+public class TimeEventHandler
 {
+	readonly WorldTime.ITimeEventHandler mTimeEvents;
+
+	public TimeEventHandler(WorldTime.ITimeEventHandler _timeEvents)
+	{
+		mTimeEvents = _timeEvents;
+	}
+
 	private void Awake()
 	{
 		UpdateTimes(false);
@@ -14,13 +21,13 @@ public class TimeEventHandler : ITimeEventHandler
 		UpdateTimes();
 	}
 
-	protected void UpdateTimes( bool _fireEvents = true)
+	protected void UpdateTimes( bool _fireEvents = true )
 	{
 		Tenkoku.Core.TenkokuModule timeModule = QuickFind.WeatherModule;
-		NotifyMinute(timeModule.currentMinute, _fireEvents);
-		NotifyHour(timeModule.currentHour, _fireEvents);
-		NotifyDay(timeModule.currentDay, _fireEvents);
-		NotifyMonth(timeModule.currentMonth, _fireEvents);
-		NotifyYear(timeModule.currentYear, _fireEvents);
+		mTimeEvents.NotifyMinute(timeModule.currentMinute, _fireEvents);
+		mTimeEvents.NotifyHour(timeModule.currentHour, _fireEvents);
+		mTimeEvents.NotifyDay(timeModule.currentDay, _fireEvents);
+		mTimeEvents.NotifyMonth(timeModule.currentMonth, _fireEvents);
+		mTimeEvents.NotifyYear(timeModule.currentYear, _fireEvents);
 	}
 }

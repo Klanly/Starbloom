@@ -2,58 +2,93 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
+using UniRx;
 
-public class ITimeEventHandler : MonoBehaviour
+namespace WorldTime
 {
-	public event Action<int> OnMinute;
-	public event Action<int> OnHour;
-	public event Action<int> OnDay;
-	public event Action<int> OnMonth;
-	public event Action<int> OnYear;
+	public class OnMinuteSignal : Signal<OnMinuteSignal, int> { }
+	public class OnHourSignal : Signal<OnHourSignal, int> { }
+	public class OnDaySignal : Signal<OnDaySignal, int> { }
+	public class OnMonthSignal : Signal<OnMonthSignal, int> { }
+	public class OnYearSignal : Signal<OnYearSignal, int> { }
 
-	public int Minute { get; protected set; }
-	public int Hour { get; protected set; }
-	public int Day { get; protected set; }
-	public int Month { get; protected set; }
-	public int Year { get; protected set; }
-
-	protected void NotifyMinute(int _minute, bool _fireEvent = true)
+	public interface ITimeEventHandler
 	{
-		if (_fireEvent && null != OnMinute && Minute != _minute)
-			OnMinute(_minute);
+		int Minute { get; }
+		int Hour { get; }
+		int Day { get; }
+		int Month { get; }
+		int Year { get; }
 
-		Minute = _minute;
+		void NotifyMinute(int _minute, bool _fireEvent = true);
+		void NotifyHour(int _hour, bool _fireEvent = true);
+		void NotifyDay(int _day, bool _fireEvent = true);
+		void NotifyMonth(int _month, bool _fireEvent = true);
+		void NotifyYear(int _year, bool _fireEvent = true);
 	}
 
-	protected void NotifyHour(int _hour, bool _fireEvent = true)
+	public class DefaultTimeEventHandler : ITimeEventHandler
 	{
-		if (_fireEvent && null != OnHour && Hour != _hour)
-			OnHour(_hour);
+		readonly OnMinuteSignal OnMinute;
+		readonly OnHourSignal OnHour;
+		readonly OnDaySignal OnDay;
+		readonly OnMonthSignal OnMonth;
+		readonly OnYearSignal OnYear;
 
-		Hour = _hour;
-	}
+		public int Minute { get; protected set; }
+		public int Hour { get; protected set; }
+		public int Day { get; protected set; }
+		public int Month { get; protected set; }
+		public int Year { get; protected set; }
 
-	protected void NotifyDay(int _day, bool _fireEvent = true)
-	{
-		if (_fireEvent && null != OnDay && Day != _day)
-			OnDay(_day);
+		public DefaultTimeEventHandler(OnMinuteSignal _onMinute, OnHourSignal _onHour, OnDaySignal _onDay, OnMonthSignal _onMonth, OnYearSignal _onYear)
+		{
+			OnMinute = _onMinute;
+			OnHour = _onHour;
+			OnDay = _onDay;
+			OnMonth = _onMonth;
+			OnYear = _onYear;
+		}
 
-		Day = _day;
-	}
+		public void NotifyMinute(int _minute, bool _fireEvent = true)
+		{
+			if (_fireEvent && Minute != _minute)
+				OnMinute.Fire(_minute);
 
-	protected void NotifyMonth(int _month, bool _fireEvent = true)
-	{
-		if (_fireEvent && null != OnMonth && Month != _month)
-			OnMonth(_month);
+			Minute = _minute;
+		}
 
-		Month = _month;
-	}
+		public void NotifyHour(int _hour, bool _fireEvent = true)
+		{
+			if (_fireEvent && Hour != _hour)
+				OnHour.Fire(_hour);
 
-	protected void NotifyYear(int _year, bool _fireEvent = true)
-	{
-		if (_fireEvent && null != OnYear && Year != _year)
-			OnYear(_year);
+			Hour = _hour;
+		}
 
-		Year = _year;
+		public void NotifyDay(int _day, bool _fireEvent = true)
+		{
+			if (_fireEvent && Day != _day)
+				OnDay.Fire(_day);
+
+			Day = _day;
+		}
+
+		public void NotifyMonth(int _month, bool _fireEvent = true)
+		{
+			if (_fireEvent && Month != _month)
+				OnMonth.Fire(_month);
+
+			Month = _month;
+		}
+
+		public void NotifyYear(int _year, bool _fireEvent = true)
+		{
+			if (_fireEvent && Year != _year)
+				OnYear.Fire(_year);
+
+			Year = _year;
+		}
 	}
 }

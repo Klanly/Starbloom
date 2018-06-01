@@ -4,6 +4,7 @@ using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
+using WorldTime;
 
 [RequireComponent(typeof(EventRecord))]
 public class Growable : SerializedMonoBehaviour
@@ -15,7 +16,7 @@ public class Growable : SerializedMonoBehaviour
 		public GameObject Prefab;
 	}
 
-	public int DaysGrown { get { return mTimeProvider.Day - DayPlanted; } }
+	public int DaysGrown { get { return QuickFind.Farm.Day - DayPlanted; } }
 	public int CurrentGrowthDay { get { return DaysGrown + GrowthOffset; } }
 	public int CurrentStageDay { get { return Stages.Lower_Bound(DaysGrown).Key; } }
 	public GrowthStage CurrentStage { get { return Stages.Lower_Bound(DaysGrown).Value; } }
@@ -28,16 +29,16 @@ public class Growable : SerializedMonoBehaviour
 	[DictionaryDrawerSettings(DisplayMode = DictionaryDisplayOptions.ExpandedFoldout, KeyLabel = "Day", ValueLabel = "Stage Settings")]
 	public SortedDictionary<int, GrowthStage> Stages = new SortedDictionary<int, GrowthStage>();
 
-	protected ITimeEventHandler mTimeProvider;
-
-	[Inject]
-	public void Construct(ITimeEventHandler _timeHandler)
+	private void Awake()
 	{
-		mTimeProvider = _timeHandler;
-		DayPlanted = mTimeProvider.Day;
-		mTimeProvider.OnDay += OnDayChanged;
+		TimeHandler.OnNewDay += OnDayChanged;
 	}
 
+	private void OnDestroy()
+	{
+		TimeHandler.OnNewDay -= OnDayChanged;
+	}
+	
 	protected void OnDayChanged( int _day )
 	{
 		Debug.LogFormat("Day changed - {0}", _day);
