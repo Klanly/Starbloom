@@ -31,6 +31,10 @@ public class Growable : SerializedMonoBehaviour
 	[DictionaryDrawerSettings(DisplayMode = DictionaryDisplayOptions.ExpandedFoldout, KeyLabel = "Day", ValueLabel = "Stage Settings")]
 	public SortedDictionary<int, GrowthStage> Stages = new SortedDictionary<int, GrowthStage>();
 
+
+    [Button(ButtonSizes.Small)]void DebugDayButton(){QuickFind.TimeHandler.SetNewDay();}
+
+
 	private void Awake()
 	{
 		TimeHandler.OnNewDay += OnDayChanged;
@@ -47,6 +51,9 @@ public class Growable : SerializedMonoBehaviour
 		DayPlanted = QuickFind.Farm.Day;
 		RefreshStage();
 	}
+
+
+    
 
 	private void OnDestroy()
 	{

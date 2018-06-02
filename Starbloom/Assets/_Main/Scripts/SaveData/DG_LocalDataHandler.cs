@@ -317,11 +317,18 @@ public class DG_LocalDataHandler : MonoBehaviour {
                 if (!ToDisk) IntData.Add(NO.YFacing); else SaveInt(NO.YFacing, Directory + "YFacing");
 
 
-                int isTrue = NO.isStorageContainer ? 1 : 0;
-                if (!ToDisk) IntData.Add(isTrue); else SaveInt(isTrue, Directory + "IsStorageContainer");
+                int isTrue = NO.isWaterable ? 1 : 0; if (!ToDisk) IntData.Add(isTrue); else SaveInt(isTrue, Directory + "IsWaterable");
+                if (isTrue == 1)
+                {
+                    isTrue = NO.HasBeenWatered ? 1 : 0; if (!ToDisk) IntData.Add(isTrue); else SaveInt(isTrue, Directory + "HasBeenWatered");
+                }
+
+                isTrue = NO.isStorageContainer ? 1 : 0; if (!ToDisk) IntData.Add(isTrue); else SaveInt(isTrue, Directory + "IsStorageContainer");
                 if (isTrue == 1)
                 {
                     DG_PlayerCharacters.RucksackSlot[] RS = NO.StorageSlots;
+                    isTrue = NO.isTreasureList ? 1 : 0;
+                    if (!ToDisk) IntData.Add(isTrue); else SaveInt(isTrue, Directory + "IsTreasureList");
                     if (!ToDisk) IntData.Add(NO.StorageSlots.Length); else SaveInt(NO.StorageSlots.Length, Directory + "StorageContainerCount");
 
                     string SubKnownDirectory = Directory;
@@ -386,13 +393,21 @@ public class DG_LocalDataHandler : MonoBehaviour {
                 //
 
                 int StorageValue;
+                if (!FromDisk) StorageValue = IntValues[Index]; else StorageValue = LoadInt(Directory + "IsWaterable"); Index++;
+                bool isTrue = false; if (StorageValue == 1) isTrue = true; NO.isWaterable = isTrue;
+                if (isTrue)
+                {
+                    if (!FromDisk) StorageValue = IntValues[Index]; else StorageValue = LoadInt(Directory + "HasBeenWatered"); Index++;
+                    isTrue = false; if (StorageValue == 1) isTrue = true; NO.HasBeenWatered = isTrue;
+                }
+
                 if (!FromDisk) StorageValue = IntValues[Index]; else StorageValue = LoadInt(Directory + "IsStorageContainer"); Index++;
-                bool isTrue = false;
-                if (StorageValue == 1) isTrue = true;
-                NO.isStorageContainer = isTrue;
+                isTrue = false; if (StorageValue == 1) isTrue = true; NO.isStorageContainer = isTrue;
                 if (isTrue)
                 {
                     int Count = 0;
+                    if (!FromDisk) StorageValue = IntValues[Index]; else StorageValue = LoadInt(Directory + "IsTreasureList"); Index++;
+                    isTrue = false; if (StorageValue == 1) isTrue = true; NO.isTreasureList = isTrue;
                     if (!FromDisk) Count = IntValues[Index]; else Count = LoadInt(Directory + "StorageContainerCount"); Index++;
                     NO.StorageSlots = new DG_PlayerCharacters.RucksackSlot[Count];
 

@@ -23,6 +23,14 @@ public class NetworkObject : MonoBehaviour {
     public int PositionZ;
     public int YFacing;
 
+    public bool isWaterable = false;
+    [ShowIf("isWaterable")]
+    public bool HasBeenWatered = false;
+
+    public bool HasHealth = false;
+    [ShowIf("HasHealth")]
+    public int HealthValue;
+
     public bool isStorageContainer = false;
     [ShowIf("isStorageContainer")]
     public bool isTreasureList;
@@ -30,15 +38,13 @@ public class NetworkObject : MonoBehaviour {
     [ListDrawerSettings(NumberOfItemsPerPage = 12)]
     public DG_PlayerCharacters.RucksackSlot[] StorageSlots;
 
-    public bool isWaterable = false;
-    [ShowIf("isWaterable")]
-    public bool HasBeenWatered = false;
 
 
 
 
 
-    public void SpawnNetworkObject()
+
+    public void SpawnNetworkObject(bool GenerateVelocity = false, Vector3 Velocity = new Vector3())
     {
         DG_ItemsDatabase IDB = QuickFind.ItemDatabase;
         DG_ItemObject IO = IDB.GetItemFromID(ItemRefID);
@@ -51,6 +57,16 @@ public class NetworkObject : MonoBehaviour {
         T.localEulerAngles = Vector3.zero;
         float Scale = IO.DefaultScale;
         T.localScale = new Vector3(Scale, Scale, Scale);
+
+        if (HasBeenWatered)
+            QuickFind.WateringSystem.AdjustWateredObjectVisual(this);
+
+
+        if(GenerateVelocity)
+        {
+            DG_MagneticItem MI = Spawn.GetComponent<DG_MagneticItem>();
+            MI.TriggerStart(Velocity);
+        }
     }
 
 
@@ -64,6 +80,11 @@ public class NetworkObject : MonoBehaviour {
         NO.YFacing = ListNO.YFacing;
         NO.isStorageContainer = ListNO.isStorageContainer;
         NO.StorageSlots = ListNO.StorageSlots;
+        NO.isTreasureList = ListNO.isTreasureList;
+        NO.isWaterable = ListNO.isWaterable;
+        NO.HasBeenWatered = ListNO.HasBeenWatered;
+        NO.HasHealth = ListNO.HasHealth;
+        NO.HealthValue = ListNO.HealthValue;
     }
 
 

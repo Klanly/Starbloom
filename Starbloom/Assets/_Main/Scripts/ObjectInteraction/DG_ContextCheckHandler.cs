@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class DG_ContextCheckHandler : MonoBehaviour {
 
-    [HideInInspector] public DG_CharacterLink CharacterLink = null;
-
     [Header("Detection Options")]
     public LayerMask ContextMask;
     [Header("Non-Mouse")]
@@ -40,8 +38,7 @@ public class DG_ContextCheckHandler : MonoBehaviour {
 
     void Update()
     {
-        if (CharacterLink == null)
-            return;
+        if (QuickFind.PlayerTrans == null) return;
 
         RaycastHit hit;
         DG_PlayerInput.Player MP = QuickFind.InputController.MainPlayer;
@@ -52,7 +49,7 @@ public class DG_ContextCheckHandler : MonoBehaviour {
             if (Physics.Raycast(ray.origin, ray.direction, out hit, 200, ContextMask))
             {
                 DetectionPoint.position = hit.point;
-                if (QuickFind.WithinDistance(DetectionPoint, CharacterLink.PlayerT, MouseDistance))
+                if (QuickFind.WithinDistance(DetectionPoint, QuickFind.PlayerTrans, MouseDistance))
                     AddNewContext(hit);
                 else
                     ContextHit = false;
@@ -61,8 +58,8 @@ public class DG_ContextCheckHandler : MonoBehaviour {
         }
         else
         {
-            DetectionPoint.position = CharacterLink.PlayerT.position;
-            DetectionPoint.rotation = CharacterLink.PlayerT.rotation;
+            DetectionPoint.position = QuickFind.PlayerTrans.position;
+            DetectionPoint.rotation = QuickFind.PlayerTrans.rotation;
 
             if (Physics.SphereCast(DetectionPoint.position, SphereCastRadius, DetectionPoint.forward, out hit, SphereCastMaxLength, ContextMask))
                 AddNewContext(hit);

@@ -82,7 +82,7 @@ public class DG_Inventory : MonoBehaviour {
                 if (RS.GetStackValue() < Object.MaxStackSize)
                 { ItemAddSlotPosition = i; return RS; }
             }
-            else if (FirstAvailableRucksackSlot == null && RS.ContainedItem == 0)
+            else if (FirstAvailableRucksackSlot == null && RS.GetStackValue() == 0)
             { FirstAvailableRucksackSlot = RS; ItemAddSlotPosition = i; }
         }
         return null;
@@ -183,7 +183,7 @@ public class DG_Inventory : MonoBehaviour {
         if (ToItem.IsStorageSlot) IndexB = QuickFind.StorageUI.ActiveStorage.transform.GetSiblingIndex();
 
         int ItemID = From.ContainedItem;
-        if (To.ContainedItem == ItemID || To.ContainedItem == 0)
+        if (To.ContainedItem == ItemID || To.GetStackValue() == 0)
         {
             To.ContainedItem = ItemID;
 
@@ -289,7 +289,7 @@ public class DG_Inventory : MonoBehaviour {
             for (int i = 0; i < AlternateSide.Length; i++)
             {
                 DG_PlayerCharacters.RucksackSlot RS = AlternateSide[i];
-                if (RS.ContainedItem == 0)
+                if (RS.GetStackValue() == 0)
                 {
                     ExchangeItem EI = new ExchangeItem();
                     EI.RS = RS;

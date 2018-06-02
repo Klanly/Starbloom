@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraLogic : MonoBehaviour {
 
-    public Transform CharTrans;
+
     public Camera MainCam;
 
     [Header("Camera Control")]
@@ -38,9 +38,8 @@ public class CameraLogic : MonoBehaviour {
 
     private void Update()
     {
-        if (CharTrans == null)
-            return;
-        _T.position = CharTrans.position;
+        if (QuickFind.PlayerTrans == null) return;
+        _T.position = QuickFind.PlayerTrans.position;
 
         if (AllowCameraPanning)
         {

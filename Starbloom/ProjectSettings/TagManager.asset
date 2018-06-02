@@ -21,9 +21,9 @@ TagManager:
   - Suimono_Depth
   - Suimono_Screen
   - 
-  - 
+  - Player
   - InteractableObject
-  - 
+  - ScatterObject
   - Tillable Terrain
   - Water
   - 

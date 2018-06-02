@@ -20,7 +20,8 @@ public class DG_ItemObject : MonoBehaviour
     {
         Vegetable,
         Herb,
-        Fish
+        Fish,
+        Resource
     }
 
 
@@ -60,6 +61,9 @@ public class DG_ItemObject : MonoBehaviour
         [Header("Shop")]
         public int BuyPrice;
         public int SellPrice;
+
+        [Header("Strength")]
+        public int StrengthValue;
 
         [Header("Visuals")]
         public bool HasCustomSprite;
@@ -114,6 +118,11 @@ public class DG_ItemObject : MonoBehaviour
         public int BuyPrice;
         public int SellPrice;
     }
+
+    [ShowIf("isItem")]
+    public bool RandomizeVelocityOnSpawn;
+    [ShowIf("isItem")]
+    public float RandomVelocityMax;
     #endregion
 
 
@@ -135,6 +144,18 @@ public class DG_ItemObject : MonoBehaviour
     #region Environment
     [Header("----------------------------------")]
     public bool isEnvironment = false;
+    [Header("Environment")]
+    [ShowIf("isEnvironment")]
+    public Environment[] EnvironmentValues;
+
+    [System.Serializable]
+    public class Environment
+    {
+        public bool IsWaterable;
+        public bool IsBreakable;
+        [ShowIf("IsBreakable")]
+        public int BreakableAtlasID;
+    }
     #endregion
 
 

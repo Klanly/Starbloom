@@ -8,7 +8,6 @@ public class FakeRainDropCollision : MonoBehaviour
     public bool LoadPoolsOnStart = false;
     public bool IsRaining = false;
     [Header("Ref Transforms")]
-    public Transform Player = null;
     public Transform ParticleContainer = null;
     public GameObject SplashRef = null;
     public GameObject RippleRef = null;
@@ -136,8 +135,7 @@ public class FakeRainDropCollision : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Player == null)
-            return;
+        if (QuickFind.PlayerTrans == null) return;
 
             if (!IsRaining)
         {
@@ -157,7 +155,7 @@ public class FakeRainDropCollision : MonoBehaviour
         bool AllowSuimonoCheck = false;
 
 
-        Vector3 CamPos = Player.position;
+        Vector3 CamPos = QuickFind.PlayerTrans.position;
         Vector3 CamOffset = new Vector3(CamPos.x, 100, CamPos.z);
 
         if (Timer < 0)

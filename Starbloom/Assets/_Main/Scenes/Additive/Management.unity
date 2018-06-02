@@ -352,7 +352,7 @@ MonoBehaviour:
   CharacterLink: {fileID: 0}
   ContextMask:
     serializedVersion: 2
-    m_Bits: 8192
+    m_Bits: 24576
   SphereCastRadius: 0.2
   SphereCastMaxLength: 0.7
   MouseDistance: 1.7

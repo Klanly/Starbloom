@@ -113,6 +113,79 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &88464733
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 88464734}
+  - component: {fileID: 88464736}
+  - component: {fileID: 88464735}
+  m_Layer: 0
+  m_Name: 0 - Basic Rock
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &88464734
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 88464733}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1259421160}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &88464735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 88464733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14c8a5c5360db50468011319fd8c89c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DatabaseID: 0
+  LockItem: 1
+  Name: Basic Rock
+  ItemObjectRefDatabaseID: 19
+  ObjectType: 0
+  ActivateableTypeRequired: 0
+  QualityLevelRequired: 0
+  ObjectHealth: 15
+  RewardRolls:
+  - RollPercent: 0.2
+    ItemGifts:
+    - ItemID: 20
+      ItemQuality: 0
+      Value: 4
+  - RollPercent: 1
+    ItemGifts:
+    - ItemID: 20
+      ItemQuality: 0
+      Value: 3
+--- !u!114 &88464736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 88464733}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 6
+  instanceID: 1522396
 --- !u!1 &97753043
 GameObject:
   m_ObjectHideFlags: 0
@@ -145,7 +218,7 @@ Transform:
   - {fileID: 911112102}
   - {fileID: 1637135973}
   m_Father: {fileID: 98179532}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &98179530
 GameObject:
@@ -195,7 +268,10 @@ MonoBehaviour:
   - {fileID: 1637135971}
   - {fileID: 275336176}
   - {fileID: 1502558390}
-  ListCount: 19
+  - {fileID: 413799159}
+  - {fileID: 1849541682}
+  ListCount: 21
+  PreMagneticObjectWaitTimer: 0.5
   GenericIconList:
   - ItemName: Health
     Icon: {fileID: 21300000, guid: da59f902e286d81439e8e50352c6e57f, type: 3}
@@ -226,6 +302,7 @@ Transform:
   - {fileID: 1330787845}
   - {fileID: 1450680410}
   - {fileID: 1215626843}
+  - {fileID: 1405799090}
   - {fileID: 1815548899}
   - {fileID: 1405183628}
   - {fileID: 97753044}
@@ -270,8 +347,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 275336178}
+  - {fileID: 413799161}
   m_Father: {fileID: 98179532}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &275336175
 GameObject:
@@ -301,11 +379,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc1a46eca4a35e5498f3df297015210f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: FishingPol
+  Name: Dirt Mound
   MaxStackSize: 1
   ActivateableType: 5
   ToolTipType:
-    GroupType: 7
+    GroupType: 16
     MainLocalizationID: 0
     SubLocalizationID: 0
     DescriptionID: 0
@@ -323,9 +401,15 @@ MonoBehaviour:
   isItem: 0
   ItemCat: 0
   ItemQualities: []
+  RandomizeVelocityOnSpawn: 0
+  RandomVelocityMax: 0
   isStorage: 0
   StorageList: []
   isEnvironment: 1
+  EnvironmentValues:
+  - IsWaterable: 1
+    IsBreakable: 0
+    BreakableAtlasID: 0
 --- !u!114 &275336177
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -338,7 +422,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: -17625716
+  instanceID: 1522418
 --- !u!4 &275336178
 Transform:
   m_ObjectHideFlags: 0
@@ -384,6 +468,90 @@ Transform:
   - {fileID: 1502558392}
   m_Father: {fileID: 98179532}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &413799158
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 413799161}
+  - component: {fileID: 413799160}
+  - component: {fileID: 413799159}
+  m_Layer: 0
+  m_Name: 19 - Rock
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &413799159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 413799158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc1a46eca4a35e5498f3df297015210f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Breakable Rock
+  MaxStackSize: 1
+  ActivateableType: 5
+  ToolTipType:
+    GroupType: 16
+    MainLocalizationID: 0
+    SubLocalizationID: 0
+    DescriptionID: 0
+    ContextID: 0
+  DatabaseID: 19
+  LockItem: 1
+  Icon: {fileID: 0}
+  ModelPrefab: {fileID: 100000, guid: a2d308598386f4a0797f87a4b95b9dd1, type: 2}
+  DefaultScale: 0.75
+  isTool: 0
+  ToolQualityLevels: []
+  isGrowableItem: 0
+  GrowableItemStages: []
+  isItem: 0
+  ItemCat: 0
+  ItemQualities: []
+  RandomizeVelocityOnSpawn: 0
+  RandomVelocityMax: 0
+  isStorage: 0
+  StorageList: []
+  isEnvironment: 1
+  EnvironmentValues:
+  - IsWaterable: 0
+    IsBreakable: 1
+    BreakableAtlasID: 0
+--- !u!114 &413799160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 413799158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 0
+  instanceID: 1522430
+--- !u!4 &413799161
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 413799158}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 113020235}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &523401138
 GameObject:
@@ -446,6 +614,7 @@ MonoBehaviour:
     EnergyUsageValue: 10
     BuyPrice: 0
     SellPrice: 0
+    StrengthValue: 5
     HasCustomSprite: 0
     Icon: {fileID: 0}
     HasCustomModel: 0
@@ -454,6 +623,7 @@ MonoBehaviour:
     EnergyUsageValue: 8
     BuyPrice: 0
     SellPrice: 0
+    StrengthValue: 10
     HasCustomSprite: 1
     Icon: {fileID: 21300000, guid: b43fa9b335c6cae439dc6d6a925ba8b3, type: 3}
     HasCustomModel: 1
@@ -462,6 +632,7 @@ MonoBehaviour:
     EnergyUsageValue: 6
     BuyPrice: 0
     SellPrice: 0
+    StrengthValue: 15
     HasCustomSprite: 1
     Icon: {fileID: 21300000, guid: bf4c007c30961654e8e8a891646ba6c4, type: 3}
     HasCustomModel: 1
@@ -470,6 +641,7 @@ MonoBehaviour:
     EnergyUsageValue: 4
     BuyPrice: 0
     SellPrice: 0
+    StrengthValue: 20
     HasCustomSprite: 1
     Icon: {fileID: 21300000, guid: 02959f34b8badaa4ba8eef7ed142b55b, type: 3}
     HasCustomModel: 1
@@ -479,9 +651,12 @@ MonoBehaviour:
   isItem: 0
   ItemCat: 0
   ItemQualities: []
+  RandomizeVelocityOnSpawn: 0
+  RandomVelocityMax: 0
   isStorage: 0
   StorageList: []
   isEnvironment: 0
+  EnvironmentValues: []
 --- !u!114 &523401141
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -494,7 +669,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 1108346
+  instanceID: 1522440
 --- !u!1 &619036614
 GameObject:
   m_ObjectHideFlags: 0
@@ -572,9 +747,12 @@ MonoBehaviour:
     EnergyAdjustValue: 65
     BuyPrice: 135
     SellPrice: 45
+  RandomizeVelocityOnSpawn: 0
+  RandomVelocityMax: 0
   isStorage: 0
   StorageList: []
   isEnvironment: 0
+  EnvironmentValues: []
 --- !u!114 &619036616
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -587,7 +765,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 1108352
+  instanceID: 1522446
 --- !u!4 &619036617
 Transform:
   m_ObjectHideFlags: 0
@@ -692,9 +870,12 @@ MonoBehaviour:
     EnergyAdjustValue: 65
     BuyPrice: 135
     SellPrice: 45
+  RandomizeVelocityOnSpawn: 0
+  RandomVelocityMax: 0
   isStorage: 0
   StorageList: []
   isEnvironment: 0
+  EnvironmentValues: []
 --- !u!114 &630922426
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -707,7 +888,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 1108362
+  instanceID: 1522456
 --- !u!1 &631133481
 GameObject:
   m_ObjectHideFlags: 0
@@ -785,10 +966,13 @@ MonoBehaviour:
     EnergyAdjustValue: 60
     BuyPrice: 720
     SellPrice: 240
+  RandomizeVelocityOnSpawn: 0
+  RandomVelocityMax: 0
   isStorage: 0
   StorageList:
   - TotalStorageSlots: 36
   isEnvironment: 0
+  EnvironmentValues: []
 --- !u!114 &631133483
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -801,7 +985,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 1108368
+  instanceID: 1522462
 --- !u!4 &631133484
 Transform:
   m_ObjectHideFlags: 0
@@ -865,10 +1049,13 @@ MonoBehaviour:
   isItem: 0
   ItemCat: 0
   ItemQualities: []
+  RandomizeVelocityOnSpawn: 0
+  RandomVelocityMax: 0
   isStorage: 1
   StorageList:
   - TotalStorageSlots: 36
   isEnvironment: 0
+  EnvironmentValues: []
 --- !u!114 &676053778
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -881,7 +1068,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 1108376
+  instanceID: 1522470
 --- !u!4 &676053779
 Transform:
   m_ObjectHideFlags: 0
@@ -956,6 +1143,7 @@ MonoBehaviour:
     EnergyUsageValue: 10
     BuyPrice: 0
     SellPrice: 0
+    StrengthValue: 5
     HasCustomSprite: 0
     Icon: {fileID: 0}
     HasCustomModel: 0
@@ -964,6 +1152,7 @@ MonoBehaviour:
     EnergyUsageValue: 8
     BuyPrice: 0
     SellPrice: 0
+    StrengthValue: 10
     HasCustomSprite: 1
     Icon: {fileID: 21300000, guid: 1e766dbeb6e4d3f4d946d59451548532, type: 3}
     HasCustomModel: 1
@@ -972,6 +1161,7 @@ MonoBehaviour:
     EnergyUsageValue: 6
     BuyPrice: 0
     SellPrice: 0
+    StrengthValue: 15
     HasCustomSprite: 1
     Icon: {fileID: 21300000, guid: dad684b2612a3f74d9f269c431d89935, type: 3}
     HasCustomModel: 1
@@ -980,6 +1170,7 @@ MonoBehaviour:
     EnergyUsageValue: 4
     BuyPrice: 0
     SellPrice: 0
+    StrengthValue: 20
     HasCustomSprite: 1
     Icon: {fileID: 21300000, guid: 13c689d9086ba9046871c537e0fe0d42, type: 3}
     HasCustomModel: 1
@@ -989,9 +1180,12 @@ MonoBehaviour:
   isItem: 0
   ItemCat: 0
   ItemQualities: []
+  RandomizeVelocityOnSpawn: 0
+  RandomVelocityMax: 0
   isStorage: 0
   StorageList: []
   isEnvironment: 0
+  EnvironmentValues: []
 --- !u!114 &769028655
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1004,7 +1198,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 1108386
+  instanceID: 1522480
 --- !u!1 &889436591
 GameObject:
   m_ObjectHideFlags: 0
@@ -1047,7 +1241,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 1108392
+  instanceID: 1522486
 --- !u!114 &889436594
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1108,10 +1302,69 @@ MonoBehaviour:
     EnergyAdjustValue: 60
     BuyPrice: 720
     SellPrice: 240
+  RandomizeVelocityOnSpawn: 0
+  RandomVelocityMax: 0
   isStorage: 0
   StorageList:
   - TotalStorageSlots: 36
   isEnvironment: 0
+  EnvironmentValues: []
+--- !u!1 &907308529
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 907308530}
+  - component: {fileID: 907308531}
+  - component: {fileID: 907308532}
+  m_Layer: 0
+  m_Name: Breakable Object Atlas
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &907308530
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 907308529}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1259421160}
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &907308531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 907308529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f280f9f66734424d81a6b6ce41d3ad8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ItemCatagoryList:
+  - {fileID: 88464735}
+  ListCount: 1
+--- !u!114 &907308532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 907308529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e595a48572380e44b8785340f9048f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &911112101
 GameObject:
   m_ObjectHideFlags: 0
@@ -1154,7 +1407,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 1108400
+  instanceID: 1522502
 --- !u!114 &911112104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1215,10 +1468,13 @@ MonoBehaviour:
     EnergyAdjustValue: 60
     BuyPrice: 720
     SellPrice: 240
+  RandomizeVelocityOnSpawn: 0
+  RandomVelocityMax: 0
   isStorage: 0
   StorageList:
   - TotalStorageSlots: 36
   isEnvironment: 0
+  EnvironmentValues: []
 --- !u!1 &1215626842
 GameObject:
   m_ObjectHideFlags: 0
@@ -1249,6 +1505,35 @@ Transform:
   - {fileID: 619036617}
   m_Father: {fileID: 98179532}
   m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1259421159
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1259421160}
+  m_Layer: 0
+  m_Name: Rocks
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1259421160
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1259421159}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 88464734}
+  m_Father: {fileID: 907308530}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1322106185
 GameObject:
@@ -1388,9 +1673,12 @@ MonoBehaviour:
     EnergyAdjustValue: 65
     BuyPrice: 135
     SellPrice: 45
+  RandomizeVelocityOnSpawn: 0
+  RandomVelocityMax: 0
   isStorage: 0
   StorageList: []
   isEnvironment: 0
+  EnvironmentValues: []
 --- !u!114 &1328181119
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1403,7 +1691,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 1108420
+  instanceID: 1522526
 --- !u!1 &1330787844
 GameObject:
   m_ObjectHideFlags: 0
@@ -1475,7 +1763,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 1108430
+  instanceID: 1522536
 --- !u!114 &1345506627
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1536,10 +1824,13 @@ MonoBehaviour:
     EnergyAdjustValue: 60
     BuyPrice: 720
     SellPrice: 240
+  RandomizeVelocityOnSpawn: 0
+  RandomVelocityMax: 0
   isStorage: 0
   StorageList:
   - TotalStorageSlots: 36
   isEnvironment: 0
+  EnvironmentValues: []
 --- !u!1 &1405183627
 GameObject:
   m_ObjectHideFlags: 0
@@ -1567,7 +1858,36 @@ Transform:
   m_Children:
   - {fileID: 676053779}
   m_Father: {fileID: 98179532}
-  m_RootOrder: 5
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1405799089
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1405799090}
+  m_Layer: 0
+  m_Name: Resource
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1405799090
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1405799089}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1849541684}
+  m_Father: {fileID: 98179532}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1429960794
 GameObject:
@@ -1630,6 +1950,7 @@ MonoBehaviour:
     EnergyUsageValue: 10
     BuyPrice: 0
     SellPrice: 0
+    StrengthValue: 0
     HasCustomSprite: 0
     Icon: {fileID: 0}
     HasCustomModel: 0
@@ -1638,6 +1959,7 @@ MonoBehaviour:
     EnergyUsageValue: 8
     BuyPrice: 0
     SellPrice: 0
+    StrengthValue: 0
     HasCustomSprite: 1
     Icon: {fileID: 21300000, guid: dc62ba5621378904e81b486b19d2ae5e, type: 3}
     HasCustomModel: 1
@@ -1646,6 +1968,7 @@ MonoBehaviour:
     EnergyUsageValue: 6
     BuyPrice: 0
     SellPrice: 0
+    StrengthValue: 0
     HasCustomSprite: 1
     Icon: {fileID: 21300000, guid: 2858bdf66d6667b4994731f799ba07d3, type: 3}
     HasCustomModel: 1
@@ -1654,6 +1977,7 @@ MonoBehaviour:
     EnergyUsageValue: 4
     BuyPrice: 0
     SellPrice: 0
+    StrengthValue: 0
     HasCustomSprite: 1
     Icon: {fileID: 21300000, guid: d1efae79809d6f94bb829362c7cae141, type: 3}
     HasCustomModel: 1
@@ -1663,9 +1987,12 @@ MonoBehaviour:
   isItem: 0
   ItemCat: 0
   ItemQualities: []
+  RandomizeVelocityOnSpawn: 0
+  RandomVelocityMax: 0
   isStorage: 0
   StorageList: []
   isEnvironment: 0
+  EnvironmentValues: []
 --- !u!114 &1429960797
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1678,7 +2005,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 1108444
+  instanceID: 1522554
 --- !u!1 &1450680409
 GameObject:
   m_ObjectHideFlags: 0
@@ -1757,6 +2084,7 @@ MonoBehaviour:
     EnergyUsageValue: 10
     BuyPrice: 0
     SellPrice: 0
+    StrengthValue: 0
     HasCustomSprite: 0
     Icon: {fileID: 0}
     HasCustomModel: 0
@@ -1765,6 +2093,7 @@ MonoBehaviour:
     EnergyUsageValue: 8
     BuyPrice: 0
     SellPrice: 0
+    StrengthValue: 0
     HasCustomSprite: 1
     Icon: {fileID: 21300000, guid: e8cecf61b8bfbce4ea8bdaba4a4f88e1, type: 3}
     HasCustomModel: 1
@@ -1774,6 +2103,7 @@ MonoBehaviour:
     EnergyUsageValue: 6
     BuyPrice: 0
     SellPrice: 0
+    StrengthValue: 0
     HasCustomSprite: 1
     Icon: {fileID: 21300000, guid: 6c369b5a0b5c5d44cb8dc5964efe99fe, type: 3}
     HasCustomModel: 1
@@ -1783,6 +2113,7 @@ MonoBehaviour:
     EnergyUsageValue: 4
     BuyPrice: 0
     SellPrice: 0
+    StrengthValue: 0
     HasCustomSprite: 1
     Icon: {fileID: 21300000, guid: efa40010fb0b8bf47a7a21a34b7b0d7b, type: 3}
     HasCustomModel: 1
@@ -1793,9 +2124,12 @@ MonoBehaviour:
   isItem: 0
   ItemCat: 0
   ItemQualities: []
+  RandomizeVelocityOnSpawn: 0
+  RandomVelocityMax: 0
   isStorage: 0
   StorageList: []
   isEnvironment: 0
+  EnvironmentValues: []
 --- !u!114 &1502558391
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1808,7 +2142,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: -19856374
+  instanceID: 1522564
 --- !u!4 &1502558392
 Transform:
   m_ObjectHideFlags: 0
@@ -1899,9 +2233,12 @@ MonoBehaviour:
     EnergyAdjustValue: 65
     BuyPrice: 135
     SellPrice: 45
+  RandomizeVelocityOnSpawn: 0
+  RandomVelocityMax: 0
   isStorage: 0
   StorageList: []
   isEnvironment: 0
+  EnvironmentValues: []
 --- !u!114 &1511745341
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1914,7 +2251,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 1108454
+  instanceID: 1522572
 --- !u!4 &1511745342
 Transform:
   m_ObjectHideFlags: 0
@@ -2034,10 +2371,13 @@ MonoBehaviour:
     EnergyAdjustValue: 60
     BuyPrice: 720
     SellPrice: 240
+  RandomizeVelocityOnSpawn: 0
+  RandomVelocityMax: 0
   isStorage: 0
   StorageList:
   - TotalStorageSlots: 36
   isEnvironment: 0
+  EnvironmentValues: []
 --- !u!114 &1637135972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2050,7 +2390,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 1108466
+  instanceID: 1522584
 --- !u!4 &1637135973
 Transform:
   m_ObjectHideFlags: 0
@@ -2122,7 +2462,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 5
-  instanceID: 1108474
+  instanceID: 1522592
 --- !u!4 &1645614859
 Transform:
   m_ObjectHideFlags: 0
@@ -2207,7 +2547,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 5
-  instanceID: 1108484
+  instanceID: 1522602
 --- !u!1 &1696380314
 GameObject:
   m_ObjectHideFlags: 0
@@ -2298,9 +2638,12 @@ MonoBehaviour:
     EnergyAdjustValue: 65
     BuyPrice: 135
     SellPrice: 45
+  RandomizeVelocityOnSpawn: 0
+  RandomVelocityMax: 0
   isStorage: 0
   StorageList: []
   isEnvironment: 0
+  EnvironmentValues: []
 --- !u!114 &1696380317
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2313,7 +2656,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 1108492
+  instanceID: 1522610
 --- !u!1 &1701517455
 GameObject:
   m_ObjectHideFlags: 0
@@ -2436,9 +2779,12 @@ MonoBehaviour:
     EnergyAdjustValue: 65
     BuyPrice: 135
     SellPrice: 45
+  RandomizeVelocityOnSpawn: 0
+  RandomVelocityMax: 0
   isStorage: 0
   StorageList: []
   isEnvironment: 0
+  EnvironmentValues: []
 --- !u!114 &1714828757
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2451,7 +2797,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 1108504
+  instanceID: 1522622
 --- !u!1 &1815548898
 GameObject:
   m_ObjectHideFlags: 0
@@ -2479,7 +2825,7 @@ Transform:
   m_Children:
   - {fileID: 630922424}
   m_Father: {fileID: 98179532}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1825876182
 GameObject:
@@ -2542,6 +2888,7 @@ MonoBehaviour:
     EnergyUsageValue: 10
     BuyPrice: 0
     SellPrice: 0
+    StrengthValue: 0
     HasCustomSprite: 0
     Icon: {fileID: 0}
     HasCustomModel: 0
@@ -2550,6 +2897,7 @@ MonoBehaviour:
     EnergyUsageValue: 8
     BuyPrice: 0
     SellPrice: 0
+    StrengthValue: 0
     HasCustomSprite: 1
     Icon: {fileID: 21300000, guid: 0ed3f7b52e37b3f42a9bcc6a8cdcf1a1, type: 3}
     HasCustomModel: 1
@@ -2558,6 +2906,7 @@ MonoBehaviour:
     EnergyUsageValue: 6
     BuyPrice: 0
     SellPrice: 0
+    StrengthValue: 0
     HasCustomSprite: 1
     Icon: {fileID: 21300000, guid: bf1166d57f9aaaf4caaaa133c2cbee6b, type: 3}
     HasCustomModel: 1
@@ -2566,6 +2915,7 @@ MonoBehaviour:
     EnergyUsageValue: 4
     BuyPrice: 0
     SellPrice: 0
+    StrengthValue: 0
     HasCustomSprite: 1
     Icon: {fileID: 21300000, guid: e22c9c5ef141a72498062c0513cbc414, type: 3}
     HasCustomModel: 1
@@ -2575,9 +2925,12 @@ MonoBehaviour:
   isItem: 0
   ItemCat: 0
   ItemQualities: []
+  RandomizeVelocityOnSpawn: 0
+  RandomVelocityMax: 0
   isStorage: 0
   StorageList: []
   isEnvironment: 0
+  EnvironmentValues: []
 --- !u!114 &1825876185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2590,7 +2943,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 1108516
+  instanceID: 1522634
 --- !u!1 &1837730739
 GameObject:
   m_ObjectHideFlags: 0
@@ -2619,6 +2972,97 @@ Transform:
   - {fileID: 2041544712}
   m_Father: {fileID: 1322106186}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1849541681
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1849541684}
+  - component: {fileID: 1849541683}
+  - component: {fileID: 1849541682}
+  m_Layer: 0
+  m_Name: 20 - Stone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1849541682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1849541681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc1a46eca4a35e5498f3df297015210f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Stone Resource
+  MaxStackSize: 999
+  ActivateableType: 4
+  ToolTipType:
+    GroupType: 0
+    MainLocalizationID: 86
+    SubLocalizationID: 50
+    DescriptionID: 87
+    ContextID: 0
+  DatabaseID: 20
+  LockItem: 1
+  Icon: {fileID: 21300000, guid: 536e97b0a1122254686205a4d7719794, type: 3}
+  ModelPrefab: {fileID: 100000, guid: 84376f2a0948947b5a6dfe814a1100a0, type: 2}
+  DefaultScale: 0.1
+  isTool: 0
+  ToolQualityLevels: []
+  isGrowableItem: 0
+  GrowableItemStages: []
+  isItem: 1
+  ItemCat: 3
+  ItemQualities:
+  - Quality: 0
+    AdjustsHealth: 0
+    HealthAdjustValue: 0
+    AdjustsEnergy: 0
+    EnergyAdjustValue: 0
+    BuyPrice: 10
+    SellPrice: 3
+  RandomizeVelocityOnSpawn: 1
+  RandomVelocityMax: 1.5
+  isStorage: 0
+  StorageList: []
+  isEnvironment: 0
+  EnvironmentValues:
+  - IsWaterable: 0
+    IsBreakable: 1
+    BreakableAtlasID: 0
+--- !u!114 &1849541683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1849541681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 0
+  instanceID: 1522644
+--- !u!4 &1849541684
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1849541681}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1405799090}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1902128843
 GameObject:
@@ -2662,7 +3106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 1108526
+  instanceID: 1522652
 --- !u!114 &1902128846
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2723,10 +3167,13 @@ MonoBehaviour:
     EnergyAdjustValue: 60
     BuyPrice: 720
     SellPrice: 240
+  RandomizeVelocityOnSpawn: 0
+  RandomVelocityMax: 0
   isStorage: 0
   StorageList:
   - TotalStorageSlots: 36
   isEnvironment: 0
+  EnvironmentValues: []
 --- !u!1 &2041544709
 GameObject:
   m_ObjectHideFlags: 0
@@ -2785,7 +3232,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 5
-  instanceID: 1108534
+  instanceID: 1522660
 --- !u!4 &2041544712
 Transform:
   m_ObjectHideFlags: 0

@@ -19,7 +19,8 @@ public class DuplicateCatcher : MonoBehaviour
         DialogueTree,
         Word,
         Quest,
-        FishingCompendium
+        FishingCompendium,
+        ObjectCompendium
     }
 
 
@@ -51,6 +52,7 @@ public class DuplicateCatcher : MonoBehaviour
                         case DatabaseType.Word: AssignNewDatabaseWordID(); break;
                         case DatabaseType.Quest: AssignNewDatabaseQuestID(); break;
                         case DatabaseType.FishingCompendium: AssignNewFishingID(); break;
+                        case DatabaseType.ObjectCompendium: AssignNewObjectCompendiumID(); break;
                     }
                 }
             }
@@ -72,6 +74,7 @@ public class DuplicateCatcher : MonoBehaviour
             case DatabaseType.Word: GiveAllWordDatabaseID(); break;
             case DatabaseType.Quest: GiveAllQuestDatabaseID(); break;
             case DatabaseType.FishingCompendium: GiveAllFishingID(); break;
+            case DatabaseType.ObjectCompendium: GiveAllObjectCompendiumID(); break;
         }
     }
 
@@ -382,7 +385,54 @@ public class DuplicateCatcher : MonoBehaviour
     }
     #endregion
 
+    #region ObjectCompendium
+    void AssignNewObjectCompendiumID()
+    {
+        transform.GetComponent<DG_BreakableObjectItem>().LockItem = false;
+        GiveAllObjectCompendiumID();
+    }
+    public void GiveAllObjectCompendiumID()
+    {
+        DG_BreakableObjectsAtlas ItemDB = QuickFindInEditor.GetBreakableObjectsCompendium();
+        Transform ItemDatabaseRoot = ItemDB.transform;
 
+        List<DG_BreakableObjectItem> AddObjects = new List<DG_BreakableObjectItem>();
+
+        for (int iN = 0; iN < ItemDatabaseRoot.childCount; iN++)
+        {
+            Transform Child = ItemDatabaseRoot.GetChild(iN);
+            for (int i = 0; i < Child.childCount; i++)
+            {
+                DG_BreakableObjectItem IO = Child.GetChild(i).GetComponent<DG_BreakableObjectItem>();
+                if (!IO.LockItem)
+                {
+                    IO.DatabaseID = ItemDB.ListCount;
+                    ItemDB.ListCount++;
+                    IO.LockItem = true;
+                    AddObjects.Add(IO);
+                }
+
+                IO.gameObject.name = IO.DatabaseID.ToString() + " - " + IO.Name;
+            }
+        }
+
+        if (AddObjects.Count == 0) { Debug.Log("All Items Accounted For. :)"); return; }
+
+        int Index = 0;
+        DG_BreakableObjectItem[] NewArray = new DG_BreakableObjectItem[ItemDB.ListCount];
+        for (int i = 0; i < ItemDB.ItemCatagoryList.Length; i++)
+        {
+            DG_BreakableObjectItem IO = ItemDB.ItemCatagoryList[i];
+            if (IO == null) continue;
+            NewArray[Index] = IO; Index++;
+        }
+        for (int i = 0; i < AddObjects.Count; i++)
+        { NewArray[Index] = AddObjects[i]; Index++; }
+
+        ItemDB.ItemCatagoryList = NewArray;
+        Debug.Log("Safely Added New Item to Database.");
+    }
+    #endregion
 
 
 
@@ -465,6 +515,18 @@ public class DuplicateCatcher : MonoBehaviour
                             ItemDB.transform.GetChild(i).GetChild(iN).GetComponent<DG_FishingAtlasObject>().LockItem = false;
                     }
                     GiveAllFishingID(); break;
+                }
+            case DatabaseType.ObjectCompendium:
+                {
+                    DG_BreakableObjectsAtlas ItemDB = QuickFindInEditor.GetBreakableObjectsCompendium();
+                    ItemDB.ListCount = 0;
+                    ItemDB.ItemCatagoryList = new DG_BreakableObjectItem[0];
+                    for (int i = 0; i < ItemDB.transform.childCount; i++)
+                    {
+                        for (int iN = 0; iN < ItemDB.transform.GetChild(i).childCount; iN++)
+                            ItemDB.transform.GetChild(i).GetChild(iN).GetComponent<DG_BreakableObjectItem>().LockItem = false;
+                    }
+                    GiveAllObjectCompendiumID(); break;
                 }
         }
     }

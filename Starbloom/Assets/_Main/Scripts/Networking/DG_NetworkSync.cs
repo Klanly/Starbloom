@@ -79,6 +79,12 @@ public class DG_NetworkSync : Photon.MonoBehaviour
         { if (UserList[i].PhotonViewID == ID) return UserList[i]; }
         return null;
     }
+    public Users GetUserByPlayerID(int ID)
+    {
+        for (int i = 0; i < UserList.Count; i++)
+        { if (UserList[i].PlayerCharacterID == ID) return UserList[i]; }
+        return null;
+    }
     public Transform GetCharacterTransformByPhotonViewID(int ViewID)
     {
         for (int i = 0; i < QuickFind.CharacterManager.transform.childCount; i++)
@@ -369,9 +375,7 @@ public class DG_NetworkSync : Photon.MonoBehaviour
 
     #region World Objects
     public void RequestWorldObjects()
-    {
-        PV.RPC("GatherWorldObjects", PhotonTargets.MasterClient, PV.ownerId);
-    }
+    { PV.RPC("GatherWorldObjects", PhotonTargets.MasterClient, PV.ownerId); }
     [PunRPC]
     void GatherWorldObjects(int ReturnPhotonOwner)
     {
@@ -395,33 +399,34 @@ public class DG_NetworkSync : Photon.MonoBehaviour
     }
     [PunRPC]
     void RemoveSceneObject(int[] Received)
-    {
-        Destroy(QuickFind.NetworkObjectManager.FindObject(Received[0], Received[1]));   
-    }
+    { Destroy(QuickFind.NetworkObjectManager.FindObject(Received[0], Received[1]));   }
 
 
     public void AddNetworkSceneObject(int[] Data)
-    {  
-        PV.RPC("AddSceneObject", PhotonTargets.All, Data);
-    }
+    {   PV.RPC("AddSceneObject", PhotonTargets.All, Data); }
     [PunRPC]
     void AddSceneObject(int[] Data)
-    {
-        QuickFind.NetworkObjectManager.CreateSceneObject(Data);
-    }
+    { QuickFind.NetworkObjectManager.CreateSceneObject(Data); }
 
 
     public void WaterNetworkObject(int[] OutData)
-    {
-        PV.RPC("SendWatered", PhotonTargets.All, OutData);
-    }
+    { PV.RPC("SendWatered", PhotonTargets.All, OutData); }
     [PunRPC]
     void SendWatered(int[] Data)
-    {
-        QuickFind.WateringSystem.WaterOne(Data);
-    }
+    { QuickFind.WateringSystem.WaterOne(Data); }
+
+    public void SendHitBreakable(int[] OutData)
+    { PV.RPC("SendBreakableHit", PhotonTargets.All, OutData);}
+    [PunRPC]
+    void SendBreakableHit(int[] Data)
+    { QuickFind.BreakableObjectsHandler.ReceiveHitData(Data); }
 
 
+    public void ClaimMagneticObject(int[] OutData)
+    { PV.RPC("CharacterClaimedMagneticObject", PhotonTargets.All, OutData); }
+    [PunRPC]
+    public void CharacterClaimedMagneticObject(int[] Data)
+    { GetUserByPlayerID(Data[0]).PhotonClone.GetChild(0).GetComponent<DG_MagnetAttraction>().ClaimObject(Data); }
 
 
     #endregion

@@ -48,7 +48,8 @@ public class DG_TooltipGUI : MonoBehaviour {
         AcheivementStone,
         AcheivementMeal,
         AcheivementGeneral,
-        UIElement
+        UIElement,
+        NoToolTip
     }
     [System.Serializable]
     public class ToolTipGroup

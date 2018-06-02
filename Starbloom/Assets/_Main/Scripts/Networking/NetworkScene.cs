@@ -51,7 +51,7 @@ public class NetworkScene : MonoBehaviour {
             NO.transform.position = new Vector3(((float)NO.PositionX / 100), ((float)NO.PositionY / 100), ((float)NO.PositionZ / 100));
             NO.transform.eulerAngles = new Vector3(0, ((float)NO.YFacing / 100), 0);
 
-            NO.SpawnNetworkObject();      
+            NO.SpawnNetworkObject();
             //
         }
         DestroyObjects();
