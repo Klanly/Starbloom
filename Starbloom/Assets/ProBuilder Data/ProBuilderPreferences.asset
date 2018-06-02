@@ -13,6 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Bool_keys:
   - pbEnableBackfaceSelection
+  - pbGenerateUV2PerObject
   m_Int_keys:
   - pb_GIWorkflowMode
   - pbHandleAlignment
@@ -25,15 +26,17 @@ MonoBehaviour:
   - pbEditorScroll.x
   - pbEditorScroll.y
   - pbExtrudeDistance
+  - pbBevelAmount
   m_String_keys: []
   m_Color_keys: []
   m_Material_keys: []
-  m_Bool_values: 00
-  m_Int_values: 00000000020000000000000001000000000000000000000002000000
+  m_Bool_values: 0000
+  m_Int_values: 01000000020000000100000002000000000000000000000002000000
   m_Float_values:
   - 0
   - 0
-  - 2
+  - 1
+  - 0.61908937
   m_String_values: []
   m_Color_values: []
   m_Material_values: []
