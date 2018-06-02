@@ -161,6 +161,10 @@ MonoBehaviour:
   PositionY: -546
   PositionZ: -4338
   YFacing: 0
+  isWaterable: 0
+  HasBeenWatered: 0
+  HasHealth: 0
+  HealthValue: 0
   isStorageContainer: 0
   isTreasureList: 0
   StorageSlots: []
@@ -298,6 +302,10 @@ MonoBehaviour:
   PositionY: -455
   PositionZ: -3715
   YFacing: 0
+  isWaterable: 0
+  HasBeenWatered: 0
+  HasHealth: 0
+  HealthValue: 0
   isStorageContainer: 0
   isTreasureList: 0
   StorageSlots: []
@@ -348,6 +356,10 @@ MonoBehaviour:
   PositionY: 163
   PositionZ: -1156
   YFacing: 0
+  isWaterable: 0
+  HasBeenWatered: 0
+  HasHealth: 0
+  HealthValue: 0
   isStorageContainer: 0
   isTreasureList: 0
   StorageSlots: []
@@ -398,6 +410,10 @@ MonoBehaviour:
   PositionY: 155
   PositionZ: -800
   YFacing: 0
+  isWaterable: 0
+  HasBeenWatered: 0
+  HasHealth: 0
+  HealthValue: 0
   isStorageContainer: 0
   isTreasureList: 0
   StorageSlots: []
@@ -448,6 +464,10 @@ MonoBehaviour:
   PositionY: -532
   PositionZ: -4290
   YFacing: 0
+  isWaterable: 0
+  HasBeenWatered: 0
+  HasHealth: 0
+  HealthValue: 0
   isStorageContainer: 0
   isTreasureList: 0
   StorageSlots: []
@@ -544,6 +564,172 @@ MonoBehaviour:
   PositionY: 158
   PositionZ: -701
   YFacing: 0
+  isWaterable: 0
+  HasBeenWatered: 0
+  HasHealth: 0
+  HealthValue: 0
+  isStorageContainer: 1
+  isTreasureList: 0
+  StorageSlots: []
+--- !u!1 &511659769
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 511659770}
+  - component: {fileID: 511659771}
+  m_Layer: 0
+  m_Name: Rock
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &511659770
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 511659769}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 7, y: 1.735, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2110302582}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &511659771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 511659769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NetworkObjectID: 0
+  ItemRefID: 19
+  ItemGrowthLevel: 0
+  PositionX: 700
+  PositionY: 173
+  PositionZ: 100
+  YFacing: 0
+  isWaterable: 0
+  HasBeenWatered: 0
+  HasHealth: 1
+  HealthValue: 15
+  isStorageContainer: 0
+  isTreasureList: 0
+  StorageSlots: []
+--- !u!1 &709497126
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 709497127}
+  - component: {fileID: 709497128}
+  m_Layer: 0
+  m_Name: Rock
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &709497127
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 709497126}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 6, y: 1.735, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2110302582}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &709497128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 709497126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NetworkObjectID: 0
+  ItemRefID: 19
+  ItemGrowthLevel: 0
+  PositionX: 600
+  PositionY: 173
+  PositionZ: 100
+  YFacing: 0
+  isWaterable: 0
+  HasBeenWatered: 0
+  HasHealth: 1
+  HealthValue: 15
+  isStorageContainer: 0
+  isTreasureList: 0
+  StorageSlots: []
+--- !u!1 &797189596
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 797189597}
+  - component: {fileID: 797189598}
+  m_Layer: 0
+  m_Name: Rock
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &797189597
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 797189596}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 6, y: 1.735, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2110302582}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &797189598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 797189596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NetworkObjectID: 0
+  ItemRefID: 19
+  ItemGrowthLevel: 0
+  PositionX: 600
+  PositionY: 173
+  PositionZ: 0
+  YFacing: 0
+  isWaterable: 0
+  HasBeenWatered: 0
+  HasHealth: 1
+  HealthValue: 15
   isStorageContainer: 0
   isTreasureList: 0
   StorageSlots: []
@@ -636,6 +822,10 @@ MonoBehaviour:
   PositionY: 165
   PositionZ: 0
   YFacing: 0
+  isWaterable: 0
+  HasBeenWatered: 0
+  HasHealth: 0
+  HealthValue: 0
   isStorageContainer: 1
   isTreasureList: 0
   StorageSlots:
@@ -902,6 +1092,10 @@ MonoBehaviour:
   PositionY: -526
   PositionZ: -4591
   YFacing: 0
+  isWaterable: 0
+  HasBeenWatered: 0
+  HasHealth: 0
+  HealthValue: 0
   isStorageContainer: 0
   isTreasureList: 0
   StorageSlots: []
@@ -970,13 +1164,13 @@ MonoBehaviour:
       Boots: 0
       RuckSackUnlockedSize: 12
       RucksackSlots:
-      - ContainedItem: 2
+      - ContainedItem: 0
         CurrentStackActive: 0
         LowValue: 1
         NormalValue: 0
         HighValue: 0
         MaximumValue: 0
-      - ContainedItem: 3
+      - ContainedItem: 2
         CurrentStackActive: 0
         LowValue: 1
         NormalValue: 0
@@ -988,9 +1182,9 @@ MonoBehaviour:
         NormalValue: 0
         HighValue: 0
         MaximumValue: 0
-      - ContainedItem: 5
+      - ContainedItem: 3
         CurrentStackActive: 0
-        LowValue: 999
+        LowValue: 1
         NormalValue: 0
         HighValue: 0
         MaximumValue: 0
@@ -1000,18 +1194,6 @@ MonoBehaviour:
         NormalValue: 0
         HighValue: 0
         MaximumValue: 0
-      - ContainedItem: 6
-        CurrentStackActive: 0
-        LowValue: 50
-        NormalValue: 50
-        HighValue: 50
-        MaximumValue: 50
-      - ContainedItem: 6
-        CurrentStackActive: 0
-        LowValue: 50
-        NormalValue: 50
-        HighValue: 50
-        MaximumValue: 50
       - ContainedItem: 10
         CurrentStackActive: 0
         LowValue: 1
@@ -1186,229 +1368,6 @@ MonoBehaviour:
         NormalValue: 0
         HighValue: 0
         MaximumValue: 0
-    Acheivements:
-      LargestFishCaught: 000000000000000000000000
-  - Name: 
-    CurrentEnergy: 0
-    MaxEnergy: 0
-    CurrentHealth: 0
-    MaxHealth: 0
-    NonCombatSkillEXP:
-      Farming: 0
-      Mining: 0
-      Foraging: 0
-      Fishing: 0
-    Equipment:
-      HatId: 0
-      Ring1: 0
-      Ring2: 0
-      Boots: 0
-      RuckSackUnlockedSize: 12
-      RucksackSlots:
-      - ContainedItem: 2
-        CurrentStackActive: 0
-        LowValue: 1
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 3
-        CurrentStackActive: 0
-        LowValue: 1
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 18
-        CurrentStackActive: 0
-        LowValue: 1
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
       - ContainedItem: 0
         CurrentStackActive: 0
         LowValue: 0
@@ -1440,13 +1399,13 @@ MonoBehaviour:
       Boots: 0
       RuckSackUnlockedSize: 12
       RucksackSlots:
-      - ContainedItem: 2
+      - ContainedItem: 0
         CurrentStackActive: 0
         LowValue: 1
         NormalValue: 0
         HighValue: 0
         MaximumValue: 0
-      - ContainedItem: 3
+      - ContainedItem: 2
         CurrentStackActive: 0
         LowValue: 1
         NormalValue: 0
@@ -1458,21 +1417,21 @@ MonoBehaviour:
         NormalValue: 0
         HighValue: 0
         MaximumValue: 0
-      - ContainedItem: 0
+      - ContainedItem: 3
         CurrentStackActive: 0
-        LowValue: 0
+        LowValue: 1
         NormalValue: 0
         HighValue: 0
         MaximumValue: 0
-      - ContainedItem: 0
+      - ContainedItem: 5
         CurrentStackActive: 0
-        LowValue: 0
+        LowValue: 1
         NormalValue: 0
         HighValue: 0
         MaximumValue: 0
-      - ContainedItem: 0
+      - ContainedItem: 10
         CurrentStackActive: 0
-        LowValue: 0
+        LowValue: 1
         NormalValue: 0
         HighValue: 0
         MaximumValue: 0
@@ -1675,13 +1634,13 @@ MonoBehaviour:
       Boots: 0
       RuckSackUnlockedSize: 12
       RucksackSlots:
-      - ContainedItem: 2
+      - ContainedItem: 0
         CurrentStackActive: 0
         LowValue: 1
         NormalValue: 0
         HighValue: 0
         MaximumValue: 0
-      - ContainedItem: 3
+      - ContainedItem: 2
         CurrentStackActive: 0
         LowValue: 1
         NormalValue: 0
@@ -1693,6 +1652,30 @@ MonoBehaviour:
         NormalValue: 0
         HighValue: 0
         MaximumValue: 0
+      - ContainedItem: 3
+        CurrentStackActive: 0
+        LowValue: 1
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 5
+        CurrentStackActive: 0
+        LowValue: 1
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 10
+        CurrentStackActive: 0
+        LowValue: 1
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 0
         CurrentStackActive: 0
         LowValue: 0
@@ -1708,6 +1691,217 @@ MonoBehaviour:
       - ContainedItem: 0
         CurrentStackActive: 0
         LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+    Acheivements:
+      LargestFishCaught: 000000000000000000000000
+  - Name: 
+    CurrentEnergy: 0
+    MaxEnergy: 0
+    CurrentHealth: 0
+    MaxHealth: 0
+    NonCombatSkillEXP:
+      Farming: 0
+      Mining: 0
+      Foraging: 0
+      Fishing: 0
+    Equipment:
+      HatId: 0
+      Ring1: 0
+      Ring2: 0
+      Boots: 0
+      RuckSackUnlockedSize: 12
+      RucksackSlots:
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 1
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 2
+        CurrentStackActive: 0
+        LowValue: 1
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 18
+        CurrentStackActive: 0
+        LowValue: 1
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 3
+        CurrentStackActive: 0
+        LowValue: 1
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 5
+        CurrentStackActive: 0
+        LowValue: 1
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 10
+        CurrentStackActive: 0
+        LowValue: 1
         NormalValue: 0
         HighValue: 0
         MaximumValue: 0
@@ -1944,6 +2138,10 @@ MonoBehaviour:
   PositionY: -451
   PositionZ: -3836
   YFacing: 0
+  isWaterable: 0
+  HasBeenWatered: 0
+  HasHealth: 0
+  HealthValue: 0
   isStorageContainer: 0
   isTreasureList: 0
   StorageSlots: []
@@ -1994,6 +2192,10 @@ MonoBehaviour:
   PositionY: -523
   PositionZ: -4163
   YFacing: 0
+  isWaterable: 0
+  HasBeenWatered: 0
+  HasHealth: 0
+  HealthValue: 0
   isStorageContainer: 0
   isTreasureList: 0
   StorageSlots: []
@@ -2057,6 +2259,10 @@ MonoBehaviour:
   PositionY: 0
   PositionZ: 0
   YFacing: 0
+  isWaterable: 0
+  HasBeenWatered: 0
+  HasHealth: 0
+  HealthValue: 0
   isStorageContainer: 1
   isTreasureList: 0
   StorageSlots:
@@ -2276,6 +2482,60 @@ MonoBehaviour:
     NormalValue: 0
     HighValue: 0
     MaximumValue: 0
+--- !u!1 &1415237814
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1415237815}
+  - component: {fileID: 1415237816}
+  m_Layer: 0
+  m_Name: Rock
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1415237815
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1415237814}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 7, y: 1.735, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2110302582}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1415237816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1415237814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NetworkObjectID: 0
+  ItemRefID: 19
+  ItemGrowthLevel: 0
+  PositionX: 700
+  PositionY: 173
+  PositionZ: 0
+  YFacing: 0
+  isWaterable: 0
+  HasBeenWatered: 0
+  HasHealth: 1
+  HealthValue: 15
+  isStorageContainer: 0
+  isTreasureList: 0
+  StorageSlots: []
 --- !u!1001 &1528084741
 Prefab:
   m_ObjectHideFlags: 0
@@ -2443,6 +2703,60 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DisplayPreviewsInSceneView: 1
+--- !u!1 &1933994749
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1933994750}
+  - component: {fileID: 1933994751}
+  m_Layer: 0
+  m_Name: Stone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1933994750
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1933994749}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 3.238, y: 2.352, z: -0.09}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2110302582}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1933994751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1933994749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NetworkObjectID: 0
+  ItemRefID: 20
+  ItemGrowthLevel: 0
+  PositionX: 323
+  PositionY: 235
+  PositionZ: -9
+  YFacing: 0
+  isWaterable: 0
+  HasBeenWatered: 0
+  HasHealth: 1
+  HealthValue: 15
+  isStorageContainer: 0
+  isTreasureList: 0
+  StorageSlots: []
 --- !u!1 &2110302581
 GameObject:
   m_ObjectHideFlags: 0
@@ -2479,6 +2793,11 @@ Transform:
   - {fileID: 373058247}
   - {fileID: 1136677238}
   - {fileID: 1065796224}
+  - {fileID: 797189597}
+  - {fileID: 1415237815}
+  - {fileID: 511659770}
+  - {fileID: 709497127}
+  - {fileID: 1933994750}
   m_Father: {fileID: 1904530056}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

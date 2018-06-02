@@ -48,7 +48,7 @@ public class HotbarItemHandler : MonoBehaviour {
                 case ActivateableTypes.Axe: Debug.Log("Axe " + UpEvent.ToString()); break;
                 case ActivateableTypes.FishingPole: QuickFind.FishingHandler.ExternalUpdate(UpEvent); break;
                 case ActivateableTypes.Hoe: QuickFind.HoeHandler.InputDetected(UpEvent); break;
-                case ActivateableTypes.Pickaxe: Debug.Log("PickAxe " + UpEvent.ToString()); break;
+                case ActivateableTypes.Pickaxe: QuickFind.PickaxeHandler.InputDetected(UpEvent); break;
                 case ActivateableTypes.RegularItem: Debug.Log("RegularItem " + UpEvent.ToString()); break;
                 case ActivateableTypes.PlaceableItem: QuickFind.ObjectPlacementManager.InputDetected(UpEvent); break;
                 case ActivateableTypes.WateringCan: QuickFind.WateringCanHandler.InputDetected(UpEvent); break;
@@ -71,12 +71,14 @@ public class HotbarItemHandler : MonoBehaviour {
         if (QuickFind.ObjectPlacementManager.PlacementActive) QuickFind.ObjectPlacementManager.DestroyObjectGhost();
         if (QuickFind.HoeHandler.PlacementActive) QuickFind.HoeHandler.CancelHoeing();
         if (QuickFind.WateringCanHandler.PlacementActive) QuickFind.WateringCanHandler.CancelWatering();
+        if (QuickFind.PickaxeHandler.PlacementActive) QuickFind.PickaxeHandler.CancelHittingMode();
 
         switch (ItemDatabaseReference.ActivateableType)
         {
             case ActivateableTypes.PlaceableItem: QuickFind.ObjectPlacementManager.SetupItemObjectGhost(DG_ObjectPlacement.PlacementType.ItemObject, RucksackSlot, ItemDatabaseReference, Slot); break;
             case ActivateableTypes.Hoe: QuickFind.HoeHandler.SetupForHoeing(RucksackSlot, ItemDatabaseReference, Slot); break;
             case ActivateableTypes.WateringCan: QuickFind.WateringCanHandler.SetupForWatering(RucksackSlot, ItemDatabaseReference, Slot); break;
+            case ActivateableTypes.Pickaxe: QuickFind.PickaxeHandler.SetupForHitting(RucksackSlot, ItemDatabaseReference, Slot); break;
         }
 
 

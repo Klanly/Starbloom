@@ -20,6 +20,8 @@ public class DG_ItemsDatabase : MonoBehaviour {
     [HideInInspector] public int ListCount;
 
 
+    public float PreMagneticObjectWaitTimer;
+
     [ListDrawerSettings(ListElementLabelName = "ItemName")]
     public GenericIconDatabaseItem[] GenericIconList;
 

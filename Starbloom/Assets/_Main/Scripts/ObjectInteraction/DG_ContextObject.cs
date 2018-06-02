@@ -13,7 +13,7 @@ public class DG_ContextObject : MonoBehaviour
         NameChange,
         Vehicle,
         PickupItem,
-        Growable,
+        Breakable,
         MoveableStorage,
         Soil
     }

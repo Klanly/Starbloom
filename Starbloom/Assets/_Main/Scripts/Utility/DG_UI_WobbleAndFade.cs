@@ -23,6 +23,8 @@ public class DG_UI_WobbleAndFade : MonoBehaviour {
     public bool isShrink;
     public float ShrinkTime;
 
+    [Header("ScaleAtAwake")]
+    bool ScaleAtAwake = true;
 
     Transform _T;
     Vector3 KnownScale;
@@ -34,7 +36,8 @@ public class DG_UI_WobbleAndFade : MonoBehaviour {
     {
         _T = transform;
         KnownScale = _T.localScale;
-        _T.localScale = Vector3.zero;
+        if(ScaleAtAwake)
+            _T.localScale = Vector3.zero;
         this.enabled = false;
     }
 

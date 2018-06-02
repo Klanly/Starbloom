@@ -69,4 +69,6 @@ MonoBehaviour:
   - LoadPlayerStat
   - AddSceneObject
   - SendWatered
+  - SendBreakableHit
+  - SendBreakableBroke
   DisableAutoOpenWizard: 1

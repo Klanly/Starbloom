@@ -27,7 +27,6 @@ public class DG_InteractHandler : MonoBehaviour
                 {
                     case DG_ContextObject.ContextTypes.PickupItem: HandlePickUpItem(CO); break;
                     case DG_ContextObject.ContextTypes.Conversation: break;
-                    case DG_ContextObject.ContextTypes.Growable: break;
                     case DG_ContextObject.ContextTypes.Treasure: break;
                     case DG_ContextObject.ContextTypes.MoveableStorage: HandleMoveableStorage(CO); break;
                 }
