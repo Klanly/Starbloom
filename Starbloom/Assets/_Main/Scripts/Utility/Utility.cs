@@ -6,7 +6,7 @@ using UnityEngine;
 
 public static class Utility
 {
-	public static void SetEmissiveColor( Material _mat, Color _color, MaterialGlobalIlluminationFlags _giFlag = MaterialGlobalIlluminationFlags.RealtimeEmissive )
+	public static void SetEmissiveColor(Material _mat, Color _color, MaterialGlobalIlluminationFlags _giFlag = MaterialGlobalIlluminationFlags.RealtimeEmissive)
 	{
 		_mat.EnableKeyword("_EMISSION");
 		_mat.globalIlluminationFlags = _giFlag;
@@ -14,7 +14,7 @@ public static class Utility
 	}
 
 	// Array to curve is original vector3 array, smoothness is the number of interpolations
-	public static Vector3[] MakeSmoothCurve( Vector3[] arrayToCurve, float smoothness)
+	public static Vector3[] MakeSmoothCurve(Vector3[] arrayToCurve, float smoothness)
 	{
 		List<Vector3> points;
 		List<Vector3> curvedPoints;
@@ -30,14 +30,14 @@ public static class Utility
 
 		float t = 0f;
 
-		for(int pointInTimeOnCurve = 0; pointInTimeOnCurve < curvedLen+1; ++pointInTimeOnCurve)
+		for (int pointInTimeOnCurve = 0; pointInTimeOnCurve < curvedLen + 1; ++pointInTimeOnCurve)
 		{
 			t = Mathf.InverseLerp(0, curvedLen, pointInTimeOnCurve);
 			points = new List<Vector3>(arrayToCurve);
 
 			for (int j = pointsLen - 1; j > 0; --j)
 			{
-				for(int i = 0; i < j; ++i )
+				for (int i = 0; i < j; ++i)
 				{
 					points[i] = (1 - t) * points[i] + t * points[i + 1];
 				}
@@ -57,7 +57,11 @@ public static class Utility
 
 	public static KeyValuePair<K, V> Lower_Bound<K, V>(this SortedDictionary<K, V> _dict, K _find) where K : IComparable<K>
 	{
-		return _dict.FirstOrDefault(x => x.Key.CompareTo(_find) >= 0);
+		for( int i = 0; i < _dict.Count; ++i )
+			if (_dict.ElementAt(i).Key.CompareTo(_find) > 0)
+				return _dict.ElementAt(Math.Max(0, i - 1));
+
+		return _dict.LastOrDefault();
 	}
 	#endregion
 }
