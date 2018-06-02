@@ -79,6 +79,12 @@ public class DG_NetworkSync : Photon.MonoBehaviour
         { if (UserList[i].PhotonViewID == ID) return UserList[i]; }
         return null;
     }
+    public Users GetUserByPlayerID(int ID)
+    {
+        for (int i = 0; i < UserList.Count; i++)
+        { if (UserList[i].PlayerCharacterID == ID) return UserList[i]; }
+        return null;
+    }
     public Transform GetCharacterTransformByPhotonViewID(int ViewID)
     {
         for (int i = 0; i < QuickFind.CharacterManager.transform.childCount; i++)
@@ -414,6 +420,13 @@ public class DG_NetworkSync : Photon.MonoBehaviour
     [PunRPC]
     void SendBreakableHit(int[] Data)
     { QuickFind.BreakableObjectsHandler.ReceiveHitData(Data); }
+
+
+    public void ClaimMagneticObject(int[] OutData)
+    { PV.RPC("CharacterClaimedMagneticObject", PhotonTargets.All, OutData); }
+    [PunRPC]
+    public void CharacterClaimedMagneticObject(int[] Data)
+    { GetUserByPlayerID(Data[0]).PhotonClone.GetChild(0).GetComponent<DG_MagnetAttraction>().ClaimObject(Data); }
 
 
     #endregion

@@ -5,21 +5,15 @@ using UnityEngine;
 public class DG_CharacterLink : MonoBehaviour {
 
 
-    public MoveInput CharInput = null;
-    public Locomotion PlayerChar = null;
-    public LocomotionAnim CharAnim = null;
-
-    public Transform PlayerT;
-
     bool Allow = false;
-
 
 
     private void Awake()
     {
-        CharInput.enabled = false;
-        PlayerChar.enabled = false;
-        CharAnim.enabled = false;
+        Transform Child = transform.GetChild(0);
+        Child.GetComponent<MoveInput>().enabled = false;
+        Child.GetComponent<Locomotion>().enabled = false;
+        Child.GetComponent<LocomotionAnim>().enabled = false;
     }
 
 
@@ -46,17 +40,15 @@ public class DG_CharacterLink : MonoBehaviour {
             return;
         }
 
+        Transform Child = transform.GetChild(0);
+        Child.GetComponent<MoveInput>().enabled = true;
+        Child.GetComponent<Locomotion>().enabled = true;
+        Child.GetComponent<LocomotionAnim>().enabled = true;
+        Child.GetComponent<DG_MagnetAttraction>().isOwner = true;
 
-        CharInput.enabled = true;
-        PlayerChar.enabled = true;
-        CharAnim.enabled = true;
-
-        QuickFind.PlayerTrans = PlayerChar.transform;
+        QuickFind.PlayerTrans = Child;
         QuickFind.InputController.MainPlayer.CharLink = this;
-        QuickFind.PlayerCam.CharTrans = PlayerChar.transform;
         QuickFind.NetworkSync.SetPhotonViewID(transform.GetComponent<PhotonView>().viewID);
-        QuickFind.ContextDetectionHandler.CharacterLink = this;
-        QuickFind.RainDropHandler.Player = PlayerChar.transform;
 
         this.enabled = false;
     }

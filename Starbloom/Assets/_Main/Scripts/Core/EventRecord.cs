@@ -88,7 +88,7 @@ public class EventRecord : SerializedMonoBehaviour
 	[Serializable]
 	public class DailyRecord : Dictionary<int, ActionMap> { }
 
-	[DictionaryDrawerSettings(DisplayMode = DictionaryDisplayOptions.OneLine, KeyLabel = "Day", ValueLabel = "Record")]
+	[DictionaryDrawerSettings(DisplayMode = DictionaryDisplayOptions.CollapsedFoldout, KeyLabel = "Day", ValueLabel = "Record")]
 	public Dictionary<int, DailyRecord> Log = new Dictionary<int, DailyRecord>();
 	
 	public ActionData AddAction(string _action, int _day, int _playerID)

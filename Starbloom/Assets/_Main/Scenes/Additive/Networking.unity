@@ -2536,7 +2536,7 @@ MonoBehaviour:
   isStorageContainer: 0
   isTreasureList: 0
   StorageSlots: []
---- !u!1001 &1528084741
+--- !u!1001 &1572039522
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -2592,12 +2592,12 @@ Prefab:
 GameObject:
   m_PrefabParentObject: {fileID: 1488329588103022, guid: c54e8c395b0069c40803538e94abf712,
     type: 2}
-  m_PrefabInternal: {fileID: 1528084741}
+  m_PrefabInternal: {fileID: 1572039522}
 --- !u!4 &1776617527 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4004003030072494, guid: c54e8c395b0069c40803538e94abf712,
     type: 2}
-  m_PrefabInternal: {fileID: 1528084741}
+  m_PrefabInternal: {fileID: 1572039522}
 --- !u!1001 &1836453460
 Prefab:
   m_ObjectHideFlags: 0

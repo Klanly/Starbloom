@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class DG_MagneticItem : MonoBehaviour {
 
-    [HideInInspector] bool AllowMagnetic = false;
+    [HideInInspector] public bool Claimed = false;
+    [HideInInspector] public bool AllowMagnetic = false;
 
     public bool RandomizeRotationOnEnable;
     public LayerMask DetectionMask;
@@ -20,6 +21,7 @@ public class DG_MagneticItem : MonoBehaviour {
         RB.AddForce(Force, ForceMode.VelocityChange);
         WaitTimer = QuickFind.ItemDatabase.PreMagneticObjectWaitTimer;
         AllowMagnetic = false;
+        Claimed = false;
         this.enabled = true;
     }
 
@@ -33,7 +35,6 @@ public class DG_MagneticItem : MonoBehaviour {
             {
                 AllowMagnetic = true;
                 this.enabled = false;
-                Debug.Log("Magnetic Ready");
             }
         }
     }

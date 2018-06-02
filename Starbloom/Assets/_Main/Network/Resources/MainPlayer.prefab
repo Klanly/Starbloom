@@ -1762,6 +1762,7 @@ GameObject:
   - component: {fileID: 114731906573777762}
   - component: {fileID: 114255783689536152}
   - component: {fileID: 114027062702383978}
+  - component: {fileID: 114254575029485218}
   - component: {fileID: 54293750097057858}
   - component: {fileID: 136819938689929860}
   m_Layer: 12
@@ -4113,6 +4114,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38d6b63c209398545a985b2fee559961, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114254575029485218
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1830578150064844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 574bc5cc480680f4fad79380b278e2af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MagneticMask:
+    serializedVersion: 2
+    m_Bits: 16384
+  BaseMagnetRange: 1.2
+  PullSpeed: 5
+  isOwner: 0
 --- !u!114 &114255783689536152
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4138,10 +4156,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b85918064b3a0541a042f913356412c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CharInput: {fileID: 114731906573777762}
-  PlayerChar: {fileID: 114255783689536152}
-  CharAnim: {fileID: 114027062702383978}
-  PlayerT: {fileID: 4711886713025158}
 --- !u!114 &114731906573777762
 MonoBehaviour:
   m_ObjectHideFlags: 1
