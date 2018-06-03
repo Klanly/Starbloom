@@ -63,8 +63,11 @@ public class Growable : SerializedMonoBehaviour
 	
 	protected void OnDayChanged( int _day )
 	{
+<<<<<<< HEAD
         if(QuickFind.GameSettings.ShowGrowthDebug) Debug.LogFormat("Day changed - {0}", _day);
 
+=======
+>>>>>>> 26bd28a67552921e58ae87e2423e4e3bdbf45f4e
 		RefreshStage();
 	}
 
