@@ -162,6 +162,7 @@ public class DG_InventoryGUI : MonoBehaviour
                 GuiItemSlots[i].Disabled.enabled = true;
         }
         UpdateMirrorGrid();
+        UpdateFloatingItemVisuals();
     }
     public void UpdateRucksackSlotVisual(DG_InventoryItem GuiSlot, DG_PlayerCharacters.RucksackSlot RucksackSlot)
     {
@@ -258,11 +259,37 @@ public class DG_InventoryGUI : MonoBehaviour
         }
     }
 
+
+
+    public void ClearFloatingObject()
+    {
+        PickedUpItemSlot = null;
+        isFloatingInventoryItem = false;
+        FloatingRect.position = new Vector3(8000, 0, 0);
+    }
+
+
+    void UpdateFloatingItemVisuals()
+    {
+        if (PickedUpItemSlot == null) return;
+
+        FloatingItem.AmountText.text = PickedUpItemSlot.AmountText.text;
+        FloatingItem.Icon.sprite = PickedUpItemSlot.Icon.sprite;
+    }
+
+
+
+
+
+
     void PickupItem(DG_InventoryItem PressedItem)
     {
+        if (PressedItem.isTrash) { return; }
+
         PickedUpItemSlot = PressedItem;
-        FloatingItem.AmountText.text = PressedItem.AmountText.text;
-        FloatingItem.Icon.sprite = PressedItem.Icon.sprite;
+
+        UpdateFloatingItemVisuals();
+
         PressedItem.AmountText.text = string.Empty;
         PressedItem.Icon.sprite = DefaultNullSprite;
         PressedItem.QualityLevelOverlay.enabled = false;
@@ -270,6 +297,8 @@ public class DG_InventoryGUI : MonoBehaviour
     }
     void AdjustFloatingInventoryUI(bool Enabled)
     {
+        if (CurrentHoverItem != null && CurrentHoverItem.isTrash) return;
+
         isFloatingInventoryItem = Enabled;
         if (!Enabled)
             FloatingRect.position = new Vector3(8000, 0, 0);

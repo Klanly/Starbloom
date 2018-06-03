@@ -11,6 +11,8 @@ public class DG_PickAxeHandler : MonoBehaviour {
     DG_PlayerCharacters.RucksackSlot RucksackSlotOpen;
     DG_ItemObject ItemDatabaseReference;
     int ActiveSlot;
+    HotbarItemHandler.ActivateableTypes CurrentActive;
+
     GameObject HitObject;
 
     [HideInInspector] public bool PlacementActive;
@@ -41,16 +43,17 @@ public class DG_PickAxeHandler : MonoBehaviour {
         {
             DG_ContextObject CO = HitObject.GetComponent<DG_ContextObject>();
             if (CO.Type == DG_ContextObject.ContextTypes.Breakable || CO.Type == DG_ContextObject.ContextTypes.Pick_And_Break)
-                QuickFind.BreakableObjectsHandler.TryHitObject(CO, HotbarItemHandler.ActivateableTypes.Pickaxe,(DG_ItemObject.ItemQualityLevels)RucksackSlotOpen.CurrentStackActive, RucksackSlotOpen);
+                QuickFind.BreakableObjectsHandler.TryHitObject(CO, CurrentActive, (DG_ItemObject.ItemQualityLevels)RucksackSlotOpen.CurrentStackActive, RucksackSlotOpen);
         }
     }
 
 
-    public void SetupForHitting(DG_PlayerCharacters.RucksackSlot Rucksack = null, DG_ItemObject Item = null, int slot = 0)
+    public void SetupForHitting(DG_PlayerCharacters.RucksackSlot Rucksack = null, DG_ItemObject Item = null, int slot = 0, HotbarItemHandler.ActivateableTypes Current = HotbarItemHandler.ActivateableTypes.Pickaxe)
     {
         RucksackSlotOpen = Rucksack;
         ItemDatabaseReference = Item;
         ActiveSlot = slot;
+        CurrentActive = Current;
         QuickFind.GridDetection.ObjectIsPlacing = true;
         QuickFind.GridDetection.GlobalPositioning = false;
         PlacementActive = true;

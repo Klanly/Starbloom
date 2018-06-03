@@ -45,7 +45,7 @@ public class HotbarItemHandler : MonoBehaviour {
             switch(CurrentItemDatabaseReference.ActivateableType)
             {
 
-                case ActivateableTypes.Axe: Debug.Log("Axe " + UpEvent.ToString()); break;
+                case ActivateableTypes.Axe: QuickFind.PickaxeHandler.InputDetected(UpEvent); break;
                 case ActivateableTypes.FishingPole: QuickFind.FishingHandler.ExternalUpdate(UpEvent); break;
                 case ActivateableTypes.Hoe: QuickFind.HoeHandler.InputDetected(UpEvent); break;
                 case ActivateableTypes.Pickaxe: QuickFind.PickaxeHandler.InputDetected(UpEvent); break;
@@ -78,7 +78,8 @@ public class HotbarItemHandler : MonoBehaviour {
             case ActivateableTypes.PlaceableItem: QuickFind.ObjectPlacementManager.SetupItemObjectGhost(DG_ObjectPlacement.PlacementType.ItemObject, RucksackSlot, ItemDatabaseReference, Slot); break;
             case ActivateableTypes.Hoe: QuickFind.HoeHandler.SetupForHoeing(RucksackSlot, ItemDatabaseReference, Slot); break;
             case ActivateableTypes.WateringCan: QuickFind.WateringCanHandler.SetupForWatering(RucksackSlot, ItemDatabaseReference, Slot); break;
-            case ActivateableTypes.Pickaxe: QuickFind.PickaxeHandler.SetupForHitting(RucksackSlot, ItemDatabaseReference, Slot); break;
+            case ActivateableTypes.Pickaxe: QuickFind.PickaxeHandler.SetupForHitting(RucksackSlot, ItemDatabaseReference, Slot, ActivateableTypes.Pickaxe); break;
+            case ActivateableTypes.Axe: QuickFind.PickaxeHandler.SetupForHitting(RucksackSlot, ItemDatabaseReference, Slot, ActivateableTypes.Axe); break;
         }
 
 

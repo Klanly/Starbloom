@@ -14,13 +14,19 @@ public class NetworkScene : MonoBehaviour {
 
 
     public int SceneID;
-    [HideInInspector] public List<NetworkObject> NetworkObjectList;
+    //[HideInInspector]
+    public List<NetworkObject> TempNetworkObjectList;
+    public List<NetworkObject> NetworkObjectList;
+
+
+    [HideInInspector] public GameObject JunkObject;
 
     int wait1 = 0;
 
     private void Awake()
     {
         NetworkObjectList = new List<NetworkObject>();
+        TempNetworkObjectList = new List<NetworkObject>();
         this.enabled = false;
     }
 
@@ -34,6 +40,12 @@ public class NetworkScene : MonoBehaviour {
         }
     }
 
+
+
+
+
+
+
     public void LoadSceneObjects()
     {
         wait1 = 2;
@@ -41,35 +53,37 @@ public class NetworkScene : MonoBehaviour {
     }
     void LoadAfterFrame()
     {
-        for (int i = 0; i < NetworkObjectList.Count; i++)
+        for (int i = 0; i < TempNetworkObjectList.Count; i++)
         {
             GameObject GO = new GameObject();
             GO.transform.SetParent(transform);
             NetworkObject NO = GO.AddComponent<NetworkObject>();
-            NetworkObject ListNO = NetworkObjectList[i];
+            NetworkObjectList.Add(NO);
+            NetworkObject ListNO = TempNetworkObjectList[i];
             NO.Clone(NO, ListNO);
+            if (NO.NetworkObjectID == 0) NO.NetworkObjectID = GetValidNextNetworkID();
             NO.transform.position = new Vector3(((float)NO.PositionX / 100), ((float)NO.PositionY / 100), ((float)NO.PositionZ / 100));
             NO.transform.eulerAngles = new Vector3(0, ((float)NO.YFacing / 100), 0);
 
             NO.SpawnNetworkObject();
             //
         }
-        DestroyObjects();
+        DestroyTempObjects();
     }
-    public void DestroyObjects()
+    public void DestroyTempObjects()
     {
-        for (int i = 0; i < NetworkObjectList.Count; i++)
-            Destroy(NetworkObjectList[i]);
-        NetworkObjectList.Clear();
+        TempNetworkObjectList.Clear();
+        if(JunkObject != null) Destroy(JunkObject);
     }
     public void AddInitialPlacedObjectsIntoList()
     {
+        JunkObject = new GameObject();
         for (int i = 0; i < transform.childCount; i++)
         {
             NetworkObject NO = transform.GetChild(i).GetComponent<NetworkObject>();
-            NetworkObject NOT = transform.gameObject.AddComponent<NetworkObject>();
+            NetworkObject NOT = JunkObject.AddComponent<NetworkObject>();
             NO.Clone(NOT, NO);
-            NetworkObjectList.Add(NO);
+            TempNetworkObjectList.Add(NO);
             Destroy(transform.GetChild(i).gameObject);
         }
     }
@@ -77,6 +91,44 @@ public class NetworkScene : MonoBehaviour {
 
 
 
+
+
+
+
+
+    public int GetValidNextNetworkID()
+    {
+        int index = 0;
+        for (int i = 0; i < NetworkObjectList.Count; i++)
+        {
+            NetworkObject NO = NetworkObjectList[i];
+            if (NO.NetworkObjectID > index) index = NO.NetworkObjectID;
+        }
+        index++;
+        return index;
+    }
+    public NetworkObject GetObjectByID(int ID)
+    {
+        for (int i = 0; i < NetworkObjectList.Count; i++)
+        {
+            NetworkObject NO = NetworkObjectList[i];
+            if (NO.NetworkObjectID == ID)
+                return NO;
+        }
+        return null;
+    }
+    public void DeleteNetworkObject(int DataID)
+    {
+        for (int i = 0; i < NetworkObjectList.Count; i++)
+        {
+            NetworkObject NO = NetworkObjectList[i];
+            if (NO.NetworkObjectID == DataID)
+            {
+                NetworkObjectList.Remove(NO);
+                Destroy(NO.gameObject);
+            }
+        }
+    }
 
 
 

@@ -107,11 +107,6 @@ public class DG_ItemObject : MonoBehaviour
         public int BuyPrice;
         public int SellPrice;
     }
-
-    [ShowIf("isItem")]
-    public bool RandomizeVelocityOnSpawn;
-    [ShowIf("isItem")]
-    public float RandomVelocityMax;
     #endregion
 
 

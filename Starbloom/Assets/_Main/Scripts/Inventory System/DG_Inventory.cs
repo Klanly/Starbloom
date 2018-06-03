@@ -100,7 +100,10 @@ public class DG_Inventory : MonoBehaviour {
         if (!SlotB.isTrash)
             SetItemValueInRucksack(RucksackSlotA, ObjectIndexA, SlotA.SlotID, RucksackSlotB.ContainedItem, RucksackSlotB.CurrentStackActive, RucksackSlotB.LowValue, RucksackSlotB.NormalValue, RucksackSlotB.HighValue, RucksackSlotB.MaximumValue, SlotA.IsStorageSlot);
         else
+        {
             SetItemValueInRucksack(RucksackSlotA, ObjectIndexA, SlotA.SlotID, 0, 0, 0, 0, 0, 0, SlotA.IsStorageSlot);
+            QuickFind.GUI_Inventory.ClearFloatingObject();
+        }
 
         if (!SlotB.isTrash) SetItemValueInRucksack(RucksackSlotB, ObjectIndexB, SlotB.SlotID, ContainedItem, CurrentStackActive, LowValue, NormalValue, HighValue, MaximumValue, SlotB.IsStorageSlot);
     }

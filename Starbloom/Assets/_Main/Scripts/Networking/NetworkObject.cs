@@ -13,8 +13,9 @@ using UnityEditor;
 
 public class NetworkObject : MonoBehaviour {
 
-    [HideInInspector] public int NetworkObjectID;
-
+    //[HideInInspector]
+    public int NetworkObjectID;
+    [Header("---------------------------------------------------------------")]
     public int ItemRefID;
     public int ItemQualityLevel;
     public int PositionX;
@@ -28,7 +29,8 @@ public class NetworkObject : MonoBehaviour {
     public int SurrogateObjectIndex;
     [ShowIf("isWaterable")]
     public bool HasBeenWatered = false;
-    [ShowIf("isWaterable")]
+
+    [Header("Growth-------------------------------------------------")]
     public int GrowthValue;
 
     [Header("Breaking -----------------------------------------------------")]
@@ -84,6 +86,7 @@ public class NetworkObject : MonoBehaviour {
 
     public void Clone(NetworkObject NO, NetworkObject ListNO)
     {
+        NO.NetworkObjectID = ListNO.NetworkObjectID;
         NO.ItemRefID = ListNO.ItemRefID;
         NO.ItemQualityLevel = ListNO.ItemQualityLevel;
         NO.PositionX = ListNO.PositionX;

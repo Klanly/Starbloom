@@ -15,15 +15,12 @@ public class DG_LocalDataHandler : MonoBehaviour {
     public string SaveFileName;
     string CacheDirectory;
     string SaveDirectory;
-    [HideInInspector] public GameObject DataChild;
 
 
     private void Awake()
     {
         QuickFind.SaveHandler = this;
         CacheDirectory = Environment.CurrentDirectory + "\\SaveFiles/";
-        DataChild = new GameObject();
-        DataChild.transform.SetParent(transform);
     }
 
 
@@ -309,6 +306,7 @@ public class DG_LocalDataHandler : MonoBehaviour {
                 string ChildChild = iN.ToString();
                 //
                 if (ToDisk) Directory = FindOrCreateSaveDirectory(KnownDirectory, "CC" + ChildChild.ToString() + "/");
+                if (!ToDisk) IntData.Add(NO.NetworkObjectID); else SaveInt(NO.NetworkObjectID, Directory + "NetworkObjectID");
                 if (!ToDisk) IntData.Add(NO.ItemRefID); else SaveInt(NO.ItemRefID, Directory + "ItemRefID");
                 if (!ToDisk) IntData.Add(NO.ItemQualityLevel); else SaveInt(NO.ItemQualityLevel, Directory + "ItemGrowthLevel");
                 if (!ToDisk) IntData.Add(NO.PositionX); else SaveInt(NO.PositionX, Directory + "x");
@@ -317,11 +315,29 @@ public class DG_LocalDataHandler : MonoBehaviour {
                 if (!ToDisk) IntData.Add(NO.YFacing); else SaveInt(NO.YFacing, Directory + "YFacing");
 
 
+
+
+
+
                 int isTrue = NO.isWaterable ? 1 : 0; if (!ToDisk) IntData.Add(isTrue); else SaveInt(isTrue, Directory + "IsWaterable");
                 if (isTrue == 1)
                 {
-                    isTrue = NO.HasBeenWatered ? 1 : 0; if (!ToDisk) IntData.Add(isTrue); else SaveInt(isTrue, Directory + "HasBeenWatered");
+                    if (!ToDisk) IntData.Add(NO.SurrogateObjectIndex); else SaveInt(NO.SurrogateObjectIndex, Directory + "SurrogateIndex");
+                    int InnerisTrue = NO.HasBeenWatered ? 1 : 0; if (!ToDisk) IntData.Add(InnerisTrue); else SaveInt(InnerisTrue, Directory + "HasBeenWatered");
                 }
+
+                if (!ToDisk) IntData.Add(NO.GrowthValue); else SaveInt(NO.GrowthValue, Directory + "GrowthValue");
+
+                isTrue = NO.HasHealth ? 1 : 0; if (!ToDisk) IntData.Add(isTrue); else SaveInt(isTrue, Directory + "HasHealth");
+                if (isTrue == 1)
+                {
+                    if (!ToDisk) IntData.Add(NO.HealthValue); else SaveInt(NO.HealthValue, Directory + "HealthValue");
+                }
+
+
+
+
+
 
                 isTrue = NO.isStorageContainer ? 1 : 0; if (!ToDisk) IntData.Add(isTrue); else SaveInt(isTrue, Directory + "IsStorageContainer");
                 if (isTrue == 1)
@@ -367,6 +383,7 @@ public class DG_LocalDataHandler : MonoBehaviour {
             if (!FromDisk) SceneID = IntValues[Index]; else SceneID = LoadInt(Directory + "SceneID"); Index++;
             //
             NetworkScene NS = QuickFind.NetworkObjectManager.GetSceneByID(SceneID);
+            NS.JunkObject = new GameObject();
             Transform Child = NS.transform;
             int count;
             //
@@ -375,12 +392,13 @@ public class DG_LocalDataHandler : MonoBehaviour {
             string KnownDirectory = Directory;
             for (int iN = 0; iN < count; iN++)
             {
-                NetworkObject NO = DataChild.AddComponent<NetworkObject>();
-                NS.NetworkObjectList.Add(NO);
+                NetworkObject NO = NS.JunkObject.AddComponent<NetworkObject>();
+                NS.TempNetworkObjectList.Add(NO);
 
                 string ChildChild = iN.ToString();
                 //
                 if (FromDisk) Directory = FindOrCreateSaveDirectory(KnownDirectory, "CC" + ChildChild + "/");
+                if (!FromDisk) NO.NetworkObjectID = IntValues[Index]; else NO.NetworkObjectID = LoadInt(Directory + "NetworkObjectID"); Index++;
                 if (!FromDisk) NO.ItemRefID = IntValues[Index];     else NO.ItemRefID = LoadInt(Directory + "ItemRefID"); Index++;
                 if (!FromDisk) NO.ItemQualityLevel = IntValues[Index]; else NO.ItemQualityLevel = LoadInt(Directory + "ItemGrowthLevel"); Index++;
                 if (!FromDisk) NO.PositionX = IntValues[Index]; else NO.PositionX = LoadInt(Directory + "x"); Index++;
@@ -392,14 +410,39 @@ public class DG_LocalDataHandler : MonoBehaviour {
                 NO.transform.eulerAngles = new Vector3(0, QuickFind.ConvertIntToFloat(NO.YFacing), 0);
                 //
 
+
+
+
+
+
                 int StorageValue;
                 if (!FromDisk) StorageValue = IntValues[Index]; else StorageValue = LoadInt(Directory + "IsWaterable"); Index++;
                 bool isTrue = false; if (StorageValue == 1) isTrue = true; NO.isWaterable = isTrue;
                 if (isTrue)
                 {
+                    if (!FromDisk) NO.SurrogateObjectIndex = IntValues[Index]; else NO.SurrogateObjectIndex = LoadInt(Directory + "SurrogateIndex"); Index++;
                     if (!FromDisk) StorageValue = IntValues[Index]; else StorageValue = LoadInt(Directory + "HasBeenWatered"); Index++;
-                    isTrue = false; if (StorageValue == 1) isTrue = true; NO.HasBeenWatered = isTrue;
+                    bool InnerisTrue = false; if (StorageValue == 1) InnerisTrue = true; NO.HasBeenWatered = InnerisTrue;
                 }
+
+                if (!FromDisk) NO.GrowthValue = IntValues[Index]; else NO.GrowthValue = LoadInt(Directory + "GrowthValue"); Index++;
+
+                if (!FromDisk) StorageValue = IntValues[Index]; else StorageValue = LoadInt(Directory + "HasHealth"); Index++;
+                isTrue = false; if (StorageValue == 1) isTrue = true; NO.HasHealth = isTrue;
+                if (isTrue)
+                {
+                    if (!FromDisk) NO.HealthValue = IntValues[Index]; else NO.HealthValue = LoadInt(Directory + "HealthValue"); Index++;
+                }
+
+
+
+
+
+
+
+
+
+
 
                 if (!FromDisk) StorageValue = IntValues[Index]; else StorageValue = LoadInt(Directory + "IsStorageContainer"); Index++;
                 isTrue = false; if (StorageValue == 1) isTrue = true; NO.isStorageContainer = isTrue;

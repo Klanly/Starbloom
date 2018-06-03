@@ -180,7 +180,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 6
-  instanceID: 168014
+  instanceID: 35166
 --- !u!1 &97753043
 GameObject:
   m_ObjectHideFlags: 0
@@ -397,8 +397,6 @@ MonoBehaviour:
   isItem: 0
   ItemCat: 0
   ItemQualities: []
-  RandomizeVelocityOnSpawn: 0
-  RandomVelocityMax: 0
   isStorage: 0
   StorageList: []
   isGrowableItem: 0
@@ -430,7 +428,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 168036
+  instanceID: 35188
 --- !u!4 &275336178
 Transform:
   m_ObjectHideFlags: 0
@@ -525,8 +523,6 @@ MonoBehaviour:
   isItem: 0
   ItemCat: 0
   ItemQualities: []
-  RandomizeVelocityOnSpawn: 0
-  RandomVelocityMax: 0
   isStorage: 0
   StorageList: []
   isGrowableItem: 0
@@ -540,7 +536,7 @@ MonoBehaviour:
     ActivateableTypeRequired: 0
     QualityLevelRequired: 0
     ObjectHealth: 15
-    DropItemsOnBreak: 0
+    DropItemsOnBreak: 1
     BreakableAtlasID: 0
     DropItemsOnInteract: 0
     InteractDropID: 0
@@ -558,7 +554,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 168048
+  instanceID: 35202
 --- !u!4 &413799161
 Transform:
   m_ObjectHideFlags: 0
@@ -669,8 +665,6 @@ MonoBehaviour:
   isItem: 0
   ItemCat: 0
   ItemQualities: []
-  RandomizeVelocityOnSpawn: 0
-  RandomVelocityMax: 0
   isStorage: 0
   StorageList: []
   isGrowableItem: 0
@@ -690,7 +684,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 168058
+  instanceID: 35212
 --- !u!1 &568888680
 GameObject:
   m_ObjectHideFlags: 0
@@ -725,14 +719,14 @@ MonoBehaviour:
   RewardRolls:
   - RollPercent: 0.2
     ItemGifts:
-    - ItemID: 20
+    - ItemID: 22
       ItemQuality: 0
-      Value: 4
+      Value: 8
   - RollPercent: 1
     ItemGifts:
-    - ItemID: 20
+    - ItemID: 22
       ItemQuality: 0
-      Value: 3
+      Value: 5
 --- !u!114 &568888682
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -745,7 +739,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 6
-  instanceID: 168064
+  instanceID: 35218
 --- !u!4 &568888683
 Transform:
   m_ObjectHideFlags: 0
@@ -835,8 +829,6 @@ MonoBehaviour:
     EnergyAdjustValue: 65
     BuyPrice: 135
     SellPrice: 45
-  RandomizeVelocityOnSpawn: 0
-  RandomVelocityMax: 0
   isStorage: 0
   StorageList: []
   isGrowableItem: 0
@@ -856,7 +848,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 168072
+  instanceID: 35226
 --- !u!4 &619036617
 Transform:
   m_ObjectHideFlags: 0
@@ -960,8 +952,6 @@ MonoBehaviour:
     EnergyAdjustValue: 65
     BuyPrice: 135
     SellPrice: 45
-  RandomizeVelocityOnSpawn: 0
-  RandomVelocityMax: 0
   isStorage: 0
   StorageList: []
   isGrowableItem: 0
@@ -981,7 +971,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 168082
+  instanceID: 35236
 --- !u!1 &631133481
 GameObject:
   m_ObjectHideFlags: 0
@@ -1058,8 +1048,6 @@ MonoBehaviour:
     EnergyAdjustValue: 60
     BuyPrice: 720
     SellPrice: 240
-  RandomizeVelocityOnSpawn: 0
-  RandomVelocityMax: 0
   isStorage: 0
   StorageList:
   - TotalStorageSlots: 36
@@ -1080,7 +1068,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 168088
+  instanceID: 35242
 --- !u!4 &631133484
 Transform:
   m_ObjectHideFlags: 0
@@ -1143,8 +1131,6 @@ MonoBehaviour:
   isItem: 0
   ItemCat: 0
   ItemQualities: []
-  RandomizeVelocityOnSpawn: 0
-  RandomVelocityMax: 0
   isStorage: 1
   StorageList:
   - TotalStorageSlots: 36
@@ -1165,7 +1151,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 168096
+  instanceID: 35250
 --- !u!4 &676053779
 Transform:
   m_ObjectHideFlags: 0
@@ -1276,8 +1262,6 @@ MonoBehaviour:
   isItem: 0
   ItemCat: 0
   ItemQualities: []
-  RandomizeVelocityOnSpawn: 0
-  RandomVelocityMax: 0
   isStorage: 0
   StorageList: []
   isGrowableItem: 0
@@ -1297,7 +1281,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 168106
+  instanceID: 35260
 --- !u!1 &889436591
 GameObject:
   m_ObjectHideFlags: 0
@@ -1340,7 +1324,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 168112
+  instanceID: 35266
 --- !u!114 &889436594
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1400,8 +1384,6 @@ MonoBehaviour:
     EnergyAdjustValue: 60
     BuyPrice: 720
     SellPrice: 240
-  RandomizeVelocityOnSpawn: 0
-  RandomVelocityMax: 0
   isStorage: 0
   StorageList:
   - TotalStorageSlots: 36
@@ -1498,7 +1480,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 168126
+  instanceID: 35280
 --- !u!114 &911112104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1558,8 +1540,6 @@ MonoBehaviour:
     EnergyAdjustValue: 60
     BuyPrice: 720
     SellPrice: 240
-  RandomizeVelocityOnSpawn: 0
-  RandomVelocityMax: 0
   isStorage: 0
   StorageList:
   - TotalStorageSlots: 36
@@ -1766,8 +1746,6 @@ MonoBehaviour:
     EnergyAdjustValue: 65
     BuyPrice: 135
     SellPrice: 45
-  RandomizeVelocityOnSpawn: 0
-  RandomVelocityMax: 0
   isStorage: 0
   StorageList: []
   isGrowableItem: 0
@@ -1787,7 +1765,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 168150
+  instanceID: 35304
 --- !u!1 &1330787844
 GameObject:
   m_ObjectHideFlags: 0
@@ -1874,8 +1852,6 @@ MonoBehaviour:
     EnergyAdjustValue: 0
     BuyPrice: 90
     SellPrice: 30
-  RandomizeVelocityOnSpawn: 0
-  RandomVelocityMax: 0
   isStorage: 0
   StorageList: []
   isGrowableItem: 1
@@ -1887,13 +1863,13 @@ MonoBehaviour:
   - IsWaterable: 0
     IsBreakable: 1
     ObjectType: 1
-    ActivateableTypeRequired: 0
+    ActivateableTypeRequired: 1
     QualityLevelRequired: 0
     ObjectHealth: 15
     DropItemsOnBreak: 0
     BreakableAtlasID: 0
     DropItemsOnInteract: 1
-    InteractDropID: 22
+    InteractDropID: 1
     SwapItemOnBreak: 1
     SwapID: 0
 --- !u!114 &1343751717
@@ -1908,7 +1884,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 168160
+  instanceID: 35314
 --- !u!4 &1343751718
 Transform:
   m_ObjectHideFlags: 0
@@ -1964,7 +1940,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 168168
+  instanceID: 35322
 --- !u!114 &1345506627
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2024,8 +2000,6 @@ MonoBehaviour:
     EnergyAdjustValue: 60
     BuyPrice: 720
     SellPrice: 240
-  RandomizeVelocityOnSpawn: 0
-  RandomVelocityMax: 0
   isStorage: 0
   StorageList:
   - TotalStorageSlots: 36
@@ -2218,8 +2192,6 @@ MonoBehaviour:
   isItem: 0
   ItemCat: 0
   ItemQualities: []
-  RandomizeVelocityOnSpawn: 0
-  RandomVelocityMax: 0
   isStorage: 0
   StorageList: []
   isGrowableItem: 0
@@ -2239,7 +2211,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 168190
+  instanceID: 35344
 --- !u!1 &1450680409
 GameObject:
   m_ObjectHideFlags: 0
@@ -2306,13 +2278,13 @@ MonoBehaviour:
     MainLocalizationID: 93
     SubLocalizationID: 94
     DescriptionID: 95
-    ContextID: 0
+    ContextID: 22
   DatabaseID: 22
   LockItem: 1
   Icon: {fileID: 21300000, guid: a343d9700f720c9438d9a0cfec6db894, type: 3}
   ModelPrefab: {fileID: 1000014262645136, guid: 0a472e24bab49784a98a5fb1a480231b,
     type: 2}
-  DefaultScale: 1
+  DefaultScale: 1.5
   isTool: 0
   ToolQualityLevels: []
   isItem: 1
@@ -2346,8 +2318,6 @@ MonoBehaviour:
     EnergyAdjustValue: 65
     BuyPrice: 135
     SellPrice: 45
-  RandomizeVelocityOnSpawn: 1
-  RandomVelocityMax: 4
   isStorage: 0
   StorageList: []
   isGrowableItem: 0
@@ -2367,7 +2337,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 168200
+  instanceID: 35354
 --- !u!4 &1470222517
 Transform:
   m_ObjectHideFlags: 0
@@ -2469,8 +2439,6 @@ MonoBehaviour:
   isItem: 0
   ItemCat: 0
   ItemQualities: []
-  RandomizeVelocityOnSpawn: 0
-  RandomVelocityMax: 0
   isStorage: 0
   StorageList: []
   isGrowableItem: 0
@@ -2490,7 +2458,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 168208
+  instanceID: 35362
 --- !u!4 &1502558392
 Transform:
   m_ObjectHideFlags: 0
@@ -2580,8 +2548,6 @@ MonoBehaviour:
     EnergyAdjustValue: 65
     BuyPrice: 135
     SellPrice: 45
-  RandomizeVelocityOnSpawn: 0
-  RandomVelocityMax: 0
   isStorage: 0
   StorageList: []
   isGrowableItem: 0
@@ -2601,7 +2567,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 168216
+  instanceID: 35370
 --- !u!4 &1511745342
 Transform:
   m_ObjectHideFlags: 0
@@ -2720,8 +2686,6 @@ MonoBehaviour:
     EnergyAdjustValue: 60
     BuyPrice: 720
     SellPrice: 240
-  RandomizeVelocityOnSpawn: 0
-  RandomVelocityMax: 0
   isStorage: 0
   StorageList:
   - TotalStorageSlots: 36
@@ -2742,7 +2706,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 168228
+  instanceID: 35382
 --- !u!4 &1637135973
 Transform:
   m_ObjectHideFlags: 0
@@ -2814,7 +2778,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 5
-  instanceID: 168236
+  instanceID: 35390
 --- !u!4 &1645614859
 Transform:
   m_ObjectHideFlags: 0
@@ -2899,7 +2863,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 5
-  instanceID: 168246
+  instanceID: 35400
 --- !u!1 &1696380314
 GameObject:
   m_ObjectHideFlags: 0
@@ -2989,8 +2953,6 @@ MonoBehaviour:
     EnergyAdjustValue: 65
     BuyPrice: 135
     SellPrice: 45
-  RandomizeVelocityOnSpawn: 0
-  RandomVelocityMax: 0
   isStorage: 0
   StorageList: []
   isGrowableItem: 0
@@ -3010,7 +2972,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 168254
+  instanceID: 35408
 --- !u!1 &1701517455
 GameObject:
   m_ObjectHideFlags: 0
@@ -3109,8 +3071,6 @@ MonoBehaviour:
     EnergyAdjustValue: 0
     BuyPrice: 60
     SellPrice: 20
-  RandomizeVelocityOnSpawn: 0
-  RandomVelocityMax: 0
   isStorage: 0
   StorageList: []
   isGrowableItem: 1
@@ -3143,7 +3103,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 168266
+  instanceID: 35420
 --- !u!1 &1815548898
 GameObject:
   m_ObjectHideFlags: 0
@@ -3270,8 +3230,6 @@ MonoBehaviour:
   isItem: 0
   ItemCat: 0
   ItemQualities: []
-  RandomizeVelocityOnSpawn: 0
-  RandomVelocityMax: 0
   isStorage: 0
   StorageList: []
   isGrowableItem: 0
@@ -3291,7 +3249,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 168278
+  instanceID: 35432
 --- !u!1 &1837730739
 GameObject:
   m_ObjectHideFlags: 0
@@ -3376,8 +3334,6 @@ MonoBehaviour:
     EnergyAdjustValue: 0
     BuyPrice: 10
     SellPrice: 3
-  RandomizeVelocityOnSpawn: 1
-  RandomVelocityMax: 1.5
   isStorage: 0
   StorageList: []
   isGrowableItem: 0
@@ -3409,7 +3365,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 168288
+  instanceID: 35442
 --- !u!4 &1849541684
 Transform:
   m_ObjectHideFlags: 0
@@ -3465,7 +3421,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 168296
+  instanceID: 35450
 --- !u!114 &1902128846
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3525,8 +3481,6 @@ MonoBehaviour:
     EnergyAdjustValue: 60
     BuyPrice: 720
     SellPrice: 240
-  RandomizeVelocityOnSpawn: 0
-  RandomVelocityMax: 0
   isStorage: 0
   StorageList:
   - TotalStorageSlots: 36
@@ -3593,7 +3547,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 5
-  instanceID: 168304
+  instanceID: 35458
 --- !u!4 &2041544712
 Transform:
   m_ObjectHideFlags: 0
