@@ -73,4 +73,5 @@ MonoBehaviour:
   - SendBreakableBroke
   - CharacterClaimedMagneticObject
   - ReceiveSurrogateTilled
+  - UserSetInBed
   DisableAutoOpenWizard: 1

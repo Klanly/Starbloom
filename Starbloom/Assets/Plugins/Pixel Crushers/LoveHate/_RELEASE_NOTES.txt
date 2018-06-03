@@ -1,0 +1,169 @@
+﻿/*
+Love/Hate
+Copyright © Pixel Crushers
+RELEASE NOTES
+-------------
+
+Version 1.8.9
+- Changed: Dominance change now better reflects witness's affinity to target.
+- Added: FactionMemberDebugger.
+- Added: FactionMember.ForgetDeed().
+- Added: FactionManagerSaver & FactionMemberSaver integration with Save System.
+- Improved: Save System now uses nonallocating (no GC) methods when loading.
+- Emerald AI: Added support.
+- ICE Creature Control: Fixed bug in demo scene.
+- PlayMaker: [Breaking Change] Actions with GameObject fields now use FsmOwnerDefault & require reassignment.
+
+
+Version 1.8.8
+- Added: DeedReactionEvents component.
+- Added: UFPS support.
+- Added: ICE Creature Control support.
+
+
+Version 1.8.7.1
+- Fixed: Dialogue System integration - ModifyAffinity() Lua command now correctly calls ModifyAffinity()
+  instead of SetAffinity().
+
+
+Version 1.8.7
+***IMPORTANT UPGRADE NOTE:***
+   - This asset has been moved from Assets to Assets/Plugins!
+   - Before upgrading, you MUST delete Assets/Pixel Crushers/Common
+     and Assets/Pixel Crushers/LoveHate!
+   - Remember to make a backup before upgrading this or any asset!
+- Added: Can See Advanced component (sophisticated vision model).
+- Added: FactionMember.GetTraitAlignment delegate.
+- Fixed: Inheriting parent traits now uses parents, not oldest ancestor.
+- All scripts now use wrappers to support easily switching between source and DLL.
+- Updated support packages for: Adventure Creator, Makinom, plyGame, & TradeSys.
+
+
+Version 1.8.6
+- Changed: Save format now includes factions' personality trait values.
+- Added: Impressionability value to FactionMember, which changes personality traits based on deeds witnessed.
+- Added: FactionMember.ShareRumor delegate.
+- Added: Rumor.Expire() method.
+- Improved: Faction Manager editor now shows runtime faction database contents.
+- Improved: Added option to not run memory cleanup.
+- Improved: Methods in triggers & StabilizePAD are now protected virtual, not private.
+- Minor API updates for Unity 5.6.
+
+
+Version 1.8.5
+- Added Rumor.customData field to support associating custom data with rumors.
+- Exposed FactionMember's utility functions so delegates that override default functionality can use them.
+- Removed UNITY_EDITOR conditional compilation for non-editor classes to make it easier to pre-compile DLLs.
+
+
+Version 1.8.4
+- Added: Deed Evaluation Overrides component for optional faction-specific overrides of deed evaluation.
+- Added: Faction Manager checkbox to allow Faction Members to witness their own deeds.
+- Added: Faction Member GetTrustInSource delegate. Default now has 100% confidence in self deeds.
+- Fixed: Judging parents of actor wasn't normalizing percentage properly and was incorrectly applying to judge's parents.
+
+
+Version 1.8.3
+- Improved: Now uses GameTime instead of Unity's Time class.
+- Adventure Creator: Updated for Adventure Creator 1.53+.
+
+
+Version 1.8.2
+- Improved: Additional caching to eliminate garbage collection.
+- Improved: Renamed FactionMember inspector Inherited Relationships checkbox to clarify its purpose.
+- Dialogue System: Added Lua functions Get/SetPersonalityTrait, GetTemperament, GetEmotionalState.
+- PlayMaker: Added Get/SetPersonalityTrait actions.
+
+
+Version 1.8.1
+- Improved: More detailed error messages in Deed Reporter.
+- Zone Controller: Certified integration.
+
+
+Version 1.8.0
+- Changed: Save game serialization format changed to accommodate dynamically-created faction names.
+- Improved: Can now adjust number of witnesses processed per update.
+- Improved: Implemented fast lookup of factions by name and ID.
+- Improved: Added tooltip help to all inspectors.
+- Adventure Creator: Added SetRelationshipInheritable action.
+- Dialogue System: Added SetRelationshipInheritable() Lua function.
+- plyGame: Added support.
+
+
+Version 1.7.1
+- Fixed: Unity 5.2.2 deprecation warning for Physics2D.raycastsStartInColliders.
+
+
+Version 1.7.0
+- Changed: Save game serialization format changed to accommodate relationship inheritability value.
+- Changed: When adding new factions in editor, initializes instead of copying previous item.
+- Added: Customizable emotion model.
+- Added: Relationships can be marked inheritable (default) or non-inheritable.
+- Added: Ability to affect relationship to subject's parents when changing relationship to a subject.
+- Fixed: Possible division by zero in deed evaluation.
+- Fixed: In editor, summing personality & relationship traits now clamp to [-100,+100].
+- PlayMaker: Added GetEmotionalState, SetRelationshipInheritability actions.
+
+
+Version 1.6
+- Changed: FactionManager now turns off debug messages when Debug.isDebugBuild is false.
+- Improved: FactionMembers are now ready on Awake, not Start.
+- Makinom: Added UseFactionManager schematic node.
+- ORK Framework: Added UseFactionManager step.
+- PlayMaker: Added UseFactionManager action. Fixed SwitchFaction action.
+- TradeSys: Updated for TradeSys 2.7.
+
+
+Version 1.5
+- Added: Option to sum or average traits when inheriting from parents.
+- Improved: Faction member inspector shows traits and relationships at design time not just runtime.
+- Makinom: Added support.
+- ORK Framework: Added SwitchFaction, InheritTraitsFromParents Steps.
+- PlayMaker: Added SwitchFaction, InheritTraitsFromParents actions.
+
+
+Version 1.4
+- Added: FactionDatabase.DestroyFaction method.
+- Improved: Can inherit traits from parents in inspector and at runtime.
+- Improved: Faction database and faction member inspectors now show inherited relationships.
+- Changed: Moved multiplayer example into separate package to avoid API warning in Unity 5.1.
+- Adventure Creator: Added support.
+- ORK Framework: Updated for ORK Framework 2.5.1; added CreateNewFaction and DestroyFaction steps.
+- TradeSys: Enhanced support.
+
+
+Version 1.3
+- Added: Multiplayer example & guide.
+- Added: Wolf/rabbit/farmer simulation example.
+- Added: FactionDatabase: CreateNewFaction()
+- Added: FactionMember: SwitchFaction(), IRememberDeedEventHandler, IForgetDeedEventHandler,
+  IModifyPADEventHandler, FactionMemberEvents component.
+- Changed: Serialized FactionMember data now includes faction ID (since members can switch factions).
+- Improved: Exposed FactionMember.DefaultEvaluateRumor().
+- TradeSys: Added support.
+
+
+Version 1.2
+- Changed: Rolled FactionMember.ApplyRumorImpact into DefaultEvaluateRumor.
+- Added: StabilizePAD component to return PAD to target values over time.
+- Improved: FactionMember inspector shows memories, relationships & parents at runtime.
+- Improved: Enhanced rumor evaluation (added TraitAlignmentImportance, PowerDifferenceCurve).
+
+
+Version 1.1
+- Added: Colored scene view gizmos for faction members and traits.
+- Added: Aura triggers.
+- Added: FactionManager and FactionMember string serialization methods.
+- Improved: Improved rumor evalation. Added deed.aggression to better affect dominance.
+- Improved: Faction manager now distributes witness evaluation of deeds across frames.
+- Improved: Better handling of uninitialized fields.
+- Improved: Added cache to interaction triggers to reduce component lookups.
+- Improved: Replaced foreach loops to eliminate garbage collection caused by Mono boxing.
+- Fixed: Deed template library editor bug when adding/removing templates.
+- ORK Framework: Added support.
+- PlayMaker: Added string serialization actions, OnAura and OnEnterAura events.
+
+
+Version 1.0
+- Initial release.
+*/
