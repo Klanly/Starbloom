@@ -24,15 +24,4 @@ public class DG_ContextObject : MonoBehaviour
     public bool ThisIsGrowthItem;
     public int ContextID;
     public ContextTypes Type;
-
-
-
-    public NetworkObject ScanUpTree(Transform T)
-    {
-        NetworkObject NO = T.GetComponent<NetworkObject>();
-        if (NO == null)
-            return ScanUpTree(T.parent);
-        else
-            return NO;
-    }
 }
