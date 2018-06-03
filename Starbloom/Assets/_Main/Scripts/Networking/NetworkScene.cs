@@ -100,8 +100,8 @@ public class NetworkScene : MonoBehaviour {
             NO.ItemRefID = QuickFind.GetIfWithinBounds(NO.ItemRefID, 0, IDB.ItemCatagoryList.Length);
             DG_ItemObject IO = IDB.GetItemFromID(NO.ItemRefID);
             if (IO == null) continue;
-            NO.ItemGrowthLevel = QuickFind.GetIfWithinBounds(NO.ItemGrowthLevel, 0, IO.GetMax());
-            GameObject Prefab = IO.GetPrefabReferenceByQuality(NO.ItemGrowthLevel);
+            NO.ItemQualityLevel = QuickFind.GetIfWithinBounds(NO.ItemQualityLevel, 0, IO.GetMax());
+            GameObject Prefab = IO.GetPrefabReferenceByQuality(NO.ItemQualityLevel);
             float Scale = IO.DefaultScale;
             Vector3 localScale = new Vector3(Scale, Scale, Scale);
             NO.DrawMesh(Prefab, localScale);

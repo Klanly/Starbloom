@@ -310,7 +310,7 @@ public class DG_LocalDataHandler : MonoBehaviour {
                 //
                 if (ToDisk) Directory = FindOrCreateSaveDirectory(KnownDirectory, "CC" + ChildChild.ToString() + "/");
                 if (!ToDisk) IntData.Add(NO.ItemRefID); else SaveInt(NO.ItemRefID, Directory + "ItemRefID");
-                if (!ToDisk) IntData.Add(NO.ItemGrowthLevel); else SaveInt(NO.ItemGrowthLevel, Directory + "ItemGrowthLevel");
+                if (!ToDisk) IntData.Add(NO.ItemQualityLevel); else SaveInt(NO.ItemQualityLevel, Directory + "ItemGrowthLevel");
                 if (!ToDisk) IntData.Add(NO.PositionX); else SaveInt(NO.PositionX, Directory + "x");
                 if (!ToDisk) IntData.Add(NO.PositionY); else SaveInt(NO.PositionY, Directory + "y");
                 if (!ToDisk) IntData.Add(NO.PositionZ); else SaveInt(NO.PositionZ, Directory + "z");
@@ -382,7 +382,7 @@ public class DG_LocalDataHandler : MonoBehaviour {
                 //
                 if (FromDisk) Directory = FindOrCreateSaveDirectory(KnownDirectory, "CC" + ChildChild + "/");
                 if (!FromDisk) NO.ItemRefID = IntValues[Index];     else NO.ItemRefID = LoadInt(Directory + "ItemRefID"); Index++;
-                if (!FromDisk) NO.ItemGrowthLevel = IntValues[Index]; else NO.ItemGrowthLevel = LoadInt(Directory + "ItemGrowthLevel"); Index++;
+                if (!FromDisk) NO.ItemQualityLevel = IntValues[Index]; else NO.ItemQualityLevel = LoadInt(Directory + "ItemGrowthLevel"); Index++;
                 if (!FromDisk) NO.PositionX = IntValues[Index]; else NO.PositionX = LoadInt(Directory + "x"); Index++;
                 if (!FromDisk) NO.PositionY = IntValues[Index]; else NO.PositionY = LoadInt(Directory + "y"); Index++;
                 if (!FromDisk) NO.PositionZ = IntValues[Index]; else NO.PositionZ = LoadInt(Directory + "z"); Index++;

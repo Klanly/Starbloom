@@ -40,7 +40,8 @@ public class DG_PickAxeHandler : MonoBehaviour {
         if (isUP && SafeToPlace)
         {
             DG_ContextObject CO = HitObject.GetComponent<DG_ContextObject>();
-            if (CO.Type == DG_ContextObject.ContextTypes.Breakable) QuickFind.BreakableObjectsHandler.TryHitObject(CO, HotbarItemHandler.ActivateableTypes.Pickaxe,(DG_ItemObject.ItemQualityLevels)RucksackSlotOpen.CurrentStackActive, RucksackSlotOpen);
+            if (CO.Type == DG_ContextObject.ContextTypes.Breakable || CO.Type == DG_ContextObject.ContextTypes.Pick_And_Break)
+                QuickFind.BreakableObjectsHandler.TryHitObject(CO, HotbarItemHandler.ActivateableTypes.Pickaxe,(DG_ItemObject.ItemQualityLevels)RucksackSlotOpen.CurrentStackActive, RucksackSlotOpen);
         }
     }
 

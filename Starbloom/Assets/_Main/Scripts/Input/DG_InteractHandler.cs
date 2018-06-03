@@ -29,6 +29,7 @@ public class DG_InteractHandler : MonoBehaviour
                     case DG_ContextObject.ContextTypes.Conversation: break;
                     case DG_ContextObject.ContextTypes.Treasure: break;
                     case DG_ContextObject.ContextTypes.MoveableStorage: HandleMoveableStorage(CO); break;
+                    case DG_ContextObject.ContextTypes.Pick_And_Break: HandleClusterPick(CO); break;
                 }
             }
         }
@@ -36,10 +37,17 @@ public class DG_InteractHandler : MonoBehaviour
 
     void HandlePickUpItem(DG_ContextObject CO)
     {
-        NetworkObject NO = CO.transform.parent.GetComponent<NetworkObject>();
+        NetworkObject NO = QuickFind.NetworkObjectManager.ScanUpTree(CO.transform);
+        int ItemID;
+        if (!CO.ThisIsGrowthItem)
+            ItemID = NO.ItemRefID;
+        else
+            ItemID = CO.ContextID;
+
         int Scene = NO.transform.parent.GetComponent<NetworkScene>().SceneID;
-        int ItemID = NO.ItemRefID;
-        int ItemQuality = NO.ItemGrowthLevel;
+        int ItemQuality = NO.ItemQualityLevel;
+            
+        
 
         if (QuickFind.InventoryManager.AddItemToRucksack(QuickFind.NetworkSync.PlayerCharacterID, ItemID, (DG_ItemObject.ItemQualityLevels)ItemQuality))
             Debug.Log("Send Inventory Full Message");
@@ -48,7 +56,12 @@ public class DG_InteractHandler : MonoBehaviour
     }
     void HandleMoveableStorage(DG_ContextObject CO)
     {
-        NetworkObject NO = CO.transform.parent.GetComponent<NetworkObject>();
+        NetworkObject NO = QuickFind.NetworkObjectManager.ScanUpTree(CO.transform);
         QuickFind.StorageUI.OpenStorageUI(NO, false);
+    }
+
+    void HandleClusterPick(DG_ContextObject CO)
+    {
+
     }
 }

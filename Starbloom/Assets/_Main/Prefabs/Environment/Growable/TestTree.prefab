@@ -19,13 +19,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4838886555606412}
-  - component: {fileID: 33958285807258178}
-  - component: {fileID: 23892797151021520}
-  - component: {fileID: 65719332901770626}
   - component: {fileID: 114519801263525046}
   - component: {fileID: 114787230307634032}
   - component: {fileID: 114293972458529144}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: TestTree
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,66 +36,12 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1721282356261930}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7, y: 2, z: -11}
+  m_LocalPosition: {x: 3, y: 2.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &23892797151021520
-MeshRenderer:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1721282356261930}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 4294967295
-  m_Materials:
-  - {fileID: 2100000, guid: 733866c8ad09b4a068b6e7e5c332e9ec, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!33 &33958285807258178
-MeshFilter:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1721282356261930}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &65719332901770626
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1721282356261930}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0.89, z: 0}
 --- !u!114 &114293972458529144
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -194,6 +137,7 @@ MonoBehaviour:
     SerializedFormat: 2
     SerializedBytes: 
     ReferencedUnityObjects:
+    - {fileID: 1190082843462652, guid: 93873d1acf25077489740c84181ed113, type: 2}
     - {fileID: 1856992669607788, guid: fc20f544ff2424749b61cc925c6981fd, type: 2}
     - {fileID: 1777025865150944, guid: 196dc8bccdee87046be3a13bb397bb7a, type: 2}
     - {fileID: 1381216602964512, guid: a5556ca6c28069142b10b6e0e0b74790, type: 2}
@@ -209,7 +153,7 @@ MonoBehaviour:
         Assembly-CSharp]], System
     - Name: 
       Entry: 12
-      Data: 4
+      Data: 5
     - Name: 
       Entry: 7
       Data: System.Collections.Generic.KeyValuePair`2[[System.Int32, mscorlib],[Growable+GrowthStage,
@@ -287,10 +231,31 @@ MonoBehaviour:
       Entry: 8
       Data: 
     - Name: 
+      Entry: 7
+      Data: System.Collections.Generic.KeyValuePair`2[[System.Int32, mscorlib],[Growable+GrowthStage,
+        Assembly-CSharp]], mscorlib
+    - Name: 
+      Entry: 3
+      Data: 4
+    - Name: 
+      Entry: 7
+      Data: 5|Growable+GrowthStage, Assembly-CSharp
+    - Name: Prefab
+      Entry: 10
+      Data: 4
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
       Entry: 13
       Data: 
     - Name: 
       Entry: 8
       Data: 
+  ActiveStage: {fileID: 0}
+  ActiveStageDay: -1
   DayPlanted: 0
   GrowthOffset: 0

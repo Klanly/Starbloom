@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 33450312434145516}
   - component: {fileID: 23570859055030852}
   - component: {fileID: 65996895818387312}
+  - component: {fileID: 114154384437077040}
   m_Layer: 13
   m_Name: Storage Chest
   m_TagString: Untagged
@@ -109,8 +110,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 538995c128d53fe48a7051ffbb220cf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ThisIsGrowthItem: 0
   ContextID: 0
   Type: 6
-  AllowScaling: 1
-  ScaleAmount: 1.05
-  ScaleSpeed: 0.5
+--- !u!114 &114154384437077040
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1503624535019576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbf7db14ed0bab04ebadc99b703a813d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isWobble: 1
+  WobbleTime: 0.3
+  WobbleMaxScale: 1.05
+  WobbleCount: 12
+  isShrink: 0
+  ShrinkTime: 0

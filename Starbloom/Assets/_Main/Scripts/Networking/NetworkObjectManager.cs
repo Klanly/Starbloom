@@ -61,6 +61,14 @@ public class NetworkObjectManager : MonoBehaviour {
     {
         return FindObject(Scene, index).GetComponent<NetworkObject>();
     }
+    public NetworkObject ScanUpTree(Transform T)
+    {
+        NetworkObject NO = T.GetComponent<NetworkObject>();
+        if (NO == null)
+            return ScanUpTree(T.parent);
+        else
+            return NO;
+    }
 
     public GameObject FindObject(int Scene, int index)
     {
@@ -127,7 +135,7 @@ public class NetworkObjectManager : MonoBehaviour {
         NetworkObject NO = NewObject.gameObject.AddComponent<NetworkObject>();
 
         NO.ItemRefID = IncomingData[index]; index++;
-        NO.ItemGrowthLevel = IncomingData[index]; index++;
+        NO.ItemQualityLevel = IncomingData[index]; index++;
         NO.PositionX = IncomingData[index]; index++;
         NO.PositionY = IncomingData[index]; index++;
         NO.PositionZ = IncomingData[index]; index++;
@@ -162,6 +170,8 @@ public class NetworkObjectManager : MonoBehaviour {
 
         else
             NO.SpawnNetworkObject();
+
+        QuickFind.ObjectPlacementManager.AwaitingNetResponse = false;
     }
 
 

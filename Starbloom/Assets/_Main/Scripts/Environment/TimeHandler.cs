@@ -80,9 +80,9 @@ public class TimeHandler : MonoBehaviour
 
 
 
-	public void SetNewDay()
+	public void SetNewDay(bool ForceRain)
 	{
-		int year = QuickFind.Farm.Year;
+        int year = QuickFind.Farm.Year;
 		int Month = QuickFind.Farm.Month;
 		int Day = QuickFind.Farm.Day;
 
@@ -100,7 +100,7 @@ public class TimeHandler : MonoBehaviour
 		}
 
 		QuickFind.NetworkSync.AdjustTimeByValues(year, Month, Day, 6, 0);
-		QuickFind.WeatherHandler.SetNewDayWeather();
+		QuickFind.WeatherHandler.SetNewDayWeather(ForceRain);
 	}
 
 
@@ -109,10 +109,8 @@ public class TimeHandler : MonoBehaviour
 
 	public void NewDayCalculationsComplete()
 	{
-		if (null != OnNewDay)
-			OnNewDay(QuickFind.Farm.Day);
-
-		Debug.Log("New Day Times, and Weather are done loading.");
+        QuickFind.NetworkGrowthHandler.CheckDayChangedHasBeenWatered();
+        if (null != OnNewDay) OnNewDay(QuickFind.Farm.Day);
 	}
 
 

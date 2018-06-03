@@ -17,7 +17,7 @@ public class DG_WateringSystem : MonoBehaviour {
 
     public void WaterObject(DG_ContextObject CO)
     {
-        NetworkObject No = CO.transform.parent.GetComponent<NetworkObject>();
+        NetworkObject No = QuickFind.NetworkObjectManager.ScanUpTree(CO.transform);
         if (!No.HasBeenWatered)
         {
             int[] Sent = new int[2];
@@ -31,15 +31,34 @@ public class DG_WateringSystem : MonoBehaviour {
     {
         NetworkObject No = QuickFind.NetworkObjectManager.GetItemByID(Data[0], Data[1]);
         No.HasBeenWatered = true;
-        AdjustWateredObjectVisual(No);
+        AdjustWateredObjectVisual(No, true);
+
+        if(No.SurrogateObjectIndex != 0)
+        {
+            NetworkObject NoSurrogate = QuickFind.NetworkObjectManager.GetItemByID(Data[0], No.SurrogateObjectIndex);
+            NoSurrogate.HasBeenWatered = true;
+            AdjustWateredObjectVisual(NoSurrogate, true);
+        }
+
     }
 
-    public void AdjustWateredObjectVisual(NetworkObject No)
+    public void AdjustWateredObjectVisual(NetworkObject No, bool isWatered)
     {
-        //Debug Purposes
-        Material MR = No.transform.GetChild(0).GetComponent<MeshRenderer>().material;
-        Color C = MR.color;
-        C.r = .3f; C.g = .3f; C.b = .3f;
-        MR.color = C;
+        //Debug Purposes - To be Better thought out later.
+        MeshRenderer MRend = No.transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>();
+        if (MRend != null)
+        {
+            Material MR = MRend.material;
+            Color C = MR.color;
+            if (isWatered)
+            {
+                C.r = .3f; C.g = .3f; C.b = .3f;
+            }
+            else
+            {
+                C.r = 1; C.g = 1; C.b = 1;
+            }
+            MR.color = C;
+        }
     }
 }

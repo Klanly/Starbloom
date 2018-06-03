@@ -11,6 +11,7 @@ public class DG_DebugSettings : MonoBehaviour {
     [Header("Debug Tools")]
     public bool DisableAudio = false;
     public bool EnableDebugKeycodes = false;
+    public bool ShowGrowthDebug = false;
 
 
     [HideInInspector] public GameObject LastSelected;

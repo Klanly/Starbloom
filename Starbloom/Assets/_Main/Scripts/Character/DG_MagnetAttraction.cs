@@ -48,8 +48,8 @@ public class DG_MagnetAttraction : MonoBehaviour {
             //If Close then destroy
             if (MT.OwnerID == QuickFind.NetworkSync.PlayerCharacterID && QuickFind.WithinDistance(MT.Trans, AdjustedHeight, .05f))
             {
-                NetworkObject NO = MT.Trans.parent.GetComponent<NetworkObject>();
-                QuickFind.InventoryManager.AddItemToRucksack(QuickFind.NetworkSync.PlayerCharacterID, NO.ItemRefID, (DG_ItemObject.ItemQualityLevels)NO.ItemGrowthLevel);
+                NetworkObject NO = QuickFind.NetworkObjectManager.ScanUpTree(MT.Trans);
+                QuickFind.InventoryManager.AddItemToRucksack(QuickFind.NetworkSync.PlayerCharacterID, NO.ItemRefID, (DG_ItemObject.ItemQualityLevels)NO.ItemQualityLevel);
                 QuickFind.NetworkSync.RemoveNetworkSceneObject(NO.transform.parent.GetComponent<NetworkScene>().SceneID, NO.transform.GetSiblingIndex());
             }
         }

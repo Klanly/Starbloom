@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 
 
@@ -15,15 +16,23 @@ public class DG_ContextObject : MonoBehaviour
         PickupItem,
         Breakable,
         MoveableStorage,
-        Soil
+        Soil,
+        Pick_And_Break
     }
 
 
-
+    public bool ThisIsGrowthItem;
     public int ContextID;
     public ContextTypes Type;
-    [Header("Scale Object on Contact")]
-    public bool AllowScaling;
-    public float ScaleAmount;
-    public float ScaleSpeed;
+
+
+
+    public NetworkObject ScanUpTree(Transform T)
+    {
+        NetworkObject NO = T.GetComponent<NetworkObject>();
+        if (NO == null)
+            return ScanUpTree(T.parent);
+        else
+            return NO;
+    }
 }

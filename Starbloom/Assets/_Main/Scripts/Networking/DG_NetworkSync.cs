@@ -399,7 +399,12 @@ public class DG_NetworkSync : Photon.MonoBehaviour
     }
     [PunRPC]
     void RemoveSceneObject(int[] Received)
-    { Destroy(QuickFind.NetworkObjectManager.FindObject(Received[0], Received[1]));   }
+    {
+        NetworkObject NO = QuickFind.NetworkObjectManager.GetItemByID(Received[0], Received[1]);
+        if(NO.SurrogateObjectIndex != 0)
+        { NetworkObject NO2 = QuickFind.NetworkObjectManager.GetItemByID(Received[0], NO.SurrogateObjectIndex); NO2.SurrogateObjectIndex = 0; }
+        Destroy(NO.gameObject);
+    }
 
 
     public void AddNetworkSceneObject(int[] Data)
@@ -427,6 +432,12 @@ public class DG_NetworkSync : Photon.MonoBehaviour
     [PunRPC]
     public void CharacterClaimedMagneticObject(int[] Data)
     { GetUserByPlayerID(Data[0]).PhotonClone.GetChild(0).GetComponent<DG_MagnetAttraction>().ClaimObject(Data); }
+
+    public void SetTilledSurrogate(int[] OutData)
+    { PV.RPC("ReceiveSurrogateTilled", PhotonTargets.All, OutData); }
+    [PunRPC]
+    public void ReceiveSurrogateTilled(int[] Data)
+    { QuickFind.ObjectPlacementManager.ReceiveTilledSurrogate(Data); }
 
 
     #endregion

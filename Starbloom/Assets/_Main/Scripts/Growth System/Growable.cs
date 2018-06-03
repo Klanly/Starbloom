@@ -32,10 +32,11 @@ public class Growable : SerializedMonoBehaviour
 	public SortedDictionary<int, GrowthStage> Stages = new SortedDictionary<int, GrowthStage>();
 
 
-    [Button(ButtonSizes.Small)]void DebugDayButton(){QuickFind.TimeHandler.SetNewDay();}
+    [Button(ButtonSizes.Small)]void DebugDayButton(){QuickFind.TimeHandler.SetNewDay(false);}
+    [Button(ButtonSizes.Small)] void DebugRainyDayButton() { QuickFind.TimeHandler.SetNewDay(false); }
 
 
-	private void Awake()
+    private void Awake()
 	{
 		TimeHandler.OnNewDay += OnDayChanged;
 	}
@@ -62,7 +63,8 @@ public class Growable : SerializedMonoBehaviour
 	
 	protected void OnDayChanged( int _day )
 	{
-		Debug.LogFormat("Day changed - {0}", _day);
+        if(QuickFind.GameSettings.ShowGrowthDebug) Debug.LogFormat("Day changed - {0}", _day);
+
 		RefreshStage();
 	}
 
@@ -76,7 +78,7 @@ public class Growable : SerializedMonoBehaviour
 
 	public void RefreshStage()
 	{
-		int curStageDay = CurrentStageDay;
+		int curStageDay = CurrentStageDay + GrowthOffset;
 		bool recalcDay = ActiveStageDay != curStageDay;
 		ActiveStageDay = curStageDay;
 
@@ -87,7 +89,11 @@ public class Growable : SerializedMonoBehaviour
 
 			ActiveStageDay = curStageDay;
 			GrowthStage curStage = CurrentStage;
-			ActiveStage = GameObject.Instantiate(curStage.Prefab, transform); 
+			ActiveStage = GameObject.Instantiate(curStage.Prefab, transform);
+            Transform T = ActiveStage.transform;
+            T.localPosition = Vector3.zero;
+            T.localEulerAngles = Vector3.zero;
+            T.localScale = new Vector3(1, 1, 1);
 		}
 	}
 }

@@ -13,7 +13,11 @@ public class Debug_AdjustTime : MonoBehaviour {
 
 
     [System.Serializable]
-    public class SimulateDayEnd { [ButtonGroup] public void SetNewDay() { QuickFind.TimeHandler.SetNewDay(); } }
+    public class SimulateDayEnd
+    {
+        [ButtonGroup] public void SetNewDay() { QuickFind.TimeHandler.SetNewDay(false); }
+        [ButtonGroup] public void SetNewRainyDay() { QuickFind.TimeHandler.SetNewDay(true); }
+        }
 
     [System.Serializable]
     public class SetSpecificTime

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3300000}
   - component: {fileID: 2300000}
   - component: {fileID: 135769740038484844}
+  - component: {fileID: 114040890366613960}
   m_Layer: 13
   m_Name: Herb_DervishRoot
   m_TagString: Untagged
@@ -85,6 +86,23 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 100000}
   m_IsPrefabParent: 1
+--- !u!114 &114040890366613960
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbf7db14ed0bab04ebadc99b703a813d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isWobble: 1
+  WobbleTime: 0.3
+  WobbleMaxScale: 1.1
+  WobbleCount: 12
+  isShrink: 0
+  ShrinkTime: 0
 --- !u!114 &114550383562501880
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -96,11 +114,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 538995c128d53fe48a7051ffbb220cf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ThisIsGrowthItem: 0
   ContextID: 0
   Type: 4
-  AllowScaling: 1
-  ScaleAmount: 1.3
-  ScaleSpeed: 0.4
 --- !u!135 &135769740038484844
 SphereCollider:
   m_ObjectHideFlags: 1

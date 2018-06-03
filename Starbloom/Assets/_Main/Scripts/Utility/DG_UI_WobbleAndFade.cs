@@ -48,7 +48,12 @@ public class DG_UI_WobbleAndFade : MonoBehaviour {
         else if (isShrink) { Timer = ShrinkTime; CurrentState = State.Shrinking; }
     }
 
+    public void Enable(){ KnownScale = _T.localScale; this.enabled = true; }
+
+    public void Disable() { if(_T != null) _T.localScale = KnownScale; this.enabled = false; }
+
     private void DisableThis() { _T.localScale = Vector3.zero; this.enabled = false; }
+
 
     private void Update()
     {

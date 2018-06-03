@@ -16,21 +16,27 @@ public class NetworkObject : MonoBehaviour {
     [HideInInspector] public int NetworkObjectID;
 
     public int ItemRefID;
-    [Range(0,5)]
-    public int ItemGrowthLevel;
+    public int ItemQualityLevel;
     public int PositionX;
     public int PositionY;
     public int PositionZ;
     public int YFacing;
 
+    [Header("Watering -----------------------------------------------------")]
     public bool isWaterable = false;
     [ShowIf("isWaterable")]
+    public int SurrogateObjectIndex;
+    [ShowIf("isWaterable")]
     public bool HasBeenWatered = false;
+    [ShowIf("isWaterable")]
+    public int GrowthValue;
 
+    [Header("Breaking -----------------------------------------------------")]
     public bool HasHealth = false;
     [ShowIf("HasHealth")]
     public int HealthValue;
 
+    [Header("Storage -----------------------------------------------------")]
     public bool isStorageContainer = false;
     [ShowIf("isStorageContainer")]
     public bool isTreasureList;
@@ -48,7 +54,7 @@ public class NetworkObject : MonoBehaviour {
     {
         DG_ItemsDatabase IDB = QuickFind.ItemDatabase;
         DG_ItemObject IO = IDB.GetItemFromID(ItemRefID);
-        GameObject Prefab = IO.GetPrefabReferenceByQuality(ItemGrowthLevel);
+        GameObject Prefab = IO.GetPrefabReferenceByQuality(ItemQualityLevel);
 
         GameObject Spawn = Instantiate(Prefab);
         Transform T = Spawn.transform;
@@ -58,34 +64,47 @@ public class NetworkObject : MonoBehaviour {
         float Scale = IO.DefaultScale;
         T.localScale = new Vector3(Scale, Scale, Scale);
 
-        if (HasBeenWatered)
-            QuickFind.WateringSystem.AdjustWateredObjectVisual(this);
-
+        if (HasBeenWatered) QuickFind.WateringSystem.AdjustWateredObjectVisual(this, true);
 
         if(GenerateVelocity)
         {
             DG_MagneticItem MI = Spawn.GetComponent<DG_MagneticItem>();
             MI.TriggerStart(Velocity);
         }
+
+        transform.name = Spawn.name;
+
+
+        if(IO.RequireTilledEarth) {if (PhotonNetwork.isMasterClient) QuickFind.ObjectPlacementManager.SendOutSurrogateSearch(Spawn);}
     }
+
+
+
 
 
     public void Clone(NetworkObject NO, NetworkObject ListNO)
     {
         NO.ItemRefID = ListNO.ItemRefID;
-        NO.ItemGrowthLevel = ListNO.ItemGrowthLevel;
+        NO.ItemQualityLevel = ListNO.ItemQualityLevel;
         NO.PositionX = ListNO.PositionX;
         NO.PositionY = ListNO.PositionY;
         NO.PositionZ = ListNO.PositionZ;
         NO.YFacing = ListNO.YFacing;
+
+        NO.isWaterable = ListNO.isWaterable;
+        NO.HasBeenWatered = ListNO.HasBeenWatered;
+        NO.SurrogateObjectIndex = ListNO.SurrogateObjectIndex;
+        NO.GrowthValue = ListNO.GrowthValue;
+
+        NO.HasHealth = ListNO.HasHealth;
+        NO.HealthValue = ListNO.HealthValue;
+
         NO.isStorageContainer = ListNO.isStorageContainer;
         NO.StorageSlots = ListNO.StorageSlots;
         NO.isTreasureList = ListNO.isTreasureList;
-        NO.isWaterable = ListNO.isWaterable;
-        NO.HasBeenWatered = ListNO.HasBeenWatered;
-        NO.HasHealth = ListNO.HasHealth;
-        NO.HealthValue = ListNO.HealthValue;
     }
+
+
 
 
 
@@ -108,8 +127,19 @@ public class NetworkObject : MonoBehaviour {
 
     public void DrawMesh(GameObject Prefab, Vector3 localScale)
     {
-        Mesh M = Prefab.GetComponent<MeshFilter>().sharedMesh;
-        Gizmos.DrawMesh(M, 0, transform.position, transform.rotation, localScale);
+        MeshFilter MF = Prefab.GetComponent<MeshFilter>();
+        if (MF != null)
+        {
+            Mesh M = MF.sharedMesh;
+            Gizmos.DrawMesh(M, 0, transform.position, transform.rotation, localScale);
+        }
+        else
+        {
+            Vector3 Position = transform.position;
+            Position.y += .5f;
+            Gizmos.DrawCube(Position, localScale);
+        }
+
         transform.name = Prefab.name;
     }
 #endif

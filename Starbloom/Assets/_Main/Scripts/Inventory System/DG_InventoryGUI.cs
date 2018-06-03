@@ -284,6 +284,10 @@ public class DG_InventoryGUI : MonoBehaviour
 
 
 
+    public void ResetHotbarSlot()
+    {
+        SetHotbarSlot(HotbarSlots[EquippedHotbarSlot]);
+    }
 
 
     public void SetHotbarSlot(DG_InventoryItem PressedItem)

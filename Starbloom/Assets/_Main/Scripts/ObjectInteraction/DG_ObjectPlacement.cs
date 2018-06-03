@@ -13,14 +13,17 @@ public class DG_ObjectPlacement : MonoBehaviour {
 
 
     public LayerMask BoxcastDetection;
+    public LayerMask SoilReplaceDetection;
 
     [HideInInspector] public Transform ObjectGhost;
     [HideInInspector] public bool PlacementActive;
-
+    [HideInInspector] public bool AwaitingNetResponse;
 
     PlacementType CurrentPlacementType;
     DG_PlayerCharacters.RucksackSlot RucksackSlotOpen;
     DG_ItemObject ItemDatabaseReference;
+    Collider DetectedInTheWay;
+    NetworkObject SoilObject;
     int ActiveSlot;
 
     bool SafeToPlace = false;
@@ -39,7 +42,7 @@ public class DG_ObjectPlacement : MonoBehaviour {
         if (PlacementActive)
         {
             ObjectGhost.position = QuickFind.GridDetection.DetectionPoint.position;
-            if (ThisPlaceisSafeToPlaceObject()) { SetMaterialColors(true); SafeToPlace = true; }
+            if (AreaIsClear(BoxcastDetection, ObjectGhost.position)) { SetMaterialColors(true); SafeToPlace = true; }
             else { SetMaterialColors(false); SafeToPlace = false; }
         }
         else
@@ -55,19 +58,37 @@ public class DG_ObjectPlacement : MonoBehaviour {
     {
         if(isUP && SafeToPlace)
         {
-            QuickFind.NetworkObjectManager.CreateNetSceneObject(QuickFind.NetworkSync.CurrentScene, ItemDatabaseReference.DatabaseID, RucksackSlotOpen.CurrentStackActive, ObjectGhost.position, ObjectGhost.eulerAngles.y);
-            DestroyObjectGhost();
-            QuickFind.InventoryManager.DestroyRucksackItem(RucksackSlotOpen, ActiveSlot);
+            if (SoilDetection())
+            {
+                if (SoilObject != null && SoilObject.SurrogateObjectIndex != 0) return;
+                if (AwaitingNetResponse) return;
+
+                AwaitingNetResponse = true;
+                QuickFind.NetworkObjectManager.CreateNetSceneObject(QuickFind.NetworkSync.CurrentScene, ItemDatabaseReference.DatabaseID, RucksackSlotOpen.CurrentStackActive, ObjectGhost.position, ObjectGhost.eulerAngles.y);
+                DestroyObjectGhost();
+                QuickFind.InventoryManager.DestroyRucksackItem(RucksackSlotOpen, ActiveSlot);
+                QuickFind.GUI_Inventory.ResetHotbarSlot();
+            }
         }
     }
 
 
 
+    bool SoilDetection()
+    {
+        if (!AreaIsClear(SoilReplaceDetection, QuickFind.GridDetection.DetectionPoint.position))
+            SoilObject = QuickFind.NetworkObjectManager.ScanUpTree(DetectedInTheWay.transform);
+        else
+            SoilObject = null;
 
-
-
-
-
+        if (ItemDatabaseReference.RequireTilledEarth) { if (SoilObject != null) return true; else return false; }
+        else
+        {
+            if(SoilObject != null && ItemDatabaseReference.DestroysSoilOnPlacement)
+                QuickFind.NetworkSync.RemoveNetworkSceneObject(QuickFind.NetworkSync.CurrentScene, SoilObject.transform.GetSiblingIndex());
+            return true;
+        }
+    }
 
 
 
@@ -82,7 +103,10 @@ public class DG_ObjectPlacement : MonoBehaviour {
         GameObject ToDestroy = null;
         if (ObjectGhost != null) ToDestroy = ObjectGhost.gameObject;
 
-        ObjectGhost = Instantiate(Item.ModelPrefab).transform;
+        if(!ItemDatabaseReference.isGrowableItem)
+            ObjectGhost = Instantiate(Item.ModelPrefab).transform;
+        else
+            ObjectGhost = Instantiate(Item.PreviewItem).transform;
         ObjectGhost.SetParent(transform);
         ObjectGhost.localScale = new Vector3(Item.DefaultScale, Item.DefaultScale, Item.DefaultScale);
 
@@ -107,20 +131,59 @@ public class DG_ObjectPlacement : MonoBehaviour {
 
 
 
-    public bool ThisPlaceisSafeToPlaceObject()
+    public bool AreaIsClear(LayerMask DetectionType, Vector3 CastPoint)
     {
         //This will have to be adjusted at a later point to fit larger objects.
 
-
         RaycastHit m_Hit;
-        Vector3 CastPoint = QuickFind.GridDetection.DetectionPoint.position;
         CastPoint.y += 20;
 
-        if (Physics.BoxCast(CastPoint, new Vector3(.5f, .5f, .5f), Vector3.down, out m_Hit, transform.rotation, 21, BoxcastDetection))
-            return false;
+        if (Physics.BoxCast(CastPoint, new Vector3(.5f, .5f, .5f), Vector3.down, out m_Hit, transform.rotation, 21, DetectionType))
+        { DetectedInTheWay = m_Hit.collider; return false; }
         else
             return true;
     }
+
+
+
+
+
+
+
+    public void SendOutSurrogateSearch(GameObject Spawn)
+    {
+        if (!AreaIsClear(SoilReplaceDetection, Spawn.transform.position))
+        {
+            DG_ContextObject CO = DetectedInTheWay.GetComponent<DG_ContextObject>();
+            Transform NetworkTrans = CO.transform.parent;
+
+            int[] OutData = new int[3];
+            OutData[0] = NetworkTrans.parent.GetComponent<NetworkScene>().SceneID;
+            OutData[1] = NetworkTrans.GetSiblingIndex();
+            OutData[2] = Spawn.transform.parent.GetSiblingIndex();
+            QuickFind.NetworkSync.SetTilledSurrogate(OutData);
+        }
+        else
+        {
+            Debug.Log("Critical Error, an object that requires tilled soil was placed in a non tilled place.");
+        }
+    }
+
+    public void ReceiveTilledSurrogate(int[] InData)
+    {
+        NetworkObject NO = QuickFind.NetworkObjectManager.GetItemByID(InData[0], InData[1]);
+        NO.SurrogateObjectIndex = InData[2];
+
+        NetworkObject NO2 = QuickFind.NetworkObjectManager.GetItemByID(InData[0], InData[2]);
+        NO2.SurrogateObjectIndex = InData[1];
+
+        NO2.HasBeenWatered = NO.HasBeenWatered;
+    }
+
+
+
+
+
 
 
     public void SetMaterialColors(bool isGreen)

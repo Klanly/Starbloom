@@ -11,22 +11,13 @@ public class DG_ContextCheckHandler : MonoBehaviour {
     public float SphereCastMaxLength = 10f;
     [Header("Mouse Distance")]
     public float MouseDistance = 2;
-    [Header("Display to Player")]
-    public Transform DetectionMeshTrans;
-    public MeshFilter DetectionMesh;
-    public MeshRenderer DetectionRenderer;
 
 
     [System.NonSerialized] public Transform LastEncounteredContext;
+    [System.NonSerialized] public DG_UI_WobbleAndFade LastEncounteredWobbleScript;
     [System.NonSerialized] public bool ContextHit = false;
     [System.NonSerialized] public DG_ContextObject COEncountered;
     Transform DetectionPoint;
-    MeshRenderer LastHoveredMesh;
-
-    Vector3 KnownScale;
-    float Timer;
-    bool ScaleUp = true;
-    bool AllowScale = true;
 
 
     private void Awake()
@@ -52,9 +43,9 @@ public class DG_ContextCheckHandler : MonoBehaviour {
                 if (QuickFind.WithinDistance(DetectionPoint, QuickFind.PlayerTrans, MouseDistance))
                     AddNewContext(hit);
                 else
-                    ContextHit = false;
+                { ContextHit = false; if (LastEncounteredWobbleScript != null) LastEncounteredWobbleScript.Disable(); }
             }
-            else ContextHit = false;
+            else { ContextHit = false; if(LastEncounteredWobbleScript != null) LastEncounteredWobbleScript.Disable(); }
         }
         else
         {
@@ -64,40 +55,11 @@ public class DG_ContextCheckHandler : MonoBehaviour {
             if (Physics.SphereCast(DetectionPoint.position, SphereCastRadius, DetectionPoint.forward, out hit, SphereCastMaxLength, ContextMask))
                 AddNewContext(hit);
             else
-                ContextHit = false;
+            { ContextHit = false; LastEncounteredWobbleScript.Disable(); }
         }
 
         if (!ContextHit)
-        {
-            LastEncounteredContext = null;
-            DetectionMesh.transform.position = new Vector3(0, 8000, 0);
-            if (LastHoveredMesh != null)
-                LastHoveredMesh.enabled = true;
-        }
-        else
-            ScaleItem();
-    }
-
-    void ScaleItem()
-    {
-        if (!AllowScale) return;
-
-        Timer = Timer - Time.deltaTime;
-
-        if (Timer < 0)
-        {
-            Timer = COEncountered.ScaleSpeed;
-            ScaleUp = !ScaleUp;
-        }
-
-        float TimerPercentage = Timer / COEncountered.ScaleSpeed;
-        if (ScaleUp) TimerPercentage = 1 - TimerPercentage;
-
-        float ScaleDiff = COEncountered.ScaleAmount - 1;
-        float Scale = 1 + (ScaleDiff * TimerPercentage);
-        Vector3 NewScale = KnownScale * Scale;
-
-        DetectionMeshTrans.localScale = NewScale;
+        { LastEncounteredContext = null; if (LastEncounteredWobbleScript != null) LastEncounteredWobbleScript.Disable(); }
     }
 
 
@@ -106,28 +68,17 @@ public class DG_ContextCheckHandler : MonoBehaviour {
     {
         if (hit.transform == LastEncounteredContext) return;
 
+
+
         LastEncounteredContext = hit.transform;
         COEncountered = LastEncounteredContext.GetComponent<DG_ContextObject>();
-
-        if(LastHoveredMesh != null) LastHoveredMesh.enabled = true;
         ContextHit = true;
 
-
-        if (COEncountered.AllowScaling)
+        if (LastEncounteredContext.GetComponent<DG_UI_WobbleAndFade>() != null)
         {
-            AllowScale = true;
-
-            LastHoveredMesh = LastEncounteredContext.transform.GetComponent<MeshRenderer>();
-            LastHoveredMesh.enabled = false;
-            DetectionMesh.mesh = LastEncounteredContext.GetComponent<MeshFilter>().mesh;
-
-            DetectionRenderer.materials = LastHoveredMesh.materials;
-
-            DetectionMesh.transform.position = LastEncounteredContext.position;
-            DetectionMesh.transform.rotation = LastEncounteredContext.rotation;
-            KnownScale = LastEncounteredContext.localScale;
-            ScaleUp = true;
-            Timer = COEncountered.ScaleSpeed / 2;
+            if (LastEncounteredWobbleScript != null) LastEncounteredWobbleScript.Disable();
+            LastEncounteredWobbleScript = LastEncounteredContext.GetComponent<DG_UI_WobbleAndFade>();
+            LastEncounteredWobbleScript.Enable();
         }
     }
 

@@ -30,7 +30,7 @@ public static class QuickFindInEditor
     public static DG_ColorCodes GetEditorColorCodes() { return GameObject.Find("Color Database").GetComponent<DG_ColorCodes>(); }
     public static SceneIDList GetEditorSceneList() { return GameObject.Find("Scene ID List").GetComponent<SceneIDList>(); }
     public static DG_FishingCompendium GetEditorFishingCompendium() { return GameObject.Find("Fish Atlas").GetComponent<DG_FishingCompendium>(); }
-    public static DG_BreakableObjectsAtlas GetBreakableObjectsCompendium() { return GameObject.Find("Breakable Object Atlas").GetComponent<DG_BreakableObjectsAtlas>(); }
+    public static DG_BreakableObjectsAtlas GetBreakableObjectsCompendium() { return GameObject.Find("Cluster Rewards Atlas").GetComponent<DG_BreakableObjectsAtlas>(); }
     //Save Data
     public static UserSettings GetEditorUserSettings() { return GameObject.Find("Player Settings").GetComponent<UserSettings>(); }
 
@@ -95,6 +95,7 @@ public static class QuickFind
     public static DG_WateringSystem WateringSystem = null;
     public static DG_BreakableObjectsHandler BreakableObjectsHandler = null;
     public static DG_ObjectPlacement ObjectPlacementManager = null;
+    public static DG_NetworkGrowthHandler NetworkGrowthHandler = null;
 
 
 

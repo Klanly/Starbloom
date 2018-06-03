@@ -257,7 +257,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LoadPoolsOnStart: 1
   IsRaining: 0
-  Player: {fileID: 0}
   ParticleContainer: {fileID: 4110548409199562}
   SplashRef: {fileID: 1079749812803062, guid: 880a40c10c99ab447a74bbb82a5a9d40, type: 2}
   RippleRef: {fileID: 1375089205569514, guid: 15728613d09e56d4a800b538d1a6a06b, type: 2}
@@ -270,5 +269,5 @@ MonoBehaviour:
   RaycastMaxDistance: 100
   RaycastMask:
     serializedVersion: 2
-    m_Bits: 4294463945
+    m_Bits: 20737
   WaterLayer: 8

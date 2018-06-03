@@ -21,13 +21,16 @@ public class DG_ItemObject : MonoBehaviour
         Vegetable,
         Herb,
         Fish,
-        Resource
+        Resource,
+        Seeds,
+        Fruit
     }
 
 
     public string Name;
     public int MaxStackSize;
     public HotbarItemHandler.ActivateableTypes ActivateableType;
+    public bool DestroysSoilOnPlacement;
     
     [Header("ToolTip Data")]
     public DG_TooltipGUI.ToolTipContainerItem ToolTipType;
@@ -71,20 +74,6 @@ public class DG_ItemObject : MonoBehaviour
         public Sprite Icon;
         public bool HasCustomModel;
         [ShowIf("HasCustomModel")]
-        public GameObject ModelPrefab;
-    }
-    #endregion
-
-
-    #region Growable Item
-    [Header("----------------------------------")]
-    public bool isGrowableItem = false;
-    [ShowIf("isGrowableItem")]
-    public GrowableItem[] GrowableItemStages;
-
-    [System.Serializable]
-    public class GrowableItem
-    {
         public GameObject ModelPrefab;
     }
     #endregion
@@ -141,6 +130,26 @@ public class DG_ItemObject : MonoBehaviour
     #endregion
 
 
+    #region Growable Item
+    [Header("----------------------------------")]
+    public bool isGrowableItem = false;
+    [ShowIf("isGrowableItem")]
+    public bool RequireTilledEarth = false;
+    [ShowIf("isGrowableItem")]
+    public GameObject PreviewItem = null;
+
+    //[ShowIf("isGrowableItem")]
+    //public GrowthStage[] GrowthStages;
+    //
+    //[System.Serializable]
+    //public class GrowthStage
+    //{
+    //    public int GrowthLevelRequired;
+    //    public GameObject StagePrefabReference;
+    //}
+    #endregion
+
+
     #region Environment
     [Header("----------------------------------")]
     public bool isEnvironment = false;
@@ -154,7 +163,28 @@ public class DG_ItemObject : MonoBehaviour
         public bool IsWaterable;
         public bool IsBreakable;
         [ShowIf("IsBreakable")]
+        public DG_BreakableObjectItem.OnHitEffectType ObjectType;
+        [ShowIf("IsBreakable")]
+        public HotbarItemHandler.ActivateableTypes ActivateableTypeRequired;
+        [ShowIf("IsBreakable")]
+        public DG_ItemObject.ItemQualityLevels QualityLevelRequired;
+        [ShowIf("IsBreakable")]
+        public int ObjectHealth;
+
+        [ShowIf("IsBreakable")]
+        public bool DropItemsOnBreak;
+        [ShowIf("DropItemsOnBreak")]
         public int BreakableAtlasID;
+
+        [ShowIf("IsBreakable")]
+        public bool DropItemsOnInteract;
+        [ShowIf("DropItemsOnInteract")]
+        public int InteractDropID;
+
+        [ShowIf("IsBreakable")]
+        public bool SwapItemOnBreak;
+        [ShowIf("SwapItemOnBreak")]
+        public int SwapID;
     }
     #endregion
 
@@ -165,8 +195,6 @@ public class DG_ItemObject : MonoBehaviour
     {
         if (isTool)
             return ToolQualityLevels.Length;
-        else if (isGrowableItem)
-            return GrowableItemStages.Length;
         else if (isItem)
             return ItemQualities.Length;
 
@@ -179,11 +207,6 @@ public class DG_ItemObject : MonoBehaviour
         {
             if (ToolQualityLevels[IQL].HasCustomModel) return ToolQualityLevels[IQL].ModelPrefab;
             else return ModelPrefab;
-        }
-        else if (isGrowableItem)
-        {
-            if (IQL >= GrowableItemStages.Length) return GrowableItemStages[GrowableItemStages.Length - 1].ModelPrefab;
-            else return GrowableItemStages[IQL].ModelPrefab;
         }
         else
             return ModelPrefab;

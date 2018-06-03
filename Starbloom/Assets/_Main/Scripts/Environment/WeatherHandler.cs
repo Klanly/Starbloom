@@ -143,7 +143,7 @@ public class WeatherHandler : MonoBehaviour
 
 
 
-    public void SetNewDayWeather()
+    public void SetNewDayWeather(bool ForceRain)
     {
         int Weather = QuickFind.Farm.Weather.TomorrowWeather;
         int Season = QuickFind.Farm.Month;
@@ -151,9 +151,18 @@ public class WeatherHandler : MonoBehaviour
         AdjustSeason(Season, Weather);
         QuickFind.NetworkSync.AdjustWeather(Season, Weather);
 
-        QuickFind.Farm.Weather.TodayWeather = Weather;
-        QuickFind.Farm.Weather.TomorrowWeather = QuickFind.Farm.Weather.TwoDayAwayWeather;
-        QuickFind.Farm.Weather.TwoDayAwayWeather = RollNewWeatherType();
+        if (!ForceRain)
+        {
+            QuickFind.Farm.Weather.TodayWeather = Weather;
+            QuickFind.Farm.Weather.TomorrowWeather = QuickFind.Farm.Weather.TwoDayAwayWeather;
+            QuickFind.Farm.Weather.TwoDayAwayWeather = RollNewWeatherType();
+        }
+        else
+        {
+            QuickFind.Farm.Weather.TodayWeather = 3;
+            QuickFind.Farm.Weather.TomorrowWeather = 3;
+            QuickFind.Farm.Weather.TwoDayAwayWeather = 3;
+        }
 
         QuickFind.NetworkSync.AdjustFutureWeather();
         QuickFind.TimeHandler.NewDayCalculationsComplete();

@@ -15,10 +15,10 @@ public class DG_BreakableObjectsHandler : MonoBehaviour {
 
     public void TryHitObject(DG_ContextObject CO, HotbarItemHandler.ActivateableTypes ActivateableType, DG_ItemObject.ItemQualityLevels ToolLevel, DG_PlayerCharacters.RucksackSlot RucksackSlotOpen)
     {
-        NetworkObject NO = CO.transform.parent.GetComponent<NetworkObject>();
+        NetworkObject NO = QuickFind.NetworkObjectManager.ScanUpTree(CO.transform);
         DG_ItemObject IO = QuickFind.ItemDatabase.GetItemFromID(NO.ItemRefID);
         DG_BreakableObjectItem BOI = QuickFind.BreakableObjectsCompendium.GetItemFromID(IO.EnvironmentValues[0].BreakableAtlasID);
-        if (ValidBreakAction(BOI, ActivateableType, ToolLevel))
+        if (ValidBreakAction(IO, BOI, ActivateableType, ToolLevel))
         {
             DG_ItemObject ToolIO = QuickFind.ItemDatabase.GetItemFromID(RucksackSlotOpen.ContainedItem);
             int Hitvalue = ToolIO.ToolQualityLevels[(int)ToolLevel].StrengthValue;
@@ -29,10 +29,10 @@ public class DG_BreakableObjectsHandler : MonoBehaviour {
         else return;
     }
 
-    bool ValidBreakAction(DG_BreakableObjectItem BOI, HotbarItemHandler.ActivateableTypes ActivateableType, DG_ItemObject.ItemQualityLevels ToolLevel)
+    bool ValidBreakAction(DG_ItemObject IO, DG_BreakableObjectItem BOI, HotbarItemHandler.ActivateableTypes ActivateableType, DG_ItemObject.ItemQualityLevels ToolLevel)
     {
-        if (ActivateableType != BOI.ActivateableTypeRequired) return false;
-        if (ToolLevel < BOI.QualityLevelRequired) return false;
+        if (ActivateableType != IO.EnvironmentValues[0].ActivateableTypeRequired) return false;
+        if (ToolLevel < IO.EnvironmentValues[0].QualityLevelRequired) return false;
         return true;
     }
 
@@ -56,11 +56,10 @@ public class DG_BreakableObjectsHandler : MonoBehaviour {
 
     void SendHitData(NetworkObject NO, int NewHealthValue, DG_BreakableObjectItem BOI)
     {
-        int[] Sent = new int[4];
+        int[] Sent = new int[3];
         Sent[0] = QuickFind.NetworkSync.CurrentScene;
         Sent[1] = NO.transform.GetSiblingIndex();
         Sent[2] = NewHealthValue;
-        Sent[3] = BOI.DatabaseID;
 
         QuickFind.NetworkSync.SendHitBreakable(Sent);
     }
@@ -69,9 +68,9 @@ public class DG_BreakableObjectsHandler : MonoBehaviour {
     {
         NetworkObject NO = QuickFind.NetworkObjectManager.GetItemByID(Data[0], Data[1]);
         NO.HealthValue = Data[2];
-        DG_BreakableObjectItem BOI = QuickFind.BreakableObjectsCompendium.GetItemFromID(Data[3]);
+        DG_ItemObject IO = QuickFind.ItemDatabase.GetItemFromID(NO.ItemRefID);
 
-        if(BOI.ObjectType == DG_BreakableObjectItem.BreakableObjectType.Stone)
+        if(IO.EnvironmentValues[0].ObjectType == DG_BreakableObjectItem.OnHitEffectType.Stone)
             NO.transform.GetChild(0).GetComponent<DG_UI_WobbleAndFade>().enabled = true;
     }
 

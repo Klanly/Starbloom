@@ -157,11 +157,6 @@ MonoBehaviour:
   DatabaseID: 0
   LockItem: 1
   Name: Basic Rock
-  ItemObjectRefDatabaseID: 19
-  ObjectType: 0
-  ActivateableTypeRequired: 0
-  QualityLevelRequired: 0
-  ObjectHealth: 15
   RewardRolls:
   - RollPercent: 0.2
     ItemGifts:
@@ -185,7 +180,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 6
-  instanceID: 1522396
+  instanceID: 1764616
 --- !u!1 &97753043
 GameObject:
   m_ObjectHideFlags: 0
@@ -270,7 +265,9 @@ MonoBehaviour:
   - {fileID: 1502558390}
   - {fileID: 413799159}
   - {fileID: 1849541682}
-  ListCount: 21
+  - {fileID: 1343751716}
+  - {fileID: 1470222515}
+  ListCount: 23
   PreMagneticObjectWaitTimer: 0.5
   GenericIconList:
   - ItemName: Health
@@ -382,6 +379,7 @@ MonoBehaviour:
   Name: Dirt Mound
   MaxStackSize: 1
   ActivateableType: 5
+  DestroysSoilOnPlacement: 0
   ToolTipType:
     GroupType: 16
     MainLocalizationID: 0
@@ -391,13 +389,11 @@ MonoBehaviour:
   DatabaseID: 17
   LockItem: 1
   Icon: {fileID: 0}
-  ModelPrefab: {fileID: 1295266464668808, guid: a54519a1f1eabfe47a583cefdf23e327,
+  ModelPrefab: {fileID: 1743720417280254, guid: a54519a1f1eabfe47a583cefdf23e327,
     type: 2}
   DefaultScale: 0.9
   isTool: 0
   ToolQualityLevels: []
-  isGrowableItem: 0
-  GrowableItemStages: []
   isItem: 0
   ItemCat: 0
   ItemQualities: []
@@ -405,11 +401,23 @@ MonoBehaviour:
   RandomVelocityMax: 0
   isStorage: 0
   StorageList: []
+  isGrowableItem: 0
+  RequireTilledEarth: 0
+  PreviewItem: {fileID: 0}
   isEnvironment: 1
   EnvironmentValues:
   - IsWaterable: 1
     IsBreakable: 0
+    ObjectType: 0
+    ActivateableTypeRequired: 0
+    QualityLevelRequired: 0
+    ObjectHealth: 0
+    DropItemsOnBreak: 0
     BreakableAtlasID: 0
+    DropItemsOnInteract: 0
+    InteractDropID: 0
+    SwapItemOnBreak: 0
+    SwapID: 0
 --- !u!114 &275336177
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -422,7 +430,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 1522418
+  instanceID: 1764638
 --- !u!4 &275336178
 Transform:
   m_ObjectHideFlags: 0
@@ -500,6 +508,7 @@ MonoBehaviour:
   Name: Breakable Rock
   MaxStackSize: 1
   ActivateableType: 5
+  DestroysSoilOnPlacement: 0
   ToolTipType:
     GroupType: 16
     MainLocalizationID: 0
@@ -513,8 +522,6 @@ MonoBehaviour:
   DefaultScale: 0.75
   isTool: 0
   ToolQualityLevels: []
-  isGrowableItem: 0
-  GrowableItemStages: []
   isItem: 0
   ItemCat: 0
   ItemQualities: []
@@ -522,11 +529,23 @@ MonoBehaviour:
   RandomVelocityMax: 0
   isStorage: 0
   StorageList: []
+  isGrowableItem: 0
+  RequireTilledEarth: 0
+  PreviewItem: {fileID: 0}
   isEnvironment: 1
   EnvironmentValues:
   - IsWaterable: 0
     IsBreakable: 1
+    ObjectType: 0
+    ActivateableTypeRequired: 0
+    QualityLevelRequired: 0
+    ObjectHealth: 15
+    DropItemsOnBreak: 0
     BreakableAtlasID: 0
+    DropItemsOnInteract: 0
+    InteractDropID: 0
+    SwapItemOnBreak: 0
+    SwapID: 0
 --- !u!114 &413799160
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -539,7 +558,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 1522430
+  instanceID: 1764650
 --- !u!4 &413799161
 Transform:
   m_ObjectHideFlags: 0
@@ -597,6 +616,7 @@ MonoBehaviour:
   Name: Pickaxe
   MaxStackSize: 1
   ActivateableType: 0
+  DestroysSoilOnPlacement: 0
   ToolTipType:
     GroupType: 2
     MainLocalizationID: 40
@@ -646,8 +666,6 @@ MonoBehaviour:
     Icon: {fileID: 21300000, guid: 02959f34b8badaa4ba8eef7ed142b55b, type: 3}
     HasCustomModel: 1
     ModelPrefab: {fileID: 183114, guid: a1c14717f64068a46bbbc6c69b642173, type: 2}
-  isGrowableItem: 0
-  GrowableItemStages: []
   isItem: 0
   ItemCat: 0
   ItemQualities: []
@@ -655,6 +673,9 @@ MonoBehaviour:
   RandomVelocityMax: 0
   isStorage: 0
   StorageList: []
+  isGrowableItem: 0
+  RequireTilledEarth: 0
+  PreviewItem: {fileID: 0}
   isEnvironment: 0
   EnvironmentValues: []
 --- !u!114 &523401141
@@ -669,7 +690,75 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 1522440
+  instanceID: 1764660
+--- !u!1 &568888680
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 568888683}
+  - component: {fileID: 568888682}
+  - component: {fileID: 568888681}
+  m_Layer: 0
+  m_Name: 1 - Apple Tree
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &568888681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 568888680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14c8a5c5360db50468011319fd8c89c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DatabaseID: 1
+  LockItem: 1
+  Name: Apple Tree
+  RewardRolls:
+  - RollPercent: 0.2
+    ItemGifts:
+    - ItemID: 20
+      ItemQuality: 0
+      Value: 4
+  - RollPercent: 1
+    ItemGifts:
+    - ItemID: 20
+      ItemQuality: 0
+      Value: 3
+--- !u!114 &568888682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 568888680}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 6
+  instanceID: 1764666
+--- !u!4 &568888683
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 568888680}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1348481037}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &619036614
 GameObject:
   m_ObjectHideFlags: 0
@@ -701,6 +790,7 @@ MonoBehaviour:
   Name: Poisifferous Roiler
   MaxStackSize: 999
   ActivateableType: 4
+  DestroysSoilOnPlacement: 0
   ToolTipType:
     GroupType: 1
     MainLocalizationID: 47
@@ -714,8 +804,6 @@ MonoBehaviour:
   DefaultScale: 0.2
   isTool: 0
   ToolQualityLevels: []
-  isGrowableItem: 0
-  GrowableItemStages: []
   isItem: 1
   ItemCat: 1
   ItemQualities:
@@ -751,6 +839,9 @@ MonoBehaviour:
   RandomVelocityMax: 0
   isStorage: 0
   StorageList: []
+  isGrowableItem: 0
+  RequireTilledEarth: 0
+  PreviewItem: {fileID: 0}
   isEnvironment: 0
   EnvironmentValues: []
 --- !u!114 &619036616
@@ -765,7 +856,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 1522446
+  instanceID: 1764674
 --- !u!4 &619036617
 Transform:
   m_ObjectHideFlags: 0
@@ -823,11 +914,12 @@ MonoBehaviour:
   Name: Cabbage
   MaxStackSize: 999
   ActivateableType: 4
+  DestroysSoilOnPlacement: 0
   ToolTipType:
     GroupType: 1
-    MainLocalizationID: 0
-    SubLocalizationID: 0
-    DescriptionID: 0
+    MainLocalizationID: 10
+    SubLocalizationID: 49
+    DescriptionID: 88
     ContextID: 0
   DatabaseID: 9
   LockItem: 1
@@ -837,8 +929,6 @@ MonoBehaviour:
   DefaultScale: 1
   isTool: 0
   ToolQualityLevels: []
-  isGrowableItem: 0
-  GrowableItemStages: []
   isItem: 1
   ItemCat: 0
   ItemQualities:
@@ -874,6 +964,9 @@ MonoBehaviour:
   RandomVelocityMax: 0
   isStorage: 0
   StorageList: []
+  isGrowableItem: 0
+  RequireTilledEarth: 0
+  PreviewItem: {fileID: 0}
   isEnvironment: 0
   EnvironmentValues: []
 --- !u!114 &630922426
@@ -888,7 +981,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 1522456
+  instanceID: 1764684
 --- !u!1 &631133481
 GameObject:
   m_ObjectHideFlags: 0
@@ -920,6 +1013,7 @@ MonoBehaviour:
   Name: Fish
   MaxStackSize: 999
   ActivateableType: 4
+  DestroysSoilOnPlacement: 0
   ToolTipType:
     GroupType: 1
     MainLocalizationID: 70
@@ -933,8 +1027,6 @@ MonoBehaviour:
   DefaultScale: 0.5
   isTool: 0
   ToolQualityLevels: []
-  isGrowableItem: 0
-  GrowableItemStages: []
   isItem: 1
   ItemCat: 2
   ItemQualities:
@@ -971,6 +1063,9 @@ MonoBehaviour:
   isStorage: 0
   StorageList:
   - TotalStorageSlots: 36
+  isGrowableItem: 0
+  RequireTilledEarth: 0
+  PreviewItem: {fileID: 0}
   isEnvironment: 0
   EnvironmentValues: []
 --- !u!114 &631133483
@@ -985,7 +1080,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 1522462
+  instanceID: 1764690
 --- !u!4 &631133484
 Transform:
   m_ObjectHideFlags: 0
@@ -1030,6 +1125,7 @@ MonoBehaviour:
   Name: Storage Chest
   MaxStackSize: 1
   ActivateableType: 5
+  DestroysSoilOnPlacement: 1
   ToolTipType:
     GroupType: 0
     MainLocalizationID: 63
@@ -1044,8 +1140,6 @@ MonoBehaviour:
   DefaultScale: 17
   isTool: 0
   ToolQualityLevels: []
-  isGrowableItem: 0
-  GrowableItemStages: []
   isItem: 0
   ItemCat: 0
   ItemQualities: []
@@ -1054,6 +1148,9 @@ MonoBehaviour:
   isStorage: 1
   StorageList:
   - TotalStorageSlots: 36
+  isGrowableItem: 0
+  RequireTilledEarth: 0
+  PreviewItem: {fileID: 0}
   isEnvironment: 0
   EnvironmentValues: []
 --- !u!114 &676053778
@@ -1068,7 +1165,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 1522470
+  instanceID: 1764698
 --- !u!4 &676053779
 Transform:
   m_ObjectHideFlags: 0
@@ -1126,6 +1223,7 @@ MonoBehaviour:
   Name: Axe
   MaxStackSize: 1
   ActivateableType: 1
+  DestroysSoilOnPlacement: 0
   ToolTipType:
     GroupType: 2
     MainLocalizationID: 39
@@ -1175,8 +1273,6 @@ MonoBehaviour:
     Icon: {fileID: 21300000, guid: 13c689d9086ba9046871c537e0fe0d42, type: 3}
     HasCustomModel: 1
     ModelPrefab: {fileID: 186260, guid: 73d91079f8379b14aab7efb95a19e7d2, type: 2}
-  isGrowableItem: 0
-  GrowableItemStages: []
   isItem: 0
   ItemCat: 0
   ItemQualities: []
@@ -1184,6 +1280,9 @@ MonoBehaviour:
   RandomVelocityMax: 0
   isStorage: 0
   StorageList: []
+  isGrowableItem: 0
+  RequireTilledEarth: 0
+  PreviewItem: {fileID: 0}
   isEnvironment: 0
   EnvironmentValues: []
 --- !u!114 &769028655
@@ -1198,7 +1297,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 1522480
+  instanceID: 1764708
 --- !u!1 &889436591
 GameObject:
   m_ObjectHideFlags: 0
@@ -1241,7 +1340,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 1522486
+  instanceID: 1764714
 --- !u!114 &889436594
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1256,6 +1355,7 @@ MonoBehaviour:
   Name: Fish
   MaxStackSize: 999
   ActivateableType: 4
+  DestroysSoilOnPlacement: 0
   ToolTipType:
     GroupType: 1
     MainLocalizationID: 74
@@ -1269,8 +1369,6 @@ MonoBehaviour:
   DefaultScale: 0.5
   isTool: 0
   ToolQualityLevels: []
-  isGrowableItem: 0
-  GrowableItemStages: []
   isItem: 1
   ItemCat: 2
   ItemQualities:
@@ -1307,6 +1405,9 @@ MonoBehaviour:
   isStorage: 0
   StorageList:
   - TotalStorageSlots: 36
+  isGrowableItem: 0
+  RequireTilledEarth: 0
+  PreviewItem: {fileID: 0}
   isEnvironment: 0
   EnvironmentValues: []
 --- !u!1 &907308529
@@ -1318,9 +1419,8 @@ GameObject:
   m_Component:
   - component: {fileID: 907308530}
   - component: {fileID: 907308531}
-  - component: {fileID: 907308532}
   m_Layer: 0
-  m_Name: Breakable Object Atlas
+  m_Name: Cluster Rewards Atlas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1337,6 +1437,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1259421160}
+  - {fileID: 1348481037}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1353,18 +1454,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemCatagoryList:
   - {fileID: 88464735}
-  ListCount: 1
---- !u!114 &907308532
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 907308529}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e595a48572380e44b8785340f9048f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  - {fileID: 568888681}
+  ListCount: 2
 --- !u!1 &911112101
 GameObject:
   m_ObjectHideFlags: 0
@@ -1407,7 +1498,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 1522502
+  instanceID: 1764728
 --- !u!114 &911112104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1422,6 +1513,7 @@ MonoBehaviour:
   Name: Fish
   MaxStackSize: 999
   ActivateableType: 4
+  DestroysSoilOnPlacement: 0
   ToolTipType:
     GroupType: 1
     MainLocalizationID: 76
@@ -1435,8 +1527,6 @@ MonoBehaviour:
   DefaultScale: 0.5
   isTool: 0
   ToolQualityLevels: []
-  isGrowableItem: 0
-  GrowableItemStages: []
   isItem: 1
   ItemCat: 2
   ItemQualities:
@@ -1473,6 +1563,9 @@ MonoBehaviour:
   isStorage: 0
   StorageList:
   - TotalStorageSlots: 36
+  isGrowableItem: 0
+  RequireTilledEarth: 0
+  PreviewItem: {fileID: 0}
   isEnvironment: 0
   EnvironmentValues: []
 --- !u!1 &1215626842
@@ -1503,6 +1596,7 @@ Transform:
   - {fileID: 1328181117}
   - {fileID: 1696380315}
   - {fileID: 619036617}
+  - {fileID: 1470222517}
   m_Father: {fileID: 98179532}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1627,6 +1721,7 @@ MonoBehaviour:
   Name: Dervish Root
   MaxStackSize: 999
   ActivateableType: 4
+  DestroysSoilOnPlacement: 0
   ToolTipType:
     GroupType: 1
     MainLocalizationID: 45
@@ -1640,8 +1735,6 @@ MonoBehaviour:
   DefaultScale: 0.14
   isTool: 0
   ToolQualityLevels: []
-  isGrowableItem: 0
-  GrowableItemStages: []
   isItem: 1
   ItemCat: 1
   ItemQualities:
@@ -1677,6 +1770,9 @@ MonoBehaviour:
   RandomVelocityMax: 0
   isStorage: 0
   StorageList: []
+  isGrowableItem: 0
+  RequireTilledEarth: 0
+  PreviewItem: {fileID: 0}
   isEnvironment: 0
   EnvironmentValues: []
 --- !u!114 &1328181119
@@ -1691,7 +1787,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 1522526
+  instanceID: 1764752
 --- !u!1 &1330787844
 GameObject:
   m_ObjectHideFlags: 0
@@ -1718,7 +1814,112 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1714828755}
+  - {fileID: 1343751718}
   m_Father: {fileID: 98179532}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1343751715
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1343751718}
+  - component: {fileID: 1343751717}
+  - component: {fileID: 1343751716}
+  m_Layer: 0
+  m_Name: 21 - TestTree
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1343751716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1343751715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc1a46eca4a35e5498f3df297015210f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Apple Tree
+  MaxStackSize: 999
+  ActivateableType: 5
+  DestroysSoilOnPlacement: 1
+  ToolTipType:
+    GroupType: 0
+    MainLocalizationID: 91
+    SubLocalizationID: 89
+    DescriptionID: 92
+    ContextID: 0
+  DatabaseID: 21
+  LockItem: 1
+  Icon: {fileID: 21300000, guid: 5c3d38af10825b04890a2523b53175e4, type: 3}
+  ModelPrefab: {fileID: 1721282356261930, guid: 045922c024be8824a9f93b1fa6305339,
+    type: 2}
+  DefaultScale: 1
+  isTool: 0
+  ToolQualityLevels: []
+  isItem: 1
+  ItemCat: 4
+  ItemQualities:
+  - Quality: 0
+    AdjustsHealth: 0
+    HealthAdjustValue: 0
+    AdjustsEnergy: 0
+    EnergyAdjustValue: 0
+    BuyPrice: 90
+    SellPrice: 30
+  RandomizeVelocityOnSpawn: 0
+  RandomVelocityMax: 0
+  isStorage: 0
+  StorageList: []
+  isGrowableItem: 1
+  RequireTilledEarth: 0
+  PreviewItem: {fileID: 1190082843462652, guid: 93873d1acf25077489740c84181ed113,
+    type: 2}
+  isEnvironment: 1
+  EnvironmentValues:
+  - IsWaterable: 0
+    IsBreakable: 1
+    ObjectType: 1
+    ActivateableTypeRequired: 0
+    QualityLevelRequired: 0
+    ObjectHealth: 15
+    DropItemsOnBreak: 0
+    BreakableAtlasID: 0
+    DropItemsOnInteract: 1
+    InteractDropID: 22
+    SwapItemOnBreak: 1
+    SwapID: 0
+--- !u!114 &1343751717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1343751715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 0
+  instanceID: 1764762
+--- !u!4 &1343751718
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1343751715}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1330787845}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1345506624
@@ -1763,7 +1964,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 1522536
+  instanceID: 1764770
 --- !u!114 &1345506627
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1778,6 +1979,7 @@ MonoBehaviour:
   Name: Fish
   MaxStackSize: 999
   ActivateableType: 4
+  DestroysSoilOnPlacement: 0
   ToolTipType:
     GroupType: 1
     MainLocalizationID: 75
@@ -1791,8 +1993,6 @@ MonoBehaviour:
   DefaultScale: 0.5
   isTool: 0
   ToolQualityLevels: []
-  isGrowableItem: 0
-  GrowableItemStages: []
   isItem: 1
   ItemCat: 2
   ItemQualities:
@@ -1829,8 +2029,40 @@ MonoBehaviour:
   isStorage: 0
   StorageList:
   - TotalStorageSlots: 36
+  isGrowableItem: 0
+  RequireTilledEarth: 0
+  PreviewItem: {fileID: 0}
   isEnvironment: 0
   EnvironmentValues: []
+--- !u!1 &1348481036
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1348481037}
+  m_Layer: 0
+  m_Name: Fruit
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1348481037
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1348481036}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 568888683}
+  m_Father: {fileID: 907308530}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1405183627
 GameObject:
   m_ObjectHideFlags: 0
@@ -1933,6 +2165,7 @@ MonoBehaviour:
   Name: FishingPol
   MaxStackSize: 1
   ActivateableType: 3
+  DestroysSoilOnPlacement: 0
   ToolTipType:
     GroupType: 2
     MainLocalizationID: 42
@@ -1982,8 +2215,6 @@ MonoBehaviour:
     Icon: {fileID: 21300000, guid: d1efae79809d6f94bb829362c7cae141, type: 3}
     HasCustomModel: 1
     ModelPrefab: {fileID: 149808, guid: 562e6d006e191b640b85f5f26201b3e2, type: 2}
-  isGrowableItem: 0
-  GrowableItemStages: []
   isItem: 0
   ItemCat: 0
   ItemQualities: []
@@ -1991,6 +2222,9 @@ MonoBehaviour:
   RandomVelocityMax: 0
   isStorage: 0
   StorageList: []
+  isGrowableItem: 0
+  RequireTilledEarth: 0
+  PreviewItem: {fileID: 0}
   isEnvironment: 0
   EnvironmentValues: []
 --- !u!114 &1429960797
@@ -2005,7 +2239,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 1522554
+  instanceID: 1764792
 --- !u!1 &1450680409
 GameObject:
   m_ObjectHideFlags: 0
@@ -2034,6 +2268,118 @@ Transform:
   - {fileID: 1511745342}
   m_Father: {fileID: 98179532}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1470222514
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1470222517}
+  - component: {fileID: 1470222516}
+  - component: {fileID: 1470222515}
+  m_Layer: 0
+  m_Name: 22 - apple01_red
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1470222515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1470222514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc1a46eca4a35e5498f3df297015210f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Apple
+  MaxStackSize: 999
+  ActivateableType: 4
+  DestroysSoilOnPlacement: 0
+  ToolTipType:
+    GroupType: 1
+    MainLocalizationID: 93
+    SubLocalizationID: 94
+    DescriptionID: 95
+    ContextID: 0
+  DatabaseID: 22
+  LockItem: 1
+  Icon: {fileID: 21300000, guid: a343d9700f720c9438d9a0cfec6db894, type: 3}
+  ModelPrefab: {fileID: 1000014262645136, guid: 0a472e24bab49784a98a5fb1a480231b,
+    type: 2}
+  DefaultScale: 1
+  isTool: 0
+  ToolQualityLevels: []
+  isItem: 1
+  ItemCat: 5
+  ItemQualities:
+  - Quality: 0
+    AdjustsHealth: 1
+    HealthAdjustValue: 15
+    AdjustsEnergy: 1
+    EnergyAdjustValue: 35
+    BuyPrice: 45
+    SellPrice: 15
+  - Quality: 1
+    AdjustsHealth: 1
+    HealthAdjustValue: 25
+    AdjustsEnergy: 1
+    EnergyAdjustValue: 45
+    BuyPrice: 75
+    SellPrice: 25
+  - Quality: 2
+    AdjustsHealth: 1
+    HealthAdjustValue: 35
+    AdjustsEnergy: 1
+    EnergyAdjustValue: 55
+    BuyPrice: 105
+    SellPrice: 35
+  - Quality: 3
+    AdjustsHealth: 1
+    HealthAdjustValue: 45
+    AdjustsEnergy: 1
+    EnergyAdjustValue: 65
+    BuyPrice: 135
+    SellPrice: 45
+  RandomizeVelocityOnSpawn: 1
+  RandomVelocityMax: 4
+  isStorage: 0
+  StorageList: []
+  isGrowableItem: 0
+  RequireTilledEarth: 0
+  PreviewItem: {fileID: 0}
+  isEnvironment: 0
+  EnvironmentValues: []
+--- !u!114 &1470222516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1470222514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 0
+  instanceID: 1764802
+--- !u!4 &1470222517
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1470222514}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1215626843}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1502558389
 GameObject:
@@ -2066,6 +2412,7 @@ MonoBehaviour:
   Name: Watering Can
   MaxStackSize: 1
   ActivateableType: 6
+  DestroysSoilOnPlacement: 0
   ToolTipType:
     GroupType: 2
     MainLocalizationID: 84
@@ -2119,8 +2466,6 @@ MonoBehaviour:
     HasCustomModel: 1
     ModelPrefab: {fileID: 1711145811675354, guid: 6880732484ef86b41a8e5b2d3783b9c4,
       type: 2}
-  isGrowableItem: 0
-  GrowableItemStages: []
   isItem: 0
   ItemCat: 0
   ItemQualities: []
@@ -2128,6 +2473,9 @@ MonoBehaviour:
   RandomVelocityMax: 0
   isStorage: 0
   StorageList: []
+  isGrowableItem: 0
+  RequireTilledEarth: 0
+  PreviewItem: {fileID: 0}
   isEnvironment: 0
   EnvironmentValues: []
 --- !u!114 &1502558391
@@ -2142,7 +2490,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 1522564
+  instanceID: 1764810
 --- !u!4 &1502558392
 Transform:
   m_ObjectHideFlags: 0
@@ -2187,6 +2535,7 @@ MonoBehaviour:
   Name: Crispins Glove
   MaxStackSize: 999
   ActivateableType: 4
+  DestroysSoilOnPlacement: 0
   ToolTipType:
     GroupType: 0
     MainLocalizationID: 44
@@ -2200,8 +2549,6 @@ MonoBehaviour:
   DefaultScale: 0.38
   isTool: 0
   ToolQualityLevels: []
-  isGrowableItem: 0
-  GrowableItemStages: []
   isItem: 1
   ItemCat: 1
   ItemQualities:
@@ -2237,6 +2584,9 @@ MonoBehaviour:
   RandomVelocityMax: 0
   isStorage: 0
   StorageList: []
+  isGrowableItem: 0
+  RequireTilledEarth: 0
+  PreviewItem: {fileID: 0}
   isEnvironment: 0
   EnvironmentValues: []
 --- !u!114 &1511745341
@@ -2251,7 +2601,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 1522572
+  instanceID: 1764818
 --- !u!4 &1511745342
 Transform:
   m_ObjectHideFlags: 0
@@ -2325,6 +2675,7 @@ MonoBehaviour:
   Name: Fish
   MaxStackSize: 999
   ActivateableType: 4
+  DestroysSoilOnPlacement: 0
   ToolTipType:
     GroupType: 1
     MainLocalizationID: 77
@@ -2338,8 +2689,6 @@ MonoBehaviour:
   DefaultScale: 0.5
   isTool: 0
   ToolQualityLevels: []
-  isGrowableItem: 0
-  GrowableItemStages: []
   isItem: 1
   ItemCat: 2
   ItemQualities:
@@ -2376,6 +2725,9 @@ MonoBehaviour:
   isStorage: 0
   StorageList:
   - TotalStorageSlots: 36
+  isGrowableItem: 0
+  RequireTilledEarth: 0
+  PreviewItem: {fileID: 0}
   isEnvironment: 0
   EnvironmentValues: []
 --- !u!114 &1637135972
@@ -2390,7 +2742,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 1522584
+  instanceID: 1764830
 --- !u!4 &1637135973
 Transform:
   m_ObjectHideFlags: 0
@@ -2462,7 +2814,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 5
-  instanceID: 1522592
+  instanceID: 1764838
 --- !u!4 &1645614859
 Transform:
   m_ObjectHideFlags: 0
@@ -2547,7 +2899,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 5
-  instanceID: 1522602
+  instanceID: 1764848
 --- !u!1 &1696380314
 GameObject:
   m_ObjectHideFlags: 0
@@ -2592,6 +2944,7 @@ MonoBehaviour:
   Name: Fire Wort
   MaxStackSize: 999
   ActivateableType: 4
+  DestroysSoilOnPlacement: 0
   ToolTipType:
     GroupType: 1
     MainLocalizationID: 46
@@ -2605,8 +2958,6 @@ MonoBehaviour:
   DefaultScale: 0.28
   isTool: 0
   ToolQualityLevels: []
-  isGrowableItem: 0
-  GrowableItemStages: []
   isItem: 1
   ItemCat: 1
   ItemQualities:
@@ -2642,6 +2993,9 @@ MonoBehaviour:
   RandomVelocityMax: 0
   isStorage: 0
   StorageList: []
+  isGrowableItem: 0
+  RequireTilledEarth: 0
+  PreviewItem: {fileID: 0}
   isEnvironment: 0
   EnvironmentValues: []
 --- !u!114 &1696380317
@@ -2656,7 +3010,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 1522610
+  instanceID: 1764856
 --- !u!1 &1701517455
 GameObject:
   m_ObjectHideFlags: 0
@@ -2697,7 +3051,7 @@ GameObject:
   - component: {fileID: 1714828757}
   - component: {fileID: 1714828756}
   m_Layer: 0
-  m_Name: 4 - Cabbage_Green_Lv1
+  m_Name: 4 - Cabbage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2729,62 +3083,54 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Cabbage Stages
   MaxStackSize: 999
-  ActivateableType: 4
+  ActivateableType: 5
+  DestroysSoilOnPlacement: 0
   ToolTipType:
     GroupType: 0
-    MainLocalizationID: 0
-    SubLocalizationID: 0
-    DescriptionID: 0
+    MainLocalizationID: 43
+    SubLocalizationID: 89
+    DescriptionID: 90
     ContextID: 0
   DatabaseID: 4
   LockItem: 1
-  Icon: {fileID: 0}
-  ModelPrefab: {fileID: 100000, guid: 22060f3d67f76de47972326b7a125453, type: 2}
+  Icon: {fileID: 21300000, guid: d92297eb237778d48a0f1808ba622238, type: 3}
+  ModelPrefab: {fileID: 1931251858157264, guid: 585340b8bc9d2b744a3e22cd810fd953,
+    type: 2}
   DefaultScale: 1
   isTool: 0
   ToolQualityLevels: []
-  isGrowableItem: 1
-  GrowableItemStages:
-  - ModelPrefab: {fileID: 100000, guid: 22060f3d67f76de47972326b7a125453, type: 2}
-  - ModelPrefab: {fileID: 100000, guid: b3883730055123f47b515dcb4b5ca6c2, type: 2}
-  - ModelPrefab: {fileID: 100000, guid: 3f66019c1dcbc574c8a3379ae734b601, type: 2}
-  isItem: 0
-  ItemCat: 0
+  isItem: 1
+  ItemCat: 4
   ItemQualities:
   - Quality: 0
-    AdjustsHealth: 1
-    HealthAdjustValue: 15
-    AdjustsEnergy: 1
-    EnergyAdjustValue: 35
-    BuyPrice: 45
-    SellPrice: 15
-  - Quality: 1
-    AdjustsHealth: 1
-    HealthAdjustValue: 25
-    AdjustsEnergy: 1
-    EnergyAdjustValue: 45
-    BuyPrice: 75
-    SellPrice: 25
-  - Quality: 2
-    AdjustsHealth: 1
-    HealthAdjustValue: 35
-    AdjustsEnergy: 1
-    EnergyAdjustValue: 55
-    BuyPrice: 105
-    SellPrice: 35
-  - Quality: 3
-    AdjustsHealth: 1
-    HealthAdjustValue: 45
-    AdjustsEnergy: 1
-    EnergyAdjustValue: 65
-    BuyPrice: 135
-    SellPrice: 45
+    AdjustsHealth: 0
+    HealthAdjustValue: 0
+    AdjustsEnergy: 0
+    EnergyAdjustValue: 0
+    BuyPrice: 60
+    SellPrice: 20
   RandomizeVelocityOnSpawn: 0
   RandomVelocityMax: 0
   isStorage: 0
   StorageList: []
-  isEnvironment: 0
-  EnvironmentValues: []
+  isGrowableItem: 1
+  RequireTilledEarth: 1
+  PreviewItem: {fileID: 1266158092570826, guid: d152bc41652b0a74e9c8905b939610f8,
+    type: 2}
+  isEnvironment: 1
+  EnvironmentValues:
+  - IsWaterable: 1
+    IsBreakable: 0
+    ObjectType: 0
+    ActivateableTypeRequired: 0
+    QualityLevelRequired: 0
+    ObjectHealth: 0
+    DropItemsOnBreak: 0
+    BreakableAtlasID: 0
+    DropItemsOnInteract: 0
+    InteractDropID: 0
+    SwapItemOnBreak: 0
+    SwapID: 0
 --- !u!114 &1714828757
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2797,7 +3143,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 1522622
+  instanceID: 1764868
 --- !u!1 &1815548898
 GameObject:
   m_ObjectHideFlags: 0
@@ -2871,6 +3217,7 @@ MonoBehaviour:
   Name: Hoe
   MaxStackSize: 1
   ActivateableType: 2
+  DestroysSoilOnPlacement: 0
   ToolTipType:
     GroupType: 2
     MainLocalizationID: 41
@@ -2920,8 +3267,6 @@ MonoBehaviour:
     Icon: {fileID: 21300000, guid: e22c9c5ef141a72498062c0513cbc414, type: 3}
     HasCustomModel: 1
     ModelPrefab: {fileID: 112078, guid: 44bf930909cf66844a3ab16619af193e, type: 2}
-  isGrowableItem: 0
-  GrowableItemStages: []
   isItem: 0
   ItemCat: 0
   ItemQualities: []
@@ -2929,6 +3274,9 @@ MonoBehaviour:
   RandomVelocityMax: 0
   isStorage: 0
   StorageList: []
+  isGrowableItem: 0
+  RequireTilledEarth: 0
+  PreviewItem: {fileID: 0}
   isEnvironment: 0
   EnvironmentValues: []
 --- !u!114 &1825876185
@@ -2943,7 +3291,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 1522634
+  instanceID: 1764880
 --- !u!1 &1837730739
 GameObject:
   m_ObjectHideFlags: 0
@@ -3004,6 +3352,7 @@ MonoBehaviour:
   Name: Stone Resource
   MaxStackSize: 999
   ActivateableType: 4
+  DestroysSoilOnPlacement: 0
   ToolTipType:
     GroupType: 0
     MainLocalizationID: 86
@@ -3017,8 +3366,6 @@ MonoBehaviour:
   DefaultScale: 0.1
   isTool: 0
   ToolQualityLevels: []
-  isGrowableItem: 0
-  GrowableItemStages: []
   isItem: 1
   ItemCat: 3
   ItemQualities:
@@ -3033,11 +3380,23 @@ MonoBehaviour:
   RandomVelocityMax: 1.5
   isStorage: 0
   StorageList: []
+  isGrowableItem: 0
+  RequireTilledEarth: 0
+  PreviewItem: {fileID: 0}
   isEnvironment: 0
   EnvironmentValues:
   - IsWaterable: 0
     IsBreakable: 1
+    ObjectType: 0
+    ActivateableTypeRequired: 0
+    QualityLevelRequired: 0
+    ObjectHealth: 0
+    DropItemsOnBreak: 0
     BreakableAtlasID: 0
+    DropItemsOnInteract: 0
+    InteractDropID: 0
+    SwapItemOnBreak: 0
+    SwapID: 0
 --- !u!114 &1849541683
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3050,7 +3409,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 1522644
+  instanceID: 1764890
 --- !u!4 &1849541684
 Transform:
   m_ObjectHideFlags: 0
@@ -3106,7 +3465,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 1522652
+  instanceID: 1764898
 --- !u!114 &1902128846
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3121,6 +3480,7 @@ MonoBehaviour:
   Name: Fish
   MaxStackSize: 999
   ActivateableType: 4
+  DestroysSoilOnPlacement: 0
   ToolTipType:
     GroupType: 1
     MainLocalizationID: 73
@@ -3134,8 +3494,6 @@ MonoBehaviour:
   DefaultScale: 0.5
   isTool: 0
   ToolQualityLevels: []
-  isGrowableItem: 0
-  GrowableItemStages: []
   isItem: 1
   ItemCat: 2
   ItemQualities:
@@ -3172,6 +3530,9 @@ MonoBehaviour:
   isStorage: 0
   StorageList:
   - TotalStorageSlots: 36
+  isGrowableItem: 0
+  RequireTilledEarth: 0
+  PreviewItem: {fileID: 0}
   isEnvironment: 0
   EnvironmentValues: []
 --- !u!1 &2041544709
@@ -3232,7 +3593,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 5
-  instanceID: 1522660
+  instanceID: 1764906
 --- !u!4 &2041544712
 Transform:
   m_ObjectHideFlags: 0

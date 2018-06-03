@@ -72,4 +72,5 @@ MonoBehaviour:
   - SendBreakableHit
   - SendBreakableBroke
   - CharacterClaimedMagneticObject
+  - ReceiveSurrogateTilled
   DisableAutoOpenWizard: 1

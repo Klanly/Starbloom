@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DG_BreakableObjectItem : MonoBehaviour {
 
-    public enum BreakableObjectType
+    public enum OnHitEffectType
     {
         Stone,
         Tree
@@ -31,13 +31,6 @@ public class DG_BreakableObjectItem : MonoBehaviour {
     
 
     public string Name;
-    public int ItemObjectRefDatabaseID;
-
-    public BreakableObjectType ObjectType;
-    public HotbarItemHandler.ActivateableTypes ActivateableTypeRequired;
-    public DG_ItemObject.ItemQualityLevels QualityLevelRequired;
-
-    public int ObjectHealth;
 
     public ItemRoll[] RewardRolls;
 }
