@@ -62,7 +62,6 @@ public class Growable : SerializedMonoBehaviour
 	
 	protected void OnDayChanged( int _day )
 	{
-		Debug.LogFormat("Day changed - {0}", _day);
 		RefreshStage();
 	}
 
