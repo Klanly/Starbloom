@@ -186,6 +186,20 @@ public class DG_NetworkSync : Photon.MonoBehaviour
         U.SceneID = IntGroup[1];
     }
 
+
+    public void SetUserInBed(int OutData)
+    {
+        PV.RPC("UserSetInBed", PhotonTargets.All, OutData);
+    }
+    [PunRPC]
+    void UserSetInBed(int InData)
+    {
+        Bed.AddSleepingPlayer(InData);
+    }
+
+
+
+
     #endregion
 
 
