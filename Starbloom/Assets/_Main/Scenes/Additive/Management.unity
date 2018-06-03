@@ -358,7 +358,7 @@ MonoBehaviour:
   m_Script: {fileID: -1229025713, guid: b5a7519e94754fb4a8ea0c272031db78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialDatabase: {fileID: 11400000, guid: c1cc03cd82f6cdb40afbc0575be25564, type: 2}
+  initialDatabase: {fileID: 0}
   displaySettings:
     conversationOverrideSettings:
       useOverrides: 0
