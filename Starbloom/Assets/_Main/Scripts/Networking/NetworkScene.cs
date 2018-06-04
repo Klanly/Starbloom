@@ -14,8 +14,9 @@ public class NetworkScene : MonoBehaviour {
 
 
     public int SceneID;
-    //[HideInInspector]
+    [HideInInspector]
     public List<NetworkObject> TempNetworkObjectList;
+    [HideInInspector]
     public List<NetworkObject> NetworkObjectList;
 
 

@@ -114,62 +114,58 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &100433157
-GameObject:
+--- !u!1001 &90823870
+Prefab:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 100433158}
-  - component: {fileID: 100433159}
-  m_Layer: 0
-  m_Name: Herb_PoisifferousRoiler
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &100433158
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 100433157}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.91, y: -5.47, z: -43.39}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 2110302582}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &100433159
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 100433157}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  NetworkObjectID: 0
-  ItemRefID: 8
-  ItemQualityLevel: 0
-  PositionX: 990
-  PositionY: -546
-  PositionZ: -4338
-  YFacing: 0
-  isWaterable: 0
-  SurrogateObjectIndex: 0
-  HasBeenWatered: 0
-  GrowthValue: 0
-  HasHealth: 0
-  HealthValue: 0
-  isStorageContainer: 0
-  isTreasureList: 0
-  StorageSlots: []
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 106225853}
+    m_Modifications:
+    - target: {fileID: 4004003030072494, guid: c54e8c395b0069c40803538e94abf712, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4004003030072494, guid: c54e8c395b0069c40803538e94abf712, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4004003030072494, guid: c54e8c395b0069c40803538e94abf712, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4004003030072494, guid: c54e8c395b0069c40803538e94abf712, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4004003030072494, guid: c54e8c395b0069c40803538e94abf712, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4004003030072494, guid: c54e8c395b0069c40803538e94abf712, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4004003030072494, guid: c54e8c395b0069c40803538e94abf712, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4004003030072494, guid: c54e8c395b0069c40803538e94abf712, type: 2}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114082914115579604, guid: c54e8c395b0069c40803538e94abf712,
+        type: 2}
+      propertyPath: viewIdField
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114082914115579604, guid: c54e8c395b0069c40803538e94abf712,
+        type: 2}
+      propertyPath: instantiationId
+      value: 2
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: c54e8c395b0069c40803538e94abf712, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &106225851
 GameObject:
   m_ObjectHideFlags: 0
@@ -215,6 +211,62 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &148655365
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 148655366}
+  - component: {fileID: 148655367}
+  m_Layer: 0
+  m_Name: Broccoli
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &148655366
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 148655365}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 6, y: 1.65, z: -6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 967766994}
+  m_RootOrder: 17
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &148655367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 148655365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NetworkObjectID: 28
+  ItemRefID: 24
+  ItemQualityLevel: 0
+  PositionX: 600
+  PositionY: 164
+  PositionZ: -600
+  YFacing: 0
+  isWaterable: 1
+  SurrogateObjectIndex: 20
+  HasBeenWatered: 0
+  GrowthValue: 0
+  HasHealth: 0
+  HealthValue: 0
+  isStorageContainer: 0
+  isTreasureList: 0
+  StorageSlots: []
 --- !u!1 &155133445
 GameObject:
   m_ObjectHideFlags: 0
@@ -256,55 +308,55 @@ Transform:
   m_Father: {fileID: 1118935757}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &189548472
+--- !u!1 &158851594
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 189548473}
-  - component: {fileID: 189548474}
+  - component: {fileID: 158851595}
+  - component: {fileID: 158851596}
   m_Layer: 0
-  m_Name: Herb_DervishRoot
+  m_Name: Strawberry
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &189548473
+--- !u!4 &158851595
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 189548472}
+  m_GameObject: {fileID: 158851594}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.21, y: -4.55, z: -37.15}
+  m_LocalPosition: {x: 10, y: 1.65, z: -6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2110302582}
-  m_RootOrder: 3
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &189548474
+--- !u!114 &158851596
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 189548472}
+  m_GameObject: {fileID: 158851594}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NetworkObjectID: 0
-  ItemRefID: 6
+  NetworkObjectID: 32
+  ItemRefID: 26
   ItemQualityLevel: 0
-  PositionX: 621
-  PositionY: -455
-  PositionZ: -3715
+  PositionX: 1000
+  PositionY: 164
+  PositionZ: -600
   YFacing: 0
-  isWaterable: 0
-  SurrogateObjectIndex: 0
+  isWaterable: 1
+  SurrogateObjectIndex: 24
   HasBeenWatered: 0
   GrowthValue: 0
   HasHealth: 0
@@ -312,59 +364,59 @@ MonoBehaviour:
   isStorageContainer: 0
   isTreasureList: 0
   StorageSlots: []
---- !u!1 &214809839
+--- !u!1 &221859123
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 214809840}
-  - component: {fileID: 214809841}
+  - component: {fileID: 221859124}
+  - component: {fileID: 221859125}
   m_Layer: 0
-  m_Name: TestTree
+  m_Name: TilledArea1 (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &214809840
+--- !u!4 &221859124
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 214809839}
+  m_GameObject: {fileID: 221859123}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7, y: 1.67, z: 1}
+  m_LocalPosition: {x: 10, y: 1.65, z: -6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 2110302582}
+  m_Father: {fileID: 967766994}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &214809841
+--- !u!114 &221859125
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 214809839}
+  m_GameObject: {fileID: 221859123}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NetworkObjectID: 0
-  ItemRefID: 21
+  NetworkObjectID: 24
+  ItemRefID: 17
   ItemQualityLevel: 0
-  PositionX: 700
-  PositionY: 166
-  PositionZ: 100
+  PositionX: 1000
+  PositionY: 164
+  PositionZ: -600
   YFacing: 0
-  isWaterable: 0
-  SurrogateObjectIndex: 0
+  isWaterable: 1
+  SurrogateObjectIndex: 32
   HasBeenWatered: 0
   GrowthValue: 0
-  HasHealth: 1
-  HealthValue: 25
+  HasHealth: 0
+  HealthValue: 0
   isStorageContainer: 0
   isTreasureList: 0
   StorageSlots: []
@@ -391,7 +443,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 254734150}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.6, y: 1.64, z: -11.56}
+  m_LocalPosition: {x: -2.69, y: 1.64, z: -11.56}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2110302582}
@@ -411,7 +463,7 @@ MonoBehaviour:
   NetworkObjectID: 0
   ItemRefID: 7
   ItemQualityLevel: 0
-  PositionX: 559
+  PositionX: -269
   PositionY: 163
   PositionZ: -1156
   YFacing: 0
@@ -447,7 +499,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 296848411}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1, y: 1.56, z: -8}
+  m_LocalPosition: {x: -4.44, y: 1.56, z: -8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2110302582}
@@ -467,65 +519,9 @@ MonoBehaviour:
   NetworkObjectID: 0
   ItemRefID: 5
   ItemQualityLevel: 0
-  PositionX: 100
+  PositionX: -444
   PositionY: 155
   PositionZ: -800
-  YFacing: 0
-  isWaterable: 0
-  SurrogateObjectIndex: 0
-  HasBeenWatered: 0
-  GrowthValue: 0
-  HasHealth: 1
-  HealthValue: 0
-  isStorageContainer: 0
-  isTreasureList: 0
-  StorageSlots: []
---- !u!1 &373058246
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 373058247}
-  - component: {fileID: 373058248}
-  m_Layer: 0
-  m_Name: Herb_DervishRoot
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &373058247
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 373058246}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.1, y: -5.33, z: -42.91}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 2110302582}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &373058248
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 373058246}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  NetworkObjectID: 0
-  ItemRefID: 6
-  ItemQualityLevel: 0
-  PositionX: 509
-  PositionY: -532
-  PositionZ: -4290
   YFacing: 0
   isWaterable: 0
   SurrogateObjectIndex: 0
@@ -536,15 +532,155 @@ MonoBehaviour:
   isStorageContainer: 0
   isTreasureList: 0
   StorageSlots: []
---- !u!1 &373816327
+--- !u!1 &319790262
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 373816328}
-  - component: {fileID: 373816329}
+  - component: {fileID: 319790263}
+  - component: {fileID: 319790264}
+  m_Layer: 0
+  m_Name: Bell Pepper (Yellow)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &319790263
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 319790262}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 9, y: 1.65, z: -6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 967766994}
+  m_RootOrder: 21
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &319790264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 319790262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NetworkObjectID: 31
+  ItemRefID: 31
+  ItemQualityLevel: 0
+  PositionX: 900
+  PositionY: 164
+  PositionZ: -600
+  YFacing: 0
+  isWaterable: 1
+  SurrogateObjectIndex: 23
+  HasBeenWatered: 0
+  GrowthValue: 0
+  HasHealth: 0
+  HealthValue: 0
+  isStorageContainer: 0
+  isTreasureList: 0
+  StorageSlots: []
+--- !u!1 &347508491
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 347508492}
+  - component: {fileID: 347508493}
+  m_Layer: 0
+  m_Name: Cabbage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &347508492
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 347508491}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 4, y: 1.65, z: -6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2110302582}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &347508493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 347508491}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NetworkObjectID: 26
+  ItemRefID: 4
+  ItemQualityLevel: 0
+  PositionX: 400
+  PositionY: 164
+  PositionZ: -600
+  YFacing: 0
+  isWaterable: 1
+  SurrogateObjectIndex: 18
+  HasBeenWatered: 0
+  GrowthValue: 0
+  HasHealth: 0
+  HealthValue: 0
+  isStorageContainer: 0
+  isTreasureList: 0
+  StorageSlots: []
+--- !u!1 &410194103
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 410194104}
+  m_Layer: 0
+  m_Name: Point B
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &410194104
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 410194103}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 11.32, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1857971650}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &420847525
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 420847526}
+  - component: {fileID: 420847527}
   m_Layer: 0
   m_Name: TestTree
   m_TagString: Untagged
@@ -552,43 +688,43 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &373816328
+--- !u!4 &420847526
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 373816327}
+  m_GameObject: {fileID: 420847525}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8, y: 1.67, z: 1}
+  m_LocalPosition: {x: 11, y: 1.65, z: -6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2110302582}
-  m_RootOrder: 16
+  m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &373816329
+--- !u!114 &420847527
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 373816327}
+  m_GameObject: {fileID: 420847525}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NetworkObjectID: 0
+  NetworkObjectID: 33
   ItemRefID: 21
   ItemQualityLevel: 0
-  PositionX: 800
-  PositionY: 166
-  PositionZ: 100
+  PositionX: 1100
+  PositionY: 164
+  PositionZ: -600
   YFacing: 0
   isWaterable: 0
   SurrogateObjectIndex: 0
   HasBeenWatered: 0
   GrowthValue: 0
-  HasHealth: 1
-  HealthValue: 25
+  HasHealth: 0
+  HealthValue: 0
   isStorageContainer: 0
   isTreasureList: 0
   StorageSlots: []
@@ -638,6 +774,286 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &461429504
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 461429505}
+  - component: {fileID: 461429506}
+  m_Layer: 0
+  m_Name: TilledArea1 (4)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &461429505
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 461429504}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 8, y: 1.65, z: -6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 967766994}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &461429506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 461429504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NetworkObjectID: 22
+  ItemRefID: 17
+  ItemQualityLevel: 0
+  PositionX: 800
+  PositionY: 164
+  PositionZ: -600
+  YFacing: 0
+  isWaterable: 1
+  SurrogateObjectIndex: 30
+  HasBeenWatered: 0
+  GrowthValue: 0
+  HasHealth: 0
+  HealthValue: 0
+  isStorageContainer: 0
+  isTreasureList: 0
+  StorageSlots: []
+--- !u!1 &478717595
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 478717596}
+  - component: {fileID: 478717597}
+  m_Layer: 0
+  m_Name: Rock (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &478717596
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 478717595}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 9, y: 1.735, z: -12}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 967766994}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &478717597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 478717595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NetworkObjectID: 0
+  ItemRefID: 19
+  ItemQualityLevel: 0
+  PositionX: 900
+  PositionY: 173
+  PositionZ: -1200
+  YFacing: 0
+  isWaterable: 0
+  SurrogateObjectIndex: 0
+  HasBeenWatered: 0
+  GrowthValue: 0
+  HasHealth: 1
+  HealthValue: 15
+  isStorageContainer: 0
+  isTreasureList: 0
+  StorageSlots: []
+--- !u!1 &487274084
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 487274085}
+  - component: {fileID: 487274086}
+  m_Layer: 0
+  m_Name: Bell Pepper (Yellow)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &487274085
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 487274084}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 9, y: 1.65, z: -6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2110302582}
+  m_RootOrder: 21
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &487274086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 487274084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NetworkObjectID: 31
+  ItemRefID: 31
+  ItemQualityLevel: 0
+  PositionX: 900
+  PositionY: 164
+  PositionZ: -600
+  YFacing: 0
+  isWaterable: 1
+  SurrogateObjectIndex: 23
+  HasBeenWatered: 0
+  GrowthValue: 0
+  HasHealth: 0
+  HealthValue: 0
+  isStorageContainer: 0
+  isTreasureList: 0
+  StorageSlots: []
+--- !u!1 &492757118
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 492757119}
+  - component: {fileID: 492757120}
+  m_Layer: 0
+  m_Name: Herb_CrispinsGlove (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &492757119
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 492757118}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -4.44, y: 1.56, z: -8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 967766994}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &492757120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 492757118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NetworkObjectID: 0
+  ItemRefID: 5
+  ItemQualityLevel: 0
+  PositionX: -444
+  PositionY: 155
+  PositionZ: -800
+  YFacing: 0
+  isWaterable: 0
+  SurrogateObjectIndex: 0
+  HasBeenWatered: 0
+  GrowthValue: 0
+  HasHealth: 0
+  HealthValue: 0
+  isStorageContainer: 0
+  isTreasureList: 0
+  StorageSlots: []
+--- !u!1 &503081771
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 503081772}
+  - component: {fileID: 503081773}
+  m_Layer: 0
+  m_Name: TilledArea1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &503081772
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 503081771}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 5, y: 1.65, z: -6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2110302582}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &503081773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 503081771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NetworkObjectID: 19
+  ItemRefID: 17
+  ItemQualityLevel: -1
+  PositionX: 500
+  PositionY: 164
+  PositionZ: -600
+  YFacing: 0
+  isWaterable: 1
+  SurrogateObjectIndex: 27
+  HasBeenWatered: 0
+  GrowthValue: 0
+  HasHealth: 0
+  HealthValue: 0
+  isStorageContainer: 0
+  isTreasureList: 0
+  StorageSlots: []
 --- !u!1 &507107464
 GameObject:
   m_ObjectHideFlags: 0
@@ -691,7 +1107,7 @@ MonoBehaviour:
   GrowthValue: 0
   HasHealth: 0
   HealthValue: 0
-  isStorageContainer: 1
+  isStorageContainer: 0
   isTreasureList: 0
   StorageSlots: []
 --- !u!1 &511659769
@@ -721,7 +1137,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2110302582}
-  m_RootOrder: 12
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &511659771
 MonoBehaviour:
@@ -736,7 +1152,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NetworkObjectID: 0
   ItemRefID: 19
-  ItemQualityLevel: 0
+  ItemQualityLevel: -1
   PositionX: 1000
   PositionY: 173
   PositionZ: -1100
@@ -747,6 +1163,342 @@ MonoBehaviour:
   GrowthValue: 0
   HasHealth: 1
   HealthValue: 15
+  isStorageContainer: 0
+  isTreasureList: 0
+  StorageSlots: []
+--- !u!1 &542988089
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 542988090}
+  - component: {fileID: 542988091}
+  m_Layer: 0
+  m_Name: TilledArea1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &542988090
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 542988089}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 6, y: 1.65, z: -6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2110302582}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &542988091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 542988089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NetworkObjectID: 20
+  ItemRefID: 17
+  ItemQualityLevel: -1
+  PositionX: 600
+  PositionY: 164
+  PositionZ: -600
+  YFacing: 0
+  isWaterable: 1
+  SurrogateObjectIndex: 28
+  HasBeenWatered: 0
+  GrowthValue: 0
+  HasHealth: 0
+  HealthValue: 0
+  isStorageContainer: 0
+  isTreasureList: 0
+  StorageSlots: []
+--- !u!1 &585584367
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 585584368}
+  - component: {fileID: 585584369}
+  m_Layer: 0
+  m_Name: Broccoli
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &585584368
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 585584367}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 6, y: 1.65, z: -6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2110302582}
+  m_RootOrder: 17
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &585584369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 585584367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NetworkObjectID: 28
+  ItemRefID: 24
+  ItemQualityLevel: 0
+  PositionX: 600
+  PositionY: 164
+  PositionZ: -600
+  YFacing: 0
+  isWaterable: 1
+  SurrogateObjectIndex: 20
+  HasBeenWatered: 0
+  GrowthValue: 0
+  HasHealth: 0
+  HealthValue: 0
+  isStorageContainer: 0
+  isTreasureList: 0
+  StorageSlots: []
+--- !u!1 &628591983
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 628591984}
+  - component: {fileID: 628591985}
+  m_Layer: 0
+  m_Name: TilledArea1 (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &628591984
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 628591983}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 6, y: 1.65, z: -6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 967766994}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &628591985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 628591983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NetworkObjectID: 20
+  ItemRefID: 17
+  ItemQualityLevel: 0
+  PositionX: 600
+  PositionY: 164
+  PositionZ: -600
+  YFacing: 0
+  isWaterable: 1
+  SurrogateObjectIndex: 28
+  HasBeenWatered: 0
+  GrowthValue: 0
+  HasHealth: 0
+  HealthValue: 0
+  isStorageContainer: 0
+  isTreasureList: 0
+  StorageSlots: []
+--- !u!1 &632645297
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 632645298}
+  - component: {fileID: 632645299}
+  m_Layer: 0
+  m_Name: TestTree
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &632645298
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 632645297}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 11, y: 1.65, z: -6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 967766994}
+  m_RootOrder: 22
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &632645299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 632645297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NetworkObjectID: 33
+  ItemRefID: 21
+  ItemQualityLevel: 0
+  PositionX: 1100
+  PositionY: 164
+  PositionZ: -600
+  YFacing: 0
+  isWaterable: 0
+  SurrogateObjectIndex: 0
+  HasBeenWatered: 0
+  GrowthValue: 0
+  HasHealth: 0
+  HealthValue: 0
+  isStorageContainer: 0
+  isTreasureList: 0
+  StorageSlots: []
+--- !u!1 &644914222
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 644914223}
+  - component: {fileID: 644914224}
+  m_Layer: 0
+  m_Name: Carrot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &644914223
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 644914222}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 5, y: 1.65, z: -6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 967766994}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &644914224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 644914222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NetworkObjectID: 27
+  ItemRefID: 25
+  ItemQualityLevel: 0
+  PositionX: 500
+  PositionY: 164
+  PositionZ: -600
+  YFacing: 0
+  isWaterable: 1
+  SurrogateObjectIndex: 19
+  HasBeenWatered: 0
+  GrowthValue: 0
+  HasHealth: 0
+  HealthValue: 0
+  isStorageContainer: 0
+  isTreasureList: 0
+  StorageSlots: []
+--- !u!1 &675496406
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 675496407}
+  - component: {fileID: 675496408}
+  m_Layer: 0
+  m_Name: Herb_FireWort
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &675496407
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 675496406}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2.69, y: 1.64, z: -11.56}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 967766994}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &675496408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 675496406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NetworkObjectID: 0
+  ItemRefID: 7
+  ItemQualityLevel: 0
+  PositionX: -269
+  PositionY: 163
+  PositionZ: -1156
+  YFacing: 0
+  isWaterable: 0
+  SurrogateObjectIndex: 0
+  HasBeenWatered: 0
+  GrowthValue: 0
+  HasHealth: 0
+  HealthValue: 0
   isStorageContainer: 0
   isTreasureList: 0
   StorageSlots: []
@@ -777,7 +1529,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2110302582}
-  m_RootOrder: 13
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &709497128
 MonoBehaviour:
@@ -792,7 +1544,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NetworkObjectID: 0
   ItemRefID: 19
-  ItemQualityLevel: 0
+  ItemQualityLevel: -1
   PositionX: 900
   PositionY: 173
   PositionZ: -1200
@@ -806,62 +1558,278 @@ MonoBehaviour:
   isStorageContainer: 0
   isTreasureList: 0
   StorageSlots: []
---- !u!1 &733493120
+--- !u!1 &736236432
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 733493121}
-  - component: {fileID: 733493122}
+  - component: {fileID: 736236433}
+  - component: {fileID: 736236434}
   m_Layer: 0
-  m_Name: TestTree
+  m_Name: Storage Chest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &733493121
+--- !u!4 &736236433
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 733493120}
+  m_GameObject: {fileID: 736236432}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9, y: 1.67, z: 1}
+  m_LocalPosition: {x: 1, y: 1.66, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 2110302582}
-  m_RootOrder: 15
+  m_Father: {fileID: 967766994}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &733493122
+--- !u!114 &736236434
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 733493120}
+  m_GameObject: {fileID: 736236432}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   NetworkObjectID: 0
-  ItemRefID: 21
+  ItemRefID: 10
   ItemQualityLevel: 0
-  PositionX: 900
-  PositionY: 166
-  PositionZ: 100
+  PositionX: 100
+  PositionY: 165
+  PositionZ: 0
   YFacing: 0
   isWaterable: 0
   SurrogateObjectIndex: 0
   HasBeenWatered: 0
   GrowthValue: 0
-  HasHealth: 1
-  HealthValue: 25
-  isStorageContainer: 0
+  HasHealth: 0
+  HealthValue: 0
+  isStorageContainer: 1
   isTreasureList: 0
-  StorageSlots: []
+  StorageSlots:
+  - ContainedItem: 21
+    CurrentStackActive: 0
+    LowValue: 50
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 4
+    CurrentStackActive: 0
+    LowValue: 50
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 25
+    CurrentStackActive: 0
+    LowValue: 50
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 24
+    CurrentStackActive: 0
+    LowValue: 50
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 23
+    CurrentStackActive: 0
+    LowValue: 50
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 27
+    CurrentStackActive: 0
+    LowValue: 50
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 31
+    CurrentStackActive: 0
+    LowValue: 50
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 26
+    CurrentStackActive: 0
+    LowValue: 50
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 26
+    CurrentStackActive: 0
+    LowValue: 999
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 0
+    CurrentStackActive: 0
+    LowValue: 0
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 0
+    CurrentStackActive: 0
+    LowValue: 0
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 0
+    CurrentStackActive: 0
+    LowValue: 0
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 0
+    CurrentStackActive: 0
+    LowValue: 0
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 0
+    CurrentStackActive: 0
+    LowValue: 0
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 0
+    CurrentStackActive: 0
+    LowValue: 0
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 0
+    CurrentStackActive: 0
+    LowValue: 0
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 0
+    CurrentStackActive: 0
+    LowValue: 0
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 0
+    CurrentStackActive: 0
+    LowValue: 0
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 0
+    CurrentStackActive: 0
+    LowValue: 0
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 0
+    CurrentStackActive: 0
+    LowValue: 0
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 0
+    CurrentStackActive: 0
+    LowValue: 0
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 0
+    CurrentStackActive: 0
+    LowValue: 0
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 0
+    CurrentStackActive: 0
+    LowValue: 0
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 0
+    CurrentStackActive: 0
+    LowValue: 0
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 0
+    CurrentStackActive: 0
+    LowValue: 0
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 0
+    CurrentStackActive: 0
+    LowValue: 0
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 0
+    CurrentStackActive: 0
+    LowValue: 0
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 0
+    CurrentStackActive: 0
+    LowValue: 0
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 0
+    CurrentStackActive: 0
+    LowValue: 0
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 0
+    CurrentStackActive: 0
+    LowValue: 0
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 0
+    CurrentStackActive: 0
+    LowValue: 0
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 0
+    CurrentStackActive: 0
+    LowValue: 0
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 0
+    CurrentStackActive: 0
+    LowValue: 0
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 0
+    CurrentStackActive: 0
+    LowValue: 0
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 0
+    CurrentStackActive: 0
+    LowValue: 0
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 0
+    CurrentStackActive: 0
+    LowValue: 0
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
 --- !u!1 &797189596
 GameObject:
   m_ObjectHideFlags: 0
@@ -889,7 +1857,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2110302582}
-  m_RootOrder: 10
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &797189598
 MonoBehaviour:
@@ -904,7 +1872,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NetworkObjectID: 0
   ItemRefID: 19
-  ItemQualityLevel: 0
+  ItemQualityLevel: -1
   PositionX: 1000
   PositionY: 173
   PositionZ: -1300
@@ -915,6 +1883,62 @@ MonoBehaviour:
   GrowthValue: 0
   HasHealth: 1
   HealthValue: 15
+  isStorageContainer: 0
+  isTreasureList: 0
+  StorageSlots: []
+--- !u!1 &942807578
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 942807579}
+  - component: {fileID: 942807580}
+  m_Layer: 0
+  m_Name: TilledArea1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &942807579
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 942807578}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 5, y: 1.65, z: -6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 967766994}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &942807580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 942807578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NetworkObjectID: 19
+  ItemRefID: 17
+  ItemQualityLevel: 0
+  PositionX: 500
+  PositionY: 164
+  PositionZ: -600
+  YFacing: 0
+  isWaterable: 1
+  SurrogateObjectIndex: 27
+  HasBeenWatered: 0
+  GrowthValue: 0
+  HasHealth: 0
+  HealthValue: 0
   isStorageContainer: 0
   isTreasureList: 0
   StorageSlots: []
@@ -943,7 +1967,30 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1366096408}
+  - {fileID: 492757119}
+  - {fileID: 675496407}
+  - {fileID: 736236433}
+  - {fileID: 1921503014}
+  - {fileID: 1515060413}
+  - {fileID: 1128795472}
+  - {fileID: 478717596}
+  - {fileID: 942807579}
+  - {fileID: 628591984}
+  - {fileID: 2116302691}
+  - {fileID: 968074675}
+  - {fileID: 461429505}
+  - {fileID: 1734843893}
+  - {fileID: 221859124}
+  - {fileID: 644914223}
+  - {fileID: 1884391770}
+  - {fileID: 148655366}
+  - {fileID: 1742313317}
+  - {fileID: 1767367698}
+  - {fileID: 1287030904}
+  - {fileID: 319790263}
+  - {fileID: 632645298}
   m_Father: {fileID: 1904530056}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -962,6 +2009,62 @@ MonoBehaviour:
   TempNetworkObjectList: []
   NetworkObjectList: []
   JunkObject: {fileID: 0}
+--- !u!1 &968074674
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 968074675}
+  - component: {fileID: 968074676}
+  m_Layer: 0
+  m_Name: TilledArea1 (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &968074675
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 968074674}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 7, y: 1.65, z: -6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 967766994}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &968074676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 968074674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NetworkObjectID: 21
+  ItemRefID: 17
+  ItemQualityLevel: 0
+  PositionX: 700
+  PositionY: 164
+  PositionZ: -600
+  YFacing: 0
+  isWaterable: 1
+  SurrogateObjectIndex: 29
+  HasBeenWatered: 0
+  GrowthValue: 0
+  HasHealth: 0
+  HealthValue: 0
+  isStorageContainer: 0
+  isTreasureList: 0
+  StorageSlots: []
 --- !u!1 &1065796223
 GameObject:
   m_ObjectHideFlags: 0
@@ -989,7 +2092,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2110302582}
-  m_RootOrder: 9
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1065796225
 MonoBehaviour:
@@ -1004,7 +2107,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NetworkObjectID: 0
   ItemRefID: 10
-  ItemQualityLevel: 0
+  ItemQualityLevel: -1
   PositionX: 100
   PositionY: 165
   PositionZ: 0
@@ -1018,9 +2121,57 @@ MonoBehaviour:
   isStorageContainer: 1
   isTreasureList: 0
   StorageSlots:
-  - ContainedItem: 5
+  - ContainedItem: 21
     CurrentStackActive: 0
-    LowValue: 1
+    LowValue: 50
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 4
+    CurrentStackActive: 0
+    LowValue: 50
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 25
+    CurrentStackActive: 0
+    LowValue: 50
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 24
+    CurrentStackActive: 0
+    LowValue: 50
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 23
+    CurrentStackActive: 0
+    LowValue: 50
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 27
+    CurrentStackActive: 0
+    LowValue: 50
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 31
+    CurrentStackActive: 0
+    LowValue: 50
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 26
+    CurrentStackActive: 0
+    LowValue: 50
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 26
+    CurrentStackActive: 0
+    LowValue: 999
     NormalValue: 0
     HighValue: 0
     MaximumValue: 0
@@ -1186,110 +2337,6 @@ MonoBehaviour:
     NormalValue: 0
     HighValue: 0
     MaximumValue: 0
-  - ContainedItem: 0
-    CurrentStackActive: 0
-    LowValue: 0
-    NormalValue: 0
-    HighValue: 0
-    MaximumValue: 0
-  - ContainedItem: 0
-    CurrentStackActive: 0
-    LowValue: 0
-    NormalValue: 0
-    HighValue: 0
-    MaximumValue: 0
-  - ContainedItem: 0
-    CurrentStackActive: 0
-    LowValue: 0
-    NormalValue: 0
-    HighValue: 0
-    MaximumValue: 0
-  - ContainedItem: 0
-    CurrentStackActive: 0
-    LowValue: 0
-    NormalValue: 0
-    HighValue: 0
-    MaximumValue: 0
-  - ContainedItem: 0
-    CurrentStackActive: 0
-    LowValue: 0
-    NormalValue: 0
-    HighValue: 0
-    MaximumValue: 0
-  - ContainedItem: 0
-    CurrentStackActive: 0
-    LowValue: 0
-    NormalValue: 0
-    HighValue: 0
-    MaximumValue: 0
-  - ContainedItem: 0
-    CurrentStackActive: 0
-    LowValue: 0
-    NormalValue: 0
-    HighValue: 0
-    MaximumValue: 0
-  - ContainedItem: 0
-    CurrentStackActive: 0
-    LowValue: 0
-    NormalValue: 0
-    HighValue: 0
-    MaximumValue: 0
---- !u!1 &1068715597
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1068715598}
-  - component: {fileID: 1068715599}
-  m_Layer: 0
-  m_Name: Herb_DervishRoot
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1068715598
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1068715597}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.58, y: -5.27, z: -45.92}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 2110302582}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1068715599
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1068715597}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  NetworkObjectID: 0
-  ItemRefID: 6
-  ItemQualityLevel: 0
-  PositionX: 158
-  PositionY: -526
-  PositionZ: -4591
-  YFacing: 0
-  isWaterable: 0
-  SurrogateObjectIndex: 0
-  HasBeenWatered: 0
-  GrowthValue: 0
-  HasHealth: 0
-  HealthValue: 0
-  isStorageContainer: 0
-  isTreasureList: 0
-  StorageSlots: []
 --- !u!1 &1118935756
 GameObject:
   m_ObjectHideFlags: 0
@@ -1318,6 +2365,7 @@ Transform:
   m_Children:
   - {fileID: 155133447}
   - {fileID: 1352009373}
+  - {fileID: 1857971650}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1379,27 +2427,27 @@ MonoBehaviour:
         NormalValue: 0
         HighValue: 0
         MaximumValue: 0
-      - ContainedItem: 4
+      - ContainedItem: 3
         CurrentStackActive: 0
         LowValue: 1
         NormalValue: 0
         HighValue: 0
         MaximumValue: 0
-      - ContainedItem: 5
+      - ContainedItem: 0
         CurrentStackActive: 0
-        LowValue: 1
+        LowValue: 0
         NormalValue: 0
         HighValue: 0
         MaximumValue: 0
-      - ContainedItem: 21
+      - ContainedItem: 0
         CurrentStackActive: 0
-        LowValue: 10
+        LowValue: 0
         NormalValue: 0
         HighValue: 0
         MaximumValue: 0
-      - ContainedItem: 4
+      - ContainedItem: 0
         CurrentStackActive: 0
-        LowValue: 30
+        LowValue: 0
         NormalValue: 0
         HighValue: 0
         MaximumValue: 0
@@ -2282,55 +3330,139 @@ MonoBehaviour:
     TodayWeather: 0
     TomorrowWeather: 0
     TwoDayAwayWeather: 0
---- !u!1 &1136677237
+--- !u!1 &1128795471
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 1136677238}
-  - component: {fileID: 1136677239}
+  - component: {fileID: 1128795472}
+  - component: {fileID: 1128795473}
   m_Layer: 0
-  m_Name: Herb_PoisifferousRoiler
+  m_Name: Rock (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1136677238
+--- !u!4 &1128795472
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1136677237}
+  m_GameObject: {fileID: 1128795471}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.04, y: -4.52, z: -38.36}
+  m_LocalPosition: {x: 10, y: 1.735, z: -11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 2110302582}
-  m_RootOrder: 8
+  m_Father: {fileID: 967766994}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1136677239
+--- !u!114 &1128795473
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1136677237}
+  m_GameObject: {fileID: 1128795471}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   NetworkObjectID: 0
-  ItemRefID: 8
+  ItemRefID: 19
   ItemQualityLevel: 0
-  PositionX: 203
-  PositionY: -451
-  PositionZ: -3836
+  PositionX: 1000
+  PositionY: 173
+  PositionZ: -1100
   YFacing: 0
   isWaterable: 0
   SurrogateObjectIndex: 0
+  HasBeenWatered: 0
+  GrowthValue: 0
+  HasHealth: 1
+  HealthValue: 15
+  isStorageContainer: 0
+  isTreasureList: 0
+  StorageSlots: []
+--- !u!1 &1177397219
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1177397220}
+  m_Layer: 0
+  m_Name: Point A
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1177397220
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1177397219}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.55, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1857971650}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1268740265
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1268740266}
+  - component: {fileID: 1268740267}
+  m_Layer: 0
+  m_Name: TilledArea1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1268740266
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1268740265}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 10, y: 1.65, z: -6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2110302582}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1268740267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1268740265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NetworkObjectID: 24
+  ItemRefID: 17
+  ItemQualityLevel: -1
+  PositionX: 1000
+  PositionY: 164
+  PositionZ: -600
+  YFacing: 0
+  isWaterable: 1
+  SurrogateObjectIndex: 32
   HasBeenWatered: 0
   GrowthValue: 0
   HasHealth: 0
@@ -2338,55 +3470,111 @@ MonoBehaviour:
   isStorageContainer: 0
   isTreasureList: 0
   StorageSlots: []
---- !u!1 &1301669059
+--- !u!1 &1287030903
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 1301669060}
-  - component: {fileID: 1301669061}
+  - component: {fileID: 1287030904}
+  - component: {fileID: 1287030905}
   m_Layer: 0
-  m_Name: Herb_DervishRoot
+  m_Name: Strawberry
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1301669060
+--- !u!4 &1287030904
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1301669059}
+  m_GameObject: {fileID: 1287030903}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.22, y: -5.23, z: -41.63}
+  m_LocalPosition: {x: 10, y: 1.65, z: -6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 2110302582}
-  m_RootOrder: 5
+  m_Father: {fileID: 967766994}
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1301669061
+--- !u!114 &1287030905
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1301669059}
+  m_GameObject: {fileID: 1287030903}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NetworkObjectID: 0
-  ItemRefID: 6
+  NetworkObjectID: 32
+  ItemRefID: 26
   ItemQualityLevel: 0
-  PositionX: -21
-  PositionY: -523
-  PositionZ: -4163
+  PositionX: 1000
+  PositionY: 164
+  PositionZ: -600
   YFacing: 0
-  isWaterable: 0
-  SurrogateObjectIndex: 0
+  isWaterable: 1
+  SurrogateObjectIndex: 24
+  HasBeenWatered: 0
+  GrowthValue: 0
+  HasHealth: 0
+  HealthValue: 0
+  isStorageContainer: 0
+  isTreasureList: 0
+  StorageSlots: []
+--- !u!1 &1298130518
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1298130519}
+  - component: {fileID: 1298130520}
+  m_Layer: 0
+  m_Name: TilledArea1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1298130519
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1298130518}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 4, y: 1.65, z: -6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2110302582}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1298130520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1298130518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NetworkObjectID: 18
+  ItemRefID: 17
+  ItemQualityLevel: -1
+  PositionX: 400
+  PositionY: 164
+  PositionZ: -600
+  YFacing: 0
+  isWaterable: 1
+  SurrogateObjectIndex: 26
   HasBeenWatered: 0
   GrowthValue: 0
   HasHealth: 0
@@ -2679,6 +3867,174 @@ MonoBehaviour:
     NormalValue: 0
     HighValue: 0
     MaximumValue: 0
+--- !u!1 &1366096407
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1366096408}
+  - component: {fileID: 1366096409}
+  m_Layer: 0
+  m_Name: Herb_CrispinsGlove
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1366096408
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1366096407}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2.27, y: 1.58, z: -7.02}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 967766994}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1366096409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1366096407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NetworkObjectID: 0
+  ItemRefID: 5
+  ItemQualityLevel: 0
+  PositionX: -226
+  PositionY: 158
+  PositionZ: -701
+  YFacing: 0
+  isWaterable: 0
+  SurrogateObjectIndex: 0
+  HasBeenWatered: 0
+  GrowthValue: 0
+  HasHealth: 0
+  HealthValue: 0
+  isStorageContainer: 0
+  isTreasureList: 0
+  StorageSlots: []
+--- !u!1 &1402461955
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1402461956}
+  - component: {fileID: 1402461957}
+  m_Layer: 0
+  m_Name: TilledArea1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1402461956
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1402461955}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 9, y: 1.65, z: -6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2110302582}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1402461957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1402461955}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NetworkObjectID: 23
+  ItemRefID: 17
+  ItemQualityLevel: -1
+  PositionX: 900
+  PositionY: 164
+  PositionZ: -600
+  YFacing: 0
+  isWaterable: 1
+  SurrogateObjectIndex: 31
+  HasBeenWatered: 0
+  GrowthValue: 0
+  HasHealth: 0
+  HealthValue: 0
+  isStorageContainer: 0
+  isTreasureList: 0
+  StorageSlots: []
+--- !u!1 &1405532468
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1405532469}
+  - component: {fileID: 1405532470}
+  m_Layer: 0
+  m_Name: Bell Pepper (Orange)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1405532469
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1405532468}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 8, y: 1.65, z: -6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2110302582}
+  m_RootOrder: 19
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1405532470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1405532468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NetworkObjectID: 30
+  ItemRefID: 27
+  ItemQualityLevel: 0
+  PositionX: 800
+  PositionY: 164
+  PositionZ: -600
+  YFacing: 0
+  isWaterable: 1
+  SurrogateObjectIndex: 22
+  HasBeenWatered: 0
+  GrowthValue: 0
+  HasHealth: 0
+  HealthValue: 0
+  isStorageContainer: 0
+  isTreasureList: 0
+  StorageSlots: []
 --- !u!1 &1415237814
 GameObject:
   m_ObjectHideFlags: 0
@@ -2706,7 +4062,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2110302582}
-  m_RootOrder: 11
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1415237816
 MonoBehaviour:
@@ -2714,6 +4070,147 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1415237814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NetworkObjectID: 0
+  ItemRefID: 19
+  ItemQualityLevel: -1
+  PositionX: 1100
+  PositionY: 173
+  PositionZ: -1200
+  YFacing: 0
+  isWaterable: 0
+  SurrogateObjectIndex: 0
+  HasBeenWatered: 0
+  GrowthValue: 0
+  HasHealth: 1
+  HealthValue: 15
+  isStorageContainer: 0
+  isTreasureList: 0
+  StorageSlots: []
+--- !u!1 &1458579799
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1458579800}
+  - component: {fileID: 1458579803}
+  - component: {fileID: 1458579802}
+  - component: {fileID: 1458579801}
+  m_Layer: 0
+  m_Name: Cube
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1458579800
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1458579799}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.5}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
+  m_Children: []
+  m_Father: {fileID: 1932721422}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1458579801
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1458579799}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &1458579802
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1458579799}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &1458579803
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1458579799}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1515060412
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1515060413}
+  - component: {fileID: 1515060414}
+  m_Layer: 0
+  m_Name: Rock (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1515060413
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1515060412}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 11, y: 1.735, z: -12}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 967766994}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1515060414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1515060412}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
@@ -2735,68 +4232,440 @@ MonoBehaviour:
   isStorageContainer: 0
   isTreasureList: 0
   StorageSlots: []
---- !u!1001 &1572039522
-Prefab:
+--- !u!1 &1695218838
+GameObject:
   m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1695218839}
+  - component: {fileID: 1695218842}
+  - component: {fileID: 1695218841}
+  - component: {fileID: 1695218840}
+  m_Layer: 0
+  m_Name: Sphere
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1695218839
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1695218838}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.5}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_Children: []
+  m_Father: {fileID: 1757459168}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &1695218840
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1695218838}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
   serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 106225853}
-    m_Modifications:
-    - target: {fileID: 4004003030072494, guid: c54e8c395b0069c40803538e94abf712, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4004003030072494, guid: c54e8c395b0069c40803538e94abf712, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4004003030072494, guid: c54e8c395b0069c40803538e94abf712, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4004003030072494, guid: c54e8c395b0069c40803538e94abf712, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4004003030072494, guid: c54e8c395b0069c40803538e94abf712, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4004003030072494, guid: c54e8c395b0069c40803538e94abf712, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4004003030072494, guid: c54e8c395b0069c40803538e94abf712, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4004003030072494, guid: c54e8c395b0069c40803538e94abf712, type: 2}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114082914115579604, guid: c54e8c395b0069c40803538e94abf712,
-        type: 2}
-      propertyPath: viewIdField
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114082914115579604, guid: c54e8c395b0069c40803538e94abf712,
-        type: 2}
-      propertyPath: instantiationId
-      value: 2
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: c54e8c395b0069c40803538e94abf712, type: 2}
-  m_IsPrefabParent: 0
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &1695218841
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1695218838}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &1695218842
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1695218838}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1713110110
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1713110111}
+  - component: {fileID: 1713110112}
+  m_Layer: 0
+  m_Name: Bell Pepper (Red)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1713110111
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1713110110}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 7, y: 1.65, z: -6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2110302582}
+  m_RootOrder: 18
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1713110112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1713110110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NetworkObjectID: 29
+  ItemRefID: 23
+  ItemQualityLevel: 0
+  PositionX: 700
+  PositionY: 164
+  PositionZ: -600
+  YFacing: 0
+  isWaterable: 1
+  SurrogateObjectIndex: 21
+  HasBeenWatered: 0
+  GrowthValue: 0
+  HasHealth: 0
+  HealthValue: 0
+  isStorageContainer: 0
+  isTreasureList: 0
+  StorageSlots: []
+--- !u!1 &1721457076
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1721457077}
+  - component: {fileID: 1721457080}
+  - component: {fileID: 1721457079}
+  - component: {fileID: 1721457078}
+  m_Layer: 0
+  m_Name: Cube
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1721457077
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1721457076}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
+  m_Children: []
+  m_Father: {fileID: 1757459168}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1721457078
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1721457076}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &1721457079
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1721457076}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
+  m_Materials:
+  - {fileID: 2100000, guid: 752a308575c9ae542b83f27c5a7746fe, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &1721457080
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1721457076}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1734843892
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1734843893}
+  - component: {fileID: 1734843894}
+  m_Layer: 0
+  m_Name: TilledArea1 (5)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1734843893
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1734843892}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 9, y: 1.65, z: -6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 967766994}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1734843894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1734843892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NetworkObjectID: 23
+  ItemRefID: 17
+  ItemQualityLevel: 0
+  PositionX: 900
+  PositionY: 164
+  PositionZ: -600
+  YFacing: 0
+  isWaterable: 1
+  SurrogateObjectIndex: 31
+  HasBeenWatered: 0
+  GrowthValue: 0
+  HasHealth: 0
+  HealthValue: 0
+  isStorageContainer: 0
+  isTreasureList: 0
+  StorageSlots: []
+--- !u!1 &1742313316
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1742313317}
+  - component: {fileID: 1742313318}
+  m_Layer: 0
+  m_Name: Bell Pepper (Red)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1742313317
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1742313316}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 7, y: 1.65, z: -6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 967766994}
+  m_RootOrder: 18
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1742313318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1742313316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NetworkObjectID: 29
+  ItemRefID: 23
+  ItemQualityLevel: 0
+  PositionX: 700
+  PositionY: 164
+  PositionZ: -600
+  YFacing: 0
+  isWaterable: 1
+  SurrogateObjectIndex: 21
+  HasBeenWatered: 0
+  GrowthValue: 0
+  HasHealth: 0
+  HealthValue: 0
+  isStorageContainer: 0
+  isTreasureList: 0
+  StorageSlots: []
+--- !u!1 &1757459167
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1757459168}
+  m_Layer: 0
+  m_Name: Actual Sphere Position
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1757459168
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1757459167}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1695218839}
+  - {fileID: 1721457077}
+  m_Father: {fileID: 1857971650}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1767367697
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1767367698}
+  - component: {fileID: 1767367699}
+  m_Layer: 0
+  m_Name: Bell Pepper (Orange)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1767367698
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1767367697}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 8, y: 1.65, z: -6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 967766994}
+  m_RootOrder: 19
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1767367699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1767367697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NetworkObjectID: 30
+  ItemRefID: 27
+  ItemQualityLevel: 0
+  PositionX: 800
+  PositionY: 164
+  PositionZ: -600
+  YFacing: 0
+  isWaterable: 1
+  SurrogateObjectIndex: 22
+  HasBeenWatered: 0
+  GrowthValue: 0
+  HasHealth: 0
+  HealthValue: 0
+  isStorageContainer: 0
+  isTreasureList: 0
+  StorageSlots: []
 --- !u!1 &1776617526 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1488329588103022, guid: c54e8c395b0069c40803538e94abf712,
     type: 2}
-  m_PrefabInternal: {fileID: 1572039522}
+  m_PrefabInternal: {fileID: 90823870}
 --- !u!4 &1776617527 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4004003030072494, guid: c54e8c395b0069c40803538e94abf712,
     type: 2}
-  m_PrefabInternal: {fileID: 1572039522}
+  m_PrefabInternal: {fileID: 90823870}
 --- !u!1001 &1836453460
 Prefab:
   m_ObjectHideFlags: 0
@@ -2859,6 +4728,94 @@ Transform:
   m_PrefabParentObject: {fileID: 4559278183740994, guid: fb9fb017398351b44b9429ac9b574522,
     type: 2}
   m_PrefabInternal: {fileID: 1836453460}
+--- !u!1 &1857971649
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1857971650}
+  m_Layer: 0
+  m_Name: Simulate Net Position Updates
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1857971650
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1857971649}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 3.21, z: 4.07}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1757459168}
+  - {fileID: 1932721422}
+  - {fileID: 1177397220}
+  - {fileID: 410194104}
+  m_Father: {fileID: 1118935757}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1884391769
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1884391770}
+  - component: {fileID: 1884391771}
+  m_Layer: 0
+  m_Name: Cabbage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1884391770
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1884391769}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 4, y: 1.65, z: -6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 967766994}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1884391771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1884391769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NetworkObjectID: 26
+  ItemRefID: 4
+  ItemQualityLevel: 0
+  PositionX: 400
+  PositionY: 164
+  PositionZ: -600
+  YFacing: 0
+  isWaterable: 1
+  SurrogateObjectIndex: 18
+  HasBeenWatered: 0
+  GrowthValue: 0
+  HasHealth: 0
+  HealthValue: 0
+  isStorageContainer: 0
+  isTreasureList: 0
+  StorageSlots: []
 --- !u!1 &1904530055
 GameObject:
   m_ObjectHideFlags: 0
@@ -2902,6 +4859,247 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DisplayPreviewsInSceneView: 1
+--- !u!1 &1918864304
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1918864305}
+  - component: {fileID: 1918864306}
+  m_Layer: 0
+  m_Name: Carrot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1918864305
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1918864304}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 5, y: 1.65, z: -6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2110302582}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1918864306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1918864304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NetworkObjectID: 27
+  ItemRefID: 25
+  ItemQualityLevel: 0
+  PositionX: 500
+  PositionY: 164
+  PositionZ: -600
+  YFacing: 0
+  isWaterable: 1
+  SurrogateObjectIndex: 19
+  HasBeenWatered: 0
+  GrowthValue: 0
+  HasHealth: 0
+  HealthValue: 0
+  isStorageContainer: 0
+  isTreasureList: 0
+  StorageSlots: []
+--- !u!1 &1921503013
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1921503014}
+  - component: {fileID: 1921503015}
+  m_Layer: 0
+  m_Name: Rock
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1921503014
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1921503013}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 10, y: 1.735, z: -13}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 967766994}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1921503015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1921503013}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NetworkObjectID: 0
+  ItemRefID: 19
+  ItemQualityLevel: 0
+  PositionX: 1000
+  PositionY: 173
+  PositionZ: -1300
+  YFacing: 0
+  isWaterable: 0
+  SurrogateObjectIndex: 0
+  HasBeenWatered: 0
+  GrowthValue: 0
+  HasHealth: 1
+  HealthValue: 15
+  isStorageContainer: 0
+  isTreasureList: 0
+  StorageSlots: []
+--- !u!1 &1932721421
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1932721422}
+  - component: {fileID: 1932721424}
+  - component: {fileID: 1932721423}
+  m_Layer: 0
+  m_Name: Shown Sphere Position
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1932721422
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1932721421}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1458579800}
+  m_Father: {fileID: 1857971650}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &1932721423
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1932721421}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &1932721424
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1932721421}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1937366189
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1937366190}
+  - component: {fileID: 1937366191}
+  m_Layer: 0
+  m_Name: TilledArea1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1937366190
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1937366189}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 8, y: 1.65, z: -6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2110302582}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1937366191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1937366189}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NetworkObjectID: 22
+  ItemRefID: 17
+  ItemQualityLevel: -1
+  PositionX: 800
+  PositionY: 164
+  PositionZ: -600
+  YFacing: 0
+  isWaterable: 1
+  SurrogateObjectIndex: 30
+  HasBeenWatered: 0
+  GrowthValue: 0
+  HasHealth: 0
+  HealthValue: 0
+  isStorageContainer: 0
+  isTreasureList: 0
+  StorageSlots: []
 --- !u!1 &2110302581
 GameObject:
   m_ObjectHideFlags: 0
@@ -2931,20 +5129,26 @@ Transform:
   - {fileID: 507107465}
   - {fileID: 296848412}
   - {fileID: 254734151}
-  - {fileID: 189548473}
-  - {fileID: 1068715598}
-  - {fileID: 1301669060}
-  - {fileID: 100433158}
-  - {fileID: 373058247}
-  - {fileID: 1136677238}
   - {fileID: 1065796224}
   - {fileID: 797189597}
   - {fileID: 1415237815}
   - {fileID: 511659770}
   - {fileID: 709497127}
-  - {fileID: 214809840}
-  - {fileID: 733493121}
-  - {fileID: 373816328}
+  - {fileID: 503081772}
+  - {fileID: 542988090}
+  - {fileID: 1298130519}
+  - {fileID: 2113260410}
+  - {fileID: 1937366190}
+  - {fileID: 1402461956}
+  - {fileID: 1268740266}
+  - {fileID: 1918864305}
+  - {fileID: 347508492}
+  - {fileID: 585584368}
+  - {fileID: 1713110111}
+  - {fileID: 1405532469}
+  - {fileID: 158851595}
+  - {fileID: 487274085}
+  - {fileID: 420847526}
   m_Father: {fileID: 1904530056}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2963,3 +5167,115 @@ MonoBehaviour:
   TempNetworkObjectList: []
   NetworkObjectList: []
   JunkObject: {fileID: 0}
+--- !u!1 &2113260409
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 2113260410}
+  - component: {fileID: 2113260411}
+  m_Layer: 0
+  m_Name: TilledArea1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2113260410
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2113260409}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 7, y: 1.65, z: -6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2110302582}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2113260411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2113260409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NetworkObjectID: 21
+  ItemRefID: 17
+  ItemQualityLevel: -1
+  PositionX: 700
+  PositionY: 164
+  PositionZ: -600
+  YFacing: 0
+  isWaterable: 1
+  SurrogateObjectIndex: 29
+  HasBeenWatered: 0
+  GrowthValue: 0
+  HasHealth: 0
+  HealthValue: 0
+  isStorageContainer: 0
+  isTreasureList: 0
+  StorageSlots: []
+--- !u!1 &2116302690
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 2116302691}
+  - component: {fileID: 2116302692}
+  m_Layer: 0
+  m_Name: TilledArea1 (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2116302691
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2116302690}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 4, y: 1.65, z: -6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 967766994}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2116302692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2116302690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NetworkObjectID: 18
+  ItemRefID: 17
+  ItemQualityLevel: 0
+  PositionX: 400
+  PositionY: 164
+  PositionZ: -600
+  YFacing: 0
+  isWaterable: 1
+  SurrogateObjectIndex: 26
+  HasBeenWatered: 0
+  GrowthValue: 0
+  HasHealth: 0
+  HealthValue: 0
+  isStorageContainer: 0
+  isTreasureList: 0
+  StorageSlots: []

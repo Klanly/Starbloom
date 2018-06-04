@@ -96,6 +96,7 @@ public static class QuickFind
     public static DG_BreakableObjectsHandler BreakableObjectsHandler = null;
     public static DG_ObjectPlacement ObjectPlacementManager = null;
     public static DG_NetworkGrowthHandler NetworkGrowthHandler = null;
+    public static DG_MoneyHandler MoneyHandler = null;
 
 
 
@@ -163,6 +164,7 @@ public static class QuickFind
 
     public static Transform FindTransform(Transform parent, string name) { Transform[] children = parent.GetComponentsInChildren<Transform>(); foreach (Transform child in children) { if (child.name == name) return child; } return null; }
     public static bool WithinDistance(Transform Object, Transform Target, float MasterMinDistance) { if (Vector3.Distance(Object.position, Target.position) < MasterMinDistance) return true; else return false; }
+    public static bool WithinDistanceVec(Vector3 Object, Vector3 Target, float MasterMinDistance) { if (Vector3.Distance(Object, Target) < MasterMinDistance) return true; else return false; }
     public static int ConvertFloatToInt(float Incoming) { return (int)(Incoming * 100); }
     public static float ConvertIntToFloat(int Incoming) { return (float)Incoming / 100; }
     public static Vector3 ConvertIntsToPosition(int IncomingX, int IncomingY, int IncomingZ) { return new Vector3(ConvertIntToFloat(IncomingX), ConvertIntToFloat(IncomingY), ConvertIntToFloat(IncomingZ)); }

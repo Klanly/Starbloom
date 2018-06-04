@@ -13,6 +13,7 @@ public class DG_NetworkSync : Photon.MonoBehaviour
         public int SceneID;
         public int PhotonViewID;
         public Transform PhotonClone;
+        public DG_MovementSync MoveSync;
     }
 
     public int UserID = 0;
@@ -67,6 +68,8 @@ public class DG_NetworkSync : Photon.MonoBehaviour
     //////////////////////////////////////////////////////////////////////////////////////////////////
 
 
+    #region Get Helpers
+
     public Users GetUserByID(int ID)
     {
         for (int i = 0; i < UserList.Count; i++)
@@ -95,11 +98,18 @@ public class DG_NetworkSync : Photon.MonoBehaviour
         }
         return null;
     }
+    public DG_MovementSync GetCharacterMoveSyncByPhotonViewID(int ID)
+    {
+        return GetUserByPlayerID(ID).MoveSync;
+    }
+
+    #endregion
 
 
 
     #region Users
     //////////////////////////////////////////////////////
+
     [PunRPC]
     void SetNewID()
     {
@@ -141,6 +151,8 @@ public class DG_NetworkSync : Photon.MonoBehaviour
             NewUser.PhotonViewID = TransferedIn[index]; index++;
 
             NewUser.PhotonClone = GetCharacterTransformByPhotonViewID(NewUser.PhotonViewID);
+            if(NewUser.PhotonClone != null)
+                NewUser.MoveSync = NewUser.PhotonClone.GetChild(0).GetComponent<DG_MovementSync>();
 
             UserList.Add(NewUser);
         }
@@ -150,8 +162,6 @@ public class DG_NetworkSync : Photon.MonoBehaviour
         Debug.Log("UserID == " + UserID.ToString());
         Debug.Log("Connected Online == " + QuickFind.GameSettings.PlayOnline.ToString());
     }
-
-
 
     public void SetPhotonViewID(int PhotonID)
     {
@@ -169,6 +179,7 @@ public class DG_NetworkSync : Photon.MonoBehaviour
         U.PhotonViewID = IntGroup[1];
         U.PlayerCharacterID = IntGroup[2];
         U.PhotonClone = GetCharacterTransformByPhotonViewID(IntGroup[1]);
+        U.MoveSync = U.PhotonClone.GetChild(0).GetComponent<DG_MovementSync>();
     }
 
 
@@ -198,6 +209,16 @@ public class DG_NetworkSync : Photon.MonoBehaviour
     }
 
 
+
+    public void UpdatePlayerMovement(int[] OutgoingData)
+    {
+        PV.RPC("ReceivePlayerMovement", PhotonTargets.Others, OutgoingData);
+    }
+    [PunRPC]
+    void ReceivePlayerMovement(int[] InData)
+    {
+        GetCharacterMoveSyncByPhotonViewID(InData[0]).UpdatePlayerPos(InData);
+    }
 
 
     #endregion
@@ -298,6 +319,12 @@ public class DG_NetworkSync : Photon.MonoBehaviour
 
         QuickFind.StorageUI.UpdateStorageVisuals();
     }
+
+    public void SetNewFarmMoneyValue(int NewValue) { PV.RPC("NewMoneyValueSet", PhotonTargets.All, NewValue); }
+    [PunRPC] void NewMoneyValueSet(int NewValue) { QuickFind.MoneyHandler.ReceiveFarmMoneyValue(NewValue); }
+
+
+
     #endregion
 
 
@@ -320,17 +347,11 @@ public class DG_NetworkSync : Photon.MonoBehaviour
         QuickFind.WeatherHandler.AdjustSeason(Season, Weather);
     }
     //////////////////////////////////////////////////////
-    public void RequestMasterWeather()
-    { PV.RPC("MasterSendForthWeather", PhotonTargets.All); }
-
-    [PunRPC] void MasterSendForthWeather()
-    { if (PhotonNetwork.isMasterClient) QuickFind.WeatherHandler.SyncWeatherToMaster(); }
+    public void RequestMasterWeather(){ PV.RPC("MasterSendForthWeather", PhotonTargets.All); }
+    [PunRPC] void MasterSendForthWeather(){ if (PhotonNetwork.isMasterClient) QuickFind.WeatherHandler.SyncWeatherToMaster(); }
     //////////////////////////////////////////////////////
-    public void SyncWeatherToMaster(int[] WeatherValues)
-    { PV.RPC("SendOutWeatherByMaster", PhotonTargets.Others, WeatherValues); }
-
-    [PunRPC] void SendOutWeatherByMaster(int[] WeatherValues)
-    { QuickFind.WeatherHandler.GetMasterWeather(WeatherValues); }
+    public void SyncWeatherToMaster(int[] WeatherValues){ PV.RPC("SendOutWeatherByMaster", PhotonTargets.Others, WeatherValues); }
+    [PunRPC] void SendOutWeatherByMaster(int[] WeatherValues){ QuickFind.WeatherHandler.GetMasterWeather(WeatherValues); }
 
     public void AdjustFutureWeather()
     {
@@ -352,11 +373,8 @@ public class DG_NetworkSync : Photon.MonoBehaviour
 
     //Time
     //////////////////////////////////////////////////////
-    public void AdjustTimeByPreset(int Time)
-    { PV.RPC("SendOutTimeByPreset", PhotonTargets.All, Time); }
-
-    [PunRPC] void SendOutTimeByPreset(int Time)
-    {  QuickFind.TimeHandler.AdjustTimeByPreset(Time); }
+    public void AdjustTimeByPreset(int Time){ PV.RPC("SendOutTimeByPreset", PhotonTargets.All, Time); }
+    [PunRPC] void SendOutTimeByPreset(int Time){  QuickFind.TimeHandler.AdjustTimeByPreset(Time); }
 
     public void AdjustTimeByValues(int Year, int Month, int Day, int Hour, int Minute)
     {

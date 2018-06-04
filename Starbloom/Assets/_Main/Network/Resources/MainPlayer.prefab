@@ -1755,6 +1755,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4711886713025158}
+  - component: {fileID: 114780489719134190}
   - component: {fileID: 114183029329288002}
   - component: {fileID: 114844400468305594}
   - component: {fileID: 114099060765708952}
@@ -4050,7 +4051,6 @@ MonoBehaviour:
   onSerializeRigidBodyOption: 2
   ownershipTransfer: 0
   ObservedComponents:
-  - {fileID: 114183029329288002}
   - {fileID: 114099060765708952}
   ObservedComponentsFoldoutOpen: 1
   viewIdField: 0
@@ -4109,7 +4109,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1830578150064844}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 38d6b63c209398545a985b2fee559961, type: 3}
   m_Name: 
@@ -4129,7 +4129,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 16384
   BaseMagnetRange: 1.2
-  PullSpeed: 5
+  PullSpeed: 6
   isOwner: 0
 --- !u!114 &114255783689536152
 MonoBehaviour:
@@ -4168,6 +4168,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputDetected: 0
+--- !u!114 &114780489719134190
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1830578150064844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b99425724abeeee48b84db5066ca730c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SendRate: 0.1
+  SlerpMoveRate: 0.1
+  SlerpTurnRate: 0.3
+  MaxDistance: 5
+  isPlayer: 0
 --- !u!114 &114844400468305594
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -50,6 +50,7 @@ public class DG_StorageGUI : MonoBehaviour {
 
         if (!StorageUIOpen || QuickFind.GUI_Inventory.isFloatingInventoryItem)
             return;
+
         if (QuickFind.InputController.MainPlayer.ButtonSet.Interact.Up)
             QuickFind.InventoryManager.ShiftStackToFromStorage();
     }
@@ -83,6 +84,8 @@ public class DG_StorageGUI : MonoBehaviour {
 
     public void UpdateStorageVisuals()
     {
+        if (ActiveStorage == null) return;
+
         for (int i = 0; i < ActiveStorage.StorageSlots.Length; i++)
             QuickFind.GUI_Inventory.UpdateRucksackSlotVisual(StorageSlots[i], ActiveStorage.StorageSlots[i]);
     }

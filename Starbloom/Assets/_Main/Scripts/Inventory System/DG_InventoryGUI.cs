@@ -166,6 +166,8 @@ public class DG_InventoryGUI : MonoBehaviour
     }
     public void UpdateRucksackSlotVisual(DG_InventoryItem GuiSlot, DG_PlayerCharacters.RucksackSlot RucksackSlot)
     {
+        if(isFloatingInventoryItem){if (PickedUpItemSlot == GuiSlot) { return; }}
+
         GuiSlot.Disabled.enabled = false;
         if (RucksackSlot.GetStackValue() == 0)
         {
@@ -273,8 +275,10 @@ public class DG_InventoryGUI : MonoBehaviour
     {
         if (PickedUpItemSlot == null) return;
 
-        FloatingItem.AmountText.text = PickedUpItemSlot.AmountText.text;
-        FloatingItem.Icon.sprite = PickedUpItemSlot.Icon.sprite;
+        DG_PlayerCharacters.RucksackSlot RucksackSlot = QuickFind.InventoryManager.GetRuckSackSlotInventoryItem(PickedUpItemSlot);
+        DG_ItemObject Object = QuickFind.ItemDatabase.GetItemFromID(RucksackSlot.ContainedItem);
+        FloatingItem.AmountText.text = RucksackSlot.GetStackValue().ToString();
+        FloatingItem.Icon.sprite = Object.Icon;
     }
 
 
