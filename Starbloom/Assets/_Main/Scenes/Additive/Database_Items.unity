@@ -113,6 +113,116 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &41691071
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 41691072}
+  - component: {fileID: 41691073}
+  - component: {fileID: 41691074}
+  m_Layer: 0
+  m_Name: 32 - BellPepper_Red_Lv3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &41691072
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 41691071}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1815548899}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &41691073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 41691071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 0
+  instanceID: 112548
+--- !u!114 &41691074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 41691071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc1a46eca4a35e5498f3df297015210f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Cabbage
+  MaxStackSize: 999
+  ActivateableType: 4
+  DestroysSoilOnPlacement: 0
+  ToolTipType:
+    GroupType: 1
+    MainLocalizationID: 112
+    SubLocalizationID: 49
+    DescriptionID: 106
+    ContextID: 32
+  DatabaseID: 32
+  LockItem: 1
+  Icon: {fileID: 21300000, guid: 8ed2f28f859af804cacddd6b3febb490, type: 3}
+  ModelPrefab: {fileID: 1575849893228066, guid: 441ade5dab12ef344af9b2dcb1aa5bf2,
+    type: 2}
+  DefaultScale: 1
+  isTool: 0
+  ToolQualityLevels: []
+  isItem: 1
+  ItemCat: 0
+  ItemQualities:
+  - Quality: 0
+    AdjustsHealth: 1
+    HealthAdjustValue: 15
+    AdjustsEnergy: 1
+    EnergyAdjustValue: 35
+    BuyPrice: 45
+    SellPrice: 15
+  - Quality: 1
+    AdjustsHealth: 1
+    HealthAdjustValue: 25
+    AdjustsEnergy: 1
+    EnergyAdjustValue: 45
+    BuyPrice: 75
+    SellPrice: 25
+  - Quality: 2
+    AdjustsHealth: 1
+    HealthAdjustValue: 35
+    AdjustsEnergy: 1
+    EnergyAdjustValue: 55
+    BuyPrice: 105
+    SellPrice: 35
+  - Quality: 3
+    AdjustsHealth: 1
+    HealthAdjustValue: 45
+    AdjustsEnergy: 1
+    EnergyAdjustValue: 65
+    BuyPrice: 135
+    SellPrice: 45
+  isStorage: 0
+  StorageList: []
+  isGrowableItem: 0
+  RequireTilledEarth: 0
+  PreviewItem: {fileID: 0}
+  isEnvironment: 0
+  EnvironmentValues: []
 --- !u!1 &49813768
 GameObject:
   m_ObjectHideFlags: 0
@@ -141,7 +251,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1330787845}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &49813770
 MonoBehaviour:
@@ -155,7 +265,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: -254698
+  instanceID: 112556
 --- !u!114 &49813771
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -167,19 +277,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc1a46eca4a35e5498f3df297015210f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: Broccoli
+  Name: Broccoli Seeds
   MaxStackSize: 999
   ActivateableType: 5
-  DestroysSoilOnPlacement: 1
+  DestroysSoilOnPlacement: 0
   ToolTipType:
     GroupType: 0
-    MainLocalizationID: 91
+    MainLocalizationID: 97
     SubLocalizationID: 89
-    DescriptionID: 92
+    DescriptionID: 90
     ContextID: 0
   DatabaseID: 24
   LockItem: 1
-  Icon: {fileID: 21300000, guid: 5c3d38af10825b04890a2523b53175e4, type: 3}
+  Icon: {fileID: 21300000, guid: 098553cd6855ce6419b2dfcbccb9e0cf, type: 3}
   ModelPrefab: {fileID: 1979187556760150, guid: 9342e41ab056e0243877631dccfeea7a,
     type: 2}
   DefaultScale: 1
@@ -198,65 +308,23 @@ MonoBehaviour:
   isStorage: 0
   StorageList: []
   isGrowableItem: 1
-  RequireTilledEarth: 0
-  PreviewItem: {fileID: 1190082843462652, guid: 93873d1acf25077489740c84181ed113,
+  RequireTilledEarth: 1
+  PreviewItem: {fileID: 1266158092570826, guid: a072d96a8e735404f8b0cff6064c6167,
     type: 2}
   isEnvironment: 1
   EnvironmentValues:
-  - IsWaterable: 0
-    IsBreakable: 1
+  - IsWaterable: 1
+    IsBreakable: 0
     ObjectType: 1
     ActivateableTypeRequired: 1
     QualityLevelRequired: 0
     ObjectHealth: 15
     DropItemsOnBreak: 0
     BreakableAtlasID: 0
-    DropItemsOnInteract: 1
+    DropItemsOnInteract: 0
     InteractDropID: 1
-    SwapItemOnBreak: 1
+    SwapItemOnBreak: 0
     SwapID: 0
---- !u!1001 &82631211
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4197032064977126, guid: 6d32f7653492c1f46b1c6bd70574acd0, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4197032064977126, guid: 6d32f7653492c1f46b1c6bd70574acd0, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 19.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4197032064977126, guid: 6d32f7653492c1f46b1c6bd70574acd0, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4197032064977126, guid: 6d32f7653492c1f46b1c6bd70574acd0, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4197032064977126, guid: 6d32f7653492c1f46b1c6bd70574acd0, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4197032064977126, guid: 6d32f7653492c1f46b1c6bd70574acd0, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4197032064977126, guid: 6d32f7653492c1f46b1c6bd70574acd0, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4197032064977126, guid: 6d32f7653492c1f46b1c6bd70574acd0, type: 2}
-      propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 6d32f7653492c1f46b1c6bd70574acd0, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &88464733
 GameObject:
   m_ObjectHideFlags: 0
@@ -324,7 +392,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 6
-  instanceID: 63026
+  instanceID: 112566
 --- !u!1 &97753043
 GameObject:
   m_ObjectHideFlags: 0
@@ -357,7 +425,7 @@ Transform:
   - {fileID: 911112102}
   - {fileID: 1637135973}
   m_Father: {fileID: 98179532}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &98179530
 GameObject:
@@ -417,7 +485,13 @@ MonoBehaviour:
   - {fileID: 1908648037}
   - {fileID: 1663225527}
   - {fileID: 1528345309}
-  ListCount: 29
+  - {fileID: 1456368176}
+  - {fileID: 477749474}
+  - {fileID: 1026884240}
+  - {fileID: 41691074}
+  - {fileID: 1254369948}
+  - {fileID: 664644634}
+  ListCount: 35
   PreMagneticObjectWaitTimer: 0.5
   GenericIconList:
   - ItemName: Health
@@ -450,12 +524,13 @@ Transform:
   - {fileID: 1450680410}
   - {fileID: 1215626843}
   - {fileID: 1405799090}
+  - {fileID: 1133565267}
   - {fileID: 1815548899}
   - {fileID: 1405183628}
   - {fileID: 97753044}
   - {fileID: 113020235}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &98179533
 MonoBehaviour:
@@ -496,7 +571,7 @@ Transform:
   - {fileID: 275336178}
   - {fileID: 413799161}
   m_Father: {fileID: 98179532}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &275336175
 GameObject:
@@ -578,7 +653,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 63048
+  instanceID: 112588
 --- !u!4 &275336178
 Transform:
   m_ObjectHideFlags: 0
@@ -704,7 +779,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 63060
+  instanceID: 112600
 --- !u!4 &413799161
 Transform:
   m_ObjectHideFlags: 0
@@ -718,6 +793,116 @@ Transform:
   m_Father: {fileID: 113020235}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &477749471
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 477749472}
+  - component: {fileID: 477749473}
+  - component: {fileID: 477749474}
+  m_Layer: 0
+  m_Name: 30 - Carrot_Lv3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &477749472
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 477749471}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1815548899}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &477749473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 477749471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 0
+  instanceID: 112608
+--- !u!114 &477749474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 477749471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc1a46eca4a35e5498f3df297015210f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Cabbage
+  MaxStackSize: 999
+  ActivateableType: 4
+  DestroysSoilOnPlacement: 0
+  ToolTipType:
+    GroupType: 1
+    MainLocalizationID: 110
+    SubLocalizationID: 49
+    DescriptionID: 104
+    ContextID: 30
+  DatabaseID: 30
+  LockItem: 1
+  Icon: {fileID: 21300000, guid: 98cc2de92c4d1d24b8726fe8c190e125, type: 3}
+  ModelPrefab: {fileID: 1408907112761738, guid: d689c4624de1b144d953ae7c6658ee13,
+    type: 2}
+  DefaultScale: 1
+  isTool: 0
+  ToolQualityLevels: []
+  isItem: 1
+  ItemCat: 0
+  ItemQualities:
+  - Quality: 0
+    AdjustsHealth: 1
+    HealthAdjustValue: 15
+    AdjustsEnergy: 1
+    EnergyAdjustValue: 35
+    BuyPrice: 45
+    SellPrice: 15
+  - Quality: 1
+    AdjustsHealth: 1
+    HealthAdjustValue: 25
+    AdjustsEnergy: 1
+    EnergyAdjustValue: 45
+    BuyPrice: 75
+    SellPrice: 25
+  - Quality: 2
+    AdjustsHealth: 1
+    HealthAdjustValue: 35
+    AdjustsEnergy: 1
+    EnergyAdjustValue: 55
+    BuyPrice: 105
+    SellPrice: 35
+  - Quality: 3
+    AdjustsHealth: 1
+    HealthAdjustValue: 45
+    AdjustsEnergy: 1
+    EnergyAdjustValue: 65
+    BuyPrice: 135
+    SellPrice: 45
+  isStorage: 0
+  StorageList: []
+  isGrowableItem: 0
+  RequireTilledEarth: 0
+  PreviewItem: {fileID: 0}
+  isEnvironment: 0
+  EnvironmentValues: []
 --- !u!1 &523401138
 GameObject:
   m_ObjectHideFlags: 0
@@ -834,7 +1019,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 63070
+  instanceID: 112618
 --- !u!1 &568888680
 GameObject:
   m_ObjectHideFlags: 0
@@ -889,7 +1074,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 6
-  instanceID: 63076
+  instanceID: 112624
 --- !u!4 &568888683
 Transform:
   m_ObjectHideFlags: 0
@@ -903,70 +1088,6 @@ Transform:
   m_Father: {fileID: 1348481037}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &602984121
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4992847234163574, guid: b03deb716406df74caa79cf01d6e05af, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0.06324644
-      objectReference: {fileID: 0}
-    - target: {fileID: 4992847234163574, guid: b03deb716406df74caa79cf01d6e05af, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: -0.028320355
-      objectReference: {fileID: 0}
-    - target: {fileID: 4992847234163574, guid: b03deb716406df74caa79cf01d6e05af, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: -0.01354712
-      objectReference: {fileID: 0}
-    - target: {fileID: 4992847234163574, guid: b03deb716406df74caa79cf01d6e05af, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4992847234163574, guid: b03deb716406df74caa79cf01d6e05af, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4992847234163574, guid: b03deb716406df74caa79cf01d6e05af, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4992847234163574, guid: b03deb716406df74caa79cf01d6e05af, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4992847234163574, guid: b03deb716406df74caa79cf01d6e05af, type: 2}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114289586751767686, guid: b03deb716406df74caa79cf01d6e05af,
-        type: 2}
-      propertyPath: serializationData.Prefab
-      value: 
-      objectReference: {fileID: 114289586751767686, guid: b03deb716406df74caa79cf01d6e05af,
-        type: 2}
-    - target: {fileID: 114193691484448606, guid: b03deb716406df74caa79cf01d6e05af,
-        type: 2}
-      propertyPath: serializationData.Prefab
-      value: 
-      objectReference: {fileID: 114193691484448606, guid: b03deb716406df74caa79cf01d6e05af,
-        type: 2}
-    - target: {fileID: 114418622440743790, guid: b03deb716406df74caa79cf01d6e05af,
-        type: 2}
-      propertyPath: serializationData.Prefab
-      value: 
-      objectReference: {fileID: 114418622440743790, guid: b03deb716406df74caa79cf01d6e05af,
-        type: 2}
-    - target: {fileID: 1815574973860084, guid: b03deb716406df74caa79cf01d6e05af, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: b03deb716406df74caa79cf01d6e05af, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &619036614
 GameObject:
   m_ObjectHideFlags: 0
@@ -1062,7 +1183,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 63084
+  instanceID: 112632
 --- !u!4 &619036617
 Transform:
   m_ObjectHideFlags: 0
@@ -1123,10 +1244,10 @@ MonoBehaviour:
   DestroysSoilOnPlacement: 0
   ToolTipType:
     GroupType: 1
-    MainLocalizationID: 10
+    MainLocalizationID: 109
     SubLocalizationID: 49
     DescriptionID: 88
-    ContextID: 0
+    ContextID: 9
   DatabaseID: 9
   LockItem: 1
   Icon: {fileID: 21300000, guid: 70a97278c74a1d14591a9955e9aedb20, type: 3}
@@ -1185,7 +1306,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 63094
+  instanceID: 112642
 --- !u!1 &631133481
 GameObject:
   m_ObjectHideFlags: 0
@@ -1282,7 +1403,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 63100
+  instanceID: 112648
 --- !u!4 &631133484
 Transform:
   m_ObjectHideFlags: 0
@@ -1295,6 +1416,115 @@ Transform:
   m_Children: []
   m_Father: {fileID: 97753044}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &664644633
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 664644636}
+  - component: {fileID: 664644635}
+  - component: {fileID: 664644634}
+  m_Layer: 0
+  m_Name: 34 - BellPepper_Yellow_Lv3 (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &664644634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 664644633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc1a46eca4a35e5498f3df297015210f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Cabbage
+  MaxStackSize: 999
+  ActivateableType: 4
+  DestroysSoilOnPlacement: 0
+  ToolTipType:
+    GroupType: 1
+    MainLocalizationID: 114
+    SubLocalizationID: 49
+    DescriptionID: 108
+    ContextID: 34
+  DatabaseID: 34
+  LockItem: 1
+  Icon: {fileID: 21300000, guid: f4b792fe3e1dc2e49ab568240dd7cf82, type: 3}
+  ModelPrefab: {fileID: 100000, guid: 2670f590bd8bcdb47a42bf5e1c3b17a6, type: 2}
+  DefaultScale: 1
+  isTool: 0
+  ToolQualityLevels: []
+  isItem: 1
+  ItemCat: 0
+  ItemQualities:
+  - Quality: 0
+    AdjustsHealth: 1
+    HealthAdjustValue: 15
+    AdjustsEnergy: 1
+    EnergyAdjustValue: 35
+    BuyPrice: 45
+    SellPrice: 15
+  - Quality: 1
+    AdjustsHealth: 1
+    HealthAdjustValue: 25
+    AdjustsEnergy: 1
+    EnergyAdjustValue: 45
+    BuyPrice: 75
+    SellPrice: 25
+  - Quality: 2
+    AdjustsHealth: 1
+    HealthAdjustValue: 35
+    AdjustsEnergy: 1
+    EnergyAdjustValue: 55
+    BuyPrice: 105
+    SellPrice: 35
+  - Quality: 3
+    AdjustsHealth: 1
+    HealthAdjustValue: 45
+    AdjustsEnergy: 1
+    EnergyAdjustValue: 65
+    BuyPrice: 135
+    SellPrice: 45
+  isStorage: 0
+  StorageList: []
+  isGrowableItem: 0
+  RequireTilledEarth: 0
+  PreviewItem: {fileID: 0}
+  isEnvironment: 0
+  EnvironmentValues: []
+--- !u!114 &664644635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 664644633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 0
+  instanceID: 112656
+--- !u!4 &664644636
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 664644633}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1815548899}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &676053776
 GameObject:
@@ -1365,7 +1595,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 63108
+  instanceID: 112664
 --- !u!4 &676053779
 Transform:
   m_ObjectHideFlags: 0
@@ -1379,112 +1609,6 @@ Transform:
   m_Father: {fileID: 1405183628}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &693550026
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4060719663264566, guid: b2a733865f09f744ca48fd971f021782, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4060719663264566, guid: b2a733865f09f744ca48fd971f021782, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4060719663264566, guid: b2a733865f09f744ca48fd971f021782, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4060719663264566, guid: b2a733865f09f744ca48fd971f021782, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4060719663264566, guid: b2a733865f09f744ca48fd971f021782, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4060719663264566, guid: b2a733865f09f744ca48fd971f021782, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4060719663264566, guid: b2a733865f09f744ca48fd971f021782, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4060719663264566, guid: b2a733865f09f744ca48fd971f021782, type: 2}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114719979150559126, guid: b2a733865f09f744ca48fd971f021782,
-        type: 2}
-      propertyPath: serializationData.Prefab
-      value: 
-      objectReference: {fileID: 114719979150559126, guid: b2a733865f09f744ca48fd971f021782,
-        type: 2}
-    - target: {fileID: 114924339958536354, guid: b2a733865f09f744ca48fd971f021782,
-        type: 2}
-      propertyPath: serializationData.Prefab
-      value: 
-      objectReference: {fileID: 114924339958536354, guid: b2a733865f09f744ca48fd971f021782,
-        type: 2}
-    - target: {fileID: 114473135683658326, guid: b2a733865f09f744ca48fd971f021782,
-        type: 2}
-      propertyPath: serializationData.Prefab
-      value: 
-      objectReference: {fileID: 114473135683658326, guid: b2a733865f09f744ca48fd971f021782,
-        type: 2}
-    - target: {fileID: 1342707268080538, guid: b2a733865f09f744ca48fd971f021782, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: b2a733865f09f744ca48fd971f021782, type: 2}
-  m_IsPrefabParent: 0
---- !u!1001 &732016087
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4477611561987782, guid: 66ec36c74d3ae75488e86c25dfa45a1e, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4477611561987782, guid: 66ec36c74d3ae75488e86c25dfa45a1e, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 19.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4477611561987782, guid: 66ec36c74d3ae75488e86c25dfa45a1e, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4477611561987782, guid: 66ec36c74d3ae75488e86c25dfa45a1e, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4477611561987782, guid: 66ec36c74d3ae75488e86c25dfa45a1e, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4477611561987782, guid: 66ec36c74d3ae75488e86c25dfa45a1e, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4477611561987782, guid: 66ec36c74d3ae75488e86c25dfa45a1e, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4477611561987782, guid: 66ec36c74d3ae75488e86c25dfa45a1e, type: 2}
-      propertyPath: m_RootOrder
-      value: 4
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 66ec36c74d3ae75488e86c25dfa45a1e, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &769028652
 GameObject:
   m_ObjectHideFlags: 0
@@ -1601,49 +1725,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 63118
---- !u!1001 &817504673
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4434302994388908, guid: 410ea6a1db88b494490f5d7d3b84a5a9, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4434302994388908, guid: 410ea6a1db88b494490f5d7d3b84a5a9, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 19.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4434302994388908, guid: 410ea6a1db88b494490f5d7d3b84a5a9, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4434302994388908, guid: 410ea6a1db88b494490f5d7d3b84a5a9, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4434302994388908, guid: 410ea6a1db88b494490f5d7d3b84a5a9, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4434302994388908, guid: 410ea6a1db88b494490f5d7d3b84a5a9, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4434302994388908, guid: 410ea6a1db88b494490f5d7d3b84a5a9, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4434302994388908, guid: 410ea6a1db88b494490f5d7d3b84a5a9, type: 2}
-      propertyPath: m_RootOrder
-      value: 5
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 410ea6a1db88b494490f5d7d3b84a5a9, type: 2}
-  m_IsPrefabParent: 0
+  instanceID: 112674
 --- !u!1 &889436591
 GameObject:
   m_ObjectHideFlags: 0
@@ -1686,7 +1768,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 63124
+  instanceID: 112680
 --- !u!114 &889436594
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1783,7 +1865,7 @@ Transform:
   - {fileID: 1259421160}
   - {fileID: 1348481037}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &907308531
 MonoBehaviour:
@@ -1842,7 +1924,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 63138
+  instanceID: 112694
 --- !u!114 &911112104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1910,6 +1992,138 @@ MonoBehaviour:
   PreviewItem: {fileID: 0}
   isEnvironment: 0
   EnvironmentValues: []
+--- !u!1 &1026884239
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1026884242}
+  - component: {fileID: 1026884241}
+  - component: {fileID: 1026884240}
+  m_Layer: 0
+  m_Name: 31 - Bell Pepper (Yellow)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1026884240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1026884239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc1a46eca4a35e5498f3df297015210f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Bell Pepper Orange Seeds
+  MaxStackSize: 999
+  ActivateableType: 5
+  DestroysSoilOnPlacement: 0
+  ToolTipType:
+    GroupType: 0
+    MainLocalizationID: 100
+    SubLocalizationID: 89
+    DescriptionID: 90
+    ContextID: 0
+  DatabaseID: 31
+  LockItem: 1
+  Icon: {fileID: 21300000, guid: 19581172c2b56b747a1ff8fffba36bb7, type: 3}
+  ModelPrefab: {fileID: 1342707268080538, guid: b2a733865f09f744ca48fd971f021782,
+    type: 2}
+  DefaultScale: 1
+  isTool: 0
+  ToolQualityLevels: []
+  isItem: 1
+  ItemCat: 4
+  ItemQualities:
+  - Quality: 0
+    AdjustsHealth: 0
+    HealthAdjustValue: 0
+    AdjustsEnergy: 0
+    EnergyAdjustValue: 0
+    BuyPrice: 90
+    SellPrice: 30
+  isStorage: 0
+  StorageList: []
+  isGrowableItem: 1
+  RequireTilledEarth: 1
+  PreviewItem: {fileID: 1288480301563340, guid: 02d06bdc07916a643b2ce1e7805323ce,
+    type: 2}
+  isEnvironment: 1
+  EnvironmentValues:
+  - IsWaterable: 1
+    IsBreakable: 0
+    ObjectType: 1
+    ActivateableTypeRequired: 1
+    QualityLevelRequired: 0
+    ObjectHealth: 15
+    DropItemsOnBreak: 0
+    BreakableAtlasID: 0
+    DropItemsOnInteract: 0
+    InteractDropID: 1
+    SwapItemOnBreak: 0
+    SwapID: 0
+--- !u!114 &1026884241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1026884239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 0
+  instanceID: 112702
+--- !u!4 &1026884242
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1026884239}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1330787845}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1133565266
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1133565267}
+  m_Layer: 0
+  m_Name: Fruit
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1133565267
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1133565266}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1470222517}
+  - {fileID: 1528345311}
+  m_Father: {fileID: 98179532}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1215626842
 GameObject:
   m_ObjectHideFlags: 0
@@ -1938,7 +2152,6 @@ Transform:
   - {fileID: 1328181117}
   - {fileID: 1696380315}
   - {fileID: 619036617}
-  - {fileID: 1470222517}
   m_Father: {fileID: 98179532}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1970,7 +2183,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1330787845}
-  m_RootOrder: 5
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1228010044
 MonoBehaviour:
@@ -1984,7 +2197,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: -264134
+  instanceID: 112718
 --- !u!114 &1228010045
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1996,19 +2209,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc1a46eca4a35e5498f3df297015210f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: Carrot
+  Name: Carrot Seeds
   MaxStackSize: 999
   ActivateableType: 5
-  DestroysSoilOnPlacement: 1
+  DestroysSoilOnPlacement: 0
   ToolTipType:
     GroupType: 0
-    MainLocalizationID: 91
+    MainLocalizationID: 96
     SubLocalizationID: 89
-    DescriptionID: 92
+    DescriptionID: 90
     ContextID: 0
   DatabaseID: 25
   LockItem: 1
-  Icon: {fileID: 21300000, guid: 5c3d38af10825b04890a2523b53175e4, type: 3}
+  Icon: {fileID: 21300000, guid: dee5a078f314dd24db9d9d9ae7df8a69, type: 3}
   ModelPrefab: {fileID: 1325620863379434, guid: 8daaecbc1a31cef4ab9f38da032e5036,
     type: 2}
   DefaultScale: 1
@@ -2027,23 +2240,132 @@ MonoBehaviour:
   isStorage: 0
   StorageList: []
   isGrowableItem: 1
-  RequireTilledEarth: 0
-  PreviewItem: {fileID: 1190082843462652, guid: 93873d1acf25077489740c84181ed113,
+  RequireTilledEarth: 1
+  PreviewItem: {fileID: 1266158092570826, guid: c826b54c257b8c14f8e2c8cb50b3d712,
     type: 2}
   isEnvironment: 1
   EnvironmentValues:
-  - IsWaterable: 0
-    IsBreakable: 1
+  - IsWaterable: 1
+    IsBreakable: 0
     ObjectType: 1
     ActivateableTypeRequired: 1
     QualityLevelRequired: 0
     ObjectHealth: 15
     DropItemsOnBreak: 0
     BreakableAtlasID: 0
-    DropItemsOnInteract: 1
+    DropItemsOnInteract: 0
     InteractDropID: 1
-    SwapItemOnBreak: 1
+    SwapItemOnBreak: 0
     SwapID: 0
+--- !u!1 &1254369945
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1254369946}
+  - component: {fileID: 1254369947}
+  - component: {fileID: 1254369948}
+  m_Layer: 0
+  m_Name: 33 - BellPepper_Orange_Lv3 (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1254369946
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1254369945}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1815548899}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1254369947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1254369945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 0
+  instanceID: 112726
+--- !u!114 &1254369948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1254369945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc1a46eca4a35e5498f3df297015210f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Cabbage
+  MaxStackSize: 999
+  ActivateableType: 4
+  DestroysSoilOnPlacement: 0
+  ToolTipType:
+    GroupType: 1
+    MainLocalizationID: 113
+    SubLocalizationID: 49
+    DescriptionID: 107
+    ContextID: 33
+  DatabaseID: 33
+  LockItem: 1
+  Icon: {fileID: 21300000, guid: 62a2f012d80b62046bc7cad2c3902053, type: 3}
+  ModelPrefab: {fileID: 100000, guid: 1f4caf9654383104da85ce5308994186, type: 2}
+  DefaultScale: 1
+  isTool: 0
+  ToolQualityLevels: []
+  isItem: 1
+  ItemCat: 0
+  ItemQualities:
+  - Quality: 0
+    AdjustsHealth: 1
+    HealthAdjustValue: 15
+    AdjustsEnergy: 1
+    EnergyAdjustValue: 35
+    BuyPrice: 45
+    SellPrice: 15
+  - Quality: 1
+    AdjustsHealth: 1
+    HealthAdjustValue: 25
+    AdjustsEnergy: 1
+    EnergyAdjustValue: 45
+    BuyPrice: 75
+    SellPrice: 25
+  - Quality: 2
+    AdjustsHealth: 1
+    HealthAdjustValue: 35
+    AdjustsEnergy: 1
+    EnergyAdjustValue: 55
+    BuyPrice: 105
+    SellPrice: 35
+  - Quality: 3
+    AdjustsHealth: 1
+    HealthAdjustValue: 45
+    AdjustsEnergy: 1
+    EnergyAdjustValue: 65
+    BuyPrice: 135
+    SellPrice: 45
+  isStorage: 0
+  StorageList: []
+  isGrowableItem: 0
+  RequireTilledEarth: 0
+  PreviewItem: {fileID: 0}
+  isEnvironment: 0
+  EnvironmentValues: []
 --- !u!1 &1259421159
 GameObject:
   m_ObjectHideFlags: 0
@@ -2103,7 +2425,7 @@ Transform:
   - {fileID: 1579001600}
   - {fileID: 1837730740}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1322106187
 MonoBehaviour:
@@ -2229,7 +2551,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 63162
+  instanceID: 112746
 --- !u!1 &1330787844
 GameObject:
   m_ObjectHideFlags: 0
@@ -2257,10 +2579,11 @@ Transform:
   m_Children:
   - {fileID: 1343751718}
   - {fileID: 1714828755}
+  - {fileID: 1228010043}
   - {fileID: 49813769}
   - {fileID: 2002398764}
   - {fileID: 1663225529}
-  - {fileID: 1228010043}
+  - {fileID: 1026884242}
   - {fileID: 1908648035}
   m_Father: {fileID: 98179532}
   m_RootOrder: 1
@@ -2353,7 +2676,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 63172
+  instanceID: 112756
 --- !u!4 &1343751718
 Transform:
   m_ObjectHideFlags: 0
@@ -2409,7 +2732,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 63180
+  instanceID: 112764
 --- !u!114 &1345506627
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2533,7 +2856,7 @@ Transform:
   m_Children:
   - {fileID: 676053779}
   m_Father: {fileID: 98179532}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1405799089
 GameObject:
@@ -2680,7 +3003,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 63202
+  instanceID: 112786
 --- !u!1 &1450680409
 GameObject:
   m_ObjectHideFlags: 0
@@ -2710,6 +3033,116 @@ Transform:
   m_Father: {fileID: 98179532}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1456368173
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1456368174}
+  - component: {fileID: 1456368175}
+  - component: {fileID: 1456368176}
+  m_Layer: 0
+  m_Name: 29 - Brocolli_Lv3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1456368174
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1456368173}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1815548899}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1456368175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1456368173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 0
+  instanceID: 112796
+--- !u!114 &1456368176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1456368173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc1a46eca4a35e5498f3df297015210f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Cabbage
+  MaxStackSize: 999
+  ActivateableType: 4
+  DestroysSoilOnPlacement: 0
+  ToolTipType:
+    GroupType: 1
+    MainLocalizationID: 111
+    SubLocalizationID: 49
+    DescriptionID: 105
+    ContextID: 29
+  DatabaseID: 29
+  LockItem: 1
+  Icon: {fileID: 21300000, guid: c6fececd94b137a4e982a92b13570b0c, type: 3}
+  ModelPrefab: {fileID: 1091118381695534, guid: 33a44360c1686094ba7a7073eeb587a6,
+    type: 2}
+  DefaultScale: 1
+  isTool: 0
+  ToolQualityLevels: []
+  isItem: 1
+  ItemCat: 0
+  ItemQualities:
+  - Quality: 0
+    AdjustsHealth: 1
+    HealthAdjustValue: 15
+    AdjustsEnergy: 1
+    EnergyAdjustValue: 35
+    BuyPrice: 45
+    SellPrice: 15
+  - Quality: 1
+    AdjustsHealth: 1
+    HealthAdjustValue: 25
+    AdjustsEnergy: 1
+    EnergyAdjustValue: 45
+    BuyPrice: 75
+    SellPrice: 25
+  - Quality: 2
+    AdjustsHealth: 1
+    HealthAdjustValue: 35
+    AdjustsEnergy: 1
+    EnergyAdjustValue: 55
+    BuyPrice: 105
+    SellPrice: 35
+  - Quality: 3
+    AdjustsHealth: 1
+    HealthAdjustValue: 45
+    AdjustsEnergy: 1
+    EnergyAdjustValue: 65
+    BuyPrice: 135
+    SellPrice: 45
+  isStorage: 0
+  StorageList: []
+  isGrowableItem: 0
+  RequireTilledEarth: 0
+  PreviewItem: {fileID: 0}
+  isEnvironment: 0
+  EnvironmentValues: []
 --- !u!1 &1470222514
 GameObject:
   m_ObjectHideFlags: 0
@@ -2806,7 +3239,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 63212
+  instanceID: 112804
 --- !u!4 &1470222517
 Transform:
   m_ObjectHideFlags: 0
@@ -2817,8 +3250,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1215626843}
-  m_RootOrder: 3
+  m_Father: {fileID: 1133565267}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1502558389
 GameObject:
@@ -2927,7 +3360,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 63220
+  instanceID: 112812
 --- !u!4 &1502558392
 Transform:
   m_ObjectHideFlags: 0
@@ -3036,7 +3469,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 63228
+  instanceID: 112820
 --- !u!4 &1511745342
 Transform:
   m_ObjectHideFlags: 0
@@ -3084,20 +3517,20 @@ MonoBehaviour:
   DestroysSoilOnPlacement: 0
   ToolTipType:
     GroupType: 1
-    MainLocalizationID: 10
-    SubLocalizationID: 49
-    DescriptionID: 88
-    ContextID: 0
+    MainLocalizationID: 102
+    SubLocalizationID: 94
+    DescriptionID: 103
+    ContextID: 28
   DatabaseID: 28
   LockItem: 1
-  Icon: {fileID: 21300000, guid: 70a97278c74a1d14591a9955e9aedb20, type: 3}
+  Icon: {fileID: 21300000, guid: c7fccc24d90546e4ab556e2b93c3a552, type: 3}
   ModelPrefab: {fileID: 1989714712356646, guid: 410ea6a1db88b494490f5d7d3b84a5a9,
     type: 2}
   DefaultScale: 1
   isTool: 0
   ToolQualityLevels: []
   isItem: 1
-  ItemCat: 0
+  ItemCat: 5
   ItemQualities:
   - Quality: 0
     AdjustsHealth: 1
@@ -3146,7 +3579,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: -1564934
+  instanceID: 112828
 --- !u!4 &1528345311
 Transform:
   m_ObjectHideFlags: 0
@@ -3157,7 +3590,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1815548899}
+  m_Father: {fileID: 1133565267}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1579001599
@@ -3285,7 +3718,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 63240
+  instanceID: 112840
 --- !u!4 &1637135973
 Transform:
   m_ObjectHideFlags: 0
@@ -3357,7 +3790,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 5
-  instanceID: 63248
+  instanceID: 112848
 --- !u!4 &1645614859
 Transform:
   m_ObjectHideFlags: 0
@@ -3399,19 +3832,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc1a46eca4a35e5498f3df297015210f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: Bell Pepper Orange
+  Name: Bell Pepper Orange Seeds
   MaxStackSize: 999
   ActivateableType: 5
-  DestroysSoilOnPlacement: 1
+  DestroysSoilOnPlacement: 0
   ToolTipType:
     GroupType: 0
-    MainLocalizationID: 91
+    MainLocalizationID: 99
     SubLocalizationID: 89
-    DescriptionID: 92
+    DescriptionID: 90
     ContextID: 0
   DatabaseID: 27
   LockItem: 1
-  Icon: {fileID: 21300000, guid: 5c3d38af10825b04890a2523b53175e4, type: 3}
+  Icon: {fileID: 21300000, guid: 46e0077d8f2f0964da25dbf344874258, type: 3}
   ModelPrefab: {fileID: 1196529855313220, guid: 10926c466b2b74641a3eed78a5086b21,
     type: 2}
   DefaultScale: 1
@@ -3430,22 +3863,22 @@ MonoBehaviour:
   isStorage: 0
   StorageList: []
   isGrowableItem: 1
-  RequireTilledEarth: 0
-  PreviewItem: {fileID: 1190082843462652, guid: 93873d1acf25077489740c84181ed113,
+  RequireTilledEarth: 1
+  PreviewItem: {fileID: 1266158092570826, guid: d0fea055582677d49896a607713439a6,
     type: 2}
   isEnvironment: 1
   EnvironmentValues:
-  - IsWaterable: 0
-    IsBreakable: 1
+  - IsWaterable: 1
+    IsBreakable: 0
     ObjectType: 1
     ActivateableTypeRequired: 1
     QualityLevelRequired: 0
     ObjectHealth: 15
     DropItemsOnBreak: 0
     BreakableAtlasID: 0
-    DropItemsOnInteract: 1
+    DropItemsOnInteract: 0
     InteractDropID: 1
-    SwapItemOnBreak: 1
+    SwapItemOnBreak: 0
     SwapID: 0
 --- !u!114 &1663225528
 MonoBehaviour:
@@ -3459,7 +3892,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: -275354
+  instanceID: 112856
 --- !u!4 &1663225529
 Transform:
   m_ObjectHideFlags: 0
@@ -3471,7 +3904,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1330787845}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1677378387
 GameObject:
@@ -3544,7 +3977,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 5
-  instanceID: 63258
+  instanceID: 112866
 --- !u!1 &1696380314
 GameObject:
   m_ObjectHideFlags: 0
@@ -3653,7 +4086,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 63266
+  instanceID: 112874
 --- !u!1 &1701517455
 GameObject:
   m_ObjectHideFlags: 0
@@ -3724,7 +4157,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc1a46eca4a35e5498f3df297015210f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: Cabbage Stages
+  Name: Cabbage Seeds
   MaxStackSize: 999
   ActivateableType: 5
   DestroysSoilOnPlacement: 0
@@ -3784,71 +4217,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 63278
---- !u!1001 &1782924805
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4595175272579934, guid: 10926c466b2b74641a3eed78a5086b21, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4595175272579934, guid: 10926c466b2b74641a3eed78a5086b21, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4595175272579934, guid: 10926c466b2b74641a3eed78a5086b21, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4595175272579934, guid: 10926c466b2b74641a3eed78a5086b21, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4595175272579934, guid: 10926c466b2b74641a3eed78a5086b21, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4595175272579934, guid: 10926c466b2b74641a3eed78a5086b21, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4595175272579934, guid: 10926c466b2b74641a3eed78a5086b21, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4595175272579934, guid: 10926c466b2b74641a3eed78a5086b21, type: 2}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114651950890483358, guid: 10926c466b2b74641a3eed78a5086b21,
-        type: 2}
-      propertyPath: serializationData.Prefab
-      value: 
-      objectReference: {fileID: 114651950890483358, guid: 10926c466b2b74641a3eed78a5086b21,
-        type: 2}
-    - target: {fileID: 114633961816596114, guid: 10926c466b2b74641a3eed78a5086b21,
-        type: 2}
-      propertyPath: serializationData.Prefab
-      value: 
-      objectReference: {fileID: 114633961816596114, guid: 10926c466b2b74641a3eed78a5086b21,
-        type: 2}
-    - target: {fileID: 114802181526261010, guid: 10926c466b2b74641a3eed78a5086b21,
-        type: 2}
-      propertyPath: serializationData.Prefab
-      value: 
-      objectReference: {fileID: 114802181526261010, guid: 10926c466b2b74641a3eed78a5086b21,
-        type: 2}
-    - target: {fileID: 1196529855313220, guid: 10926c466b2b74641a3eed78a5086b21, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 10926c466b2b74641a3eed78a5086b21, type: 2}
-  m_IsPrefabParent: 0
+  instanceID: 112886
 --- !u!1 &1815548898
 GameObject:
   m_ObjectHideFlags: 0
@@ -3875,9 +4244,13 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 630922424}
-  - {fileID: 1528345311}
+  - {fileID: 477749472}
+  - {fileID: 1456368174}
+  - {fileID: 41691072}
+  - {fileID: 1254369946}
+  - {fileID: 664644636}
   m_Father: {fileID: 98179532}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1825876182
 GameObject:
@@ -3995,7 +4368,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 63290
+  instanceID: 112898
 --- !u!1 &1837730739
 GameObject:
   m_ObjectHideFlags: 0
@@ -4111,7 +4484,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 63300
+  instanceID: 112908
 --- !u!4 &1849541684
 Transform:
   m_ObjectHideFlags: 0
@@ -4167,7 +4540,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 63308
+  instanceID: 112916
 --- !u!114 &1902128846
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4263,7 +4636,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1330787845}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1908648036
 MonoBehaviour:
@@ -4277,7 +4650,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: -271040
+  instanceID: 112924
 --- !u!114 &1908648037
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4289,19 +4662,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc1a46eca4a35e5498f3df297015210f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: Strawberry
+  Name: Strawberry Seeds
   MaxStackSize: 999
   ActivateableType: 5
-  DestroysSoilOnPlacement: 1
+  DestroysSoilOnPlacement: 0
   ToolTipType:
     GroupType: 0
-    MainLocalizationID: 91
+    MainLocalizationID: 101
     SubLocalizationID: 89
-    DescriptionID: 92
+    DescriptionID: 90
     ContextID: 0
   DatabaseID: 26
   LockItem: 1
-  Icon: {fileID: 21300000, guid: 5c3d38af10825b04890a2523b53175e4, type: 3}
+  Icon: {fileID: 21300000, guid: 9e86c0c22c2e6a344b20fca54d0ad4d1, type: 3}
   ModelPrefab: {fileID: 1669617070192530, guid: 14ec22336f9f15343b97dda629e21b6f,
     type: 2}
   DefaultScale: 1
@@ -4320,22 +4693,22 @@ MonoBehaviour:
   isStorage: 0
   StorageList: []
   isGrowableItem: 1
-  RequireTilledEarth: 0
-  PreviewItem: {fileID: 1190082843462652, guid: 93873d1acf25077489740c84181ed113,
+  RequireTilledEarth: 1
+  PreviewItem: {fileID: 1266158092570826, guid: 3abee9e0c0076fc4bb94cf6c0291c233,
     type: 2}
   isEnvironment: 1
   EnvironmentValues:
-  - IsWaterable: 0
-    IsBreakable: 1
+  - IsWaterable: 1
+    IsBreakable: 0
     ObjectType: 1
     ActivateableTypeRequired: 1
     QualityLevelRequired: 0
     ObjectHealth: 15
     DropItemsOnBreak: 0
     BreakableAtlasID: 0
-    DropItemsOnInteract: 1
+    DropItemsOnInteract: 0
     InteractDropID: 1
-    SwapItemOnBreak: 1
+    SwapItemOnBreak: 0
     SwapID: 0
 --- !u!1 &2002398763
 GameObject:
@@ -4365,7 +4738,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1330787845}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2002398765
 MonoBehaviour:
@@ -4379,7 +4752,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: -224544
+  instanceID: 112932
 --- !u!114 &2002398766
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4391,19 +4764,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc1a46eca4a35e5498f3df297015210f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: Bell Pepper Red
+  Name: Bell Pepper Red Seeds
   MaxStackSize: 999
   ActivateableType: 5
-  DestroysSoilOnPlacement: 1
+  DestroysSoilOnPlacement: 0
   ToolTipType:
     GroupType: 0
-    MainLocalizationID: 91
+    MainLocalizationID: 98
     SubLocalizationID: 89
-    DescriptionID: 92
+    DescriptionID: 90
     ContextID: 0
   DatabaseID: 23
   LockItem: 1
-  Icon: {fileID: 21300000, guid: 5c3d38af10825b04890a2523b53175e4, type: 3}
+  Icon: {fileID: 21300000, guid: 9e86c0c22c2e6a344b20fca54d0ad4d1, type: 3}
   ModelPrefab: {fileID: 1815574973860084, guid: b03deb716406df74caa79cf01d6e05af,
     type: 2}
   DefaultScale: 1
@@ -4422,22 +4795,22 @@ MonoBehaviour:
   isStorage: 0
   StorageList: []
   isGrowableItem: 1
-  RequireTilledEarth: 0
-  PreviewItem: {fileID: 1190082843462652, guid: 93873d1acf25077489740c84181ed113,
+  RequireTilledEarth: 1
+  PreviewItem: {fileID: 1266158092570826, guid: 3abee9e0c0076fc4bb94cf6c0291c233,
     type: 2}
   isEnvironment: 1
   EnvironmentValues:
-  - IsWaterable: 0
-    IsBreakable: 1
+  - IsWaterable: 1
+    IsBreakable: 0
     ObjectType: 1
     ActivateableTypeRequired: 1
     QualityLevelRequired: 0
     ObjectHealth: 15
     DropItemsOnBreak: 0
     BreakableAtlasID: 0
-    DropItemsOnInteract: 1
+    DropItemsOnInteract: 0
     InteractDropID: 1
-    SwapItemOnBreak: 1
+    SwapItemOnBreak: 0
     SwapID: 0
 --- !u!1 &2041544709
 GameObject:
@@ -4497,7 +4870,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 5
-  instanceID: 63316
+  instanceID: 112940
 --- !u!4 &2041544712
 Transform:
   m_ObjectHideFlags: 0

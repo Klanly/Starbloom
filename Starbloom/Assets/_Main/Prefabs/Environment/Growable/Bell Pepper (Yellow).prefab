@@ -125,18 +125,6 @@ MonoBehaviour:
     - Name: 
       Entry: 7
       Data: 2|Harvestable+HarvestSettings, Assembly-CSharp
-    - Name: YieldItem
-      Entry: 7
-      Data: Devdog.InventoryPro.ItemAmountRow, Assembly-CSharp
-    - Name: item
-      Entry: 6
-      Data: 
-    - Name: amount
-      Entry: 3
-      Data: 1
-    - Name: 
-      Entry: 8
-      Data: 
     - Name: Rarities
       Entry: 7
       Data: 3|DG_ItemObject+ItemQualityLevels[], Assembly-CSharp
@@ -186,9 +174,9 @@ MonoBehaviour:
     SerializedBytes: 
     ReferencedUnityObjects:
     - {fileID: 1288480301563340, guid: 02d06bdc07916a643b2ce1e7805323ce, type: 2}
-    - {fileID: 100000, guid: 71b3f810c2d3f47438f71a8aa1312d5c, type: 2}
-    - {fileID: 100000, guid: ef963a951e4e5bc438e1f49290d870ee, type: 2}
-    - {fileID: 100000, guid: 2670f590bd8bcdb47a42bf5e1c3b17a6, type: 2}
+    - {fileID: 1838461022517622, guid: 71b3f810c2d3f47438f71a8aa1312d5c, type: 2}
+    - {fileID: 1989196727940694, guid: ef963a951e4e5bc438e1f49290d870ee, type: 2}
+    - {fileID: 1479496050413472, guid: 2670f590bd8bcdb47a42bf5e1c3b17a6, type: 2}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -287,3 +275,4 @@ MonoBehaviour:
   ActiveStageDay: -1
   DayPlanted: 0
   GrowthOffset: 0
+  AfterHarvestSetToDay: 4

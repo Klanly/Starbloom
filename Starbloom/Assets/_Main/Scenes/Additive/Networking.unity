@@ -1018,51 +1018,51 @@ MonoBehaviour:
   isStorageContainer: 1
   isTreasureList: 0
   StorageSlots:
-  - ContainedItem: 5
+  - ContainedItem: 21
     CurrentStackActive: 0
-    LowValue: 1
+    LowValue: 50
     NormalValue: 0
     HighValue: 0
     MaximumValue: 0
-  - ContainedItem: 0
+  - ContainedItem: 4
     CurrentStackActive: 0
-    LowValue: 0
+    LowValue: 50
     NormalValue: 0
     HighValue: 0
     MaximumValue: 0
-  - ContainedItem: 0
+  - ContainedItem: 25
     CurrentStackActive: 0
-    LowValue: 0
+    LowValue: 50
     NormalValue: 0
     HighValue: 0
     MaximumValue: 0
-  - ContainedItem: 0
+  - ContainedItem: 24
     CurrentStackActive: 0
-    LowValue: 0
+    LowValue: 50
     NormalValue: 0
     HighValue: 0
     MaximumValue: 0
-  - ContainedItem: 0
+  - ContainedItem: 23
     CurrentStackActive: 0
-    LowValue: 0
+    LowValue: 50
     NormalValue: 0
     HighValue: 0
     MaximumValue: 0
-  - ContainedItem: 0
+  - ContainedItem: 27
     CurrentStackActive: 0
-    LowValue: 0
+    LowValue: 50
     NormalValue: 0
     HighValue: 0
     MaximumValue: 0
-  - ContainedItem: 0
+  - ContainedItem: 31
     CurrentStackActive: 0
-    LowValue: 0
+    LowValue: 50
     NormalValue: 0
     HighValue: 0
     MaximumValue: 0
-  - ContainedItem: 0
+  - ContainedItem: 26
     CurrentStackActive: 0
-    LowValue: 0
+    LowValue: 50
     NormalValue: 0
     HighValue: 0
     MaximumValue: 0
@@ -1379,27 +1379,27 @@ MonoBehaviour:
         NormalValue: 0
         HighValue: 0
         MaximumValue: 0
-      - ContainedItem: 4
+      - ContainedItem: 3
         CurrentStackActive: 0
         LowValue: 1
         NormalValue: 0
         HighValue: 0
         MaximumValue: 0
-      - ContainedItem: 5
+      - ContainedItem: 0
         CurrentStackActive: 0
-        LowValue: 1
+        LowValue: 0
         NormalValue: 0
         HighValue: 0
         MaximumValue: 0
-      - ContainedItem: 21
+      - ContainedItem: 0
         CurrentStackActive: 0
-        LowValue: 10
+        LowValue: 0
         NormalValue: 0
         HighValue: 0
         MaximumValue: 0
-      - ContainedItem: 4
+      - ContainedItem: 0
         CurrentStackActive: 0
-        LowValue: 30
+        LowValue: 0
         NormalValue: 0
         HighValue: 0
         MaximumValue: 0

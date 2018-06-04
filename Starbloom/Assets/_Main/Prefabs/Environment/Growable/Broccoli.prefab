@@ -98,9 +98,9 @@ MonoBehaviour:
     SerializedBytes: 
     ReferencedUnityObjects:
     - {fileID: 1266158092570826, guid: a072d96a8e735404f8b0cff6064c6167, type: 2}
-    - {fileID: 100000, guid: e030b8e5411e0ad4ca5912f642394ba7, type: 2}
-    - {fileID: 100000, guid: 5d1a54d769ec6e342ba2e5fdadebd658, type: 2}
-    - {fileID: 100000, guid: 33a44360c1686094ba7a7073eeb587a6, type: 2}
+    - {fileID: 1666546217561844, guid: e030b8e5411e0ad4ca5912f642394ba7, type: 2}
+    - {fileID: 1090377704027090, guid: 5d1a54d769ec6e342ba2e5fdadebd658, type: 2}
+    - {fileID: 1091118381695534, guid: 33a44360c1686094ba7a7073eeb587a6, type: 2}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -199,6 +199,7 @@ MonoBehaviour:
   ActiveStageDay: -1
   DayPlanted: 0
   GrowthOffset: 0
+  AfterHarvestSetToDay: 0
 --- !u!114 &114771017437612688
 MonoBehaviour:
   m_ObjectHideFlags: 1
