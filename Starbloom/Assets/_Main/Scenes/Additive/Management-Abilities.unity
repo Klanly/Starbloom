@@ -925,6 +925,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ed55373e04f38844af5d2707baf72e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_LineRenderer: {fileID: 0}
+  m_Start: {fileID: 0}
+  m_End: {fileID: 0}
+  m_UseSegmentsByDistance: 1
+  m_Segments: 20
+  m_SegmentsPerUnit: 2
+  m_Tension: 0
+  m_UsePerlinTension: 0
+  m_PerlinTensionSpeed: 0.5
+  m_ProjectFromHighest: 1
+  m_CheckCollision: 1
+  m_CollisionOffset: {x: 0, y: 1, z: 0}
+  m_CollisionCheckHeight: 5
+  m_CollisionLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_SmoothLine: 1
+  m_SmoothFactor: 1
+  m_SegmentLocs: []
+  m_LineEase: 1
 --- !u!120 &1819080181
 LineRenderer:
   m_ObjectHideFlags: 0
