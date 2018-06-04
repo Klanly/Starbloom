@@ -917,6 +917,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SceneList:
   - DebugFarm
+  - Farm
 --- !u!4 &1535058565
 Transform:
   m_ObjectHideFlags: 0
