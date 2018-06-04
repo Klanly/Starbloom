@@ -23,6 +23,8 @@ public class DG_InteractHandler : MonoBehaviour
             if (QuickFind.ContextDetectionHandler.ContextHit)
             {
                 DG_ContextObject CO = QuickFind.ContextDetectionHandler.COEncountered;
+                if (CO == null) return;
+
                 switch(CO.Type)
                 {
                     case DG_ContextObject.ContextTypes.PickupItem: HandlePickUpItem(CO); break;
@@ -47,13 +49,11 @@ public class DG_InteractHandler : MonoBehaviour
 
         int Scene = NO.transform.parent.GetComponent<NetworkScene>().SceneID;
         int ItemQuality = NO.ItemQualityLevel;
-            
-        
 
-        if (QuickFind.InventoryManager.AddItemToRucksack(QuickFind.NetworkSync.PlayerCharacterID, ItemID, (DG_ItemObject.ItemQualityLevels)ItemQuality))
-            Debug.Log("Send Inventory Full Message");
-        else
-            QuickFind.NetworkSync.RemoveNetworkSceneObject(Scene, NO.NetworkObjectID);
+
+        if(QuickFind.InventoryManager.AddItemToRucksack(QuickFind.NetworkSync.PlayerCharacterID, ItemID, (DG_ItemObject.ItemQualityLevels)ItemQuality, false))
+            QuickFind.NetworkSync.RemoveNetworkSceneObject(QuickFind.NetworkSync.CurrentScene, NO.NetworkObjectID);
+
     }
     void HandleMoveableStorage(DG_ContextObject CO)
     {
@@ -65,10 +65,6 @@ public class DG_InteractHandler : MonoBehaviour
     {
         NetworkObject NO = QuickFind.NetworkObjectManager.ScanUpTree(CO.transform);
         DG_ItemObject IO = QuickFind.ItemDatabase.GetItemFromID(NO.ItemRefID);
-
-
-        Growable G = NO.transform.GetChild(0).GetComponent<Growable>();
-        G.Harvest();
 
         if (Type == DG_ContextObject.ContextTypes.Pick_And_Break)
         {
@@ -86,6 +82,8 @@ public class DG_InteractHandler : MonoBehaviour
                         QuickFind.NetworkObjectManager.CreateNetSceneObject(SceneID, Clump.ItemID, Clump.ItemQuality, CO.GetSpawnPoint(), 0, true, CO.RandomVelocity());
                 }
             }
+            Growable G = NO.transform.GetChild(0).GetComponent<Growable>();
+            G.Harvest();
         }
         else if(Type == DG_ContextObject.ContextTypes.PickOnly)
         {
@@ -96,7 +94,12 @@ public class DG_InteractHandler : MonoBehaviour
                 ItemID = CO.ContextID;
 
             int ItemQuality = NO.ItemQualityLevel;
-            QuickFind.InventoryManager.AddItemToRucksack(QuickFind.NetworkSync.PlayerCharacterID, ItemID, (DG_ItemObject.ItemQualityLevels)ItemQuality);
+            if (QuickFind.InventoryManager.AddItemToRucksack(QuickFind.NetworkSync.PlayerCharacterID, ItemID, (DG_ItemObject.ItemQualityLevels)ItemQuality, false))
+            {
+                QuickFind.NetworkSync.RemoveNetworkSceneObject(QuickFind.NetworkSync.CurrentScene, NO.NetworkObjectID);
+                Growable G = NO.transform.GetChild(0).GetComponent<Growable>();
+                G.Harvest();
+            }
         }
     }
 }

@@ -74,4 +74,6 @@ MonoBehaviour:
   - CharacterClaimedMagneticObject
   - ReceiveSurrogateTilled
   - UserSetInBed
+  - NewMoneyValueSet
+  - ReceivePlayerMovement
   DisableAutoOpenWizard: 1

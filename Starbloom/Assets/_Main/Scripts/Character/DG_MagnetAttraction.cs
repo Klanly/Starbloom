@@ -49,8 +49,8 @@ public class DG_MagnetAttraction : MonoBehaviour {
             if (MT.OwnerID == QuickFind.NetworkSync.PlayerCharacterID && QuickFind.WithinDistance(MT.Trans, AdjustedHeight, .05f))
             {
                 NetworkObject NO = QuickFind.NetworkObjectManager.ScanUpTree(MT.Trans);
-                QuickFind.InventoryManager.AddItemToRucksack(QuickFind.NetworkSync.PlayerCharacterID, NO.ItemRefID, (DG_ItemObject.ItemQualityLevels)NO.ItemQualityLevel);
-                QuickFind.NetworkSync.RemoveNetworkSceneObject(NO.transform.parent.GetComponent<NetworkScene>().SceneID, NO.NetworkObjectID);
+                if(QuickFind.InventoryManager.AddItemToRucksack(QuickFind.NetworkSync.PlayerCharacterID, NO.ItemRefID, (DG_ItemObject.ItemQualityLevels)NO.ItemQualityLevel, false))
+                    QuickFind.NetworkSync.RemoveNetworkSceneObject(NO.transform.parent.GetComponent<NetworkScene>().SceneID, NO.NetworkObjectID);
             }
         }
     }
@@ -88,6 +88,8 @@ public class DG_MagnetAttraction : MonoBehaviour {
     void RequestObject(DG_MagneticItem MI)
     {
         NetworkObject NO = QuickFind.NetworkObjectManager.ScanUpTree(MI.transform);
+        if (!QuickFind.InventoryManager.AddItemToRucksack(QuickFind.NetworkSync.PlayerCharacterID, NO.ItemRefID, (DG_ItemObject.ItemQualityLevels)NO.ItemQualityLevel, false, true)) return;
+        
         int[] Sent = new int[3];
         Sent[0] = QuickFind.NetworkSync.PlayerCharacterID;
         Sent[1] = QuickFind.NetworkSync.CurrentScene;
@@ -102,8 +104,9 @@ public class DG_MagnetAttraction : MonoBehaviour {
         DG_MagneticItem MI = NO.transform.GetChild(0).GetComponent<DG_MagneticItem>();
 
         if (MI.Claimed) return; //if two charaters standing close to spawn point, and send simultanious request.
-        else
-            MI.Claimed = true;
+        else if (!QuickFind.InventoryManager.AddItemToRucksack(QuickFind.NetworkSync.PlayerCharacterID, NO.ItemRefID, (DG_ItemObject.ItemQualityLevels)NO.ItemQualityLevel, false)) return;
+
+        MI.Claimed = true;
 
         MagneticTracker MT = new MagneticTracker();
         MT.Trans = MI.transform;

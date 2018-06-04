@@ -399,7 +399,7 @@ public class Fishing_MasterHandler : MonoBehaviour
         int PlayerCharID = QuickFind.NetworkSync.PlayerCharacterID;
 
         DG_ItemObject ItemRef = QuickFind.ItemDatabase.GetItemFromID(ActiveFishReference.AtlasObject.ItemObjectRefDatabaseID);
-        QuickFind.InventoryManager.AddItemToRucksack(PlayerCharID, ItemRef.DatabaseID, ActiveFishReference.QualityLevel);
+        QuickFind.InventoryManager.AddItemToRucksack(PlayerCharID, ItemRef.DatabaseID, ActiveFishReference.QualityLevel, true);
         Sprite FishSprite = ItemRef.Icon;
         float DisplayWeight = (float)ActiveFishReference.Weight / 10;
         QuickFind.FishingGUI.OpenObjectCaughtGUI(FishSprite, QuickFind.WordDatabase.GetWordFromID(ItemRef.ToolTipType.MainLocalizationID), DisplayWeight.ToString());

@@ -110,8 +110,7 @@ public class DG_QuestObject : MonoBehaviour {
                 Debug.Log("Quality Level Not set dynamically");
                 DG_ItemObject.ItemQualityLevels RewardLevel = DG_ItemObject.ItemQualityLevels.Low;
 
-                if (QuickFind.InventoryManager.AddItemToRucksack(QuickFind.NetworkSync.PlayerCharacterID, Rew.RewardItemDatabaseID, RewardLevel))
-                    QuickFind.TreasureManager.OpenTrashUI(Rew.RewardItemDatabaseID, RewardLevel);
+                QuickFind.InventoryManager.AddItemToRucksack(QuickFind.NetworkSync.PlayerCharacterID, Rew.RewardItemDatabaseID, RewardLevel, true);
             }
         }
         Debug.Log("Quest " + BoolSaveLocation.ToString() + " Completed: Rewards Adjusted");

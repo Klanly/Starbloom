@@ -13,7 +13,7 @@ using UnityEditor;
 
 public class NetworkObject : MonoBehaviour {
 
-    //[HideInInspector]
+    [HideInInspector]
     public int NetworkObjectID;
     [Header("---------------------------------------------------------------")]
     public int ItemRefID;

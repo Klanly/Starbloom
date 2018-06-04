@@ -32,38 +32,48 @@ public class DG_Inventory : MonoBehaviour {
 
 
 
-    public bool AddItemToRucksack(int PlayerID, int ItemID, DG_ItemObject.ItemQualityLevels QualityLevel)
+    public bool AddItemToRucksack(int PlayerID, int ItemID, DG_ItemObject.ItemQualityLevels QualityLevel, bool OpenTrashUI, bool JustCheck = false)
     {
         DG_PlayerCharacters.CharacterEquipment Equipment = QuickFind.Farm.PlayerCharacters[PlayerID].Equipment;
         DG_ItemObject Object = QuickFind.ItemDatabase.GetItemFromID(ItemID);
         DG_PlayerCharacters.RucksackSlot RucksackSlot = RucksackSlotContainingID(Equipment, Object);
 
-        bool TrashSwap = false;
+        bool DestroyNetItem = true;
+        bool OpenTrash = false;
 
         if (RucksackSlot == null) //Item Does Not Exist in Bag Yet.
         {
             if (FirstAvailableRucksackSlot == null) // There is no Available Room in Bag.
             {
-                TrashSwap = true;
+                if (OpenTrashUI) { DestroyNetItem = true; OpenTrash = true; }
+                else DestroyNetItem = false;
             }
             else //Add Item to First Available Rucksack Slot
             {
-                FirstAvailableRucksackSlot.ContainedItem = Object.DatabaseID;
-                FirstAvailableRucksackSlot.AddStackQualityValue(QualityLevel, 1);
-                RucksackSlot = FirstAvailableRucksackSlot;
-                RucksackSlot.CurrentStackActive = (int)QualityLevel;
+                if (!JustCheck)
+                {
+                    FirstAvailableRucksackSlot.ContainedItem = Object.DatabaseID;
+                    FirstAvailableRucksackSlot.AddStackQualityValue(QualityLevel, 1);
+                    RucksackSlot = FirstAvailableRucksackSlot;
+                    RucksackSlot.CurrentStackActive = (int)QualityLevel;
+                }
             }
         }
         else //Add Item to Rucksack Slot
-        { RucksackSlot.AddStackQualityValue(QualityLevel, 1); }
+        { if (!JustCheck) RucksackSlot.AddStackQualityValue(QualityLevel, 1); }
 
-        if (!TrashSwap)
+
+        if (OpenTrash)
+            QuickFind.TreasureManager.OpenTrashUI(ItemID, QualityLevel);
+        else if(DestroyNetItem && !JustCheck)
+        {
             QuickFind.NetworkSync.SetRucksackValue(PlayerID, ItemAddSlotPosition, RucksackSlot.ContainedItem, RucksackSlot.CurrentStackActive,
             RucksackSlot.LowValue, RucksackSlot.NormalValue, RucksackSlot.HighValue, RucksackSlot.MaximumValue);
+            QuickFind.SystemMessageGUI.GenerateSystemMessage(ItemID);
+        }
 
-        QuickFind.SystemMessageGUI.GenerateSystemMessage(ItemID);
 
-        return TrashSwap;
+        return DestroyNetItem;
     }
 
 
@@ -249,10 +259,22 @@ public class DG_Inventory : MonoBehaviour {
         DG_PlayerCharacters.RucksackSlot MoveStack = GetRuckSackSlotInventoryItem(CurrentHoverItem);
         DG_PlayerCharacters.RucksackSlot[] AlternateSide;
         bool IsStorage;
+        int AlternateSideLength = 36;
         if (CurrentHoverItem.IsStorageSlot)
-        { IsStorage = true; AlternateSide = QuickFind.Farm.PlayerCharacters[QuickFind.NetworkSync.PlayerCharacterID].Equipment.RucksackSlots; }
+        {
+            IsStorage = true;
+            AlternateSide = QuickFind.Farm.PlayerCharacters[QuickFind.NetworkSync.PlayerCharacterID].Equipment.RucksackSlots;
+            AlternateSideLength = QuickFind.Farm.PlayerCharacters[QuickFind.NetworkSync.PlayerCharacterID].Equipment.RuckSackUnlockedSize;
+        }
         else
-        { IsStorage = false; AlternateSide = QuickFind.StorageUI.ActiveStorage.StorageSlots; InventorySlots = QuickFind.StorageUI.StorageSlots; }
+        {
+            IsStorage = false;
+            AlternateSide = QuickFind.StorageUI.ActiveStorage.StorageSlots; InventorySlots = QuickFind.StorageUI.StorageSlots;
+        }
+
+        
+
+
 
         DG_ItemObject IO = GetItemByInventoryItem(QuickFind.GUI_Inventory.CurrentHoverItem);
 
@@ -289,7 +311,7 @@ public class DG_Inventory : MonoBehaviour {
         }
         if (MoveStackValue > 0)
         {
-            for (int i = 0; i < AlternateSide.Length; i++)
+            for (int i = 0; i < AlternateSideLength; i++)
             {
                 DG_PlayerCharacters.RucksackSlot RS = AlternateSide[i];
                 if (RS.GetStackValue() == 0)
