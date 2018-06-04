@@ -85,7 +85,7 @@ public class DG_ObjectPlacement : MonoBehaviour {
         else
         {
             if(SoilObject != null && ItemDatabaseReference.DestroysSoilOnPlacement)
-                QuickFind.NetworkSync.RemoveNetworkSceneObject(QuickFind.NetworkSync.CurrentScene, SoilObject.NetworkObjectID);
+                QuickFind.NetworkSync.RemoveNetworkSceneObject(QuickFind.NetworkSync.CurrentScene, SoilObject.transform.GetSiblingIndex());
             return true;
         }
     }
@@ -155,13 +155,12 @@ public class DG_ObjectPlacement : MonoBehaviour {
         if (!AreaIsClear(SoilReplaceDetection, Spawn.transform.position))
         {
             DG_ContextObject CO = DetectedInTheWay.GetComponent<DG_ContextObject>();
-            NetworkObject NO = QuickFind.NetworkObjectManager.ScanUpTree(CO.transform);
-            NetworkObject NO2 = QuickFind.NetworkObjectManager.ScanUpTree(Spawn.transform);
+            Transform NetworkTrans = CO.transform.parent;
 
             int[] OutData = new int[3];
-            OutData[0] = NO.transform.parent.GetComponent<NetworkScene>().SceneID;
-            OutData[1] = NO.NetworkObjectID;
-            OutData[2] = NO2.NetworkObjectID;
+            OutData[0] = NetworkTrans.parent.GetComponent<NetworkScene>().SceneID;
+            OutData[1] = NetworkTrans.GetSiblingIndex();
+            OutData[2] = Spawn.transform.parent.GetSiblingIndex();
             QuickFind.NetworkSync.SetTilledSurrogate(OutData);
         }
         else

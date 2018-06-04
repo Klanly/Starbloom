@@ -13,42 +13,52 @@ public class DG_BreakableObjectsHandler : MonoBehaviour {
     { QuickFind.BreakableObjectsHandler = this; }
 
 
-
-
     public void TryHitObject(DG_ContextObject CO, HotbarItemHandler.ActivateableTypes ActivateableType, DG_ItemObject.ItemQualityLevels ToolLevel, DG_PlayerCharacters.RucksackSlot RucksackSlotOpen)
     {
         NetworkObject NO = QuickFind.NetworkObjectManager.ScanUpTree(CO.transform);
         DG_ItemObject IO = QuickFind.ItemDatabase.GetItemFromID(NO.ItemRefID);
-        if (ValidBreakAction(IO, ActivateableType, ToolLevel))
+        DG_BreakableObjectItem BOI = QuickFind.BreakableObjectsCompendium.GetItemFromID(IO.EnvironmentValues[0].BreakableAtlasID);
+        if (ValidBreakAction(IO, BOI, ActivateableType, ToolLevel))
         {
             DG_ItemObject ToolIO = QuickFind.ItemDatabase.GetItemFromID(RucksackSlotOpen.ContainedItem);
             int Hitvalue = ToolIO.ToolQualityLevels[(int)ToolLevel].StrengthValue;
             int newHealthValue = NO.HealthValue - Hitvalue;
-
-            if (newHealthValue <= 0) SendBreak(NO, CO, IO);
-            else SendHitData(NO, newHealthValue);
+            if (newHealthValue <= 0) SendBreak(NO, BOI, GetBreakReward(BOI));
+            else SendHitData(NO, newHealthValue, BOI);
         }
         else return;
     }
 
-
-
-
-    bool ValidBreakAction(DG_ItemObject IO, HotbarItemHandler.ActivateableTypes ActivateableType, DG_ItemObject.ItemQualityLevels ToolLevel)
+    bool ValidBreakAction(DG_ItemObject IO, DG_BreakableObjectItem BOI, HotbarItemHandler.ActivateableTypes ActivateableType, DG_ItemObject.ItemQualityLevels ToolLevel)
     {
         if (ActivateableType != IO.EnvironmentValues[0].ActivateableTypeRequired) return false;
         if (ToolLevel < IO.EnvironmentValues[0].QualityLevelRequired) return false;
         return true;
     }
 
+    int GetBreakReward(DG_BreakableObjectItem BOI)
+    {
+        float RewardRoll = Random.Range(0f, 1f);
+        for (int i = 0; i < BOI.RewardRolls.Length; i++)
+            if (RewardRoll < BOI.RewardRolls[i].RollPercent) return i;
+        return 0;
+    }
 
 
 
-    void SendHitData(NetworkObject NO, int NewHealthValue)
+
+
+
+
+
+
+
+
+    void SendHitData(NetworkObject NO, int NewHealthValue, DG_BreakableObjectItem BOI)
     {
         int[] Sent = new int[3];
         Sent[0] = QuickFind.NetworkSync.CurrentScene;
-        Sent[1] = NO.NetworkObjectID;
+        Sent[1] = NO.transform.GetSiblingIndex();
         Sent[2] = NewHealthValue;
 
         QuickFind.NetworkSync.SendHitBreakable(Sent);
@@ -65,27 +75,34 @@ public class DG_BreakableObjectsHandler : MonoBehaviour {
     }
 
 
-
-
-    void SendBreak(NetworkObject NO, DG_ContextObject CO, DG_ItemObject IO)
+    void SendBreak(NetworkObject NO, DG_BreakableObjectItem BOI, int RewardNum)
     {
-        QuickFind.NetworkSync.RemoveNetworkSceneObject(QuickFind.NetworkSync.CurrentScene, NO.NetworkObjectID);
+        QuickFind.NetworkSync.RemoveNetworkSceneObject(QuickFind.NetworkSync.CurrentScene, NO.transform.GetSiblingIndex());
         int SceneID = QuickFind.NetworkSync.CurrentScene;
-        DG_ItemObject.Environment E = IO.EnvironmentValues[0];
+        DG_BreakableObjectItem.ItemClump[] IC = BOI.RewardRolls[RewardNum].ItemGifts;
+        Vector3 SpawnPoint = NO.transform.position;
 
-        if (E.DropItemsOnBreak)
+        bool Randomize = false;
+        Vector3 Vec = Vector3.zero;
+
+        for (int i = 0; i < IC.Length; i++)
         {
-            DG_BreakableObjectItem BOI = QuickFind.BreakableObjectsCompendium.GetItemFromID(E.BreakableAtlasID);
-            DG_BreakableObjectItem.ItemClump[] IC = BOI.GetBreakReward();
-
-            for (int i = 0; i < IC.Length; i++)
+            DG_BreakableObjectItem.ItemClump IO = IC[i];
+            DG_ItemObject O = QuickFind.ItemDatabase.GetItemFromID(IO.ItemID);
+            for (int iN = 0; iN < IO.Value; iN++)
             {
-                DG_BreakableObjectItem.ItemClump Clump = IC[i];
-                for (int iN = 0; iN < Clump.Value; iN++)
-                    QuickFind.NetworkObjectManager.CreateNetSceneObject(SceneID, Clump.ItemID, Clump.ItemQuality, CO.GetSpawnPoint(), 0,true, CO.RandomVelocity());
+                Randomize = false;
+                if (O.RandomizeVelocityOnSpawn) Randomize = true;
+                if(!Randomize) Vec = Vector3.zero;
+                else
+                {
+                    Vec.x = Random.Range(-O.RandomVelocityMax, O.RandomVelocityMax);
+                    Vec.y = Random.Range(0, O.RandomVelocityMax);
+                    Vec.z = Random.Range(-O.RandomVelocityMax, O.RandomVelocityMax);
+                }
+
+                QuickFind.NetworkObjectManager.CreateNetSceneObject(SceneID, IO.ItemID, IO.ItemQuality, SpawnPoint, 0, Randomize, Vec);
             }
         }
-        else if(E.SwapItemOnBreak)
-            QuickFind.NetworkObjectManager.CreateNetSceneObject(SceneID, E.SwapID, 0, NO.transform.position, NO.transform.eulerAngles.y);
     }
 }

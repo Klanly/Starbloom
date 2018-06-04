@@ -1,4 +1,5 @@
-﻿using Sirenix.OdinInspector;
+﻿using Devdog.InventoryPro;
+using Sirenix.OdinInspector;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -10,6 +11,9 @@ public class Harvestable : SerializedMonoBehaviour
 	[Serializable]
 	public class HarvestSettings
 	{
+		[SerializeField]
+		public ItemAmountRow YieldItem = new ItemAmountRow();
+
 		[SerializeField]
 		public DG_ItemObject.ItemQualityLevels[] Rarities = new DG_ItemObject.ItemQualityLevels[1];
 
@@ -43,11 +47,13 @@ public class Harvestable : SerializedMonoBehaviour
 
 	public void Harvest(int _pid, HarvestSettings _settings )
 	{
+		QuickFind.InventoryManager.AddItemToRucksack(_pid, (int)_settings.YieldItem.item.ID, _settings.Rarities.RandomItem());
+
 
 		if (_settings.KillCrop)
 			GameObject.Destroy(mGrowable.gameObject);
 
-		//else if (_settings.ResetDay > 0)
-		//	mGrowable.SetGrowthDay(_settings.ResetDay);
+		else if (_settings.ResetDay > 0)
+			mGrowable.SetGrowthDay(_settings.ResetDay);
 	}
 }

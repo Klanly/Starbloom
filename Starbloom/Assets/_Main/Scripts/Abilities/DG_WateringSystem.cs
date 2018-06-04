@@ -22,7 +22,7 @@ public class DG_WateringSystem : MonoBehaviour {
         {
             int[] Sent = new int[2];
             Sent[0] = QuickFind.NetworkSync.CurrentScene;
-            Sent[1] = No.NetworkObjectID;
+            Sent[1] = CO.transform.parent.GetSiblingIndex();
 
             QuickFind.NetworkSync.WaterNetworkObject(Sent);
         }

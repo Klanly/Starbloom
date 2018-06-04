@@ -417,8 +417,7 @@ public class DG_NetworkSync : Photon.MonoBehaviour
         NetworkObject NO = QuickFind.NetworkObjectManager.GetItemByID(Received[0], Received[1]);
         if(NO.SurrogateObjectIndex != 0)
         { NetworkObject NO2 = QuickFind.NetworkObjectManager.GetItemByID(Received[0], NO.SurrogateObjectIndex); NO2.SurrogateObjectIndex = 0; }
-        NetworkScene NS = QuickFind.NetworkObjectManager.GetSceneByID(Received[0]);
-        NS.DeleteNetworkObject(Received[1]);
+        Destroy(NO.gameObject);
     }
 
 

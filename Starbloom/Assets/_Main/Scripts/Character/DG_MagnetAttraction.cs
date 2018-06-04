@@ -50,7 +50,7 @@ public class DG_MagnetAttraction : MonoBehaviour {
             {
                 NetworkObject NO = QuickFind.NetworkObjectManager.ScanUpTree(MT.Trans);
                 QuickFind.InventoryManager.AddItemToRucksack(QuickFind.NetworkSync.PlayerCharacterID, NO.ItemRefID, (DG_ItemObject.ItemQualityLevels)NO.ItemQualityLevel);
-                QuickFind.NetworkSync.RemoveNetworkSceneObject(NO.transform.parent.GetComponent<NetworkScene>().SceneID, NO.NetworkObjectID);
+                QuickFind.NetworkSync.RemoveNetworkSceneObject(NO.transform.parent.GetComponent<NetworkScene>().SceneID, NO.transform.GetSiblingIndex());
             }
         }
     }
@@ -87,11 +87,10 @@ public class DG_MagnetAttraction : MonoBehaviour {
 
     void RequestObject(DG_MagneticItem MI)
     {
-        NetworkObject NO = QuickFind.NetworkObjectManager.ScanUpTree(MI.transform);
         int[] Sent = new int[3];
         Sent[0] = QuickFind.NetworkSync.PlayerCharacterID;
         Sent[1] = QuickFind.NetworkSync.CurrentScene;
-        Sent[2] = NO.NetworkObjectID;
+        Sent[2] = MI.transform.parent.GetSiblingIndex();
 
         QuickFind.NetworkSync.ClaimMagneticObject(Sent);
     }

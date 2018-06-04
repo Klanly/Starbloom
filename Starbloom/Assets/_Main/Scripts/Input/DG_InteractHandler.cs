@@ -52,7 +52,7 @@ public class DG_InteractHandler : MonoBehaviour
         if (QuickFind.InventoryManager.AddItemToRucksack(QuickFind.NetworkSync.PlayerCharacterID, ItemID, (DG_ItemObject.ItemQualityLevels)ItemQuality))
             Debug.Log("Send Inventory Full Message");
         else
-            QuickFind.NetworkSync.RemoveNetworkSceneObject(Scene, NO.NetworkObjectID);
+            QuickFind.NetworkSync.RemoveNetworkSceneObject(Scene, NO.transform.GetSiblingIndex());
     }
     void HandleMoveableStorage(DG_ContextObject CO)
     {
@@ -62,26 +62,6 @@ public class DG_InteractHandler : MonoBehaviour
 
     void HandleClusterPick(DG_ContextObject CO)
     {
-        NetworkObject NO = QuickFind.NetworkObjectManager.ScanUpTree(CO.transform);
-        DG_ItemObject IO = QuickFind.ItemDatabase.GetItemFromID(NO.ItemRefID);
-        DG_ItemObject.Environment E = IO.EnvironmentValues[0];
 
-        Growable G = NO.transform.GetChild(0).GetComponent<Growable>();
-        G.Harvest();
-
-
-        if (E.DropItemsOnInteract)
-        {
-            int SceneID = QuickFind.NetworkSync.CurrentScene;
-            DG_BreakableObjectItem BOI = QuickFind.BreakableObjectsCompendium.GetItemFromID(E.InteractDropID);
-            DG_BreakableObjectItem.ItemClump[] IC = BOI.GetBreakReward();
-
-            for (int i = 0; i < IC.Length; i++)
-            {
-                DG_BreakableObjectItem.ItemClump Clump = IC[i];
-                for (int iN = 0; iN < Clump.Value; iN++)
-                    QuickFind.NetworkObjectManager.CreateNetSceneObject(SceneID, Clump.ItemID, Clump.ItemQuality, CO.GetSpawnPoint(), 0, true, CO.RandomVelocity());
-            }
-        }
     }
 }

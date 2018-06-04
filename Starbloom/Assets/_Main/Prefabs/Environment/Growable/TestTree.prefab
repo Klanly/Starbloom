@@ -75,43 +75,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 12
-      Data: 1
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: 
-      Entry: 3
-      Data: 4
-    - Name: 
-      Entry: 7
-      Data: 2|Harvestable+HarvestSettings, Assembly-CSharp
-    - Name: Rarities
-      Entry: 7
-      Data: 3|DG_ItemObject+ItemQualityLevels[], Assembly-CSharp
-    - Name: 
-      Entry: 12
-      Data: 1
-    - Name: 
-      Entry: 3
       Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: ResetDay
-      Entry: 3
-      Data: 1
-    - Name: KillCrop
-      Entry: 5
-      Data: false
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
     - Name: 
       Entry: 13
       Data: 
@@ -295,4 +259,3 @@ MonoBehaviour:
   ActiveStageDay: -1
   DayPlanted: 0
   GrowthOffset: 0
-  AfterHarvestSetToDay: 3

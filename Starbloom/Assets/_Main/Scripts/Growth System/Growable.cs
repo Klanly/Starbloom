@@ -3,6 +3,8 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
+using WorldTime;
 
 [RequireComponent(typeof(EventRecord))]
 public class Growable : SerializedMonoBehaviour
@@ -25,8 +27,6 @@ public class Growable : SerializedMonoBehaviour
 
 	[ReadOnly, Tooltip("Used by set the current growth stage")]
 	public int GrowthOffset = 0;
-
-    public int AfterHarvestSetToDay;
 
 	[DictionaryDrawerSettings(DisplayMode = DictionaryDisplayOptions.ExpandedFoldout, KeyLabel = "Day", ValueLabel = "Stage Settings")]
 	public SortedDictionary<int, GrowthStage> Stages = new SortedDictionary<int, GrowthStage>();
@@ -68,10 +68,13 @@ public class Growable : SerializedMonoBehaviour
 		RefreshStage();
 	}
 
-
-
-
-
+	public void SetGrowthDay( int _day )
+	{
+		int curDays = CurrentGrowthDay;
+		int delta = _day - curDays;
+		GrowthOffset += delta;
+		RefreshStage();
+	}
 
 	public void RefreshStage()
 	{
@@ -93,25 +96,4 @@ public class Growable : SerializedMonoBehaviour
             T.localScale = new Vector3(1, 1, 1);
 		}
 	}
-
-
-
-
-
-    public void Harvest()
-    {
-        GrowthOffset = 0;
-        DayPlanted = QuickFind.Farm.Day - AfterHarvestSetToDay;
-        RefreshStage();
-    }
-
-
-
-    //public void SetGrowthDay( int _day )
-    //{
-    //	int curDays = CurrentGrowthDay;
-    //	int delta = _day - curDays;
-    //	GrowthOffset += delta;
-    //	RefreshStage();
-    //}
 }

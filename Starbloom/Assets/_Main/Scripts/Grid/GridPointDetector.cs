@@ -5,6 +5,7 @@ using UnityEngine;
 public class GridPointDetector : MonoBehaviour
 {
 
+
     public LayerMask DetectionMask;
 
     [Header("Max Distance From Player")]
@@ -54,7 +55,7 @@ public class GridPointDetector : MonoBehaviour
             if (Physics.Raycast(ray.origin, ray.direction, out hit, 200, DetectionMask))
             {
                 DetectionPoint.position = hit.point;
-                if (!GlobalPositioning && !QuickFind.WithinDistance(DetectionPoint, PlayerPointHelper, 1f))
+                if (!GlobalPositioning)
                 {        
                     PlayerPointHelper.LookAt(DetectionPoint);
                     PlayerPointHelper.position += PlayerPointHelper.forward * MaxDistance;
