@@ -243,7 +243,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SaveFileName: Debug
-  DataChild: {fileID: 0}
 --- !u!4 &155133447
 Transform:
   m_ObjectHideFlags: 0
@@ -476,7 +475,7 @@ MonoBehaviour:
   SurrogateObjectIndex: 0
   HasBeenWatered: 0
   GrowthValue: 0
-  HasHealth: 0
+  HasHealth: 1
   HealthValue: 0
   isStorageContainer: 0
   isTreasureList: 0
@@ -534,6 +533,62 @@ MonoBehaviour:
   GrowthValue: 0
   HasHealth: 0
   HealthValue: 0
+  isStorageContainer: 0
+  isTreasureList: 0
+  StorageSlots: []
+--- !u!1 &373816327
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 373816328}
+  - component: {fileID: 373816329}
+  m_Layer: 0
+  m_Name: TestTree
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &373816328
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 373816327}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 8, y: 1.67, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2110302582}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &373816329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 373816327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NetworkObjectID: 0
+  ItemRefID: 21
+  ItemQualityLevel: 0
+  PositionX: 800
+  PositionY: 166
+  PositionZ: 100
+  YFacing: 0
+  isWaterable: 0
+  SurrogateObjectIndex: 0
+  HasBeenWatered: 0
+  GrowthValue: 0
+  HasHealth: 1
+  HealthValue: 25
   isStorageContainer: 0
   isTreasureList: 0
   StorageSlots: []
@@ -751,6 +806,62 @@ MonoBehaviour:
   isStorageContainer: 0
   isTreasureList: 0
   StorageSlots: []
+--- !u!1 &733493120
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 733493121}
+  - component: {fileID: 733493122}
+  m_Layer: 0
+  m_Name: TestTree
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &733493121
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 733493120}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 9, y: 1.67, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2110302582}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &733493122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 733493120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NetworkObjectID: 0
+  ItemRefID: 21
+  ItemQualityLevel: 0
+  PositionX: 900
+  PositionY: 166
+  PositionZ: 100
+  YFacing: 0
+  isWaterable: 0
+  SurrogateObjectIndex: 0
+  HasBeenWatered: 0
+  GrowthValue: 0
+  HasHealth: 1
+  HealthValue: 25
+  isStorageContainer: 0
+  isTreasureList: 0
+  StorageSlots: []
 --- !u!1 &797189596
 GameObject:
   m_ObjectHideFlags: 0
@@ -848,7 +959,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SceneID: 1
+  TempNetworkObjectList: []
   NetworkObjectList: []
+  JunkObject: {fileID: 0}
 --- !u!1 &1065796223
 GameObject:
   m_ObjectHideFlags: 0
@@ -1248,6 +1361,12 @@ MonoBehaviour:
         NormalValue: 0
         HighValue: 0
         MaximumValue: 0
+      - ContainedItem: 1
+        CurrentStackActive: 0
+        LowValue: 1
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
       - ContainedItem: 2
         CurrentStackActive: 0
         LowValue: 1
@@ -1260,19 +1379,13 @@ MonoBehaviour:
         NormalValue: 0
         HighValue: 0
         MaximumValue: 0
-      - ContainedItem: 3
+      - ContainedItem: 4
         CurrentStackActive: 0
         LowValue: 1
         NormalValue: 0
         HighValue: 0
         MaximumValue: 0
       - ContainedItem: 5
-        CurrentStackActive: 0
-        LowValue: 1
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 10
         CurrentStackActive: 0
         LowValue: 1
         NormalValue: 0
@@ -2830,6 +2943,8 @@ Transform:
   - {fileID: 511659770}
   - {fileID: 709497127}
   - {fileID: 214809840}
+  - {fileID: 733493121}
+  - {fileID: 373816328}
   m_Father: {fileID: 1904530056}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2845,4 +2960,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SceneID: 0
+  TempNetworkObjectList: []
   NetworkObjectList: []
+  JunkObject: {fileID: 0}

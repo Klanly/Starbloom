@@ -14,6 +14,11 @@ public class NetworkObjectManager : MonoBehaviour {
 
 
 
+
+
+
+
+
     public void GenerateObjectData()
     {
         if(PhotonNetwork.isMasterClient)
@@ -37,13 +42,11 @@ public class NetworkObjectManager : MonoBehaviour {
         for (int i = 0; i < transform.childCount; i++)
         {
             Transform Child = transform.GetChild(i);
-            Child.GetComponent<NetworkScene>().DestroyObjects();
+            Child.GetComponent<NetworkScene>().DestroyTempObjects();
             for (int iN = 0; iN < Child.childCount; iN++)
                 Destroy(Child.GetChild(iN).gameObject);
         }
     }
-
-
     public void GenerateSceneObjects(int Scene)
     {
         for (int i = 0; i < transform.childCount; i++)
@@ -57,9 +60,23 @@ public class NetworkObjectManager : MonoBehaviour {
             }
         }
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     public NetworkObject GetItemByID(int Scene, int index)
     {
-        return FindObject(Scene, index).GetComponent<NetworkObject>();
+        return GetSceneByID(Scene).GetObjectByID(index);    
     }
     public NetworkObject ScanUpTree(Transform T)
     {
@@ -68,18 +85,6 @@ public class NetworkObjectManager : MonoBehaviour {
             return ScanUpTree(T.parent);
         else
             return NO;
-    }
-
-    public GameObject FindObject(int Scene, int index)
-    {
-        for(int i = 0; i < transform.childCount; i++)
-        {
-            Transform Child = transform.GetChild(i);
-            NetworkScene NS = Child.GetComponent<NetworkScene>();
-            if (NS.SceneID == Scene)
-                return Child.GetChild(index).gameObject;
-        }
-        return null;
     }
     public NetworkScene GetSceneByID(int index)
     {
@@ -96,12 +101,23 @@ public class NetworkObjectManager : MonoBehaviour {
 
 
 
+
+
+
+
+
+
+
+
     //Outgoing
     public void CreateNetSceneObject(int SceneID, int ObjectID, int ItemLevel, Vector3 Position, float Facing, bool GenerateVelocity = false, Vector3 Velocity = new Vector3())
     {
         List<int> IntData = new List<int>();
 
         IntData.Add(SceneID);
+
+        int NewObjectID = QuickFind.NetworkObjectManager.GetSceneByID(SceneID).GetValidNextNetworkID();
+        IntData.Add(NewObjectID);
         IntData.Add(ObjectID);
         IntData.Add(ItemLevel);
 
@@ -134,8 +150,12 @@ public class NetworkObjectManager : MonoBehaviour {
         NewObject.SetParent(NS.transform);
         NetworkObject NO = NewObject.gameObject.AddComponent<NetworkObject>();
 
+        NS.NetworkObjectList.Add(NO);
+
+        NO.NetworkObjectID = IncomingData[index]; index++;
         NO.ItemRefID = IncomingData[index]; index++;
         NO.ItemQualityLevel = IncomingData[index]; index++;
+
         NO.PositionX = IncomingData[index]; index++;
         NO.PositionY = IncomingData[index]; index++;
         NO.PositionZ = IncomingData[index]; index++;
@@ -173,10 +193,6 @@ public class NetworkObjectManager : MonoBehaviour {
 
         QuickFind.ObjectPlacementManager.AwaitingNetResponse = false;
     }
-
-
-
-
 
 
 

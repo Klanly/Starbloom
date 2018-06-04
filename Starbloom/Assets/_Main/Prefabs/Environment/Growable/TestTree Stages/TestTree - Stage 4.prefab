@@ -305,7 +305,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 733866c8ad09b4a068b6e7e5c332e9ec, type: 2}
+  - {fileID: 2100000, guid: 9bc8a926d06437e4cbb1f79d2082aa3e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -651,7 +651,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isWobble: 1
   WobbleTime: 0.5
-  WobbleMaxScale: 1.1
+  WobbleMaxScale: 1.02
   WobbleCount: 18
   isShrink: 0
   ShrinkTime: 0
@@ -669,3 +669,16 @@ MonoBehaviour:
   ThisIsGrowthItem: 1
   ContextID: 0
   Type: 8
+  BreakValues:
+  - SpawnPoints:
+    - {fileID: 4046471182870222}
+    - {fileID: 4574367939897950}
+    - {fileID: 4066882307193714}
+    - {fileID: 4085728502318402}
+    RandomizeVelocity: 1
+    XMin: 1
+    XMax: 1
+    YMin: 0
+    YMax: 1
+    ZMin: 1
+    ZMax: 1

@@ -18,24 +18,38 @@ public class DG_NetworkGrowthHandler : MonoBehaviour
 
         for (int i = 0; i < QuickFind.NetworkObjectManager.transform.childCount; i++)
         {
-            Transform Scene = QuickFind.NetworkObjectManager.transform.GetChild(i);
-            for (int iN = 0; iN < Scene.childCount; iN++)
+            NetworkScene Scene = QuickFind.NetworkObjectManager.transform.GetChild(i).GetComponent<NetworkScene>();
+            for (int iN = 0; iN < Scene.NetworkObjectList.Count; iN++)
             {
-                NetworkObject NO = Scene.GetChild(iN).GetComponent<NetworkObject>();
-                if (!NO.isWaterable) continue;
-
+                NetworkObject NO = Scene.NetworkObjectList[iN];
                 DG_ItemObject IO = QuickFind.ItemDatabase.GetItemFromID(NO.ItemRefID);
-                if (IO.isItem)
+
+                if (IO.isGrowableItem || IO.isEnvironment)
                 {
-                    if (!NO.HasBeenWatered) NO.transform.GetChild(0).GetComponent<Growable>().GrowthOffset--; ;
+                    if (IO.isGrowableItem)
+                        NO.GrowthValue++;
+
+                    //Trees, and Rocks, and anything that doesn't require Watering.
+                    if (IO.EnvironmentValues[0] == null) continue;
+                    if (!IO.EnvironmentValues[0].IsWaterable) continue;
+
+
+                    if (IO.isGrowableItem && !NO.HasBeenWatered)
+                    {
+                        NO.GrowthValue--;
+                        Growable Grow = NO.transform.GetChild(0).GetComponent<Growable>();
+                        if (Grow != null) Grow.GrowthOffset--;
+                        else
+                            Debug.Log("FuckedUpshit");
+                    }
+
+                    if (CurrentWeather == WeatherHandler.WeatherTyps.Raining || CurrentWeather == WeatherHandler.WeatherTyps.Thunderstorm)
+                        NO.HasBeenWatered = true;
+                    else
+                        NO.HasBeenWatered = false;
+
+                    QuickFind.WateringSystem.AdjustWateredObjectVisual(NO, NO.HasBeenWatered);
                 }
-
-                if (CurrentWeather == WeatherHandler.WeatherTyps.Raining || CurrentWeather == WeatherHandler.WeatherTyps.Thunderstorm)
-                    NO.HasBeenWatered = true;
-                else
-                    NO.HasBeenWatered = false;
-
-                QuickFind.WateringSystem.AdjustWateredObjectVisual(NO, NO.HasBeenWatered);
             }
         }
     }
