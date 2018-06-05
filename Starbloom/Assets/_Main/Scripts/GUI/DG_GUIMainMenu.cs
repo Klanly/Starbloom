@@ -143,6 +143,7 @@ public class DG_GUIMainMenu : Photon.MonoBehaviour
         QuickFind.GUI_Inventory.SetHotbarSlot(QuickFind.GUI_Inventory.HotbarSlots[0]);
 
 
+
         QuickFind.NetworkObjectManager.GenerateObjectData();
 
         QuickFind.FadeScreen.FadeIn(DG_GUI_FadeScreen.FadeInSpeeds.NormalFade);

@@ -14,7 +14,7 @@ public class Growable : SerializedMonoBehaviour
 		public GameObject Prefab;
 	}
 
-	public int DaysGrown { get { return QuickFind.Farm.Day - DayPlanted; } }
+	public int DaysGrown { get { if (QuickFind.Farm == null) return 0; else return QuickFind.Farm.Day - DayPlanted; } }
 	public int CurrentGrowthDay { get { return DaysGrown + GrowthOffset; } }
 	public int CurrentStageDay { get { return Stages.Lower_Bound(DaysGrown).Key; } }
 	public GrowthStage CurrentStage { get { return Stages.Lower_Bound(DaysGrown).Value; } }
@@ -49,7 +49,8 @@ public class Growable : SerializedMonoBehaviour
 
 	private void OnEnable()
 	{
-		DayPlanted = QuickFind.Farm.Day;
+        if(QuickFind.Farm != null)
+		    DayPlanted = QuickFind.Farm.Day;
 		RefreshStage();
 	}
 

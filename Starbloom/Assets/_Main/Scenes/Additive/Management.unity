@@ -989,6 +989,7 @@ GameObject:
   - component: {fileID: 1620623744}
   - component: {fileID: 1620623745}
   - component: {fileID: 1620623746}
+  - component: {fileID: 1620623748}
   - component: {fileID: 1620623747}
   m_Layer: 0
   m_Name: DEBUG
@@ -1054,6 +1055,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TestSpeed: 0
+--- !u!114 &1620623748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1620623743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d331097e3e3651d4381c98e52e75b83e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Value: 50
 --- !u!1 &1730668924
 GameObject:
   m_ObjectHideFlags: 0

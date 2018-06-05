@@ -29,6 +29,10 @@ public class NetworkObjectManager : MonoBehaviour {
 
             for (int i = 0; i < transform.childCount; i++)
                 transform.GetChild(i).GetComponent<NetworkScene>().AddInitialPlacedObjectsIntoList();
+
+            string Scene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+            QuickFind.NetworkSync.CurrentScene = QuickFind.SceneList.GetSceneIDByString(Scene);
+
             GenerateSceneObjects(QuickFind.NetworkSync.CurrentScene);
         }
         else
@@ -213,7 +217,7 @@ public class NetworkObjectManager : MonoBehaviour {
         else
         {
             for (int i = 0; i < transform.childCount; i++)
-                transform.GetChild(0).GetComponent<NetworkScene>().InternalGizmos();
+                transform.GetChild(i).GetComponent<NetworkScene>().InternalGizmos();
         }
     }
 #endif

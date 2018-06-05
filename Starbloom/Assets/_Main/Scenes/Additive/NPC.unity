@@ -170,7 +170,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 1
+<<<<<<< HEAD
+  instanceID: 151638
+=======
   instanceID: 75688
+>>>>>>> 7b1392952cbb4696cd3b2577f7c2e1c10f804b5f
 --- !u!1 &1524751960
 GameObject:
   m_ObjectHideFlags: 0
@@ -271,7 +275,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 1
+<<<<<<< HEAD
+  instanceID: 151652
+=======
   instanceID: 75702
+>>>>>>> 7b1392952cbb4696cd3b2577f7c2e1c10f804b5f
 --- !u!1 &1939056529
 GameObject:
   m_ObjectHideFlags: 0
