@@ -161,9 +161,6 @@ MonoBehaviour:
     SceneName: Database_Items
     EditorSceneFolderPath: Assets/_Main/Scenes/Additive/
   - DebugDoNotLoad: 0
-    SceneName: NPC
-    EditorSceneFolderPath: Assets/_Main/Scenes/Additive/
-  - DebugDoNotLoad: 0
     SceneName: Networking
     EditorSceneFolderPath: Assets/_Main/Scenes/Additive/
   - DebugDoNotLoad: 0

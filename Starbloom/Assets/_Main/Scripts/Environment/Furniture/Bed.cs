@@ -23,6 +23,13 @@ public class Bed : MonoBehaviour
     }
 	
 
+    //Incoming Message from Interaction Handler
+    public void Interact()
+    {
+        SetNetworkPlayerInBed();
+    }
+
+
 
 
     //Network Send

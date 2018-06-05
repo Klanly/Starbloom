@@ -33,6 +33,7 @@ public class DG_InteractHandler : MonoBehaviour
                     case DG_ContextObject.ContextTypes.MoveableStorage: HandleMoveableStorage(CO); break;
                     case DG_ContextObject.ContextTypes.Pick_And_Break: HandleClusterPick(CO, DG_ContextObject.ContextTypes.Pick_And_Break); break;
                     case DG_ContextObject.ContextTypes.PickOnly: HandleClusterPick(CO, DG_ContextObject.ContextTypes.PickOnly); break;
+                    case DG_ContextObject.ContextTypes.GenericSendMessage: CO.SendMessage("Interact"); break;
                 }
             }
         }

@@ -18,7 +18,8 @@ public class DG_ContextObject : MonoBehaviour
         MoveableStorage,
         Soil,
         Pick_And_Break,
-        PickOnly
+        PickOnly,
+        GenericSendMessage
     }
 
     [System.Serializable]
