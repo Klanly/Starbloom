@@ -19,7 +19,6 @@ public class DG_ContextObject : MonoBehaviour
         Soil,
         Pick_And_Break,
         PickOnly,
-        GenericSendMessage
     }
 
     [System.Serializable]

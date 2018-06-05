@@ -31,6 +31,7 @@ public static class QuickFindInEditor
     public static SceneIDList GetEditorSceneList() { return GameObject.Find("Scene ID List").GetComponent<SceneIDList>(); }
     public static DG_FishingCompendium GetEditorFishingCompendium() { return GameObject.Find("Fish Atlas").GetComponent<DG_FishingCompendium>(); }
     public static DG_BreakableObjectsAtlas GetBreakableObjectsCompendium() { return GameObject.Find("Cluster Rewards Atlas").GetComponent<DG_BreakableObjectsAtlas>(); }
+    public static DG_ShopAtlas GetShopCompendium() { return GameObject.Find("Shop Type Atlas").GetComponent<DG_ShopAtlas>(); }
     //Save Data
     public static UserSettings GetEditorUserSettings() { return GameObject.Find("Player Settings").GetComponent<UserSettings>(); }
 
@@ -74,6 +75,7 @@ public static class QuickFind
     public static DG_StorageGUI StorageUI = null;
     public static DG_FishingGUI FishingGUI = null;
     public static DG_SystemMessageGUI SystemMessageGUI = null;
+    public static DG_ShopGUI ShopGUI = null;
 
 
     //GUI - Main Overview
@@ -87,6 +89,7 @@ public static class QuickFind
     public static DG_FishingLevelStats FishingStatsHandler = null;
     public static DG_FishingCompendium FishingCompendium = null;
     public static DG_BreakableObjectsAtlas BreakableObjectsCompendium = null;
+    public static DG_ShopAtlas ShopAtlas;
 
 
     //Managers
@@ -97,6 +100,7 @@ public static class QuickFind
     public static DG_ObjectPlacement ObjectPlacementManager = null;
     public static DG_NetworkGrowthHandler NetworkGrowthHandler = null;
     public static DG_MoneyHandler MoneyHandler = null;
+    public static DG_ShopHandler ShopHandler = null;
 
 
 

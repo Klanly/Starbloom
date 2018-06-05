@@ -172,5 +172,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ThisIsGrowthItem: 1
   ContextID: 34
-  Type: 9
+  Type: 8
   BreakValues: []

@@ -79,7 +79,6 @@ GameObject:
   - component: {fileID: 54556378154472070}
   - component: {fileID: 65686683264721096}
   - component: {fileID: 114902506289028066}
-  - component: {fileID: 114456126615671416}
   m_Layer: 13
   m_Name: Single_Bed_1
   m_TagString: Untagged
@@ -362,21 +361,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.02, y: 2, z: 4.15}
   m_Center: {x: 0, y: 1, z: 0}
---- !u!114 &114456126615671416
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 183180}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 538995c128d53fe48a7051ffbb220cf9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ThisIsGrowthItem: 0
-  ContextID: 0
-  Type: 10
-  BreakValues: []
 --- !u!114 &114902506289028066
 MonoBehaviour:
   m_ObjectHideFlags: 1

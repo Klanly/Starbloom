@@ -20,7 +20,8 @@ public class DuplicateCatcher : MonoBehaviour
         Word,
         Quest,
         FishingCompendium,
-        ObjectCompendium
+        ObjectCompendium,
+        ShopsCompendium
     }
 
 
@@ -53,6 +54,7 @@ public class DuplicateCatcher : MonoBehaviour
                         case DatabaseType.Quest: AssignNewDatabaseQuestID(); break;
                         case DatabaseType.FishingCompendium: AssignNewFishingID(); break;
                         case DatabaseType.ObjectCompendium: AssignNewObjectCompendiumID(); break;
+                        case DatabaseType.ShopsCompendium: AssignNewShopCompendiumID(); break;
                     }
                 }
             }
@@ -75,6 +77,7 @@ public class DuplicateCatcher : MonoBehaviour
             case DatabaseType.Quest: GiveAllQuestDatabaseID(); break;
             case DatabaseType.FishingCompendium: GiveAllFishingID(); break;
             case DatabaseType.ObjectCompendium: GiveAllObjectCompendiumID(); break;
+            case DatabaseType.ShopsCompendium: GiveAllShopCompendiumID(); break;
         }
     }
 
@@ -434,6 +437,55 @@ public class DuplicateCatcher : MonoBehaviour
     }
     #endregion
 
+    #region Shops Compendium
+    void AssignNewShopCompendiumID()
+    {
+        transform.GetComponent<DG_ShopAtlasObject>().LockItem = false;
+        GiveAllShopCompendiumID();
+    }
+    public void GiveAllShopCompendiumID()
+    {
+        DG_ShopAtlas ItemDB = QuickFindInEditor.GetShopCompendium();
+        Transform ItemDatabaseRoot = ItemDB.transform;
+
+        List<DG_ShopAtlasObject> AddObjects = new List<DG_ShopAtlasObject>();
+
+        for (int iN = 0; iN < ItemDatabaseRoot.childCount; iN++)
+        {
+            Transform Child = ItemDatabaseRoot.GetChild(iN);
+            for (int i = 0; i < Child.childCount; i++)
+            {
+                DG_ShopAtlasObject IO = Child.GetChild(i).GetComponent<DG_ShopAtlasObject>();
+                if (!IO.LockItem)
+                {
+                    IO.DatabaseID = ItemDB.ListCount;
+                    ItemDB.ListCount++;
+                    IO.LockItem = true;
+                    AddObjects.Add(IO);
+                }
+
+                IO.gameObject.name = IO.DatabaseID.ToString() + " - " + IO.Name;
+            }
+        }
+
+        if (AddObjects.Count == 0) { Debug.Log("All Items Accounted For. :)"); return; }
+
+        int Index = 0;
+        DG_ShopAtlasObject[] NewArray = new DG_ShopAtlasObject[ItemDB.ListCount];
+        for (int i = 0; i < ItemDB.ItemCatagoryList.Length; i++)
+        {
+            DG_ShopAtlasObject IO = ItemDB.ItemCatagoryList[i];
+            if (IO == null) continue;
+            NewArray[Index] = IO; Index++;
+        }
+        for (int i = 0; i < AddObjects.Count; i++)
+        { NewArray[Index] = AddObjects[i]; Index++; }
+
+        ItemDB.ItemCatagoryList = NewArray;
+        Debug.Log("Safely Added New Item to Database.");
+    }
+    #endregion
+
 
 
 
@@ -527,6 +579,18 @@ public class DuplicateCatcher : MonoBehaviour
                             ItemDB.transform.GetChild(i).GetChild(iN).GetComponent<DG_BreakableObjectItem>().LockItem = false;
                     }
                     GiveAllObjectCompendiumID(); break;
+                }
+            case DatabaseType.ShopsCompendium:
+                {
+                    DG_ShopAtlas ItemDB = QuickFindInEditor.GetShopCompendium();
+                    ItemDB.ListCount = 0;
+                    ItemDB.ItemCatagoryList = new DG_ShopAtlasObject[0];
+                    for (int i = 0; i < ItemDB.transform.childCount; i++)
+                    {
+                        for (int iN = 0; iN < ItemDB.transform.GetChild(i).childCount; iN++)
+                            ItemDB.transform.GetChild(i).GetChild(iN).GetComponent<DG_ShopAtlasObject>().LockItem = false;
+                    }
+                    GiveAllShopCompendiumID(); break;
                 }
         }
     }

@@ -23,7 +23,11 @@ public class DG_InteractHandler : MonoBehaviour
             if (QuickFind.ContextDetectionHandler.ContextHit)
             {
                 DG_ContextObject CO = QuickFind.ContextDetectionHandler.COEncountered;
-                if (CO == null) return;
+                if (CO == null)
+                {
+                    if (QuickFind.ContextDetectionHandler.LastEncounteredContext != null)
+                        QuickFind.ContextDetectionHandler.LastEncounteredContext.SendMessage("OnInteract"); return;
+                }
 
                 switch(CO.Type)
                 {
@@ -33,7 +37,6 @@ public class DG_InteractHandler : MonoBehaviour
                     case DG_ContextObject.ContextTypes.MoveableStorage: HandleMoveableStorage(CO); break;
                     case DG_ContextObject.ContextTypes.Pick_And_Break: HandleClusterPick(CO, DG_ContextObject.ContextTypes.Pick_And_Break); break;
                     case DG_ContextObject.ContextTypes.PickOnly: HandleClusterPick(CO, DG_ContextObject.ContextTypes.PickOnly); break;
-                    case DG_ContextObject.ContextTypes.GenericSendMessage: CO.SendMessage("Interact"); break;
                 }
             }
         }

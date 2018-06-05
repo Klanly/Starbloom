@@ -2,12 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DG_BreakableObjectsAtlas : MonoBehaviour {
-
-
+public class DG_ShopAtlas : MonoBehaviour {
 
     [HideInInspector]
-    public DG_BreakableObjectItem[] ItemCatagoryList;
+    public DG_ShopAtlasObject[] ItemCatagoryList;
     [HideInInspector]
     public int ListCount;
 
@@ -15,11 +13,11 @@ public class DG_BreakableObjectsAtlas : MonoBehaviour {
 
     private void Awake()
     {
-        QuickFind.BreakableObjectsCompendium = this;
+        QuickFind.ShopAtlas = this;
     }
 
 
-    public DG_BreakableObjectItem GetItemFromID(int ID)
+    public DG_ShopAtlasObject GetItemFromID(int ID)
     {
         if (ID < 0) { Debug.Log("Get By ID Failed"); return null; }
         if (ID >= ItemCatagoryList.Length) { Debug.Log("Get By ID Failed"); return null; }

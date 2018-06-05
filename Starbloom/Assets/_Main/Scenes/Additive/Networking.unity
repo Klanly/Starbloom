@@ -816,7 +816,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NetworkObjectID: 19
   ItemRefID: 17
-  ItemQualityLevel: -1
+  ItemQualityLevel: 0
   PositionX: 500
   PositionY: 164
   PositionZ: -600
@@ -984,7 +984,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NetworkObjectID: 20
   ItemRefID: 17
-  ItemQualityLevel: -1
+  ItemQualityLevel: 0
   PositionX: 600
   PositionY: 164
   PositionZ: -600
@@ -1152,7 +1152,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NetworkObjectID: 0
   ItemRefID: 19
-  ItemQualityLevel: -1
+  ItemQualityLevel: 0
   PositionX: 900
   PositionY: 173
   PositionZ: -1200
@@ -1588,7 +1588,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NetworkObjectID: 0
   ItemRefID: 10
-  ItemQualityLevel: -1
+  ItemQualityLevel: 0
   PositionX: 100
   PositionY: 165
   PositionZ: 0
@@ -2937,7 +2937,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NetworkObjectID: 24
   ItemRefID: 17
-  ItemQualityLevel: -1
+  ItemQualityLevel: 0
   PositionX: 1000
   PositionY: 164
   PositionZ: -600
@@ -2993,7 +2993,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NetworkObjectID: 18
   ItemRefID: 17
-  ItemQualityLevel: -1
+  ItemQualityLevel: 0
   PositionX: 400
   PositionY: 164
   PositionZ: -600
@@ -3390,7 +3390,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NetworkObjectID: 23
   ItemRefID: 17
-  ItemQualityLevel: -1
+  ItemQualityLevel: 0
   PositionX: 900
   PositionY: 164
   PositionZ: -600
@@ -4311,7 +4311,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NetworkObjectID: 22
   ItemRefID: 17
-  ItemQualityLevel: -1
+  ItemQualityLevel: 0
   PositionX: 800
   PositionY: 164
   PositionZ: -600
@@ -4434,7 +4434,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NetworkObjectID: 21
   ItemRefID: 17
-  ItemQualityLevel: -1
+  ItemQualityLevel: 0
   PositionX: 700
   PositionY: 164
   PositionZ: -600

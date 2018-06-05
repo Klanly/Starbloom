@@ -23,8 +23,9 @@ public class Bed : MonoBehaviour
     }
 	
 
+    //////////////////////////////////////////////////
     //Incoming Message from Interaction Handler
-    public void Interact()
+    public void OnInteract()
     {
         SetNetworkPlayerInBed();
     }
