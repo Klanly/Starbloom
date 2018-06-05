@@ -1087,7 +1087,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e612e6e90adbb5a40b86b9ab7b2315c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UICanvas: {fileID: 0}
+  UICanvas: {fileID: 38887671}
 --- !u!224 &42601819 stripped
 RectTransform:
   m_PrefabParentObject: {fileID: 224920724801908484, guid: 10ebb72ecad01f440a78b3b892eb59d9,
@@ -1605,7 +1605,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 150, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 300, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &99459263

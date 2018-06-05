@@ -29,6 +29,7 @@ public class DG_InventoryGUI : MonoBehaviour
     [Header("Shifing UI Position")]
     public RectTransform InventoryFrame;
     public Vector3 StoragePosition;
+    public Vector3 ShopPosition;
     Vector3 StartingPosition;
 
 
@@ -139,6 +140,20 @@ public class DG_InventoryGUI : MonoBehaviour
         InventoryIsOpen = true;
     }
     public void CloseStorageUI()
+    {
+        InventoryFrame.localPosition = StartingPosition;
+        InventoryIsOpen = false;
+        QuickFind.EnableCanvas(UICanvas, false);
+    }
+
+    public void OpenShopUI()
+    {
+        InventoryFrame.localPosition = StoragePosition;
+        QuickFind.EnableCanvas(UICanvas, true);
+        UpdateInventoryVisuals();
+        InventoryIsOpen = true;
+    }
+    public void CloseShopUI()
     {
         InventoryFrame.localPosition = StartingPosition;
         InventoryIsOpen = false;
