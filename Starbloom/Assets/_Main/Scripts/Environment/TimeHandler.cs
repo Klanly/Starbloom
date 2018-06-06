@@ -106,7 +106,56 @@ public class TimeHandler : MonoBehaviour
 		TimeModule.timeCompression = Times[8];
 	}
 
+    public void AdjustTimeByValues(int Year, int Month, int Day, int Hour, int Minute)
+    {
+        QuickFind.Farm.Year = Year;
+        QuickFind.Farm.Month = Month;
+        QuickFind.Farm.Day = Day;
 
+        Tenkoku.Core.TenkokuModule TimeModule = QuickFind.WeatherModule;
+
+        TimeModule.currentHour = Hour;
+        TimeModule.currentMinute = Minute;
+        TimeModule.currentSecond = 0;
+    }
+
+    public void AdjustTimeByPreset(int TimePreset)
+    {
+        TimePresetEnums Preset = (TimePresetEnums)TimePreset;
+        TimePreset TP = null;
+        for (int i = 0; i < TimePresets.Length; i++)
+        {
+            if (TimePresets[i].PresetTime == Preset)
+                TP = TimePresets[i];
+        }
+
+        SetTime(TP);
+    }
+    void SetTime(TimePreset TP)
+    {
+        Tenkoku.Core.TenkokuModule TimeModule = QuickFind.WeatherModule;
+
+        TimeModule.currentSecond = TP.currentSecond;
+        TimeModule.currentMinute = TP.currentMinute;
+        TimeModule.currentHour = TP.currentHour;
+    }
+
+
+
+
+
+
+
+
+
+
+
+    public void SetDayEnd()
+    {
+        QuickFind.ShippingBin.DayEndTallyMoney();
+        Debug.Log("Todo. Make Money Tally by Catagory GUI");
+        SetNewDay(false);
+    }
 
 
 	public void SetNewDay(bool ForceRain)
@@ -132,10 +181,6 @@ public class TimeHandler : MonoBehaviour
 		QuickFind.WeatherHandler.SetNewDayWeather(ForceRain);
 	}
 
-
-
-
-
 	public void NewDayCalculationsComplete()
 	{
         QuickFind.NetworkGrowthHandler.CheckDayChangedHasBeenWatered();
@@ -147,41 +192,4 @@ public class TimeHandler : MonoBehaviour
 
 
 
-
-
-
-
-	public void AdjustTimeByValues(int Year, int Month, int Day, int Hour, int Minute)
-	{
-		QuickFind.Farm.Year = Year;
-		QuickFind.Farm.Month = Month;
-		QuickFind.Farm.Day = Day;
-
-		Tenkoku.Core.TenkokuModule TimeModule = QuickFind.WeatherModule;
-
-		TimeModule.currentHour = Hour;
-		TimeModule.currentMinute = Minute;
-		TimeModule.currentSecond = 0;
-	}
-
-	public void AdjustTimeByPreset(int TimePreset)
-	{
-		TimePresetEnums Preset = (TimePresetEnums)TimePreset;
-		TimePreset TP = null;
-		for (int i = 0; i < TimePresets.Length; i++)
-		{
-			if (TimePresets[i].PresetTime == Preset)
-				TP = TimePresets[i];
-		}
-
-		SetTime(TP);
-	}
-	void SetTime(TimePreset TP)
-	{
-		Tenkoku.Core.TenkokuModule TimeModule = QuickFind.WeatherModule;
-
-		TimeModule.currentSecond = TP.currentSecond;
-		TimeModule.currentMinute = TP.currentMinute;
-		TimeModule.currentHour = TP.currentHour;
-	}
 }

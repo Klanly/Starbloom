@@ -33,7 +33,7 @@ public class DG_InventoryGUI : MonoBehaviour
     Vector3 StartingPosition;
 
 
-    bool InventoryIsOpen;
+    [HideInInspector] public bool InventoryIsOpen;
 
 
     [HideInInspector] public DG_InventoryItem[] GuiItemSlots;
@@ -134,6 +134,9 @@ public class DG_InventoryGUI : MonoBehaviour
 
     public void OpenStorageUI()
     {
+        QuickFind.ContextDetectionHandler.COEncountered = null;
+        QuickFind.ContextDetectionHandler.LastEncounteredContext = null;
+
         InventoryFrame.localPosition = StoragePosition;
         QuickFind.EnableCanvas(UICanvas, true);
         UpdateInventoryVisuals();
@@ -148,14 +151,17 @@ public class DG_InventoryGUI : MonoBehaviour
 
     public void OpenShopUI()
     {
-        InventoryFrame.localPosition = StoragePosition;
+        QuickFind.ContextDetectionHandler.COEncountered = null;
+        QuickFind.ContextDetectionHandler.LastEncounteredContext = null;
+
+        InventoryFrame.localPosition = ShopPosition;
         QuickFind.EnableCanvas(UICanvas, true);
         UpdateInventoryVisuals();
         InventoryIsOpen = true;
     }
     public void CloseShopUI()
     {
-        InventoryFrame.localPosition = StartingPosition;
+        InventoryFrame.localPosition = ShopPosition;
         InventoryIsOpen = false;
         QuickFind.EnableCanvas(UICanvas, false);
     }
@@ -196,7 +202,7 @@ public class DG_InventoryGUI : MonoBehaviour
         {
             DG_ItemObject Object = QuickFind.ItemDatabase.GetItemFromID(RucksackSlot.ContainedItem);
             GuiSlot.ContainsItem = true;
-            GuiSlot.Icon.sprite = Object.Icon;
+            GuiSlot.Icon.sprite = Object.GetItemSpriteByQuality(RucksackSlot.CurrentStackActive);
             if (RucksackSlot.GetStackValue() > 1)
             {
                 GuiSlot.AmountText.text = RucksackSlot.GetStackValue().ToString();
@@ -218,6 +224,7 @@ public class DG_InventoryGUI : MonoBehaviour
                 GuiSlot.QualityLevelOverlay.enabled = false;
         }
     }
+
 
     public void UpdateMirrorGrid()
     {
@@ -247,8 +254,7 @@ public class DG_InventoryGUI : MonoBehaviour
     public void InventoryItemPressed(DG_InventoryItem PressedItem)
     {
         //This is a mirror Item, and This is for Setting Current Equipped Item
-        if (PressedItem.isMirror)
-            SetHotbarSlot(PressedItem);
+        if (PressedItem.isMirror) SetHotbarSlot(PressedItem);
 
         //This is an Inventory Item, and we want to handle user moving item somewhere.
         else
@@ -272,7 +278,12 @@ public class DG_InventoryGUI : MonoBehaviour
 
                 PressedItem.ItemHoverIn();
             }
-            else { AdjustFloatingInventoryUI(true); PickupItem(PressedItem); }
+            else
+            {
+                DG_PlayerCharacters.RucksackSlot RucksackSlotA = QuickFind.InventoryManager.GetRuckSackSlotInventoryItem(PressedItem);
+                if (RucksackSlotA.GetStackValue() != 0)
+                { AdjustFloatingInventoryUI(true); PickupItem(PressedItem); }
+            }
         }
     }
 
@@ -293,7 +304,7 @@ public class DG_InventoryGUI : MonoBehaviour
         DG_PlayerCharacters.RucksackSlot RucksackSlot = QuickFind.InventoryManager.GetRuckSackSlotInventoryItem(PickedUpItemSlot);
         DG_ItemObject Object = QuickFind.ItemDatabase.GetItemFromID(RucksackSlot.ContainedItem);
         FloatingItem.AmountText.text = RucksackSlot.GetStackValue().ToString();
-        FloatingItem.Icon.sprite = Object.Icon;
+        FloatingItem.Icon.sprite = Object.GetItemSpriteByQuality(RucksackSlot.CurrentStackActive);
     }
 
 

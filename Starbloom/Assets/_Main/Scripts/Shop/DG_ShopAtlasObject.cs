@@ -31,6 +31,7 @@ public class DG_ShopAtlasObject : MonoBehaviour {
         [Header("---------------------------------------------------")]
         public string Name;
         public int ItemDatabaseRef;
+        public int QualityLevel;
 
         [Header("Situational")]
         public bool FiniteStock;

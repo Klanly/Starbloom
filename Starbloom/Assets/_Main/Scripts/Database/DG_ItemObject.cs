@@ -186,6 +186,8 @@ public class DG_ItemObject : MonoBehaviour
 
 
 
+    #region Get Helpers
+
     public int GetMax()
     {
         if (isTool)
@@ -226,4 +228,36 @@ public class DG_ItemObject : MonoBehaviour
         }
         return null;
     }
+    public Sprite GetItemSpriteByQuality(int IQL)
+    {
+        if (isTool)
+        {
+            Tool T = GetToolByQuality(IQL);
+            if (T.HasCustomSprite) return T.Icon;
+        }
+
+        return Icon;
+    }
+
+    public int GetBuyPriceByQuality(int IQL)
+    {
+        if (isTool) return GetToolByQuality(IQL).BuyPrice;
+        if(isItem) return GetItemByQuality(IQL).BuyPrice;
+
+        Debug.Log("This Item is not listed as an item or tool.");
+        return 0;
+    }
+
+    public int GetSellPriceByQuality(int IQL)
+    {
+        if (isTool) return GetToolByQuality(IQL).SellPrice;
+        if (isItem) return GetItemByQuality(IQL).SellPrice;
+
+        Debug.Log("This Item is not listed as an item or tool.");
+        return 0;
+    }
+
+
+    #endregion
+
 }

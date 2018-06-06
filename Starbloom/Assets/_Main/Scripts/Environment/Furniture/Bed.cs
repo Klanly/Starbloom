@@ -53,7 +53,7 @@ public class Bed : MonoBehaviour
     {
         List<DG_NetworkSync.Users> users = QuickFind.NetworkSync.UserList;
         if (users.TrueForAll(x => mSleepingPlayers.Contains(x.PlayerCharacterID)))
-            QuickFind.TimeHandler.SetNewDay(false);
+            QuickFind.TimeHandler.SetDayEnd();
     }
 
 }

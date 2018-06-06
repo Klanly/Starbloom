@@ -99,6 +99,10 @@ public class DG_PlayerCharacters : MonoBehaviour {
             if (QualityLevel == DG_ItemObject.ItemQualityLevels.Max) return MaximumValue;
             return 0;
         }
+        public void ClearRucksack()
+        {
+            LowValue = 0; NormalValue = 0; HighValue = 0; MaximumValue = 0;
+        }
     }
 
     [System.Serializable]

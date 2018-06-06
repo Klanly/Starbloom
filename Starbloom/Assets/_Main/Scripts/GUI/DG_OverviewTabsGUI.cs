@@ -40,6 +40,9 @@ public class DG_OverviewTabsGUI : MonoBehaviour {
 
     public void OpenUI()
     {
+        QuickFind.ContextDetectionHandler.COEncountered = null;
+        QuickFind.ContextDetectionHandler.LastEncounteredContext = null;
+
         UIisOpen = !UIisOpen;
         QuickFind.EnableCanvas(UICanvas, UIisOpen);
         if (UIisOpen)

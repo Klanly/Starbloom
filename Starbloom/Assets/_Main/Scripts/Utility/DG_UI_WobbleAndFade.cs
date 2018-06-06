@@ -24,7 +24,7 @@ public class DG_UI_WobbleAndFade : MonoBehaviour {
     public float ShrinkTime;
 
     [Header("ScaleAtAwake")]
-    bool ScaleAtAwake = true;
+    public bool ScaleAtAwake = true;
 
     Transform _T;
     Vector3 KnownScale;

@@ -43,8 +43,12 @@ public class GridPointDetector : MonoBehaviour
     }
     void GetDetectionPoint()
     {
-        if(QuickFind.PlayerTrans != null)
+        if (QuickFind.GUI_OverviewTabs.UIisOpen) return;
+        if (QuickFind.GUI_Inventory.InventoryIsOpen) return;
+
+        if (QuickFind.PlayerTrans != null)
             PlayerPointHelper.position = QuickFind.PlayerTrans.position;
+
         AlignTransToClosestGridPoint(PlayerPointHelper);
 
         if (QuickFind.InputController.MainPlayer.Context == DG_PlayerInput.ContextDetection.MousePosition)

@@ -16,6 +16,15 @@ public class DG_MoneyHandler : MonoBehaviour {
 
 
 
+
+
+    //Check
+    public bool CheckIfSubtractMoney(int AmountRequired)
+    {
+        int CurrentMoney = QuickFind.Farm.SharedMoney;
+        if (AmountRequired < CurrentMoney) return true;
+        else return false;
+    }
     //Add
     public void AddMoney(int AdjustAmount)
     {

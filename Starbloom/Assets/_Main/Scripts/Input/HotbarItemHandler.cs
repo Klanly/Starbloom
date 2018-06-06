@@ -44,13 +44,12 @@ public class HotbarItemHandler : MonoBehaviour {
         {
             switch(CurrentItemDatabaseReference.ActivateableType)
             {
+                case ActivateableTypes.PlaceableItem: QuickFind.ObjectPlacementManager.InputDetected(UpEvent); break;
 
                 case ActivateableTypes.Axe: QuickFind.PickaxeHandler.InputDetected(UpEvent); break;
                 case ActivateableTypes.FishingPole: QuickFind.FishingHandler.ExternalUpdate(UpEvent); break;
                 case ActivateableTypes.Hoe: QuickFind.HoeHandler.InputDetected(UpEvent); break;
                 case ActivateableTypes.Pickaxe: QuickFind.PickaxeHandler.InputDetected(UpEvent); break;
-                case ActivateableTypes.RegularItem: Debug.Log("RegularItem " + UpEvent.ToString()); break;
-                case ActivateableTypes.PlaceableItem: QuickFind.ObjectPlacementManager.InputDetected(UpEvent); break;
                 case ActivateableTypes.WateringCan: QuickFind.WateringCanHandler.InputDetected(UpEvent); break;
             }
         }
@@ -88,4 +87,5 @@ public class HotbarItemHandler : MonoBehaviour {
     {
         AwaitingActivateable = false;
     }
+
 }

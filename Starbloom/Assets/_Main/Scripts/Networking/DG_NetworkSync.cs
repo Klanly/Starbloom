@@ -324,6 +324,11 @@ public class DG_NetworkSync : Photon.MonoBehaviour
     [PunRPC] void NewMoneyValueSet(int NewValue) { QuickFind.MoneyHandler.ReceiveFarmMoneyValue(NewValue); }
 
 
+    public void SetItemInShippingBin(int[] OutData){PV.RPC("ItemSetInShippingBin", PhotonTargets.All, OutData);}
+    [PunRPC] void ItemSetInShippingBin(int[] InData) { QuickFind.ShippingBin.ItemSetInShippingBin(InData); }
+
+
+
 
     #endregion
 

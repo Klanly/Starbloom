@@ -76,4 +76,5 @@ MonoBehaviour:
   - UserSetInBed
   - NewMoneyValueSet
   - ReceivePlayerMovement
+  - ItemSetInShippingBin
   DisableAutoOpenWizard: 1

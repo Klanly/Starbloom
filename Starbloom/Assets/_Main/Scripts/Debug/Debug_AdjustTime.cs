@@ -17,7 +17,8 @@ public class Debug_AdjustTime : MonoBehaviour {
     {
         [ButtonGroup] public void SetNewDay() { QuickFind.TimeHandler.SetNewDay(false); }
         [ButtonGroup] public void SetNewRainyDay() { QuickFind.TimeHandler.SetNewDay(true); }
-        }
+        [ButtonGroup] public void SetNewMonth() { QuickFind.Farm.Day = 30; QuickFind.TimeHandler.SetNewDay(true); }
+    }
 
     [System.Serializable]
     public class SetSpecificTime

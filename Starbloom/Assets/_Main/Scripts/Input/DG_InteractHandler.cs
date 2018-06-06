@@ -37,6 +37,8 @@ public class DG_InteractHandler : MonoBehaviour
                     case DG_ContextObject.ContextTypes.MoveableStorage: HandleMoveableStorage(CO); break;
                     case DG_ContextObject.ContextTypes.Pick_And_Break: HandleClusterPick(CO, DG_ContextObject.ContextTypes.Pick_And_Break); break;
                     case DG_ContextObject.ContextTypes.PickOnly: HandleClusterPick(CO, DG_ContextObject.ContextTypes.PickOnly); break;
+                    case DG_ContextObject.ContextTypes.ShopInterface: HandleShopInterface(CO); break;
+                    case DG_ContextObject.ContextTypes.ShippingBin: QuickFind.ShippingBin.SetStackInShippingBin(CO); break;
                 }
             }
         }
@@ -100,10 +102,14 @@ public class DG_InteractHandler : MonoBehaviour
             int ItemQuality = NO.ItemQualityLevel;
             if (QuickFind.InventoryManager.AddItemToRucksack(QuickFind.NetworkSync.PlayerCharacterID, ItemID, (DG_ItemObject.ItemQualityLevels)ItemQuality, false))
             {
-                QuickFind.NetworkSync.RemoveNetworkSceneObject(QuickFind.NetworkSync.CurrentScene, NO.NetworkObjectID);
+                //QuickFind.NetworkSync.RemoveNetworkSceneObject(QuickFind.NetworkSync.CurrentScene, NO.NetworkObjectID);
                 Growable G = NO.transform.GetChild(0).GetComponent<Growable>();
                 G.Harvest();
             }
         }
+    }
+    void HandleShopInterface(DG_ContextObject CO)
+    {
+        QuickFind.ShopGUI.OpenShopUI(CO.ContextID);
     }
 }

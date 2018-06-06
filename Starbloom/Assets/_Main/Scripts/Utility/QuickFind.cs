@@ -100,8 +100,7 @@ public static class QuickFind
     public static DG_ObjectPlacement ObjectPlacementManager = null;
     public static DG_NetworkGrowthHandler NetworkGrowthHandler = null;
     public static DG_MoneyHandler MoneyHandler = null;
-    public static DG_ShopHandler ShopHandler = null;
-
+    public static DG_ShippingBin ShippingBin = null;
 
 
     //Tools

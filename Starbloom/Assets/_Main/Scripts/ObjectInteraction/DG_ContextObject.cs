@@ -19,6 +19,8 @@ public class DG_ContextObject : MonoBehaviour
         Soil,
         Pick_And_Break,
         PickOnly,
+        ShopInterface,
+        ShippingBin
     }
 
     [System.Serializable]

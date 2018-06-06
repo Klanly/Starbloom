@@ -146,7 +146,7 @@ public class WeatherHandler : MonoBehaviour
     public void SetNewDayWeather(bool ForceRain)
     {
         int Weather = QuickFind.Farm.Weather.TomorrowWeather;
-        int Season = QuickFind.Farm.Month;
+        int Season = QuickFind.Farm.Month - 1;
 
         AdjustSeason(Season, Weather);
         QuickFind.NetworkSync.AdjustWeather(Season, Weather);
@@ -240,6 +240,8 @@ public class WeatherHandler : MonoBehaviour
             if (WeatherArray[i].Weather == SetWeather)
                 WS = WeatherArray[i];
         }
+
+        if (WS == null) WS = WeatherArray[0];
 
         SetWeatherValues(WS);
     }
