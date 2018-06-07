@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 
 public class DG_FishingAtlasObject : MonoBehaviour
@@ -27,6 +28,9 @@ public class DG_FishingAtlasObject : MonoBehaviour
 
     public string Name;
     public int ItemObjectRefDatabaseID;
+
+    public bool HasCustomEXPReward;
+    [ShowIf("HasCustomEXPReward")]
     public int ExpGainPerCatch;
 
     public DG_ItemObject.ItemQualityLevels RodRequired;

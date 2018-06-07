@@ -57,8 +57,18 @@ public class DG_InteractHandler : MonoBehaviour
         int ItemQuality = NO.ItemQualityLevel;
 
 
-        if(QuickFind.InventoryManager.AddItemToRucksack(QuickFind.NetworkSync.PlayerCharacterID, ItemID, (DG_ItemObject.ItemQualityLevels)ItemQuality, false))
+        if (QuickFind.InventoryManager.AddItemToRucksack(QuickFind.NetworkSync.PlayerCharacterID, ItemID, (DG_ItemObject.ItemQualityLevels)ItemQuality, false))
+        {
             QuickFind.NetworkSync.RemoveNetworkSceneObject(QuickFind.NetworkSync.CurrentScene, NO.NetworkObjectID);
+
+            DG_ItemObject IO = QuickFind.ItemDatabase.GetItemFromID(NO.ItemRefID);
+            //Pick Up Herb
+            if (IO.ItemCat == DG_ItemObject.ItemCatagory.Herb)
+                QuickFind.SkillTracker.IncreaseSkillLevel(DG_SkillTracker.SkillTags.Foraging, DG_ItemObject.ItemQualityLevels.Normal);
+            //Pick Up Crop
+            else if(IO.ItemCat != DG_ItemObject.ItemCatagory.Resource)
+                QuickFind.SkillTracker.IncreaseSkillLevel(DG_SkillTracker.SkillTags.Farming, (DG_ItemObject.ItemQualityLevels)ItemQuality);
+        }
 
     }
     void HandleMoveableStorage(DG_ContextObject CO)
@@ -102,9 +112,12 @@ public class DG_InteractHandler : MonoBehaviour
             int ItemQuality = NO.ItemQualityLevel;
             if (QuickFind.InventoryManager.AddItemToRucksack(QuickFind.NetworkSync.PlayerCharacterID, ItemID, (DG_ItemObject.ItemQualityLevels)ItemQuality, false))
             {
-                //QuickFind.NetworkSync.RemoveNetworkSceneObject(QuickFind.NetworkSync.CurrentScene, NO.NetworkObjectID);
+                QuickFind.NetworkSync.RemoveNetworkSceneObject(QuickFind.NetworkSync.CurrentScene, NO.NetworkObjectID);
                 Growable G = NO.transform.GetChild(0).GetComponent<Growable>();
                 G.Harvest();
+
+                if (IO.ItemCat != DG_ItemObject.ItemCatagory.Resource)
+                    QuickFind.SkillTracker.IncreaseSkillLevel(DG_SkillTracker.SkillTags.Farming, (DG_ItemObject.ItemQualityLevels)ItemQuality);
             }
         }
     }

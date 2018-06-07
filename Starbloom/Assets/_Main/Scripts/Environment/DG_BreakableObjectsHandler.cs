@@ -87,5 +87,8 @@ public class DG_BreakableObjectsHandler : MonoBehaviour {
         }
         else if(E.SwapItemOnBreak)
             QuickFind.NetworkObjectManager.CreateNetSceneObject(SceneID, E.SwapID, 0, NO.transform.position, NO.transform.eulerAngles.y);
+
+        if (E.ObjectType == DG_BreakableObjectItem.OnHitEffectType.Stone)
+            QuickFind.SkillTracker.IncreaseSkillLevel(DG_SkillTracker.SkillTags.Mining, DG_ItemObject.ItemQualityLevels.Low);
     }
 }

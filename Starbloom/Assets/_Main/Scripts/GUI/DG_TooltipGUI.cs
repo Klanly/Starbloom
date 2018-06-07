@@ -112,6 +112,9 @@ public class DG_TooltipGUI : MonoBehaviour {
     [ListDrawerSettings(ListElementLabelName = "GroupType", NumberOfItemsPerPage = 16, Expanded = false)]
     public ToolTipGroup[] ToolTipTypes;
 
+    [Header("Localization")]
+    public int HealthLocalizationID = 61;
+    public int EnergyLocalizationID = 62;
 
     [Header("Debug")]
     public bool DebugON = false;
@@ -286,9 +289,9 @@ public class DG_TooltipGUI : MonoBehaviour {
         {
             int HealthAdjust = Item.HealthAdjustValue;
             DG_TooltipSubItem Sub = Desc.GetSubItem(index); index++;
-            DG_ItemsDatabase.GenericIconDatabaseItem ICD = QuickFind.ItemDatabase.GenericIconList[0];
+            DG_ItemsDatabase.GenericIconDatabaseItem ICD = QuickFind.ItemDatabase.GetGenericIconByString("Health");
             Sub.DisplayImage.sprite = ICD.Icon;
-            Sub.TextObject.text = HealthAdjust.ToString() + " " + QuickFind.WordDatabase.GetWordFromID(61);
+            Sub.TextObject.text = HealthAdjust.ToString() + " " + QuickFind.WordDatabase.GetWordFromID(HealthLocalizationID);
 
             Color C = ICD.ColorVariations[0];
             Sub.DisplayImage.color = C;
@@ -297,9 +300,9 @@ public class DG_TooltipGUI : MonoBehaviour {
         {
             int EnergyAdjust = Item.EnergyAdjustValue;
             DG_TooltipSubItem Sub = Desc.GetSubItem(index); index++;
-            DG_ItemsDatabase.GenericIconDatabaseItem ICD = QuickFind.ItemDatabase.GenericIconList[1];
+            DG_ItemsDatabase.GenericIconDatabaseItem ICD = QuickFind.ItemDatabase.GetGenericIconByString("Energy");
             Sub.DisplayImage.sprite = ICD.Icon;
-            Sub.TextObject.text = EnergyAdjust.ToString() + " " + QuickFind.WordDatabase.GetWordFromID(62);
+            Sub.TextObject.text = EnergyAdjust.ToString() + " " + QuickFind.WordDatabase.GetWordFromID(EnergyLocalizationID);
 
             Color C = ICD.ColorVariations[0];
             Sub.DisplayImage.color = C;
@@ -353,8 +356,9 @@ public class DG_TooltipGUI : MonoBehaviour {
         {
             DG_InventoryItem GuiSlot = FloatingQualityGrid.GetChild(i).GetComponent<DG_InventoryItem>();
             GuiSlot.QualityLevelOverlay.enabled = true;
-            GuiSlot.QualityLevelOverlay.sprite = QuickFind.ItemDatabase.GenericIconList[2].Icon;
-            GuiSlot.QualityLevelOverlay.color = QuickFind.ItemDatabase.GenericIconList[2].ColorVariations[i];
+            DG_ItemsDatabase.GenericIconDatabaseItem ICD = QuickFind.ItemDatabase.GetGenericIconByString("QualityMarker");
+            GuiSlot.QualityLevelOverlay.sprite = ICD.Icon;
+            GuiSlot.QualityLevelOverlay.color = ICD.ColorVariations[i];
         }
     }
 

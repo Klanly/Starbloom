@@ -51,15 +51,24 @@ public static class QuickFind
     public static UserSettings UserSettings = null;
 
 
+
+
     //InputController
     public static Transform PlayerTrans = null;
     public static DG_PlayerInput InputController = null;
     public static DG_CharacterControllers CharacterManager = null;
     public static DG_InteractHandler InteractHandler = null;
     public static HotbarItemHandler ItemActivateableHandler = null;
+
+    //Cameras
+    public static CameraLogic PlayerCam;
+    public static EZCameraShake.CameraShaker CameraShake = null;
+
     //Detection
     public static DG_ContextCheckHandler ContextDetectionHandler = null;
     public static GridPointDetector GridDetection = null;
+
+
 
 
     //GUI
@@ -77,7 +86,6 @@ public static class QuickFind
     public static DG_SystemMessageGUI SystemMessageGUI = null;
     public static DG_ShopGUI ShopGUI = null;
 
-
     //GUI - Main Overview
     public static GuiMainGameplay GUI_MainOverview = null;
     public static DG_OverviewTabsGUI GUI_OverviewTabs = null;
@@ -85,11 +93,20 @@ public static class QuickFind
     public static DG_SkillsGUI GUI_Skills = null;
 
 
+
+
+
+    //Trackers
+    public static DG_AcheivementTracker AcheivementTracker = null;
+    public static DG_SkillTracker SkillTracker = null;
+
     //Item Compendiums
-    public static DG_FishingLevelStats FishingStatsHandler = null;
     public static DG_FishingCompendium FishingCompendium = null;
     public static DG_BreakableObjectsAtlas BreakableObjectsCompendium = null;
     public static DG_ShopAtlas ShopAtlas;
+    
+
+
 
 
     //Managers
@@ -102,28 +119,22 @@ public static class QuickFind
     public static DG_MoneyHandler MoneyHandler = null;
     public static DG_ShippingBin ShippingBin = null;
 
-
     //Tools
     public static DG_HoeHandler HoeHandler = null;
     public static DG_WateringCan WateringCanHandler = null;
     public static DG_PickAxeHandler PickaxeHandler = null;
-
 
     //Fishing
     public static Fishing_MasterHandler FishingHandler = null;
     public static DG_FishingRoller FishingRoller = null;
 
 
-    //Cameras
-    public static CameraLogic PlayerCam;
-    public static EZCameraShake.CameraShaker CameraShake = null;
 
 
     //Network
     public static ConnectAndJoinRandom NetworkMaster = null;
     public static DG_NetworkSync NetworkSync = null;
     public static NetworkObjectManager NetworkObjectManager = null;
-
 
     //Database
     public static DG_DialogueManager DialogueManager = null;
@@ -135,6 +146,11 @@ public static class QuickFind
     public static SceneIDList SceneList = null;
     public static DG_TextLanguageFonts LanguageFonts = null;
 
+    //Serialization
+    public static DG_LocalDataHandler SaveHandler;
+
+
+
 
 
     //Environment
@@ -144,15 +160,6 @@ public static class QuickFind
     public static Suimono.Core.SuimonoObject WaterObject = null;
     public static TimeHandler TimeHandler = null;
     public static FakeRainDropCollision RainDropHandler = null;
-
-
-    //Serialization
-    public static DG_LocalDataHandler SaveHandler;
-
-
-
-
-
 
 
 

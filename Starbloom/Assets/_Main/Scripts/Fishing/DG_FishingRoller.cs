@@ -58,7 +58,7 @@ public class DG_FishingRoller : MonoBehaviour {
     }
     public DG_ItemObject.ItemQualityLevels GetQualityLevel(DG_FishingAtlasObject AtlasObject, DG_ItemObject.ItemQualityLevels FishingRodQuality)
     {
-        int FishingLevel = QuickFind.FishingStatsHandler.GetMyFishingLevelInt();
+        int FishingLevel = QuickFind.SkillTracker.GetMySkillLevel(DG_SkillTracker.SkillTags.Fishing);
 
         if (FishingLevel == 9) return DG_ItemObject.ItemQualityLevels.Max;
 

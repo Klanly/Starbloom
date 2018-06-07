@@ -217,8 +217,9 @@ public class DG_InventoryGUI : MonoBehaviour
             if (Object.MaxStackSize > 1)
             {
                 GuiSlot.QualityLevelOverlay.enabled = true;
-                GuiSlot.QualityLevelOverlay.sprite = QuickFind.ItemDatabase.GenericIconList[2].Icon;
-                GuiSlot.QualityLevelOverlay.color = QuickFind.ItemDatabase.GenericIconList[2].ColorVariations[RucksackSlot.CurrentStackActive];
+                DG_ItemsDatabase.GenericIconDatabaseItem ICD = QuickFind.ItemDatabase.GetGenericIconByString("QualityMarker");
+                GuiSlot.QualityLevelOverlay.sprite = ICD.Icon;
+                GuiSlot.QualityLevelOverlay.color = ICD.ColorVariations[RucksackSlot.CurrentStackActive];
             }
             else
                 GuiSlot.QualityLevelOverlay.enabled = false;

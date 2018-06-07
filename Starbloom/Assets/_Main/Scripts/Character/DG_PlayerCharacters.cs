@@ -58,7 +58,6 @@ public class DG_PlayerCharacters : MonoBehaviour {
         public int Mining;
         public int Foraging;
         public int Fishing;
-        [Button(ButtonSizes.Small)]public void DebugIncreaseFishingLevel(){int FishingLevel = QuickFind.FishingStatsHandler.GetMyFishingLevelInt(); Fishing = QuickFind.FishingStatsHandler.FishingLevelStats[FishingLevel + 1].ExpMin;}
     }
 
     [System.Serializable]
@@ -146,23 +145,5 @@ public class DG_PlayerCharacters : MonoBehaviour {
     private void Awake()
     {
         QuickFind.Farm = this;
-    }
-
-
-
-
-
-
-
-
-    public void SetSkillInt(int SkillName, int StatValue, int PlayerNum)
-    {
-        switch (SkillName)
-        {
-            case 1: PlayerCharacters[PlayerNum].NonCombatSkillEXP.Farming = StatValue; break;
-            case 2: PlayerCharacters[PlayerNum].NonCombatSkillEXP.Mining = StatValue; break;
-            case 3: PlayerCharacters[PlayerNum].NonCombatSkillEXP.Foraging = StatValue; break;
-            case 4: PlayerCharacters[PlayerNum].NonCombatSkillEXP.Fishing = StatValue; break;
-        }
     }
 }

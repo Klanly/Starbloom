@@ -49,8 +49,7 @@ public class DG_MagnetAttraction : MonoBehaviour {
             if (MT.OwnerID == QuickFind.NetworkSync.PlayerCharacterID && QuickFind.WithinDistance(MT.Trans, AdjustedHeight, .05f))
             {
                 NetworkObject NO = QuickFind.NetworkObjectManager.ScanUpTree(MT.Trans);
-                if(QuickFind.InventoryManager.AddItemToRucksack(QuickFind.NetworkSync.PlayerCharacterID, NO.ItemRefID, (DG_ItemObject.ItemQualityLevels)NO.ItemQualityLevel, false))
-                    QuickFind.NetworkSync.RemoveNetworkSceneObject(NO.transform.parent.GetComponent<NetworkScene>().SceneID, NO.NetworkObjectID);
+                QuickFind.NetworkSync.RemoveNetworkSceneObject(NO.transform.parent.GetComponent<NetworkScene>().SceneID, NO.NetworkObjectID);
             }
         }
     }
@@ -103,8 +102,16 @@ public class DG_MagnetAttraction : MonoBehaviour {
         NetworkObject NO = QuickFind.NetworkObjectManager.GetItemByID(Data[1], Data[2]);
         DG_MagneticItem MI = NO.transform.GetChild(0).GetComponent<DG_MagneticItem>();
 
-        if (MI.Claimed) return; //if two charaters standing close to spawn point, and send simultanious request.
-        else if (!QuickFind.InventoryManager.AddItemToRucksack(QuickFind.NetworkSync.PlayerCharacterID, NO.ItemRefID, (DG_ItemObject.ItemQualityLevels)NO.ItemQualityLevel, false)) return;
+        //if two charaters standing close to spawn point, and send simultanious request.
+        if (MI.Claimed) return;
+        //if not enough inventory space, don't claim item.
+        else if (!QuickFind.InventoryManager.AddItemToRucksack(QuickFind.NetworkSync.PlayerCharacterID, NO.ItemRefID, (DG_ItemObject.ItemQualityLevels)NO.ItemQualityLevel, false, true)) return;
+
+
+        QuickFind.InventoryManager.AddItemToRucksack(QuickFind.NetworkSync.PlayerCharacterID, NO.ItemRefID, (DG_ItemObject.ItemQualityLevels)NO.ItemQualityLevel, false, false);
+        DG_ItemObject IO = QuickFind.ItemDatabase.GetItemFromID(NO.ItemRefID);
+        if (IO.ItemCat != DG_ItemObject.ItemCatagory.Resource)
+            QuickFind.SkillTracker.IncreaseSkillLevel(DG_SkillTracker.SkillTags.Foraging, DG_ItemObject.ItemQualityLevels.Low);
 
         MI.Claimed = true;
 

@@ -68,6 +68,8 @@ public class DG_NetworkSync : Photon.MonoBehaviour
     //////////////////////////////////////////////////////////////////////////////////////////////////
 
 
+
+
     #region Get Helpers
 
     public Users GetUserByID(int ID)
@@ -503,19 +505,14 @@ public class DG_NetworkSync : Photon.MonoBehaviour
 
     #region Player Stats
     /////////////////////////////////////////////////////
-    public void UpdatePlayerStat(int Stat, int StatValue, int PlayerNum)
+    public void UpdatePlayerStat(int[] ReceivedInts)
     {
-        int[] SendInts = new int[3];
-        SendInts[0] = Stat;
-        SendInts[1] = StatValue;
-        SendInts[2] = PlayerNum;
-
-        PV.RPC("LoadPlayerStat", PhotonTargets.Others, SendInts);
+        PV.RPC("LoadPlayerStat", PhotonTargets.All, ReceivedInts);
     }
     [PunRPC]
     void LoadPlayerStat(int[] ReceivedInts)
     {
-        QuickFind.Farm.SetSkillInt(ReceivedInts[0], ReceivedInts[1], ReceivedInts[2]);
+        QuickFind.SkillTracker.IncomingSetSkillExp(ReceivedInts);
     }
     #endregion
 
