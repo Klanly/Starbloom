@@ -300,7 +300,7 @@ public class Fishing_MasterHandler : MonoBehaviour
     }
     void OpenFishingGUI()
     {
-        float FishingBarSize = QuickFind.FishingStatsHandler.GetMyFishingLevel().FishingBarSize;
+        float FishingBarSize = 100 + (QuickFind.SkillTracker.GetMySkillLevel(DG_SkillTracker.SkillTags.Fishing) * 20);
         QuickFind.FishingGUI.SetCaptureZoneSize(FishingBarSize);
 
         MaxFishHeight = QuickFind.FishingGUI.FishRegionMain.rect.height;
@@ -404,23 +404,12 @@ public class Fishing_MasterHandler : MonoBehaviour
         float DisplayWeight = (float)ActiveFishReference.Weight / 10;
         QuickFind.FishingGUI.OpenObjectCaughtGUI(FishSprite, QuickFind.WordDatabase.GetWordFromID(ItemRef.ToolTipType.MainLocalizationID), DisplayWeight.ToString());
 
-        //Add EXP for Catch
-        QuickFind.Farm.PlayerCharacters[PlayerCharID].NonCombatSkillEXP.Fishing += ActiveFishReference.AtlasObject.ExpGainPerCatch;
-        QuickFind.NetworkSync.UpdatePlayerStat(4, QuickFind.Farm.PlayerCharacters[PlayerCharID].NonCombatSkillEXP.Fishing, PlayerCharID);
-
-        CheckifFishisRecord();
+        //Update Trackers
+        DG_PlayerCharacters.RucksackSlot CurrentRucksackSlot = QuickFind.ItemActivateableHandler.CurrentRucksackSlot;
+        QuickFind.SkillTracker.IncreaseFishingLevel(ActiveFishReference, (DG_ItemObject.ItemQualityLevels)CurrentRucksackSlot.CurrentStackActive);
+        QuickFind.AcheivementTracker.CheckFishAchevement(ActiveFishReference);
 
         ActiveFishReference = null;
-    }
-    void CheckifFishisRecord()
-    {
-        DG_PlayerCharacters.CharacterAchievements Acheivements = QuickFind.Farm.PlayerCharacters[QuickFind.NetworkSync.PlayerCharacterID].Acheivements;
-        int CurrentFishMax = Acheivements.LargestFishCaught[ActiveFishReference.AtlasObject.DatabaseID];
-        if (CurrentFishMax < ActiveFishReference.Weight)
-        {
-            QuickFind.FishingGUI.DisplayFishRecordText();
-            Acheivements.LargestFishCaught[ActiveFishReference.AtlasObject.DatabaseID] = ActiveFishReference.Weight;
-        }
     }
 
 

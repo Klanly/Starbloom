@@ -42,4 +42,15 @@ public class DG_ItemsDatabase : MonoBehaviour {
         if (ID >= ItemCatagoryList.Length) { Debug.Log("Get By ID Failed"); return null; }
         return ItemCatagoryList[ID];
     }
+
+    public GenericIconDatabaseItem GetGenericIconByString(string Requested)
+    {
+        for(int i = 0; i < GenericIconList.Length; i++)
+        {
+            if (GenericIconList[i].ItemName == Requested)
+                return GenericIconList[i];
+        }
+        Debug.Log("No Item Found with that name");
+        return null;
+    }
 }
