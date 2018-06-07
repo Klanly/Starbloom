@@ -311,7 +311,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Dialogue Text
-        value: ..h..lo?.Ca..ou..ear me?
+        value: ..h..lo?.Can.ou.hear me?
         type: 0
         typeString: 
       - title: Parenthetical
@@ -347,8 +347,8 @@ MonoBehaviour:
           Culture=neutral, PublicKeyToken=null
       canvasRect:
         serializedVersion: 2
-        x: 621.98975
-        y: 30.329903
+        x: 625.36053
+        y: 33.138893
         width: 160
         height: 30
     - id: 4
@@ -420,8 +420,8 @@ MonoBehaviour:
           Culture=neutral, PublicKeyToken=null
       canvasRect:
         serializedVersion: 2
-        x: 402.4742
-        y: 121.75258
+        x: 401.91238
+        y: 121.19078
         width: 160
         height: 30
     - id: 5
@@ -487,12 +487,12 @@ MonoBehaviour:
           Culture=neutral, PublicKeyToken=null
       canvasRect:
         serializedVersion: 2
-        x: 624.12366
-        y: 123.298965
+        x: 625.025
+        y: 120.9321
         width: 160
         height: 30
-    canvasScrollPosition: {x: 0, y: 0}
-    canvasZoom: 0.97
+    canvasScrollPosition: {x: 244.3977, y: 0}
+    canvasZoom: 1.2699997
   syncInfo:
     syncActors: 0
     syncItems: 0
