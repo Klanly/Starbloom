@@ -100,9 +100,16 @@ public class DG_NetworkSync : Photon.MonoBehaviour
         }
         return null;
     }
-    public DG_MovementSync GetCharacterMoveSyncByPhotonViewID(int ID)
+
+    public DG_MovementSync GetCharacterMoveSyncByPlayerID(int ID)
     {
-        return GetUserByPlayerID(ID).MoveSync;
+        Users U = GetUserByPlayerID(ID);
+        if(U.MoveSync == null)
+        {
+            if(U.PhotonClone == null) U.PhotonClone = GetCharacterTransformByPhotonViewID(GetUserByPlayerID(ID).PhotonViewID);
+            if (U.PhotonClone != null) U.MoveSync = U.PhotonClone.transform.GetChild(0).GetComponent<DG_MovementSync>();
+        }
+        return U.MoveSync;
     }
 
     #endregion
@@ -219,7 +226,7 @@ public class DG_NetworkSync : Photon.MonoBehaviour
     [PunRPC]
     void ReceivePlayerMovement(int[] InData)
     {
-        GetCharacterMoveSyncByPhotonViewID(InData[0]).UpdatePlayerPos(InData);
+        GetCharacterMoveSyncByPlayerID(InData[0]).UpdatePlayerPos(InData);
     }
 
 
@@ -443,6 +450,7 @@ public class DG_NetworkSync : Photon.MonoBehaviour
         if(NO.SurrogateObjectIndex != 0)
         { NetworkObject NO2 = QuickFind.NetworkObjectManager.GetItemByID(Received[0], NO.SurrogateObjectIndex); NO2.SurrogateObjectIndex = 0; }
         NetworkScene NS = QuickFind.NetworkObjectManager.GetSceneByID(Received[0]);
+        NS.NetworkObjectList.Remove(NO);
         Destroy(NO.gameObject);
     }
 
