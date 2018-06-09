@@ -9,6 +9,7 @@ GameObject:
   m_Component:
   - component: {fileID: 400000}
   - component: {fileID: 114319696490596152}
+  - component: {fileID: 114624214585539164}
   - component: {fileID: 114638361534107888}
   - component: {fileID: 3300000}
   - component: {fileID: 2300000}
@@ -140,19 +141,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 538995c128d53fe48a7051ffbb220cf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ThisIsGrowthItem: 0
-  ContextID: 0
   Type: 5
-  BreakValues:
-  - SpawnPoints:
-    - {fileID: 4198467099582786}
-    RandomizeVelocity: 1
-    XMin: 1
-    XMax: 1
-    YMin: 0
-    YMax: 1
-    ZMin: 1
-    ZMax: 1
+--- !u!114 &114624214585539164
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 804f475623a107145a3f8b68b6700f36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SpawnPoints:
+  - {fileID: 4198467099582786}
+  RandomizeVelocity: 1
+  XMin: 1
+  XMax: 1
+  YMin: 0
+  YMax: 1
+  ZMin: 1
+  ZMax: 1
 --- !u!114 &114638361534107888
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -170,3 +179,4 @@ MonoBehaviour:
   WobbleCount: 1
   isShrink: 0
   ShrinkTime: 0
+  ScaleAtAwake: 1

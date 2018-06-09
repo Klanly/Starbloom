@@ -60,7 +60,8 @@ public class NA_DialogueGUIController : MonoBehaviour
         if (GUIState == GUIStates.NotInConversatation && QuickFind.ContextDetectionHandler.ContextHit)
         {
             DG_ContextObject CO = QuickFind.ContextDetectionHandler.LastEncounteredContext.GetComponent<DG_ContextObject>();
-            TriggerEvent(CO.ContextID);
+            NetworkObject NO = QuickFind.NetworkObjectManager.ScanUpTree(CO.transform);
+            TriggerEvent(NO.ItemRefID);
         }
         else if (GUIState == GUIStates.TextTyping)
             QuickFind.TextPrintout.RushAllActiveTextEffects();

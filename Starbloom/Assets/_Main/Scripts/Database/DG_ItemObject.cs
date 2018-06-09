@@ -26,7 +26,7 @@ public class DG_ItemObject : MonoBehaviour
         Fruit
     }
 
-
+    public bool DatabaseUsesNameInsteadOfPrefab;
     public string Name;
     public int MaxStackSize;
     public HotbarItemHandler.ActivateableTypes ActivateableType;
@@ -35,8 +35,10 @@ public class DG_ItemObject : MonoBehaviour
     [Header("ToolTip Data")]
     public DG_TooltipGUI.ToolTipContainerItem ToolTipType;
 
-    [HideInInspector] public int DatabaseID;
-    [HideInInspector] public bool LockItem;
+    [HideInInspector]
+    public int DatabaseID;
+    [HideInInspector]
+    public bool LockItem;
 
 
     [Header("Default Visuals")]
@@ -129,59 +131,56 @@ public class DG_ItemObject : MonoBehaviour
     [Header("----------------------------------")]
     public bool isGrowableItem = false;
     [ShowIf("isGrowableItem")]
+    public bool IsWaterable;
+    [ShowIf("isGrowableItem")]
     public bool RequireTilledEarth = false;
     [ShowIf("isGrowableItem")]
-    public GameObject PreviewItem = null;
+    public int ResetIndex;
+    [ShowIf("isGrowableItem")]
+    public int BreakIndex;
 
-    //[ShowIf("isGrowableItem")]
-    //public GrowthStage[] GrowthStages;
-    //
-    //[System.Serializable]
-    //public class GrowthStage
-    //{
-    //    public int GrowthLevelRequired;
-    //    public GameObject StagePrefabReference;
-    //}
+    [ShowIf("isGrowableItem")]
+    public GrowthStage[] GrowthStages;
+
+
+
+    [System.Serializable]
+    public class GrowthStage
+    {
+        public int GrowthLevelRequired;
+        public GameObject StagePrefabReference;
+    }
     #endregion
 
 
     #region Environment
     [Header("----------------------------------")]
-    public bool isEnvironment = false;
-    [Header("Environment")]
-    [ShowIf("isEnvironment")]
+    public bool isBreakable = false;
+    [Header("Breakable")]
+    [ShowIf("isBreakable")]
     public Environment[] EnvironmentValues;
 
     [System.Serializable]
     public class Environment
     {
-        public bool IsWaterable;
-        public bool IsBreakable;
-        [ShowIf("IsBreakable")]
-        public DG_BreakableObjectItem.OnHitEffectType ObjectType;
-        [ShowIf("IsBreakable")]
+        public DG_BreakableObjectItem.OnHitEffectType OnHitFXType;
         public HotbarItemHandler.ActivateableTypes ActivateableTypeRequired;
-        [ShowIf("IsBreakable")]
         public DG_ItemObject.ItemQualityLevels QualityLevelRequired;
-        [ShowIf("IsBreakable")]
         public int ObjectHealth;
-
-        [ShowIf("IsBreakable")]
-        public bool DropItemsOnBreak;
-        [ShowIf("DropItemsOnBreak")]
-        public int BreakableAtlasID;
-
-        [ShowIf("IsBreakable")]
-        public bool DropItemsOnInteract;
-        [ShowIf("DropItemsOnInteract")]
-        public int InteractDropID;
-
-        [ShowIf("IsBreakable")]
-        public bool SwapItemOnBreak;
-        [ShowIf("SwapItemOnBreak")]
-        public int SwapID;
     }
     #endregion
+
+
+    [Header("Harvest----------------------------------")]
+    public bool HarvestableItem;
+    [ShowIf("HarvestableItem")]
+    public int HarvestItemIndex;
+    [ShowIf("HarvestableItem")]
+    public int HarvestClusterIndex;
+
+
+
+
 
 
 

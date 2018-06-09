@@ -66,7 +66,13 @@ public class NetworkScene : MonoBehaviour {
             NO.transform.position = new Vector3(((float)NO.PositionX / 100), ((float)NO.PositionY / 100), ((float)NO.PositionZ / 100));
             NO.transform.eulerAngles = new Vector3(0, ((float)NO.YFacing / 100), 0);
 
-            NO.SpawnNetworkObject();
+            if (NO.GrowthValue != 0)
+            {
+                NO.ActiveVisual = QuickFind.NetworkGrowthHandler.GetCurrentVisualByGrowthValue(NO);
+                QuickFind.NetworkGrowthHandler.SetActiveVisual(NO, false);
+            }
+            else
+                NO.SpawnNetworkObject();
             //
         }
         DestroyTempObjects();
@@ -94,9 +100,6 @@ public class NetworkScene : MonoBehaviour {
 
 
 
-
-
-
     public int GetValidNextNetworkID()
     {
         int index = 0;
@@ -117,18 +120,6 @@ public class NetworkScene : MonoBehaviour {
                 return NO;
         }
         return null;
-    }
-    public void DeleteNetworkObject(int DataID)
-    {
-        for (int i = 0; i < NetworkObjectList.Count; i++)
-        {
-            NetworkObject NO = NetworkObjectList[i];
-            if (NO.NetworkObjectID == DataID)
-            {
-                NetworkObjectList.Remove(NO);
-                Destroy(NO.gameObject);
-            }
-        }
     }
 
 

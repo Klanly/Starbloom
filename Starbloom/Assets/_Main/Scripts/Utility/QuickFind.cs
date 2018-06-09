@@ -32,6 +32,7 @@ public static class QuickFindInEditor
     public static DG_FishingCompendium GetEditorFishingCompendium() { return GameObject.Find("Fish Atlas").GetComponent<DG_FishingCompendium>(); }
     public static DG_BreakableObjectsAtlas GetBreakableObjectsCompendium() { return GameObject.Find("Cluster Rewards Atlas").GetComponent<DG_BreakableObjectsAtlas>(); }
     public static DG_ShopAtlas GetShopCompendium() { return GameObject.Find("Shop Type Atlas").GetComponent<DG_ShopAtlas>(); }
+    public static DG_CraftingDictionary GetCraftingCompendium() { return GameObject.Find("Crafting Dictionary").GetComponent<DG_CraftingDictionary>(); }
     //Save Data
     public static UserSettings GetEditorUserSettings() { return GameObject.Find("Player Settings").GetComponent<UserSettings>(); }
 
@@ -91,6 +92,7 @@ public static class QuickFind
     public static DG_OverviewTabsGUI GUI_OverviewTabs = null;
     public static DG_InventoryGUI GUI_Inventory = null;
     public static DG_SkillsGUI GUI_Skills = null;
+    public static DG_CraftingGUI GUI_Crafting = null;
 
 
 
@@ -104,7 +106,8 @@ public static class QuickFind
     public static DG_FishingCompendium FishingCompendium = null;
     public static DG_BreakableObjectsAtlas BreakableObjectsCompendium = null;
     public static DG_ShopAtlas ShopAtlas;
-    
+    public static DG_CraftingDictionary CraftingDictionary = null;
+
 
 
 

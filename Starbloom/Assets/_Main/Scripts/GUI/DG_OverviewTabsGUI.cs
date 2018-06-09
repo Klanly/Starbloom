@@ -9,7 +9,8 @@ public class DG_OverviewTabsGUI : MonoBehaviour {
         Inventory,
         Skills,
         Relationship,
-        Map
+        Map,
+        Crafting
     }
 
 
@@ -73,6 +74,7 @@ public class DG_OverviewTabsGUI : MonoBehaviour {
             case TabType.Skills: QuickFind.GUI_Skills.OpenUI(); break;
             case TabType.Relationship: break;
             case TabType.Map: break;
+            case TabType.Crafting: QuickFind.GUI_Crafting.OpenUI(); break;
         }
         SetTab(Tab.Type);
     }

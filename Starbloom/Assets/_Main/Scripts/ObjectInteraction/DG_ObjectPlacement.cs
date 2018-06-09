@@ -103,10 +103,8 @@ public class DG_ObjectPlacement : MonoBehaviour {
         GameObject ToDestroy = null;
         if (ObjectGhost != null) ToDestroy = ObjectGhost.gameObject;
 
-        if(!ItemDatabaseReference.isGrowableItem)
-            ObjectGhost = Instantiate(Item.ModelPrefab).transform;
-        else
-            ObjectGhost = Instantiate(Item.PreviewItem).transform;
+        ObjectGhost = Instantiate(Item.ModelPrefab).transform;
+    
         ObjectGhost.SetParent(transform);
         ObjectGhost.localScale = new Vector3(Item.DefaultScale, Item.DefaultScale, Item.DefaultScale);
 

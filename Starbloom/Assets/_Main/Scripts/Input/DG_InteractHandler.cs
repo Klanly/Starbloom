@@ -35,8 +35,8 @@ public class DG_InteractHandler : MonoBehaviour
                     case DG_ContextObject.ContextTypes.Conversation: break;
                     case DG_ContextObject.ContextTypes.Treasure: break;
                     case DG_ContextObject.ContextTypes.MoveableStorage: HandleMoveableStorage(CO); break;
-                    case DG_ContextObject.ContextTypes.Pick_And_Break: HandleClusterPick(CO, DG_ContextObject.ContextTypes.Pick_And_Break); break;
-                    case DG_ContextObject.ContextTypes.PickOnly: HandleClusterPick(CO, DG_ContextObject.ContextTypes.PickOnly); break;
+                    case DG_ContextObject.ContextTypes.HarvestablePlant: HandleSingleHarvest(CO); break;
+                    case DG_ContextObject.ContextTypes.HarvestableTree: HandleClusterHarvest(CO); break;
                     case DG_ContextObject.ContextTypes.ShopInterface: HandleShopInterface(CO); break;
                     case DG_ContextObject.ContextTypes.ShippingBin: QuickFind.ShippingBin.SetStackInShippingBin(CO); break;
                 }
@@ -47,11 +47,8 @@ public class DG_InteractHandler : MonoBehaviour
     void HandlePickUpItem(DG_ContextObject CO)
     {
         NetworkObject NO = QuickFind.NetworkObjectManager.ScanUpTree(CO.transform);
-        int ItemID;
-        if (!CO.ThisIsGrowthItem)
-            ItemID = NO.ItemRefID;
-        else
-            ItemID = CO.ContextID;
+        DG_ItemObject IO = QuickFind.ItemDatabase.GetItemFromID(NO.ItemRefID);
+        int ItemID = IO.HarvestItemIndex;
 
         int Scene = NO.transform.parent.GetComponent<NetworkScene>().SceneID;
         int ItemQuality = NO.ItemQualityLevel;
@@ -59,9 +56,7 @@ public class DG_InteractHandler : MonoBehaviour
 
         if (QuickFind.InventoryManager.AddItemToRucksack(QuickFind.NetworkSync.PlayerCharacterID, ItemID, (DG_ItemObject.ItemQualityLevels)ItemQuality, false))
         {
-            QuickFind.NetworkSync.RemoveNetworkSceneObject(QuickFind.NetworkSync.CurrentScene, NO.NetworkObjectID);
-
-            DG_ItemObject IO = QuickFind.ItemDatabase.GetItemFromID(NO.ItemRefID);
+            QuickFind.NetworkSync.RemoveNetworkSceneObject(QuickFind.NetworkSync.CurrentScene, NO.NetworkObjectID);         
             //Pick Up Herb
             if (IO.ItemCat == DG_ItemObject.ItemCatagory.Herb)
                 QuickFind.SkillTracker.IncreaseSkillLevel(DG_SkillTracker.SkillTags.Foraging, DG_ItemObject.ItemQualityLevels.Normal);
@@ -77,52 +72,45 @@ public class DG_InteractHandler : MonoBehaviour
         QuickFind.StorageUI.OpenStorageUI(NO, false);
     }
 
-    void HandleClusterPick(DG_ContextObject CO, DG_ContextObject.ContextTypes Type)
+    public void HandleClusterHarvest(DG_ContextObject CO)
     {
         NetworkObject NO = QuickFind.NetworkObjectManager.ScanUpTree(CO.transform);
         DG_ItemObject IO = QuickFind.ItemDatabase.GetItemFromID(NO.ItemRefID);
+        int SceneID = QuickFind.NetworkSync.CurrentScene;
 
-        if (Type == DG_ContextObject.ContextTypes.Pick_And_Break)
+        DG_BreakableObjectItem BOI = QuickFind.BreakableObjectsCompendium.GetItemFromID(IO.HarvestClusterIndex);
+        DG_BreakableObjectItem.ItemClump[] IC = BOI.GetBreakReward();
+
+        DG_ScatterPointReference SPR = CO.GetComponent<DG_ScatterPointReference>();
+
+        for (int i = 0; i < IC.Length; i++)
         {
-            DG_ItemObject.Environment E = IO.EnvironmentValues[0];
-            if (E.DropItemsOnInteract)
-            {
-                int SceneID = QuickFind.NetworkSync.CurrentScene;
-                DG_BreakableObjectItem BOI = QuickFind.BreakableObjectsCompendium.GetItemFromID(E.InteractDropID);
-                DG_BreakableObjectItem.ItemClump[] IC = BOI.GetBreakReward();
-
-                for (int i = 0; i < IC.Length; i++)
-                {
-                    DG_BreakableObjectItem.ItemClump Clump = IC[i];
-                    for (int iN = 0; iN < Clump.Value; iN++)
-                        QuickFind.NetworkObjectManager.CreateNetSceneObject(SceneID, Clump.ItemID, Clump.ItemQuality, CO.GetSpawnPoint(), 0, true, CO.RandomVelocity());
-                }
-            }
-            Growable G = NO.transform.GetChild(0).GetComponent<Growable>();
-            G.Harvest();
+            DG_BreakableObjectItem.ItemClump Clump = IC[i];
+            for (int iN = 0; iN < Clump.Value; iN++)
+                QuickFind.NetworkObjectManager.CreateNetSceneObject(SceneID, Clump.ItemID, Clump.ItemQuality, SPR.GetSpawnPoint(), 0, true, SPR.RandomVelocity());
         }
-        else if(Type == DG_ContextObject.ContextTypes.PickOnly)
+
+        QuickFind.NetworkGrowthHandler.Harvest(NO, IO, SceneID);
+    }
+    public void HandleSingleHarvest(DG_ContextObject CO)
+    {
+        NetworkObject NO = QuickFind.NetworkObjectManager.ScanUpTree(CO.transform);
+        DG_ItemObject IO = QuickFind.ItemDatabase.GetItemFromID(NO.ItemRefID);
+        int SceneID = QuickFind.NetworkSync.CurrentScene;
+        int ItemID = IO.HarvestItemIndex;
+
+        int ItemQuality = NO.ItemQualityLevel;
+        if (QuickFind.InventoryManager.AddItemToRucksack(QuickFind.NetworkSync.PlayerCharacterID, ItemID, (DG_ItemObject.ItemQualityLevels)ItemQuality, false))
         {
-            int ItemID;
-            if (!CO.ThisIsGrowthItem)
-                ItemID = NO.ItemRefID;
-            else
-                ItemID = CO.ContextID;
+            QuickFind.NetworkGrowthHandler.Harvest(NO, IO, SceneID);
 
-            int ItemQuality = NO.ItemQualityLevel;
-            if (QuickFind.InventoryManager.AddItemToRucksack(QuickFind.NetworkSync.PlayerCharacterID, ItemID, (DG_ItemObject.ItemQualityLevels)ItemQuality, false))
-            {
-                QuickFind.NetworkSync.RemoveNetworkSceneObject(QuickFind.NetworkSync.CurrentScene, NO.NetworkObjectID);
-                Growable G = NO.transform.GetChild(0).GetComponent<Growable>();
-                G.Harvest();
-
-                if (IO.ItemCat != DG_ItemObject.ItemCatagory.Resource)
-                    QuickFind.SkillTracker.IncreaseSkillLevel(DG_SkillTracker.SkillTags.Farming, (DG_ItemObject.ItemQualityLevels)ItemQuality);
-            }
+            if (IO.ItemCat != DG_ItemObject.ItemCatagory.Resource)
+                QuickFind.SkillTracker.IncreaseSkillLevel(DG_SkillTracker.SkillTags.Farming, (DG_ItemObject.ItemQualityLevels)ItemQuality);
         }
     }
     void HandleShopInterface(DG_ContextObject CO)
     {
-        QuickFind.ShopGUI.OpenShopUI(CO.ContextID);
+        DG_ShopInteractionPoint SIP = CO.GetComponent<DG_ShopInteractionPoint>();
+        QuickFind.ShopGUI.OpenShopUI(SIP.ShopID);
     }
 }

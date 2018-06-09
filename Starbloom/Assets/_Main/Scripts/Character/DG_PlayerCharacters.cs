@@ -5,6 +5,10 @@ using Sirenix.OdinInspector;
 
 public class DG_PlayerCharacters : MonoBehaviour {
 
+
+    private void Awake() { QuickFind.Farm = this; }
+
+
     [System.Serializable]
     public class PlayerCharacter
     {
@@ -21,6 +25,9 @@ public class DG_PlayerCharacters : MonoBehaviour {
 
         [Header("Equipment")]
         public CharacterEquipment Equipment;
+
+        [Header("Discovered")]
+        public int[] CraftsDiscovered;
 
         [Header("Acheivements")]
         public CharacterAchievements Acheivements;
@@ -49,7 +56,6 @@ public class DG_PlayerCharacters : MonoBehaviour {
         public int TomorrowWeather;
         public int TwoDayAwayWeather;
     }
-
 
     [System.Serializable]
     public class NonCombatSkills
@@ -125,8 +131,6 @@ public class DG_PlayerCharacters : MonoBehaviour {
 
 
 
-
-
     public string FarmName;
     public int SharedMoney;
     public int Year;
@@ -142,8 +146,6 @@ public class DG_PlayerCharacters : MonoBehaviour {
 
 
 
-    private void Awake()
-    {
-        QuickFind.Farm = this;
-    }
+
+
 }

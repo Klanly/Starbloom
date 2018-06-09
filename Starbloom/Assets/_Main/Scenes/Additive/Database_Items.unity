@@ -184,7 +184,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 35102
+  instanceID: 79476
 --- !u!1 &18402820
 GameObject:
   m_ObjectHideFlags: 0
@@ -256,7 +256,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 35110
+  instanceID: 79484
 --- !u!1 &37325301
 GameObject:
   m_ObjectHideFlags: 0
@@ -330,7 +330,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 35118
+  instanceID: 79492
 --- !u!1 &41691071
 GameObject:
   m_ObjectHideFlags: 0
@@ -373,7 +373,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 35124
+  instanceID: 79498
 --- !u!114 &41691074
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -385,6 +385,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc1a46eca4a35e5498f3df297015210f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DatabaseUsesNameInsteadOfPrefab: 0
   Name: Cabbage
   MaxStackSize: 999
   ActivateableType: 4
@@ -398,7 +399,7 @@ MonoBehaviour:
   DatabaseID: 32
   LockItem: 1
   Icon: {fileID: 21300000, guid: 8ed2f28f859af804cacddd6b3febb490, type: 3}
-  ModelPrefab: {fileID: 1575849893228066, guid: 441ade5dab12ef344af9b2dcb1aa5bf2,
+  ModelPrefab: {fileID: 1575849893228066, guid: 45f56835abac67e47826fbd8f6de3834,
     type: 2}
   DefaultScale: 1
   isTool: 0
@@ -437,10 +438,16 @@ MonoBehaviour:
   isStorage: 0
   StorageList: []
   isGrowableItem: 0
+  IsWaterable: 0
   RequireTilledEarth: 0
-  PreviewItem: {fileID: 0}
-  isEnvironment: 0
+  ResetIndex: 0
+  BreakIndex: 0
+  GrowthStages: []
+  isBreakable: 0
   EnvironmentValues: []
+  HarvestableItem: 0
+  HarvestItemIndex: 0
+  HarvestClusterIndex: 0
 --- !u!1 &49813768
 GameObject:
   m_ObjectHideFlags: 0
@@ -452,7 +459,7 @@ GameObject:
   - component: {fileID: 49813770}
   - component: {fileID: 49813771}
   m_Layer: 0
-  m_Name: 24 - Broccoli
+  m_Name: 24 - Broccoli Plant
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -469,7 +476,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1330787845}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &49813770
 MonoBehaviour:
@@ -483,7 +490,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 35132
+  instanceID: 79506
 --- !u!114 &49813771
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -495,7 +502,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc1a46eca4a35e5498f3df297015210f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: Broccoli Seeds
+  DatabaseUsesNameInsteadOfPrefab: 1
+  Name: Broccoli Plant
   MaxStackSize: 999
   ActivateableType: 5
   DestroysSoilOnPlacement: 0
@@ -508,7 +516,7 @@ MonoBehaviour:
   DatabaseID: 24
   LockItem: 1
   Icon: {fileID: 21300000, guid: 098553cd6855ce6419b2dfcbccb9e0cf, type: 3}
-  ModelPrefab: {fileID: 1979187556760150, guid: 9342e41ab056e0243877631dccfeea7a,
+  ModelPrefab: {fileID: 1266158092570826, guid: a072d96a8e735404f8b0cff6064c6167,
     type: 2}
   DefaultScale: 1
   isTool: 0
@@ -526,23 +534,32 @@ MonoBehaviour:
   isStorage: 0
   StorageList: []
   isGrowableItem: 1
+  IsWaterable: 1
   RequireTilledEarth: 1
-  PreviewItem: {fileID: 1266158092570826, guid: a072d96a8e735404f8b0cff6064c6167,
-    type: 2}
-  isEnvironment: 1
+  ResetIndex: 0
+  BreakIndex: 0
+  GrowthStages:
+  - GrowthLevelRequired: 0
+    StagePrefabReference: {fileID: 1266158092570826, guid: a072d96a8e735404f8b0cff6064c6167,
+      type: 2}
+  - GrowthLevelRequired: 1
+    StagePrefabReference: {fileID: 1666546217561844, guid: e030b8e5411e0ad4ca5912f642394ba7,
+      type: 2}
+  - GrowthLevelRequired: 2
+    StagePrefabReference: {fileID: 1090377704027090, guid: 5d1a54d769ec6e342ba2e5fdadebd658,
+      type: 2}
+  - GrowthLevelRequired: 3
+    StagePrefabReference: {fileID: 1091118381695534, guid: 33a44360c1686094ba7a7073eeb587a6,
+      type: 2}
+  isBreakable: 0
   EnvironmentValues:
-  - IsWaterable: 1
-    IsBreakable: 0
-    ObjectType: 1
+  - OnHitFXType: 0
     ActivateableTypeRequired: 1
     QualityLevelRequired: 0
     ObjectHealth: 15
-    DropItemsOnBreak: 0
-    BreakableAtlasID: 0
-    DropItemsOnInteract: 0
-    InteractDropID: 1
-    SwapItemOnBreak: 0
-    SwapID: 0
+  HarvestableItem: 1
+  HarvestItemIndex: 29
+  HarvestClusterIndex: 0
 --- !u!1 &50282250
 GameObject:
   m_ObjectHideFlags: 0
@@ -614,7 +631,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 35142
+  instanceID: 79516
 --- !u!1 &62073040
 GameObject:
   m_ObjectHideFlags: 0
@@ -686,7 +703,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 35150
+  instanceID: 79524
 --- !u!1 &74907970
 GameObject:
   m_ObjectHideFlags: 0
@@ -758,7 +775,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 35158
+  instanceID: 79532
 --- !u!1 &76152370
 GameObject:
   m_ObjectHideFlags: 0
@@ -831,7 +848,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 35166
+  instanceID: 79540
 --- !u!1 &81693793
 GameObject:
   m_ObjectHideFlags: 0
@@ -903,7 +920,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 35174
+  instanceID: 79548
 --- !u!1 &88464733
 GameObject:
   m_ObjectHideFlags: 0
@@ -971,7 +988,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 6
-  instanceID: 35182
+  instanceID: 79556
 --- !u!1 &97403835
 GameObject:
   m_ObjectHideFlags: 0
@@ -1043,7 +1060,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 35190
+  instanceID: 79564
 --- !u!1 &97753043
 GameObject:
   m_ObjectHideFlags: 0
@@ -1076,7 +1093,7 @@ Transform:
   - {fileID: 911112102}
   - {fileID: 1637135973}
   m_Father: {fileID: 98179532}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &98179530
 GameObject:
@@ -1143,7 +1160,8 @@ MonoBehaviour:
   - {fileID: 41691074}
   - {fileID: 1254369948}
   - {fileID: 664644634}
-  ListCount: 35
+  - {fileID: 2007011314}
+  ListCount: 36
   PreMagneticObjectWaitTimer: 0.5
   GenericIconList:
   - ItemName: Health
@@ -1193,6 +1211,7 @@ Transform:
   m_Children:
   - {fileID: 289748391}
   - {fileID: 1330787845}
+  - {fileID: 628325961}
   - {fileID: 1450680410}
   - {fileID: 1215626843}
   - {fileID: 1405799090}
@@ -1297,7 +1316,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 35212
+  instanceID: 79586
 --- !u!1 &108958417
 GameObject:
   m_ObjectHideFlags: 0
@@ -1369,7 +1388,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 35220
+  instanceID: 79594
 --- !u!1 &109069266
 GameObject:
   m_ObjectHideFlags: 0
@@ -1441,7 +1460,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 35228
+  instanceID: 79602
 --- !u!1 &111903024
 GameObject:
   m_ObjectHideFlags: 0
@@ -1513,7 +1532,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 35236
+  instanceID: 79610
 --- !u!1 &113020234
 GameObject:
   m_ObjectHideFlags: 0
@@ -1542,7 +1561,7 @@ Transform:
   - {fileID: 275336178}
   - {fileID: 413799161}
   m_Father: {fileID: 98179532}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &113280555
 GameObject:
@@ -1615,7 +1634,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 35248
+  instanceID: 79622
 --- !u!1 &118947720
 GameObject:
   m_ObjectHideFlags: 0
@@ -1689,7 +1708,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 35256
+  instanceID: 79630
 --- !u!1 &125984543
 GameObject:
   m_ObjectHideFlags: 0
@@ -1732,7 +1751,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 35262
+  instanceID: 79636
 --- !u!114 &125984546
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1833,7 +1852,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 35272
+  instanceID: 79646
 --- !u!1 &146695317
 GameObject:
   m_ObjectHideFlags: 0
@@ -1905,7 +1924,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 35280
+  instanceID: 79654
 --- !u!1 &148355567
 GameObject:
   m_ObjectHideFlags: 0
@@ -1938,7 +1957,7 @@ Transform:
   - {fileID: 734868827}
   - {fileID: 2075862850}
   m_Father: {fileID: 1337974348}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &152267086
 GameObject:
@@ -2011,7 +2030,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 35292
+  instanceID: 79666
 --- !u!1 &180225645
 GameObject:
   m_ObjectHideFlags: 0
@@ -2044,7 +2063,7 @@ Transform:
   - {fileID: 1151417058}
   - {fileID: 1117581184}
   m_Father: {fileID: 1337974348}
-  m_RootOrder: 14
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &187649276
 GameObject:
@@ -2081,7 +2100,7 @@ Transform:
   - {fileID: 1610581555}
   - {fileID: 1563600520}
   m_Father: {fileID: 1337974348}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &202844937
 GameObject:
@@ -2154,7 +2173,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 35308
+  instanceID: 79682
 --- !u!1 &206279743
 GameObject:
   m_ObjectHideFlags: 0
@@ -2226,7 +2245,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 35316
+  instanceID: 79690
 --- !u!1 &207424871
 GameObject:
   m_ObjectHideFlags: 0
@@ -2298,7 +2317,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 35324
+  instanceID: 79698
 --- !u!1 &233886828
 GameObject:
   m_ObjectHideFlags: 0
@@ -2370,7 +2389,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 35332
+  instanceID: 79706
 --- !u!1 &237396867
 GameObject:
   m_ObjectHideFlags: 0
@@ -2398,8 +2417,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1297176233}
-  m_RootOrder: 4
+  m_Father: {fileID: 1150511934}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &237396869
 MonoBehaviour:
@@ -2442,7 +2461,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 35340
+  instanceID: 79714
 --- !u!1 &242617541
 GameObject:
   m_ObjectHideFlags: 0
@@ -2514,7 +2533,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 35348
+  instanceID: 79722
 --- !u!1 &242946780
 GameObject:
   m_ObjectHideFlags: 0
@@ -2525,7 +2544,7 @@ GameObject:
   - component: {fileID: 242946782}
   - component: {fileID: 242946783}
   m_Layer: 0
-  m_Name: Shop Type Atlas
+  m_Name: Shop Type Dictionary
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2630,7 +2649,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 35362
+  instanceID: 79736
+--- !u!1 &257731751
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 257731752}
+  m_Layer: 0
+  m_Name: Item - Resources
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &257731752
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 257731751}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 2140217086}
+  - {fileID: 369462728}
+  m_Father: {fileID: 1337974348}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &269337485
 GameObject:
   m_ObjectHideFlags: 0
@@ -2702,7 +2751,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 35370
+  instanceID: 79748
 --- !u!1 &275336175
 GameObject:
   m_ObjectHideFlags: 0
@@ -2731,6 +2780,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc1a46eca4a35e5498f3df297015210f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DatabaseUsesNameInsteadOfPrefab: 0
   Name: Dirt Mound
   MaxStackSize: 1
   ActivateableType: 5
@@ -2754,23 +2804,21 @@ MonoBehaviour:
   ItemQualities: []
   isStorage: 0
   StorageList: []
-  isGrowableItem: 0
+  isGrowableItem: 1
+  IsWaterable: 1
   RequireTilledEarth: 0
-  PreviewItem: {fileID: 0}
-  isEnvironment: 1
+  ResetIndex: 0
+  BreakIndex: 0
+  GrowthStages: []
+  isBreakable: 0
   EnvironmentValues:
-  - IsWaterable: 1
-    IsBreakable: 0
-    ObjectType: 0
+  - OnHitFXType: 0
     ActivateableTypeRequired: 0
     QualityLevelRequired: 0
     ObjectHealth: 0
-    DropItemsOnBreak: 0
-    BreakableAtlasID: 0
-    DropItemsOnInteract: 0
-    InteractDropID: 0
-    SwapItemOnBreak: 0
-    SwapID: 0
+  HarvestableItem: 0
+  HarvestItemIndex: 0
+  HarvestClusterIndex: 0
 --- !u!114 &275336177
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2783,7 +2831,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 35376
+  instanceID: 79754
 --- !u!4 &275336178
 Transform:
   m_ObjectHideFlags: 0
@@ -2901,7 +2949,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 35390
+  instanceID: 79768
 --- !u!1 &337637629
 GameObject:
   m_ObjectHideFlags: 0
@@ -2973,7 +3021,69 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 35398
+  instanceID: 79776
+--- !u!1 &344529163
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 344529164}
+  - component: {fileID: 344529166}
+  - component: {fileID: 344529165}
+  m_Layer: 0
+  m_Name: 0 - Storage Chest
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &344529164
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 344529163}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 733344064}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &344529165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 344529163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fec416fbe71013d4ca8f38d07a1580c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DatabaseID: 0
+  LockItem: 1
+  Name: Storage Chest
+  ItemCreatedRef: 10
+  IngredientList:
+  - Name: 35 - Spruce Log
+    ItemDatabaseRef: 35
+    Value: 50
+--- !u!114 &344529166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 344529163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 8
+  instanceID: 79784
 --- !u!1 &359713187
 GameObject:
   m_ObjectHideFlags: 0
@@ -3002,6 +3112,78 @@ Transform:
   - {fileID: 1879222548}
   m_Father: {fileID: 242946782}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &369462725
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 369462728}
+  - component: {fileID: 369462727}
+  - component: {fileID: 369462726}
+  m_Layer: 0
+  m_Name: 123 - Wood
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &369462726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 369462725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 766834c6f2c9cf243ab3296f4a43ade1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DatabaseID: 123
+  LockItem: 1
+  DevNotes: 8 - Herb_PoisifferousRoiler
+  TextValues:
+  - Language: 0
+    stringEntry: Wood
+  - Language: 1
+    stringEntry: 
+  - Language: 2
+    stringEntry: 
+  - Language: 3
+    stringEntry: 
+  - Language: 4
+    stringEntry: 
+  - Language: 5
+    stringEntry: 
+  - Language: 6
+    stringEntry: 
+--- !u!114 &369462727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 369462725}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 3
+  instanceID: 79794
+--- !u!4 &369462728
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 369462725}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 257731752}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &386247815
 GameObject:
@@ -3074,7 +3256,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 35410
+  instanceID: 79804
 --- !u!1 &393570843
 GameObject:
   m_ObjectHideFlags: 0
@@ -3146,7 +3328,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 35418
+  instanceID: 79812
 --- !u!1 &412881067
 GameObject:
   m_ObjectHideFlags: 0
@@ -3218,7 +3400,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 35426
+  instanceID: 79820
 --- !u!1 &413799158
 GameObject:
   m_ObjectHideFlags: 0
@@ -3247,6 +3429,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc1a46eca4a35e5498f3df297015210f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DatabaseUsesNameInsteadOfPrefab: 0
   Name: Breakable Rock
   MaxStackSize: 1
   ActivateableType: 5
@@ -3270,22 +3453,20 @@ MonoBehaviour:
   isStorage: 0
   StorageList: []
   isGrowableItem: 0
+  IsWaterable: 0
   RequireTilledEarth: 0
-  PreviewItem: {fileID: 0}
-  isEnvironment: 1
+  ResetIndex: 0
+  BreakIndex: 0
+  GrowthStages: []
+  isBreakable: 1
   EnvironmentValues:
-  - IsWaterable: 0
-    IsBreakable: 1
-    ObjectType: 0
+  - OnHitFXType: 0
     ActivateableTypeRequired: 0
     QualityLevelRequired: 0
     ObjectHealth: 15
-    DropItemsOnBreak: 1
-    BreakableAtlasID: 0
-    DropItemsOnInteract: 0
-    InteractDropID: 0
-    SwapItemOnBreak: 0
-    SwapID: 0
+  HarvestableItem: 0
+  HarvestItemIndex: 0
+  HarvestClusterIndex: 0
 --- !u!114 &413799160
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3298,7 +3479,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 35432
+  instanceID: 79826
 --- !u!4 &413799161
 Transform:
   m_ObjectHideFlags: 0
@@ -3383,7 +3564,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 35442
+  instanceID: 79836
 --- !u!1 &455383455
 GameObject:
   m_ObjectHideFlags: 0
@@ -3455,7 +3636,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 35450
+  instanceID: 79844
 --- !u!1 &472164502
 GameObject:
   m_ObjectHideFlags: 0
@@ -3527,7 +3708,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 35458
+  instanceID: 79852
 --- !u!1 &477749471
 GameObject:
   m_ObjectHideFlags: 0
@@ -3570,7 +3751,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 35464
+  instanceID: 79858
 --- !u!114 &477749474
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3582,6 +3763,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc1a46eca4a35e5498f3df297015210f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DatabaseUsesNameInsteadOfPrefab: 0
   Name: Cabbage
   MaxStackSize: 999
   ActivateableType: 4
@@ -3595,7 +3777,7 @@ MonoBehaviour:
   DatabaseID: 30
   LockItem: 1
   Icon: {fileID: 21300000, guid: 98cc2de92c4d1d24b8726fe8c190e125, type: 3}
-  ModelPrefab: {fileID: 1408907112761738, guid: d689c4624de1b144d953ae7c6658ee13,
+  ModelPrefab: {fileID: 1408907112761738, guid: e9202c3885ecbb849a41918c9700d358,
     type: 2}
   DefaultScale: 1
   isTool: 0
@@ -3634,10 +3816,16 @@ MonoBehaviour:
   isStorage: 0
   StorageList: []
   isGrowableItem: 0
+  IsWaterable: 0
   RequireTilledEarth: 0
-  PreviewItem: {fileID: 0}
-  isEnvironment: 0
+  ResetIndex: 0
+  BreakIndex: 0
+  GrowthStages: []
+  isBreakable: 0
   EnvironmentValues: []
+  HarvestableItem: 0
+  HarvestItemIndex: 0
+  HarvestClusterIndex: 0
 --- !u!1 &486141672
 GameObject:
   m_ObjectHideFlags: 0
@@ -3709,7 +3897,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 35474
+  instanceID: 79868
 --- !u!1 &496052511
 GameObject:
   m_ObjectHideFlags: 0
@@ -3781,7 +3969,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 35482
+  instanceID: 79876
 --- !u!1 &523401138
 GameObject:
   m_ObjectHideFlags: 0
@@ -3823,6 +4011,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc1a46eca4a35e5498f3df297015210f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DatabaseUsesNameInsteadOfPrefab: 0
   Name: Pickaxe
   MaxStackSize: 1
   ActivateableType: 0
@@ -3882,10 +4071,16 @@ MonoBehaviour:
   isStorage: 0
   StorageList: []
   isGrowableItem: 0
+  IsWaterable: 0
   RequireTilledEarth: 0
-  PreviewItem: {fileID: 0}
-  isEnvironment: 0
+  ResetIndex: 0
+  BreakIndex: 0
+  GrowthStages: []
+  isBreakable: 0
   EnvironmentValues: []
+  HarvestableItem: 0
+  HarvestItemIndex: 0
+  HarvestClusterIndex: 0
 --- !u!114 &523401141
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3898,7 +4093,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 35490
+  instanceID: 79884
 --- !u!1 &527002840
 GameObject:
   m_ObjectHideFlags: 0
@@ -3970,7 +4165,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 35498
+  instanceID: 79892
 --- !u!1 &568888680
 GameObject:
   m_ObjectHideFlags: 0
@@ -4025,7 +4220,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 6
-  instanceID: 35504
+  instanceID: 79898
 --- !u!4 &568888683
 Transform:
   m_ObjectHideFlags: 0
@@ -4110,7 +4305,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 35514
+  instanceID: 79908
 --- !u!1 &604142826
 GameObject:
   m_ObjectHideFlags: 0
@@ -4184,7 +4379,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 35522
+  instanceID: 79916
 --- !u!1 &607181675
 GameObject:
   m_ObjectHideFlags: 0
@@ -4256,7 +4451,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 35530
+  instanceID: 79924
 --- !u!1 &619036614
 GameObject:
   m_ObjectHideFlags: 0
@@ -4285,6 +4480,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc1a46eca4a35e5498f3df297015210f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DatabaseUsesNameInsteadOfPrefab: 0
   Name: Poisifferous Roiler
   MaxStackSize: 999
   ActivateableType: 4
@@ -4336,10 +4532,16 @@ MonoBehaviour:
   isStorage: 0
   StorageList: []
   isGrowableItem: 0
+  IsWaterable: 0
   RequireTilledEarth: 0
-  PreviewItem: {fileID: 0}
-  isEnvironment: 0
+  ResetIndex: 0
+  BreakIndex: 0
+  GrowthStages: []
+  isBreakable: 0
   EnvironmentValues: []
+  HarvestableItem: 1
+  HarvestItemIndex: 8
+  HarvestClusterIndex: 0
 --- !u!114 &619036616
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4352,7 +4554,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 35536
+  instanceID: 79930
 --- !u!4 &619036617
 Transform:
   m_ObjectHideFlags: 0
@@ -4364,6 +4566,35 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1215626843}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &628325960
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 628325961}
+  m_Layer: 0
+  m_Name: Growable Trees
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &628325961
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 628325960}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1343751718}
+  m_Father: {fileID: 98179532}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &630922423
@@ -4407,6 +4638,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc1a46eca4a35e5498f3df297015210f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DatabaseUsesNameInsteadOfPrefab: 0
   Name: Cabbage
   MaxStackSize: 999
   ActivateableType: 4
@@ -4459,10 +4691,16 @@ MonoBehaviour:
   isStorage: 0
   StorageList: []
   isGrowableItem: 0
+  IsWaterable: 0
   RequireTilledEarth: 0
-  PreviewItem: {fileID: 0}
-  isEnvironment: 0
+  ResetIndex: 0
+  BreakIndex: 0
+  GrowthStages: []
+  isBreakable: 0
   EnvironmentValues: []
+  HarvestableItem: 0
+  HarvestItemIndex: 0
+  HarvestClusterIndex: 0
 --- !u!114 &630922426
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4475,7 +4713,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 35546
+  instanceID: 79944
 --- !u!1 &631133481
 GameObject:
   m_ObjectHideFlags: 0
@@ -4504,6 +4742,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc1a46eca4a35e5498f3df297015210f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DatabaseUsesNameInsteadOfPrefab: 0
   Name: Fish
   MaxStackSize: 999
   ActivateableType: 4
@@ -4556,10 +4795,16 @@ MonoBehaviour:
   StorageList:
   - TotalStorageSlots: 36
   isGrowableItem: 0
+  IsWaterable: 0
   RequireTilledEarth: 0
-  PreviewItem: {fileID: 0}
-  isEnvironment: 0
+  ResetIndex: 0
+  BreakIndex: 0
+  GrowthStages: []
+  isBreakable: 0
   EnvironmentValues: []
+  HarvestableItem: 0
+  HarvestItemIndex: 0
+  HarvestClusterIndex: 0
 --- !u!114 &631133483
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4572,7 +4817,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 35552
+  instanceID: 79950
 --- !u!4 &631133484
 Transform:
   m_ObjectHideFlags: 0
@@ -4585,6 +4830,50 @@ Transform:
   m_Children: []
   m_Father: {fileID: 97753044}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &641755808
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 641755810}
+  - component: {fileID: 641755809}
+  m_Layer: 0
+  m_Name: Crafting Dictionary
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &641755809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 641755808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bf0034556d739148b800106690931d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ItemCatagoryList:
+  - {fileID: 344529165}
+  ListCount: 1
+--- !u!4 &641755810
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 641755808}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1575.3969, y: 496.06357, z: 22.249454}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 733344064}
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &642408099
 GameObject:
@@ -4657,7 +4946,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 35562
+  instanceID: 79966
 --- !u!1 &664644633
 GameObject:
   m_ObjectHideFlags: 0
@@ -4669,7 +4958,7 @@ GameObject:
   - component: {fileID: 664644635}
   - component: {fileID: 664644634}
   m_Layer: 0
-  m_Name: 34 - BellPepper_Yellow_Lv3 (1)
+  m_Name: 34 - BellPepper_Yellow_Lv3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4686,6 +4975,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc1a46eca4a35e5498f3df297015210f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DatabaseUsesNameInsteadOfPrefab: 0
   Name: Cabbage
   MaxStackSize: 999
   ActivateableType: 4
@@ -4737,10 +5027,16 @@ MonoBehaviour:
   isStorage: 0
   StorageList: []
   isGrowableItem: 0
+  IsWaterable: 0
   RequireTilledEarth: 0
-  PreviewItem: {fileID: 0}
-  isEnvironment: 0
+  ResetIndex: 0
+  BreakIndex: 0
+  GrowthStages: []
+  isBreakable: 0
   EnvironmentValues: []
+  HarvestableItem: 0
+  HarvestItemIndex: 0
+  HarvestClusterIndex: 0
 --- !u!114 &664644635
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4753,7 +5049,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 35568
+  instanceID: 79972
 --- !u!4 &664644636
 Transform:
   m_ObjectHideFlags: 0
@@ -4797,7 +5093,7 @@ Transform:
   - {fileID: 1690898329}
   - {fileID: 527002841}
   m_Father: {fileID: 1337974348}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &676053776
 GameObject:
@@ -4827,6 +5123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc1a46eca4a35e5498f3df297015210f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DatabaseUsesNameInsteadOfPrefab: 0
   Name: Storage Chest
   MaxStackSize: 1
   ActivateableType: 5
@@ -4852,10 +5149,16 @@ MonoBehaviour:
   StorageList:
   - TotalStorageSlots: 36
   isGrowableItem: 0
+  IsWaterable: 0
   RequireTilledEarth: 0
-  PreviewItem: {fileID: 0}
-  isEnvironment: 0
+  ResetIndex: 0
+  BreakIndex: 0
+  GrowthStages: []
+  isBreakable: 0
   EnvironmentValues: []
+  HarvestableItem: 0
+  HarvestItemIndex: 0
+  HarvestClusterIndex: 0
 --- !u!114 &676053778
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4868,7 +5171,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 35580
+  instanceID: 79984
 --- !u!4 &676053779
 Transform:
   m_ObjectHideFlags: 0
@@ -4953,7 +5256,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 35590
+  instanceID: 79994
 --- !u!1 &694112714
 GameObject:
   m_ObjectHideFlags: 0
@@ -5025,7 +5328,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 35598
+  instanceID: 80002
+--- !u!1 &733344063
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 733344064}
+  m_Layer: 0
+  m_Name: Crafts
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &733344064
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 733344063}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 344529164}
+  m_Father: {fileID: 641755810}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &734868826
 GameObject:
   m_ObjectHideFlags: 0
@@ -5097,7 +5429,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 35606
+  instanceID: 80014
 --- !u!1 &737240873
 GameObject:
   m_ObjectHideFlags: 0
@@ -5169,7 +5501,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 35614
+  instanceID: 80022
 --- !u!1 &769028652
 GameObject:
   m_ObjectHideFlags: 0
@@ -5211,6 +5543,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc1a46eca4a35e5498f3df297015210f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DatabaseUsesNameInsteadOfPrefab: 0
   Name: Axe
   MaxStackSize: 1
   ActivateableType: 1
@@ -5270,10 +5603,16 @@ MonoBehaviour:
   isStorage: 0
   StorageList: []
   isGrowableItem: 0
+  IsWaterable: 0
   RequireTilledEarth: 0
-  PreviewItem: {fileID: 0}
-  isEnvironment: 0
+  ResetIndex: 0
+  BreakIndex: 0
+  GrowthStages: []
+  isBreakable: 0
   EnvironmentValues: []
+  HarvestableItem: 0
+  HarvestItemIndex: 0
+  HarvestClusterIndex: 0
 --- !u!114 &769028655
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5286,7 +5625,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 35622
+  instanceID: 80030
 --- !u!1 &782780638
 GameObject:
   m_ObjectHideFlags: 0
@@ -5329,7 +5668,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 35628
+  instanceID: 80036
 --- !u!114 &782780641
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5430,7 +5769,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 35638
+  instanceID: 80046
 --- !u!1 &828965505
 GameObject:
   m_ObjectHideFlags: 0
@@ -5502,7 +5841,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 35646
+  instanceID: 80054
 --- !u!1 &839248947
 GameObject:
   m_ObjectHideFlags: 0
@@ -5574,7 +5913,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 35654
+  instanceID: 80062
 --- !u!1 &846776802
 GameObject:
   m_ObjectHideFlags: 0
@@ -5646,7 +5985,75 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 35662
+  instanceID: 80070
+--- !u!1 &863140311
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 863140314}
+  - component: {fileID: 863140313}
+  - component: {fileID: 863140312}
+  m_Layer: 0
+  m_Name: 3 - Spruce Logs 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &863140312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 863140311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14c8a5c5360db50468011319fd8c89c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DatabaseID: 3
+  LockItem: 1
+  Name: Spruce Logs Trunk
+  RewardRolls:
+  - RollPercent: 0.2
+    ItemGifts:
+    - ItemID: 35
+      ItemQuality: 0
+      Value: 4
+  - RollPercent: 1
+    ItemGifts:
+    - ItemID: 35
+      ItemQuality: 0
+      Value: 8
+--- !u!114 &863140313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 863140311}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 6
+  instanceID: 80076
+--- !u!4 &863140314
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 863140311}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1259421160}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &869247364
 GameObject:
   m_ObjectHideFlags: 0
@@ -5689,7 +6096,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: -14573654
+  instanceID: 80084
 --- !u!114 &869247367
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5790,7 +6197,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 35670
+  instanceID: 80094
 --- !u!1 &889436591
 GameObject:
   m_ObjectHideFlags: 0
@@ -5833,7 +6240,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 35676
+  instanceID: 80100
 --- !u!114 &889436594
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5845,6 +6252,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc1a46eca4a35e5498f3df297015210f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DatabaseUsesNameInsteadOfPrefab: 0
   Name: Fish
   MaxStackSize: 999
   ActivateableType: 4
@@ -5897,10 +6305,16 @@ MonoBehaviour:
   StorageList:
   - TotalStorageSlots: 36
   isGrowableItem: 0
+  IsWaterable: 0
   RequireTilledEarth: 0
-  PreviewItem: {fileID: 0}
-  isEnvironment: 0
+  ResetIndex: 0
+  BreakIndex: 0
+  GrowthStages: []
+  isBreakable: 0
   EnvironmentValues: []
+  HarvestableItem: 0
+  HarvestItemIndex: 0
+  HarvestClusterIndex: 0
 --- !u!1 &903885948
 GameObject:
   m_ObjectHideFlags: 0
@@ -5972,7 +6386,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 35686
+  instanceID: 80110
 --- !u!1 &907308529
 GameObject:
   m_ObjectHideFlags: 0
@@ -5983,7 +6397,7 @@ GameObject:
   - component: {fileID: 907308530}
   - component: {fileID: 907308531}
   m_Layer: 0
-  m_Name: Cluster Rewards Atlas
+  m_Name: Cluster Rewards Dictionary
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6018,7 +6432,9 @@ MonoBehaviour:
   ItemCatagoryList:
   - {fileID: 88464735}
   - {fileID: 568888681}
-  ListCount: 2
+  - {fileID: 1037744384}
+  - {fileID: 863140312}
+  ListCount: 4
 --- !u!1 &911112101
 GameObject:
   m_ObjectHideFlags: 0
@@ -6061,7 +6477,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 35698
+  instanceID: 80122
 --- !u!114 &911112104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6073,6 +6489,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc1a46eca4a35e5498f3df297015210f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DatabaseUsesNameInsteadOfPrefab: 0
   Name: Fish
   MaxStackSize: 999
   ActivateableType: 4
@@ -6125,10 +6542,16 @@ MonoBehaviour:
   StorageList:
   - TotalStorageSlots: 36
   isGrowableItem: 0
+  IsWaterable: 0
   RequireTilledEarth: 0
-  PreviewItem: {fileID: 0}
-  isEnvironment: 0
+  ResetIndex: 0
+  BreakIndex: 0
+  GrowthStages: []
+  isBreakable: 0
   EnvironmentValues: []
+  HarvestableItem: 0
+  HarvestItemIndex: 0
+  HarvestClusterIndex: 0
 --- !u!1 &919782884
 GameObject:
   m_ObjectHideFlags: 0
@@ -6158,7 +6581,6 @@ Transform:
   - {fileID: 1367582964}
   - {fileID: 454701156}
   - {fileID: 108958418}
-  - {fileID: 2140217086}
   m_Father: {fileID: 1337974348}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6233,7 +6655,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 35712
+  instanceID: 80136
 --- !u!1 &946834387
 GameObject:
   m_ObjectHideFlags: 0
@@ -6305,7 +6727,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 35720
+  instanceID: 80144
 --- !u!1 &947853066
 GameObject:
   m_ObjectHideFlags: 0
@@ -6377,7 +6799,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 35728
+  instanceID: 80152
 --- !u!1 &983058082
 GameObject:
   m_ObjectHideFlags: 0
@@ -6436,7 +6858,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 35734
+  instanceID: 80158
 --- !u!4 &983058085
 Transform:
   m_ObjectHideFlags: 0
@@ -6521,7 +6943,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 35744
+  instanceID: 80168
 --- !u!1 &1001442999
 GameObject:
   m_ObjectHideFlags: 0
@@ -6593,7 +7015,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 35752
+  instanceID: 80176
 --- !u!1 &1026884239
 GameObject:
   m_ObjectHideFlags: 0
@@ -6605,7 +7027,7 @@ GameObject:
   - component: {fileID: 1026884241}
   - component: {fileID: 1026884240}
   m_Layer: 0
-  m_Name: 31 - Bell Pepper (Yellow)
+  m_Name: 31 - Bell Pepper Yellow Plant
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6622,7 +7044,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc1a46eca4a35e5498f3df297015210f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: Bell Pepper Orange Seeds
+  DatabaseUsesNameInsteadOfPrefab: 1
+  Name: Bell Pepper Yellow Plant
   MaxStackSize: 999
   ActivateableType: 5
   DestroysSoilOnPlacement: 0
@@ -6635,7 +7058,7 @@ MonoBehaviour:
   DatabaseID: 31
   LockItem: 1
   Icon: {fileID: 21300000, guid: 19581172c2b56b747a1ff8fffba36bb7, type: 3}
-  ModelPrefab: {fileID: 1342707268080538, guid: b2a733865f09f744ca48fd971f021782,
+  ModelPrefab: {fileID: 1288480301563340, guid: 02d06bdc07916a643b2ce1e7805323ce,
     type: 2}
   DefaultScale: 1
   isTool: 0
@@ -6653,23 +7076,28 @@ MonoBehaviour:
   isStorage: 0
   StorageList: []
   isGrowableItem: 1
+  IsWaterable: 1
   RequireTilledEarth: 1
-  PreviewItem: {fileID: 1288480301563340, guid: 02d06bdc07916a643b2ce1e7805323ce,
-    type: 2}
-  isEnvironment: 1
-  EnvironmentValues:
-  - IsWaterable: 1
-    IsBreakable: 0
-    ObjectType: 1
-    ActivateableTypeRequired: 1
-    QualityLevelRequired: 0
-    ObjectHealth: 15
-    DropItemsOnBreak: 0
-    BreakableAtlasID: 0
-    DropItemsOnInteract: 0
-    InteractDropID: 1
-    SwapItemOnBreak: 0
-    SwapID: 0
+  ResetIndex: 2
+  BreakIndex: 0
+  GrowthStages:
+  - GrowthLevelRequired: 0
+    StagePrefabReference: {fileID: 1288480301563340, guid: 02d06bdc07916a643b2ce1e7805323ce,
+      type: 2}
+  - GrowthLevelRequired: 1
+    StagePrefabReference: {fileID: 1838461022517622, guid: 71b3f810c2d3f47438f71a8aa1312d5c,
+      type: 2}
+  - GrowthLevelRequired: 2
+    StagePrefabReference: {fileID: 1989196727940694, guid: ef963a951e4e5bc438e1f49290d870ee,
+      type: 2}
+  - GrowthLevelRequired: 3
+    StagePrefabReference: {fileID: 1479496050413472, guid: 2670f590bd8bcdb47a42bf5e1c3b17a6,
+      type: 2}
+  isBreakable: 0
+  EnvironmentValues: []
+  HarvestableItem: 1
+  HarvestItemIndex: 34
+  HarvestClusterIndex: 0
 --- !u!114 &1026884241
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6682,7 +7110,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 35758
+  instanceID: 80182
 --- !u!4 &1026884242
 Transform:
   m_ObjectHideFlags: 0
@@ -6694,7 +7122,75 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1330787845}
-  m_RootOrder: 6
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1037744383
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1037744386}
+  - component: {fileID: 1037744385}
+  - component: {fileID: 1037744384}
+  m_Layer: 0
+  m_Name: 2 - Spruce Logs 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1037744384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1037744383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14c8a5c5360db50468011319fd8c89c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DatabaseID: 2
+  LockItem: 1
+  Name: Spruce Logs 1
+  RewardRolls:
+  - RollPercent: 0.2
+    ItemGifts:
+    - ItemID: 35
+      ItemQuality: 0
+      Value: 15
+  - RollPercent: 1
+    ItemGifts:
+    - ItemID: 35
+      ItemQuality: 0
+      Value: 10
+--- !u!114 &1037744385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1037744383}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 6
+  instanceID: 80190
+--- !u!4 &1037744386
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1037744383}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1259421160}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1042155235
 GameObject:
@@ -6767,7 +7263,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 35768
+  instanceID: 80200
 --- !u!1 &1053465270
 GameObject:
   m_ObjectHideFlags: 0
@@ -6839,7 +7335,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 35776
+  instanceID: 80208
 --- !u!1 &1069764471
 GameObject:
   m_ObjectHideFlags: 0
@@ -6872,7 +7368,7 @@ Transform:
   - {fileID: 1988801391}
   - {fileID: 1705398620}
   m_Father: {fileID: 1337974348}
-  m_RootOrder: 12
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1071378047
 GameObject:
@@ -6916,7 +7412,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: -14583306
+  instanceID: 80218
 --- !u!114 &1071378050
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7017,7 +7513,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 35788
+  instanceID: 80228
 --- !u!1 &1087104903
 GameObject:
   m_ObjectHideFlags: 0
@@ -7089,7 +7585,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 35796
+  instanceID: 80236
 --- !u!1 &1101497691
 GameObject:
   m_ObjectHideFlags: 0
@@ -7122,7 +7618,7 @@ Transform:
   - {fileID: 152267087}
   - {fileID: 947853067}
   m_Father: {fileID: 1337974348}
-  m_RootOrder: 13
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1117581183
 GameObject:
@@ -7195,7 +7691,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 35808
+  instanceID: 80248
 --- !u!1 &1118554396
 GameObject:
   m_ObjectHideFlags: 0
@@ -7254,7 +7750,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 35814
+  instanceID: 80254
 --- !u!4 &1118554399
 Transform:
   m_ObjectHideFlags: 0
@@ -7339,7 +7835,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 35824
+  instanceID: 80264
 --- !u!1 &1133565266
 GameObject:
   m_ObjectHideFlags: 0
@@ -7368,7 +7864,37 @@ Transform:
   - {fileID: 1470222517}
   - {fileID: 1528345311}
   m_Father: {fileID: 98179532}
-  m_RootOrder: 5
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1150511933
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1150511934}
+  m_Layer: 0
+  m_Name: Resource Descriptions
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1150511934
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1150511933}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 237396868}
+  - {fileID: 1547347344}
+  m_Father: {fileID: 1337974348}
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1151417057
 GameObject:
@@ -7441,7 +7967,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 35836
+  instanceID: 80280
 --- !u!1 &1215626842
 GameObject:
   m_ObjectHideFlags: 0
@@ -7471,7 +7997,7 @@ Transform:
   - {fileID: 1696380315}
   - {fileID: 619036617}
   m_Father: {fileID: 98179532}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1228010042
 GameObject:
@@ -7484,7 +8010,7 @@ GameObject:
   - component: {fileID: 1228010044}
   - component: {fileID: 1228010045}
   m_Layer: 0
-  m_Name: 25 - Carrot
+  m_Name: 25 - Carrot Plant
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7501,7 +8027,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1330787845}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1228010044
 MonoBehaviour:
@@ -7515,7 +8041,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 35846
+  instanceID: 80290
 --- !u!114 &1228010045
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7527,7 +8053,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc1a46eca4a35e5498f3df297015210f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: Carrot Seeds
+  DatabaseUsesNameInsteadOfPrefab: 1
+  Name: Carrot Plant
   MaxStackSize: 999
   ActivateableType: 5
   DestroysSoilOnPlacement: 0
@@ -7540,7 +8067,7 @@ MonoBehaviour:
   DatabaseID: 25
   LockItem: 1
   Icon: {fileID: 21300000, guid: dee5a078f314dd24db9d9d9ae7df8a69, type: 3}
-  ModelPrefab: {fileID: 1325620863379434, guid: 8daaecbc1a31cef4ab9f38da032e5036,
+  ModelPrefab: {fileID: 1266158092570826, guid: c826b54c257b8c14f8e2c8cb50b3d712,
     type: 2}
   DefaultScale: 1
   isTool: 0
@@ -7558,23 +8085,32 @@ MonoBehaviour:
   isStorage: 0
   StorageList: []
   isGrowableItem: 1
+  IsWaterable: 1
   RequireTilledEarth: 1
-  PreviewItem: {fileID: 1266158092570826, guid: c826b54c257b8c14f8e2c8cb50b3d712,
-    type: 2}
-  isEnvironment: 1
+  ResetIndex: 0
+  BreakIndex: 0
+  GrowthStages:
+  - GrowthLevelRequired: 0
+    StagePrefabReference: {fileID: 1266158092570826, guid: c826b54c257b8c14f8e2c8cb50b3d712,
+      type: 2}
+  - GrowthLevelRequired: 1
+    StagePrefabReference: {fileID: 1773957010297932, guid: 83b8da0c589aaea4d9ae759f2ef62e78,
+      type: 2}
+  - GrowthLevelRequired: 2
+    StagePrefabReference: {fileID: 1148948131236884, guid: 7862df04d7dc8fb4abfa69f487a55e31,
+      type: 2}
+  - GrowthLevelRequired: 3
+    StagePrefabReference: {fileID: 1408907112761738, guid: d689c4624de1b144d953ae7c6658ee13,
+      type: 2}
+  isBreakable: 0
   EnvironmentValues:
-  - IsWaterable: 1
-    IsBreakable: 0
-    ObjectType: 1
+  - OnHitFXType: 0
     ActivateableTypeRequired: 1
     QualityLevelRequired: 0
     ObjectHealth: 15
-    DropItemsOnBreak: 0
-    BreakableAtlasID: 0
-    DropItemsOnInteract: 0
-    InteractDropID: 1
-    SwapItemOnBreak: 0
-    SwapID: 0
+  HarvestableItem: 1
+  HarvestItemIndex: 30
+  HarvestClusterIndex: 0
 --- !u!1 &1238877021
 GameObject:
   m_ObjectHideFlags: 0
@@ -7646,7 +8182,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 35856
+  instanceID: 80300
 --- !u!1 &1254369945
 GameObject:
   m_ObjectHideFlags: 0
@@ -7658,7 +8194,7 @@ GameObject:
   - component: {fileID: 1254369947}
   - component: {fileID: 1254369948}
   m_Layer: 0
-  m_Name: 33 - BellPepper_Orange_Lv3 (1)
+  m_Name: 33 - BellPepper_Orange_Lv3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7689,7 +8225,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 35862
+  instanceID: 80306
 --- !u!114 &1254369948
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7701,6 +8237,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc1a46eca4a35e5498f3df297015210f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DatabaseUsesNameInsteadOfPrefab: 0
   Name: Cabbage
   MaxStackSize: 999
   ActivateableType: 4
@@ -7752,10 +8289,16 @@ MonoBehaviour:
   isStorage: 0
   StorageList: []
   isGrowableItem: 0
+  IsWaterable: 0
   RequireTilledEarth: 0
-  PreviewItem: {fileID: 0}
-  isEnvironment: 0
+  ResetIndex: 0
+  BreakIndex: 0
+  GrowthStages: []
+  isBreakable: 0
   EnvironmentValues: []
+  HarvestableItem: 0
+  HarvestItemIndex: 0
+  HarvestClusterIndex: 0
 --- !u!1 &1259421159
 GameObject:
   m_ObjectHideFlags: 0
@@ -7765,7 +8308,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1259421160}
   m_Layer: 0
-  m_Name: Rocks
+  m_Name: Resources
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7782,6 +8325,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 88464734}
+  - {fileID: 1037744386}
+  - {fileID: 863140314}
   m_Father: {fileID: 907308530}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7856,7 +8401,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 35876
+  instanceID: 80320
 --- !u!1 &1290746968
 GameObject:
   m_ObjectHideFlags: 0
@@ -7928,7 +8473,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 35884
+  instanceID: 80328
 --- !u!1 &1297176232
 GameObject:
   m_ObjectHideFlags: 0
@@ -7958,9 +8503,8 @@ Transform:
   - {fileID: 1369702742}
   - {fileID: 1997068650}
   - {fileID: 307170511}
-  - {fileID: 237396868}
   m_Father: {fileID: 1337974348}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1302384509
 GameObject:
@@ -7996,7 +8540,7 @@ Transform:
   - {fileID: 1072192233}
   - {fileID: 1995547179}
   m_Father: {fileID: 1337974348}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1308403043
 GameObject:
@@ -8069,7 +8613,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 35900
+  instanceID: 80344
 --- !u!1 &1315412316
 GameObject:
   m_ObjectHideFlags: 0
@@ -8141,7 +8685,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 35908
+  instanceID: 80352
 --- !u!1 &1322106185
 GameObject:
   m_ObjectHideFlags: 0
@@ -8152,7 +8696,7 @@ GameObject:
   - component: {fileID: 1322106186}
   - component: {fileID: 1322106187}
   m_Layer: 0
-  m_Name: Fish Atlas
+  m_Name: Fish Dictionary
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8231,6 +8775,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc1a46eca4a35e5498f3df297015210f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DatabaseUsesNameInsteadOfPrefab: 0
   Name: Dervish Root
   MaxStackSize: 999
   ActivateableType: 4
@@ -8282,10 +8827,16 @@ MonoBehaviour:
   isStorage: 0
   StorageList: []
   isGrowableItem: 0
+  IsWaterable: 0
   RequireTilledEarth: 0
-  PreviewItem: {fileID: 0}
-  isEnvironment: 0
+  ResetIndex: 0
+  BreakIndex: 0
+  GrowthStages: []
+  isBreakable: 0
   EnvironmentValues: []
+  HarvestableItem: 1
+  HarvestItemIndex: 6
+  HarvestClusterIndex: 0
 --- !u!114 &1328181119
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8298,7 +8849,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 35922
+  instanceID: 80366
 --- !u!1 &1329798022
 GameObject:
   m_ObjectHideFlags: 0
@@ -8370,7 +8921,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 35930
+  instanceID: 80374
 --- !u!1 &1330787844
 GameObject:
   m_ObjectHideFlags: 0
@@ -8396,7 +8947,6 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1343751718}
   - {fileID: 1714828755}
   - {fileID: 1228010043}
   - {fileID: 49813769}
@@ -8437,6 +8987,7 @@ Transform:
   m_Children:
   - {fileID: 1456541171}
   - {fileID: 919782885}
+  - {fileID: 257731752}
   - {fileID: 148355568}
   - {fileID: 1991773471}
   - {fileID: 672129053}
@@ -8447,6 +8998,7 @@ Transform:
   - {fileID: 1302384510}
   - {fileID: 187649277}
   - {fileID: 1297176233}
+  - {fileID: 1150511934}
   - {fileID: 1069764472}
   - {fileID: 1101497692}
   - {fileID: 180225646}
@@ -8590,7 +9142,9 @@ MonoBehaviour:
   - {fileID: 1071378050}
   - {fileID: 1988801393}
   - {fileID: 1705398618}
-  ListCount: 123
+  - {fileID: 369462726}
+  - {fileID: 1547347342}
+  ListCount: 125
 --- !u!114 &1337974350
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8639,7 +9193,7 @@ GameObject:
   - component: {fileID: 1343751717}
   - component: {fileID: 1343751716}
   m_Layer: 0
-  m_Name: 21 - TestTree
+  m_Name: 21 - Apple Tree
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8656,6 +9210,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc1a46eca4a35e5498f3df297015210f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DatabaseUsesNameInsteadOfPrefab: 1
   Name: Apple Tree
   MaxStackSize: 999
   ActivateableType: 5
@@ -8669,7 +9224,7 @@ MonoBehaviour:
   DatabaseID: 21
   LockItem: 1
   Icon: {fileID: 21300000, guid: 5c3d38af10825b04890a2523b53175e4, type: 3}
-  ModelPrefab: {fileID: 1721282356261930, guid: 045922c024be8824a9f93b1fa6305339,
+  ModelPrefab: {fileID: 1190082843462652, guid: 93873d1acf25077489740c84181ed113,
     type: 2}
   DefaultScale: 1
   isTool: 0
@@ -8687,23 +9242,35 @@ MonoBehaviour:
   isStorage: 0
   StorageList: []
   isGrowableItem: 1
+  IsWaterable: 0
   RequireTilledEarth: 0
-  PreviewItem: {fileID: 1190082843462652, guid: 93873d1acf25077489740c84181ed113,
-    type: 2}
-  isEnvironment: 1
+  ResetIndex: 3
+  BreakIndex: 3
+  GrowthStages:
+  - GrowthLevelRequired: 0
+    StagePrefabReference: {fileID: 1190082843462652, guid: 93873d1acf25077489740c84181ed113,
+      type: 2}
+  - GrowthLevelRequired: 1
+    StagePrefabReference: {fileID: 1856992669607788, guid: fc20f544ff2424749b61cc925c6981fd,
+      type: 2}
+  - GrowthLevelRequired: 2
+    StagePrefabReference: {fileID: 1777025865150944, guid: 196dc8bccdee87046be3a13bb397bb7a,
+      type: 2}
+  - GrowthLevelRequired: 3
+    StagePrefabReference: {fileID: 1459779756748382, guid: 4530528c3d0c56549b6b5863f959d73e,
+      type: 2}
+  - GrowthLevelRequired: 4
+    StagePrefabReference: {fileID: 1411329487874204, guid: b91929826d953fb4f998a8dbdfaa03f3,
+      type: 2}
+  isBreakable: 1
   EnvironmentValues:
-  - IsWaterable: 0
-    IsBreakable: 1
-    ObjectType: 1
+  - OnHitFXType: 1
     ActivateableTypeRequired: 1
     QualityLevelRequired: 0
     ObjectHealth: 15
-    DropItemsOnBreak: 0
-    BreakableAtlasID: 0
-    DropItemsOnInteract: 1
-    InteractDropID: 1
-    SwapItemOnBreak: 1
-    SwapID: 0
+  HarvestableItem: 1
+  HarvestItemIndex: 0
+  HarvestClusterIndex: 1
 --- !u!114 &1343751717
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8716,7 +9283,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 35950
+  instanceID: 80394
 --- !u!4 &1343751718
 Transform:
   m_ObjectHideFlags: 0
@@ -8727,7 +9294,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1330787845}
+  m_Father: {fileID: 628325961}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1345319859
@@ -8801,7 +9368,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 35960
+  instanceID: 80404
 --- !u!1 &1345506624
 GameObject:
   m_ObjectHideFlags: 0
@@ -8844,7 +9411,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 35966
+  instanceID: 80410
 --- !u!114 &1345506627
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8856,6 +9423,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc1a46eca4a35e5498f3df297015210f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DatabaseUsesNameInsteadOfPrefab: 0
   Name: Fish
   MaxStackSize: 999
   ActivateableType: 4
@@ -8908,10 +9476,16 @@ MonoBehaviour:
   StorageList:
   - TotalStorageSlots: 36
   isGrowableItem: 0
+  IsWaterable: 0
   RequireTilledEarth: 0
-  PreviewItem: {fileID: 0}
-  isEnvironment: 0
+  ResetIndex: 0
+  BreakIndex: 0
+  GrowthStages: []
+  isBreakable: 0
   EnvironmentValues: []
+  HarvestableItem: 0
+  HarvestItemIndex: 0
+  HarvestClusterIndex: 0
 --- !u!1 &1348481036
 GameObject:
   m_ObjectHideFlags: 0
@@ -9012,7 +9586,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 35980
+  instanceID: 80424
 --- !u!1 &1351259150
 GameObject:
   m_ObjectHideFlags: 0
@@ -9084,7 +9658,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 35988
+  instanceID: 80432
 --- !u!1 &1364082331
 GameObject:
   m_ObjectHideFlags: 0
@@ -9156,7 +9730,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 35996
+  instanceID: 80440
 --- !u!1 &1366259587
 GameObject:
   m_ObjectHideFlags: 0
@@ -9228,7 +9802,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 36004
+  instanceID: 80448
 --- !u!1 &1367582963
 GameObject:
   m_ObjectHideFlags: 0
@@ -9300,7 +9874,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 36012
+  instanceID: 80456
 --- !u!1 &1369702741
 GameObject:
   m_ObjectHideFlags: 0
@@ -9372,7 +9946,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 36020
+  instanceID: 80464
 --- !u!1 &1377290875
 GameObject:
   m_ObjectHideFlags: 0
@@ -9444,7 +10018,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 36028
+  instanceID: 80472
 --- !u!1 &1405183627
 GameObject:
   m_ObjectHideFlags: 0
@@ -9472,7 +10046,7 @@ Transform:
   m_Children:
   - {fileID: 676053779}
   m_Father: {fileID: 98179532}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1405799089
 GameObject:
@@ -9500,8 +10074,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1849541684}
+  - {fileID: 2007011313}
   m_Father: {fileID: 98179532}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1429960794
 GameObject:
@@ -9544,6 +10119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc1a46eca4a35e5498f3df297015210f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DatabaseUsesNameInsteadOfPrefab: 0
   Name: FishingPol
   MaxStackSize: 1
   ActivateableType: 3
@@ -9603,10 +10179,16 @@ MonoBehaviour:
   isStorage: 0
   StorageList: []
   isGrowableItem: 0
+  IsWaterable: 0
   RequireTilledEarth: 0
-  PreviewItem: {fileID: 0}
-  isEnvironment: 0
+  ResetIndex: 0
+  BreakIndex: 0
+  GrowthStages: []
+  isBreakable: 0
   EnvironmentValues: []
+  HarvestableItem: 0
+  HarvestItemIndex: 0
+  HarvestClusterIndex: 0
 --- !u!114 &1429960797
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9619,7 +10201,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 36044
+  instanceID: 80488
 --- !u!1 &1440713918
 GameObject:
   m_ObjectHideFlags: 0
@@ -9691,7 +10273,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 36052
+  instanceID: 80496
 --- !u!1 &1449750574
 GameObject:
   m_ObjectHideFlags: 0
@@ -9763,7 +10345,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 36060
+  instanceID: 80504
 --- !u!1 &1450680409
 GameObject:
   m_ObjectHideFlags: 0
@@ -9791,7 +10373,7 @@ Transform:
   m_Children:
   - {fileID: 1511745342}
   m_Father: {fileID: 98179532}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1454810876
 GameObject:
@@ -9835,7 +10417,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 36070
+  instanceID: 80514
 --- !u!114 &1454810879
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9907,7 +10489,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 36078
+  instanceID: 80522
 --- !u!114 &1456368176
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9919,6 +10501,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc1a46eca4a35e5498f3df297015210f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DatabaseUsesNameInsteadOfPrefab: 0
   Name: Cabbage
   MaxStackSize: 999
   ActivateableType: 4
@@ -9932,7 +10515,7 @@ MonoBehaviour:
   DatabaseID: 29
   LockItem: 1
   Icon: {fileID: 21300000, guid: c6fececd94b137a4e982a92b13570b0c, type: 3}
-  ModelPrefab: {fileID: 1091118381695534, guid: 33a44360c1686094ba7a7073eeb587a6,
+  ModelPrefab: {fileID: 1091118381695534, guid: e25c32ffc52b24e4e8b25d5483175459,
     type: 2}
   DefaultScale: 1
   isTool: 0
@@ -9971,10 +10554,16 @@ MonoBehaviour:
   isStorage: 0
   StorageList: []
   isGrowableItem: 0
+  IsWaterable: 0
   RequireTilledEarth: 0
-  PreviewItem: {fileID: 0}
-  isEnvironment: 0
+  ResetIndex: 0
+  BreakIndex: 0
+  GrowthStages: []
+  isBreakable: 0
   EnvironmentValues: []
+  HarvestableItem: 0
+  HarvestItemIndex: 0
+  HarvestClusterIndex: 0
 --- !u!1 &1456541170
 GameObject:
   m_ObjectHideFlags: 0
@@ -10084,7 +10673,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 36092
+  instanceID: 80536
 --- !u!1 &1470222514
 GameObject:
   m_ObjectHideFlags: 0
@@ -10113,6 +10702,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc1a46eca4a35e5498f3df297015210f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DatabaseUsesNameInsteadOfPrefab: 0
   Name: Apple
   MaxStackSize: 999
   ActivateableType: 4
@@ -10165,10 +10755,16 @@ MonoBehaviour:
   isStorage: 0
   StorageList: []
   isGrowableItem: 0
+  IsWaterable: 0
   RequireTilledEarth: 0
-  PreviewItem: {fileID: 0}
-  isEnvironment: 0
+  ResetIndex: 0
+  BreakIndex: 0
+  GrowthStages: []
+  isBreakable: 0
   EnvironmentValues: []
+  HarvestableItem: 0
+  HarvestItemIndex: 0
+  HarvestClusterIndex: 0
 --- !u!114 &1470222516
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10181,7 +10777,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 36098
+  instanceID: 80542
 --- !u!4 &1470222517
 Transform:
   m_ObjectHideFlags: 0
@@ -10266,7 +10862,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 36108
+  instanceID: 80552
 --- !u!1 &1488660083
 GameObject:
   m_ObjectHideFlags: 0
@@ -10301,7 +10897,7 @@ Transform:
   - {fileID: 1736991614}
   - {fileID: 62073041}
   m_Father: {fileID: 1337974348}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1490872495
 GameObject:
@@ -10374,7 +10970,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 36120
+  instanceID: 80564
 --- !u!1 &1502558389
 GameObject:
   m_ObjectHideFlags: 0
@@ -10403,6 +10999,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc1a46eca4a35e5498f3df297015210f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DatabaseUsesNameInsteadOfPrefab: 0
   Name: Watering Can
   MaxStackSize: 1
   ActivateableType: 6
@@ -10466,10 +11063,16 @@ MonoBehaviour:
   isStorage: 0
   StorageList: []
   isGrowableItem: 0
+  IsWaterable: 0
   RequireTilledEarth: 0
-  PreviewItem: {fileID: 0}
-  isEnvironment: 0
+  ResetIndex: 0
+  BreakIndex: 0
+  GrowthStages: []
+  isBreakable: 0
   EnvironmentValues: []
+  HarvestableItem: 0
+  HarvestItemIndex: 0
+  HarvestClusterIndex: 0
 --- !u!114 &1502558391
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10482,7 +11085,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 36126
+  instanceID: 80570
 --- !u!4 &1502558392
 Transform:
   m_ObjectHideFlags: 0
@@ -10524,6 +11127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc1a46eca4a35e5498f3df297015210f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DatabaseUsesNameInsteadOfPrefab: 0
   Name: Crispins Glove
   MaxStackSize: 999
   ActivateableType: 4
@@ -10575,10 +11179,16 @@ MonoBehaviour:
   isStorage: 0
   StorageList: []
   isGrowableItem: 0
+  IsWaterable: 0
   RequireTilledEarth: 0
-  PreviewItem: {fileID: 0}
-  isEnvironment: 0
+  ResetIndex: 0
+  BreakIndex: 0
+  GrowthStages: []
+  isBreakable: 0
   EnvironmentValues: []
+  HarvestableItem: 1
+  HarvestItemIndex: 5
+  HarvestClusterIndex: 0
 --- !u!114 &1511745341
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10591,7 +11201,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 36134
+  instanceID: 80578
 --- !u!4 &1511745342
 Transform:
   m_ObjectHideFlags: 0
@@ -10633,6 +11243,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc1a46eca4a35e5498f3df297015210f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DatabaseUsesNameInsteadOfPrefab: 0
   Name: Strawberry
   MaxStackSize: 999
   ActivateableType: 4
@@ -10646,7 +11257,7 @@ MonoBehaviour:
   DatabaseID: 28
   LockItem: 1
   Icon: {fileID: 21300000, guid: c7fccc24d90546e4ab556e2b93c3a552, type: 3}
-  ModelPrefab: {fileID: 1989714712356646, guid: 410ea6a1db88b494490f5d7d3b84a5a9,
+  ModelPrefab: {fileID: 1989714712356646, guid: 2e00ba2b42318b540b77173578de0ff8,
     type: 2}
   DefaultScale: 1
   isTool: 0
@@ -10685,10 +11296,16 @@ MonoBehaviour:
   isStorage: 0
   StorageList: []
   isGrowableItem: 0
+  IsWaterable: 0
   RequireTilledEarth: 0
-  PreviewItem: {fileID: 0}
-  isEnvironment: 0
+  ResetIndex: 0
+  BreakIndex: 0
+  GrowthStages: []
+  isBreakable: 0
   EnvironmentValues: []
+  HarvestableItem: 0
+  HarvestItemIndex: 0
+  HarvestClusterIndex: 0
 --- !u!114 &1528345310
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10701,7 +11318,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 36142
+  instanceID: 80586
 --- !u!4 &1528345311
 Transform:
   m_ObjectHideFlags: 0
@@ -10713,6 +11330,79 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1133565267}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1547347341
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1547347344}
+  - component: {fileID: 1547347343}
+  - component: {fileID: 1547347342}
+  m_Layer: 0
+  m_Name: 124 - Hardwood f
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1547347342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1547347341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 766834c6f2c9cf243ab3296f4a43ade1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DatabaseID: 124
+  LockItem: 1
+  DevNotes: 8 - Herb_PoisifferousRoiler
+  TextValues:
+  - Language: 0
+    stringEntry: Hardwood from a cut tree.  Good for construction or burning in a
+      fire.
+  - Language: 1
+    stringEntry: 
+  - Language: 2
+    stringEntry: 
+  - Language: 3
+    stringEntry: 
+  - Language: 4
+    stringEntry: 
+  - Language: 5
+    stringEntry: 
+  - Language: 6
+    stringEntry: 
+--- !u!114 &1547347343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1547347341}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 3
+  instanceID: 80594
+--- !u!4 &1547347344
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1547347341}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1150511934}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1563600519
@@ -10786,7 +11476,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 36152
+  instanceID: 80604
 --- !u!1 &1571557578
 GameObject:
   m_ObjectHideFlags: 0
@@ -10819,7 +11509,7 @@ Transform:
   - {fileID: 2050036660}
   - {fileID: 1042155236}
   m_Father: {fileID: 1337974348}
-  m_RootOrder: 16
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1579001599
 GameObject:
@@ -10921,7 +11611,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 36168
+  instanceID: 80620
 --- !u!1 &1592455085
 GameObject:
   m_ObjectHideFlags: 0
@@ -10993,7 +11683,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 36176
+  instanceID: 80628
 --- !u!1 &1610581554
 GameObject:
   m_ObjectHideFlags: 0
@@ -11065,7 +11755,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 36184
+  instanceID: 80636
 --- !u!1 &1613849535
 GameObject:
   m_ObjectHideFlags: 0
@@ -11137,7 +11827,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 36192
+  instanceID: 80644
 --- !u!1 &1631441170
 GameObject:
   m_ObjectHideFlags: 0
@@ -11209,7 +11899,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 36200
+  instanceID: 80652
 --- !u!1 &1637135970
 GameObject:
   m_ObjectHideFlags: 0
@@ -11238,6 +11928,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc1a46eca4a35e5498f3df297015210f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DatabaseUsesNameInsteadOfPrefab: 0
   Name: Fish
   MaxStackSize: 999
   ActivateableType: 4
@@ -11290,10 +11981,16 @@ MonoBehaviour:
   StorageList:
   - TotalStorageSlots: 36
   isGrowableItem: 0
+  IsWaterable: 0
   RequireTilledEarth: 0
-  PreviewItem: {fileID: 0}
-  isEnvironment: 0
+  ResetIndex: 0
+  BreakIndex: 0
+  GrowthStages: []
+  isBreakable: 0
   EnvironmentValues: []
+  HarvestableItem: 0
+  HarvestItemIndex: 0
+  HarvestClusterIndex: 0
 --- !u!114 &1637135972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11306,7 +12003,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 36206
+  instanceID: 80658
 --- !u!4 &1637135973
 Transform:
   m_ObjectHideFlags: 0
@@ -11379,7 +12076,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 5
-  instanceID: 36214
+  instanceID: 80666
 --- !u!4 &1645614859
 Transform:
   m_ObjectHideFlags: 0
@@ -11448,7 +12145,7 @@ Transform:
   - {fileID: 125984544}
   - {fileID: 1118554399}
   m_Father: {fileID: 1337974348}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1658054324
 GameObject:
@@ -11521,7 +12218,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 36228
+  instanceID: 80680
 --- !u!1 &1663225526
 GameObject:
   m_ObjectHideFlags: 0
@@ -11533,7 +12230,7 @@ GameObject:
   - component: {fileID: 1663225528}
   - component: {fileID: 1663225527}
   m_Layer: 0
-  m_Name: 27 - Bell Pepper (Orange)
+  m_Name: 27 - Bell Pepper Orange Plant
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11550,7 +12247,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc1a46eca4a35e5498f3df297015210f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: Bell Pepper Orange Seeds
+  DatabaseUsesNameInsteadOfPrefab: 1
+  Name: Bell Pepper Orange Plant
   MaxStackSize: 999
   ActivateableType: 5
   DestroysSoilOnPlacement: 0
@@ -11563,7 +12261,7 @@ MonoBehaviour:
   DatabaseID: 27
   LockItem: 1
   Icon: {fileID: 21300000, guid: 46e0077d8f2f0964da25dbf344874258, type: 3}
-  ModelPrefab: {fileID: 1196529855313220, guid: 10926c466b2b74641a3eed78a5086b21,
+  ModelPrefab: {fileID: 1266158092570826, guid: d0fea055582677d49896a607713439a6,
     type: 2}
   DefaultScale: 1
   isTool: 0
@@ -11581,23 +12279,28 @@ MonoBehaviour:
   isStorage: 0
   StorageList: []
   isGrowableItem: 1
+  IsWaterable: 1
   RequireTilledEarth: 1
-  PreviewItem: {fileID: 1266158092570826, guid: d0fea055582677d49896a607713439a6,
-    type: 2}
-  isEnvironment: 1
-  EnvironmentValues:
-  - IsWaterable: 1
-    IsBreakable: 0
-    ObjectType: 1
-    ActivateableTypeRequired: 1
-    QualityLevelRequired: 0
-    ObjectHealth: 15
-    DropItemsOnBreak: 0
-    BreakableAtlasID: 0
-    DropItemsOnInteract: 0
-    InteractDropID: 1
-    SwapItemOnBreak: 0
-    SwapID: 0
+  ResetIndex: 2
+  BreakIndex: 0
+  GrowthStages:
+  - GrowthLevelRequired: 0
+    StagePrefabReference: {fileID: 1266158092570826, guid: d0fea055582677d49896a607713439a6,
+      type: 2}
+  - GrowthLevelRequired: 1
+    StagePrefabReference: {fileID: 1795909956878164, guid: 0ea46ca1b3bebd848b01def2cffcee18,
+      type: 2}
+  - GrowthLevelRequired: 2
+    StagePrefabReference: {fileID: 1908955520381268, guid: 283694a8b60ffda499137dca8140644e,
+      type: 2}
+  - GrowthLevelRequired: 3
+    StagePrefabReference: {fileID: 1164922301465776, guid: 1f4caf9654383104da85ce5308994186,
+      type: 2}
+  isBreakable: 0
+  EnvironmentValues: []
+  HarvestableItem: 1
+  HarvestItemIndex: 33
+  HarvestClusterIndex: 0
 --- !u!114 &1663225528
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11610,7 +12313,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 36234
+  instanceID: 80686
 --- !u!4 &1663225529
 Transform:
   m_ObjectHideFlags: 0
@@ -11622,7 +12325,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1330787845}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1670173907
 GameObject:
@@ -11696,7 +12399,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 36244
+  instanceID: 80696
 --- !u!1 &1673153791
 GameObject:
   m_ObjectHideFlags: 0
@@ -11768,7 +12471,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 36252
+  instanceID: 80704
 --- !u!1 &1677378387
 GameObject:
   m_ObjectHideFlags: 0
@@ -11841,7 +12544,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 5
-  instanceID: 36260
+  instanceID: 80712
 --- !u!1 &1686792870
 GameObject:
   m_ObjectHideFlags: 0
@@ -11913,7 +12616,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 36268
+  instanceID: 80720
 --- !u!1 &1690898328
 GameObject:
   m_ObjectHideFlags: 0
@@ -11985,7 +12688,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 36276
+  instanceID: 80728
 --- !u!1 &1696380314
 GameObject:
   m_ObjectHideFlags: 0
@@ -12027,6 +12730,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc1a46eca4a35e5498f3df297015210f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DatabaseUsesNameInsteadOfPrefab: 0
   Name: Fire Wort
   MaxStackSize: 999
   ActivateableType: 4
@@ -12078,10 +12782,16 @@ MonoBehaviour:
   isStorage: 0
   StorageList: []
   isGrowableItem: 0
+  IsWaterable: 0
   RequireTilledEarth: 0
-  PreviewItem: {fileID: 0}
-  isEnvironment: 0
+  ResetIndex: 0
+  BreakIndex: 0
+  GrowthStages: []
+  isBreakable: 0
   EnvironmentValues: []
+  HarvestableItem: 1
+  HarvestItemIndex: 7
+  HarvestClusterIndex: 0
 --- !u!114 &1696380317
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12094,7 +12804,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 36284
+  instanceID: 80736
 --- !u!1 &1701517455
 GameObject:
   m_ObjectHideFlags: 0
@@ -12182,7 +12892,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: -14593896
+  instanceID: 80746
 --- !u!4 &1705398620
 Transform:
   m_ObjectHideFlags: 0
@@ -12207,7 +12917,7 @@ GameObject:
   - component: {fileID: 1714828757}
   - component: {fileID: 1714828756}
   m_Layer: 0
-  m_Name: 4 - Cabbage
+  m_Name: 4 - Cabbage Plant
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12224,7 +12934,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1330787845}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1714828756
 MonoBehaviour:
@@ -12237,7 +12947,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc1a46eca4a35e5498f3df297015210f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: Cabbage Seeds
+  DatabaseUsesNameInsteadOfPrefab: 1
+  Name: Cabbage Plant
   MaxStackSize: 999
   ActivateableType: 5
   DestroysSoilOnPlacement: 0
@@ -12250,7 +12961,7 @@ MonoBehaviour:
   DatabaseID: 4
   LockItem: 1
   Icon: {fileID: 21300000, guid: d92297eb237778d48a0f1808ba622238, type: 3}
-  ModelPrefab: {fileID: 1931251858157264, guid: 585340b8bc9d2b744a3e22cd810fd953,
+  ModelPrefab: {fileID: 1266158092570826, guid: d152bc41652b0a74e9c8905b939610f8,
     type: 2}
   DefaultScale: 1
   isTool: 0
@@ -12268,23 +12979,32 @@ MonoBehaviour:
   isStorage: 0
   StorageList: []
   isGrowableItem: 1
+  IsWaterable: 1
   RequireTilledEarth: 1
-  PreviewItem: {fileID: 1266158092570826, guid: d152bc41652b0a74e9c8905b939610f8,
-    type: 2}
-  isEnvironment: 1
+  ResetIndex: 0
+  BreakIndex: 0
+  GrowthStages:
+  - GrowthLevelRequired: 0
+    StagePrefabReference: {fileID: 1266158092570826, guid: d152bc41652b0a74e9c8905b939610f8,
+      type: 2}
+  - GrowthLevelRequired: 1
+    StagePrefabReference: {fileID: 1782879711367454, guid: 8091c888ae24fdb4db38e0794aa40412,
+      type: 2}
+  - GrowthLevelRequired: 2
+    StagePrefabReference: {fileID: 1265529115830760, guid: 14bbd0be9dcc12a43a35cec63dda1301,
+      type: 2}
+  - GrowthLevelRequired: 3
+    StagePrefabReference: {fileID: 1452840498419332, guid: ff9b4ef58ca02b54692381af54cb5f38,
+      type: 2}
+  isBreakable: 0
   EnvironmentValues:
-  - IsWaterable: 1
-    IsBreakable: 0
-    ObjectType: 0
+  - OnHitFXType: 0
     ActivateableTypeRequired: 0
     QualityLevelRequired: 0
     ObjectHealth: 0
-    DropItemsOnBreak: 0
-    BreakableAtlasID: 0
-    DropItemsOnInteract: 0
-    InteractDropID: 0
-    SwapItemOnBreak: 0
-    SwapID: 0
+  HarvestableItem: 1
+  HarvestItemIndex: 9
+  HarvestClusterIndex: 0
 --- !u!114 &1714828757
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12297,7 +13017,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 36296
+  instanceID: 80756
 --- !u!1 &1736991613
 GameObject:
   m_ObjectHideFlags: 0
@@ -12369,7 +13089,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 36304
+  instanceID: 80764
 --- !u!1 &1753353420
 GameObject:
   m_ObjectHideFlags: 0
@@ -12441,7 +13161,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 36312
+  instanceID: 80772
 --- !u!1 &1782937100
 GameObject:
   m_ObjectHideFlags: 0
@@ -12514,7 +13234,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 36320
+  instanceID: 80780
 --- !u!1 &1802553526
 GameObject:
   m_ObjectHideFlags: 0
@@ -12586,7 +13306,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 36328
+  instanceID: 80788
 --- !u!1 &1815548898
 GameObject:
   m_ObjectHideFlags: 0
@@ -12619,7 +13339,7 @@ Transform:
   - {fileID: 1254369946}
   - {fileID: 664644636}
   m_Father: {fileID: 98179532}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1816672650
 GameObject:
@@ -12692,7 +13412,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 36340
+  instanceID: 80800
 --- !u!1 &1825876182
 GameObject:
   m_ObjectHideFlags: 0
@@ -12734,6 +13454,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc1a46eca4a35e5498f3df297015210f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DatabaseUsesNameInsteadOfPrefab: 0
   Name: Hoe
   MaxStackSize: 1
   ActivateableType: 2
@@ -12793,10 +13514,16 @@ MonoBehaviour:
   isStorage: 0
   StorageList: []
   isGrowableItem: 0
+  IsWaterable: 0
   RequireTilledEarth: 0
-  PreviewItem: {fileID: 0}
-  isEnvironment: 0
+  ResetIndex: 0
+  BreakIndex: 0
+  GrowthStages: []
+  isBreakable: 0
   EnvironmentValues: []
+  HarvestableItem: 0
+  HarvestItemIndex: 0
+  HarvestClusterIndex: 0
 --- !u!114 &1825876185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12809,7 +13536,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 36348
+  instanceID: 80808
 --- !u!1 &1837730739
 GameObject:
   m_ObjectHideFlags: 0
@@ -12910,7 +13637,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 36360
+  instanceID: 80820
 --- !u!1 &1846466102
 GameObject:
   m_ObjectHideFlags: 0
@@ -12982,7 +13709,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 36368
+  instanceID: 80828
 --- !u!1 &1849541681
 GameObject:
   m_ObjectHideFlags: 0
@@ -13011,6 +13738,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc1a46eca4a35e5498f3df297015210f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DatabaseUsesNameInsteadOfPrefab: 0
   Name: Stone Resource
   MaxStackSize: 999
   ActivateableType: 4
@@ -13041,22 +13769,20 @@ MonoBehaviour:
   isStorage: 0
   StorageList: []
   isGrowableItem: 0
+  IsWaterable: 0
   RequireTilledEarth: 0
-  PreviewItem: {fileID: 0}
-  isEnvironment: 0
+  ResetIndex: 0
+  BreakIndex: 0
+  GrowthStages: []
+  isBreakable: 0
   EnvironmentValues:
-  - IsWaterable: 0
-    IsBreakable: 1
-    ObjectType: 0
+  - OnHitFXType: 0
     ActivateableTypeRequired: 0
     QualityLevelRequired: 0
     ObjectHealth: 0
-    DropItemsOnBreak: 0
-    BreakableAtlasID: 0
-    DropItemsOnInteract: 0
-    InteractDropID: 0
-    SwapItemOnBreak: 0
-    SwapID: 0
+  HarvestableItem: 0
+  HarvestItemIndex: 0
+  HarvestClusterIndex: 0
 --- !u!114 &1849541683
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13069,7 +13795,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 36374
+  instanceID: 80834
 --- !u!4 &1849541684
 Transform:
   m_ObjectHideFlags: 0
@@ -13154,7 +13880,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 36384
+  instanceID: 80844
 --- !u!1 &1879222547
 GameObject:
   m_ObjectHideFlags: 0
@@ -13257,7 +13983,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 7
-  instanceID: 36392
+  instanceID: 80852
 --- !u!1 &1893988407
 GameObject:
   m_ObjectHideFlags: 0
@@ -13286,7 +14012,7 @@ Transform:
   - {fileID: 1846466103}
   - {fileID: 1658054325}
   m_Father: {fileID: 1337974348}
-  m_RootOrder: 15
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1902128843
 GameObject:
@@ -13330,7 +14056,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 36402
+  instanceID: 80862
 --- !u!114 &1902128846
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13342,6 +14068,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc1a46eca4a35e5498f3df297015210f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DatabaseUsesNameInsteadOfPrefab: 0
   Name: Fish
   MaxStackSize: 999
   ActivateableType: 4
@@ -13394,10 +14121,16 @@ MonoBehaviour:
   StorageList:
   - TotalStorageSlots: 36
   isGrowableItem: 0
+  IsWaterable: 0
   RequireTilledEarth: 0
-  PreviewItem: {fileID: 0}
-  isEnvironment: 0
+  ResetIndex: 0
+  BreakIndex: 0
+  GrowthStages: []
+  isBreakable: 0
   EnvironmentValues: []
+  HarvestableItem: 0
+  HarvestItemIndex: 0
+  HarvestClusterIndex: 0
 --- !u!1 &1908648034
 GameObject:
   m_ObjectHideFlags: 0
@@ -13409,7 +14142,7 @@ GameObject:
   - component: {fileID: 1908648036}
   - component: {fileID: 1908648037}
   m_Layer: 0
-  m_Name: 26 - Strawberry
+  m_Name: 26 - Strawberry Plant
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13426,7 +14159,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1330787845}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1908648036
 MonoBehaviour:
@@ -13440,7 +14173,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 36410
+  instanceID: 80870
 --- !u!114 &1908648037
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13452,7 +14185,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc1a46eca4a35e5498f3df297015210f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: Strawberry Seeds
+  DatabaseUsesNameInsteadOfPrefab: 1
+  Name: Strawberry Plant
   MaxStackSize: 999
   ActivateableType: 5
   DestroysSoilOnPlacement: 0
@@ -13465,7 +14199,7 @@ MonoBehaviour:
   DatabaseID: 26
   LockItem: 1
   Icon: {fileID: 21300000, guid: 9e86c0c22c2e6a344b20fca54d0ad4d1, type: 3}
-  ModelPrefab: {fileID: 1669617070192530, guid: 14ec22336f9f15343b97dda629e21b6f,
+  ModelPrefab: {fileID: 1266158092570826, guid: 3abee9e0c0076fc4bb94cf6c0291c233,
     type: 2}
   DefaultScale: 1
   isTool: 0
@@ -13483,23 +14217,28 @@ MonoBehaviour:
   isStorage: 0
   StorageList: []
   isGrowableItem: 1
+  IsWaterable: 1
   RequireTilledEarth: 1
-  PreviewItem: {fileID: 1266158092570826, guid: 3abee9e0c0076fc4bb94cf6c0291c233,
-    type: 2}
-  isEnvironment: 1
-  EnvironmentValues:
-  - IsWaterable: 1
-    IsBreakable: 0
-    ObjectType: 1
-    ActivateableTypeRequired: 1
-    QualityLevelRequired: 0
-    ObjectHealth: 15
-    DropItemsOnBreak: 0
-    BreakableAtlasID: 0
-    DropItemsOnInteract: 0
-    InteractDropID: 1
-    SwapItemOnBreak: 0
-    SwapID: 0
+  ResetIndex: 2
+  BreakIndex: 0
+  GrowthStages:
+  - GrowthLevelRequired: 0
+    StagePrefabReference: {fileID: 1266158092570826, guid: 3abee9e0c0076fc4bb94cf6c0291c233,
+      type: 2}
+  - GrowthLevelRequired: 1
+    StagePrefabReference: {fileID: 1416021496373578, guid: 6d32f7653492c1f46b1c6bd70574acd0,
+      type: 2}
+  - GrowthLevelRequired: 2
+    StagePrefabReference: {fileID: 1668817841046246, guid: 66ec36c74d3ae75488e86c25dfa45a1e,
+      type: 2}
+  - GrowthLevelRequired: 3
+    StagePrefabReference: {fileID: 1989714712356646, guid: 410ea6a1db88b494490f5d7d3b84a5a9,
+      type: 2}
+  isBreakable: 0
+  EnvironmentValues: []
+  HarvestableItem: 1
+  HarvestItemIndex: 28
+  HarvestClusterIndex: 0
 --- !u!1 &1929439630
 GameObject:
   m_ObjectHideFlags: 0
@@ -13532,7 +14271,7 @@ Transform:
   - {fileID: 1991254218}
   - {fileID: 1366259588}
   m_Father: {fileID: 1337974348}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1967410545
 GameObject:
@@ -13605,7 +14344,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 36424
+  instanceID: 80884
 --- !u!1 &1985819918
 GameObject:
   m_ObjectHideFlags: 0
@@ -13677,7 +14416,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 36432
+  instanceID: 80892
 --- !u!1 &1988801390
 GameObject:
   m_ObjectHideFlags: 0
@@ -13720,7 +14459,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: -14587628
+  instanceID: 80898
 --- !u!114 &1988801393
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13821,7 +14560,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 36440
+  instanceID: 80908
 --- !u!1 &1991773470
 GameObject:
   m_ObjectHideFlags: 0
@@ -13850,7 +14589,7 @@ Transform:
   - {fileID: 102850514}
   - {fileID: 2141586113}
   m_Father: {fileID: 1337974348}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1995547178
 GameObject:
@@ -13923,7 +14662,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 36452
+  instanceID: 80920
 --- !u!1 &1997068649
 GameObject:
   m_ObjectHideFlags: 0
@@ -13995,7 +14734,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 36460
+  instanceID: 80928
 --- !u!1 &2002398763
 GameObject:
   m_ObjectHideFlags: 0
@@ -14007,7 +14746,7 @@ GameObject:
   - component: {fileID: 2002398765}
   - component: {fileID: 2002398766}
   m_Layer: 0
-  m_Name: 23 - Bell Pepper (Red)
+  m_Name: 23 - Bell Pepper Red Plant
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14024,7 +14763,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1330787845}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2002398765
 MonoBehaviour:
@@ -14038,7 +14777,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 36466
+  instanceID: 80934
 --- !u!114 &2002398766
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14050,7 +14789,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc1a46eca4a35e5498f3df297015210f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: Bell Pepper Red Seeds
+  DatabaseUsesNameInsteadOfPrefab: 1
+  Name: Bell Pepper Red Plant
   MaxStackSize: 999
   ActivateableType: 5
   DestroysSoilOnPlacement: 0
@@ -14063,7 +14803,7 @@ MonoBehaviour:
   DatabaseID: 23
   LockItem: 1
   Icon: {fileID: 21300000, guid: 9e86c0c22c2e6a344b20fca54d0ad4d1, type: 3}
-  ModelPrefab: {fileID: 1815574973860084, guid: b03deb716406df74caa79cf01d6e05af,
+  ModelPrefab: {fileID: 1266158092570826, guid: 3abee9e0c0076fc4bb94cf6c0291c233,
     type: 2}
   DefaultScale: 1
   isTool: 0
@@ -14081,23 +14821,32 @@ MonoBehaviour:
   isStorage: 0
   StorageList: []
   isGrowableItem: 1
+  IsWaterable: 1
   RequireTilledEarth: 1
-  PreviewItem: {fileID: 1266158092570826, guid: 3abee9e0c0076fc4bb94cf6c0291c233,
-    type: 2}
-  isEnvironment: 1
+  ResetIndex: 2
+  BreakIndex: 0
+  GrowthStages:
+  - GrowthLevelRequired: 0
+    StagePrefabReference: {fileID: 1266158092570826, guid: 3abee9e0c0076fc4bb94cf6c0291c233,
+      type: 2}
+  - GrowthLevelRequired: 1
+    StagePrefabReference: {fileID: 1516680329257382, guid: 7710938d6d8f1cf45b06bfdfb313301c,
+      type: 2}
+  - GrowthLevelRequired: 2
+    StagePrefabReference: {fileID: 1376407945033108, guid: 9b903df57ee09024d96d32ffd5460efc,
+      type: 2}
+  - GrowthLevelRequired: 3
+    StagePrefabReference: {fileID: 1575849893228066, guid: 441ade5dab12ef344af9b2dcb1aa5bf2,
+      type: 2}
+  isBreakable: 0
   EnvironmentValues:
-  - IsWaterable: 1
-    IsBreakable: 0
-    ObjectType: 1
+  - OnHitFXType: 0
     ActivateableTypeRequired: 1
     QualityLevelRequired: 0
     ObjectHealth: 15
-    DropItemsOnBreak: 0
-    BreakableAtlasID: 0
-    DropItemsOnInteract: 0
-    InteractDropID: 1
-    SwapItemOnBreak: 0
-    SwapID: 0
+  HarvestableItem: 1
+  HarvestItemIndex: 32
+  HarvestClusterIndex: 0
 --- !u!1 &2005898654
 GameObject:
   m_ObjectHideFlags: 0
@@ -14169,7 +14918,107 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 36476
+  instanceID: 80944
+--- !u!1 &2007011312
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 2007011313}
+  - component: {fileID: 2007011315}
+  - component: {fileID: 2007011314}
+  m_Layer: 0
+  m_Name: 35 - Spruce Log
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2007011313
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2007011312}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1405799090}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2007011314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2007011312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc1a46eca4a35e5498f3df297015210f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DatabaseUsesNameInsteadOfPrefab: 0
+  Name: Wood Resource
+  MaxStackSize: 999
+  ActivateableType: 4
+  DestroysSoilOnPlacement: 0
+  ToolTipType:
+    GroupType: 0
+    MainLocalizationID: 123
+    SubLocalizationID: 50
+    DescriptionID: 124
+    ContextID: 0
+  DatabaseID: 35
+  LockItem: 1
+  Icon: {fileID: 21300000, guid: 3fbdc38c990674b43b084191a76b3ffd, type: 3}
+  ModelPrefab: {fileID: 1606510537315246, guid: 8bf422c2ec5566341a01e9408b77a76e,
+    type: 2}
+  DefaultScale: 0.25
+  isTool: 0
+  ToolQualityLevels: []
+  isItem: 1
+  ItemCat: 3
+  ItemQualities:
+  - Quality: 0
+    AdjustsHealth: 0
+    HealthAdjustValue: 0
+    AdjustsEnergy: 0
+    EnergyAdjustValue: 0
+    BuyPrice: 10
+    SellPrice: 3
+  isStorage: 0
+  StorageList: []
+  isGrowableItem: 0
+  IsWaterable: 0
+  RequireTilledEarth: 0
+  ResetIndex: 0
+  BreakIndex: 0
+  GrowthStages: []
+  isBreakable: 0
+  EnvironmentValues:
+  - OnHitFXType: 0
+    ActivateableTypeRequired: 0
+    QualityLevelRequired: 0
+    ObjectHealth: 0
+  HarvestableItem: 0
+  HarvestItemIndex: 0
+  HarvestClusterIndex: 0
+--- !u!114 &2007011315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2007011312}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 0
+  instanceID: 80952
 --- !u!1 &2018851479
 GameObject:
   m_ObjectHideFlags: 0
@@ -14201,7 +15050,7 @@ Transform:
   - {fileID: 846776803}
   - {fileID: 1377290876}
   m_Father: {fileID: 1337974348}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2026458753
 GameObject:
@@ -14276,7 +15125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 36488
+  instanceID: 80964
 --- !u!1 &2041544709
 GameObject:
   m_ObjectHideFlags: 0
@@ -14336,7 +15185,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 5
-  instanceID: 36494
+  instanceID: 80970
 --- !u!4 &2041544712
 Transform:
   m_ObjectHideFlags: 0
@@ -14421,7 +15270,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 36504
+  instanceID: 80980
 --- !u!1 &2063523896
 GameObject:
   m_ObjectHideFlags: 0
@@ -14493,7 +15342,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 36512
+  instanceID: 80988
 --- !u!1 &2067220876
 GameObject:
   m_ObjectHideFlags: 0
@@ -14565,7 +15414,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 36520
+  instanceID: 80996
 --- !u!1 &2075862849
 GameObject:
   m_ObjectHideFlags: 0
@@ -14637,7 +15486,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 36528
+  instanceID: 81004
 --- !u!1 &2140217085
 GameObject:
   m_ObjectHideFlags: 0
@@ -14665,8 +15514,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 919782885}
-  m_RootOrder: 4
+  m_Father: {fileID: 257731752}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2140217087
 MonoBehaviour:
@@ -14709,7 +15558,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 36536
+  instanceID: 81012
 --- !u!1 &2141586112
 GameObject:
   m_ObjectHideFlags: 0
@@ -14781,4 +15630,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 36544
+  instanceID: 81020

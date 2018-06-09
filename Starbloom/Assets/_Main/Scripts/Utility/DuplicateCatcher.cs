@@ -21,7 +21,8 @@ public class DuplicateCatcher : MonoBehaviour
         Quest,
         FishingCompendium,
         ObjectCompendium,
-        ShopsCompendium
+        ShopsCompendium,
+        CraftingCompendium
     }
 
 
@@ -55,6 +56,7 @@ public class DuplicateCatcher : MonoBehaviour
                         case DatabaseType.FishingCompendium: AssignNewFishingID(); break;
                         case DatabaseType.ObjectCompendium: AssignNewObjectCompendiumID(); break;
                         case DatabaseType.ShopsCompendium: AssignNewShopCompendiumID(); break;
+                        case DatabaseType.CraftingCompendium: AssignNewCraftingCompendiumID(); break;
                     }
                 }
             }
@@ -78,6 +80,7 @@ public class DuplicateCatcher : MonoBehaviour
             case DatabaseType.FishingCompendium: GiveAllFishingID(); break;
             case DatabaseType.ObjectCompendium: GiveAllObjectCompendiumID(); break;
             case DatabaseType.ShopsCompendium: GiveAllShopCompendiumID(); break;
+            case DatabaseType.CraftingCompendium: GiveAllCraftingCompendiumID(); break;
         }
     }
 
@@ -111,7 +114,13 @@ public class DuplicateCatcher : MonoBehaviour
                     AddObjects.Add(IO);
                 }
 
-                IO.gameObject.name = IO.DatabaseID.ToString() + " - " + IO.ModelPrefab.name;
+                if (IO.ModelPrefab == null)
+                    Debug.Log("Model Prefab Missing WTF?");
+
+                if(IO.DatabaseUsesNameInsteadOfPrefab)
+                    IO.gameObject.name = IO.DatabaseID.ToString() + " - " + IO.Name;
+                else
+                    IO.gameObject.name = IO.DatabaseID.ToString() + " - " + IO.ModelPrefab.name;
             }
         }
 
@@ -486,7 +495,54 @@ public class DuplicateCatcher : MonoBehaviour
     }
     #endregion
 
+    #region Crafting Compendium
+    void AssignNewCraftingCompendiumID()
+    {
+        transform.GetComponent<DG_CraftingDictionaryItem>().LockItem = false;
+        GiveAllCraftingCompendiumID();
+    }
+    public void GiveAllCraftingCompendiumID()
+    {
+        DG_CraftingDictionary ItemDB = QuickFindInEditor.GetCraftingCompendium();
+        Transform ItemDatabaseRoot = ItemDB.transform;
 
+        List<DG_CraftingDictionaryItem> AddObjects = new List<DG_CraftingDictionaryItem>();
+
+        for (int iN = 0; iN < ItemDatabaseRoot.childCount; iN++)
+        {
+            Transform Child = ItemDatabaseRoot.GetChild(iN);
+            for (int i = 0; i < Child.childCount; i++)
+            {
+                DG_CraftingDictionaryItem IO = Child.GetChild(i).GetComponent<DG_CraftingDictionaryItem>();
+                if (!IO.LockItem)
+                {
+                    IO.DatabaseID = ItemDB.ListCount;
+                    ItemDB.ListCount++;
+                    IO.LockItem = true;
+                    AddObjects.Add(IO);
+                }
+
+                IO.gameObject.name = IO.DatabaseID.ToString() + " - " + IO.Name;
+            }
+        }
+
+        if (AddObjects.Count == 0) { Debug.Log("All Items Accounted For. :)"); return; }
+
+        int Index = 0;
+        DG_CraftingDictionaryItem[] NewArray = new DG_CraftingDictionaryItem[ItemDB.ListCount];
+        for (int i = 0; i < ItemDB.ItemCatagoryList.Length; i++)
+        {
+            DG_CraftingDictionaryItem IO = ItemDB.ItemCatagoryList[i];
+            if (IO == null) continue;
+            NewArray[Index] = IO; Index++;
+        }
+        for (int i = 0; i < AddObjects.Count; i++)
+        { NewArray[Index] = AddObjects[i]; Index++; }
+
+        ItemDB.ItemCatagoryList = NewArray;
+        Debug.Log("Safely Added New Item to Database.");
+    }
+    #endregion
 
 
 
@@ -591,6 +647,18 @@ public class DuplicateCatcher : MonoBehaviour
                             ItemDB.transform.GetChild(i).GetChild(iN).GetComponent<DG_ShopAtlasObject>().LockItem = false;
                     }
                     GiveAllShopCompendiumID(); break;
+                }
+            case DatabaseType.CraftingCompendium:
+                {
+                    DG_CraftingDictionary ItemDB = QuickFindInEditor.GetCraftingCompendium();
+                    ItemDB.ListCount = 0;
+                    ItemDB.ItemCatagoryList = new DG_CraftingDictionaryItem[0];
+                    for (int i = 0; i < ItemDB.transform.childCount; i++)
+                    {
+                        for (int iN = 0; iN < ItemDB.transform.GetChild(i).childCount; iN++)
+                            ItemDB.transform.GetChild(i).GetChild(iN).GetComponent<DG_CraftingDictionaryItem>().LockItem = false;
+                    }
+                    GiveAllCraftingCompendiumID(); break;
                 }
         }
     }

@@ -45,10 +45,8 @@ public class DG_InventoryItem : MonoBehaviour {
     }
     private void Start()
     {
-        if(!isDragDisplay)
-            this.enabled = false;
-        if (!isTrash)
-            Icon.sprite = QuickFind.GUI_Inventory.DefaultNullSprite;
+        if(!isDragDisplay) this.enabled = false;
+        if (!isTrash) Icon.sprite = QuickFind.GUI_Inventory.DefaultNullSprite;
     }
 
     public void ItemHoverIn()
@@ -63,8 +61,8 @@ public class DG_InventoryItem : MonoBehaviour {
 
         if (ContainsItem)
         {
-            if(!isMirror)
-                QuickFind.TooltipHandler.HoveredInventoryItem = this;
+            if(!isMirror) QuickFind.TooltipHandler.HoveredInventoryItem = this;
+
             DG_PlayerCharacters.RucksackSlot RSS = QuickFind.InventoryManager.GetRuckSackSlotInventoryItem(this);
             QuickFind.TooltipHandler.ActiveRucksackSlot = RSS;
             QuickFind.TooltipHandler.ShowToolTip(QuickFind.ItemDatabase.GetItemFromID(RSS.ContainedItem).ToolTipType);

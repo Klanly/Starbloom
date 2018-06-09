@@ -42,7 +42,10 @@ public class DG_PickAxeHandler : MonoBehaviour {
         if (isUP && SafeToPlace)
         {
             DG_ContextObject CO = HitObject.GetComponent<DG_ContextObject>();
-            if (CO.Type == DG_ContextObject.ContextTypes.Breakable || CO.Type == DG_ContextObject.ContextTypes.Pick_And_Break)
+            if (CO.Type == DG_ContextObject.ContextTypes.Breakable || 
+                CO.Type == DG_ContextObject.ContextTypes.HarvestablePlant ||
+                CO.Type == DG_ContextObject.ContextTypes.HarvestableTree ||
+                CO.Type == DG_ContextObject.ContextTypes.BreakableTree)
                 QuickFind.BreakableObjectsHandler.TryHitObject(CO, CurrentActive, (DG_ItemObject.ItemQualityLevels)RucksackSlotOpen.CurrentStackActive, RucksackSlotOpen);
         }
     }

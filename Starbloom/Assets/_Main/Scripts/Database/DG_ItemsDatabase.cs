@@ -16,8 +16,10 @@ public class DG_ItemsDatabase : MonoBehaviour {
     }
 
 
-    [HideInInspector] public DG_ItemObject[] ItemCatagoryList;
-    [HideInInspector] public int ListCount;
+    [HideInInspector]
+    public DG_ItemObject[] ItemCatagoryList;
+    [HideInInspector]
+    public int ListCount;
 
 
     public float PreMagneticObjectWaitTimer;

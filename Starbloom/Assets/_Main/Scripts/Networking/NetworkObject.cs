@@ -32,6 +32,7 @@ public class NetworkObject : MonoBehaviour {
 
     [Header("Growth-------------------------------------------------")]
     public int GrowthValue;
+    public int ActiveVisual;
 
     [Header("Breaking -----------------------------------------------------")]
     public bool HasHealth = false;
@@ -97,6 +98,7 @@ public class NetworkObject : MonoBehaviour {
         NO.isWaterable = ListNO.isWaterable;
         NO.HasBeenWatered = ListNO.HasBeenWatered;
         NO.SurrogateObjectIndex = ListNO.SurrogateObjectIndex;
+
         NO.GrowthValue = ListNO.GrowthValue;
 
         NO.HasHealth = ListNO.HasHealth;

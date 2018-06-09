@@ -29,10 +29,6 @@ public class NetworkObjectManager : MonoBehaviour {
 
             for (int i = 0; i < transform.childCount; i++)
                 transform.GetChild(i).GetComponent<NetworkScene>().AddInitialPlacedObjectsIntoList();
-
-            string Scene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
-            QuickFind.NetworkSync.CurrentScene = QuickFind.SceneList.GetSceneIDByString(Scene);
-
             GenerateSceneObjects(QuickFind.NetworkSync.CurrentScene);
         }
         else
@@ -46,23 +42,17 @@ public class NetworkObjectManager : MonoBehaviour {
         for (int i = 0; i < transform.childCount; i++)
         {
             Transform Child = transform.GetChild(i);
-            Child.GetComponent<NetworkScene>().DestroyTempObjects();
+            NetworkScene NS = Child.GetComponent<NetworkScene>();
+            NS.DestroyTempObjects();
             for (int iN = 0; iN < Child.childCount; iN++)
                 Destroy(Child.GetChild(iN).gameObject);
+
+            NS.NetworkObjectList.Clear();
         }
     }
     public void GenerateSceneObjects(int Scene)
     {
-        for (int i = 0; i < transform.childCount; i++)
-        {
-            Transform Child = transform.GetChild(i);
-            NetworkScene NS = Child.GetComponent<NetworkScene>();
-            if (NS.SceneID == Scene)
-            {
-                NS.LoadSceneObjects();
-                return;
-            }
-        }
+        GetSceneByID(Scene).LoadSceneObjects();
     }
 
 
@@ -132,7 +122,7 @@ public class NetworkObjectManager : MonoBehaviour {
 
         DG_ItemObject IO = QuickFind.ItemDatabase.GetItemFromID(ObjectID);
 
-        if(IO.isEnvironment && IO.EnvironmentValues[0].IsWaterable) IntData.Add(1); else IntData.Add(0);
+        if(IO.IsWaterable) IntData.Add(1); else IntData.Add(0);
         if (IO.isStorage) IntData.Add(1); else IntData.Add(0);
 
         if (GenerateVelocity) IntData.Add(1); else IntData.Add(0);
@@ -217,7 +207,7 @@ public class NetworkObjectManager : MonoBehaviour {
         else
         {
             for (int i = 0; i < transform.childCount; i++)
-                transform.GetChild(i).GetComponent<NetworkScene>().InternalGizmos();
+                transform.GetChild(0).GetComponent<NetworkScene>().InternalGizmos();
         }
     }
 #endif

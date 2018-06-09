@@ -90,186 +90,164 @@ public class DG_LocalDataHandler : MonoBehaviour {
 
     public List<int> GatherPlayerDataInts(bool ToDisk)
     {
-        string Directory = "";
         List<int> IntData = new List<int>();
         DG_PlayerCharacters PlayerData = QuickFind.Farm;
         //
-        if (ToDisk) Directory = FindOrCreateSaveDirectory(SaveDirectory, "PlayerData") + "/";
-        if (!ToDisk) IntData.Add(PlayerData.PlayerCharacters.Count); else SaveInt(PlayerData.PlayerCharacters.Count, Directory + "Count");
-        if (!ToDisk) IntData.Add(PlayerData.SharedMoney); else SaveInt(PlayerData.SharedMoney, Directory + "SharedMoney");
-        if (!ToDisk) IntData.Add(PlayerData.Year); else SaveInt(PlayerData.Year, Directory + "Year");
-        if (!ToDisk) IntData.Add(PlayerData.Month); else SaveInt(PlayerData.Month, Directory + "Month");
-        if (!ToDisk) IntData.Add(PlayerData.Day); else SaveInt(PlayerData.Day, Directory + "Day");
+        IntData.Add(PlayerData.PlayerCharacters.Count);
+        IntData.Add(PlayerData.SharedMoney);
+        IntData.Add(PlayerData.Year);
+        IntData.Add(PlayerData.Month);
+        IntData.Add(PlayerData.Day);
         //
         for (int i = 0; i < PlayerData.PlayerCharacters.Count; i++)
         {
             DG_PlayerCharacters.PlayerCharacter PC = PlayerData.PlayerCharacters[i];
             DG_PlayerCharacters.CharacterEquipment CE = PC.Equipment;
-            string PlayerNum = i.ToString();
-            string KnownDirectory;
 
-            if (ToDisk) Directory = FindOrCreateSaveDirectory(SaveDirectory, "PlayerNonCombatStats" + PlayerNum + "/");
-            if (!ToDisk) IntData.Add(PC.NonCombatSkillEXP.Farming); else SaveInt(PC.NonCombatSkillEXP.Farming, Directory + "Farming");
-            if (!ToDisk) IntData.Add(PC.NonCombatSkillEXP.Mining); else SaveInt(PC.NonCombatSkillEXP.Mining, Directory + "Mining");
-            if (!ToDisk) IntData.Add(PC.NonCombatSkillEXP.Foraging); else SaveInt(PC.NonCombatSkillEXP.Foraging, Directory + "Foraging");
-            if (!ToDisk) IntData.Add(PC.NonCombatSkillEXP.Fishing); else SaveInt(PC.NonCombatSkillEXP.Fishing, Directory + "Fishing");
+            IntData.Add(PC.NonCombatSkillEXP.Farming);
+            IntData.Add(PC.NonCombatSkillEXP.Mining);
+            IntData.Add(PC.NonCombatSkillEXP.Foraging);
+            IntData.Add(PC.NonCombatSkillEXP.Fishing);
 
             //
-            if (ToDisk) Directory = FindOrCreateSaveDirectory(SaveDirectory, "PlayerEquipment" + PlayerNum + "/");
-            if (!ToDisk) IntData.Add(CE.HatId); else SaveInt(CE.HatId, Directory + "HatId");
-            if (!ToDisk) IntData.Add(CE.Ring1); else SaveInt(CE.Ring1, Directory + "Ring1");
-            if (!ToDisk) IntData.Add(CE.Ring2); else SaveInt(CE.Ring2, Directory + "Ring2");
-            if (!ToDisk) IntData.Add(CE.Boots); else SaveInt(CE.Boots, Directory + "Boots");
+            IntData.Add(CE.HatId);
+            IntData.Add(CE.Ring1);
+            IntData.Add(CE.Ring2);
+            IntData.Add(CE.Boots);
             //
             // Rucksack
-            if (ToDisk) Directory = FindOrCreateSaveDirectory(SaveDirectory, "Rucksack" + PlayerNum + "/");
-            if (!ToDisk) IntData.Add(CE.RuckSackUnlockedSize); else SaveInt(CE.RuckSackUnlockedSize, Directory + "RuckSackUnlockedSize");
-            KnownDirectory = Directory;
+            IntData.Add(CE.RuckSackUnlockedSize);
             for (int iN = 0; iN < CE.RuckSackUnlockedSize; iN++)
             {
                 DG_PlayerCharacters.RucksackSlot RSlot = CE.RucksackSlots[iN];
                 string RuckSackSlot = iN.ToString();
                 //
-                if (ToDisk) Directory = FindOrCreateSaveDirectory(KnownDirectory, "RS" + RuckSackSlot + "/");
-                if (!ToDisk) IntData.Add(RSlot.ContainedItem);        else SaveInt(RSlot.ContainedItem, Directory + "ContainedItem");
-                if (!ToDisk) IntData.Add(RSlot.CurrentStackActive);   else SaveInt(RSlot.CurrentStackActive, Directory + "CurrentStackActive");
-                if (!ToDisk) IntData.Add(RSlot.LowValue);             else SaveInt(RSlot.LowValue, Directory + "LowValue");
-                if (!ToDisk) IntData.Add(RSlot.NormalValue);          else SaveInt(RSlot.NormalValue, Directory + "NormalValue");
-                if (!ToDisk) IntData.Add(RSlot.HighValue);            else SaveInt(RSlot.HighValue, Directory + "HighValue");
-                if (!ToDisk) IntData.Add(RSlot.MaximumValue); else SaveInt(RSlot.MaximumValue, Directory + "MaximumValue");
+                IntData.Add(RSlot.ContainedItem);       
+                IntData.Add(RSlot.CurrentStackActive);  
+                IntData.Add(RSlot.LowValue);          
+                IntData.Add(RSlot.NormalValue);       
+                IntData.Add(RSlot.HighValue);      
+                IntData.Add(RSlot.MaximumValue);
             }
 
             //Acheivements
             DG_PlayerCharacters.CharacterAchievements Acheivements = PC.Acheivements;
 
-            if (ToDisk) Directory = FindOrCreateSaveDirectory(SaveDirectory, "FishLarge" + PlayerNum + "/");
-            if (!ToDisk) IntData.Add(Acheivements.LargestFishCaught.Length); else SaveInt(Acheivements.LargestFishCaught.Length, Directory + "FishAwardsSize");
-            KnownDirectory = Directory;
+            IntData.Add(Acheivements.LargestFishCaught.Length);
             for (int iN = 0; iN < Acheivements.LargestFishCaught.Length; iN++)
             {
                 int FishAward = Acheivements.LargestFishCaught[iN];
-                string FishAcheivementSlot = iN.ToString();
                 //
-                if (ToDisk) Directory = FindOrCreateSaveDirectory(KnownDirectory, "Fish" + FishAcheivementSlot + "/");
-                if (!ToDisk) IntData.Add(FishAward); else SaveInt(FishAward, Directory + "Largest");
+                IntData.Add(FishAward);
             }
         }
+
+        if (ToDisk)
+            SaveInts(IntData.ToArray(), SaveDirectory + "/CharInts");
+
         return IntData;
     }
     public void GetIntValues(int[] IntValues, bool FromDisk)
     {
-        string Directory = "";
+        if (FromDisk)
+            IntValues = LoadInts(SaveDirectory + "/CharInts");
+
         int Index = 0;
         int PlayerCount = 0;
         DG_PlayerCharacters PlayerData = QuickFind.Farm;
         //
-        if (FromDisk) Directory = FindOrCreateSaveDirectory(SaveDirectory, "PlayerData") + "/";
-        if (!FromDisk) PlayerCount = IntValues[Index]; else PlayerCount = LoadInt(Directory + "Count"); Index++;
-        if (!FromDisk) PlayerData.SharedMoney = IntValues[Index]; else PlayerData.SharedMoney = LoadInt(Directory + "SharedMoney"); Index++;
-        if (!FromDisk) PlayerData.Year = IntValues[Index]; else PlayerData.Year = LoadInt(Directory + "Year"); Index++;
-        if (!FromDisk) PlayerData.Month = IntValues[Index]; else PlayerData.Month = LoadInt(Directory + "Month"); Index++;
-        if (!FromDisk) PlayerData.Day = IntValues[Index]; else PlayerData.Day = LoadInt(Directory + "Day"); Index++;
+        PlayerCount = IntValues[Index]; Index++;
+        PlayerData.SharedMoney = IntValues[Index]; Index++;
+        PlayerData.Year = IntValues[Index]; Index++;
+        PlayerData.Month = IntValues[Index]; Index++;
+        PlayerData.Day = IntValues[Index]; Index++;
         //
         for (int i = 0; i < PlayerCount; i++)
         {
             DG_PlayerCharacters.PlayerCharacter PC = PlayerData.PlayerCharacters[i];
             DG_PlayerCharacters.CharacterEquipment CE = PC.Equipment;
-            string PlayerNum = i.ToString();
-            string KnownDirectory;
 
-            if (FromDisk) Directory = FindOrCreateSaveDirectory(SaveDirectory, "PlayerNonCombatStats" + PlayerNum + "/");
-            if (!FromDisk) PC.NonCombatSkillEXP.Farming = IntValues[Index]; else PC.NonCombatSkillEXP.Farming = LoadInt(Directory + "Farming"); Index++;
-            if (!FromDisk) PC.NonCombatSkillEXP.Mining = IntValues[Index]; else PC.NonCombatSkillEXP.Mining = LoadInt(Directory + "Mining"); Index++;
-            if (!FromDisk) PC.NonCombatSkillEXP.Foraging = IntValues[Index]; else PC.NonCombatSkillEXP.Foraging = LoadInt(Directory + "Foraging"); Index++;
-            if (!FromDisk) PC.NonCombatSkillEXP.Fishing = IntValues[Index]; else PC.NonCombatSkillEXP.Fishing = LoadInt(Directory + "Fishing"); Index++;
+            PC.NonCombatSkillEXP.Farming = IntValues[Index]; Index++;
+            PC.NonCombatSkillEXP.Mining = IntValues[Index]; Index++;
+            PC.NonCombatSkillEXP.Foraging = IntValues[Index]; Index++;
+            PC.NonCombatSkillEXP.Fishing = IntValues[Index]; Index++;
 
             //
-            if (FromDisk) Directory = FindOrCreateSaveDirectory(SaveDirectory, "PlayerEquipment" + PlayerNum + "/");
-            if (!FromDisk) CE.HatId = IntValues[Index]; else CE.HatId = LoadInt(Directory + "HatId"); Index++;
-            if (!FromDisk) CE.Ring1 = IntValues[Index]; else CE.Ring1 = LoadInt(Directory + "Ring1"); Index++;
-            if (!FromDisk) CE.Ring2 = IntValues[Index]; else CE.Ring2 = LoadInt(Directory + "Ring2"); Index++;
-            if (!FromDisk) CE.Boots = IntValues[Index]; else CE.Boots = LoadInt(Directory + "Boots"); Index++;
+            CE.HatId = IntValues[Index]; Index++;
+            CE.Ring1 = IntValues[Index]; Index++;
+            CE.Ring2 = IntValues[Index]; Index++;
+            CE.Boots = IntValues[Index]; Index++;
             //
-            if (FromDisk) Directory = FindOrCreateSaveDirectory(SaveDirectory, "Rucksack" + PlayerNum + "/");
-            if (!FromDisk) CE.RuckSackUnlockedSize = IntValues[Index]; else CE.RuckSackUnlockedSize = LoadInt(Directory + "RuckSackUnlockedSize"); Index++;
+            CE.RuckSackUnlockedSize = IntValues[Index]; Index++;
             //
 
             //RuckSack
             DG_PlayerCharacters.RucksackSlot[] RS = CE.RucksackSlots;
-            KnownDirectory = Directory;
             for (int iN = 0; iN < CE.RuckSackUnlockedSize; iN++)
             {
                 DG_PlayerCharacters.RucksackSlot RSlot = RS[iN];
-                string RuckSackSlot = iN.ToString();
                 //
-                if (FromDisk) Directory = FindOrCreateSaveDirectory(KnownDirectory, "RS" + RuckSackSlot + "/");
-                if (!FromDisk) RSlot.ContainedItem = IntValues[Index]; else RSlot.ContainedItem = LoadInt(Directory + "ContainedItem"); Index++;
-                if (!FromDisk) RSlot.CurrentStackActive = IntValues[Index]; else RSlot.CurrentStackActive = LoadInt(Directory + "CurrentStackActive"); Index++;
-                if (!FromDisk) RSlot.LowValue = IntValues[Index]; else RSlot.LowValue = LoadInt(Directory + "LowValue"); Index++;
-                if (!FromDisk) RSlot.NormalValue = IntValues[Index]; else RSlot.NormalValue = LoadInt(Directory + "NormalValue"); Index++;
-                if (!FromDisk) RSlot.HighValue = IntValues[Index]; else RSlot.HighValue = LoadInt(Directory + "HighValue"); Index++;
-                if (!FromDisk) RSlot.MaximumValue = IntValues[Index]; else RSlot.MaximumValue = LoadInt(Directory + "MaximumValue"); Index++;
+                RSlot.ContainedItem = IntValues[Index]; Index++;
+                RSlot.CurrentStackActive = IntValues[Index]; Index++;
+                RSlot.LowValue = IntValues[Index]; Index++;
+                RSlot.NormalValue = IntValues[Index]; Index++;
+                RSlot.HighValue = IntValues[Index]; Index++;
+                RSlot.MaximumValue = IntValues[Index]; Index++;
             }
 
             //Acheivements
             DG_PlayerCharacters.CharacterAchievements Acheivements = PC.Acheivements;
 
-            if (FromDisk) Directory = FindOrCreateSaveDirectory(SaveDirectory, "FishLarge" + PlayerNum + "/");
             int count;
-            if (!FromDisk) count = IntValues[Index]; else count = LoadInt(Directory + "FishAwardsSize"); Index++;
-            KnownDirectory = Directory;
+            count = IntValues[Index]; Index++;
             for (int iN = 0; iN < count; iN++)
             {
-                string FishAcheivementSlot = iN.ToString();
-                if (FromDisk) Directory = FindOrCreateSaveDirectory(KnownDirectory, "Fish" + FishAcheivementSlot + "/");
-                if (!FromDisk) Acheivements.LargestFishCaught[iN] = IntValues[Index]; else Acheivements.LargestFishCaught[iN] = LoadInt(Directory + "Largest"); Index++;
+                Acheivements.LargestFishCaught[iN] = IntValues[Index]; Index++;
             }
-
-
         }
     }
 
 
     public List<string> GatherPlayerDataStrings(bool ToDisk)
     {
-        string Directory = "";
         List<string> StringData = new List<string>();
         DG_PlayerCharacters PlayerData = QuickFind.Farm;
         //
-        if (ToDisk) Directory = FindOrCreateSaveDirectory(SaveDirectory, "PlayerData") + "/";
-        if (!ToDisk) StringData.Add(PlayerData.FarmName); else SaveString(PlayerData.FarmName, Directory + "FarmName");
+        StringData.Add(PlayerData.FarmName);
         string CharCount = PlayerData.PlayerCharacters.Count.ToString();
-        if (!ToDisk) StringData.Add(CharCount); else SaveString(CharCount, Directory + "CharCount");
+        StringData.Add(CharCount);
         //
         for (int i = 0; i < PlayerData.PlayerCharacters.Count; i++)
         {
             DG_PlayerCharacters.PlayerCharacter PC = PlayerData.PlayerCharacters[i];
-            string PlayerNum = i.ToString();
             //
-            if (ToDisk) Directory = FindOrCreateSaveDirectory(SaveDirectory, "PlayerCharStrings" + PlayerNum.ToString() + "/");
-            if (!ToDisk) StringData.Add(PC.Name); else SaveString(PC.Name, Directory + "Name");
+            StringData.Add(PC.Name);
         }
+
+        if(ToDisk)
+            SaveStrings(StringData.ToArray(), SaveDirectory + "/CharStrings");
+
         return StringData;
     }
     public void GetStringValues(string[] StringValues, bool FromDisk)
     {
-        string Directory = "";
+        if (FromDisk)
+            StringValues = LoadStrings(SaveDirectory + "/CharStrings");
+
+
         int Index = 0;
         string PlayerCount;
         DG_PlayerCharacters PlayerData = QuickFind.Farm;
         //
-        if (FromDisk) Directory = FindOrCreateSaveDirectory(SaveDirectory, "PlayerData") + "/";
-        if (!FromDisk) PlayerData.FarmName = StringValues[Index]; else PlayerData.FarmName = LoadString(Directory + "FarmName"); Index++;
-        if (!FromDisk) PlayerCount = StringValues[Index]; else PlayerCount = LoadString(Directory + "CharCount"); Index++;
+        PlayerData.FarmName = StringValues[Index]; Index++;
+        PlayerCount = StringValues[Index]; Index++;
         //
         int count = int.Parse(PlayerCount);
         for (int i = 0; i < count; i++)
         {
             DG_PlayerCharacters.PlayerCharacter PC = PlayerData.PlayerCharacters[i];
-            string PlayerNum = i.ToString();
             //
-            if (FromDisk) Directory = FindOrCreateSaveDirectory(SaveDirectory, "PlayerCharStrings" + PlayerNum.ToString() + "/");
-            if (!FromDisk) PC.Name = StringValues[Index]; else PC.Name = LoadString(Directory + "Name"); Index++;
+            PC.Name = StringValues[Index]; Index++;
         }
     }
 
@@ -282,193 +260,162 @@ public class DG_LocalDataHandler : MonoBehaviour {
     //WorldObjects
     public List<int> GatherWorldInts(bool ToDisk)
     {
-        string Directory = "";
         List<int> IntData = new List<int>();
         Transform NOM = QuickFind.NetworkObjectManager.transform;
         //
-        if (ToDisk) Directory = FindOrCreateSaveDirectory(SaveDirectory, "WorldData") + "/";
-        if (!ToDisk) IntData.Add(NOM.childCount); else SaveInt(NOM.childCount, Directory + "Count");
+        IntData.Add(NOM.childCount);
         //
         for (int i = 0; i < NOM.childCount; i++)
         {
             Transform Child = NOM.GetChild(i);
             NetworkScene NS = Child.GetComponent<NetworkScene>();
-            string PlayerNum = i.ToString();
             //
-            if (ToDisk) Directory = FindOrCreateSaveDirectory(SaveDirectory, "WorldDataScene") + "/";
-            if (!ToDisk) IntData.Add(NS.SceneID); else SaveInt(NS.SceneID, Directory + "SceneID");
-            if (!ToDisk) IntData.Add(Child.childCount); else SaveInt(Child.childCount, Directory + "ChildCount");
+            IntData.Add(NS.SceneID);
+            IntData.Add(Child.childCount);
             //
-            string KnownDirectory = Directory;
             for (int iN = 0; iN < Child.childCount; iN++)
             {
                 NetworkObject NO = Child.GetChild(iN).GetComponent<NetworkObject>();
-                string ChildChild = iN.ToString();
                 //
-                if (ToDisk) Directory = FindOrCreateSaveDirectory(KnownDirectory, "CC" + ChildChild.ToString() + "/");
-                if (!ToDisk) IntData.Add(NO.NetworkObjectID); else SaveInt(NO.NetworkObjectID, Directory + "NetworkObjectID");
-                if (!ToDisk) IntData.Add(NO.ItemRefID); else SaveInt(NO.ItemRefID, Directory + "ItemRefID");
-                if (!ToDisk) IntData.Add(NO.ItemQualityLevel); else SaveInt(NO.ItemQualityLevel, Directory + "ItemGrowthLevel");
-                if (!ToDisk) IntData.Add(NO.PositionX); else SaveInt(NO.PositionX, Directory + "x");
-                if (!ToDisk) IntData.Add(NO.PositionY); else SaveInt(NO.PositionY, Directory + "y");
-                if (!ToDisk) IntData.Add(NO.PositionZ); else SaveInt(NO.PositionZ, Directory + "z");
-                if (!ToDisk) IntData.Add(NO.YFacing); else SaveInt(NO.YFacing, Directory + "YFacing");
+                IntData.Add(NO.NetworkObjectID);
+                IntData.Add(NO.ItemRefID);
+                IntData.Add(NO.ItemQualityLevel);
+                IntData.Add(NO.PositionX);
+                IntData.Add(NO.PositionY);
+                IntData.Add(NO.PositionZ);
+                IntData.Add(NO.YFacing);
 
 
-
-
-
-
-                int isTrue = NO.isWaterable ? 1 : 0; if (!ToDisk) IntData.Add(isTrue); else SaveInt(isTrue, Directory + "IsWaterable");
+                int isTrue = NO.isWaterable ? 1 : 0; IntData.Add(isTrue);
                 if (isTrue == 1)
                 {
-                    if (!ToDisk) IntData.Add(NO.SurrogateObjectIndex); else SaveInt(NO.SurrogateObjectIndex, Directory + "SurrogateIndex");
-                    int InnerisTrue = NO.HasBeenWatered ? 1 : 0; if (!ToDisk) IntData.Add(InnerisTrue); else SaveInt(InnerisTrue, Directory + "HasBeenWatered");
+                    IntData.Add(NO.SurrogateObjectIndex);
+                    int InnerisTrue = NO.HasBeenWatered ? 1 : 0; IntData.Add(InnerisTrue);
                 }
 
-                if (!ToDisk) IntData.Add(NO.GrowthValue); else SaveInt(NO.GrowthValue, Directory + "GrowthValue");
+                IntData.Add(NO.GrowthValue);
 
-                isTrue = NO.HasHealth ? 1 : 0; if (!ToDisk) IntData.Add(isTrue); else SaveInt(isTrue, Directory + "HasHealth");
+                isTrue = NO.HasHealth ? 1 : 0; IntData.Add(isTrue);
                 if (isTrue == 1)
                 {
-                    if (!ToDisk) IntData.Add(NO.HealthValue); else SaveInt(NO.HealthValue, Directory + "HealthValue");
+                    IntData.Add(NO.HealthValue);
                 }
 
 
-
-
-
-
-                isTrue = NO.isStorageContainer ? 1 : 0; if (!ToDisk) IntData.Add(isTrue); else SaveInt(isTrue, Directory + "IsStorageContainer");
+                isTrue = NO.isStorageContainer ? 1 : 0; IntData.Add(isTrue);
                 if (isTrue == 1)
                 {
                     DG_PlayerCharacters.RucksackSlot[] RS = NO.StorageSlots;
                     isTrue = NO.isTreasureList ? 1 : 0;
-                    if (!ToDisk) IntData.Add(isTrue); else SaveInt(isTrue, Directory + "IsTreasureList");
-                    if (!ToDisk) IntData.Add(NO.StorageSlots.Length); else SaveInt(NO.StorageSlots.Length, Directory + "StorageContainerCount");
+                    IntData.Add(isTrue);
+                    IntData.Add(NO.StorageSlots.Length);
 
-                    string SubKnownDirectory = Directory;
                     for (int iR = 0; iR < NO.StorageSlots.Length; iR++)
                     {
                         DG_PlayerCharacters.RucksackSlot RSlot = NO.StorageSlots[iR];
-                        string RuckSackSlot = iR.ToString();
                         //
-                        if (ToDisk) Directory = FindOrCreateSaveDirectory(SubKnownDirectory, "RS" + RuckSackSlot + "/");
-                        if (!ToDisk) IntData.Add(RSlot.ContainedItem); else SaveInt(RSlot.ContainedItem, Directory + "ContainedItem");
-                        if (!ToDisk) IntData.Add(RSlot.CurrentStackActive); else SaveInt(RSlot.CurrentStackActive, Directory + "CurrentStackActive");
-                        if (!ToDisk) IntData.Add(RSlot.LowValue); else SaveInt(RSlot.LowValue, Directory + "LowValue");
-                        if (!ToDisk) IntData.Add(RSlot.NormalValue); else SaveInt(RSlot.NormalValue, Directory + "NormalValue");
-                        if (!ToDisk) IntData.Add(RSlot.HighValue); else SaveInt(RSlot.HighValue, Directory + "HighValue");
-                        if (!ToDisk) IntData.Add(RSlot.MaximumValue); else SaveInt(RSlot.MaximumValue, Directory + "MaximumValue");
+                        IntData.Add(RSlot.ContainedItem);
+                        IntData.Add(RSlot.CurrentStackActive);
+                        IntData.Add(RSlot.LowValue);
+                        IntData.Add(RSlot.NormalValue);
+                        IntData.Add(RSlot.HighValue);
+                        IntData.Add(RSlot.MaximumValue);
                     }
                 }
             }
         }
+        if (ToDisk)
+            SaveInts(IntData.ToArray(), SaveDirectory + "/WorldInts");
+
+
         return IntData;
     }
     public void GetWorldInts(int[] IntValues, bool FromDisk)
     {
-        string Directory = "";
+        if (FromDisk)
+            IntValues = LoadInts(SaveDirectory + "/WorldInts");
+
         int Index = 0;
         int SceneCount = 0;
         Transform NOM = QuickFind.NetworkObjectManager.transform;
 
-        if (FromDisk) Directory = FindOrCreateSaveDirectory(SaveDirectory, "WorldData") + "/";
-        if (!FromDisk) SceneCount = IntValues[Index]; else SceneCount = LoadInt(Directory + "Count"); Index++;
+        SceneCount = IntValues[Index]; Index++;
         //
         for (int i = 0; i < SceneCount; i++)
         {
             int SceneID;
-            if (FromDisk) Directory = FindOrCreateSaveDirectory(SaveDirectory, "WorldDataScene") + "/";
-            if (!FromDisk) SceneID = IntValues[Index]; else SceneID = LoadInt(Directory + "SceneID"); Index++;
+            SceneID = IntValues[Index]; Index++;
             //
             NetworkScene NS = QuickFind.NetworkObjectManager.GetSceneByID(SceneID);
             NS.JunkObject = new GameObject();
             Transform Child = NS.transform;
             int count;
             //
-            if (!FromDisk) count = IntValues[Index]; else count = LoadInt(Directory + "ChildCount"); Index++;
+            count = IntValues[Index]; Index++;
             //
-            string KnownDirectory = Directory;
             for (int iN = 0; iN < count; iN++)
             {
                 NetworkObject NO = NS.JunkObject.AddComponent<NetworkObject>();
                 NS.TempNetworkObjectList.Add(NO);
 
-                string ChildChild = iN.ToString();
-                //
-                if (FromDisk) Directory = FindOrCreateSaveDirectory(KnownDirectory, "CC" + ChildChild + "/");
-                if (!FromDisk) NO.NetworkObjectID = IntValues[Index]; else NO.NetworkObjectID = LoadInt(Directory + "NetworkObjectID"); Index++;
-                if (!FromDisk) NO.ItemRefID = IntValues[Index];     else NO.ItemRefID = LoadInt(Directory + "ItemRefID"); Index++;
-                if (!FromDisk) NO.ItemQualityLevel = IntValues[Index]; else NO.ItemQualityLevel = LoadInt(Directory + "ItemGrowthLevel"); Index++;
-                if (!FromDisk) NO.PositionX = IntValues[Index]; else NO.PositionX = LoadInt(Directory + "x"); Index++;
-                if (!FromDisk) NO.PositionY = IntValues[Index]; else NO.PositionY = LoadInt(Directory + "y"); Index++;
-                if (!FromDisk) NO.PositionZ = IntValues[Index]; else NO.PositionZ = LoadInt(Directory + "z"); Index++;
-                if (!FromDisk) NO.YFacing = IntValues[Index]; else NO.YFacing = LoadInt(Directory + "YFacing"); Index++;
+                string ChildChild = iN.ToString();                
+                NO.NetworkObjectID = IntValues[Index]; Index++;
+                NO.ItemRefID = IntValues[Index]; Index++;
+                NO.ItemQualityLevel = IntValues[Index]; Index++;
+                NO.PositionX = IntValues[Index]; Index++;
+                NO.PositionY = IntValues[Index]; Index++;
+                NO.PositionZ = IntValues[Index]; Index++;
+                NO.YFacing = IntValues[Index]; Index++;
 
                 NO.transform.position = QuickFind.ConvertIntsToPosition(NO.PositionX, NO.PositionY, NO.PositionZ);
                 NO.transform.eulerAngles = new Vector3(0, QuickFind.ConvertIntToFloat(NO.YFacing), 0);
                 //
 
 
-
-
-
-
                 int StorageValue;
-                if (!FromDisk) StorageValue = IntValues[Index]; else StorageValue = LoadInt(Directory + "IsWaterable"); Index++;
+                StorageValue = IntValues[Index]; Index++;
                 bool isTrue = false; if (StorageValue == 1) isTrue = true; NO.isWaterable = isTrue;
                 if (isTrue)
                 {
-                    if (!FromDisk) NO.SurrogateObjectIndex = IntValues[Index]; else NO.SurrogateObjectIndex = LoadInt(Directory + "SurrogateIndex"); Index++;
-                    if (!FromDisk) StorageValue = IntValues[Index]; else StorageValue = LoadInt(Directory + "HasBeenWatered"); Index++;
+                    NO.SurrogateObjectIndex = IntValues[Index]; Index++;
+                    StorageValue = IntValues[Index]; Index++;
                     bool InnerisTrue = false; if (StorageValue == 1) InnerisTrue = true; NO.HasBeenWatered = InnerisTrue;
                 }
 
-                if (!FromDisk) NO.GrowthValue = IntValues[Index]; else NO.GrowthValue = LoadInt(Directory + "GrowthValue"); Index++;
+                NO.GrowthValue = IntValues[Index]; Index++;
 
-                if (!FromDisk) StorageValue = IntValues[Index]; else StorageValue = LoadInt(Directory + "HasHealth"); Index++;
+                StorageValue = IntValues[Index]; Index++;
                 isTrue = false; if (StorageValue == 1) isTrue = true; NO.HasHealth = isTrue;
                 if (isTrue)
                 {
-                    if (!FromDisk) NO.HealthValue = IntValues[Index]; else NO.HealthValue = LoadInt(Directory + "HealthValue"); Index++;
+                    NO.HealthValue = IntValues[Index]; Index++;
                 }
 
 
 
 
-
-
-
-
-
-
-
-                if (!FromDisk) StorageValue = IntValues[Index]; else StorageValue = LoadInt(Directory + "IsStorageContainer"); Index++;
+                StorageValue = IntValues[Index]; Index++;
                 isTrue = false; if (StorageValue == 1) isTrue = true; NO.isStorageContainer = isTrue;
                 if (isTrue)
                 {
                     int Count = 0;
-                    if (!FromDisk) StorageValue = IntValues[Index]; else StorageValue = LoadInt(Directory + "IsTreasureList"); Index++;
+                    StorageValue = IntValues[Index]; Index++;
                     isTrue = false; if (StorageValue == 1) isTrue = true; NO.isTreasureList = isTrue;
-                    if (!FromDisk) Count = IntValues[Index]; else Count = LoadInt(Directory + "StorageContainerCount"); Index++;
+                    Count = IntValues[Index]; Index++;
                     NO.StorageSlots = new DG_PlayerCharacters.RucksackSlot[Count];
 
-                    string SubKnownDirectory = Directory;
                     DG_PlayerCharacters.RucksackSlot[] RS = NO.StorageSlots;
                     for (int iR = 0; iR < Count; iR++)
                     {
                         RS[iR] = new DG_PlayerCharacters.RucksackSlot();
                         DG_PlayerCharacters.RucksackSlot RSlot = RS[iR];
-                        string RuckSackSlot = iR.ToString();
                         //
-                        if (FromDisk) Directory = FindOrCreateSaveDirectory(SubKnownDirectory, "RS" + RuckSackSlot + "/");
-                        if (!FromDisk) RSlot.ContainedItem = IntValues[Index]; else RSlot.ContainedItem = LoadInt(Directory + "ContainedItem"); Index++;
-                        if (!FromDisk) RSlot.CurrentStackActive = IntValues[Index]; else RSlot.CurrentStackActive = LoadInt(Directory + "CurrentStackActive"); Index++;
-                        if (!FromDisk) RSlot.LowValue = IntValues[Index]; else RSlot.LowValue = LoadInt(Directory + "LowValue"); Index++;
-                        if (!FromDisk) RSlot.NormalValue = IntValues[Index]; else RSlot.NormalValue = LoadInt(Directory + "NormalValue"); Index++;
-                        if (!FromDisk) RSlot.HighValue = IntValues[Index]; else RSlot.HighValue = LoadInt(Directory + "HighValue"); Index++;
-                        if (!FromDisk) RSlot.MaximumValue = IntValues[Index]; else RSlot.MaximumValue = LoadInt(Directory + "MaximumValue"); Index++;
+                        RSlot.ContainedItem = IntValues[Index]; Index++;
+                        RSlot.CurrentStackActive = IntValues[Index]; Index++;
+                        RSlot.LowValue = IntValues[Index]; Index++;
+                        RSlot.NormalValue = IntValues[Index]; Index++;
+                        RSlot.HighValue = IntValues[Index]; Index++;
+                        RSlot.MaximumValue = IntValues[Index]; Index++;
                     }
                 }
             }

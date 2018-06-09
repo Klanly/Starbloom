@@ -21,12 +21,17 @@ public class DG_BreakableObjectsHandler : MonoBehaviour {
         DG_ItemObject IO = QuickFind.ItemDatabase.GetItemFromID(NO.ItemRefID);
         if (ValidBreakAction(IO, ActivateableType, ToolLevel))
         {
-            DG_ItemObject ToolIO = QuickFind.ItemDatabase.GetItemFromID(RucksackSlotOpen.ContainedItem);
-            int Hitvalue = ToolIO.ToolQualityLevels[(int)ToolLevel].StrengthValue;
-            int newHealthValue = NO.HealthValue - Hitvalue;
+            if (CO.Type == DG_ContextObject.ContextTypes.HarvestableTree)
+                QuickFind.InteractHandler.HandleClusterHarvest(CO);
+            else
+            {
+                DG_ItemObject ToolIO = QuickFind.ItemDatabase.GetItemFromID(RucksackSlotOpen.ContainedItem);
+                int Hitvalue = ToolIO.ToolQualityLevels[(int)ToolLevel].StrengthValue;
+                int newHealthValue = NO.HealthValue - Hitvalue;
 
-            if (newHealthValue <= 0) SendBreak(NO, CO, IO);
-            else SendHitData(NO, newHealthValue);
+                if (newHealthValue <= 0) SendBreak(NO, CO, IO);
+                else SendHitData(CO, NO, newHealthValue);
+            }
         }
         else return;
     }
@@ -44,7 +49,7 @@ public class DG_BreakableObjectsHandler : MonoBehaviour {
 
 
 
-    void SendHitData(NetworkObject NO, int NewHealthValue)
+    void SendHitData(DG_ContextObject CO, NetworkObject NO, int NewHealthValue)
     {
         int[] Sent = new int[3];
         Sent[0] = QuickFind.NetworkSync.CurrentScene;
@@ -60,7 +65,7 @@ public class DG_BreakableObjectsHandler : MonoBehaviour {
         NO.HealthValue = Data[2];
         DG_ItemObject IO = QuickFind.ItemDatabase.GetItemFromID(NO.ItemRefID);
 
-        if(IO.EnvironmentValues[0].ObjectType == DG_BreakableObjectItem.OnHitEffectType.Stone)
+        if(IO.EnvironmentValues[0].OnHitFXType == DG_BreakableObjectItem.OnHitEffectType.Stone)
             NO.transform.GetChild(0).GetComponent<DG_UI_WobbleAndFade>().enabled = true;
     }
 
@@ -69,26 +74,25 @@ public class DG_BreakableObjectsHandler : MonoBehaviour {
 
     void SendBreak(NetworkObject NO, DG_ContextObject CO, DG_ItemObject IO)
     {
-        QuickFind.NetworkSync.RemoveNetworkSceneObject(QuickFind.NetworkSync.CurrentScene, NO.NetworkObjectID);
-        int SceneID = QuickFind.NetworkSync.CurrentScene;
-        DG_ItemObject.Environment E = IO.EnvironmentValues[0];
-
-        if (E.DropItemsOnBreak)
+        if(CO.Type == DG_ContextObject.ContextTypes.BreakableTree)
+            CO.GetComponent<DG_TreeFall>().BreakMessage();
+        else
         {
-            DG_BreakableObjectItem BOI = QuickFind.BreakableObjectsCompendium.GetItemFromID(E.BreakableAtlasID);
+            QuickFind.NetworkSync.RemoveNetworkSceneObject(QuickFind.NetworkSync.CurrentScene, NO.NetworkObjectID);
+            int SceneID = QuickFind.NetworkSync.CurrentScene;
+            DG_BreakableObjectItem BOI = QuickFind.BreakableObjectsCompendium.GetItemFromID(IO.HarvestClusterIndex);
             DG_BreakableObjectItem.ItemClump[] IC = BOI.GetBreakReward();
 
+            DG_ScatterPointReference SPR = CO.GetComponent<DG_ScatterPointReference>();
             for (int i = 0; i < IC.Length; i++)
             {
                 DG_BreakableObjectItem.ItemClump Clump = IC[i];
                 for (int iN = 0; iN < Clump.Value; iN++)
-                    QuickFind.NetworkObjectManager.CreateNetSceneObject(SceneID, Clump.ItemID, Clump.ItemQuality, CO.GetSpawnPoint(), 0,true, CO.RandomVelocity());
+                    QuickFind.NetworkObjectManager.CreateNetSceneObject(SceneID, Clump.ItemID, Clump.ItemQuality, SPR.GetSpawnPoint(), 0, true, SPR.RandomVelocity());
             }
-        }
-        else if(E.SwapItemOnBreak)
-            QuickFind.NetworkObjectManager.CreateNetSceneObject(SceneID, E.SwapID, 0, NO.transform.position, NO.transform.eulerAngles.y);
 
-        if (E.ObjectType == DG_BreakableObjectItem.OnHitEffectType.Stone)
-            QuickFind.SkillTracker.IncreaseSkillLevel(DG_SkillTracker.SkillTags.Mining, DG_ItemObject.ItemQualityLevels.Low);
+            if (IO.EnvironmentValues[0].ActivateableTypeRequired == HotbarItemHandler.ActivateableTypes.Pickaxe)
+                QuickFind.SkillTracker.IncreaseSkillLevel(DG_SkillTracker.SkillTags.Mining, DG_ItemObject.ItemQualityLevels.Low);
+        }
     }
 }

@@ -8,7 +8,6 @@ public class DG_MagneticItem : MonoBehaviour {
     [HideInInspector] public bool AllowMagnetic = false;
 
     public bool RandomizeRotationOnEnable;
-    public LayerMask DetectionMask;
     float WaitTimer;
 
 

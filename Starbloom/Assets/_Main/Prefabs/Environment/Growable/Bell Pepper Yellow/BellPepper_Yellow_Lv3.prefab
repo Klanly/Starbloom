@@ -159,7 +159,6 @@ MonoBehaviour:
   WobbleCount: 18
   isShrink: 0
   ShrinkTime: 0
-  ScaleAtAwake: 1
 --- !u!114 &114625049817176156
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -173,5 +172,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ThisIsGrowthItem: 1
   ContextID: 34
-  Type: 9
+  Type: 8
   BreakValues: []

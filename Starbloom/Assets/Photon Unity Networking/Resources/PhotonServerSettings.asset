@@ -77,4 +77,6 @@ MonoBehaviour:
   - NewMoneyValueSet
   - ReceivePlayerMovement
   - ItemSetInShippingBin
+  - ReceivedHarvestedObject
+  - ReceiveTreeFall
   DisableAutoOpenWizard: 1

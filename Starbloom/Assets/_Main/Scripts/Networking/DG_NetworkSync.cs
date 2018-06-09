@@ -443,7 +443,7 @@ public class DG_NetworkSync : Photon.MonoBehaviour
         if(NO.SurrogateObjectIndex != 0)
         { NetworkObject NO2 = QuickFind.NetworkObjectManager.GetItemByID(Received[0], NO.SurrogateObjectIndex); NO2.SurrogateObjectIndex = 0; }
         NetworkScene NS = QuickFind.NetworkObjectManager.GetSceneByID(Received[0]);
-        NS.DeleteNetworkObject(Received[1]);
+        Destroy(NO.gameObject);
     }
 
 
@@ -478,6 +478,24 @@ public class DG_NetworkSync : Photon.MonoBehaviour
     [PunRPC]
     public void ReceiveSurrogateTilled(int[] Data)
     { QuickFind.ObjectPlacementManager.ReceiveTilledSurrogate(Data); }
+
+
+    public void HarvestObject(int[] OutData)
+    { PV.RPC("ReceivedHarvestedObject", PhotonTargets.All, OutData); }
+    [PunRPC]
+    public void ReceivedHarvestedObject(int[] Data)
+    { QuickFind.NetworkGrowthHandler.ReceivedPlantHarvested(Data); }
+
+
+    public void SignalTreeFall(int[] OutData)
+    { PV.RPC("ReceiveTreeFall", PhotonTargets.All, OutData); }
+    [PunRPC]
+    public void ReceiveTreeFall(int[] Data)
+    {
+        NetworkObject NO = QuickFind.NetworkObjectManager.GetItemByID(Data[0], Data[1]);
+        NO.transform.GetChild(0).GetComponent<DG_TreeFall>().ReceiveTreefallEvent(Data);
+    }
+
 
 
     #endregion
