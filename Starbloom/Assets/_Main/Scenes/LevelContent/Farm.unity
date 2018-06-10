@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.16883594, g: 0.30699894, b: 0.6308183, a: 1}
+  m_IndirectSpecularColor: {r: 0.16877761, g: 0.30701706, b: 0.63128734, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -442,10 +442,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 538995c128d53fe48a7051ffbb220cf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ThisIsGrowthItem: 0
-  ContextID: 0
   Type: 11
-  BreakValues: []
 --- !u!114 &367790110
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4874,18 +4871,27 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114282750014194908, guid: 26a9456aa818d134ca596e3e56200a22,
-        type: 2}
-      propertyPath: serializationData.Prefab
-      value: 
-      objectReference: {fileID: 114282750014194908, guid: 26a9456aa818d134ca596e3e56200a22,
-        type: 2}
     - target: {fileID: 114603496628545226, guid: 26a9456aa818d134ca596e3e56200a22,
         type: 2}
       propertyPath: serializationData.Prefab
       value: 
       objectReference: {fileID: 114603496628545226, guid: 26a9456aa818d134ca596e3e56200a22,
         type: 2}
+    - target: {fileID: 114282750014194908, guid: 26a9456aa818d134ca596e3e56200a22,
+        type: 2}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 114282750014194908, guid: 26a9456aa818d134ca596e3e56200a22,
+        type: 2}
+    - target: {fileID: 1263508048407966, guid: 26a9456aa818d134ca596e3e56200a22, type: 2}
+      propertyPath: m_Name
+      value: Persephone
+      objectReference: {fileID: 0}
+    - target: {fileID: 114282750014194908, guid: 26a9456aa818d134ca596e3e56200a22,
+        type: 2}
+      propertyPath: serializationData.SerializedFormat
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 26a9456aa818d134ca596e3e56200a22, type: 2}
   m_IsPrefabParent: 0
@@ -9731,10 +9737,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 538995c128d53fe48a7051ffbb220cf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ThisIsGrowthItem: 0
-  ContextID: 0
   Type: 10
-  BreakValues: []
 --- !u!43 &1548824061
 Mesh:
   m_ObjectHideFlags: 0

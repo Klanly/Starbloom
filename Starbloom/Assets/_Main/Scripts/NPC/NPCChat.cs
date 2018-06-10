@@ -4,16 +4,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using PixelCrushers.DialogueSystem;
 
-[RequireComponent(typeof(NPCRelationship)), RequireComponent(typeof(NPCController))]
+[RequireComponent(typeof(NPCRelationship)), RequireComponent(typeof(NPCController)) RequireComponent(typeof(ConversationTrigger))]
 public class NPCChat : MonoBehaviour
 {
 	protected NPCController Controller;
 	protected NPCRelationship Relation;
+	protected ConversationTrigger ConversationTrg;
 
 	private void Awake()
 	{
 		Controller = GetComponent<NPCController>();
 		Relation = GetComponent<NPCRelationship>();
+		ConversationTrg = GetComponent<ConversationTrigger>();
 	}
 
 	[Button("Debug Conversation")]
@@ -25,6 +27,9 @@ public class NPCChat : MonoBehaviour
 	public string GetConversationName()
 	{
 		string npcName = Controller.NPCName.ToUpper();
+
+		Debug.AssertFormat(!string.IsNullOrEmpty(npcName), "NPC name not set on transform [{0}]", transform.name);
+
 		if (Relation.IsPlayerUnknown)
 			return string.Format("{0}_UNKNOWN", npcName);
 
@@ -48,8 +53,16 @@ public class NPCChat : MonoBehaviour
 		return possibleConvs.ToArray().RandomItem();
 	}
 
+	public void OnInteract()
+	{
+		Talk();
+	}
+
 	[Button("Debug Talk")]
 	public void Talk()
 	{
+		ConversationTrg.actor = QuickFind.PlayerTrans;
+		ConversationTrg.conversation = GetConversationName();
+		ConversationTrg.TryStartConversation(transform);
 	}
 }
