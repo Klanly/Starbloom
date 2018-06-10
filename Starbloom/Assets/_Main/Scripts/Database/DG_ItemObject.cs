@@ -44,6 +44,9 @@ public class DG_ItemObject : MonoBehaviour
     [Header("Default Visuals")]
     public Sprite Icon;
     public GameObject ModelPrefab;
+    public bool UsePoolIDForSpawn;
+    [ShowIf("UsePoolIDForSpawn")]
+    public int PoolID;
     public float DefaultScale = 1;
 
 

@@ -13839,7 +13839,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 2470, y: 1305}
+  m_AnchoredPosition: {x: -2212.9995, y: 1585.9998}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!225 &695973729
@@ -13865,6 +13865,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UICanvas: {fileID: 695973729}
+  CraftGrid: {fileID: 1211736165}
+  AbleToCraftColor: {r: 1, g: 1, b: 1, a: 1}
+  InableToCraftColor: {r: 1, g: 1, b: 1, a: 0.3137255}
+  CanCraft: 0
   CurrentHoverItem: {fileID: 0}
 --- !u!1 &703902396
 GameObject:
@@ -28878,7 +28882,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 0
+  m_firstOverflowCharacterIndex: -1
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -31478,7 +31482,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -2407, y: 1376}
+  m_AnchoredPosition: {x: 2425, y: -1247.4}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!225 &1625719495
@@ -36485,7 +36489,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 0
+  m_firstOverflowCharacterIndex: -1
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0

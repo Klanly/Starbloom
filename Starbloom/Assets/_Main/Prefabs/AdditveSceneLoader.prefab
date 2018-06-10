@@ -161,5 +161,8 @@ MonoBehaviour:
     SceneName: Networking
     EditorSceneFolderPath: Assets/_Main/Scenes/Additive/
   - DebugDoNotLoad: 0
+    SceneName: Pooling
+    EditorSceneFolderPath: Assets/_Main/Scenes/Additive/
+  - DebugDoNotLoad: 0
     SceneName: Fade Handler
     EditorSceneFolderPath: Assets/_Main/Scenes/Additive/

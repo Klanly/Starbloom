@@ -10,6 +10,9 @@ public class DG_CraftButton : MonoBehaviour {
     public Image HoverOverImage = null;
     public Image ActiveHotbarItem = null;
 
+    [HideInInspector] public int CraftDatabaseID;
+    [HideInInspector] public bool AbleToCraft;
+
     [Header("Icon Scale Effect")]
     public float ScaleSize;
     public float ScaleTime;
@@ -52,9 +55,8 @@ public class DG_CraftButton : MonoBehaviour {
 
     public void ItemPressed()
     {
-        if (Input.GetMouseButtonDown(1)) return;
-
-        QuickFind.GUI_Crafting.CraftButtonPressed();
+        if (!AbleToCraft) return;
+        QuickFind.GUI_Crafting.CraftButtonPressed(this);
     }
 
 

@@ -33,6 +33,9 @@ public static class QuickFindInEditor
     public static DG_BreakableObjectsAtlas GetBreakableObjectsCompendium() { return GameObject.Find("Cluster Rewards Atlas").GetComponent<DG_BreakableObjectsAtlas>(); }
     public static DG_ShopAtlas GetShopCompendium() { return GameObject.Find("Shop Type Atlas").GetComponent<DG_ShopAtlas>(); }
     public static DG_CraftingDictionary GetCraftingCompendium() { return GameObject.Find("Crafting Dictionary").GetComponent<DG_CraftingDictionary>(); }
+    public static DG_PrefabPoolDictionary GetPrefabPool() { return GameObject.Find("Prefab Pool Dictionary").GetComponent<DG_PrefabPoolDictionary>(); }
+    public static DG_FXPoolDictionary GetFXPool() { return GameObject.Find("FX Pool Dictionary").GetComponent<DG_FXPoolDictionary>(); }
+
     //Save Data
     public static UserSettings GetEditorUserSettings() { return GameObject.Find("Player Settings").GetComponent<UserSettings>(); }
 
@@ -154,8 +157,6 @@ public static class QuickFind
 
 
 
-
-
     //Environment
     public static WeatherHandler WeatherHandler = null;
     public static Tenkoku.Core.TenkokuModule WeatherModule = null;
@@ -163,6 +164,18 @@ public static class QuickFind
     public static Suimono.Core.SuimonoObject WaterObject = null;
     public static TimeHandler TimeHandler = null;
     public static FakeRainDropCollision RainDropHandler = null;
+
+
+
+    //Pooling
+    public static DG_PrefabPoolDictionary PrefabPool = null;
+    public static DG_FXPoolDictionary FXPool = null;
+
+
+
+
+
+
 
 
 
