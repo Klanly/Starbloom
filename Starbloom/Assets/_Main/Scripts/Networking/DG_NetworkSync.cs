@@ -451,6 +451,10 @@ public class DG_NetworkSync : Photon.MonoBehaviour
         { NetworkObject NO2 = QuickFind.NetworkObjectManager.GetItemByID(Received[0], NO.SurrogateObjectIndex); NO2.SurrogateObjectIndex = 0; }
         NetworkScene NS = QuickFind.NetworkObjectManager.GetSceneByID(Received[0]);
         NS.NetworkObjectList.Remove(NO);
+
+        DG_ItemObject IO = QuickFind.ItemDatabase.GetItemFromID(NO.ItemRefID);
+        if (IO.UsePoolIDForSpawn)
+            QuickFind.PrefabPool.SafeReturnNetworkPoolObject(NO);
         Destroy(NO.gameObject);
     }
 

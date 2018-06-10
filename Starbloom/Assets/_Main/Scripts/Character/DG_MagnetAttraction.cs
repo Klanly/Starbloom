@@ -50,6 +50,7 @@ public class DG_MagnetAttraction : MonoBehaviour {
             {
                 NetworkObject NO = QuickFind.NetworkObjectManager.ScanUpTree(MT.Trans);
                 QuickFind.NetworkSync.RemoveNetworkSceneObject(NO.transform.parent.GetComponent<NetworkScene>().SceneID, NO.NetworkObjectID);
+                MagnetObjects.Remove(MT);
             }
         }
     }

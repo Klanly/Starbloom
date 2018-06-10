@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.36612314, g: 0.43895644, b: 0.5326626, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -156,7 +156,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DatabaseID: 0
   LockItem: 1
-  ObjectName: Leave This Empty
+  Name: Leave This Empty
   NameWordID: 0
 --- !u!114 &447920608
 MonoBehaviour:
@@ -170,11 +170,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 1
-<<<<<<< HEAD
-  instanceID: 151638
-=======
-  instanceID: 75688
->>>>>>> 7b1392952cbb4696cd3b2577f7c2e1c10f804b5f
+  instanceID: 38468
 --- !u!1 &1524751960
 GameObject:
   m_ObjectHideFlags: 0
@@ -261,7 +257,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DatabaseID: 1
   LockItem: 1
-  ObjectName: Jethro
+  Name: Jethro
   NameWordID: 14
 --- !u!114 &1822878652
 MonoBehaviour:
@@ -275,11 +271,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 1
-<<<<<<< HEAD
-  instanceID: 151652
-=======
-  instanceID: 75702
->>>>>>> 7b1392952cbb4696cd3b2577f7c2e1c10f804b5f
+  instanceID: 38482
 --- !u!1 &1939056529
 GameObject:
   m_ObjectHideFlags: 0

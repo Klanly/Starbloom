@@ -102,4 +102,12 @@ public class DG_PrefabPoolItem : MonoBehaviour {
         ReturnObject.GameObjectRef.SetActive(false);
         ReturnObject.IsActive = false;
     }
+
+
+
+    [Button(ButtonSizes.Small)]
+    public void SyncNameToPrefabRef()
+    {
+        Name = PrefabReference.name;
+    }
 }

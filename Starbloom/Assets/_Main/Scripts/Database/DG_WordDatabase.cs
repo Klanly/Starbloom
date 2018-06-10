@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 
 public class DG_WordDatabase : MonoBehaviour {
 
-    [HideInInspector] public DG_WordObject[] ItemCatagoryList;
-    [HideInInspector] public int ListCount;
+    [HideInInspector]
+    public DG_WordObject[] ItemCatagoryList;
+    [HideInInspector]
+    public int ListCount;
 
     private void Awake()
     {
@@ -69,5 +72,17 @@ public class DG_WordDatabase : MonoBehaviour {
             }
         }
         return string.Empty;
+    }
+
+
+
+
+
+
+
+    [Button(ButtonSizes.Small)]
+    public void SyncAllNamesToFirst10Letters()
+    {
+        foreach (DG_WordObject WO in ItemCatagoryList) WO.SyncNameToText();
     }
 }

@@ -1,27 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-
-#if UNITY_EDITOR
-using UnityEditor;
-/////////////////////////////////////////////////////////////////////////////////Editor Extension Buttons
-[CustomEditor(typeof(DG_WordObject))]
-class DG_WordObjectEditor : Editor
-{
-    public override void OnInspectorGUI()
-    {
-        DrawDefaultInspector();
-
-        //Buttons
-
-        DG_WordObject myScript = (DG_WordObject)target;
-        if (GUILayout.Button("UpdateLanguages"))
-            myScript.UpdateLanguages();
-    }
-}
-//////////////////////////////////////////////////////////////////////////////////
-#endif
+using Sirenix.OdinInspector;
 
 
 
@@ -38,13 +18,15 @@ public class DG_WordObject : MonoBehaviour {
 
     [HideInInspector] public int DatabaseID;
     [HideInInspector] public bool LockItem;
+    public string Name;
 
     public string DevNotes;
     [Header("Values")]
+    [ListDrawerSettings(ListElementLabelName = "Language")]
     public TextEntry[] TextValues;
 
 
-
+    [Button(ButtonSizes.Small)]
     public void UpdateLanguages()
     {
         PopulateLanguageOptions(this);
@@ -81,4 +63,24 @@ public class DG_WordObject : MonoBehaviour {
         }
         return null;
     }
+
+
+
+
+    [Button(ButtonSizes.Small)]
+    public void SyncNameToText()
+    {
+        Name = GetFirst10Letters(TextValues[0].stringEntry);
+    }
+    string GetFirst10Letters(string Base)
+    {
+        char[] c = Base.ToCharArray();
+        System.Text.StringBuilder SB = new System.Text.StringBuilder();
+        int count = 10;
+        if (c.Length < 10) count = c.Length;
+        for (int i = 0; i < count; i++)
+            SB.Append(c[i]);
+        return SB.ToString();
+    }
+
 }

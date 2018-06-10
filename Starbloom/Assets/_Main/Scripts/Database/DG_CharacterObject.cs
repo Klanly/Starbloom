@@ -9,7 +9,7 @@ public class DG_CharacterObject : MonoBehaviour {
     [HideInInspector] public int DatabaseID;
     [HideInInspector] public bool LockItem;
 
-    public string ObjectName;
+    public string Name;
     [Header("Localization")]
     public int NameWordID;
 }

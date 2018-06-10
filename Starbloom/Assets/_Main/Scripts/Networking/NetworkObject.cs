@@ -59,7 +59,10 @@ public class NetworkObject : MonoBehaviour {
         DG_ItemObject IO = IDB.GetItemFromID(ItemRefID);
         GameObject Prefab = IO.GetPrefabReferenceByQuality(ItemQualityLevel);
 
-        GameObject Spawn = Instantiate(Prefab);
+        GameObject Spawn;
+        if (IO.UsePoolIDForSpawn && Application.isPlaying) Spawn = Prefab;
+        else Spawn = Instantiate(Prefab);
+
         Transform T = Spawn.transform;
         T.SetParent(transform);
         T.localPosition = Vector3.zero;

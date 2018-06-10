@@ -6,4 +6,5 @@ public class DG_TooltipSubItem : MonoBehaviour {
 
     public UnityEngine.UI.Image DisplayImage;
     public TMPro.TextMeshProUGUI TextObject;
+    public TMPro.TextMeshProUGUI NumberObject;
 }

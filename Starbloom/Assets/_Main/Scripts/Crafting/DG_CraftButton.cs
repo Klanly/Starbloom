@@ -40,7 +40,9 @@ public class DG_CraftButton : MonoBehaviour {
         this.enabled = true;
 
         QuickFind.GUI_Crafting.CurrentHoverItem = this;
-        //QuickFind.TooltipHandler.ShowToolTip(QuickFind.ItemDatabase.GetItemFromID(RSS.ContainedItem).ToolTipType);
+
+        DG_CraftingDictionaryItem CDI = QuickFind.CraftingDictionary.GetItemFromID(CraftDatabaseID);
+        QuickFind.TooltipHandler.ShowToolTip(QuickFind.ItemDatabase.GetItemFromID(CDI.ItemCreatedRef).ToolTipType);
     }
     public void ItemHoverOut()
     {

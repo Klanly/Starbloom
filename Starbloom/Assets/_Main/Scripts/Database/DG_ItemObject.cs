@@ -207,6 +207,8 @@ public class DG_ItemObject : MonoBehaviour
             if (ToolQualityLevels[IQL].HasCustomModel) return ToolQualityLevels[IQL].ModelPrefab;
             else return ModelPrefab;
         }
+        else if (UsePoolIDForSpawn && Application.isPlaying)
+            return QuickFind.PrefabPool.GetPoolItemByPrefabID(PoolID);
         else
             return ModelPrefab;
     }

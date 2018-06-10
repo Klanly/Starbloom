@@ -255,6 +255,14 @@ public class DG_TooltipGUI : MonoBehaviour {
                     SetUpInventoryStats();
                 }
                 break;
+            case ToolTipGroups.Craft:
+                {
+                    SetMain();
+                    SetSub();
+                    SetUpCraftIngredients();
+                    SetDescription();
+                }
+                break;
         }
     }
 
@@ -291,7 +299,8 @@ public class DG_TooltipGUI : MonoBehaviour {
             DG_TooltipSubItem Sub = Desc.GetSubItem(index); index++;
             DG_ItemsDatabase.GenericIconDatabaseItem ICD = QuickFind.ItemDatabase.GetGenericIconByString("Health");
             Sub.DisplayImage.sprite = ICD.Icon;
-            Sub.TextObject.text = HealthAdjust.ToString() + " " + QuickFind.WordDatabase.GetWordFromID(HealthLocalizationID);
+            Sub.NumberObject.text = HealthAdjust.ToString(); 
+            Sub.TextObject.text =  QuickFind.WordDatabase.GetWordFromID(HealthLocalizationID);
 
             Color C = ICD.ColorVariations[0];
             Sub.DisplayImage.color = C;
@@ -302,10 +311,46 @@ public class DG_TooltipGUI : MonoBehaviour {
             DG_TooltipSubItem Sub = Desc.GetSubItem(index); index++;
             DG_ItemsDatabase.GenericIconDatabaseItem ICD = QuickFind.ItemDatabase.GetGenericIconByString("Energy");
             Sub.DisplayImage.sprite = ICD.Icon;
-            Sub.TextObject.text = EnergyAdjust.ToString() + " " + QuickFind.WordDatabase.GetWordFromID(EnergyLocalizationID);
+            Sub.NumberObject.text = EnergyAdjust.ToString();
+            Sub.TextObject.text = QuickFind.WordDatabase.GetWordFromID(EnergyLocalizationID);
 
             Color C = ICD.ColorVariations[0];
             Sub.DisplayImage.color = C;
+        }
+    }
+    void SetUpCraftIngredients()
+    {
+        DG_TooltipModule Desc = GetModuleByType(ToolTipModules.CraftingIngredient);
+        Desc.TurnOFFSubs();
+
+        //Update Static Ingredients Text based on language.
+        Desc.transform.GetChild(0).GetChild(0).GetComponent<DG_TextStatic>().ManualLoad();
+
+        DG_CraftingDictionaryItem CDI = QuickFind.CraftingDictionary.GetItemFromID(ActiveItemObject.ContextID);
+        DG_ItemObject IO = QuickFind.ItemDatabase.GetItemFromID(CDI.ItemCreatedRef);
+
+
+        int index = 0;
+        for (int i = 0; i < CDI.IngredientList.Length; i++)
+        {
+            DG_CraftingDictionaryItem.Ingredient I = CDI.IngredientList[i];
+            DG_ItemObject IngredientObject = QuickFind.ItemDatabase.GetItemFromID(I.ItemDatabaseRef);
+            DG_TooltipSubItem Sub = Desc.GetSubItem(index); index++;
+            Sub.DisplayImage.sprite = IngredientObject.Icon;
+            Sub.NumberObject.text = I.Value.ToString();
+            Sub.TextObject.text = QuickFind.WordDatabase.GetWordFromID(IngredientObject.ToolTipType.MainLocalizationID);
+
+            DG_ItemsDatabase.GenericIconDatabaseItem ICD = QuickFind.ItemDatabase.GetGenericIconByString("TextColor");
+            if (QuickFind.InventoryManager.TotalInventoryCountOfItem(IngredientObject.DatabaseID) < I.Value)
+            {
+                Sub.TextObject.color = ICD.ColorVariations[1];  //Not Enough Color
+                Sub.NumberObject.color = ICD.ColorVariations[1];
+            }
+            else
+            {
+                Sub.TextObject.color = ICD.ColorVariations[0];  //Has Enough Color
+                Sub.NumberObject.color = ICD.ColorVariations[0];
+            }
         }
     }
 
@@ -334,6 +379,16 @@ public class DG_TooltipGUI : MonoBehaviour {
 
 
 
+
+
+
+
+
+
+
+
+
+
     void SetQualityHotbarPosition()
     {
         if (DisplayTooltip && HoveredInventoryItem != null)
@@ -349,6 +404,7 @@ public class DG_TooltipGUI : MonoBehaviour {
             FloatingQualitySelect.position = InventoryItem.position;
         }
     }
+
 
     void SetQualityLevelStars()
     {

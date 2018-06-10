@@ -47,7 +47,7 @@ public class NodeLink : MonoBehaviour
 
     [HideInInspector] public int DatabaseID;
     [HideInInspector] public bool LockItem;
-    public string TreeName;
+    public string Name;
 
     //For future Expansions to node editor
     [HideInInspector] public NodeWindowtype NodeWindowType;

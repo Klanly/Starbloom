@@ -37,7 +37,7 @@ public class DG_QuestObject : MonoBehaviour {
 
     [HideInInspector] public int DatabaseID;
     [HideInInspector] public bool LockItem;
-    public string ObjectName;
+    public string Name;
 
     public int BoolSaveLocation;
 

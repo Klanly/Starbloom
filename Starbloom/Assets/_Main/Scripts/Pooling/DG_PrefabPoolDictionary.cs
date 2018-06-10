@@ -15,14 +15,8 @@ public class DG_PrefabPoolDictionary : MonoBehaviour {
     private void Awake(){QuickFind.PrefabPool = this;}
 
 
-    public GameObject GetPoolItemByPrefabID(int PrefabID)
-    {
-        return GetItemFromID(PrefabID).GetAvailablePoolObject();
-    }
-    public void ReturnPoolItem(DG_PrefabPoolItem.PoolObject PoolObject)
-    {
-        GetItemFromID(PoolObject.PrefabID).ReturnPoolObject(PoolObject);
-    }
+    public GameObject GetPoolItemByPrefabID(int PrefabID) { return GetItemFromID(PrefabID).GetAvailablePoolObject(); }
+    public void ReturnPoolItem(DG_PrefabPoolItem.PoolObject PoolObject) { GetItemFromID(PoolObject.PrefabID).ReturnPoolObject(PoolObject); }
 
 
     DG_PrefabPoolItem GetItemFromID(int ID)
@@ -36,7 +30,7 @@ public class DG_PrefabPoolDictionary : MonoBehaviour {
 
 
     //Re-Pool, or Destroy
-    public void SafeDestroyNetworkObject(NetworkObject Object)
+    public void SafeReturnNetworkPoolObject(NetworkObject Object)
     {
         Transform PrefabChild = Object.transform.GetChild(0);
         if (PrefabChild.GetComponent<DG_PoolLink>() != null)
@@ -45,15 +39,11 @@ public class DG_PrefabPoolDictionary : MonoBehaviour {
             PL.transform.SetParent(GetItemFromID(PL.PoolObjectRef.PrefabID).transform);
             ReturnPoolItem(PL.PoolObjectRef);
         }
-
-        Destroy(Object.gameObject);
     }
-    public void SafeDestroyNormalObject(GameObject Object)
+    public void SafeReturnNormalObject(GameObject Object)
     {
         if (Object.GetComponent<DG_PoolLink>() != null)
             ReturnPoolItem(Object.GetComponent<DG_PoolLink>().PoolObjectRef);
-        else
-            Destroy(Object);
     }
 
 }
