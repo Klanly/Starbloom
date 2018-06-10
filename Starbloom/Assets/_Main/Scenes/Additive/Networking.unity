@@ -381,7 +381,7 @@ GameObject:
   - component: {fileID: 347508492}
   - component: {fileID: 347508493}
   m_Layer: 0
-  m_Name: Green Seeds 2
+  m_Name: Seed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1503,15 +1503,15 @@ MonoBehaviour:
     NormalValue: 0
     HighValue: 0
     MaximumValue: 0
-  - ContainedItem: 0
+  - ContainedItem: 7
     CurrentStackActive: 0
-    LowValue: 0
+    LowValue: 500
     NormalValue: 0
     HighValue: 0
     MaximumValue: 0
-  - ContainedItem: 0
+  - ContainedItem: 35
     CurrentStackActive: 0
-    LowValue: 0
+    LowValue: 500
     NormalValue: 0
     HighValue: 0
     MaximumValue: 0
@@ -1948,7 +1948,7 @@ MonoBehaviour:
         NormalValue: 0
         HighValue: 0
         MaximumValue: 0
-    CraftsDiscovered: 01000000
+    CraftsDiscovered: 0100000001000000
     Acheivements:
       LargestFishCaught: 000000000000000000000000
   - Name: 
@@ -2184,7 +2184,7 @@ MonoBehaviour:
         NormalValue: 0
         HighValue: 0
         MaximumValue: 0
-    CraftsDiscovered: 01000000
+    CraftsDiscovered: 0100000001000000
     Acheivements:
       LargestFishCaught: 000000000000000000000000
   - Name: 
@@ -2420,7 +2420,7 @@ MonoBehaviour:
         NormalValue: 0
         HighValue: 0
         MaximumValue: 0
-    CraftsDiscovered: 01000000
+    CraftsDiscovered: 0100000001000000
     Acheivements:
       LargestFishCaught: 000000000000000000000000
   - Name: 
@@ -2656,7 +2656,7 @@ MonoBehaviour:
         NormalValue: 0
         HighValue: 0
         MaximumValue: 0
-    CraftsDiscovered: 01000000
+    CraftsDiscovered: 0100000001000000
     Acheivements:
       LargestFishCaught: 000000000000000000000000
   Weather:

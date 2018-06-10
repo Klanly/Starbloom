@@ -8,10 +8,12 @@ public class DG_DebugSettings : MonoBehaviour {
     [Header("Network")]
     public bool PlayOnline = true;
     public bool BypassMainMenu = false;
+    
     [Header("Debug Tools")]
     public bool DisableAudio = false;
     public bool EnableDebugKeycodes = false;
     public bool ShowGrowthDebug = false;
+    public bool DisableAllPoolSpawningAtStart;
 
 
     [HideInInspector] public GameObject LastSelected;

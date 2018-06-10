@@ -108,11 +108,20 @@ public class DG_ObjectPlacement : MonoBehaviour {
         ObjectGhost.SetParent(transform);
         ObjectGhost.localScale = new Vector3(Item.DefaultScale, Item.DefaultScale, Item.DefaultScale);
 
-        foreach (Collider c in ObjectGhost.GetComponents<Collider>()) c.enabled = false;
+        TurnOffCollidersLoop(ObjectGhost);
 
         PlacementActive = true;
 
         if (ToDestroy != null) Destroy(ToDestroy);
+    }
+    void TurnOffCollidersLoop(Transform T)
+    {
+        if (T.GetComponent<Collider>()) T.GetComponent<Collider>().enabled = false;
+        if(T.childCount > 0)
+        {
+            for (int i = 0; i < T.childCount; i++)
+                TurnOffCollidersLoop(T.GetChild(i));
+        }
     }
 
 

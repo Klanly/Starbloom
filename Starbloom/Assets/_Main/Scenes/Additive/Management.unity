@@ -252,7 +252,7 @@ Transform:
   - {fileID: 1017073428}
   - {fileID: 1337580522}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519852981
 GameObject:
@@ -421,7 +421,7 @@ Transform:
   m_Children:
   - {fileID: 1307435960}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 20, y: 0, z: 0}
 --- !u!114 &1076293942
 MonoBehaviour:
@@ -929,7 +929,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1569164464
 GameObject:
@@ -988,8 +988,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1620623744}
   - component: {fileID: 1620623745}
-  - component: {fileID: 1620623746}
   - component: {fileID: 1620623748}
+  - component: {fileID: 1620623746}
+  - component: {fileID: 1620623749}
   - component: {fileID: 1620623747}
   m_Layer: 0
   m_Name: DEBUG
@@ -1027,6 +1028,7 @@ MonoBehaviour:
   DisableAudio: 1
   EnableDebugKeycodes: 0
   ShowGrowthDebug: 0
+  DisableAllPoolSpawningAtStart: 0
   LastSelected: {fileID: 0}
 --- !u!114 &1620623746
 MonoBehaviour:
@@ -1063,10 +1065,29 @@ MonoBehaviour:
   m_GameObject: {fileID: 1620623743}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d331097e3e3651d4381c98e52e75b83e, type: 3}
+  m_Script: {fileID: 11500000, guid: 201d340e64d5f1c4fa97182b6e004bf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Value: 50
+  TimeSpecific:
+    Year: 1
+    Month: 1
+    Day: 1
+    Hour: 6
+    Minute: 0
+  TimePresets:
+    PresetTime: 0
+--- !u!114 &1620623749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1620623743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc3411606fd656446864a1f1b5c3c6f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Value: 0
 --- !u!1 &1730668924
 GameObject:
   m_ObjectHideFlags: 0
@@ -1139,135 +1160,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1730668924}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1913074698
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1913074700}
-  - component: {fileID: 1913074699}
-  m_Layer: 0
-  m_Name: Dialogue Manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1913074699
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1913074698}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1229025713, guid: b5a7519e94754fb4a8ea0c272031db78, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  initialDatabase: {fileID: 0}
-  displaySettings:
-    conversationOverrideSettings:
-      useOverrides: 0
-      overrideSubtitleSettings: 0
-      showNPCSubtitlesDuringLine: 1
-      showNPCSubtitlesWithResponses: 1
-      showPCSubtitlesDuringLine: 0
-      skipPCSubtitleAfterResponseMenu: 0
-      subtitleCharsPerSecond: 30
-      minSubtitleSeconds: 2
-      continueButton: 0
-      overrideSequenceSettings: 0
-      defaultSequence: 
-      defaultPlayerSequence: 
-      defaultResponseMenuSequence: 
-      overrideInputSettings: 0
-      alwaysForceResponseMenu: 1
-      responseTimeout: 0
-    dialogueUI: {fileID: 0}
-    localizationSettings:
-      language: 
-      useSystemLanguage: 0
-      localizedText: {fileID: 0}
-    subtitleSettings:
-      showNPCSubtitlesDuringLine: 1
-      showNPCSubtitlesWithResponses: 1
-      showPCSubtitlesDuringLine: 0
-      allowPCSubtitleReminders: 0
-      skipPCSubtitleAfterResponseMenu: 0
-      subtitleCharsPerSecond: 30
-      minSubtitleSeconds: 2
-      continueButton: 0
-      richTextEmphases: 0
-      informSequenceStartAndEnd: 0
-    cameraSettings:
-      sequencerCamera: {fileID: 0}
-      alternateCameraObject: {fileID: 0}
-      cameraAngles: {fileID: 0}
-      defaultSequence: Delay({{end}})
-      defaultPlayerSequence: 
-      defaultResponseMenuSequence: 
-      entrytagFormat: 0
-      disableInternalSequencerCommands: 0
-    inputSettings:
-      alwaysForceResponseMenu: 1
-      includeInvalidEntries: 0
-      responseTimeout: 0
-      responseTimeoutAction: 0
-      emTagForOldResponses: 0
-      emTagForInvalidResponses: 0
-      qteButtons:
-      - Fire1
-      - Fire2
-      cancel:
-        key: 27
-        buttonName: 
-      cancelConversation:
-        key: 27
-        buttonName: 
-    barkSettings:
-      allowBarksDuringConversations: 1
-      barkCharsPerSecond: 0
-      minBarkSeconds: 0
-    alertSettings:
-      allowAlertsDuringConversations: 0
-      alertCheckFrequency: 0
-      alertCharsPerSecond: 0
-      minAlertSeconds: 0
-  persistentDataSettings:
-    recordPersistentDataOn: 0
-    includeActorData: 1
-    includeAllItemData: 0
-    includeLocationData: 0
-    includeStatusAndRelationshipData: 1
-    includeAllConversationFields: 0
-    saveConversationSimStatusWithField: 
-    saveDialogueEntrySimStatusWithField: 
-    asyncGameObjectBatchSize: 1000
-    asyncDialogueEntryBatchSize: 100
-    initializeNewVariables: 1
-  allowSimultaneousConversations: 0
-  includeSimStatus: 0
-  preloadResources: 0
-  instantiateDatabase: 0
-  dontDestroyOnLoad: 1
-  allowOnlyOneInstance: 1
-  dialogueTimeMode: 0
-  debugLevel: 2
---- !u!4 &1913074700
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1913074698}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1978687869
 GameObject:
   m_ObjectHideFlags: 0
