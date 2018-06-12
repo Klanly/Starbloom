@@ -25,8 +25,12 @@ public class DG_HoeHandler : MonoBehaviour {
     private void Update()
     {
         if (PlacementActive)
-        { if (ThisPlaceisSafeToPlaceObject()) { SafeToPlace = true; } else { SafeToPlace = false; } }
-        else SafeToPlace = false;
+        {
+            if (ThisPlaceisSafeToPlaceObject())
+            { QuickFind.GridDetection.GridMesh.enabled = true; SafeToPlace = true; }
+            else { QuickFind.GridDetection.GridMesh.enabled = false; SafeToPlace = false; }
+        }
+        else { SafeToPlace = false; }
     }
 
 

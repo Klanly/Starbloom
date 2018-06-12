@@ -156,7 +156,7 @@ public class DG_ItemObject : MonoBehaviour
     #endregion
 
 
-    #region Environment
+    #region Breakable
     [Header("----------------------------------")]
     public bool isBreakable = false;
     [Header("Breakable")]
@@ -174,12 +174,14 @@ public class DG_ItemObject : MonoBehaviour
     #endregion
 
 
-    [Header("Harvest----------------------------------")]
+    [Header("Situational----------------------------------")]
     public bool HarvestableItem;
     [ShowIf("HarvestableItem")]
     public int HarvestItemIndex;
     [ShowIf("HarvestableItem")]
     public int HarvestClusterIndex;
+
+    public bool isWallItem;
 
 
 

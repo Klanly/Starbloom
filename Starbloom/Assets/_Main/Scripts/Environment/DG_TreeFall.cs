@@ -145,6 +145,7 @@ public class DG_TreeFall : MonoBehaviour {
             NO.HealthValue = QuickFind.ItemDatabase.GetItemFromID(NO.ItemRefID).EnvironmentValues[0].ObjectHealth;
         }
 
+        TopScatterRef.GetComponent<DG_FXContextObjectReference>().TriggerBreak();
 
         isFalling = false;
         TopVisuals.gameObject.SetActive(false);
@@ -170,6 +171,10 @@ public class DG_TreeFall : MonoBehaviour {
     {
         SpawnReward(BottomClusterGroupID, BottomScatterRef);
         NetworkObject NO = QuickFind.NetworkObjectManager.ScanUpTree(transform);
+
+        //Make this networked?
+        BottomScatterRef.GetComponent<DG_FXContextObjectReference>().TriggerBreak();
+
         QuickFind.NetworkSync.RemoveNetworkSceneObject(QuickFind.NetworkSync.CurrentScene, NO.NetworkObjectID);
     }
 
@@ -220,6 +225,8 @@ public class DG_TreeFall : MonoBehaviour {
         CastHelper.transform.localEulerAngles = new Vector3(0, 0, 0);
         TopVisuals.SetParent(PivotPoint);
         TreeTopDetectionPoint.SetParent(PivotPoint);
+
+        transform.GetComponent<DG_FXContextObjectReference>().TriggerImpact();
 
         this.enabled = true;
     }

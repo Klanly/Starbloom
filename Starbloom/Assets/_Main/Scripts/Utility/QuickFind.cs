@@ -28,13 +28,13 @@ public static class QuickFindInEditor
     public static DG_ItemsDatabase GetEditorItemDatabase() { return GameObject.Find("Item Database").GetComponent<DG_ItemsDatabase>(); }
     public static DG_CharacterDatabase GetEditorCharacterDatabase() { return GameObject.Find("Character Database").GetComponent<DG_CharacterDatabase>(); }
     public static DG_ColorCodes GetEditorColorCodes() { return GameObject.Find("Color Database").GetComponent<DG_ColorCodes>(); }
-    public static SceneIDList GetEditorSceneList() { return GameObject.Find("Scene ID List").GetComponent<SceneIDList>(); }
+    public static SceneIDList GetEditorSceneList() { return GameObject.Find("Scene Transition").GetComponent<SceneIDList>(); }
     public static DG_FishingCompendium GetEditorFishingCompendium() { return GameObject.Find("Fish Atlas").GetComponent<DG_FishingCompendium>(); }
     public static DG_BreakableObjectsAtlas GetBreakableObjectsCompendium() { return GameObject.Find("Cluster Rewards Atlas").GetComponent<DG_BreakableObjectsAtlas>(); }
     public static DG_ShopAtlas GetShopCompendium() { return GameObject.Find("Shop Type Atlas").GetComponent<DG_ShopAtlas>(); }
     public static DG_CraftingDictionary GetCraftingCompendium() { return GameObject.Find("Crafting Dictionary").GetComponent<DG_CraftingDictionary>(); }
     public static DG_PrefabPoolDictionary GetPrefabPool() { return GameObject.Find("Prefab Pool Dictionary").GetComponent<DG_PrefabPoolDictionary>(); }
-    public static DG_FXPoolDictionary GetFXPool() { return GameObject.Find("FX Pool Dictionary").GetComponent<DG_FXPoolDictionary>(); }
+    public static DG_FXHandler GetFXHandler() { return GameObject.Find("FX Handler").GetComponent<DG_FXHandler>(); }
 
     //Save Data
     public static UserSettings GetEditorUserSettings() { return GameObject.Find("Player Settings").GetComponent<UserSettings>(); }
@@ -124,6 +124,9 @@ public static class QuickFind
     public static DG_NetworkGrowthHandler NetworkGrowthHandler = null;
     public static DG_MoneyHandler MoneyHandler = null;
     public static DG_ShippingBin ShippingBin = null;
+    public static DG_SceneTransition SceneTransitionHandler = null;
+    public static DG_FXHandler FXHandler = null;
+
 
     //Tools
     public static DG_HoeHandler HoeHandler = null;
@@ -169,7 +172,6 @@ public static class QuickFind
 
     //Pooling
     public static DG_PrefabPoolDictionary PrefabPool = null;
-    public static DG_FXPoolDictionary FXPool = null;
 
 
 
@@ -220,5 +222,11 @@ public static class QuickFind
         if (IncomingValue < Min) return Min;
         if (IncomingValue >= ArrayLength) return ArrayLength - 1;
         return IncomingValue;
+    }
+
+    public static int GetIntAtDigit(int Number, int DigitNeeded)
+    {
+        while (DigitNeeded-- > 0) { Number /= 10; }
+        return (Number % 10);
     }
 }

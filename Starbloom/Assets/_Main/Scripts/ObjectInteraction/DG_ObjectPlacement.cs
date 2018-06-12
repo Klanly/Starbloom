@@ -13,15 +13,17 @@ public class DG_ObjectPlacement : MonoBehaviour {
 
 
     public LayerMask BoxcastDetection;
+    public LayerMask SeedPlacementDetection;
     public LayerMask SoilReplaceDetection;
 
     [HideInInspector] public Transform ObjectGhost;
     [HideInInspector] public bool PlacementActive;
     [HideInInspector] public bool AwaitingNetResponse;
 
+    [HideInInspector] public DG_PlayerCharacters.RucksackSlot RucksackSlotOpen;
+    [HideInInspector] public DG_ItemObject ItemDatabaseReference;
+
     PlacementType CurrentPlacementType;
-    DG_PlayerCharacters.RucksackSlot RucksackSlotOpen;
-    DG_ItemObject ItemDatabaseReference;
     Collider DetectedInTheWay;
     NetworkObject SoilObject;
     int ActiveSlot;
@@ -42,11 +44,17 @@ public class DG_ObjectPlacement : MonoBehaviour {
         if (PlacementActive)
         {
             ObjectGhost.position = QuickFind.GridDetection.DetectionPoint.position;
-            if (AreaIsClear(BoxcastDetection, ObjectGhost.position)) { SetMaterialColors(true); SafeToPlace = true; }
-            else { SetMaterialColors(false); SafeToPlace = false; }
+            bool GoodToPlace = false;
+            if (ItemDatabaseReference.ItemCat == DG_ItemObject.ItemCatagory.Seeds)
+                GoodToPlace = AreaIsClear(SeedPlacementDetection, ObjectGhost.position);
+            else
+                GoodToPlace = AreaIsClear(BoxcastDetection, ObjectGhost.position);
+
+            QuickFind.GridDetection.GridMesh.enabled = GoodToPlace;
+            SetMaterialColors(GoodToPlace);
+            SafeToPlace = GoodToPlace;
         }
-        else
-            SafeToPlace = false;
+        else SafeToPlace = false;
     }
 
 
@@ -64,7 +72,11 @@ public class DG_ObjectPlacement : MonoBehaviour {
                 if (AwaitingNetResponse) return;
 
                 AwaitingNetResponse = true;
-                QuickFind.NetworkObjectManager.CreateNetSceneObject(QuickFind.NetworkSync.CurrentScene, ItemDatabaseReference.DatabaseID, RucksackSlotOpen.CurrentStackActive, ObjectGhost.position, ObjectGhost.eulerAngles.y);
+
+                if(!ItemDatabaseReference.isWallItem)
+                    QuickFind.NetworkObjectManager.CreateNetSceneObject(QuickFind.NetworkSync.CurrentScene, ItemDatabaseReference.DatabaseID, RucksackSlotOpen.CurrentStackActive, ObjectGhost.position, ObjectGhost.eulerAngles.y);
+                else
+                    ObjectGhost.GetComponent<DG_DynamicWall>().TriggerPlaceWall();
                 DestroyObjectGhost();
                 QuickFind.InventoryManager.DestroyRucksackItem(RucksackSlotOpen, ActiveSlot);
                 QuickFind.GUI_Inventory.ResetHotbarSlot();
@@ -110,6 +122,8 @@ public class DG_ObjectPlacement : MonoBehaviour {
 
         TurnOffCollidersLoop(ObjectGhost);
 
+        if (Item.isWallItem) ObjectGhost.GetComponent<DG_DynamicWall>().TriggerPlacementMode();
+
         PlacementActive = true;
 
         if (ToDestroy != null) Destroy(ToDestroy);
@@ -147,8 +161,7 @@ public class DG_ObjectPlacement : MonoBehaviour {
 
         if (Physics.BoxCast(CastPoint, new Vector3(.5f, .5f, .5f), Vector3.down, out m_Hit, transform.rotation, 21, DetectionType))
         { DetectedInTheWay = m_Hit.collider; return false; }
-        else
-            return true;
+        else { return true; }
     }
 
 

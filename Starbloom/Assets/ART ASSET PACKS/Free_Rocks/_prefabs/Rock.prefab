@@ -10,6 +10,7 @@ GameObject:
   - component: {fileID: 400000}
   - component: {fileID: 114319696490596152}
   - component: {fileID: 114624214585539164}
+  - component: {fileID: 114207561755239394}
   - component: {fileID: 114638361534107888}
   - component: {fileID: 3300000}
   - component: {fileID: 2300000}
@@ -130,6 +131,23 @@ Transform:
   m_Father: {fileID: 400000}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114207561755239394
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26a28b7076c3ab740a1de59eb85c1fc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ImpactEffects:
+  - SpawnPointReference: {fileID: 4198467099582786}
+    FXID: 1
+  BreakEffects:
+  - SpawnPointReference: {fileID: 4198467099582786}
+    FXID: 0
 --- !u!114 &114319696490596152
 MonoBehaviour:
   m_ObjectHideFlags: 1

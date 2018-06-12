@@ -30,8 +30,12 @@ public class DG_WateringCan : MonoBehaviour {
     private void Update()
     {
         if (PlacementActive)
-        { if (WaterableObjectFound()) { SafeToPlace = true; } else { SafeToPlace = false; } }
-        else SafeToPlace = false;
+        {
+            if (WaterableObjectFound())
+            { QuickFind.GridDetection.GridMesh.enabled = true; SafeToPlace = true; }
+            else { QuickFind.GridDetection.GridMesh.enabled = false; SafeToPlace = false; }
+        }
+        else { SafeToPlace = false; }
     }
 
 

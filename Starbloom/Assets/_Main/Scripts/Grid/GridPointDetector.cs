@@ -13,6 +13,7 @@ public class GridPointDetector : MonoBehaviour
     [Header("Grid Display")]
     public bool ShowGridDisplay;
     public Transform GridDisplay;
+    public MeshRenderer GridMesh = null;
 
 
 
@@ -33,6 +34,7 @@ public class GridPointDetector : MonoBehaviour
         DetectionPoint.SetParent(transform);
         PlayerPointHelper.SetParent(transform);
         GridDisplay.position = new Vector3(0, 10000, 0);
+        GridMesh.enabled = false;
     }
 
 
@@ -59,7 +61,7 @@ public class GridPointDetector : MonoBehaviour
             {
                 DetectionPoint.position = hit.point;
                 if (!GlobalPositioning && !QuickFind.WithinDistance(DetectionPoint, PlayerPointHelper, 1f))
-                {        
+                {
                     PlayerPointHelper.LookAt(DetectionPoint);
                     PlayerPointHelper.position += PlayerPointHelper.forward * MaxDistance;
                     DetectionPoint.position = PlayerPointHelper.position;
@@ -85,7 +87,7 @@ public class GridPointDetector : MonoBehaviour
     }
     void SetGridDisplay(Transform T)
     {
-        if (ShowGridDisplay || ObjectIsPlacing)
+        if (ObjectIsPlacing)
         {
             Vector3 GridPoint = T.position;
             GridPoint.y = GridPoint.y - .45f;

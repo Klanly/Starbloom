@@ -29,8 +29,8 @@ public class DG_BreakableObjectsHandler : MonoBehaviour {
                 int Hitvalue = ToolIO.ToolQualityLevels[(int)ToolLevel].StrengthValue;
                 int newHealthValue = NO.HealthValue - Hitvalue;
 
-                if (newHealthValue <= 0) SendBreak(NO, CO, IO);
-                else SendHitData(CO, NO, newHealthValue);
+                if (newHealthValue <= 0) { SendBreak(NO, CO, IO); }
+                else { SendHitData(CO, NO, newHealthValue); }
             }
         }
         else return;
@@ -65,8 +65,10 @@ public class DG_BreakableObjectsHandler : MonoBehaviour {
         NO.HealthValue = Data[2];
         DG_ItemObject IO = QuickFind.ItemDatabase.GetItemFromID(NO.ItemRefID);
 
-        if(IO.EnvironmentValues[0].OnHitFXType == DG_BreakableObjectItem.OnHitEffectType.Stone)
-            NO.transform.GetChild(0).GetComponent<DG_UI_WobbleAndFade>().enabled = true;
+        //FX
+        Transform Child = NO.transform.GetChild(0);
+        if (IO.EnvironmentValues[0].OnHitFXType == DG_BreakableObjectItem.OnHitEffectType.Stone) Child.GetComponent<DG_UI_WobbleAndFade>().enabled = true;
+        Child.GetComponent<DG_FXContextObjectReference>().TriggerImpact();
     }
 
 
@@ -78,6 +80,12 @@ public class DG_BreakableObjectsHandler : MonoBehaviour {
             CO.GetComponent<DG_TreeFall>().BreakMessage();
         else
         {
+            int[] OutData = new int[2];
+            NetworkScene NS = NO.transform.parent.GetComponent<NetworkScene>();
+            OutData[0] = NS.SceneID;
+            OutData[1] = NO.NetworkObjectID;
+
+            QuickFind.NetworkSync.PlayDestroyEffect(OutData);
             QuickFind.NetworkSync.RemoveNetworkSceneObject(QuickFind.NetworkSync.CurrentScene, NO.NetworkObjectID);
             int SceneID = QuickFind.NetworkSync.CurrentScene;
             DG_BreakableObjectItem BOI = QuickFind.BreakableObjectsCompendium.GetItemFromID(IO.HarvestClusterIndex);
@@ -91,8 +99,12 @@ public class DG_BreakableObjectsHandler : MonoBehaviour {
                     QuickFind.NetworkObjectManager.CreateNetSceneObject(SceneID, Clump.ItemID, Clump.ItemQuality, SPR.GetSpawnPoint(), 0, true, SPR.RandomVelocity());
             }
 
+            //EXP
             if (IO.EnvironmentValues[0].ActivateableTypeRequired == HotbarItemHandler.ActivateableTypes.Pickaxe)
                 QuickFind.SkillTracker.IncreaseSkillLevel(DG_SkillTracker.SkillTags.Mining, DG_ItemObject.ItemQualityLevels.Low);
+
+            //FX
+            CO.GetComponent<DG_FXContextObjectReference>().TriggerBreak();
         }
     }
 }

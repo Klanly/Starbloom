@@ -77,6 +77,11 @@ public class CameraLogic : MonoBehaviour {
         }
     }
 
+    public void InstantSetCameraAngle(Vector3 Euler)
+    {
+        transform.eulerAngles = new Vector3(30, Euler.y, 0);
+    }
+
 
     public void SetNewVerticalPanPosition(float Vertical, float VerticalSpeed = 0){AutoPanVertical = true; NewAutoPanValueX = Vertical;if (VerticalSpeed != 0) AutoPanXSpeed = VerticalSpeed; else AutoPanXSpeed = DefaultVertSpeed;}
     public void SetNewHorizontalPanPosition(float Horizontal, float HorizontalSpeed = 0){AutoPanHorizontal = true; NewAutoPanValueY = Horizontal;if(HorizontalSpeed != 0) AutoPanYSpeed = HorizontalSpeed; else AutoPanYSpeed = DefaultHorSpeed;}

@@ -7,7 +7,8 @@ public class DG_BreakableObjectItem : MonoBehaviour {
     public enum OnHitEffectType
     {
         Stone,
-        Tree
+        Tree,
+        Plant
     }
 
     [System.Serializable]

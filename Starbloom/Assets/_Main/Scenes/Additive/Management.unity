@@ -366,7 +366,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 916298285}
-  - {fileID: 1403033708}
   m_Father: {fileID: 92244914}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -469,7 +468,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.18461019, g: 0.21617565, b: 0.24295847, a: 0.6}
+  m_BackGroundColor: {r: 0.25280595, g: 0.2938393, b: 0.33515888, a: 0.6}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -809,85 +808,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DetectionMask:
     serializedVersion: 2
-    m_Bits: 32768
+    m_Bits: 294912
   MaxDistance: 1.4
   ShowGridDisplay: 0
   GridDisplay: {fileID: 1730668925}
+  GridMesh: {fileID: 1730668926}
   DetectionPoint: {fileID: 0}
   ObjectIsPlacing: 0
   GlobalPositioning: 0
---- !u!1 &1403033707
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1403033708}
-  - component: {fileID: 1403033711}
-  - component: {fileID: 1403033710}
-  m_Layer: 0
-  m_Name: Detection Mesh
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1403033708
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1403033707}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1017073428}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &1403033710
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1403033707}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 4294967295
-  m_Materials:
-  - {fileID: 2100000, guid: 588754ef038cd704ab5d347f7b7cc1bf, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!33 &1403033711
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1403033707}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1535058563
 GameObject:
   m_ObjectHideFlags: 0
@@ -896,9 +824,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1535058565}
+  - component: {fileID: 1535058566}
   - component: {fileID: 1535058564}
   m_Layer: 0
-  m_Name: Scene ID List
+  m_Name: Scene Transition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -915,9 +844,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7df83536e2dbf494c8b8f32d480f5bf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SceneList:
+  Scenes:
   - DebugFarm
+  - DebugHouse
   - Farm
+  - House
 --- !u!4 &1535058565
 Transform:
   m_ObjectHideFlags: 0
@@ -931,6 +862,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1535058566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1535058563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 391a386c57f9e744ca60304db3ee6f1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1569164464
 GameObject:
   m_ObjectHideFlags: 0

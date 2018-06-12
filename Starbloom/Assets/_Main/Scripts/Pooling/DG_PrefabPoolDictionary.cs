@@ -16,10 +16,11 @@ public class DG_PrefabPoolDictionary : MonoBehaviour {
 
 
     public GameObject GetPoolItemByPrefabID(int PrefabID) { return GetItemFromID(PrefabID).GetAvailablePoolObject(); }
+    public GameObject GetPoolItemByFXID(int PrefabID) { return GetItemFromID(PrefabID).GetFXObjectByIndex(); }
     public void ReturnPoolItem(DG_PrefabPoolItem.PoolObject PoolObject) { GetItemFromID(PoolObject.PrefabID).ReturnPoolObject(PoolObject); }
 
 
-    DG_PrefabPoolItem GetItemFromID(int ID)
+    public DG_PrefabPoolItem GetItemFromID(int ID)
     {
         if (ID < 0) { Debug.Log("Get By ID Failed"); return null; }
         if (ID >= ItemCatagoryList.Length) { Debug.Log("Get By ID Failed"); return null; }

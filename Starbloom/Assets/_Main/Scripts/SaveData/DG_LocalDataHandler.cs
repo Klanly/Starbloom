@@ -75,7 +75,7 @@ public class DG_LocalDataHandler : MonoBehaviour {
 
         QuickFind.NetworkObjectManager.ClearObjects();
         GetWorldInts(null, true);
-        QuickFind.NetworkObjectManager.GenerateSceneObjects(QuickFind.NetworkSync.CurrentScene);
+        QuickFind.NetworkObjectManager.GenerateSceneObjects();
 
         QuickFind.NetworkSync.GameWasLoaded();
         Debug.Log("Game Loaded");
@@ -293,12 +293,12 @@ public class DG_LocalDataHandler : MonoBehaviour {
                     int InnerisTrue = NO.HasBeenWatered ? 1 : 0; IntData.Add(InnerisTrue);
                 }
 
-                IntData.Add(NO.GrowthValue);
-
                 isTrue = NO.HasHealth ? 1 : 0; IntData.Add(isTrue);
                 if (isTrue == 1)
                 {
                     IntData.Add(NO.HealthValue);
+                    IntData.Add(NO.GrowthValue);
+                    IntData.Add(NO.ActiveVisual);
                 }
 
 
@@ -372,35 +372,37 @@ public class DG_LocalDataHandler : MonoBehaviour {
                 //
 
 
-                int StorageValue;
-                StorageValue = IntValues[Index]; Index++;
-                bool isTrue = false; if (StorageValue == 1) isTrue = true; NO.isWaterable = isTrue;
+                int BoolValue;
+                BoolValue = IntValues[Index]; Index++;
+                bool isTrue = false; if (BoolValue == 1) isTrue = true; NO.isWaterable = isTrue;
                 if (isTrue)
                 {
                     NO.SurrogateObjectIndex = IntValues[Index]; Index++;
-                    StorageValue = IntValues[Index]; Index++;
-                    bool InnerisTrue = false; if (StorageValue == 1) InnerisTrue = true; NO.HasBeenWatered = InnerisTrue;
+                    BoolValue = IntValues[Index]; Index++;
+                    bool InnerisTrue = false; if (BoolValue == 1) InnerisTrue = true; NO.HasBeenWatered = InnerisTrue;
                 }
 
-                NO.GrowthValue = IntValues[Index]; Index++;
+                
 
-                StorageValue = IntValues[Index]; Index++;
-                isTrue = false; if (StorageValue == 1) isTrue = true; NO.HasHealth = isTrue;
+                BoolValue = IntValues[Index]; Index++;
+                isTrue = false; if (BoolValue == 1) isTrue = true; NO.HasHealth = isTrue;
                 if (isTrue)
                 {
                     NO.HealthValue = IntValues[Index]; Index++;
+                    NO.GrowthValue = IntValues[Index]; Index++;
+                    NO.ActiveVisual = IntValues[Index]; Index++;
                 }
 
 
 
 
-                StorageValue = IntValues[Index]; Index++;
-                isTrue = false; if (StorageValue == 1) isTrue = true; NO.isStorageContainer = isTrue;
+                BoolValue = IntValues[Index]; Index++;
+                isTrue = false; if (BoolValue == 1) isTrue = true; NO.isStorageContainer = isTrue;
                 if (isTrue)
                 {
                     int Count = 0;
-                    StorageValue = IntValues[Index]; Index++;
-                    isTrue = false; if (StorageValue == 1) isTrue = true; NO.isTreasureList = isTrue;
+                    BoolValue = IntValues[Index]; Index++;
+                    isTrue = false; if (BoolValue == 1) isTrue = true; NO.isTreasureList = isTrue;
                     Count = IntValues[Index]; Index++;
                     NO.StorageSlots = new DG_PlayerCharacters.RucksackSlot[Count];
 

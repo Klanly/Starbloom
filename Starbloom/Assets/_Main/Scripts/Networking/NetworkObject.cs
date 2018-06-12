@@ -30,14 +30,14 @@ public class NetworkObject : MonoBehaviour {
     [ShowIf("isWaterable")]
     public bool HasBeenWatered = false;
 
-    [Header("Growth-------------------------------------------------")]
-    public int GrowthValue;
-    public int ActiveVisual;
-
     [Header("Breaking -----------------------------------------------------")]
     public bool HasHealth = false;
     [ShowIf("HasHealth")]
     public int HealthValue;
+    [ShowIf("HasHealth")]
+    public int GrowthValue;
+    [ShowIf("HasHealth")]
+    public int ActiveVisual;
 
     [Header("Storage -----------------------------------------------------")]
     public bool isStorageContainer = false;
@@ -53,7 +53,7 @@ public class NetworkObject : MonoBehaviour {
 
 
 
-    public void SpawnNetworkObject(bool GenerateVelocity = false, Vector3 Velocity = new Vector3())
+    public void SpawnNetworkObject(NetworkScene NS, bool GenerateVelocity = false, Vector3 Velocity = new Vector3())
     {
         DG_ItemsDatabase IDB = QuickFind.ItemDatabase;
         DG_ItemObject IO = IDB.GetItemFromID(ItemRefID);
@@ -70,9 +70,12 @@ public class NetworkObject : MonoBehaviour {
         float Scale = IO.DefaultScale;
         T.localScale = new Vector3(Scale, Scale, Scale);
 
+        if (NS.SceneID != QuickFind.NetworkSync.CurrentScene) transform.gameObject.SetActive(false);
+        if (IO.isBreakable) { HasHealth = true; HealthValue = IO.EnvironmentValues[0].ObjectHealth; }
         if (HasBeenWatered) QuickFind.WateringSystem.AdjustWateredObjectVisual(this, true);
+        if (IO.isWallItem) Spawn.GetComponent<DG_DynamicWall>().DetermineActiveBoolsByID(ItemQualityLevel);
 
-        if(GenerateVelocity)
+        if (GenerateVelocity)
         {
             DG_MagneticItem MI = Spawn.GetComponent<DG_MagneticItem>();
             MI.TriggerStart(Velocity);
