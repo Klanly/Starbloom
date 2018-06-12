@@ -223,4 +223,10 @@ public static class QuickFind
         if (IncomingValue >= ArrayLength) return ArrayLength - 1;
         return IncomingValue;
     }
+
+    public static int GetIntAtDigit(int Number, int DigitNeeded)
+    {
+        while (DigitNeeded-- > 0) { Number /= 10; }
+        return (Number % 10);
+    }
 }

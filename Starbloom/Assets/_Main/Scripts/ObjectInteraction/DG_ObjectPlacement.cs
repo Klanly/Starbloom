@@ -20,9 +20,10 @@ public class DG_ObjectPlacement : MonoBehaviour {
     [HideInInspector] public bool PlacementActive;
     [HideInInspector] public bool AwaitingNetResponse;
 
+    [HideInInspector] public DG_PlayerCharacters.RucksackSlot RucksackSlotOpen;
+    [HideInInspector] public DG_ItemObject ItemDatabaseReference;
+
     PlacementType CurrentPlacementType;
-    DG_PlayerCharacters.RucksackSlot RucksackSlotOpen;
-    DG_ItemObject ItemDatabaseReference;
     Collider DetectedInTheWay;
     NetworkObject SoilObject;
     int ActiveSlot;
@@ -71,7 +72,11 @@ public class DG_ObjectPlacement : MonoBehaviour {
                 if (AwaitingNetResponse) return;
 
                 AwaitingNetResponse = true;
-                QuickFind.NetworkObjectManager.CreateNetSceneObject(QuickFind.NetworkSync.CurrentScene, ItemDatabaseReference.DatabaseID, RucksackSlotOpen.CurrentStackActive, ObjectGhost.position, ObjectGhost.eulerAngles.y);
+
+                if(!ItemDatabaseReference.isWallItem)
+                    QuickFind.NetworkObjectManager.CreateNetSceneObject(QuickFind.NetworkSync.CurrentScene, ItemDatabaseReference.DatabaseID, RucksackSlotOpen.CurrentStackActive, ObjectGhost.position, ObjectGhost.eulerAngles.y);
+                else
+                    ObjectGhost.GetComponent<DG_DynamicWall>().TriggerPlaceWall();
                 DestroyObjectGhost();
                 QuickFind.InventoryManager.DestroyRucksackItem(RucksackSlotOpen, ActiveSlot);
                 QuickFind.GUI_Inventory.ResetHotbarSlot();
@@ -116,6 +121,8 @@ public class DG_ObjectPlacement : MonoBehaviour {
         ObjectGhost.localScale = new Vector3(Item.DefaultScale, Item.DefaultScale, Item.DefaultScale);
 
         TurnOffCollidersLoop(ObjectGhost);
+
+        if (Item.isWallItem) ObjectGhost.GetComponent<DG_DynamicWall>().TriggerPlacementMode();
 
         PlacementActive = true;
 

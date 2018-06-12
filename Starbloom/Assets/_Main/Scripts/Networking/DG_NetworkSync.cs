@@ -527,6 +527,15 @@ public class DG_NetworkSync : Photon.MonoBehaviour
         NO.transform.GetChild(0).GetComponent<DG_FXContextObjectReference>().TriggerPick();
     }
 
+    public void WallAdjustMessage(int[] OutData)
+    { PV.RPC("ReceiveWallAdjust", PhotonTargets.All, OutData); }
+    [PunRPC]
+    public void ReceiveWallAdjust(int[] Data)
+    {
+        NetworkObject NO = QuickFind.NetworkObjectManager.GetItemByID(Data[0], Data[1]);
+        NO.transform.GetChild(0).GetComponent<DG_DynamicWall>().IncomingWallMessage(Data[2]);
+    }
+
 
 
     #endregion

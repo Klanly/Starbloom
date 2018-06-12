@@ -108,7 +108,8 @@ public class NetworkObjectManager : MonoBehaviour {
 
 
     //Outgoing
-    public void CreateNetSceneObject(int SceneID, int ObjectID, int ItemLevel, Vector3 Position, float Facing, bool GenerateVelocity = false, Vector3 Velocity = new Vector3())
+    public void CreateNetSceneObject(   int SceneID, int ObjectID, int ItemLevel, Vector3 Position, float Facing, 
+                                        bool GenerateVelocity = false, Vector3 Velocity = new Vector3())
     {
         List<int> IntData = new List<int>();
 
@@ -123,11 +124,6 @@ public class NetworkObjectManager : MonoBehaviour {
         IntData.Add(QuickFind.ConvertFloatToInt(Position.y));
         IntData.Add(QuickFind.ConvertFloatToInt(Position.z));
         IntData.Add(QuickFind.ConvertFloatToInt(Facing));
-
-        DG_ItemObject IO = QuickFind.ItemDatabase.GetItemFromID(ObjectID);
-
-        if(IO.IsWaterable) IntData.Add(1); else IntData.Add(0);
-        if (IO.isStorage) IntData.Add(1); else IntData.Add(0);
 
         if (GenerateVelocity) IntData.Add(1); else IntData.Add(0);
         if(GenerateVelocity)
@@ -159,11 +155,10 @@ public class NetworkObjectManager : MonoBehaviour {
         NO.PositionZ = IncomingData[index]; index++;
         NO.YFacing = IncomingData[index]; index++;
 
-        int Waterable = IncomingData[index]; index++;
-        if (Waterable == 1){NO.isWaterable = true;}
+        DG_ItemObject IO = QuickFind.ItemDatabase.GetItemFromID(IncomingData[2]);
 
-        int isStorage = IncomingData[index]; index++;
-        if (isStorage == 1)
+        if (IO.IsWaterable) { NO.isWaterable = true;}
+        if (IO.isStorage)
         {
             NO.isStorageContainer = true;
             NO.StorageSlots = new DG_PlayerCharacters.RucksackSlot[36];
@@ -184,8 +179,6 @@ public class NetworkObjectManager : MonoBehaviour {
 
             NO.SpawnNetworkObject(NS, true, Velo);
         }
-
-
         else
             NO.SpawnNetworkObject(NS);
 

@@ -185,7 +185,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1687292
+  instanceID: 62126
 --- !u!1 &18402820
 GameObject:
   m_ObjectHideFlags: 0
@@ -258,7 +258,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1687300
+  instanceID: 62134
 --- !u!1 &37325301
 GameObject:
   m_ObjectHideFlags: 0
@@ -333,7 +333,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1687308
+  instanceID: 62142
 --- !u!1 &41691071
 GameObject:
   m_ObjectHideFlags: 0
@@ -345,7 +345,7 @@ GameObject:
   - component: {fileID: 41691073}
   - component: {fileID: 41691074}
   m_Layer: 0
-  m_Name: 32 - BellPepper_Red_Lv3
+  m_Name: 32 - Cabbage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -376,7 +376,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 1687314
+  instanceID: 62148
 --- !u!114 &41691074
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -453,6 +453,7 @@ MonoBehaviour:
   HarvestableItem: 0
   HarvestItemIndex: 0
   HarvestClusterIndex: 0
+  isWallItem: 0
 --- !u!1 &49813768
 GameObject:
   m_ObjectHideFlags: 0
@@ -495,7 +496,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 1687322
+  instanceID: 62156
 --- !u!114 &49813771
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -558,15 +559,16 @@ MonoBehaviour:
   - GrowthLevelRequired: 3
     StagePrefabReference: {fileID: 1091118381695534, guid: 33a44360c1686094ba7a7073eeb587a6,
       type: 2}
-  isBreakable: 0
+  isBreakable: 1
   EnvironmentValues:
-  - OnHitFXType: 0
+  - OnHitFXType: 2
     ActivateableTypeRequired: 1
     QualityLevelRequired: 0
     ObjectHealth: 15
   HarvestableItem: 1
   HarvestItemIndex: 29
   HarvestClusterIndex: 0
+  isWallItem: 0
 --- !u!1 &50282250
 GameObject:
   m_ObjectHideFlags: 0
@@ -639,7 +641,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1687332
+  instanceID: 62166
 --- !u!1 &62073040
 GameObject:
   m_ObjectHideFlags: 0
@@ -712,7 +714,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1687340
+  instanceID: 62174
 --- !u!1 &73578925
 GameObject:
   m_ObjectHideFlags: 0
@@ -765,7 +767,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 10
-  instanceID: -35190688
+  instanceID: 62180
 --- !u!4 &73578928
 Transform:
   m_ObjectHideFlags: 0
@@ -851,7 +853,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1687348
+  instanceID: 62190
 --- !u!1 &76152370
 GameObject:
   m_ObjectHideFlags: 0
@@ -925,7 +927,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1687356
+  instanceID: 62198
 --- !u!1 &81693793
 GameObject:
   m_ObjectHideFlags: 0
@@ -998,7 +1000,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1687364
+  instanceID: 62206
 --- !u!1 &88464733
 GameObject:
   m_ObjectHideFlags: 0
@@ -1066,7 +1068,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 6
-  instanceID: 1687372
+  instanceID: 62214
 --- !u!1 &97403835
 GameObject:
   m_ObjectHideFlags: 0
@@ -1139,7 +1141,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1687380
+  instanceID: 62222
 --- !u!1 &97753043
 GameObject:
   m_ObjectHideFlags: 0
@@ -1241,7 +1243,8 @@ MonoBehaviour:
   - {fileID: 664644634}
   - {fileID: 2007011314}
   - {fileID: 1893027773}
-  ListCount: 37
+  - {fileID: 684466176}
+  ListCount: 38
   PreMagneticObjectWaitTimer: 0.5
   GenericIconList:
   - ItemName: TextColor
@@ -1330,6 +1333,79 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2a038b4d96d0644b8368ed657c2aa56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &102032471
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 102032474}
+  - component: {fileID: 102032473}
+  - component: {fileID: 102032472}
+  m_Layer: 0
+  m_Name: 130 - Constructi
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &102032472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 102032471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 766834c6f2c9cf243ab3296f4a43ade1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DatabaseID: 130
+  LockItem: 1
+  Name: Constructi
+  DevNotes: 
+  TextValues:
+  - Language: 0
+    stringEntry: Construction
+  - Language: 1
+    stringEntry: 
+  - Language: 2
+    stringEntry: 
+  - Language: 3
+    stringEntry: 
+  - Language: 4
+    stringEntry: 
+  - Language: 5
+    stringEntry: 
+  - Language: 6
+    stringEntry: 
+--- !u!114 &102032473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 102032471}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 3
+  instanceID: 62242
+--- !u!4 &102032474
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 102032471}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1302384510}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &102850513
 GameObject:
   m_ObjectHideFlags: 0
@@ -1402,7 +1478,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1687402
+  instanceID: 62252
 --- !u!1 &108958417
 GameObject:
   m_ObjectHideFlags: 0
@@ -1475,7 +1551,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1687410
+  instanceID: 62260
 --- !u!1 &109069266
 GameObject:
   m_ObjectHideFlags: 0
@@ -1548,7 +1624,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1687418
+  instanceID: 62268
 --- !u!1 &111903024
 GameObject:
   m_ObjectHideFlags: 0
@@ -1621,7 +1697,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1687426
+  instanceID: 62276
 --- !u!1 &113020234
 GameObject:
   m_ObjectHideFlags: 0
@@ -1724,7 +1800,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1687438
+  instanceID: 62288
 --- !u!1 &118947720
 GameObject:
   m_ObjectHideFlags: 0
@@ -1799,7 +1875,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1687446
+  instanceID: 62296
 --- !u!1 &125984543
 GameObject:
   m_ObjectHideFlags: 0
@@ -1842,7 +1918,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1687452
+  instanceID: 62302
 --- !u!114 &125984546
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1945,7 +2021,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1687462
+  instanceID: 62312
 --- !u!1 &146695317
 GameObject:
   m_ObjectHideFlags: 0
@@ -2018,7 +2094,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1687470
+  instanceID: 62320
 --- !u!1 &148355567
 GameObject:
   m_ObjectHideFlags: 0
@@ -2125,7 +2201,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1687482
+  instanceID: 62332
 --- !u!1 &180225645
 GameObject:
   m_ObjectHideFlags: 0
@@ -2268,7 +2344,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1687498
+  instanceID: 62348
 --- !u!1 &206279743
 GameObject:
   m_ObjectHideFlags: 0
@@ -2341,7 +2417,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1687506
+  instanceID: 62356
 --- !u!1 &207424871
 GameObject:
   m_ObjectHideFlags: 0
@@ -2414,7 +2490,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1687514
+  instanceID: 62364
 --- !u!1 &233886828
 GameObject:
   m_ObjectHideFlags: 0
@@ -2487,7 +2563,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1687522
+  instanceID: 62372
 --- !u!1 &237396867
 GameObject:
   m_ObjectHideFlags: 0
@@ -2560,7 +2636,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1687530
+  instanceID: 62380
 --- !u!1 &242617541
 GameObject:
   m_ObjectHideFlags: 0
@@ -2633,7 +2709,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1687538
+  instanceID: 62388
 --- !u!1 &242946780
 GameObject:
   m_ObjectHideFlags: 0
@@ -2750,7 +2826,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1687552
+  instanceID: 62402
 --- !u!1 &257731751
 GameObject:
   m_ObjectHideFlags: 0
@@ -2853,7 +2929,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1687564
+  instanceID: 62414
 --- !u!1 &275336175
 GameObject:
   m_ObjectHideFlags: 0
@@ -2865,7 +2941,7 @@ GameObject:
   - component: {fileID: 275336177}
   - component: {fileID: 275336176}
   m_Layer: 0
-  m_Name: 17 - TilledArea1
+  m_Name: 17 - Dirt Mound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2923,6 +2999,7 @@ MonoBehaviour:
   HarvestableItem: 0
   HarvestItemIndex: 0
   HarvestClusterIndex: 0
+  isWallItem: 0
 --- !u!114 &275336177
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2935,7 +3012,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 1687570
+  instanceID: 62420
 --- !u!4 &275336178
 Transform:
   m_ObjectHideFlags: 0
@@ -3054,7 +3131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1687584
+  instanceID: 62434
 --- !u!1 &337637629
 GameObject:
   m_ObjectHideFlags: 0
@@ -3127,7 +3204,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1687592
+  instanceID: 62442
 --- !u!1 &344529163
 GameObject:
   m_ObjectHideFlags: 0
@@ -3189,7 +3266,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 8
-  instanceID: 1687600
+  instanceID: 62450
 --- !u!1 &359713187
 GameObject:
   m_ObjectHideFlags: 0
@@ -3278,7 +3355,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1687610
+  instanceID: 62460
 --- !u!4 &369462728
 Transform:
   m_ObjectHideFlags: 0
@@ -3364,7 +3441,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1687620
+  instanceID: 62470
 --- !u!1 &393570843
 GameObject:
   m_ObjectHideFlags: 0
@@ -3437,7 +3514,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1687628
+  instanceID: 62478
 --- !u!1 &412881067
 GameObject:
   m_ObjectHideFlags: 0
@@ -3510,7 +3587,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1687636
+  instanceID: 62486
 --- !u!1 &413799158
 GameObject:
   m_ObjectHideFlags: 0
@@ -3522,7 +3599,7 @@ GameObject:
   - component: {fileID: 413799160}
   - component: {fileID: 413799159}
   m_Layer: 0
-  m_Name: 19 - Rock
+  m_Name: 19 - Breakable Rock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3579,6 +3656,7 @@ MonoBehaviour:
   HarvestableItem: 0
   HarvestItemIndex: 0
   HarvestClusterIndex: 0
+  isWallItem: 0
 --- !u!114 &413799160
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3591,7 +3669,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 1687642
+  instanceID: 62492
 --- !u!4 &413799161
 Transform:
   m_ObjectHideFlags: 0
@@ -3711,7 +3789,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1687656
+  instanceID: 62506
 --- !u!1 &455383455
 GameObject:
   m_ObjectHideFlags: 0
@@ -3784,7 +3862,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1687664
+  instanceID: 62514
 --- !u!1 &472164502
 GameObject:
   m_ObjectHideFlags: 0
@@ -3857,7 +3935,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1687672
+  instanceID: 62522
 --- !u!1 &477749471
 GameObject:
   m_ObjectHideFlags: 0
@@ -3869,7 +3947,7 @@ GameObject:
   - component: {fileID: 477749473}
   - component: {fileID: 477749474}
   m_Layer: 0
-  m_Name: 30 - Carrot_Lv3
+  m_Name: 30 - Cabbage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3900,7 +3978,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 1687678
+  instanceID: 62528
 --- !u!114 &477749474
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3977,6 +4055,7 @@ MonoBehaviour:
   HarvestableItem: 0
   HarvestItemIndex: 0
   HarvestClusterIndex: 0
+  isWallItem: 0
 --- !u!1 &486141672
 GameObject:
   m_ObjectHideFlags: 0
@@ -4049,7 +4128,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1687688
+  instanceID: 62538
 --- !u!1 &496052511
 GameObject:
   m_ObjectHideFlags: 0
@@ -4122,7 +4201,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1687696
+  instanceID: 62546
 --- !u!1 &496079699
 GameObject:
   m_ObjectHideFlags: 0
@@ -4182,7 +4261,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 10
-  instanceID: -34185816
+  instanceID: 62552
 --- !u!4 &496079702
 Transform:
   m_ObjectHideFlags: 0
@@ -4207,7 +4286,7 @@ GameObject:
   - component: {fileID: 523401141}
   - component: {fileID: 523401140}
   m_Layer: 0
-  m_Name: 0 - pickaxe02_blue
+  m_Name: 0 - Pickaxe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4309,6 +4388,7 @@ MonoBehaviour:
   HarvestableItem: 0
   HarvestItemIndex: 0
   HarvestClusterIndex: 0
+  isWallItem: 0
 --- !u!114 &523401141
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4321,7 +4401,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 1687704
+  instanceID: 62562
 --- !u!1 &527002840
 GameObject:
   m_ObjectHideFlags: 0
@@ -4394,7 +4474,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1687712
+  instanceID: 62570
 --- !u!1 &568888680
 GameObject:
   m_ObjectHideFlags: 0
@@ -4449,7 +4529,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 6
-  instanceID: 1687718
+  instanceID: 62576
 --- !u!4 &568888683
 Transform:
   m_ObjectHideFlags: 0
@@ -4490,6 +4570,7 @@ Transform:
   m_Children:
   - {fileID: 1991254218}
   - {fileID: 1466624030}
+  - {fileID: 1301492708}
   m_Father: {fileID: 1337974348}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4565,7 +4646,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1687732
+  instanceID: 62590
 --- !u!1 &604142826
 GameObject:
   m_ObjectHideFlags: 0
@@ -4640,7 +4721,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1687740
+  instanceID: 62598
 --- !u!1 &607181675
 GameObject:
   m_ObjectHideFlags: 0
@@ -4713,7 +4794,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1687748
+  instanceID: 62606
 --- !u!1 &619036614
 GameObject:
   m_ObjectHideFlags: 0
@@ -4725,7 +4806,7 @@ GameObject:
   - component: {fileID: 619036616}
   - component: {fileID: 619036615}
   m_Layer: 0
-  m_Name: 8 - Herb_PoisifferousRoiler
+  m_Name: 8 - Poisifferous Roiler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4806,6 +4887,7 @@ MonoBehaviour:
   HarvestableItem: 1
   HarvestItemIndex: 8
   HarvestClusterIndex: 0
+  isWallItem: 0
 --- !u!114 &619036616
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4818,7 +4900,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 1687754
+  instanceID: 62612
 --- !u!4 &619036617
 Transform:
   m_ObjectHideFlags: 0
@@ -4872,7 +4954,7 @@ GameObject:
   - component: {fileID: 630922426}
   - component: {fileID: 630922425}
   m_Layer: 0
-  m_Name: 9 - Veg_Cabbage
+  m_Name: 9 - Cabbage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4967,6 +5049,7 @@ MonoBehaviour:
   HarvestableItem: 0
   HarvestItemIndex: 0
   HarvestClusterIndex: 0
+  isWallItem: 0
 --- !u!114 &630922426
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4979,7 +5062,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 1687768
+  instanceID: 62626
 --- !u!1 &631133481
 GameObject:
   m_ObjectHideFlags: 0
@@ -4991,7 +5074,7 @@ GameObject:
   - component: {fileID: 631133483}
   - component: {fileID: 631133482}
   m_Layer: 0
-  m_Name: 11 - Blue_Fish
+  m_Name: 11 - Fish
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5073,6 +5156,7 @@ MonoBehaviour:
   HarvestableItem: 0
   HarvestItemIndex: 0
   HarvestClusterIndex: 0
+  isWallItem: 0
 --- !u!114 &631133483
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5085,7 +5169,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 1687774
+  instanceID: 62632
 --- !u!4 &631133484
 Transform:
   m_ObjectHideFlags: 0
@@ -5129,7 +5213,8 @@ MonoBehaviour:
   ItemCatagoryList:
   - {fileID: 344529165}
   - {fileID: 1324796401}
-  ListCount: 2
+  - {fileID: 2070317663}
+  ListCount: 3
 --- !u!4 &641755810
 Transform:
   m_ObjectHideFlags: 0
@@ -5216,7 +5301,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1687790
+  instanceID: 62648
 --- !u!1 &664644633
 GameObject:
   m_ObjectHideFlags: 0
@@ -5228,7 +5313,7 @@ GameObject:
   - component: {fileID: 664644635}
   - component: {fileID: 664644634}
   m_Layer: 0
-  m_Name: 34 - BellPepper_Yellow_Lv3 (1)
+  m_Name: 34 - Cabbage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5309,6 +5394,7 @@ MonoBehaviour:
   HarvestableItem: 0
   HarvestItemIndex: 0
   HarvestClusterIndex: 0
+  isWallItem: 0
 --- !u!114 &664644635
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5321,7 +5407,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 1687796
+  instanceID: 62654
 --- !u!4 &664644636
 Transform:
   m_ObjectHideFlags: 0
@@ -5433,6 +5519,7 @@ MonoBehaviour:
   HarvestableItem: 0
   HarvestItemIndex: 0
   HarvestClusterIndex: 0
+  isWallItem: 0
 --- !u!114 &676053778
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5445,7 +5532,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 1687808
+  instanceID: 62666
 --- !u!4 &676053779
 Transform:
   m_ObjectHideFlags: 0
@@ -5531,7 +5618,99 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1687818
+  instanceID: 62676
+--- !u!1 &684466175
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 684466178}
+  - component: {fileID: 684466177}
+  - component: {fileID: 684466176}
+  m_Layer: 0
+  m_Name: 37 - Wood Fence
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &684466176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 684466175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc1a46eca4a35e5498f3df297015210f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DatabaseUsesNameInsteadOfPrefab: 0
+  Name: Wood Fence
+  MaxStackSize: 999
+  ActivateableType: 5
+  DestroysSoilOnPlacement: 1
+  ToolTipType:
+    GroupType: 8
+    MainLocalizationID: 129
+    SubLocalizationID: 130
+    DescriptionID: 131
+    ContextID: 2
+  DatabaseID: 37
+  LockItem: 1
+  Icon: {fileID: 21300000, guid: 7976cc5ff35c9074388b0a8310170ff3, type: 3}
+  ModelPrefab: {fileID: 1344142289677378, guid: e9ecb3aeb0c1c7242aa46caa0628d316,
+    type: 2}
+  UsePoolIDForSpawn: 0
+  PoolID: 0
+  DefaultScale: 1
+  isTool: 0
+  ToolQualityLevels: []
+  isItem: 0
+  ItemCat: 0
+  ItemQualities: []
+  isStorage: 0
+  StorageList: []
+  isGrowableItem: 0
+  IsWaterable: 0
+  RequireTilledEarth: 0
+  ResetIndex: 0
+  BreakIndex: 0
+  GrowthStages: []
+  isBreakable: 0
+  EnvironmentValues: []
+  HarvestableItem: 0
+  HarvestItemIndex: 0
+  HarvestClusterIndex: 0
+  isWallItem: 1
+--- !u!114 &684466177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 684466175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 0
+  instanceID: 62682
+--- !u!4 &684466178
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 684466175}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1405183628}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &694112714
 GameObject:
   m_ObjectHideFlags: 0
@@ -5604,7 +5783,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1687826
+  instanceID: 62692
 --- !u!1 &702845925
 GameObject:
   m_ObjectHideFlags: 0
@@ -5664,7 +5843,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1687832
+  instanceID: 62698
 --- !u!4 &702845928
 Transform:
   m_ObjectHideFlags: 0
@@ -5737,7 +5916,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1687840
+  instanceID: 62706
 --- !u!4 &729905715
 Transform:
   m_ObjectHideFlags: 0
@@ -5778,6 +5957,7 @@ Transform:
   m_Children:
   - {fileID: 344529164}
   - {fileID: 1324796403}
+  - {fileID: 2070317665}
   m_Father: {fileID: 641755810}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5853,7 +6033,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1687854
+  instanceID: 62720
 --- !u!1 &737240873
 GameObject:
   m_ObjectHideFlags: 0
@@ -5926,7 +6106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1687862
+  instanceID: 62728
 --- !u!1 &769028652
 GameObject:
   m_ObjectHideFlags: 0
@@ -5938,7 +6118,7 @@ GameObject:
   - component: {fileID: 769028655}
   - component: {fileID: 769028654}
   m_Layer: 0
-  m_Name: 1 - axe01_blue
+  m_Name: 1 - Axe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6040,6 +6220,7 @@ MonoBehaviour:
   HarvestableItem: 0
   HarvestItemIndex: 0
   HarvestClusterIndex: 0
+  isWallItem: 0
 --- !u!114 &769028655
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6052,7 +6233,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 1687870
+  instanceID: 62736
 --- !u!1 &782780638
 GameObject:
   m_ObjectHideFlags: 0
@@ -6095,7 +6276,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1687876
+  instanceID: 62742
 --- !u!114 &782780641
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6198,7 +6379,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1687886
+  instanceID: 62752
 --- !u!1 &828965505
 GameObject:
   m_ObjectHideFlags: 0
@@ -6271,7 +6452,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1687894
+  instanceID: 62760
 --- !u!1 &839248947
 GameObject:
   m_ObjectHideFlags: 0
@@ -6344,7 +6525,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1687902
+  instanceID: 62768
 --- !u!1 &846776802
 GameObject:
   m_ObjectHideFlags: 0
@@ -6417,7 +6598,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1687910
+  instanceID: 62776
 --- !u!1 &862514934
 GameObject:
   m_ObjectHideFlags: 0
@@ -6477,7 +6658,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 10
-  instanceID: -34271196
+  instanceID: 62782
 --- !u!4 &862514937
 Transform:
   m_ObjectHideFlags: 0
@@ -6545,7 +6726,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 6
-  instanceID: 1687916
+  instanceID: 62790
 --- !u!4 &863140314
 Transform:
   m_ObjectHideFlags: 0
@@ -6601,7 +6782,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1687924
+  instanceID: 62798
 --- !u!114 &869247367
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6704,7 +6885,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1687934
+  instanceID: 62808
 --- !u!1 &889436591
 GameObject:
   m_ObjectHideFlags: 0
@@ -6716,7 +6897,7 @@ GameObject:
   - component: {fileID: 889436593}
   - component: {fileID: 889436594}
   m_Layer: 0
-  m_Name: 13 - Pink_Fish
+  m_Name: 13 - Fish
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6747,7 +6928,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 1687940
+  instanceID: 62814
 --- !u!114 &889436594
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6824,6 +7005,7 @@ MonoBehaviour:
   HarvestableItem: 0
   HarvestItemIndex: 0
   HarvestClusterIndex: 0
+  isWallItem: 0
 --- !u!1 &903885948
 GameObject:
   m_ObjectHideFlags: 0
@@ -6896,7 +7078,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1687950
+  instanceID: 62824
 --- !u!1 &907308529
 GameObject:
   m_ObjectHideFlags: 0
@@ -6956,7 +7138,7 @@ GameObject:
   - component: {fileID: 911112103}
   - component: {fileID: 911112104}
   m_Layer: 0
-  m_Name: 15 - Violet_Fish
+  m_Name: 15 - Fish
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6987,7 +7169,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 1687962
+  instanceID: 62836
 --- !u!114 &911112104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7064,6 +7246,7 @@ MonoBehaviour:
   HarvestableItem: 0
   HarvestItemIndex: 0
   HarvestClusterIndex: 0
+  isWallItem: 0
 --- !u!1 &919782884
 GameObject:
   m_ObjectHideFlags: 0
@@ -7168,7 +7351,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1687976
+  instanceID: 62850
 --- !u!1 &946834387
 GameObject:
   m_ObjectHideFlags: 0
@@ -7241,7 +7424,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1687984
+  instanceID: 62858
 --- !u!1 &947853066
 GameObject:
   m_ObjectHideFlags: 0
@@ -7314,7 +7497,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1687992
+  instanceID: 62866
 --- !u!1 &983058082
 GameObject:
   m_ObjectHideFlags: 0
@@ -7374,7 +7557,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1687998
+  instanceID: 62872
 --- !u!4 &983058085
 Transform:
   m_ObjectHideFlags: 0
@@ -7460,7 +7643,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1688008
+  instanceID: 62882
 --- !u!1 &1001442999
 GameObject:
   m_ObjectHideFlags: 0
@@ -7533,7 +7716,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1688016
+  instanceID: 62890
 --- !u!1 &1026884239
 GameObject:
   m_ObjectHideFlags: 0
@@ -7613,11 +7796,16 @@ MonoBehaviour:
   - GrowthLevelRequired: 3
     StagePrefabReference: {fileID: 1479496050413472, guid: 2670f590bd8bcdb47a42bf5e1c3b17a6,
       type: 2}
-  isBreakable: 0
-  EnvironmentValues: []
+  isBreakable: 1
+  EnvironmentValues:
+  - OnHitFXType: 2
+    ActivateableTypeRequired: 1
+    QualityLevelRequired: 0
+    ObjectHealth: 15
   HarvestableItem: 1
   HarvestItemIndex: 34
   HarvestClusterIndex: 0
+  isWallItem: 0
 --- !u!114 &1026884241
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7630,7 +7818,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 1688022
+  instanceID: 62896
 --- !u!4 &1026884242
 Transform:
   m_ObjectHideFlags: 0
@@ -7698,7 +7886,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 6
-  instanceID: 1688030
+  instanceID: 62904
 --- !u!4 &1037744386
 Transform:
   m_ObjectHideFlags: 0
@@ -7784,7 +7972,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1688040
+  instanceID: 62914
 --- !u!1 &1053465270
 GameObject:
   m_ObjectHideFlags: 0
@@ -7857,7 +8045,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1688048
+  instanceID: 62922
 --- !u!1 &1069764471
 GameObject:
   m_ObjectHideFlags: 0
@@ -7934,7 +8122,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1688058
+  instanceID: 62932
 --- !u!114 &1071378050
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8037,7 +8225,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1688068
+  instanceID: 62942
 --- !u!1 &1087104903
 GameObject:
   m_ObjectHideFlags: 0
@@ -8110,7 +8298,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1688076
+  instanceID: 62950
 --- !u!1 &1101497691
 GameObject:
   m_ObjectHideFlags: 0
@@ -8217,7 +8405,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1688088
+  instanceID: 62962
 --- !u!1 &1118554396
 GameObject:
   m_ObjectHideFlags: 0
@@ -8277,7 +8465,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1688094
+  instanceID: 62968
 --- !u!4 &1118554399
 Transform:
   m_ObjectHideFlags: 0
@@ -8363,7 +8551,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1688104
+  instanceID: 62978
 --- !u!1 &1133565266
 GameObject:
   m_ObjectHideFlags: 0
@@ -8496,7 +8684,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1688120
+  instanceID: 62994
 --- !u!1 &1215626842
 GameObject:
   m_ObjectHideFlags: 0
@@ -8570,7 +8758,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 1688130
+  instanceID: 63004
 --- !u!114 &1228010045
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8633,15 +8821,16 @@ MonoBehaviour:
   - GrowthLevelRequired: 3
     StagePrefabReference: {fileID: 1408907112761738, guid: d689c4624de1b144d953ae7c6658ee13,
       type: 2}
-  isBreakable: 0
+  isBreakable: 1
   EnvironmentValues:
-  - OnHitFXType: 0
+  - OnHitFXType: 2
     ActivateableTypeRequired: 1
     QualityLevelRequired: 0
     ObjectHealth: 15
   HarvestableItem: 1
   HarvestItemIndex: 30
   HarvestClusterIndex: 0
+  isWallItem: 0
 --- !u!1 &1238877021
 GameObject:
   m_ObjectHideFlags: 0
@@ -8714,7 +8903,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1688140
+  instanceID: 63014
 --- !u!1 &1254369945
 GameObject:
   m_ObjectHideFlags: 0
@@ -8726,7 +8915,7 @@ GameObject:
   - component: {fileID: 1254369947}
   - component: {fileID: 1254369948}
   m_Layer: 0
-  m_Name: 33 - BellPepper_Orange_Lv3 (1)
+  m_Name: 33 - Cabbage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8757,7 +8946,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 1688146
+  instanceID: 63020
 --- !u!114 &1254369948
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8833,6 +9022,7 @@ MonoBehaviour:
   HarvestableItem: 0
   HarvestItemIndex: 0
   HarvestClusterIndex: 0
+  isWallItem: 0
 --- !u!1 &1259421159
 GameObject:
   m_ObjectHideFlags: 0
@@ -8936,7 +9126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1688160
+  instanceID: 63034
 --- !u!1 &1290746968
 GameObject:
   m_ObjectHideFlags: 0
@@ -9009,7 +9199,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1688168
+  instanceID: 63042
 --- !u!1 &1297176232
 GameObject:
   m_ObjectHideFlags: 0
@@ -9041,6 +9231,79 @@ Transform:
   - {fileID: 307170511}
   m_Father: {fileID: 1337974348}
   m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1301492705
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1301492708}
+  - component: {fileID: 1301492707}
+  - component: {fileID: 1301492706}
+  m_Layer: 0
+  m_Name: 129 - Wood Fence
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1301492706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1301492705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 766834c6f2c9cf243ab3296f4a43ade1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DatabaseID: 129
+  LockItem: 1
+  Name: Wood Fence
+  DevNotes: 
+  TextValues:
+  - Language: 0
+    stringEntry: Wood Fence
+  - Language: 1
+    stringEntry: 
+  - Language: 2
+    stringEntry: 
+  - Language: 3
+    stringEntry: 
+  - Language: 4
+    stringEntry: 
+  - Language: 5
+    stringEntry: 
+  - Language: 6
+    stringEntry: 
+--- !u!114 &1301492707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1301492705}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 3
+  instanceID: 63052
+--- !u!4 &1301492708
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1301492705}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 576121020}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1302384509
 GameObject:
@@ -9076,6 +9339,7 @@ Transform:
   - {fileID: 1072192233}
   - {fileID: 1995547179}
   - {fileID: 702845928}
+  - {fileID: 102032474}
   m_Father: {fileID: 1337974348}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9151,7 +9415,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1688184
+  instanceID: 63066
 --- !u!1 &1315412316
 GameObject:
   m_ObjectHideFlags: 0
@@ -9224,7 +9488,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1688192
+  instanceID: 63074
 --- !u!1 &1322106185
 GameObject:
   m_ObjectHideFlags: 0
@@ -9324,7 +9588,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 8
-  instanceID: 1688204
+  instanceID: 63086
 --- !u!4 &1324796403
 Transform:
   m_ObjectHideFlags: 0
@@ -9349,7 +9613,7 @@ GameObject:
   - component: {fileID: 1328181119}
   - component: {fileID: 1328181118}
   m_Layer: 0
-  m_Name: 6 - Herb_DervishRoot
+  m_Name: 6 - Dervish Root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9443,6 +9707,7 @@ MonoBehaviour:
   HarvestableItem: 1
   HarvestItemIndex: 6
   HarvestClusterIndex: 0
+  isWallItem: 0
 --- !u!114 &1328181119
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9455,7 +9720,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 1688214
+  instanceID: 63096
 --- !u!1 &1329798022
 GameObject:
   m_ObjectHideFlags: 0
@@ -9528,7 +9793,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1688222
+  instanceID: 63104
 --- !u!1 &1330787844
 GameObject:
   m_ObjectHideFlags: 0
@@ -9757,7 +10022,10 @@ MonoBehaviour:
   - {fileID: 702845926}
   - {fileID: 1502315840}
   - {fileID: 729905713}
-  ListCount: 129
+  - {fileID: 1301492706}
+  - {fileID: 102032472}
+  - {fileID: 1786131565}
+  ListCount: 132
 --- !u!114 &1337974350
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9886,6 +10154,7 @@ MonoBehaviour:
   HarvestableItem: 1
   HarvestItemIndex: 0
   HarvestClusterIndex: 1
+  isWallItem: 0
 --- !u!114 &1343751717
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9898,7 +10167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 1688242
+  instanceID: 63124
 --- !u!4 &1343751718
 Transform:
   m_ObjectHideFlags: 0
@@ -9984,7 +10253,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1688252
+  instanceID: 63134
 --- !u!1 &1345506624
 GameObject:
   m_ObjectHideFlags: 0
@@ -9996,7 +10265,7 @@ GameObject:
   - component: {fileID: 1345506626}
   - component: {fileID: 1345506627}
   m_Layer: 0
-  m_Name: 14 - Red_Fish
+  m_Name: 14 - Fish
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10027,7 +10296,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 1688258
+  instanceID: 63140
 --- !u!114 &1345506627
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10104,6 +10373,7 @@ MonoBehaviour:
   HarvestableItem: 0
   HarvestItemIndex: 0
   HarvestClusterIndex: 0
+  isWallItem: 0
 --- !u!1 &1348481036
 GameObject:
   m_ObjectHideFlags: 0
@@ -10205,7 +10475,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1688272
+  instanceID: 63154
 --- !u!1 &1351259150
 GameObject:
   m_ObjectHideFlags: 0
@@ -10278,7 +10548,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1688280
+  instanceID: 63162
 --- !u!1 &1364082331
 GameObject:
   m_ObjectHideFlags: 0
@@ -10351,7 +10621,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1688288
+  instanceID: 63170
 --- !u!1 &1366259587
 GameObject:
   m_ObjectHideFlags: 0
@@ -10424,7 +10694,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1688296
+  instanceID: 63178
 --- !u!1 &1367582963
 GameObject:
   m_ObjectHideFlags: 0
@@ -10497,7 +10767,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1688304
+  instanceID: 63186
 --- !u!1 &1369702741
 GameObject:
   m_ObjectHideFlags: 0
@@ -10570,7 +10840,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1688312
+  instanceID: 63194
 --- !u!1 &1370439230
 GameObject:
   m_ObjectHideFlags: 0
@@ -10692,7 +10962,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1688326
+  instanceID: 63208
 --- !u!1 &1405183627
 GameObject:
   m_ObjectHideFlags: 0
@@ -10720,6 +10990,7 @@ Transform:
   m_Children:
   - {fileID: 676053779}
   - {fileID: 1893027775}
+  - {fileID: 684466178}
   m_Father: {fileID: 98179532}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -10764,7 +11035,7 @@ GameObject:
   - component: {fileID: 1429960797}
   - component: {fileID: 1429960796}
   m_Layer: 0
-  m_Name: 3 - fishingpole01_blue
+  m_Name: 3 - FishingPol
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10866,6 +11137,7 @@ MonoBehaviour:
   HarvestableItem: 0
   HarvestItemIndex: 0
   HarvestClusterIndex: 0
+  isWallItem: 0
 --- !u!114 &1429960797
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10878,7 +11150,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 1688342
+  instanceID: 63224
 --- !u!1 &1440713918
 GameObject:
   m_ObjectHideFlags: 0
@@ -10951,7 +11223,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1688350
+  instanceID: 63232
 --- !u!1 &1449750574
 GameObject:
   m_ObjectHideFlags: 0
@@ -11024,7 +11296,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1688360
+  instanceID: 63240
 --- !u!1 &1450680409
 GameObject:
   m_ObjectHideFlags: 0
@@ -11096,7 +11368,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1688370
+  instanceID: 63250
 --- !u!114 &1454810879
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11138,7 +11410,7 @@ GameObject:
   - component: {fileID: 1456368175}
   - component: {fileID: 1456368176}
   m_Layer: 0
-  m_Name: 29 - Brocolli_Lv3
+  m_Name: 29 - Cabbage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11169,7 +11441,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 1688378
+  instanceID: 63258
 --- !u!114 &1456368176
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11246,6 +11518,7 @@ MonoBehaviour:
   HarvestableItem: 0
   HarvestItemIndex: 0
   HarvestClusterIndex: 0
+  isWallItem: 0
 --- !u!1 &1456541170
 GameObject:
   m_ObjectHideFlags: 0
@@ -11356,7 +11629,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1688392
+  instanceID: 63272
 --- !u!1 &1466624027
 GameObject:
   m_ObjectHideFlags: 0
@@ -11416,7 +11689,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1688398
+  instanceID: 63278
 --- !u!4 &1466624030
 Transform:
   m_ObjectHideFlags: 0
@@ -11441,7 +11714,7 @@ GameObject:
   - component: {fileID: 1470222516}
   - component: {fileID: 1470222515}
   m_Layer: 0
-  m_Name: 22 - apple01_red
+  m_Name: 22 - Apple
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11523,6 +11796,7 @@ MonoBehaviour:
   HarvestableItem: 0
   HarvestItemIndex: 0
   HarvestClusterIndex: 0
+  isWallItem: 0
 --- !u!114 &1470222516
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11535,7 +11809,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 1688406
+  instanceID: 63286
 --- !u!4 &1470222517
 Transform:
   m_ObjectHideFlags: 0
@@ -11621,7 +11895,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1688416
+  instanceID: 63296
 --- !u!1 &1488660083
 GameObject:
   m_ObjectHideFlags: 0
@@ -11730,7 +12004,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1688428
+  instanceID: 63308
 --- !u!1 &1502315839
 GameObject:
   m_ObjectHideFlags: 0
@@ -11790,7 +12064,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1688434
+  instanceID: 63314
 --- !u!4 &1502315842
 Transform:
   m_ObjectHideFlags: 0
@@ -11815,7 +12089,7 @@ GameObject:
   - component: {fileID: 1502558391}
   - component: {fileID: 1502558390}
   m_Layer: 0
-  m_Name: 18 - SurvivalTools_WateringCan
+  m_Name: 18 - Watering Can
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11908,6 +12182,7 @@ MonoBehaviour:
   HarvestableItem: 0
   HarvestItemIndex: 0
   HarvestClusterIndex: 0
+  isWallItem: 0
 --- !u!114 &1502558391
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11920,7 +12195,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 1688442
+  instanceID: 63322
 --- !u!4 &1502558392
 Transform:
   m_ObjectHideFlags: 0
@@ -11945,7 +12220,7 @@ GameObject:
   - component: {fileID: 1511745341}
   - component: {fileID: 1511745340}
   m_Layer: 0
-  m_Name: 5 - Herb_CrispinsGlove
+  m_Name: 5 - Crispins Glove
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12026,6 +12301,7 @@ MonoBehaviour:
   HarvestableItem: 1
   HarvestItemIndex: 5
   HarvestClusterIndex: 0
+  isWallItem: 0
 --- !u!114 &1511745341
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12038,7 +12314,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 1688450
+  instanceID: 63330
 --- !u!4 &1511745342
 Transform:
   m_ObjectHideFlags: 0
@@ -12063,7 +12339,7 @@ GameObject:
   - component: {fileID: 1528345310}
   - component: {fileID: 1528345309}
   m_Layer: 0
-  m_Name: 28 - Strawberry_Lv3
+  m_Name: 28 - Strawberry
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12145,6 +12421,7 @@ MonoBehaviour:
   HarvestableItem: 0
   HarvestItemIndex: 0
   HarvestClusterIndex: 0
+  isWallItem: 0
 --- !u!114 &1528345310
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12157,7 +12434,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 1688458
+  instanceID: 63338
 --- !u!4 &1528345311
 Transform:
   m_ObjectHideFlags: 0
@@ -12231,7 +12508,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1688466
+  instanceID: 63346
 --- !u!4 &1547347344
 Transform:
   m_ObjectHideFlags: 0
@@ -12317,7 +12594,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1688476
+  instanceID: 63356
 --- !u!1 &1571557578
 GameObject:
   m_ObjectHideFlags: 0
@@ -12453,7 +12730,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1688492
+  instanceID: 63372
 --- !u!1 &1592455085
 GameObject:
   m_ObjectHideFlags: 0
@@ -12526,7 +12803,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1688500
+  instanceID: 63380
 --- !u!1 &1610581554
 GameObject:
   m_ObjectHideFlags: 0
@@ -12599,7 +12876,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1688508
+  instanceID: 63388
 --- !u!1 &1613849535
 GameObject:
   m_ObjectHideFlags: 0
@@ -12672,7 +12949,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1688516
+  instanceID: 63396
 --- !u!1 &1631441170
 GameObject:
   m_ObjectHideFlags: 0
@@ -12745,7 +13022,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1688524
+  instanceID: 63404
 --- !u!1 &1637135970
 GameObject:
   m_ObjectHideFlags: 0
@@ -12757,7 +13034,7 @@ GameObject:
   - component: {fileID: 1637135972}
   - component: {fileID: 1637135971}
   m_Layer: 0
-  m_Name: 16 - Yellow_Fish
+  m_Name: 16 - Fish
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12839,6 +13116,7 @@ MonoBehaviour:
   HarvestableItem: 0
   HarvestItemIndex: 0
   HarvestClusterIndex: 0
+  isWallItem: 0
 --- !u!114 &1637135972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12851,7 +13129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 1688530
+  instanceID: 63410
 --- !u!4 &1637135973
 Transform:
   m_ObjectHideFlags: 0
@@ -12924,7 +13202,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 5
-  instanceID: 1688538
+  instanceID: 63418
 --- !u!4 &1645614859
 Transform:
   m_ObjectHideFlags: 0
@@ -13068,7 +13346,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1688552
+  instanceID: 63432
 --- !u!1 &1663225526
 GameObject:
   m_ObjectHideFlags: 0
@@ -13148,11 +13426,16 @@ MonoBehaviour:
   - GrowthLevelRequired: 3
     StagePrefabReference: {fileID: 1164922301465776, guid: 1f4caf9654383104da85ce5308994186,
       type: 2}
-  isBreakable: 0
-  EnvironmentValues: []
+  isBreakable: 1
+  EnvironmentValues:
+  - OnHitFXType: 2
+    ActivateableTypeRequired: 1
+    QualityLevelRequired: 0
+    ObjectHealth: 15
   HarvestableItem: 1
   HarvestItemIndex: 33
   HarvestClusterIndex: 0
+  isWallItem: 0
 --- !u!114 &1663225528
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13165,7 +13448,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 1688558
+  instanceID: 63438
 --- !u!4 &1663225529
 Transform:
   m_ObjectHideFlags: 0
@@ -13252,7 +13535,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1688568
+  instanceID: 63448
 --- !u!1 &1673153791
 GameObject:
   m_ObjectHideFlags: 0
@@ -13325,7 +13608,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1688576
+  instanceID: 63456
 --- !u!1 &1677378387
 GameObject:
   m_ObjectHideFlags: 0
@@ -13398,7 +13681,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 5
-  instanceID: 1688584
+  instanceID: 63464
 --- !u!1 &1686792870
 GameObject:
   m_ObjectHideFlags: 0
@@ -13471,7 +13754,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1688592
+  instanceID: 63472
 --- !u!1 &1690898328
 GameObject:
   m_ObjectHideFlags: 0
@@ -13544,7 +13827,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1688600
+  instanceID: 63480
 --- !u!1 &1696380314
 GameObject:
   m_ObjectHideFlags: 0
@@ -13556,7 +13839,7 @@ GameObject:
   - component: {fileID: 1696380317}
   - component: {fileID: 1696380316}
   m_Layer: 0
-  m_Name: 7 - Herb_FireWort
+  m_Name: 7 - Fire Wort
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13650,6 +13933,7 @@ MonoBehaviour:
   HarvestableItem: 1
   HarvestItemIndex: 7
   HarvestClusterIndex: 0
+  isWallItem: 0
 --- !u!114 &1696380317
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13662,7 +13946,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 1688608
+  instanceID: 63488
 --- !u!1 &1701517455
 GameObject:
   m_ObjectHideFlags: 0
@@ -13751,7 +14035,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1688618
+  instanceID: 63498
 --- !u!4 &1705398620
 Transform:
   m_ObjectHideFlags: 0
@@ -13857,15 +14141,16 @@ MonoBehaviour:
   - GrowthLevelRequired: 3
     StagePrefabReference: {fileID: 1452840498419332, guid: ff9b4ef58ca02b54692381af54cb5f38,
       type: 2}
-  isBreakable: 0
+  isBreakable: 1
   EnvironmentValues:
-  - OnHitFXType: 0
-    ActivateableTypeRequired: 0
+  - OnHitFXType: 2
+    ActivateableTypeRequired: 1
     QualityLevelRequired: 0
-    ObjectHealth: 0
+    ObjectHealth: 15
   HarvestableItem: 1
   HarvestItemIndex: 9
   HarvestClusterIndex: 0
+  isWallItem: 0
 --- !u!114 &1714828757
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13878,7 +14163,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 1688628
+  instanceID: 63508
 --- !u!1 &1736991613
 GameObject:
   m_ObjectHideFlags: 0
@@ -13951,7 +14236,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1688636
+  instanceID: 63516
 --- !u!1 &1747360897
 GameObject:
   m_ObjectHideFlags: 0
@@ -14038,7 +14323,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 10
-  instanceID: 1688644
+  instanceID: 63524
 --- !u!1 &1753353420
 GameObject:
   m_ObjectHideFlags: 0
@@ -14111,7 +14396,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1688652
+  instanceID: 63532
 --- !u!1 &1782937100
 GameObject:
   m_ObjectHideFlags: 0
@@ -14185,7 +14470,80 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1688660
+  instanceID: 63540
+--- !u!1 &1786131564
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1786131567}
+  - component: {fileID: 1786131566}
+  - component: {fileID: 1786131565}
+  m_Layer: 0
+  m_Name: 131 - Sturdy woo
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1786131565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1786131564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 766834c6f2c9cf243ab3296f4a43ade1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DatabaseID: 131
+  LockItem: 1
+  Name: Sturdy woo
+  DevNotes: 10 - Storage Chest
+  TextValues:
+  - Language: 0
+    stringEntry: Sturdy wooden fence, used to keep animals safely within an area.
+  - Language: 1
+    stringEntry: 
+  - Language: 2
+    stringEntry: 
+  - Language: 3
+    stringEntry: 
+  - Language: 4
+    stringEntry: 
+  - Language: 5
+    stringEntry: 
+  - Language: 6
+    stringEntry: 
+--- !u!114 &1786131566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1786131564}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 3
+  instanceID: 63546
+--- !u!4 &1786131567
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1786131564}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1903492055}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1802553526
 GameObject:
   m_ObjectHideFlags: 0
@@ -14258,7 +14616,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1688668
+  instanceID: 63556
 --- !u!1 &1815548898
 GameObject:
   m_ObjectHideFlags: 0
@@ -14365,7 +14723,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1688680
+  instanceID: 63568
 --- !u!1 &1825876182
 GameObject:
   m_ObjectHideFlags: 0
@@ -14377,7 +14735,7 @@ GameObject:
   - component: {fileID: 1825876185}
   - component: {fileID: 1825876184}
   m_Layer: 0
-  m_Name: 2 - hoe02_blue
+  m_Name: 2 - Hoe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14479,6 +14837,7 @@ MonoBehaviour:
   HarvestableItem: 0
   HarvestItemIndex: 0
   HarvestClusterIndex: 0
+  isWallItem: 0
 --- !u!114 &1825876185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14491,7 +14850,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 1688688
+  instanceID: 63576
 --- !u!1 &1837730739
 GameObject:
   m_ObjectHideFlags: 0
@@ -14587,7 +14946,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 10
-  instanceID: -36807364
+  instanceID: 63586
 --- !u!4 &1838602556
 Transform:
   m_ObjectHideFlags: 0
@@ -14673,7 +15032,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1688700
+  instanceID: 63596
 --- !u!1 &1846466102
 GameObject:
   m_ObjectHideFlags: 0
@@ -14746,7 +15105,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1688708
+  instanceID: 63604
 --- !u!1 &1849541681
 GameObject:
   m_ObjectHideFlags: 0
@@ -14758,7 +15117,7 @@ GameObject:
   - component: {fileID: 1849541683}
   - component: {fileID: 1849541682}
   m_Layer: 0
-  m_Name: 20 - Stone
+  m_Name: 20 - Stone Resource
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14822,6 +15181,7 @@ MonoBehaviour:
   HarvestableItem: 0
   HarvestItemIndex: 0
   HarvestClusterIndex: 0
+  isWallItem: 0
 --- !u!114 &1849541683
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14834,7 +15194,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 1688714
+  instanceID: 63610
 --- !u!4 &1849541684
 Transform:
   m_ObjectHideFlags: 0
@@ -14920,7 +15280,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1688724
+  instanceID: 63620
 --- !u!1 &1879222547
 GameObject:
   m_ObjectHideFlags: 0
@@ -15023,7 +15383,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 7
-  instanceID: 1688732
+  instanceID: 63628
 --- !u!1 &1893027772
 GameObject:
   m_ObjectHideFlags: 0
@@ -15089,6 +15449,7 @@ MonoBehaviour:
   HarvestableItem: 0
   HarvestItemIndex: 0
   HarvestClusterIndex: 0
+  isWallItem: 0
 --- !u!114 &1893027774
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15101,7 +15462,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 1688738
+  instanceID: 63634
 --- !u!4 &1893027775
 Transform:
   m_ObjectHideFlags: 0
@@ -15156,7 +15517,7 @@ GameObject:
   - component: {fileID: 1902128845}
   - component: {fileID: 1902128846}
   m_Layer: 0
-  m_Name: 12 - Cyan_Fish
+  m_Name: 12 - Fish
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15187,7 +15548,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 1688750
+  instanceID: 63646
 --- !u!114 &1902128846
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15264,6 +15625,7 @@ MonoBehaviour:
   HarvestableItem: 0
   HarvestItemIndex: 0
   HarvestClusterIndex: 0
+  isWallItem: 0
 --- !u!1 &1903492054
 GameObject:
   m_ObjectHideFlags: 0
@@ -15291,6 +15653,7 @@ Transform:
   m_Children:
   - {fileID: 18402821}
   - {fileID: 1502315842}
+  - {fileID: 1786131567}
   m_Father: {fileID: 1337974348}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -15336,7 +15699,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 1688762
+  instanceID: 63658
 --- !u!114 &1908648037
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15399,11 +15762,16 @@ MonoBehaviour:
   - GrowthLevelRequired: 3
     StagePrefabReference: {fileID: 1989714712356646, guid: 410ea6a1db88b494490f5d7d3b84a5a9,
       type: 2}
-  isBreakable: 0
-  EnvironmentValues: []
+  isBreakable: 1
+  EnvironmentValues:
+  - OnHitFXType: 2
+    ActivateableTypeRequired: 1
+    QualityLevelRequired: 0
+    ObjectHealth: 15
   HarvestableItem: 1
   HarvestItemIndex: 28
   HarvestClusterIndex: 0
+  isWallItem: 0
 --- !u!1 &1929439630
 GameObject:
   m_ObjectHideFlags: 0
@@ -15496,7 +15864,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 10
-  instanceID: -36920290
+  instanceID: 63670
 --- !u!4 &1964282994
 Transform:
   m_ObjectHideFlags: 0
@@ -15582,7 +15950,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1688776
+  instanceID: 63680
 --- !u!1 &1985819918
 GameObject:
   m_ObjectHideFlags: 0
@@ -15655,7 +16023,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1688784
+  instanceID: 63688
 --- !u!1 &1988801390
 GameObject:
   m_ObjectHideFlags: 0
@@ -15698,7 +16066,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1688790
+  instanceID: 63694
 --- !u!114 &1988801393
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15801,7 +16169,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1688800
+  instanceID: 63704
 --- !u!1 &1991773470
 GameObject:
   m_ObjectHideFlags: 0
@@ -15904,7 +16272,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1688812
+  instanceID: 63716
 --- !u!1 &1997068649
 GameObject:
   m_ObjectHideFlags: 0
@@ -15977,7 +16345,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1688820
+  instanceID: 63724
 --- !u!1 &2002398763
 GameObject:
   m_ObjectHideFlags: 0
@@ -16020,7 +16388,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 1688826
+  instanceID: 63730
 --- !u!114 &2002398766
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16083,15 +16451,16 @@ MonoBehaviour:
   - GrowthLevelRequired: 3
     StagePrefabReference: {fileID: 1575849893228066, guid: 441ade5dab12ef344af9b2dcb1aa5bf2,
       type: 2}
-  isBreakable: 0
+  isBreakable: 1
   EnvironmentValues:
-  - OnHitFXType: 0
+  - OnHitFXType: 2
     ActivateableTypeRequired: 1
     QualityLevelRequired: 0
     ObjectHealth: 15
   HarvestableItem: 1
   HarvestItemIndex: 32
   HarvestClusterIndex: 0
+  isWallItem: 0
 --- !u!1 &2005898654
 GameObject:
   m_ObjectHideFlags: 0
@@ -16164,7 +16533,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1688836
+  instanceID: 63740
 --- !u!1 &2007011312
 GameObject:
   m_ObjectHideFlags: 0
@@ -16176,7 +16545,7 @@ GameObject:
   - component: {fileID: 2007011315}
   - component: {fileID: 2007011314}
   m_Layer: 0
-  m_Name: 35 - Spruce Log
+  m_Name: 35 - Wood Resource
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16254,6 +16623,7 @@ MonoBehaviour:
   HarvestableItem: 0
   HarvestItemIndex: 0
   HarvestClusterIndex: 0
+  isWallItem: 0
 --- !u!114 &2007011315
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16266,7 +16636,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 1688844
+  instanceID: 63748
 --- !u!1 &2018851479
 GameObject:
   m_ObjectHideFlags: 0
@@ -16374,7 +16744,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1688856
+  instanceID: 63760
 --- !u!1 &2041544709
 GameObject:
   m_ObjectHideFlags: 0
@@ -16434,7 +16804,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 5
-  instanceID: 1688862
+  instanceID: 63766
 --- !u!4 &2041544712
 Transform:
   m_ObjectHideFlags: 0
@@ -16520,7 +16890,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1688872
+  instanceID: 63776
 --- !u!1 &2063523896
 GameObject:
   m_ObjectHideFlags: 0
@@ -16593,7 +16963,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1688880
+  instanceID: 63784
 --- !u!1 &2067220876
 GameObject:
   m_ObjectHideFlags: 0
@@ -16666,7 +17036,69 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1688888
+  instanceID: 63792
+--- !u!1 &2070317662
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 2070317665}
+  - component: {fileID: 2070317664}
+  - component: {fileID: 2070317663}
+  m_Layer: 0
+  m_Name: 2 - Dynamic Fence
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2070317663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2070317662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fec416fbe71013d4ca8f38d07a1580c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DatabaseID: 2
+  LockItem: 1
+  Name: Dynamic Fence
+  ItemCreatedRef: 37
+  IngredientList:
+  - Name: 35 - Spruce Log
+    ItemDatabaseRef: 35
+    Value: 20
+--- !u!114 &2070317664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2070317662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 8
+  instanceID: 63798
+--- !u!4 &2070317665
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2070317662}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 733344064}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2075862849
 GameObject:
   m_ObjectHideFlags: 0
@@ -16739,7 +17171,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1688896
+  instanceID: 63808
 --- !u!1 &2140217085
 GameObject:
   m_ObjectHideFlags: 0
@@ -16812,7 +17244,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1688904
+  instanceID: 63816
 --- !u!1 &2141586112
 GameObject:
   m_ObjectHideFlags: 0
@@ -16885,4 +17317,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 1688912
+  instanceID: 63824
