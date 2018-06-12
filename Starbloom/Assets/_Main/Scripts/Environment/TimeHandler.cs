@@ -72,6 +72,8 @@ public class TimeHandler : MonoBehaviour
 
 
     public int GetCurrentHour() { return QuickFind.WeatherModule.currentHour; }
+    public int GetCurrentDay() { return QuickFind.WeatherModule.currentDay; }
+    public int GetCurrentYear() { return QuickFind.WeatherModule.currentYear; }
 	public void RequestMasterTimes() { QuickFind.NetworkSync.RequestMasterTime(); }
 
 
