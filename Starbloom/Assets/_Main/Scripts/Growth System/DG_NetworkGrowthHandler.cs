@@ -30,7 +30,7 @@ public class DG_NetworkGrowthHandler : MonoBehaviour
                     {
                         AddGrowthValue(NO, IO);
                         CheckGrowthVisual(NO, IO);
-                        SetActiveVisual(NO);
+                        SetActiveVisual(Scene, NO);
                     }
                     if (!IO.IsWaterable) continue;
                     if (CurrentWeather == WeatherHandler.WeatherTyps.Raining || CurrentWeather == WeatherHandler.WeatherTyps.Thunderstorm) NO.HasBeenWatered = true;
@@ -67,7 +67,7 @@ public class DG_NetworkGrowthHandler : MonoBehaviour
                 NO.ActiveVisual = i;
         }
     }
-    public void SetActiveVisual(NetworkObject NO, bool DestroyOld = true)
+    public void SetActiveVisual(NetworkScene NS, NetworkObject NO, bool DestroyOld = true)
     {
         DG_ItemObject IO = QuickFind.ItemDatabase.GetItemFromID(NO.ItemRefID);
 
@@ -88,6 +88,9 @@ public class DG_NetworkGrowthHandler : MonoBehaviour
         T.localScale = new Vector3(Scale, Scale, Scale);
 
         if (ShowBrokenItem) Spawn.GetComponent<DG_BreakObjectLoadSet>().LoadBrokenType();
+
+        if (NS.SceneID != QuickFind.NetworkSync.CurrentScene)
+            NO.transform.gameObject.SetActive(false);
 
         if (DestroyOld)
         {
@@ -117,7 +120,7 @@ public class DG_NetworkGrowthHandler : MonoBehaviour
             NO.GrowthValue = IO.GrowthStages[NO.ActiveVisual].GrowthLevelRequired;
             CheckGrowthVisual(NO, IO);
         }
-        SetActiveVisual(NO);
+        SetActiveVisual(Scene, NO);
     }
 
 

@@ -53,7 +53,7 @@ public class NetworkObject : MonoBehaviour {
 
 
 
-    public void SpawnNetworkObject(bool GenerateVelocity = false, Vector3 Velocity = new Vector3())
+    public void SpawnNetworkObject(NetworkScene NS, bool GenerateVelocity = false, Vector3 Velocity = new Vector3())
     {
         DG_ItemsDatabase IDB = QuickFind.ItemDatabase;
         DG_ItemObject IO = IDB.GetItemFromID(ItemRefID);
@@ -69,6 +69,11 @@ public class NetworkObject : MonoBehaviour {
         T.localEulerAngles = Vector3.zero;
         float Scale = IO.DefaultScale;
         T.localScale = new Vector3(Scale, Scale, Scale);
+
+        if (NS.SceneID != QuickFind.NetworkSync.CurrentScene)
+            transform.gameObject.SetActive(false);
+
+        if (IO.isBreakable) { HasHealth = true; HealthValue = IO.EnvironmentValues[0].ObjectHealth; }
 
         if (HasBeenWatered) QuickFind.WateringSystem.AdjustWateredObjectVisual(this, true);
 

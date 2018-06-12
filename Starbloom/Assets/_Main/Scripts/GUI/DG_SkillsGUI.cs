@@ -105,7 +105,7 @@ public class DG_SkillsGUI : MonoBehaviour {
         for (int i = SkillLevel + 1; i < STI.LevelGrid.childCount; i++)
             STI.LevelGrid.GetChild(i).GetChild(0).GetComponent<UnityEngine.UI.Image>().fillAmount = 0;
 
-        STI.LevelText.text = SkillLevel.ToString();
+        STI.LevelText.text = (SkillLevel + 1).ToString();
     }
 
 }

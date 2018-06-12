@@ -25,9 +25,8 @@ public class DG_PrefabPoolItem : MonoBehaviour {
     public string Name;
     public GameObject PrefabReference;
 
-    [Header("Pool Size")]
+    [Header("FX Pool Size")]
     public bool UseMaxPoolValue;
-    [ShowIf("UseMaxPoolValue")]
     public int PoolMaxValue;
 
     [Header("GenerateOnStart")]
@@ -41,7 +40,7 @@ public class DG_PrefabPoolItem : MonoBehaviour {
 
 
     List<PoolObject> PrefabPool;
-
+    int FXIndex = 0;
 
 
     private void Awake()
@@ -96,6 +95,22 @@ public class DG_PrefabPoolItem : MonoBehaviour {
         if (PrintDebugWhenHitPoolMax) Debug.Log("We have reached our Max Pool Length");
         return null;
     }
+
+
+    public GameObject GetFXObjectByIndex()
+    {
+        if (PoolMaxValue == 0) Debug.Log("Pool Max Value Has not been set for an FX Object " + Name);
+        PoolObject PO;
+        if (FXIndex < PrefabPool.Count)
+            PO = PrefabPool[FXIndex];
+        else
+            PO = GenerateNewPoolObject(true);
+        FXIndex++;
+        if (FXIndex == PoolMaxValue) FXIndex = 0;
+
+        return PO.GameObjectRef;
+    }
+
 
     public void ReturnPoolObject(PoolObject ReturnObject)
     {

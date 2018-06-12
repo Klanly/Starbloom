@@ -13,6 +13,7 @@ public class DG_ObjectPlacement : MonoBehaviour {
 
 
     public LayerMask BoxcastDetection;
+    public LayerMask SeedPlacementDetection;
     public LayerMask SoilReplaceDetection;
 
     [HideInInspector] public Transform ObjectGhost;
@@ -42,11 +43,17 @@ public class DG_ObjectPlacement : MonoBehaviour {
         if (PlacementActive)
         {
             ObjectGhost.position = QuickFind.GridDetection.DetectionPoint.position;
-            if (AreaIsClear(BoxcastDetection, ObjectGhost.position)) { SetMaterialColors(true); SafeToPlace = true; }
-            else { SetMaterialColors(false); SafeToPlace = false; }
+            bool GoodToPlace = false;
+            if (ItemDatabaseReference.ItemCat == DG_ItemObject.ItemCatagory.Seeds)
+                GoodToPlace = AreaIsClear(SeedPlacementDetection, ObjectGhost.position);
+            else
+                GoodToPlace = AreaIsClear(BoxcastDetection, ObjectGhost.position);
+
+            QuickFind.GridDetection.GridMesh.enabled = GoodToPlace;
+            SetMaterialColors(GoodToPlace);
+            SafeToPlace = GoodToPlace;
         }
-        else
-            SafeToPlace = false;
+        else SafeToPlace = false;
     }
 
 
@@ -147,8 +154,7 @@ public class DG_ObjectPlacement : MonoBehaviour {
 
         if (Physics.BoxCast(CastPoint, new Vector3(.5f, .5f, .5f), Vector3.down, out m_Hit, transform.rotation, 21, DetectionType))
         { DetectedInTheWay = m_Hit.collider; return false; }
-        else
-            return true;
+        else { return true; }
     }
 
 

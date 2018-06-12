@@ -69,11 +69,10 @@ public class NetworkScene : MonoBehaviour {
             if (NO.GrowthValue != 0)
             {
                 NO.ActiveVisual = QuickFind.NetworkGrowthHandler.GetCurrentVisualByGrowthValue(NO);
-                QuickFind.NetworkGrowthHandler.SetActiveVisual(NO, false);
+                QuickFind.NetworkGrowthHandler.SetActiveVisual(QuickFind.NetworkObjectManager.GetSceneByID(SceneID), NO, false);
             }
             else
-                NO.SpawnNetworkObject();
-            //
+                NO.SpawnNetworkObject(QuickFind.NetworkObjectManager.GetSceneByID(SceneID));
         }
         DestroyTempObjects();
     }

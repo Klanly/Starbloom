@@ -113,79 +113,326 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &94933102
+--- !u!1 &230943737
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 94933103}
+  - component: {fileID: 230943740}
+  - component: {fileID: 230943739}
+  - component: {fileID: 230943738}
   m_Layer: 0
-  m_Name: Cat Level 1
+  m_Name: 3 - Leaf Burst - Normal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &94933103
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 94933102}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 2028580589}
-  m_Father: {fileID: 509886358}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &509886357
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 509886358}
-  - component: {fileID: 509886359}
-  m_Layer: 0
-  m_Name: FX Pool Dictionary
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &509886358
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 509886357}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 94933103}
-  m_Father: {fileID: 0}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &509886359
+--- !u!114 &230943738
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 509886357}
+  m_GameObject: {fileID: 230943737}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5e3633873068bf44b42d585c0a6f863, type: 3}
+  m_Script: {fileID: 11500000, guid: 23293ddb33c1f2442a1686923a56c0cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ItemCatagoryList:
-  - {fileID: 2028580590}
-  ListCount: 1
+  DatabaseID: 3
+  LockItem: 1
+  Name: Leaf Burst - Normal
+  PrefabReference: {fileID: 1202852992998096, guid: ec0b31fb061541b45853d90a91476a01,
+    type: 2}
+  UseMaxPoolValue: 0
+  PoolMaxValue: 50
+  GeneratePoolOnStart: 0
+  GenerationValue: 0
+  PrintDebugWhenHitPoolMax: 0
+--- !u!114 &230943739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 230943737}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 9
+  instanceID: -27214398
+--- !u!4 &230943740
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 230943737}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1879140231}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &313338017
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 313338018}
+  - component: {fileID: 313338019}
+  - component: {fileID: 313338020}
+  m_Layer: 0
+  m_Name: 10 - Rock Burst
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &313338018
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 313338017}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1879140231}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &313338019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 313338017}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 9
+  instanceID: -27402368
+--- !u!114 &313338020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 313338017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23293ddb33c1f2442a1686923a56c0cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DatabaseID: 10
+  LockItem: 1
+  Name: Rock Burst
+  PrefabReference: {fileID: 1781088751202796, guid: 76a97781d0c73dc41919e7215c931e2c,
+    type: 2}
+  UseMaxPoolValue: 0
+  PoolMaxValue: 10
+  GeneratePoolOnStart: 0
+  GenerationValue: 0
+  PrintDebugWhenHitPoolMax: 0
+--- !u!1 &426733810
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 426733811}
+  - component: {fileID: 426733812}
+  - component: {fileID: 426733813}
+  m_Layer: 0
+  m_Name: 4 - Leaf Burst - Large
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &426733811
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 426733810}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1879140231}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &426733812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 426733810}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 9
+  instanceID: -27334490
+--- !u!114 &426733813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 426733810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23293ddb33c1f2442a1686923a56c0cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DatabaseID: 4
+  LockItem: 1
+  Name: Leaf Burst - Large
+  PrefabReference: {fileID: 1474929875533234, guid: b06511e08b7d45b44b6d29a42172a56c,
+    type: 2}
+  UseMaxPoolValue: 0
+  PoolMaxValue: 50
+  GeneratePoolOnStart: 0
+  GenerationValue: 0
+  PrintDebugWhenHitPoolMax: 0
+--- !u!1 &491060805
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 491060808}
+  - component: {fileID: 491060807}
+  - component: {fileID: 491060806}
+  m_Layer: 0
+  m_Name: 11 - Rock Burst - W_Collision
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &491060806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 491060805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23293ddb33c1f2442a1686923a56c0cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DatabaseID: 11
+  LockItem: 1
+  Name: Rock Burst - W_Collision
+  PrefabReference: {fileID: 1837661605126688, guid: 89d7e745d2a44c742b41068cc9071eee,
+    type: 2}
+  UseMaxPoolValue: 0
+  PoolMaxValue: 10
+  GeneratePoolOnStart: 0
+  GenerationValue: 0
+  PrintDebugWhenHitPoolMax: 0
+--- !u!114 &491060807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 491060805}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 9
+  instanceID: -27415956
+--- !u!4 &491060808
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 491060805}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1879140231}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &653244909
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 653244910}
+  - component: {fileID: 653244911}
+  - component: {fileID: 653244912}
+  m_Layer: 0
+  m_Name: 6 - Wood Burst - Large
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &653244910
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 653244909}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1879140231}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &653244911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 653244909}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 9
+  instanceID: -27356398
+--- !u!114 &653244912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 653244909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23293ddb33c1f2442a1686923a56c0cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DatabaseID: 6
+  LockItem: 1
+  Name: Wood Burst - Large
+  PrefabReference: {fileID: 1023434483635704, guid: 1a06fb55c414487428b440352fcbc36c,
+    type: 2}
+  UseMaxPoolValue: 0
+  PoolMaxValue: 50
+  GeneratePoolOnStart: 0
+  GenerationValue: 0
+  PrintDebugWhenHitPoolMax: 0
 --- !u!1 &784908313
 GameObject:
   m_ObjectHideFlags: 0
@@ -213,6 +460,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1168055768}
+  - {fileID: 1879140231}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -231,7 +479,16 @@ MonoBehaviour:
   - {fileID: 1484500830}
   - {fileID: 865801882}
   - {fileID: 1699125929}
-  ListCount: 3
+  - {fileID: 230943738}
+  - {fileID: 426733813}
+  - {fileID: 2118999286}
+  - {fileID: 653244912}
+  - {fileID: 1568434886}
+  - {fileID: 1743787697}
+  - {fileID: 1579207499}
+  - {fileID: 313338020}
+  - {fileID: 491060806}
+  ListCount: 12
 --- !u!1 &865801881
 GameObject:
   m_ObjectHideFlags: 0
@@ -282,7 +539,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 9
-  instanceID: -8663916
+  instanceID: 1472960
 --- !u!4 &865801884
 Transform:
   m_ObjectHideFlags: 0
@@ -305,7 +562,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1168055768}
   m_Layer: 0
-  m_Name: Catagory
+  m_Name: Scatter Objects
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -390,7 +647,135 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 9
-  instanceID: 38850
+  instanceID: 1472974
+--- !u!1 &1568434883
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1568434884}
+  - component: {fileID: 1568434885}
+  - component: {fileID: 1568434886}
+  m_Layer: 0
+  m_Name: 7 - Bark Burst - Normal
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1568434884
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1568434883}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1879140231}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1568434885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1568434883}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 9
+  instanceID: -27364996
+--- !u!114 &1568434886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1568434883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23293ddb33c1f2442a1686923a56c0cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DatabaseID: 7
+  LockItem: 1
+  Name: Bark Burst - Normal
+  PrefabReference: {fileID: 1549762975495574, guid: 3a551a607d8a25e4182a61e2129385c9,
+    type: 2}
+  UseMaxPoolValue: 0
+  PoolMaxValue: 50
+  GeneratePoolOnStart: 0
+  GenerationValue: 0
+  PrintDebugWhenHitPoolMax: 0
+--- !u!1 &1579207496
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1579207497}
+  - component: {fileID: 1579207498}
+  - component: {fileID: 1579207499}
+  m_Layer: 0
+  m_Name: 9 - Dust Burst - Quick
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1579207497
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1579207496}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1879140231}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1579207498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1579207496}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 9
+  instanceID: -27394228
+--- !u!114 &1579207499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1579207496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23293ddb33c1f2442a1686923a56c0cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DatabaseID: 9
+  LockItem: 1
+  Name: Dust Burst - Quick
+  PrefabReference: {fileID: 1592909433476296, guid: d857c7d674ae6ad458e6bae93df4c0d0,
+    type: 2}
+  UseMaxPoolValue: 0
+  PoolMaxValue: 10
+  GeneratePoolOnStart: 0
+  GenerationValue: 0
+  PrintDebugWhenHitPoolMax: 0
 --- !u!1 &1699125928
 GameObject:
   m_ObjectHideFlags: 0
@@ -440,7 +825,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 9
-  instanceID: -8939214
+  instanceID: 1472980
 --- !u!4 &1699125931
 Transform:
   m_ObjectHideFlags: 0
@@ -454,60 +839,168 @@ Transform:
   m_Father: {fileID: 1168055768}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2028580588
+--- !u!1 &1743787694
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 2028580589}
-  - component: {fileID: 2028580591}
-  - component: {fileID: 2028580590}
+  - component: {fileID: 1743787695}
+  - component: {fileID: 1743787696}
+  - component: {fileID: 1743787697}
   m_Layer: 0
-  m_Name: 0 - Test
+  m_Name: 8 - Dust Burst
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2028580589
+--- !u!4 &1743787695
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2028580588}
+  m_GameObject: {fileID: 1743787694}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 94933103}
-  m_RootOrder: 0
+  m_Father: {fileID: 1879140231}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2028580590
+--- !u!114 &1743787696
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2028580588}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 423568a36be8b2646b2e3e400aadf29e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DatabaseID: 0
-  LockItem: 1
-  Name: Test
---- !u!114 &2028580591
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2028580588}
+  m_GameObject: {fileID: 1743787694}
   m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DBType: 10
-  instanceID: 38858
+  DBType: 9
+  instanceID: -27369734
+--- !u!114 &1743787697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1743787694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23293ddb33c1f2442a1686923a56c0cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DatabaseID: 8
+  LockItem: 1
+  Name: Dust Burst
+  PrefabReference: {fileID: 1939958604924808, guid: cf4591e10601ab745a34c68da392d82b,
+    type: 2}
+  UseMaxPoolValue: 0
+  PoolMaxValue: 10
+  GeneratePoolOnStart: 0
+  GenerationValue: 0
+  PrintDebugWhenHitPoolMax: 0
+--- !u!1 &1879140230
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1879140231}
+  m_Layer: 0
+  m_Name: FX Objects
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1879140231
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1879140230}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 230943740}
+  - {fileID: 426733811}
+  - {fileID: 2118999284}
+  - {fileID: 653244910}
+  - {fileID: 1568434884}
+  - {fileID: 1743787695}
+  - {fileID: 1579207497}
+  - {fileID: 313338018}
+  - {fileID: 491060808}
+  m_Father: {fileID: 784908314}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2118999283
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 2118999284}
+  - component: {fileID: 2118999285}
+  - component: {fileID: 2118999286}
+  m_Layer: 0
+  m_Name: 5 - Wood Burst - Normal
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2118999284
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2118999283}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1879140231}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2118999285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2118999283}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 9
+  instanceID: -27351974
+--- !u!114 &2118999286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2118999283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23293ddb33c1f2442a1686923a56c0cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DatabaseID: 5
+  LockItem: 1
+  Name: Wood Burst - Normal
+  PrefabReference: {fileID: 1575153635095428, guid: 20dbb16e95a58494f89b28b5083e0bbe,
+    type: 2}
+  UseMaxPoolValue: 0
+  PoolMaxValue: 50
+  GeneratePoolOnStart: 0
+  GenerationValue: 0
+  PrintDebugWhenHitPoolMax: 0

@@ -194,6 +194,7 @@ public class DG_NetworkSync : Photon.MonoBehaviour
 
     public void SetSelfInScene(int NewScene)
     {
+        QuickFind.NetworkSync.CurrentScene = NewScene;
         CurrentScene = NewScene;
         int[] IntGroup = new int[2];
         IntGroup[0] = UserID;
@@ -432,7 +433,7 @@ public class DG_NetworkSync : Photon.MonoBehaviour
     void SendOutWorldObjectInts(int[] IntValues)
     {
         QuickFind.SaveHandler.GetWorldInts(IntValues, false);
-        QuickFind.NetworkObjectManager.GenerateSceneObjects(CurrentScene);
+        QuickFind.NetworkObjectManager.GenerateSceneObjects();
     }
 
     public void RemoveNetworkSceneObject(int Scene, int ItemIndex)
@@ -506,6 +507,24 @@ public class DG_NetworkSync : Photon.MonoBehaviour
     {
         NetworkObject NO = QuickFind.NetworkObjectManager.GetItemByID(Data[0], Data[1]);
         NO.transform.GetChild(0).GetComponent<DG_TreeFall>().ReceiveTreefallEvent(Data);
+    }
+
+    public void PlayDestroyEffect(int[] OutData)
+    { PV.RPC("ReceiveDestroyEffect", PhotonTargets.All, OutData); }
+    [PunRPC]
+    public void ReceiveDestroyEffect(int[] Data)
+    {
+        NetworkObject NO = QuickFind.NetworkObjectManager.GetItemByID(Data[0], Data[1]);
+        NO.transform.GetChild(0).GetComponent<DG_FXContextObjectReference>().TriggerBreak();
+    }
+
+    public void PlayClusterPickEffect(int[] OutData)
+    { PV.RPC("ReceiveClusterPickEffect", PhotonTargets.All, OutData); }
+    [PunRPC]
+    public void ReceiveClusterPickEffect(int[] Data)
+    {
+        NetworkObject NO = QuickFind.NetworkObjectManager.GetItemByID(Data[0], Data[1]);
+        NO.transform.GetChild(0).GetComponent<DG_FXContextObjectReference>().TriggerPick();
     }
 
 

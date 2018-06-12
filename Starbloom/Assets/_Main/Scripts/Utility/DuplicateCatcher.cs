@@ -24,7 +24,7 @@ public class DuplicateCatcher : MonoBehaviour
         ShopsCompendium,
         CraftingCompendium,
         PrefabPool,
-        FXPool
+        FXCompendium
     }
 
     public DatabaseType DBType;
@@ -94,7 +94,7 @@ public class DuplicateCatcher : MonoBehaviour
             case DatabaseType.ShopsCompendium: { GD.ClassType = typeof(DG_ShopAtlas); GD.TransformReference = QuickFindInEditor.GetShopCompendium().transform; GD.ObjectReference = GD.TransformReference.GetComponent<DG_ShopAtlas>(); GD.ItemClassType = typeof(DG_ShopAtlasObject); } break;
             case DatabaseType.CraftingCompendium: { GD.ClassType = typeof(DG_CraftingDictionary); GD.TransformReference = QuickFindInEditor.GetCraftingCompendium().transform; GD.ObjectReference = GD.TransformReference.GetComponent<DG_CraftingDictionary>(); GD.ItemClassType = typeof(DG_CraftingDictionaryItem); } break;
             case DatabaseType.PrefabPool: { GD.ClassType = typeof(DG_PrefabPoolDictionary); GD.TransformReference = QuickFindInEditor.GetPrefabPool().transform; GD.ObjectReference = GD.TransformReference.GetComponent<DG_PrefabPoolDictionary>(); GD.ItemClassType = typeof(DG_PrefabPoolItem); } break;
-            case DatabaseType.FXPool: { GD.ClassType = typeof(DG_FXPoolDictionary); GD.TransformReference = QuickFindInEditor.GetFXPool().transform; GD.ObjectReference = GD.TransformReference.GetComponent<DG_FXPoolDictionary>(); GD.ItemClassType = typeof(DG_FXPoolItem); } break;
+            case DatabaseType.FXCompendium: { GD.ClassType = typeof(DG_FXHandler); GD.TransformReference = QuickFindInEditor.GetFXHandler().transform; GD.ObjectReference = GD.TransformReference.GetComponent<DG_FXHandler>(); GD.ItemClassType = typeof(DG_FXObject); } break;
         }
         return GD;
     }
@@ -113,7 +113,7 @@ public class DuplicateCatcher : MonoBehaviour
             case DatabaseType.ShopsCompendium: { TO.ClassType = typeof(DG_ShopAtlasObject); TO.ObjectReference = T.GetComponent<DG_ShopAtlasObject>(); } break;
             case DatabaseType.CraftingCompendium: { TO.ClassType = typeof(DG_CraftingDictionaryItem); TO.ObjectReference = T.GetComponent<DG_CraftingDictionaryItem>(); } break;
             case DatabaseType.PrefabPool: { TO.ClassType = typeof(DG_PrefabPoolItem); TO.ObjectReference = T.GetComponent<DG_PrefabPoolItem>(); } break;
-            case DatabaseType.FXPool: { TO.ClassType = typeof(DG_FXPoolItem); TO.ObjectReference = T.GetComponent<DG_FXPoolItem>(); } break;
+            case DatabaseType.FXCompendium: { TO.ClassType = typeof(DG_FXObject); TO.ObjectReference = T.GetComponent<DG_FXObject>(); } break;
         }
         return TO;
     }

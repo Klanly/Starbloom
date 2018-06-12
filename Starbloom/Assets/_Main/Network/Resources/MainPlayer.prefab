@@ -1755,7 +1755,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4711886713025158}
-  - component: {fileID: 114801796170856346}
+  - component: {fileID: 114957170350704390}
   - component: {fileID: 114099060765708952}
   - component: {fileID: 95330846659427612}
   - component: {fileID: 114731906573777762}
@@ -4116,7 +4116,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 16384
   BaseMagnetRange: 1.2
-  PullSpeed: 6
+  PullSpeed: 7
   isOwner: 0
 --- !u!114 &114255783689536152
 MonoBehaviour:
@@ -4155,7 +4155,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputDetected: 0
---- !u!114 &114801796170856346
+--- !u!114 &114957170350704390
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}

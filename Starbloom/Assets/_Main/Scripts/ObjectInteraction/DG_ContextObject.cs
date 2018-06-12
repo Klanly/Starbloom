@@ -21,7 +21,8 @@ public class DG_ContextObject : MonoBehaviour
         HarvestableTree,
         ShopInterface,
         ShippingBin,
-        BreakableTree
+        BreakableTree,
+        ScenePortal
     }
 
     public ContextTypes Type;

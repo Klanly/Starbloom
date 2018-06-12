@@ -75,7 +75,7 @@ public class DG_LocalDataHandler : MonoBehaviour {
 
         QuickFind.NetworkObjectManager.ClearObjects();
         GetWorldInts(null, true);
-        QuickFind.NetworkObjectManager.GenerateSceneObjects(QuickFind.NetworkSync.CurrentScene);
+        QuickFind.NetworkObjectManager.GenerateSceneObjects();
 
         QuickFind.NetworkSync.GameWasLoaded();
         Debug.Log("Game Loaded");

@@ -95,7 +95,9 @@ public class DG_MovementSync : MonoBehaviour {
         else
         {
             if (QuickFind.NetworkSync == null) return false;
-            DG_NetworkSync.Users User = QuickFind.NetworkSync.GetUserByPlayerID(QuickFind.NetworkSync.PlayerCharacterID);
+
+            PhotonView PV = transform.parent.GetComponent<PhotonView>();
+            DG_NetworkSync.Users User = QuickFind.NetworkSync.GetUserByPhotonViewID(PV.viewID);
             if (User == null) return false;
             else { UserOwner = User; return true; }
         }

@@ -31,7 +31,9 @@ public class DG_PickAxeHandler : MonoBehaviour {
     private void Update()
     {
         if (PlacementActive)
-        { if (PickaxeObjectFound()) { SafeToPlace = true; } else { SafeToPlace = false; } }
+        { if (PickaxeObjectFound())
+            { QuickFind.GridDetection.GridMesh.enabled = true; SafeToPlace = true; }
+            else { QuickFind.GridDetection.GridMesh.enabled = false; SafeToPlace = false; } }
         else SafeToPlace = false;
     }
 
@@ -42,11 +44,7 @@ public class DG_PickAxeHandler : MonoBehaviour {
         if (isUP && SafeToPlace)
         {
             DG_ContextObject CO = HitObject.GetComponent<DG_ContextObject>();
-            if (CO.Type == DG_ContextObject.ContextTypes.Breakable || 
-                CO.Type == DG_ContextObject.ContextTypes.HarvestablePlant ||
-                CO.Type == DG_ContextObject.ContextTypes.HarvestableTree ||
-                CO.Type == DG_ContextObject.ContextTypes.BreakableTree)
-                QuickFind.BreakableObjectsHandler.TryHitObject(CO, CurrentActive, (DG_ItemObject.ItemQualityLevels)RucksackSlotOpen.CurrentStackActive, RucksackSlotOpen);
+            QuickFind.BreakableObjectsHandler.TryHitObject(CO, CurrentActive, (DG_ItemObject.ItemQualityLevels)RucksackSlotOpen.CurrentStackActive, RucksackSlotOpen);
         }
     }
 
@@ -74,7 +72,27 @@ public class DG_PickAxeHandler : MonoBehaviour {
         Vector3 CastPoint = QuickFind.GridDetection.DetectionPoint.position;
         CastPoint.y += 20;
 
-        if (Physics.BoxCast(CastPoint, new Vector3(.5f, .5f, .5f), Vector3.down, out m_Hit, transform.rotation, 21, PickaxeObjectDetection)) { HitObject = m_Hit.collider.gameObject; return true; }
-        else { return false; }
+        if (Physics.BoxCast(CastPoint, new Vector3(.5f, .5f, .5f), Vector3.down, out m_Hit, transform.rotation, 21, PickaxeObjectDetection))
+        {
+            HitObject = m_Hit.collider.gameObject;
+            DG_ContextObject CO = HitObject.GetComponent<DG_ContextObject>();
+            if (CO == null) return false;
+
+            if(CurrentActive == HotbarItemHandler.ActivateableTypes.Pickaxe)
+            {
+                if (CO.Type == DG_ContextObject.ContextTypes.Breakable)
+                    return true;
+            }
+            if (CurrentActive == HotbarItemHandler.ActivateableTypes.Axe)
+            {
+                if ( CO.Type == DG_ContextObject.ContextTypes.HarvestablePlant || CO.Type == DG_ContextObject.ContextTypes.HarvestableTree || CO.Type == DG_ContextObject.ContextTypes.BreakableTree)
+                    return true;
+            }
+            return false;
+        }
+        else
+        {
+            return false;
+        }
     }
 }

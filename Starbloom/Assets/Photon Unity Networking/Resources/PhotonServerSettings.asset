@@ -79,4 +79,6 @@ MonoBehaviour:
   - ItemSetInShippingBin
   - ReceivedHarvestedObject
   - ReceiveTreeFall
+  - ReceiveClusterPickEffect
+  - ReceiveDestroyEffect
   DisableAutoOpenWizard: 1

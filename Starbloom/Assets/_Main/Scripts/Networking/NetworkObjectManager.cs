@@ -29,7 +29,7 @@ public class NetworkObjectManager : MonoBehaviour {
 
             for (int i = 0; i < transform.childCount; i++)
                 transform.GetChild(i).GetComponent<NetworkScene>().AddInitialPlacedObjectsIntoList();
-            GenerateSceneObjects(QuickFind.NetworkSync.CurrentScene);
+            GenerateSceneObjects();
         }
         else
         {
@@ -50,9 +50,13 @@ public class NetworkObjectManager : MonoBehaviour {
             NS.NetworkObjectList.Clear();
         }
     }
-    public void GenerateSceneObjects(int Scene)
+    public void GenerateSceneObjects()
     {
-        GetSceneByID(Scene).LoadSceneObjects();
+        for(int i = 0; i < transform.childCount; i++)
+        {
+            NetworkScene NS = transform.GetChild(i).GetComponent<NetworkScene>();
+            NS.LoadSceneObjects();
+        }
     }
 
 
@@ -178,12 +182,12 @@ public class NetworkObjectManager : MonoBehaviour {
             Velo.y = QuickFind.ConvertIntToFloat(IncomingData[index]); index++;
             Velo.z = QuickFind.ConvertIntToFloat(IncomingData[index]); index++;
 
-            NO.SpawnNetworkObject(true, Velo);
+            NO.SpawnNetworkObject(NS, true, Velo);
         }
 
 
         else
-            NO.SpawnNetworkObject();
+            NO.SpawnNetworkObject(NS);
 
         QuickFind.ObjectPlacementManager.AwaitingNetResponse = false;
     }

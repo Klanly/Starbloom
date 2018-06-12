@@ -142,10 +142,9 @@ public class DG_GUIMainMenu : Photon.MonoBehaviour
         QuickFind.GUI_Inventory.UpdateInventoryVisuals();
         QuickFind.GUI_Inventory.SetHotbarSlot(QuickFind.GUI_Inventory.HotbarSlots[0]);
 
-
+        QuickFind.NetworkSync.SetSelfInScene(QuickFind.SceneList.GetSceneIDByString(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name));
 
         QuickFind.NetworkObjectManager.GenerateObjectData();
-
         QuickFind.GUI_MainOverview.SetMoneyValue(0, QuickFind.Farm.SharedMoney, true);
         QuickFind.GUI_MainOverview.SetGuiDayValue(QuickFind.Farm.Month, QuickFind.Farm.Day);
 
