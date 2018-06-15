@@ -23,7 +23,8 @@ public class DG_ItemObject : MonoBehaviour
         Fish,
         Resource,
         Seeds,
-        Fruit
+        Fruit,
+        Misc
     }
 
     public bool DatabaseUsesNameInsteadOfPrefab;
@@ -172,6 +173,30 @@ public class DG_ItemObject : MonoBehaviour
         public int ObjectHealth;
     }
     #endregion
+
+
+    #region Weapon
+    [Header("----------------------------------")]
+    public bool isWeapon = false;
+    [Header("Weapon")]
+    [ShowIf("isWeapon")]
+    public Weapon[] WeaponValues;
+
+    [System.Serializable]
+    public class Weapon
+    {
+        public DG_CombatHandler.DamageTypes DamageType;
+
+        [Header("Energy")]
+        public int EnergyBaseCost;
+        public int ManaCost;
+        [Header("Damage")]
+        public int DamageMin;
+        public int DamageMax;
+
+    }
+    #endregion
+
 
 
     [Header("Situational----------------------------------")]

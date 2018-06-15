@@ -286,7 +286,7 @@ public class DG_Inventory : MonoBehaviour {
 
         if (!IsStorage) { LoopIndex = StorageID; FinalIndex = PlayerID; }
 
-        for (int i = 0; i < AlternateSide.Length; i++)
+        for (int i = 0; i < AlternateSideLength; i++)
         {
             DG_PlayerCharacters.RucksackSlot RS = AlternateSide[i];
             if (RS.ContainedItem == MoveStack.ContainedItem)
@@ -326,8 +326,8 @@ public class DG_Inventory : MonoBehaviour {
 
                     count = MoveStack.LowValue; for (int iN = 0; iN < count; iN++) { RS.LowValue++; MoveStack.LowValue--; RS.CurrentStackActive = 0; }
                     count = MoveStack.NormalValue; for (int iN = 0; iN < count; iN++) { RS.NormalValue++; MoveStack.NormalValue--; RS.CurrentStackActive = 1; }
-                    count = MoveStack.HighValue; for (int iN = 0; iN < count; iN++) { RS.HighValue++; MoveStack.HighValue--; RS.CurrentStackActive = 0; }
-                    count = MoveStack.MaximumValue; for (int iN = 0; iN < count; iN++) { RS.MaximumValue++; MoveStack.MaximumValue--; RS.CurrentStackActive = 0; }
+                    count = MoveStack.HighValue; for (int iN = 0; iN < count; iN++) { RS.HighValue++; MoveStack.HighValue--; RS.CurrentStackActive = 2; }
+                    count = MoveStack.MaximumValue; for (int iN = 0; iN < count; iN++) { RS.MaximumValue++; MoveStack.MaximumValue--; RS.CurrentStackActive = 3; }
                     break;
                 }
             }
@@ -344,6 +344,76 @@ public class DG_Inventory : MonoBehaviour {
     }
 
 
+
+    public void ShiftStackToFromShippingBin(DG_ShippingBinItem BinItem)
+    {
+        DG_ShippingBin.ShippingBinItem ReferenceItem = BinItem.ReferenceItem;
+
+        DG_ItemObject IO = QuickFind.ItemDatabase.GetItemFromID(ReferenceItem.ItemRef);
+
+        int MaxStack = IO.MaxStackSize;
+        int MoveStackValue = ReferenceItem.GetStackValue();
+        int PlayerID = QuickFind.NetworkSync.PlayerCharacterID;
+
+        DG_PlayerCharacters.RucksackSlot[] AlternateSide = QuickFind.Farm.PlayerCharacters[QuickFind.NetworkSync.PlayerCharacterID].Equipment.RucksackSlots;
+        int AlternateSideLength = QuickFind.Farm.PlayerCharacters[QuickFind.NetworkSync.PlayerCharacterID].Equipment.RuckSackUnlockedSize;
+
+        for (int i = 0; i < AlternateSideLength; i++)
+        {
+            DG_PlayerCharacters.RucksackSlot RS = AlternateSide[i];
+            if (RS.ContainedItem == ReferenceItem.ItemRef)
+            {
+                ExchangeItem EI = new ExchangeItem();
+                EI.RS = RS;
+                EI.index = i;
+
+                ExchangeItems.Add(EI);
+                int StackValue = RS.GetStackValue();
+                int count;
+
+                count = ReferenceItem.Low; for (int iN = 0; iN < count; iN++) { if (StackValue == MaxStack) break; RS.LowValue++; ReferenceItem.Low--; StackValue++; MoveStackValue--; }
+                count = ReferenceItem.Normal; for (int iN = 0; iN < count; iN++) { if (StackValue == MaxStack) break; RS.NormalValue++; ReferenceItem.Normal--; StackValue++; MoveStackValue--; }
+                count = ReferenceItem.High; for (int iN = 0; iN < count; iN++) { if (StackValue == MaxStack) break; RS.HighValue++; ReferenceItem.High--; StackValue++; MoveStackValue--; }
+                count = ReferenceItem.Max; for (int iN = 0; iN < count; iN++) { if (StackValue == MaxStack) break; RS.MaximumValue++; ReferenceItem.Max--; StackValue++; MoveStackValue--; }
+
+                if (MoveStackValue == 0)
+                { ReferenceItem.ItemRef = 0; }
+            }
+        }
+        if (MoveStackValue > 0)
+        {
+            for (int i = 0; i < AlternateSideLength; i++)
+            {
+                DG_PlayerCharacters.RucksackSlot RS = AlternateSide[i];
+                if (RS.GetStackValue() == 0)
+                {
+                    ExchangeItem EI = new ExchangeItem();
+                    EI.RS = RS;
+                    EI.index = i;
+                    ExchangeItems.Add(EI);
+
+                    RS.ContainedItem = ReferenceItem.ItemRef;
+                    ReferenceItem.ItemRef = 0;
+                    int count;
+
+                    count = ReferenceItem.Low; for (int iN = 0; iN < count; iN++) { RS.LowValue++; ReferenceItem.Low--; RS.CurrentStackActive = 0; }
+                    count = ReferenceItem.Normal; for (int iN = 0; iN < count; iN++) { RS.NormalValue++; ReferenceItem.Normal--; RS.CurrentStackActive = 1; }
+                    count = ReferenceItem.High; for (int iN = 0; iN < count; iN++) { RS.HighValue++; ReferenceItem.High--; RS.CurrentStackActive = 2; }
+                    count = ReferenceItem.Max; for (int iN = 0; iN < count; iN++) { RS.MaximumValue++; ReferenceItem.Max--; RS.CurrentStackActive = 3; }
+                    break;
+                }
+            }
+        }
+
+
+        for (int i = 0; i < ExchangeItems.Count; i++)
+        {
+            DG_PlayerCharacters.RucksackSlot RS = ExchangeItems[i].RS;
+            SetItemValueInRucksack(RS, QuickFind.NetworkSync.PlayerCharacterID, ExchangeItems[i].index, RS.ContainedItem, RS.CurrentStackActive, RS.LowValue, RS.NormalValue, RS.HighValue, RS.MaximumValue, false);
+        }
+
+        QuickFind.ShippingBin.UpdateBinItem(ReferenceItem);
+    }
 
 
 

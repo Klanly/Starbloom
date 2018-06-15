@@ -45,9 +45,9 @@ public class DG_ContextCheckHandler : MonoBehaviour {
                 if (QuickFind.WithinDistance(DetectionPoint, QuickFind.PlayerTrans, MouseDistance))
                     AddNewContext(hit);
                 else
-                { ContextHit = false; if (LastEncounteredWobbleScript != null) LastEncounteredWobbleScript.Disable(); }
+                { ContextHit = false; }
             }
-            else { ContextHit = false; if(LastEncounteredWobbleScript != null) LastEncounteredWobbleScript.Disable(); }
+            else { ContextHit = false; }
         }
         else
         {
@@ -57,11 +57,11 @@ public class DG_ContextCheckHandler : MonoBehaviour {
             if (Physics.SphereCast(DetectionPoint.position, SphereCastRadius, DetectionPoint.forward, out hit, SphereCastMaxLength, ContextMask))
                 AddNewContext(hit);
             else
-            { ContextHit = false; LastEncounteredWobbleScript.Disable(); }
+            { ContextHit = false; }
         }
 
         if (!ContextHit)
-        { LastEncounteredContext = null; if (LastEncounteredWobbleScript != null) LastEncounteredWobbleScript.Disable(); }
+        { LastEncounteredContext = null; if (LastEncounteredWobbleScript != null) LastEncounteredWobbleScript.Disable(); QuickFind.GUIPopup.HideToolTip(); }
     }
 
 
@@ -70,18 +70,29 @@ public class DG_ContextCheckHandler : MonoBehaviour {
     {
         if (hit.transform == LastEncounteredContext) return;
 
-
-
         LastEncounteredContext = hit.transform;
         COEncountered = LastEncounteredContext.GetComponent<DG_ContextObject>();
         ContextHit = true;
 
-        if (LastEncounteredContext.GetComponent<DG_UI_WobbleAndFade>() != null)
+
+
+        if (COEncountered == null) return;
+
+        bool AllowWobble = false;
+        switch (COEncountered.Type)
+        {
+            case DG_ContextObject.ContextTypes.PickupItem: AllowWobble = true; break;
+            case DG_ContextObject.ContextTypes.MoveableStorage: AllowWobble = true; break;
+        }
+
+        QuickFind.GUIPopup.ShowPopup(COEncountered);
+
+        if (AllowWobble && LastEncounteredContext.GetComponent<DG_UI_WobbleAndFade>() != null)
         {
             if (LastEncounteredWobbleScript != null) LastEncounteredWobbleScript.Disable();
             LastEncounteredWobbleScript = LastEncounteredContext.GetComponent<DG_UI_WobbleAndFade>();
             LastEncounteredWobbleScript.Enable();
-        }
+        }     
     }
 
 

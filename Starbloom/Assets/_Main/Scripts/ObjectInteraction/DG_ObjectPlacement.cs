@@ -74,7 +74,7 @@ public class DG_ObjectPlacement : MonoBehaviour {
                 AwaitingNetResponse = true;
 
                 if(!ItemDatabaseReference.isWallItem)
-                    QuickFind.NetworkObjectManager.CreateNetSceneObject(QuickFind.NetworkSync.CurrentScene, ItemDatabaseReference.DatabaseID, RucksackSlotOpen.CurrentStackActive, ObjectGhost.position, ObjectGhost.eulerAngles.y);
+                    QuickFind.NetworkObjectManager.CreateNetSceneObject(QuickFind.NetworkSync.CurrentScene, NetworkObjectManager.NetworkObjectTypes.Item, ItemDatabaseReference.DatabaseID, RucksackSlotOpen.CurrentStackActive, ObjectGhost.position, ObjectGhost.eulerAngles.y);
                 else
                     ObjectGhost.GetComponent<DG_DynamicWall>().TriggerPlaceWall();
                 DestroyObjectGhost();

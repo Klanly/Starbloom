@@ -81,4 +81,7 @@ MonoBehaviour:
   - ReceiveTreeFall
   - ReceiveClusterPickEffect
   - ReceiveDestroyEffect
+  - ReceiveWallAdjust
+  - ClearBinReceived
+  - ReceiveEnemyHit
   DisableAutoOpenWizard: 1

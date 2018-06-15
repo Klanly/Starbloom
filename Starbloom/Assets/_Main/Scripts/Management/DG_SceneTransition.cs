@@ -30,10 +30,10 @@ public class DG_SceneTransition : MonoBehaviour {
 
         Transitioning = true;
         SceneUnloading = SceneManager.GetActiveScene();
-        NetworkSceneIndexUnloading = QuickFind.SceneList.GetSceneIDByString(SceneUnloading.name);
+        NetworkSceneIndexUnloading = QuickFind.SceneList.GetSceneIndexByString(SceneUnloading.name);
 
         SceneLoading = SceneString;
-        NetworkSceneIndexLoading = QuickFind.SceneList.GetSceneIDByString(SceneString);
+        NetworkSceneIndexLoading = QuickFind.SceneList.GetSceneIndexByString(SceneString);
         LoadingPortalID = PortalValue;
 
         //Unload Network Objects

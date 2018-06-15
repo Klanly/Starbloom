@@ -5,6 +5,13 @@ using UnityEngine;
 
 public class NetworkObjectManager : MonoBehaviour {
 
+    public enum NetworkObjectTypes
+    {
+        Item,
+        Enemy
+    }
+
+
 
 
     private void Awake()
@@ -108,30 +115,34 @@ public class NetworkObjectManager : MonoBehaviour {
 
 
     //Outgoing
-    public void CreateNetSceneObject(   int SceneID, int ObjectID, int ItemLevel, Vector3 Position, float Facing, 
+    public void CreateNetSceneObject(   int SceneID, NetworkObjectTypes ObjectType, int ObjectID, int ItemLevel, Vector3 Position, float Facing, 
                                         bool GenerateVelocity = false, Vector3 Velocity = new Vector3())
     {
         List<int> IntData = new List<int>();
 
         IntData.Add(SceneID);
-
         int NewObjectID = QuickFind.NetworkObjectManager.GetSceneByID(SceneID).GetValidNextNetworkID();
         IntData.Add(NewObjectID);
-        IntData.Add(ObjectID);
-        IntData.Add(ItemLevel);
-
         IntData.Add(QuickFind.ConvertFloatToInt(Position.x));
         IntData.Add(QuickFind.ConvertFloatToInt(Position.y));
         IntData.Add(QuickFind.ConvertFloatToInt(Position.z));
         IntData.Add(QuickFind.ConvertFloatToInt(Facing));
+        IntData.Add((int)ObjectType);
+        IntData.Add(ObjectID);
 
-        if (GenerateVelocity) IntData.Add(1); else IntData.Add(0);
-        if(GenerateVelocity)
+        if (ObjectType == NetworkObjectTypes.Item)
         {
-            IntData.Add(QuickFind.ConvertFloatToInt(Velocity.x));
-            IntData.Add(QuickFind.ConvertFloatToInt(Velocity.y));
-            IntData.Add(QuickFind.ConvertFloatToInt(Velocity.z));
+            IntData.Add(ItemLevel);
+
+            if (GenerateVelocity) IntData.Add(1); else IntData.Add(0);
+            if (GenerateVelocity)
+            {
+                IntData.Add(QuickFind.ConvertFloatToInt(Velocity.x));
+                IntData.Add(QuickFind.ConvertFloatToInt(Velocity.y));
+                IntData.Add(QuickFind.ConvertFloatToInt(Velocity.z));
+            }
         }
+
 
         QuickFind.NetworkSync.AddNetworkSceneObject(IntData.ToArray());
     }
@@ -142,47 +153,56 @@ public class NetworkObjectManager : MonoBehaviour {
         NetworkScene NS = GetSceneByID(IncomingData[index]); index++;
         Transform NewObject = new GameObject().transform;
         NewObject.SetParent(NS.transform);
-        NetworkObject NO = NewObject.gameObject.AddComponent<NetworkObject>();
 
+        NetworkObject NO = NewObject.gameObject.AddComponent<NetworkObject>();
         NS.NetworkObjectList.Add(NO);
 
         NO.NetworkObjectID = IncomingData[index]; index++;
-        NO.ItemRefID = IncomingData[index]; index++;
-        NO.ItemQualityLevel = IncomingData[index]; index++;
-
         NO.PositionX = IncomingData[index]; index++;
         NO.PositionY = IncomingData[index]; index++;
         NO.PositionZ = IncomingData[index]; index++;
         NO.YFacing = IncomingData[index]; index++;
+        NO.ObjectType = (NetworkObjectTypes)IncomingData[index]; index++;
+        NO.ItemRefID = IncomingData[index]; index++;
 
-        DG_ItemObject IO = QuickFind.ItemDatabase.GetItemFromID(IncomingData[2]);
 
-        if (IO.IsWaterable) { NO.isWaterable = true;}
-        if (IO.isStorage)
+        if (NO.ObjectType == NetworkObjectTypes.Item)
         {
-            NO.isStorageContainer = true;
-            NO.StorageSlots = new DG_PlayerCharacters.RucksackSlot[36];
-            for (int i = 0; i < 36; i++) NO.StorageSlots[i] = new DG_PlayerCharacters.RucksackSlot();
+            NO.ItemQualityLevel = IncomingData[index]; index++;
+
+            DG_ItemObject IO = QuickFind.ItemDatabase.GetItemFromID(NO.ItemRefID);
+
+            if (IO.IsWaterable) { NO.isWaterable = true; }
+            if (IO.isStorage)
+            {
+                NO.isStorageContainer = true;
+                NO.StorageSlots = new DG_PlayerCharacters.RucksackSlot[36];
+                for (int i = 0; i < 36; i++) NO.StorageSlots[i] = new DG_PlayerCharacters.RucksackSlot();
+            }
+
+            NewObject.position = QuickFind.ConvertIntsToPosition(NO.PositionX, NO.PositionY, NO.PositionZ);
+            NewObject.eulerAngles = new Vector3(0, QuickFind.ConvertIntToFloat(NO.YFacing), 0);
+
+
+            int GenerateVelocity = IncomingData[index]; index++;
+            if (GenerateVelocity == 1)
+            {
+                Vector3 Velo;
+                Velo.x = QuickFind.ConvertIntToFloat(IncomingData[index]); index++;
+                Velo.y = QuickFind.ConvertIntToFloat(IncomingData[index]); index++;
+                Velo.z = QuickFind.ConvertIntToFloat(IncomingData[index]); index++;
+
+                NO.SpawnNetworkObject(NS, true, Velo);
+            }
+            else
+                NO.SpawnNetworkObject(NS);
+
+            QuickFind.ObjectPlacementManager.AwaitingNetResponse = false;
         }
 
-        NewObject.position = QuickFind.ConvertIntsToPosition(NO.PositionX, NO.PositionY, NO.PositionZ);
-        NewObject.eulerAngles = new Vector3(0, QuickFind.ConvertIntToFloat(NO.YFacing), 0);
 
 
-        int GenerateVelocity = IncomingData[index]; index++;
-        if (GenerateVelocity == 1)
-        {
-            Vector3 Velo;
-            Velo.x = QuickFind.ConvertIntToFloat(IncomingData[index]); index++;
-            Velo.y = QuickFind.ConvertIntToFloat(IncomingData[index]); index++;
-            Velo.z = QuickFind.ConvertIntToFloat(IncomingData[index]); index++;
 
-            NO.SpawnNetworkObject(NS, true, Velo);
-        }
-        else
-            NO.SpawnNetworkObject(NS);
-
-        QuickFind.ObjectPlacementManager.AwaitingNetResponse = false;
     }
 
 

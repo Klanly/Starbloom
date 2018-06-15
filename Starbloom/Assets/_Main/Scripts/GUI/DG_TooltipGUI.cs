@@ -37,7 +37,7 @@ public class DG_TooltipGUI : MonoBehaviour {
         EdibleItem,
         Tool,
         Weapon,
-        Equipement,
+        Equipment,
         SkillDisplay,
         Person,
         MapItem,
@@ -111,10 +111,6 @@ public class DG_TooltipGUI : MonoBehaviour {
     public UnityEngine.UI.ContentSizeFitter CSF;
     [ListDrawerSettings(ListElementLabelName = "GroupType", NumberOfItemsPerPage = 16, Expanded = false)]
     public ToolTipGroup[] ToolTipTypes;
-
-    [Header("Localization")]
-    public int HealthLocalizationID = 61;
-    public int EnergyLocalizationID = 62;
 
     [Header("Debug")]
     public bool DebugON = false;
@@ -263,6 +259,14 @@ public class DG_TooltipGUI : MonoBehaviour {
                     SetDescription();
                 }
                 break;
+            case ToolTipGroups.Weapon:
+                {
+                    SetMain();
+                    SetSub();
+                    SetDescription();
+                    SetUpCombatStats();
+                }
+                break;
         }
     }
 
@@ -285,11 +289,8 @@ public class DG_TooltipGUI : MonoBehaviour {
     {
         DG_TooltipModule Desc = GetModuleByType(ToolTipModules.InventoryStat);
         Desc.TurnOFFSubs();
-
         DG_ItemObject IO = QuickFind.ItemDatabase.GetItemFromID(ActiveItemObject.ContextID);
-
         if (IO == null) Debug.Log("trying to hoverover an edible item that has no context ID, be sure to set the context ID to the Item database ID");
-
         DG_ItemObject.Item Item = IO.GetItemByQuality(ActiveRucksackSlot.CurrentStackActive);
 
         int index = 0;
@@ -300,7 +301,7 @@ public class DG_TooltipGUI : MonoBehaviour {
             DG_ItemsDatabase.GenericIconDatabaseItem ICD = QuickFind.ItemDatabase.GetGenericIconByString("Health");
             Sub.DisplayImage.sprite = ICD.Icon;
             Sub.NumberObject.text = HealthAdjust.ToString(); 
-            Sub.TextObject.text =  QuickFind.WordDatabase.GetWordFromID(HealthLocalizationID);
+            Sub.TextObject.text =  QuickFind.WordDatabase.GetWordFromID(ICD.LocalizationID);
 
             Color C = ICD.ColorVariations[0];
             Sub.DisplayImage.color = C;
@@ -312,7 +313,7 @@ public class DG_TooltipGUI : MonoBehaviour {
             DG_ItemsDatabase.GenericIconDatabaseItem ICD = QuickFind.ItemDatabase.GetGenericIconByString("Energy");
             Sub.DisplayImage.sprite = ICD.Icon;
             Sub.NumberObject.text = EnergyAdjust.ToString();
-            Sub.TextObject.text = QuickFind.WordDatabase.GetWordFromID(EnergyLocalizationID);
+            Sub.TextObject.text = QuickFind.WordDatabase.GetWordFromID(ICD.LocalizationID);
 
             Color C = ICD.ColorVariations[0];
             Sub.DisplayImage.color = C;
@@ -353,6 +354,32 @@ public class DG_TooltipGUI : MonoBehaviour {
             }
         }
     }
+    void SetUpCombatStats()
+    {
+        DG_TooltipModule Desc = GetModuleByType(ToolTipModules.InventoryStat);
+        Desc.TurnOFFSubs();
+        DG_ItemObject IO = QuickFind.ItemDatabase.GetItemFromID(ActiveItemObject.ContextID);
+        if (IO == null) Debug.Log("trying to hoverover an edible item that has no context ID, be sure to set the context ID to the Item database ID");
+
+        for (int i = 0; i < IO.WeaponValues.Length; i++)
+        {
+            DG_ItemObject.Weapon Weapon = IO.WeaponValues[i];
+            DG_TooltipSubItem Sub = Desc.GetSubItem(i);
+
+
+            Sub.NumberObject.text = Weapon.DamageMin.ToString() + "-" + Weapon.DamageMax.ToString();
+
+
+            DG_ItemsDatabase.GenericIconDatabaseItem ICD = null;
+            if(Weapon.DamageType == DG_CombatHandler.DamageTypes.Slashing)
+                ICD = QuickFind.ItemDatabase.GetGenericIconByString("Slashing");
+
+            Sub.DisplayImage.sprite = ICD.Icon;
+            Sub.TextObject.text = QuickFind.WordDatabase.GetWordFromID(ICD.LocalizationID);
+            Sub.DisplayImage.color = Color.white;
+        }
+    }
+
 
 
 

@@ -4167,7 +4167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SendRate: 0.1
-  SlerpMoveRate: 0.1
+  SlerpMoveRate: 0.18
   SlerpTurnRate: 0.3
   MaxDistance: 5
   isPlayer: 0

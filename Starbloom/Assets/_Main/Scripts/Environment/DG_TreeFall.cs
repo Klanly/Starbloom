@@ -163,7 +163,7 @@ public class DG_TreeFall : MonoBehaviour {
         {
             DG_BreakableObjectItem.ItemClump Clump = IC[i];
             for (int iN = 0; iN < Clump.Value; iN++)
-                QuickFind.NetworkObjectManager.CreateNetSceneObject(SceneID, Clump.ItemID, Clump.ItemQuality, ScatterRef.GetSpawnPoint(), 0, true, ScatterRef.RandomVelocity());
+                QuickFind.NetworkObjectManager.CreateNetSceneObject(SceneID, NetworkObjectManager.NetworkObjectTypes.Item, Clump.ItemID, Clump.ItemQuality, ScatterRef.GetSpawnPoint(), 0, true, ScatterRef.RandomVelocity());
         }
     }
 

@@ -22,7 +22,8 @@ public class DG_ContextObject : MonoBehaviour
         ShopInterface,
         ShippingBin,
         BreakableTree,
-        ScenePortal
+        ScenePortal,
+        Enemy
     }
 
     public ContextTypes Type;

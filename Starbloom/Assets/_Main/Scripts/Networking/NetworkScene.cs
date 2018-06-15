@@ -133,21 +133,35 @@ public class NetworkScene : MonoBehaviour {
 #if UNITY_EDITOR
     public void InternalGizmos() //Draw Gizmo in Scene view
     {
-        int ActiveScene = QuickFindInEditor.GetEditorSceneList().GetSceneIDByString(EditorSceneManager.GetActiveScene().name);
+        int ActiveScene = QuickFindInEditor.GetEditorSceneList().GetSceneIndexByString(EditorSceneManager.GetActiveScene().name);
         if (ActiveScene != SceneID) return;
 
         for(int i = 0; i < transform.childCount; i++)
         {
             NetworkObject NO = transform.GetChild(i).GetComponent<NetworkObject>();
-            DG_ItemsDatabase IDB = QuickFindInEditor.GetEditorItemDatabase();
-            NO.ItemRefID = QuickFind.GetIfWithinBounds(NO.ItemRefID, 0, IDB.ItemCatagoryList.Length);
-            DG_ItemObject IO = IDB.GetItemFromID(NO.ItemRefID);
-            if (IO == null) continue;
-            NO.ItemQualityLevel = QuickFind.GetIfWithinBounds(NO.ItemQualityLevel, 0, IO.GetMax());
-            GameObject Prefab = IO.GetPrefabReferenceByQuality(NO.ItemQualityLevel);
-            float Scale = IO.DefaultScale;
-            Vector3 localScale = new Vector3(Scale, Scale, Scale);
-            NO.DrawMesh(Prefab, localScale);
+
+            if (NO.ObjectType == NetworkObjectManager.NetworkObjectTypes.Item)
+            {
+                DG_ItemsDatabase IDB = QuickFindInEditor.GetEditorItemDatabase();
+                NO.ItemRefID = QuickFind.GetIfWithinBounds(NO.ItemRefID, 0, IDB.ItemCatagoryList.Length);
+                DG_ItemObject IO = IDB.GetItemFromID(NO.ItemRefID);
+                if (IO == null) continue;
+                NO.ItemQualityLevel = QuickFind.GetIfWithinBounds(NO.ItemQualityLevel, 0, IO.GetMax());
+                GameObject Prefab = IO.GetPrefabReferenceByQuality(NO.ItemQualityLevel);
+                float Scale = IO.DefaultScale;
+                Vector3 localScale = new Vector3(Scale, Scale, Scale);
+                NO.DrawMesh(Prefab, localScale);
+            }
+            if (NO.ObjectType == NetworkObjectManager.NetworkObjectTypes.Enemy)
+            {
+                DG_EnemyDatabase EDB = QuickFindInEditor.GetEnemyDatabase();
+                NO.ItemRefID = QuickFind.GetIfWithinBounds(NO.ItemRefID, 0, EDB.ItemCatagoryList.Length);
+                DG_EnemyObject EO = EDB.GetItemFromID(NO.ItemRefID);
+                if (EO == null) continue;
+                GameObject Prefab = EO.PrefabRef;
+                Vector3 localScale = new Vector3(1, 1, 1);
+                NO.DrawMesh(Prefab, localScale);
+            }
         }
     }
 #endif

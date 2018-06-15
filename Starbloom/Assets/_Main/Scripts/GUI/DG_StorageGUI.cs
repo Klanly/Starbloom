@@ -48,8 +48,7 @@ public class DG_StorageGUI : MonoBehaviour {
         if (Wait1) { Wait1 = false; return; }
 
 
-        if (!StorageUIOpen || QuickFind.GUI_Inventory.isFloatingInventoryItem)
-            return;
+        if (!StorageUIOpen || QuickFind.GUI_Inventory.isFloatingInventoryItem || QuickFind.ShippingBinGUI.BinUIisOpen) return;
 
         if (QuickFind.InputController.MainPlayer.ButtonSet.Interact.Up)
             QuickFind.InventoryManager.ShiftStackToFromStorage();

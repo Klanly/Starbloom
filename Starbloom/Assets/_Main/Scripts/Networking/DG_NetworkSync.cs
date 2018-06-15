@@ -333,10 +333,11 @@ public class DG_NetworkSync : Photon.MonoBehaviour
     public void SetNewFarmMoneyValue(int NewValue) { PV.RPC("NewMoneyValueSet", PhotonTargets.All, NewValue); }
     [PunRPC] void NewMoneyValueSet(int NewValue) { QuickFind.MoneyHandler.ReceiveFarmMoneyValue(NewValue); }
 
-
     public void SetItemInShippingBin(int[] OutData){PV.RPC("ItemSetInShippingBin", PhotonTargets.All, OutData);}
     [PunRPC] void ItemSetInShippingBin(int[] InData) { QuickFind.ShippingBin.ItemSetInShippingBin(InData); }
 
+    public void ClearBinItem(int OutData) { PV.RPC("ClearBinReceived", PhotonTargets.All, OutData); }
+    [PunRPC] void ClearBinReceived(int InData) { QuickFind.ShippingBin.ClearBinItem(InData); }
 
 
 
@@ -538,6 +539,17 @@ public class DG_NetworkSync : Photon.MonoBehaviour
 
 
 
+    #endregion
+
+
+
+
+    #region Enemies
+    public void SendEnemyHit(int[] OutData)
+    { PV.RPC("ReceiveEnemyHit", PhotonTargets.All, OutData); }
+    [PunRPC]
+    void ReceiveEnemyHit(int[] Data)
+    { QuickFind.CombatHandler.ReceiveHitData(Data); }
     #endregion
 
 

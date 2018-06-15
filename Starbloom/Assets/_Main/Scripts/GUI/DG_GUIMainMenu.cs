@@ -124,6 +124,10 @@ public class DG_GUIMainMenu : Photon.MonoBehaviour
         DG_CharacterLink CL = newPlayerObject.GetComponent<DG_CharacterLink>();
         CL.ActivatePlayer();
 
+        if (QuickFind.Farm.PlayerCharacters[QuickFind.NetworkSync.PlayerCharacterID].Name == string.Empty)
+            QuickFind.Farm.PlayerCharacters[QuickFind.NetworkSync.PlayerCharacterID].Name = "Default Name " + QuickFind.NetworkSync.PlayerCharacterID.ToString();
+        if (QuickFind.Farm.FarmName == string.Empty)
+            QuickFind.Farm.FarmName = "Default Farm Name";
 
         MainMenuCam.enabled = false;
         QuickFind.PlayerCam.MainCam.enabled = true;
@@ -142,7 +146,7 @@ public class DG_GUIMainMenu : Photon.MonoBehaviour
         QuickFind.GUI_Inventory.UpdateInventoryVisuals();
         QuickFind.GUI_Inventory.SetHotbarSlot(QuickFind.GUI_Inventory.HotbarSlots[0]);
 
-        QuickFind.NetworkSync.SetSelfInScene(QuickFind.SceneList.GetSceneIDByString(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name));
+        QuickFind.NetworkSync.SetSelfInScene(QuickFind.SceneList.GetSceneIndexByString(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name));
 
         QuickFind.NetworkObjectManager.GenerateObjectData();
         QuickFind.GUI_MainOverview.SetMoneyValue(0, QuickFind.Farm.SharedMoney, true);

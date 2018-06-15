@@ -12,6 +12,7 @@ public class DG_ItemsDatabase : MonoBehaviour {
         [Header("--------------------------------------")]
         public string ItemName;
         public Sprite Icon;
+        public int LocalizationID;
         public Color[] ColorVariations;
     }
 

@@ -83,6 +83,7 @@ public class DG_InventoryItem : MonoBehaviour {
     {
         if (Input.GetMouseButtonDown(1)) return;
 
+        if (QuickFind.ShippingBinGUI.BinUIisOpen) QuickFind.ShippingBinGUI.DropPanel.SetActive(false);
         QuickFind.GUI_Inventory.InventoryItemPressed(this);
     }
 
@@ -94,6 +95,7 @@ public class DG_InventoryItem : MonoBehaviour {
     public void DragReleased()
     {
         if (isMirror) return;
+        if (QuickFind.ShippingBinGUI.BinUIisOpen) QuickFind.ShippingBinGUI.DropPanel.SetActive(false);
         ItemPressed();
     }
 

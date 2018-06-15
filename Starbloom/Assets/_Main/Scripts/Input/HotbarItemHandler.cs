@@ -13,7 +13,8 @@ public class HotbarItemHandler : MonoBehaviour {
         FishingPole,
         RegularItem,
         PlaceableItem,
-        WateringCan
+        WateringCan,
+        Sword
     }
 
 
@@ -51,6 +52,7 @@ public class HotbarItemHandler : MonoBehaviour {
                 case ActivateableTypes.Hoe: QuickFind.HoeHandler.InputDetected(UpEvent); break;
                 case ActivateableTypes.Pickaxe: QuickFind.PickaxeHandler.InputDetected(UpEvent); break;
                 case ActivateableTypes.WateringCan: QuickFind.WateringCanHandler.InputDetected(UpEvent); break;
+                case ActivateableTypes.Sword: QuickFind.SwordHandler.InputDetected(UpEvent); break;
             }
         }
     }
@@ -71,6 +73,7 @@ public class HotbarItemHandler : MonoBehaviour {
         if (QuickFind.HoeHandler.PlacementActive) QuickFind.HoeHandler.CancelHoeing();
         if (QuickFind.WateringCanHandler.PlacementActive) QuickFind.WateringCanHandler.CancelWatering();
         if (QuickFind.PickaxeHandler.PlacementActive) QuickFind.PickaxeHandler.CancelHittingMode();
+        if (QuickFind.SwordHandler.SwordActive) QuickFind.SwordHandler.CancelHittingMode();
 
         switch (ItemDatabaseReference.ActivateableType)
         {
@@ -79,6 +82,7 @@ public class HotbarItemHandler : MonoBehaviour {
             case ActivateableTypes.WateringCan: QuickFind.WateringCanHandler.SetupForWatering(RucksackSlot, ItemDatabaseReference, Slot); break;
             case ActivateableTypes.Pickaxe: QuickFind.PickaxeHandler.SetupForHitting(RucksackSlot, ItemDatabaseReference, Slot, ActivateableTypes.Pickaxe); break;
             case ActivateableTypes.Axe: QuickFind.PickaxeHandler.SetupForHitting(RucksackSlot, ItemDatabaseReference, Slot, ActivateableTypes.Axe); break;
+            case ActivateableTypes.Sword: QuickFind.SwordHandler.SetupForHitting(RucksackSlot, ItemDatabaseReference, Slot); break;
         }
 
 

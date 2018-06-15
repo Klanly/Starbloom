@@ -8,6 +8,7 @@ public class DG_ScenePortalTrigger : MonoBehaviour {
     
     public string SceneString;
     public int PortalValue;
+    public int Owner;
 
 
     public void TriggerSceneChange()

@@ -30,6 +30,7 @@ public class DG_InventoryGUI : MonoBehaviour
     public RectTransform InventoryFrame;
     public Vector3 StoragePosition;
     public Vector3 ShopPosition;
+    public Vector3 ShippingBinPosition;
     Vector3 StartingPosition;
 
 
@@ -42,7 +43,7 @@ public class DG_InventoryGUI : MonoBehaviour
     //InventorySwap Stuff
     [HideInInspector] public DG_InventoryItem CurrentHoverItem;
     [HideInInspector] public bool isFloatingInventoryItem;
-    DG_InventoryItem PickedUpItemSlot;
+    [HideInInspector] public DG_InventoryItem PickedUpItemSlot;
 
     //Equiped Hotbar Slot
     [HideInInspector] public int EquippedHotbarSlot = 0;
@@ -105,7 +106,7 @@ public class DG_InventoryGUI : MonoBehaviour
                     if (ZoomAxis != 0)
                         QuickFind.TooltipHandler.UpdateEquippedNum(-(int)ZoomAxis, false);
                 }
-                if (QuickFind.InputController.MainPlayer.ButtonSet.Interact.Up)
+                if (QuickFind.InputController.MainPlayer.ButtonSet.Interact.Up && !QuickFind.ShippingBinGUI.BinUIisOpen)
                 {
                     if (isFloatingInventoryItem)
                         QuickFind.InventoryManager.DropOne(PickedUpItemSlot, CurrentHoverItem);
@@ -132,36 +133,28 @@ public class DG_InventoryGUI : MonoBehaviour
 
 
 
-    public void OpenStorageUI()
+    public void OpenStorageUI() { InventoryFrame.localPosition = StoragePosition; OpenOuterUI(); }
+    public void OpenShopUI() { InventoryFrame.localPosition = ShopPosition; OpenOuterUI(); }
+    public void OpenShippingUI() { InventoryFrame.localPosition = ShippingBinPosition; OpenOuterUI(); }
+
+    public void CloseStorageUI() { CloseOuterUI(); }
+    public void CloseShopUI() { CloseOuterUI(); }
+    public void CloseShippingUI() { CloseOuterUI(); }
+
+    void OpenOuterUI()
     {
         QuickFind.ContextDetectionHandler.COEncountered = null;
         QuickFind.ContextDetectionHandler.LastEncounteredContext = null;
-
-        InventoryFrame.localPosition = StoragePosition;
         QuickFind.EnableCanvas(UICanvas, true);
         UpdateInventoryVisuals();
         InventoryIsOpen = true;
     }
-    public void CloseStorageUI()
+    void CloseOuterUI()
     {
+        ClearFloatingObject();
+        QuickFind.TooltipHandler.HideToolTip();
+        
         InventoryFrame.localPosition = StartingPosition;
-        InventoryIsOpen = false;
-        QuickFind.EnableCanvas(UICanvas, false);
-    }
-
-    public void OpenShopUI()
-    {
-        QuickFind.ContextDetectionHandler.COEncountered = null;
-        QuickFind.ContextDetectionHandler.LastEncounteredContext = null;
-
-        InventoryFrame.localPosition = ShopPosition;
-        QuickFind.EnableCanvas(UICanvas, true);
-        UpdateInventoryVisuals();
-        InventoryIsOpen = true;
-    }
-    public void CloseShopUI()
-    {
-        InventoryFrame.localPosition = ShopPosition;
         InventoryIsOpen = false;
         QuickFind.EnableCanvas(UICanvas, false);
     }
@@ -331,6 +324,7 @@ public class DG_InventoryGUI : MonoBehaviour
         if (CurrentHoverItem != null && CurrentHoverItem.isTrash) return;
 
         isFloatingInventoryItem = Enabled;
+        if (QuickFind.ShippingBinGUI.BinUIisOpen) QuickFind.ShippingBinGUI.OpenDropPanel(Enabled);
         if (!Enabled)
             FloatingRect.position = new Vector3(8000, 0, 0);
     }

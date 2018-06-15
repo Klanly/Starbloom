@@ -10,7 +10,7 @@ public class DG_ShopGUI : MonoBehaviour {
     public DG_UICustomGridScroll GridScroll;
     [Header("Canvases")]
     public CanvasGroup UICanvas = null;
-    public bool ShopUIisOpen = false;
+    [HideInInspector] public bool ShopUIisOpen = false;
 
 
 
@@ -101,6 +101,8 @@ public class DG_ShopGUI : MonoBehaviour {
 
     public void ShopItemPressed(DG_ShopGuiItem ShopItem)
     {
+        if (QuickFind.GUI_Inventory.isFloatingInventoryItem) return;
+
         if (!QuickFind.InventoryManager.AddItemToRucksack(QuickFind.NetworkSync.PlayerCharacterID, ShopItem.SeasonalGoodsRef.ItemDatabaseRef, (DG_ItemObject.ItemQualityLevels)ShopItem.SeasonalGoodsRef.QualityLevel, false, true)) return;
         if (!QuickFind.MoneyHandler.CheckIfSubtractMoney(QuickFind.ItemDatabase.GetItemFromID(ShopItem.SeasonalGoodsRef.ItemDatabaseRef).GetBuyPriceByQuality(ShopItem.SeasonalGoodsRef.QualityLevel))) return;
         MakePurchase(ShopItem);

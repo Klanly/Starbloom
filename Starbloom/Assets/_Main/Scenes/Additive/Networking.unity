@@ -200,205 +200,6 @@ Transform:
   m_Father: {fileID: 1118935757}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &158851594
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 158851595}
-  - component: {fileID: 158851596}
-  m_Layer: 0
-  m_Name: Red Seeds 2
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &158851595
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 158851594}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -17, y: 1.65, z: 4}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 2110302582}
-  m_RootOrder: 15
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &158851596
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 158851594}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  NetworkObjectID: 32
-  ItemRefID: 26
-  ItemQualityLevel: 0
-  PositionX: -1700
-  PositionY: 164
-  PositionZ: 400
-  YFacing: 0
-  isWaterable: 1
-  SurrogateObjectIndex: 24
-  HasBeenWatered: 0
-  GrowthValue: 0
-  ActiveVisual: 0
-  HasHealth: 0
-  HealthValue: 0
-  isStorageContainer: 0
-  isTreasureList: 0
-  StorageSlots: []
---- !u!1 &254734150
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 254734151}
-  - component: {fileID: 254734152}
-  m_Layer: 0
-  m_Name: Herb_FireWort
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &254734151
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 254734150}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -15, y: 1.64, z: 8}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 2110302582}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &254734152
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 254734150}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  NetworkObjectID: 0
-  ItemRefID: 7
-  ItemQualityLevel: 0
-  PositionX: -1500
-  PositionY: 163
-  PositionZ: 800
-  YFacing: 0
-  isWaterable: 0
-  SurrogateObjectIndex: 0
-  HasBeenWatered: 0
-  GrowthValue: 0
-  ActiveVisual: 0
-  HasHealth: 0
-  HealthValue: 0
-  isStorageContainer: 0
-  isTreasureList: 0
-  StorageSlots: []
---- !u!1 &347508491
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 347508492}
-  - component: {fileID: 347508493}
-  m_Layer: 0
-  m_Name: Seed
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &347508492
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 347508491}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -23, y: 1.65, z: 4}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 2110302582}
-  m_RootOrder: 11
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &347508493
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 347508491}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  NetworkObjectID: 26
-  ItemRefID: 4
-  ItemQualityLevel: 0
-  PositionX: -2300
-  PositionY: 164
-  PositionZ: 400
-  YFacing: 0
-  isWaterable: 1
-  SurrogateObjectIndex: 18
-  HasBeenWatered: 0
-  GrowthValue: 0
-  ActiveVisual: 0
-  HasHealth: 1
-  HealthValue: 15
-  isStorageContainer: 0
-  isTreasureList: 0
-  StorageSlots: []
---- !u!1 &410194103
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 410194104}
-  m_Layer: 0
-  m_Name: Point B
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &410194104
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 410194103}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 11.32, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1857971650}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &438454040
 GameObject:
   m_ObjectHideFlags: 0
@@ -497,120 +298,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c54e8c395b0069c40803538e94abf712, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &478717595
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 478717596}
-  - component: {fileID: 478717597}
-  m_Layer: 0
-  m_Name: Rock
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &478717596
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 478717595}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9, y: 2.345, z: -12}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 967766994}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &478717597
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 478717595}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  NetworkObjectID: 0
-  ItemRefID: 19
-  ItemQualityLevel: 0
-  PositionX: 900
-  PositionY: 234
-  PositionZ: -1200
-  YFacing: 0
-  isWaterable: 0
-  SurrogateObjectIndex: 0
-  HasBeenWatered: 0
-  GrowthValue: 0
-  ActiveVisual: 0
-  HasHealth: 1
-  HealthValue: 15
-  isStorageContainer: 0
-  isTreasureList: 0
-  StorageSlots: []
---- !u!1 &487274084
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 487274085}
-  - component: {fileID: 487274086}
-  m_Layer: 0
-  m_Name: Yellow Seeds 2
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &487274085
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 487274084}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -18, y: 1.65, z: 4}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 2110302582}
-  m_RootOrder: 16
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &487274086
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 487274084}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  NetworkObjectID: 31
-  ItemRefID: 31
-  ItemQualityLevel: 0
-  PositionX: -1800
-  PositionY: 164
-  PositionZ: 400
-  YFacing: 0
-  isWaterable: 1
-  SurrogateObjectIndex: 23
-  HasBeenWatered: 0
-  GrowthValue: 0
-  ActiveVisual: 0
-  HasHealth: 0
-  HealthValue: 0
-  isStorageContainer: 0
-  isTreasureList: 0
-  StorageSlots: []
 --- !u!1 &487331646
 GameObject:
   m_ObjectHideFlags: 0
@@ -682,7 +369,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 967766994}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &492757120
 MonoBehaviour:
@@ -696,247 +383,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NetworkObjectID: 0
-  ItemRefID: 5
-  ItemQualityLevel: 0
   PositionX: -444
   PositionY: 216
   PositionZ: -800
   YFacing: 0
-  isWaterable: 0
-  SurrogateObjectIndex: 0
-  HasBeenWatered: 0
-  GrowthValue: 0
-  ActiveVisual: 0
-  HasHealth: 0
-  HealthValue: 0
-  isStorageContainer: 0
-  isTreasureList: 0
-  StorageSlots: []
---- !u!1 &503081771
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 503081772}
-  - component: {fileID: 503081773}
-  m_Layer: 0
-  m_Name: TilledArea1
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &503081772
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 503081771}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -22, y: 1.65, z: 4}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 2110302582}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &503081773
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 503081771}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  NetworkObjectID: 19
-  ItemRefID: 17
-  ItemQualityLevel: -1
-  PositionX: -2200
-  PositionY: 164
-  PositionZ: 400
-  YFacing: 0
-  isWaterable: 1
-  SurrogateObjectIndex: 27
-  HasBeenWatered: 0
-  GrowthValue: 0
-  ActiveVisual: 0
-  HasHealth: 0
-  HealthValue: 0
-  isStorageContainer: 0
-  isTreasureList: 0
-  StorageSlots: []
---- !u!1 &507107464
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 507107465}
-  - component: {fileID: 507107466}
-  m_Layer: 0
-  m_Name: Herb_CrispinsGlove
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &507107465
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 507107464}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -13, y: 1.58, z: 6}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 2110302582}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &507107466
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 507107464}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  NetworkObjectID: 0
+  ObjectType: 0
   ItemRefID: 5
+  HasHealth: 0
+  HealthValue: 0
   ItemQualityLevel: 0
-  PositionX: -1300
-  PositionY: 158
-  PositionZ: 600
-  YFacing: 0
   isWaterable: 0
   SurrogateObjectIndex: 0
   HasBeenWatered: 0
-  GrowthValue: 0
   ActiveVisual: 0
-  HasHealth: 0
-  HealthValue: 0
-  isStorageContainer: 0
-  isTreasureList: 0
-  StorageSlots: []
---- !u!1 &542988089
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 542988090}
-  - component: {fileID: 542988091}
-  m_Layer: 0
-  m_Name: TilledArea1
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &542988090
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 542988089}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -21, y: 1.65, z: 4}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 2110302582}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &542988091
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 542988089}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  NetworkObjectID: 20
-  ItemRefID: 17
-  ItemQualityLevel: -1
-  PositionX: -2100
-  PositionY: 164
-  PositionZ: 400
-  YFacing: 0
-  isWaterable: 1
-  SurrogateObjectIndex: 28
-  HasBeenWatered: 0
   GrowthValue: 0
-  ActiveVisual: 0
-  HasHealth: 0
-  HealthValue: 0
-  isStorageContainer: 0
-  isTreasureList: 0
-  StorageSlots: []
---- !u!1 &585584367
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 585584368}
-  - component: {fileID: 585584369}
-  m_Layer: 0
-  m_Name: Green Seeds 3
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &585584368
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 585584367}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -21, y: 1.65, z: 4}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 2110302582}
-  m_RootOrder: 12
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &585584369
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 585584367}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  NetworkObjectID: 28
-  ItemRefID: 24
-  ItemQualityLevel: 0
-  PositionX: -2100
-  PositionY: 164
-  PositionZ: 400
-  YFacing: 0
-  isWaterable: 1
-  SurrogateObjectIndex: 20
-  HasBeenWatered: 0
-  GrowthValue: 0
-  ActiveVisual: 0
-  HasHealth: 0
-  HealthValue: 0
   isStorageContainer: 0
   isTreasureList: 0
   StorageSlots: []
@@ -967,7 +427,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 967766994}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &675496408
 MonoBehaviour:
@@ -981,19 +441,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NetworkObjectID: 0
-  ItemRefID: 7
-  ItemQualityLevel: 0
   PositionX: -269
   PositionY: 225
   PositionZ: -1156
   YFacing: 0
+  ObjectType: 0
+  ItemRefID: 7
+  HasHealth: 0
+  HealthValue: 0
+  ItemQualityLevel: 0
   isWaterable: 0
   SurrogateObjectIndex: 0
   HasBeenWatered: 0
-  GrowthValue: 0
   ActiveVisual: 0
-  HasHealth: 0
-  HealthValue: 0
+  GrowthValue: 0
   isStorageContainer: 0
   isTreasureList: 0
   StorageSlots: []
@@ -1024,7 +485,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 967766994}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &736236434
 MonoBehaviour:
@@ -1038,19 +499,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NetworkObjectID: 0
-  ItemRefID: 10
-  ItemQualityLevel: 0
   PositionX: 300
   PositionY: 226
   PositionZ: 200
   YFacing: 0
+  ObjectType: 0
+  ItemRefID: 10
+  HasHealth: 0
+  HealthValue: 0
+  ItemQualityLevel: 0
   isWaterable: 0
   SurrogateObjectIndex: 0
   HasBeenWatered: 0
-  GrowthValue: 0
   ActiveVisual: 0
-  HasHealth: 0
-  HealthValue: 0
+  GrowthValue: 0
   isStorageContainer: 1
   isTreasureList: 0
   StorageSlots:
@@ -1340,14 +802,11 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1366096408}
   - {fileID: 492757119}
   - {fileID: 675496407}
   - {fileID: 736236433}
   - {fileID: 1921503014}
   - {fileID: 1515060413}
-  - {fileID: 1128795472}
-  - {fileID: 478717596}
   m_Father: {fileID: 1904530056}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1389,11 +848,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1065796223}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4, y: 1.66, z: 8}
+  m_LocalPosition: {x: -42, y: 1.66, z: 8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2110302582}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1065796225
 MonoBehaviour:
@@ -1407,19 +866,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NetworkObjectID: 0
-  ItemRefID: 10
-  ItemQualityLevel: -1
-  PositionX: 400
+  PositionX: -4200
   PositionY: 165
   PositionZ: 800
   YFacing: 0
+  ObjectType: 0
+  ItemRefID: 10
+  HasHealth: 0
+  HealthValue: 0
+  ItemQualityLevel: 0
   isWaterable: 0
   SurrogateObjectIndex: 0
   HasBeenWatered: 0
-  GrowthValue: 0
   ActiveVisual: 0
-  HasHealth: 0
-  HealthValue: 0
+  GrowthValue: 0
   isStorageContainer: 1
   isTreasureList: 0
   StorageSlots:
@@ -1489,9 +949,9 @@ MonoBehaviour:
     NormalValue: 0
     HighValue: 0
     MaximumValue: 0
-  - ContainedItem: 0
+  - ContainedItem: 37
     CurrentStackActive: 0
-    LowValue: 0
+    LowValue: 200
     NormalValue: 0
     HighValue: 0
     MaximumValue: 0
@@ -1668,7 +1128,6 @@ Transform:
   - {fileID: 155133447}
   - {fileID: 1352009373}
   - {fileID: 1464828941}
-  - {fileID: 1857971650}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1736,9 +1195,9 @@ MonoBehaviour:
         NormalValue: 0
         HighValue: 0
         MaximumValue: 0
-      - ContainedItem: 37
+      - ContainedItem: 38
         CurrentStackActive: 0
-        LowValue: 200
+        LowValue: 1
         NormalValue: 0
         HighValue: 0
         MaximumValue: 0
@@ -2637,205 +2096,6 @@ MonoBehaviour:
     TodayWeather: 0
     TomorrowWeather: 0
     TwoDayAwayWeather: 0
---- !u!1 &1128795471
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1128795472}
-  - component: {fileID: 1128795473}
-  m_Layer: 0
-  m_Name: Rock
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1128795472
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1128795471}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 10, y: 2.345, z: -11}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 967766994}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1128795473
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1128795471}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  NetworkObjectID: 0
-  ItemRefID: 19
-  ItemQualityLevel: 0
-  PositionX: 1000
-  PositionY: 234
-  PositionZ: -1100
-  YFacing: 0
-  isWaterable: 0
-  SurrogateObjectIndex: 0
-  HasBeenWatered: 0
-  GrowthValue: 0
-  ActiveVisual: 0
-  HasHealth: 1
-  HealthValue: 15
-  isStorageContainer: 0
-  isTreasureList: 0
-  StorageSlots: []
---- !u!1 &1177397219
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1177397220}
-  m_Layer: 0
-  m_Name: Point A
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1177397220
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1177397219}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.55, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1857971650}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1268740265
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1268740266}
-  - component: {fileID: 1268740267}
-  m_Layer: 0
-  m_Name: TilledArea1
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1268740266
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1268740265}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -17, y: 1.65, z: 4}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 2110302582}
-  m_RootOrder: 9
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1268740267
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1268740265}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  NetworkObjectID: 24
-  ItemRefID: 17
-  ItemQualityLevel: -1
-  PositionX: -1700
-  PositionY: 164
-  PositionZ: 400
-  YFacing: 0
-  isWaterable: 1
-  SurrogateObjectIndex: 32
-  HasBeenWatered: 0
-  GrowthValue: 0
-  ActiveVisual: 0
-  HasHealth: 0
-  HealthValue: 0
-  isStorageContainer: 0
-  isTreasureList: 0
-  StorageSlots: []
---- !u!1 &1298130518
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1298130519}
-  - component: {fileID: 1298130520}
-  m_Layer: 0
-  m_Name: TilledArea1
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1298130519
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1298130518}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -23, y: 1.65, z: 4}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 2110302582}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1298130520
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1298130518}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  NetworkObjectID: 18
-  ItemRefID: 17
-  ItemQualityLevel: -1
-  PositionX: -2300
-  PositionY: 164
-  PositionZ: 400
-  YFacing: 0
-  isWaterable: 1
-  SurrogateObjectIndex: 26
-  HasBeenWatered: 0
-  GrowthValue: 0
-  ActiveVisual: 0
-  HasHealth: 0
-  HealthValue: 0
-  isStorageContainer: 0
-  isTreasureList: 0
-  StorageSlots: []
 --- !u!1 &1352009372
 GameObject:
   m_ObjectHideFlags: 0
@@ -2890,19 +2150,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NetworkObjectID: 0
-  ItemRefID: 0
-  ItemQualityLevel: 0
   PositionX: 0
   PositionY: 0
   PositionZ: 0
   YFacing: 0
+  ObjectType: 0
+  ItemRefID: 0
+  HasHealth: 0
+  HealthValue: 0
+  ItemQualityLevel: 0
   isWaterable: 0
   SurrogateObjectIndex: 0
   HasBeenWatered: 0
-  GrowthValue: 0
   ActiveVisual: 0
-  HasHealth: 0
-  HealthValue: 0
+  GrowthValue: 0
   isStorageContainer: 1
   isTreasureList: 0
   StorageSlots:
@@ -3122,319 +2383,6 @@ MonoBehaviour:
     NormalValue: 0
     HighValue: 0
     MaximumValue: 0
---- !u!1 &1366096407
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1366096408}
-  - component: {fileID: 1366096409}
-  m_Layer: 0
-  m_Name: Herb_CrispinsGlove
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1366096408
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1366096407}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.27, y: 2.19, z: -7.02}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 967766994}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1366096409
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1366096407}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  NetworkObjectID: 0
-  ItemRefID: 5
-  ItemQualityLevel: 0
-  PositionX: -226
-  PositionY: 219
-  PositionZ: -701
-  YFacing: 0
-  isWaterable: 0
-  SurrogateObjectIndex: 0
-  HasBeenWatered: 0
-  GrowthValue: 0
-  ActiveVisual: 0
-  HasHealth: 0
-  HealthValue: 0
-  isStorageContainer: 0
-  isTreasureList: 0
-  StorageSlots: []
---- !u!1 &1390175523
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1390175524}
-  - component: {fileID: 1390175525}
-  m_Layer: 0
-  m_Name: Rock
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1390175524
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1390175523}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -20, y: 1.7, z: 2}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 2110302582}
-  m_RootOrder: 17
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1390175525
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1390175523}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  NetworkObjectID: 0
-  ItemRefID: 19
-  ItemQualityLevel: 0
-  PositionX: -2000
-  PositionY: 170
-  PositionZ: 200
-  YFacing: 0
-  isWaterable: 0
-  SurrogateObjectIndex: 0
-  HasBeenWatered: 0
-  GrowthValue: 0
-  ActiveVisual: 0
-  HasHealth: 1
-  HealthValue: 15
-  isStorageContainer: 0
-  isTreasureList: 0
-  StorageSlots: []
---- !u!1 &1402461955
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1402461956}
-  - component: {fileID: 1402461957}
-  m_Layer: 0
-  m_Name: TilledArea1
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1402461956
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1402461955}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -18, y: 1.65, z: 4}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 2110302582}
-  m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1402461957
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1402461955}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  NetworkObjectID: 23
-  ItemRefID: 17
-  ItemQualityLevel: -1
-  PositionX: -1800
-  PositionY: 164
-  PositionZ: 400
-  YFacing: 0
-  isWaterable: 1
-  SurrogateObjectIndex: 31
-  HasBeenWatered: 0
-  GrowthValue: 0
-  ActiveVisual: 0
-  HasHealth: 0
-  HealthValue: 0
-  isStorageContainer: 0
-  isTreasureList: 0
-  StorageSlots: []
---- !u!1 &1405532468
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1405532469}
-  - component: {fileID: 1405532470}
-  m_Layer: 0
-  m_Name: Orange Seeds 1
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1405532469
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1405532468}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -19, y: 1.65, z: 4}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 2110302582}
-  m_RootOrder: 14
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1405532470
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1405532468}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  NetworkObjectID: 30
-  ItemRefID: 27
-  ItemQualityLevel: 0
-  PositionX: -1900
-  PositionY: 164
-  PositionZ: 400
-  YFacing: 0
-  isWaterable: 1
-  SurrogateObjectIndex: 22
-  HasBeenWatered: 0
-  GrowthValue: 0
-  ActiveVisual: 0
-  HasHealth: 0
-  HealthValue: 0
-  isStorageContainer: 0
-  isTreasureList: 0
-  StorageSlots: []
---- !u!1 &1458579799
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1458579800}
-  - component: {fileID: 1458579803}
-  - component: {fileID: 1458579802}
-  - component: {fileID: 1458579801}
-  m_Layer: 0
-  m_Name: Cube
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1458579800
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1458579799}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.5}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
-  m_Children: []
-  m_Father: {fileID: 1932721422}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &1458579801
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1458579799}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &1458579802
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1458579799}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 4294967295
-  m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!33 &1458579803
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1458579799}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1464828940
 GameObject:
   m_ObjectHideFlags: 0
@@ -3475,6 +2423,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 771c751c525ce52458ba51d4fa764655, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DailyShippingItems: []
+  ActiveBinObject: {fileID: 0}
 --- !u!1 &1515060412
 GameObject:
   m_ObjectHideFlags: 0
@@ -3502,7 +2452,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 967766994}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1515060414
 MonoBehaviour:
@@ -3516,279 +2466,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NetworkObjectID: 0
-  ItemRefID: 19
-  ItemQualityLevel: 0
   PositionX: 1100
   PositionY: 234
   PositionZ: -1200
   YFacing: 0
+  ObjectType: 0
+  ItemRefID: 19
+  HasHealth: 1
+  HealthValue: 15
+  ItemQualityLevel: 0
   isWaterable: 0
   SurrogateObjectIndex: 0
   HasBeenWatered: 0
-  GrowthValue: 0
   ActiveVisual: 0
-  HasHealth: 1
-  HealthValue: 15
+  GrowthValue: 0
   isStorageContainer: 0
   isTreasureList: 0
   StorageSlots: []
---- !u!1 &1695218838
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1695218839}
-  - component: {fileID: 1695218842}
-  - component: {fileID: 1695218841}
-  - component: {fileID: 1695218840}
-  m_Layer: 0
-  m_Name: Sphere
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1695218839
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1695218838}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.5}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
-  m_Children: []
-  m_Father: {fileID: 1757459168}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &1695218840
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1695218838}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &1695218841
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1695218838}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 4294967295
-  m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!33 &1695218842
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1695218838}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1713110110
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1713110111}
-  - component: {fileID: 1713110112}
-  m_Layer: 0
-  m_Name: Red Seeds 2
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1713110111
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1713110110}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -20, y: 1.65, z: 4}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 2110302582}
-  m_RootOrder: 13
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1713110112
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1713110110}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  NetworkObjectID: 29
-  ItemRefID: 23
-  ItemQualityLevel: 0
-  PositionX: -2000
-  PositionY: 164
-  PositionZ: 400
-  YFacing: 0
-  isWaterable: 1
-  SurrogateObjectIndex: 21
-  HasBeenWatered: 0
-  GrowthValue: 0
-  ActiveVisual: 0
-  HasHealth: 0
-  HealthValue: 0
-  isStorageContainer: 0
-  isTreasureList: 0
-  StorageSlots: []
---- !u!1 &1721457076
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1721457077}
-  - component: {fileID: 1721457080}
-  - component: {fileID: 1721457079}
-  - component: {fileID: 1721457078}
-  m_Layer: 0
-  m_Name: Cube
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1721457077
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1721457076}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
-  m_Children: []
-  m_Father: {fileID: 1757459168}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &1721457078
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1721457076}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &1721457079
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1721457076}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 4294967295
-  m_Materials:
-  - {fileID: 2100000, guid: 752a308575c9ae542b83f27c5a7746fe, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!33 &1721457080
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1721457076}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1757459167
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1757459168}
-  m_Layer: 0
-  m_Name: Actual Sphere Position
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1757459168
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1757459167}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1695218839}
-  - {fileID: 1721457077}
-  m_Father: {fileID: 1857971650}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1776617526 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1488329588103022, guid: c54e8c395b0069c40803538e94abf712,
@@ -3861,62 +2555,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4559278183740994, guid: fb9fb017398351b44b9429ac9b574522,
     type: 2}
   m_PrefabInternal: {fileID: 1836453460}
---- !u!1 &1857971649
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1857971650}
-  - component: {fileID: 1857971651}
-  m_Layer: 0
-  m_Name: Simulate Net Position Updates
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &1857971650
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1857971649}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 3.21, z: 4.07}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1757459168}
-  - {fileID: 1932721422}
-  - {fileID: 1177397220}
-  - {fileID: 410194104}
-  m_Father: {fileID: 1118935757}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1857971651
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1857971649}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd0b67eb78ffbac4e8f55ff77f8135e9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SendRate: 0.1
-  SlerpMoveRate: 0.1
-  SlerpTurnRate: 0.3
-  MaxDistance: 5
-  PlayerMoveSpeed: 0.15
-  PlayerSpinRate: 5
-  ActualPosition: {fileID: 1757459168}
-  ShowPosition: {fileID: 1932721422}
-  PointA: {fileID: 1177397220}
-  PointB: {fileID: 410194104}
-  DoMove: 1
-  DoSpin: 1
 --- !u!1 &1904530055
 GameObject:
   m_ObjectHideFlags: 0
@@ -3962,63 +2600,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DisplayPreviewsInSceneView: 1
---- !u!1 &1918864304
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1918864305}
-  - component: {fileID: 1918864306}
-  m_Layer: 0
-  m_Name: Orange Seeds 3
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1918864305
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1918864304}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -22, y: 1.65, z: 4}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 2110302582}
-  m_RootOrder: 10
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1918864306
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1918864304}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  NetworkObjectID: 27
-  ItemRefID: 25
-  ItemQualityLevel: 0
-  PositionX: -2200
-  PositionY: 164
-  PositionZ: 400
-  YFacing: 0
-  isWaterable: 1
-  SurrogateObjectIndex: 19
-  HasBeenWatered: 0
-  GrowthValue: 0
-  ActiveVisual: 0
-  HasHealth: 0
-  HealthValue: 0
-  isStorageContainer: 0
-  isTreasureList: 0
-  StorageSlots: []
 --- !u!1 &1921503013
 GameObject:
   m_ObjectHideFlags: 0
@@ -4046,7 +2627,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 967766994}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1921503015
 MonoBehaviour:
@@ -4060,206 +2641,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NetworkObjectID: 0
-  ItemRefID: 19
-  ItemQualityLevel: 0
   PositionX: 1000
   PositionY: 234
   PositionZ: -1300
   YFacing: 0
-  isWaterable: 0
-  SurrogateObjectIndex: 0
-  HasBeenWatered: 0
-  GrowthValue: 0
-  ActiveVisual: 0
-  HasHealth: 1
-  HealthValue: 15
-  isStorageContainer: 0
-  isTreasureList: 0
-  StorageSlots: []
---- !u!1 &1932721421
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1932721422}
-  - component: {fileID: 1932721424}
-  - component: {fileID: 1932721423}
-  m_Layer: 0
-  m_Name: Shown Sphere Position
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1932721422
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1932721421}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1458579800}
-  m_Father: {fileID: 1857971650}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &1932721423
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1932721421}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 4294967295
-  m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!33 &1932721424
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1932721421}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1937366189
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1937366190}
-  - component: {fileID: 1937366191}
-  m_Layer: 0
-  m_Name: TilledArea1
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1937366190
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1937366189}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -19, y: 1.65, z: 4}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 2110302582}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1937366191
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1937366189}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  NetworkObjectID: 22
-  ItemRefID: 17
-  ItemQualityLevel: -1
-  PositionX: -1900
-  PositionY: 164
-  PositionZ: 400
-  YFacing: 0
-  isWaterable: 1
-  SurrogateObjectIndex: 30
-  HasBeenWatered: 0
-  GrowthValue: 0
-  ActiveVisual: 0
-  HasHealth: 0
-  HealthValue: 0
-  isStorageContainer: 0
-  isTreasureList: 0
-  StorageSlots: []
---- !u!1 &2102694677
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 2102694678}
-  - component: {fileID: 2102694679}
-  m_Layer: 0
-  m_Name: Rock
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2102694678
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2102694677}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -19, y: 1.7, z: 2}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 2110302582}
-  m_RootOrder: 18
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2102694679
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2102694677}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  NetworkObjectID: 0
+  ObjectType: 0
   ItemRefID: 19
+  HasHealth: 1
+  HealthValue: 15
   ItemQualityLevel: 0
-  PositionX: -1900
-  PositionY: 170
-  PositionZ: 200
-  YFacing: 0
   isWaterable: 0
   SurrogateObjectIndex: 0
   HasBeenWatered: 0
-  GrowthValue: 0
   ActiveVisual: 0
-  HasHealth: 1
-  HealthValue: 15
+  GrowthValue: 0
   isStorageContainer: 0
   isTreasureList: 0
   StorageSlots: []
@@ -4289,25 +2684,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 507107465}
-  - {fileID: 254734151}
   - {fileID: 1065796224}
-  - {fileID: 503081772}
-  - {fileID: 542988090}
-  - {fileID: 1298130519}
-  - {fileID: 2113260410}
-  - {fileID: 1937366190}
-  - {fileID: 1402461956}
-  - {fileID: 1268740266}
-  - {fileID: 1918864305}
-  - {fileID: 347508492}
-  - {fileID: 585584368}
-  - {fileID: 1713110111}
-  - {fileID: 1405532469}
-  - {fileID: 158851595}
-  - {fileID: 487274085}
-  - {fileID: 1390175524}
-  - {fileID: 2102694678}
+  - {fileID: 2111082842}
   m_Father: {fileID: 1904530056}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4326,60 +2704,61 @@ MonoBehaviour:
   TempNetworkObjectList: []
   NetworkObjectList: []
   JunkObject: {fileID: 0}
---- !u!1 &2113260409
+--- !u!1 &2111082841
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 2113260410}
-  - component: {fileID: 2113260411}
+  - component: {fileID: 2111082842}
+  - component: {fileID: 2111082843}
   m_Layer: 0
-  m_Name: TilledArea1
+  m_Name: Skeleton Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2113260410
+--- !u!4 &2111082842
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2113260409}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -20, y: 1.65, z: 4}
+  m_GameObject: {fileID: 2111082841}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: -0.89, y: 1.662, z: 8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2110302582}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2113260411
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!114 &2111082843
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2113260409}
+  m_GameObject: {fileID: 2111082841}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NetworkObjectID: 21
-  ItemRefID: 17
-  ItemQualityLevel: -1
-  PositionX: -2000
-  PositionY: 164
-  PositionZ: 400
-  YFacing: 0
-  isWaterable: 1
-  SurrogateObjectIndex: 29
+  NetworkObjectID: 0
+  PositionX: -88
+  PositionY: 166
+  PositionZ: 800
+  YFacing: 18000
+  ObjectType: 1
+  ItemRefID: 1
+  HasHealth: 1
+  HealthValue: 10
+  ItemQualityLevel: 0
+  isWaterable: 0
+  SurrogateObjectIndex: 0
   HasBeenWatered: 0
-  GrowthValue: 0
   ActiveVisual: 0
-  HasHealth: 0
-  HealthValue: 0
+  GrowthValue: 0
   isStorageContainer: 0
   isTreasureList: 0
   StorageSlots: []

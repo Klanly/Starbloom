@@ -63,7 +63,7 @@ public class DG_DynamicWall : MonoBehaviour {
             { WestActive = true; if (SendOutNetMessage) OutGoingWallMessage(WallMessage.East); }  
 
         if (SendOutNetMessage)
-            QuickFind.NetworkObjectManager.CreateNetSceneObject(QuickFind.NetworkSync.CurrentScene, QuickFind.ObjectPlacementManager.ItemDatabaseReference.DatabaseID, DetermineVisualID(), transform.position, 0);
+            QuickFind.NetworkObjectManager.CreateNetSceneObject(QuickFind.NetworkSync.CurrentScene, NetworkObjectManager.NetworkObjectTypes.Item, QuickFind.ObjectPlacementManager.ItemDatabaseReference.DatabaseID, DetermineVisualID(), transform.position, 0);
         else
             SetActiveChildren();
     }

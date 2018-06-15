@@ -26,7 +26,7 @@ public class DG_WordObject : MonoBehaviour {
     public TextEntry[] TextValues;
 
 
-    [Button(ButtonSizes.Small)]
+    //[Button(ButtonSizes.Small)]
     public void UpdateLanguages()
     {
         PopulateLanguageOptions(this);

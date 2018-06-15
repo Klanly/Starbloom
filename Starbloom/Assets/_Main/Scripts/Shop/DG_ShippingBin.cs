@@ -12,10 +12,15 @@ public class DG_ShippingBin : MonoBehaviour {
         public int Normal;
         public int High;
         public int Max;
+
+        public int GetStackValue()
+        { return Low + Normal + High + Max; }
     }
 
-    List<ShippingBinItem> DailyShippingItems;
+    [HideInInspector] public List<ShippingBinItem> DailyShippingItems;
+    [HideInInspector] public DG_ContextObject ActiveBinObject;
     int NetID = 0;
+
 
 
     private void Awake()
@@ -26,14 +31,8 @@ public class DG_ShippingBin : MonoBehaviour {
 
 
 
-    public void SetStackInShippingBin(DG_ContextObject CO)
+    public void SetStackInShippingBin(DG_PlayerCharacters.RucksackSlot RucksackSlot)
     {
-        if (QuickFind.ItemActivateableHandler.CurrentItemDatabaseReference.ActivateableType != HotbarItemHandler.ActivateableTypes.RegularItem)
-            return;
-        DG_PlayerCharacters.RucksackSlot RucksackSlot = QuickFind.ItemActivateableHandler.CurrentRucksackSlot;
-
-
-
         ShippingBinItem SBI = null;
         for (int i = 0; i < DailyShippingItems.Count; i++)
         {
@@ -58,10 +57,10 @@ public class DG_ShippingBin : MonoBehaviour {
         }
 
         QuickFind.NetworkSync.SetItemInShippingBin(SendData);
-        RucksackSlot.ClearRucksack();
-        QuickFind.GUI_Inventory.UpdateInventoryVisuals();
-        CO.GetComponent<DG_UI_WobbleAndFade>().enabled = true;
+        //FX
+        ActiveBinObject.GetComponent<DG_UI_WobbleAndFade>().enabled = true;
     }
+
 
     public void ItemSetInShippingBin(int[] InData)
     {
@@ -86,18 +85,7 @@ public class DG_ShippingBin : MonoBehaviour {
     {
         int MoneyMade = 0;
         for(int i = 0; i < DailyShippingItems.Count; i++)
-        {
-            ShippingBinItem SBI = DailyShippingItems[i];
-            DG_ItemObject IO = QuickFind.ItemDatabase.GetItemFromID(SBI.ItemRef);
-            if (SBI.Low > 0)
-                MoneyMade += SBI.Low * IO.GetSellPriceByQuality(0);
-            if (SBI.Normal > 0)
-                MoneyMade += SBI.Normal * IO.GetSellPriceByQuality(1);
-            if (SBI.High > 0)
-                MoneyMade += SBI.High * IO.GetSellPriceByQuality(2);
-            if (SBI.Max > 0)
-                MoneyMade += SBI.Max * IO.GetSellPriceByQuality(3);
-        }
+            MoneyMade += CalculateTotalOfStack(DailyShippingItems[i]);
 
         DailyShippingItems.Clear();
         Debug.Log("Total Daily Money Made == " + MoneyMade.ToString());
@@ -106,5 +94,51 @@ public class DG_ShippingBin : MonoBehaviour {
             if(MoneyMade != 0)
                 QuickFind.MoneyHandler.AddMoney(MoneyMade);
         }
+    }
+
+
+    public int CalculateTotalOfStack(ShippingBinItem SBI)
+    {
+        int MoneyMade = 0;
+        DG_ItemObject IO = QuickFind.ItemDatabase.GetItemFromID(SBI.ItemRef);
+        if (SBI.Low > 0)
+            MoneyMade += SBI.Low * IO.GetSellPriceByQuality(0);
+        if (SBI.Normal > 0)
+            MoneyMade += SBI.Normal * IO.GetSellPriceByQuality(1);
+        if (SBI.High > 0)
+            MoneyMade += SBI.High * IO.GetSellPriceByQuality(2);
+        if (SBI.Max > 0)
+            MoneyMade += SBI.Max * IO.GetSellPriceByQuality(3);
+
+        return MoneyMade;
+    }
+
+
+
+
+
+    public void UpdateBinItem(DG_ShippingBin.ShippingBinItem BinItem)
+    {
+        for(int i = 0; i < DailyShippingItems.Count; i++)
+        {
+            if (DailyShippingItems[i] == BinItem) { QuickFind.NetworkSync.ClearBinItem(i); break; }
+        }
+        if (BinItem.ItemRef != 0)
+        {
+            int[] SendData = new int[5];
+
+            SendData[0] = BinItem.ItemRef;
+            SendData[1] += BinItem.Low;
+            SendData[2] += BinItem.Normal;
+            SendData[3] += BinItem.High;
+            SendData[4] += BinItem.Max;
+
+            QuickFind.NetworkSync.SetItemInShippingBin(SendData);
+        }
+    }
+
+    public void ClearBinItem(int ItemIndex)
+    {
+        DailyShippingItems.RemoveAt(ItemIndex);
     }
 }

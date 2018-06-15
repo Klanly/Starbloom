@@ -96,7 +96,7 @@ public class DG_BreakableObjectsHandler : MonoBehaviour {
             {
                 DG_BreakableObjectItem.ItemClump Clump = IC[i];
                 for (int iN = 0; iN < Clump.Value; iN++)
-                    QuickFind.NetworkObjectManager.CreateNetSceneObject(SceneID, Clump.ItemID, Clump.ItemQuality, SPR.GetSpawnPoint(), 0, true, SPR.RandomVelocity());
+                    QuickFind.NetworkObjectManager.CreateNetSceneObject(SceneID, NetworkObjectManager.NetworkObjectTypes.Item, Clump.ItemID, Clump.ItemQuality, SPR.GetSpawnPoint(), 0, true, SPR.RandomVelocity());
             }
 
             //EXP
