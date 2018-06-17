@@ -16,7 +16,6 @@ public class DG_PrefabPoolDictionary : MonoBehaviour {
 
 
     public GameObject GetPoolItemByPrefabID(int PrefabID) { return GetItemFromID(PrefabID).GetAvailablePoolObject(); }
-    public GameObject GetPoolItemByFXID(int PrefabID) { return GetItemFromID(PrefabID).GetFXObjectByIndex(); }
     public void ReturnPoolItem(DG_PrefabPoolItem.PoolObject PoolObject) { GetItemFromID(PoolObject.PrefabID).ReturnPoolObject(PoolObject); }
 
 

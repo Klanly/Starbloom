@@ -21,9 +21,11 @@ public class DG_DebugSettings : MonoBehaviour {
     private void Awake()
     {
         QuickFind.GameSettings = this;
-
+    }
+    private void Start()
+    {
         if (DisableAudio)
-            AudioListener.volume = 0;
+            QuickFind.AudioManager.MasterMixerGroup.audioMixer.SetFloat("MasterVolume", -80f);
     }
 
 

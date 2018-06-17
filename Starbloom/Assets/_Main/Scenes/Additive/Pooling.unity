@@ -146,11 +146,13 @@ MonoBehaviour:
   Name: Leaf Burst - Normal
   PrefabReference: {fileID: 1202852992998096, guid: ec0b31fb061541b45853d90a91476a01,
     type: 2}
-  UseMaxPoolValue: 0
-  PoolMaxValue: 50
+  UseSFXObject: 0
+  AudioFile: {fileID: 0}
+  UseMaxPoolValue: 1
+  PoolMaxValue: 4
+  HowToHandleMaxPool: 0
   GeneratePoolOnStart: 0
   GenerationValue: 0
-  PrintDebugWhenHitPoolMax: 0
 --- !u!114 &230943739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,7 +165,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 9
-  instanceID: -27214398
+  instanceID: 65124
 --- !u!4 &230943740
 Transform:
   m_ObjectHideFlags: 0
@@ -219,7 +221,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 9
-  instanceID: -27402368
+  instanceID: 65132
 --- !u!114 &313338020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -236,11 +238,13 @@ MonoBehaviour:
   Name: Rock Burst
   PrefabReference: {fileID: 1781088751202796, guid: 76a97781d0c73dc41919e7215c931e2c,
     type: 2}
-  UseMaxPoolValue: 0
-  PoolMaxValue: 10
+  UseSFXObject: 0
+  AudioFile: {fileID: 0}
+  UseMaxPoolValue: 1
+  PoolMaxValue: 4
+  HowToHandleMaxPool: 0
   GeneratePoolOnStart: 0
   GenerationValue: 0
-  PrintDebugWhenHitPoolMax: 0
 --- !u!1 &426733810
 GameObject:
   m_ObjectHideFlags: 0
@@ -283,7 +287,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 9
-  instanceID: -27334490
+  instanceID: 65140
 --- !u!114 &426733813
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -300,11 +304,13 @@ MonoBehaviour:
   Name: Leaf Burst - Large
   PrefabReference: {fileID: 1474929875533234, guid: b06511e08b7d45b44b6d29a42172a56c,
     type: 2}
-  UseMaxPoolValue: 0
-  PoolMaxValue: 50
+  UseSFXObject: 0
+  AudioFile: {fileID: 0}
+  UseMaxPoolValue: 1
+  PoolMaxValue: 4
+  HowToHandleMaxPool: 0
   GeneratePoolOnStart: 0
   GenerationValue: 0
-  PrintDebugWhenHitPoolMax: 0
 --- !u!1 &491060805
 GameObject:
   m_ObjectHideFlags: 0
@@ -338,11 +344,13 @@ MonoBehaviour:
   Name: Rock Burst - W_Collision
   PrefabReference: {fileID: 1837661605126688, guid: 89d7e745d2a44c742b41068cc9071eee,
     type: 2}
-  UseMaxPoolValue: 0
-  PoolMaxValue: 10
+  UseSFXObject: 0
+  AudioFile: {fileID: 0}
+  UseMaxPoolValue: 1
+  PoolMaxValue: 4
+  HowToHandleMaxPool: 0
   GeneratePoolOnStart: 0
   GenerationValue: 0
-  PrintDebugWhenHitPoolMax: 0
 --- !u!114 &491060807
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -355,7 +363,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 9
-  instanceID: -27415956
+  instanceID: 65148
 --- !u!4 &491060808
 Transform:
   m_ObjectHideFlags: 0
@@ -411,7 +419,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 9
-  instanceID: -27356398
+  instanceID: 65156
 --- !u!114 &653244912
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -428,11 +436,13 @@ MonoBehaviour:
   Name: Wood Burst - Large
   PrefabReference: {fileID: 1023434483635704, guid: 1a06fb55c414487428b440352fcbc36c,
     type: 2}
-  UseMaxPoolValue: 0
-  PoolMaxValue: 50
+  UseSFXObject: 0
+  AudioFile: {fileID: 0}
+  UseMaxPoolValue: 1
+  PoolMaxValue: 4
+  HowToHandleMaxPool: 0
   GeneratePoolOnStart: 0
   GenerationValue: 0
-  PrintDebugWhenHitPoolMax: 0
 --- !u!1 &784908313
 GameObject:
   m_ObjectHideFlags: 0
@@ -461,6 +471,7 @@ Transform:
   m_Children:
   - {fileID: 1168055768}
   - {fileID: 1879140231}
+  - {fileID: 1175351605}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -488,7 +499,8 @@ MonoBehaviour:
   - {fileID: 1579207499}
   - {fileID: 313338020}
   - {fileID: 491060806}
-  ListCount: 12
+  - {fileID: 1430861632}
+  ListCount: 13
 --- !u!1 &865801881
 GameObject:
   m_ObjectHideFlags: 0
@@ -522,11 +534,13 @@ MonoBehaviour:
   Name: apple01_red
   PrefabReference: {fileID: 1000014262645136, guid: 0a472e24bab49784a98a5fb1a480231b,
     type: 2}
+  UseSFXObject: 0
+  AudioFile: {fileID: 0}
   UseMaxPoolValue: 0
   PoolMaxValue: 50
+  HowToHandleMaxPool: 0
   GeneratePoolOnStart: 0
   GenerationValue: 0
-  PrintDebugWhenHitPoolMax: 0
 --- !u!114 &865801883
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -539,7 +553,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 9
-  instanceID: 1472960
+  instanceID: 65170
 --- !u!4 &865801884
 Transform:
   m_ObjectHideFlags: 0
@@ -582,6 +596,100 @@ Transform:
   - {fileID: 865801884}
   - {fileID: 1699125931}
   m_Father: {fileID: 784908314}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1175351604
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1175351605}
+  m_Layer: 0
+  m_Name: SFX Objects
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1175351605
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1175351604}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1430861634}
+  m_Father: {fileID: 784908314}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1430861631
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1430861634}
+  - component: {fileID: 1430861633}
+  - component: {fileID: 1430861632}
+  m_Layer: 0
+  m_Name: 12 - SFX - Notification_09
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1430861632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1430861631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23293ddb33c1f2442a1686923a56c0cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DatabaseID: 12
+  LockItem: 1
+  Name: SFX - Notification_09
+  PrefabReference: {fileID: 0}
+  UseSFXObject: 1
+  AudioFile: {fileID: 8300000, guid: 387c05bd93c706e48b2270d0a5e98004, type: 3}
+  UseMaxPoolValue: 1
+  PoolMaxValue: 3
+  HowToHandleMaxPool: 0
+  GeneratePoolOnStart: 0
+  GenerationValue: 0
+--- !u!114 &1430861633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1430861631}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 9
+  instanceID: 65186
+--- !u!4 &1430861634
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1430861631}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1175351605}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1484500828
@@ -630,11 +738,13 @@ MonoBehaviour:
   Name: Spruce Log
   PrefabReference: {fileID: 1606510537315246, guid: 8bf422c2ec5566341a01e9408b77a76e,
     type: 2}
+  UseSFXObject: 0
+  AudioFile: {fileID: 0}
   UseMaxPoolValue: 0
   PoolMaxValue: 50
+  HowToHandleMaxPool: 0
   GeneratePoolOnStart: 0
   GenerationValue: 0
-  PrintDebugWhenHitPoolMax: 0
 --- !u!114 &1484500831
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -647,7 +757,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 9
-  instanceID: 1472974
+  instanceID: 65196
 --- !u!1 &1568434883
 GameObject:
   m_ObjectHideFlags: 0
@@ -690,7 +800,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 9
-  instanceID: -27364996
+  instanceID: 65202
 --- !u!114 &1568434886
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -707,11 +817,13 @@ MonoBehaviour:
   Name: Bark Burst - Normal
   PrefabReference: {fileID: 1549762975495574, guid: 3a551a607d8a25e4182a61e2129385c9,
     type: 2}
-  UseMaxPoolValue: 0
-  PoolMaxValue: 50
+  UseSFXObject: 0
+  AudioFile: {fileID: 0}
+  UseMaxPoolValue: 1
+  PoolMaxValue: 4
+  HowToHandleMaxPool: 0
   GeneratePoolOnStart: 0
   GenerationValue: 0
-  PrintDebugWhenHitPoolMax: 0
 --- !u!1 &1579207496
 GameObject:
   m_ObjectHideFlags: 0
@@ -754,7 +866,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 9
-  instanceID: -27394228
+  instanceID: 65210
 --- !u!114 &1579207499
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -771,11 +883,13 @@ MonoBehaviour:
   Name: Dust Burst - Quick
   PrefabReference: {fileID: 1592909433476296, guid: d857c7d674ae6ad458e6bae93df4c0d0,
     type: 2}
-  UseMaxPoolValue: 0
-  PoolMaxValue: 10
+  UseSFXObject: 0
+  AudioFile: {fileID: 0}
+  UseMaxPoolValue: 1
+  PoolMaxValue: 4
+  HowToHandleMaxPool: 0
   GeneratePoolOnStart: 0
   GenerationValue: 0
-  PrintDebugWhenHitPoolMax: 0
 --- !u!1 &1699125928
 GameObject:
   m_ObjectHideFlags: 0
@@ -808,11 +922,13 @@ MonoBehaviour:
   LockItem: 1
   Name: Stone
   PrefabReference: {fileID: 100000, guid: 84376f2a0948947b5a6dfe814a1100a0, type: 2}
+  UseSFXObject: 0
+  AudioFile: {fileID: 0}
   UseMaxPoolValue: 0
   PoolMaxValue: 50
+  HowToHandleMaxPool: 0
   GeneratePoolOnStart: 0
   GenerationValue: 0
-  PrintDebugWhenHitPoolMax: 0
 --- !u!114 &1699125930
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -825,7 +941,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 9
-  instanceID: 1472980
+  instanceID: 65218
 --- !u!4 &1699125931
 Transform:
   m_ObjectHideFlags: 0
@@ -881,7 +997,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 9
-  instanceID: -27369734
+  instanceID: 65226
 --- !u!114 &1743787697
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -898,11 +1014,13 @@ MonoBehaviour:
   Name: Dust Burst
   PrefabReference: {fileID: 1939958604924808, guid: cf4591e10601ab745a34c68da392d82b,
     type: 2}
-  UseMaxPoolValue: 0
-  PoolMaxValue: 10
+  UseSFXObject: 0
+  AudioFile: {fileID: 0}
+  UseMaxPoolValue: 1
+  PoolMaxValue: 4
+  HowToHandleMaxPool: 0
   GeneratePoolOnStart: 0
   GenerationValue: 0
-  PrintDebugWhenHitPoolMax: 0
 --- !u!1 &1879140230
 GameObject:
   m_ObjectHideFlags: 0
@@ -982,7 +1100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 9
-  instanceID: -27351974
+  instanceID: 65238
 --- !u!114 &2118999286
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -999,8 +1117,10 @@ MonoBehaviour:
   Name: Wood Burst - Normal
   PrefabReference: {fileID: 1575153635095428, guid: 20dbb16e95a58494f89b28b5083e0bbe,
     type: 2}
-  UseMaxPoolValue: 0
-  PoolMaxValue: 50
+  UseSFXObject: 0
+  AudioFile: {fileID: 0}
+  UseMaxPoolValue: 1
+  PoolMaxValue: 4
+  HowToHandleMaxPool: 0
   GeneratePoolOnStart: 0
   GenerationValue: 0
-  PrintDebugWhenHitPoolMax: 0

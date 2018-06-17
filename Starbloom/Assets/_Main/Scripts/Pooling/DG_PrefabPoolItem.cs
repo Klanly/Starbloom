@@ -2,8 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
+using UnityEngine.Audio;
 
 public class DG_PrefabPoolItem : MonoBehaviour {
+
+    public enum MaxPoolReached
+    {
+        ReplaceOldest,
+        JustDontSpawn,
+        ReplaceByDistance
+    }
+
 
     [HideInInspector]
     public int DatabaseID;
@@ -20,22 +29,26 @@ public class DG_PrefabPoolItem : MonoBehaviour {
         public int PrefabID;
     }
 
-
-
     public string Name;
+
+    [Header("Generation Reference")]
     public GameObject PrefabReference;
+    public bool UseSFXObject;
+    [ShowIf("UseSFXObject")]
+    public AudioClip AudioFile;
 
     [Header("FX Pool Size")]
     public bool UseMaxPoolValue;
+    [ShowIf("UseMaxPoolValue")]
     public int PoolMaxValue;
+    [ShowIf("UseMaxPoolValue")]
+    public MaxPoolReached HowToHandleMaxPool;
+  
 
     [Header("GenerateOnStart")]
     public bool GeneratePoolOnStart;
     [ShowIf("GeneratePoolOnStart")]
     public int GenerationValue;
-
-    [Header("Debug")]
-    public bool PrintDebugWhenHitPoolMax;
 
 
 
@@ -66,7 +79,15 @@ public class DG_PrefabPoolItem : MonoBehaviour {
     }
     GameObject SpawnNewPrefab(bool SpawnActive, PoolObject PO)
     {
-        GameObject GO = Instantiate(PrefabReference);
+        GameObject GO = null;
+        if (!UseSFXObject) GO = Instantiate(PrefabReference);
+        else
+        {
+            GO = new GameObject();
+            AudioSource AS = GO.AddComponent<AudioSource>();
+            AS.playOnAwake = false;
+            AS.clip = AudioFile;
+        }
         GO.transform.SetParent(transform);
         DG_PoolLink PL = GO.AddComponent<DG_PoolLink>();
         PL.PoolObjectRef = PO;
@@ -79,25 +100,32 @@ public class DG_PrefabPoolItem : MonoBehaviour {
 
     public GameObject GetAvailablePoolObject()
     {
-        for(int i = 0; i < PrefabPool.Count; i++)
+        if (!UseMaxPoolValue) return GetPoolPrefabByActive(false);
+        else
         {
-            PoolObject PO = PrefabPool[i];
+            if (HowToHandleMaxPool == MaxPoolReached.ReplaceOldest) return GetObjectByIndex();
+            if (HowToHandleMaxPool == MaxPoolReached.JustDontSpawn) return GetPoolPrefabByActive(true);
+            if (HowToHandleMaxPool == MaxPoolReached.ReplaceByDistance) Debug.Log("Todo, replace by distance logic");
+        }
+
+        return null;
+    }
+    GameObject GetPoolPrefabByActive(bool DontSpawnPastMax)
+    {
+        PoolObject PO;
+        for (int i = 0; i < PrefabPool.Count; i++)
+        {
+            PO = PrefabPool[i];
             if (PO.IsActive) continue;
             else { PO.IsActive = true; PO.GameObjectRef.SetActive(true); return PO.GameObjectRef; }
         }
-        if (!UseMaxPoolValue || PrefabPool.Count < PoolMaxValue)
-        {
-            PoolObject PO = GenerateNewPoolObject(true);
-            PO.IsActive = true;
-            return PO.GameObjectRef;
-        }
+        if (DontSpawnPastMax && PrefabPool.Count == PoolMaxValue) return null;
 
-        if (PrintDebugWhenHitPoolMax) Debug.Log("We have reached our Max Pool Length");
-        return null;
+        PO = GenerateNewPoolObject(true);
+        PO.IsActive = true;
+        return PO.GameObjectRef;     
     }
-
-
-    public GameObject GetFXObjectByIndex()
+    GameObject GetObjectByIndex()
     {
         if (PoolMaxValue == 0) Debug.Log("Pool Max Value Has not been set for an FX Object " + Name);
         PoolObject PO;
@@ -120,9 +148,6 @@ public class DG_PrefabPoolItem : MonoBehaviour {
 
 
 
-    [Button(ButtonSizes.Small)]
-    public void SyncNameToPrefabRef()
-    {
-        Name = PrefabReference.name;
-    }
+    [Button(ButtonSizes.Small)] public void SyncNameToPrefabRef() { Name = PrefabReference.name; }
+    [Button(ButtonSizes.Small)] public void SyncNameToAudioFileName() { Name = "SFX - " + AudioFile.name; }
 }

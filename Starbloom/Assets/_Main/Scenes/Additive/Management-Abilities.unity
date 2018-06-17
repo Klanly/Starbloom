@@ -1152,6 +1152,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aecfc05238261864faafb83301014445, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  RucksackSlotOpen:
+    ContainedItem: 0
+    CurrentStackActive: 0
+    LowValue: 0
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  ItemDatabaseReference: {fileID: 0}
+  ActiveSlot: 0
 --- !u!1 &1819080178
 GameObject:
   m_ObjectHideFlags: 0
