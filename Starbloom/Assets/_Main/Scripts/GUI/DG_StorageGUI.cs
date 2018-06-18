@@ -48,8 +48,12 @@ public class DG_StorageGUI : MonoBehaviour {
         if (Wait1) { Wait1 = false; return; }
 
 
+<<<<<<< .merge_file_a10540
         if (!StorageUIOpen || QuickFind.GUI_Inventory.isFloatingInventoryItem)
             return;
+=======
+        if (!StorageUIOpen || QuickFind.GUI_Inventory.isFloatingInventoryItem || QuickFind.ShippingBinGUI.BinUIisOpen) return;
+>>>>>>> .merge_file_a00548
 
         if (QuickFind.InputController.MainPlayer.ButtonSet.Interact.Up)
             QuickFind.InventoryManager.ShiftStackToFromStorage();

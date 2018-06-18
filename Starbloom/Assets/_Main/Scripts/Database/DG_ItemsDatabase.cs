@@ -12,6 +12,10 @@ public class DG_ItemsDatabase : MonoBehaviour {
         [Header("--------------------------------------")]
         public string ItemName;
         public Sprite Icon;
+<<<<<<< .merge_file_a11876
+=======
+        public int LocalizationID;
+>>>>>>> .merge_file_a09476
         public Color[] ColorVariations;
     }
 

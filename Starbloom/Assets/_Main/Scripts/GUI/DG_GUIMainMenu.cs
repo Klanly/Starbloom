@@ -124,6 +124,13 @@ public class DG_GUIMainMenu : Photon.MonoBehaviour
         DG_CharacterLink CL = newPlayerObject.GetComponent<DG_CharacterLink>();
         CL.ActivatePlayer();
 
+<<<<<<< .merge_file_a14060
+=======
+        if (QuickFind.Farm.PlayerCharacters[QuickFind.NetworkSync.PlayerCharacterID].Name == string.Empty)
+            QuickFind.Farm.PlayerCharacters[QuickFind.NetworkSync.PlayerCharacterID].Name = "Default Name " + QuickFind.NetworkSync.PlayerCharacterID.ToString();
+        if (QuickFind.Farm.FarmName == string.Empty)
+            QuickFind.Farm.FarmName = "Default Farm Name";
+>>>>>>> .merge_file_a08076
 
         MainMenuCam.enabled = false;
         QuickFind.PlayerCam.MainCam.enabled = true;
@@ -142,7 +149,11 @@ public class DG_GUIMainMenu : Photon.MonoBehaviour
         QuickFind.GUI_Inventory.UpdateInventoryVisuals();
         QuickFind.GUI_Inventory.SetHotbarSlot(QuickFind.GUI_Inventory.HotbarSlots[0]);
 
+<<<<<<< .merge_file_a14060
         QuickFind.NetworkSync.SetSelfInScene(QuickFind.SceneList.GetSceneIDByString(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name));
+=======
+        QuickFind.NetworkSync.SetSelfInScene(QuickFind.SceneList.GetSceneIndexByString(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name));
+>>>>>>> .merge_file_a08076
 
         QuickFind.NetworkObjectManager.GenerateObjectData();
         QuickFind.GUI_MainOverview.SetMoneyValue(0, QuickFind.Farm.SharedMoney, true);

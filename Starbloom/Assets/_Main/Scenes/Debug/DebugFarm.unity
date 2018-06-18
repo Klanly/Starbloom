@@ -38,7 +38,11 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
+<<<<<<< .merge_file_a09068
   m_IndirectSpecularColor: {r: 0.16096501, g: 0.27260903, b: 0.47426397, a: 1}
+=======
+  m_IndirectSpecularColor: {r: 0.14469883, g: 0.23481964, b: 0.37361845, a: 1}
+>>>>>>> .merge_file_a16132
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -194,7 +198,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 367790104}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+<<<<<<< .merge_file_a09068
   m_LocalPosition: {x: 0, y: 2.21, z: 8}
+=======
+  m_LocalPosition: {x: -46, y: 2.21, z: 9}
+>>>>>>> .merge_file_a16132
   m_LocalScale: {x: 1, y: 1, z: 3}
   m_Children: []
   m_Father: {fileID: 0}
@@ -252,7 +260,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 421630493}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+<<<<<<< .merge_file_a09068
   m_LocalPosition: {x: -3.43, y: 1.703, z: 7.57}
+=======
+  m_LocalPosition: {x: -49.4, y: 1.703, z: 7.57}
+>>>>>>> .merge_file_a16132
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1847378179}
@@ -4547,7 +4559,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1449494764}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+<<<<<<< .merge_file_a09068
   m_LocalPosition: {x: -2, y: 4, z: 12}
+=======
+  m_LocalPosition: {x: -48, y: 4, z: 12}
+>>>>>>> .merge_file_a16132
   m_LocalScale: {x: 7, y: 5, z: 5}
   m_Children:
   - {fileID: 1804816448}
@@ -5058,6 +5074,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SceneString: DebugHouse
   PortalValue: 0
+<<<<<<< .merge_file_a09068
+=======
+  Owner: 0
+>>>>>>> .merge_file_a16132
 --- !u!114 &1804816453
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5187,6 +5207,7 @@ MonoBehaviour:
   uvRotation: 0
   meshfilter: {fileID: 1972583345}
   controlPoints:
+<<<<<<< .merge_file_a09068
   - {x: 135.58861, y: 2.5022888, z: 149.9941, w: 5.1259913}
   - {x: 131.68292, y: 3.2814493, z: 142.8964, w: 16.047117}
   - {x: 121.47612, y: 3.2814493, z: 142.96173, w: 16.021408}
@@ -5200,6 +5221,21 @@ MonoBehaviour:
   - {x: 94.1096, y: 3.3750403, z: 113.4698, w: 7.289459}
   - {x: 94.32497, y: 1.4126807, z: 112.091324, w: 6.409331}
   - {x: 94.51494, y: 1.0382504, z: 106.030075, w: 8.316817}
+=======
+  - {x: 135.58861, y: 2.5038602, z: 149.99413, w: 5.1259913}
+  - {x: 131.68297, y: 3.2816498, z: 142.89647, w: 16.047117}
+  - {x: 121.47609, y: 3.2814555, z: 142.96184, w: 16.021408}
+  - {x: 116.43622, y: 3.2814639, z: 146.5092, w: 17.692709}
+  - {x: 111.63541, y: 3.2816412, z: 148.88995, w: 11.488643}
+  - {x: 105.19841, y: 3.2816308, z: 148.46272, w: 10.421213}
+  - {x: 97.63191, y: 3.2814436, z: 141.7068, w: 8.18091}
+  - {x: 94.92331, y: 3.2816565, z: 136.54733, w: 8.8789}
+  - {x: 94.528984, y: 3.281331, z: 130.42485, w: 8.554539}
+  - {x: 94.35884, y: 3.2814717, z: 118.41382, w: 8.462167}
+  - {x: 94.10959, y: 3.3750412, z: 113.469795, w: 7.289459}
+  - {x: 94.32497, y: 1.4129274, z: 112.09127, w: 6.409331}
+  - {x: 94.51494, y: 1.0383663, z: 106.030075, w: 8.316817}
+>>>>>>> .merge_file_a16132
   controlPointsRotations:
   - {x: 0, y: 0, z: 0, w: 1}
   - {x: 0, y: 0, z: 0, w: 1}
@@ -8450,7 +8486,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2015903919}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+<<<<<<< .merge_file_a09068
   m_LocalPosition: {x: -8.29, y: 2.15, z: 10.05}
+=======
+  m_LocalPosition: {x: -55, y: 2.15, z: 10.05}
+>>>>>>> .merge_file_a16132
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1482307243}

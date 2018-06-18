@@ -24,7 +24,14 @@ public class DuplicateCatcher : MonoBehaviour
         ShopsCompendium,
         CraftingCompendium,
         PrefabPool,
+<<<<<<< .merge_file_a18356
         FXCompendium
+=======
+        FXCompendium,
+        Enemy,
+        MusicObject,
+        SFXObject,
+>>>>>>> .merge_file_a13632
     }
 
     public DatabaseType DBType;
@@ -95,6 +102,12 @@ public class DuplicateCatcher : MonoBehaviour
             case DatabaseType.CraftingCompendium: { GD.ClassType = typeof(DG_CraftingDictionary); GD.TransformReference = QuickFindInEditor.GetCraftingCompendium().transform; GD.ObjectReference = GD.TransformReference.GetComponent<DG_CraftingDictionary>(); GD.ItemClassType = typeof(DG_CraftingDictionaryItem); } break;
             case DatabaseType.PrefabPool: { GD.ClassType = typeof(DG_PrefabPoolDictionary); GD.TransformReference = QuickFindInEditor.GetPrefabPool().transform; GD.ObjectReference = GD.TransformReference.GetComponent<DG_PrefabPoolDictionary>(); GD.ItemClassType = typeof(DG_PrefabPoolItem); } break;
             case DatabaseType.FXCompendium: { GD.ClassType = typeof(DG_FXHandler); GD.TransformReference = QuickFindInEditor.GetFXHandler().transform; GD.ObjectReference = GD.TransformReference.GetComponent<DG_FXHandler>(); GD.ItemClassType = typeof(DG_FXObject); } break;
+<<<<<<< .merge_file_a18356
+=======
+            case DatabaseType.Enemy: { GD.ClassType = typeof(DG_EnemyDatabase); GD.TransformReference = QuickFindInEditor.GetEnemyDatabase().transform; GD.ObjectReference = GD.TransformReference.GetComponent<DG_EnemyDatabase>(); GD.ItemClassType = typeof(DG_EnemyObject); } break;
+            case DatabaseType.MusicObject: { GD.ClassType = typeof(DG_MusicDatabase); GD.TransformReference = QuickFindInEditor.GetMusicDatabase().transform; GD.ObjectReference = GD.TransformReference.GetComponent<DG_MusicDatabase>(); GD.ItemClassType = typeof(DG_MusicObject); } break;
+            case DatabaseType.SFXObject: { GD.ClassType = typeof(DG_SFXDatabase); GD.TransformReference = QuickFindInEditor.GetSFXDatabase().transform; GD.ObjectReference = GD.TransformReference.GetComponent<DG_SFXDatabase>(); GD.ItemClassType = typeof(DG_SFXObject); } break;
+>>>>>>> .merge_file_a13632
         }
         return GD;
     }
@@ -114,6 +127,12 @@ public class DuplicateCatcher : MonoBehaviour
             case DatabaseType.CraftingCompendium: { TO.ClassType = typeof(DG_CraftingDictionaryItem); TO.ObjectReference = T.GetComponent<DG_CraftingDictionaryItem>(); } break;
             case DatabaseType.PrefabPool: { TO.ClassType = typeof(DG_PrefabPoolItem); TO.ObjectReference = T.GetComponent<DG_PrefabPoolItem>(); } break;
             case DatabaseType.FXCompendium: { TO.ClassType = typeof(DG_FXObject); TO.ObjectReference = T.GetComponent<DG_FXObject>(); } break;
+<<<<<<< .merge_file_a18356
+=======
+            case DatabaseType.Enemy: { TO.ClassType = typeof(DG_EnemyObject); TO.ObjectReference = T.GetComponent<DG_EnemyObject>(); } break;
+            case DatabaseType.MusicObject: { TO.ClassType = typeof(DG_MusicObject); TO.ObjectReference = T.GetComponent<DG_MusicObject>(); } break;
+            case DatabaseType.SFXObject: { TO.ClassType = typeof(DG_SFXObject); TO.ObjectReference = T.GetComponent<DG_SFXObject>(); } break;
+>>>>>>> .merge_file_a13632
         }
         return TO;
     }

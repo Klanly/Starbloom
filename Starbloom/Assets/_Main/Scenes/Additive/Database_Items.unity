@@ -185,7 +185,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 62126
+  instanceID: 2449168
 --- !u!1 &18402820
 GameObject:
   m_ObjectHideFlags: 0
@@ -258,7 +258,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 62134
+  instanceID: 2449176
 --- !u!1 &37325301
 GameObject:
   m_ObjectHideFlags: 0
@@ -333,7 +333,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 62142
+  instanceID: 2449184
 --- !u!1 &41691071
 GameObject:
   m_ObjectHideFlags: 0
@@ -376,7 +376,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 62148
+  instanceID: 2449190
 --- !u!114 &41691074
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -450,6 +450,8 @@ MonoBehaviour:
   GrowthStages: []
   isBreakable: 0
   EnvironmentValues: []
+  isWeapon: 0
+  WeaponValues: []
   HarvestableItem: 0
   HarvestItemIndex: 0
   HarvestClusterIndex: 0
@@ -496,7 +498,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 62156
+  instanceID: 2449198
 --- !u!114 &49813771
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -565,6 +567,8 @@ MonoBehaviour:
     ActivateableTypeRequired: 1
     QualityLevelRequired: 0
     ObjectHealth: 15
+  isWeapon: 0
+  WeaponValues: []
   HarvestableItem: 1
   HarvestItemIndex: 29
   HarvestClusterIndex: 0
@@ -641,7 +645,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 62166
+  instanceID: 2449208
 --- !u!1 &62073040
 GameObject:
   m_ObjectHideFlags: 0
@@ -714,7 +718,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 62174
+  instanceID: 2449216
 --- !u!1 &73578925
 GameObject:
   m_ObjectHideFlags: 0
@@ -767,7 +771,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 10
-  instanceID: 62180
+  instanceID: 2449222
 --- !u!4 &73578928
 Transform:
   m_ObjectHideFlags: 0
@@ -853,7 +857,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 62190
+  instanceID: 2449232
 --- !u!1 &76152370
 GameObject:
   m_ObjectHideFlags: 0
@@ -927,7 +931,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 62198
+  instanceID: 2449240
 --- !u!1 &81693793
 GameObject:
   m_ObjectHideFlags: 0
@@ -1000,7 +1004,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 62206
+  instanceID: 2449248
 --- !u!1 &88464733
 GameObject:
   m_ObjectHideFlags: 0
@@ -1068,7 +1072,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 6
-  instanceID: 62214
+  instanceID: 2449256
 --- !u!1 &97403835
 GameObject:
   m_ObjectHideFlags: 0
@@ -1141,7 +1145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 62222
+  instanceID: 2449264
 --- !u!1 &97753043
 GameObject:
   m_ObjectHideFlags: 0
@@ -1244,24 +1248,29 @@ MonoBehaviour:
   - {fileID: 2007011314}
   - {fileID: 1893027773}
   - {fileID: 684466176}
-  ListCount: 38
+  - {fileID: 1171818499}
+  ListCount: 39
   PreMagneticObjectWaitTimer: 0.5
   GenericIconList:
   - ItemName: TextColor
     Icon: {fileID: 0}
+    LocalizationID: 0
     ColorVariations:
     - {r: 1, g: 1, b: 1, a: 1}
     - {r: 1, g: 0, b: 0, a: 1}
   - ItemName: Health
     Icon: {fileID: 21300000, guid: da59f902e286d81439e8e50352c6e57f, type: 3}
+    LocalizationID: 61
     ColorVariations:
     - {r: 0.12230325, g: 1, b: 0, a: 1}
   - ItemName: Energy
     Icon: {fileID: 21300000, guid: 07bcd70a59bb1d447a9d3fda59dcb535, type: 3}
+    LocalizationID: 62
     ColorVariations:
     - {r: 1, g: 0.9459826, b: 0, a: 1}
   - ItemName: QualityMarker
     Icon: {fileID: 21300000, guid: 12935799fa2be3a4696e3b441d07296a, type: 3}
+    LocalizationID: 0
     ColorVariations:
     - {r: 0.4056604, g: 0.4056604, b: 0.4056604, a: 1}
     - {r: 0.754717, g: 0.4448485, b: 0.11747954, a: 1}
@@ -1269,24 +1278,32 @@ MonoBehaviour:
     - {r: 0.42986825, g: 0.85041386, b: 0.8679245, a: 1}
   - ItemName: Farming
     Icon: {fileID: 21300000, guid: 70a97278c74a1d14591a9955e9aedb20, type: 3}
+    LocalizationID: 0
     ColorVariations:
     - {r: 0.19607843, g: 0.65882355, b: 0.25576404, a: 1}
     - {r: 0.43529412, g: 0.8509804, b: 0.50633126, a: 1}
   - ItemName: Mining
     Icon: {fileID: 21300000, guid: bf8be130f9a05104d9f0cff89c2d85e8, type: 3}
+    LocalizationID: 0
     ColorVariations:
     - {r: 0.65882355, g: 0.38518426, b: 0.19607843, a: 1}
     - {r: 0.8509804, g: 0.64239216, b: 0.43529412, a: 1}
   - ItemName: Foraging
     Icon: {fileID: 21300000, guid: 229ea83b2432ff244ac5171efd858266, type: 3}
+    LocalizationID: 0
     ColorVariations:
     - {r: 0.65882355, g: 0.19607843, b: 0.2431605, a: 1}
     - {r: 0.8509804, g: 0.43529412, b: 0.6170318, a: 1}
   - ItemName: Fishing
     Icon: {fileID: 21300000, guid: fea8373730235b6489cdfaf7f1252d55, type: 3}
+    LocalizationID: 0
     ColorVariations:
     - {r: 0.19607843, g: 0.34426618, b: 0.65882355, a: 1}
     - {r: 0.43654326, g: 0.56938654, b: 0.8490566, a: 1}
+  - ItemName: Slashing
+    Icon: {fileID: 21300000, guid: 701249558f2f3b84eb42f7e6123b581c, type: 3}
+    LocalizationID: 137
+    ColorVariations: []
 --- !u!4 &98179532
 Transform:
   m_ObjectHideFlags: 0
@@ -1308,6 +1325,7 @@ Transform:
   - {fileID: 1405183628}
   - {fileID: 97753044}
   - {fileID: 113020235}
+  - {fileID: 1107126605}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1392,7 +1410,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 62242
+  instanceID: 2449284
 --- !u!4 &102032474
 Transform:
   m_ObjectHideFlags: 0
@@ -1478,7 +1496,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 62252
+  instanceID: 2449294
 --- !u!1 &108958417
 GameObject:
   m_ObjectHideFlags: 0
@@ -1551,7 +1569,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 62260
+  instanceID: 2449302
 --- !u!1 &109069266
 GameObject:
   m_ObjectHideFlags: 0
@@ -1624,7 +1642,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 62268
+  instanceID: 2449310
 --- !u!1 &111903024
 GameObject:
   m_ObjectHideFlags: 0
@@ -1697,7 +1715,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 62276
+  instanceID: 2449318
 --- !u!1 &113020234
 GameObject:
   m_ObjectHideFlags: 0
@@ -1800,7 +1818,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 62288
+  instanceID: 2449330
 --- !u!1 &118947720
 GameObject:
   m_ObjectHideFlags: 0
@@ -1875,7 +1893,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 62296
+  instanceID: 2449338
 --- !u!1 &125984543
 GameObject:
   m_ObjectHideFlags: 0
@@ -1918,7 +1936,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 62302
+  instanceID: 2449344
 --- !u!114 &125984546
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1949,6 +1967,79 @@ MonoBehaviour:
     stringEntry: 
   - Language: 6
     stringEntry: 
+--- !u!1 &142690107
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 142690110}
+  - component: {fileID: 142690109}
+  - component: {fileID: 142690108}
+  m_Layer: 0
+  m_Name: 137 - Slash Dama
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &142690108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 142690107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 766834c6f2c9cf243ab3296f4a43ade1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DatabaseID: 137
+  LockItem: 1
+  Name: Slash Dama
+  DevNotes: 
+  TextValues:
+  - Language: 0
+    stringEntry: Slash Damage
+  - Language: 1
+    stringEntry: 
+  - Language: 2
+    stringEntry: 
+  - Language: 3
+    stringEntry: 
+  - Language: 4
+    stringEntry: 
+  - Language: 5
+    stringEntry: 
+  - Language: 6
+    stringEntry: 
+--- !u!114 &142690109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 142690107}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 3
+  instanceID: 2449352
+--- !u!4 &142690110
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 142690107}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1069764472}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &144357548
 GameObject:
   m_ObjectHideFlags: 0
@@ -2021,7 +2112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 62312
+  instanceID: 2449362
 --- !u!1 &146695317
 GameObject:
   m_ObjectHideFlags: 0
@@ -2094,7 +2185,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 62320
+  instanceID: 2449370
 --- !u!1 &148355567
 GameObject:
   m_ObjectHideFlags: 0
@@ -2201,7 +2292,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 62332
+  instanceID: 2449382
 --- !u!1 &180225645
 GameObject:
   m_ObjectHideFlags: 0
@@ -2344,7 +2435,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 62348
+  instanceID: 2449398
 --- !u!1 &206279743
 GameObject:
   m_ObjectHideFlags: 0
@@ -2417,7 +2508,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 62356
+  instanceID: 2449406
 --- !u!1 &207424871
 GameObject:
   m_ObjectHideFlags: 0
@@ -2490,7 +2581,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 62364
+  instanceID: 2449414
 --- !u!1 &233886828
 GameObject:
   m_ObjectHideFlags: 0
@@ -2563,7 +2654,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 62372
+  instanceID: 2449422
 --- !u!1 &237396867
 GameObject:
   m_ObjectHideFlags: 0
@@ -2636,7 +2727,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 62380
+  instanceID: 2449430
 --- !u!1 &242617541
 GameObject:
   m_ObjectHideFlags: 0
@@ -2709,7 +2800,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 62388
+  instanceID: 2449438
 --- !u!1 &242946780
 GameObject:
   m_ObjectHideFlags: 0
@@ -2754,6 +2845,36 @@ MonoBehaviour:
   ItemCatagoryList:
   - {fileID: 1879222549}
   ListCount: 1
+--- !u!1 &243703262
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 243703263}
+  m_Layer: 0
+  m_Name: Scenes
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &243703263
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 243703262}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 256253378}
+  - {fileID: 1893365172}
+  m_Father: {fileID: 1337974348}
+  m_RootOrder: 21
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &244803569
 GameObject:
   m_ObjectHideFlags: 0
@@ -2826,7 +2947,80 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 62402
+  instanceID: 2449456
+--- !u!1 &256253377
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 256253378}
+  - component: {fileID: 256253379}
+  - component: {fileID: 256253380}
+  m_Layer: 0
+  m_Name: 132 - Farm
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &256253378
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 256253377}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 243703263}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &256253379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 256253377}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 3
+  instanceID: 2449462
+--- !u!114 &256253380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 256253377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 766834c6f2c9cf243ab3296f4a43ade1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DatabaseID: 132
+  LockItem: 1
+  Name: Farm
+  DevNotes: 8 - Herb_PoisifferousRoiler
+  TextValues:
+  - Language: 0
+    stringEntry: Farm
+  - Language: 1
+    stringEntry: 
+  - Language: 2
+    stringEntry: 
+  - Language: 3
+    stringEntry: 
+  - Language: 4
+    stringEntry: 
+  - Language: 5
+    stringEntry: 
+  - Language: 6
+    stringEntry: 
 --- !u!1 &257731751
 GameObject:
   m_ObjectHideFlags: 0
@@ -2929,7 +3123,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 62414
+  instanceID: 2449476
 --- !u!1 &275336175
 GameObject:
   m_ObjectHideFlags: 0
@@ -2996,6 +3190,8 @@ MonoBehaviour:
     ActivateableTypeRequired: 0
     QualityLevelRequired: 0
     ObjectHealth: 0
+  isWeapon: 0
+  WeaponValues: []
   HarvestableItem: 0
   HarvestItemIndex: 0
   HarvestClusterIndex: 0
@@ -3012,7 +3208,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 62420
+  instanceID: 2449482
 --- !u!4 &275336178
 Transform:
   m_ObjectHideFlags: 0
@@ -3131,7 +3327,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 62434
+  instanceID: 2449496
 --- !u!1 &337637629
 GameObject:
   m_ObjectHideFlags: 0
@@ -3204,7 +3400,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 62442
+  instanceID: 2449504
 --- !u!1 &344529163
 GameObject:
   m_ObjectHideFlags: 0
@@ -3266,7 +3462,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 8
-  instanceID: 62450
+  instanceID: 2449512
 --- !u!1 &359713187
 GameObject:
   m_ObjectHideFlags: 0
@@ -3355,7 +3551,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 62460
+  instanceID: 2449522
 --- !u!4 &369462728
 Transform:
   m_ObjectHideFlags: 0
@@ -3441,7 +3637,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 62470
+  instanceID: 2449532
 --- !u!1 &393570843
 GameObject:
   m_ObjectHideFlags: 0
@@ -3514,7 +3710,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 62478
+  instanceID: 2449540
 --- !u!1 &412881067
 GameObject:
   m_ObjectHideFlags: 0
@@ -3587,7 +3783,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 62486
+  instanceID: 2449548
 --- !u!1 &413799158
 GameObject:
   m_ObjectHideFlags: 0
@@ -3653,6 +3849,8 @@ MonoBehaviour:
     ActivateableTypeRequired: 0
     QualityLevelRequired: 0
     ObjectHealth: 15
+  isWeapon: 0
+  WeaponValues: []
   HarvestableItem: 0
   HarvestItemIndex: 0
   HarvestClusterIndex: 0
@@ -3669,7 +3867,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 62492
+  instanceID: 2449554
 --- !u!4 &413799161
 Transform:
   m_ObjectHideFlags: 0
@@ -3789,7 +3987,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 62506
+  instanceID: 2449568
 --- !u!1 &455383455
 GameObject:
   m_ObjectHideFlags: 0
@@ -3862,7 +4060,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 62514
+  instanceID: 2449576
+--- !u!1 &469358568
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 469358569}
+  m_Layer: 0
+  m_Name: Weapon Descriptions
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &469358569
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 469358568}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1248245484}
+  m_Father: {fileID: 1337974348}
+  m_RootOrder: 23
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &472164502
 GameObject:
   m_ObjectHideFlags: 0
@@ -3935,7 +4162,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 62522
+  instanceID: 2449588
 --- !u!1 &477749471
 GameObject:
   m_ObjectHideFlags: 0
@@ -3978,7 +4205,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 62528
+  instanceID: 2449594
 --- !u!114 &477749474
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4052,6 +4279,8 @@ MonoBehaviour:
   GrowthStages: []
   isBreakable: 0
   EnvironmentValues: []
+  isWeapon: 0
+  WeaponValues: []
   HarvestableItem: 0
   HarvestItemIndex: 0
   HarvestClusterIndex: 0
@@ -4128,7 +4357,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 62538
+  instanceID: 2449604
 --- !u!1 &496052511
 GameObject:
   m_ObjectHideFlags: 0
@@ -4201,7 +4430,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 62546
+  instanceID: 2449612
 --- !u!1 &496079699
 GameObject:
   m_ObjectHideFlags: 0
@@ -4261,7 +4490,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 10
-  instanceID: 62552
+  instanceID: 2449618
 --- !u!4 &496079702
 Transform:
   m_ObjectHideFlags: 0
@@ -4273,6 +4502,36 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 440850630}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &510014712
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 510014713}
+  m_Layer: 0
+  m_Name: Type
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &510014713
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 510014712}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1460868359}
+  - {fileID: 1326798925}
+  m_Father: {fileID: 2068794780}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &523401138
@@ -4385,6 +4644,8 @@ MonoBehaviour:
   GrowthStages: []
   isBreakable: 0
   EnvironmentValues: []
+  isWeapon: 0
+  WeaponValues: []
   HarvestableItem: 0
   HarvestItemIndex: 0
   HarvestClusterIndex: 0
@@ -4401,7 +4662,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 62562
+  instanceID: 2449632
 --- !u!1 &527002840
 GameObject:
   m_ObjectHideFlags: 0
@@ -4474,7 +4735,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 62570
+  instanceID: 2449640
 --- !u!1 &568888680
 GameObject:
   m_ObjectHideFlags: 0
@@ -4529,7 +4790,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 6
-  instanceID: 62576
+  instanceID: 2449646
 --- !u!4 &568888683
 Transform:
   m_ObjectHideFlags: 0
@@ -4646,7 +4907,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 62590
+  instanceID: 2449660
 --- !u!1 &604142826
 GameObject:
   m_ObjectHideFlags: 0
@@ -4721,7 +4982,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 62598
+  instanceID: 2449668
 --- !u!1 &607181675
 GameObject:
   m_ObjectHideFlags: 0
@@ -4794,7 +5055,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 62606
+  instanceID: 2449676
 --- !u!1 &619036614
 GameObject:
   m_ObjectHideFlags: 0
@@ -4884,6 +5145,8 @@ MonoBehaviour:
   GrowthStages: []
   isBreakable: 0
   EnvironmentValues: []
+  isWeapon: 0
+  WeaponValues: []
   HarvestableItem: 1
   HarvestItemIndex: 8
   HarvestClusterIndex: 0
@@ -4900,7 +5163,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 62612
+  instanceID: 2449682
 --- !u!4 &619036617
 Transform:
   m_ObjectHideFlags: 0
@@ -5046,6 +5309,8 @@ MonoBehaviour:
   GrowthStages: []
   isBreakable: 0
   EnvironmentValues: []
+  isWeapon: 0
+  WeaponValues: []
   HarvestableItem: 0
   HarvestItemIndex: 0
   HarvestClusterIndex: 0
@@ -5062,7 +5327,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 62626
+  instanceID: 2449696
 --- !u!1 &631133481
 GameObject:
   m_ObjectHideFlags: 0
@@ -5153,6 +5418,8 @@ MonoBehaviour:
   GrowthStages: []
   isBreakable: 0
   EnvironmentValues: []
+  isWeapon: 0
+  WeaponValues: []
   HarvestableItem: 0
   HarvestItemIndex: 0
   HarvestClusterIndex: 0
@@ -5169,7 +5436,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 62632
+  instanceID: 2449702
 --- !u!4 &631133484
 Transform:
   m_ObjectHideFlags: 0
@@ -5301,7 +5568,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 62648
+  instanceID: 2449718
 --- !u!1 &664644633
 GameObject:
   m_ObjectHideFlags: 0
@@ -5391,6 +5658,8 @@ MonoBehaviour:
   GrowthStages: []
   isBreakable: 0
   EnvironmentValues: []
+  isWeapon: 0
+  WeaponValues: []
   HarvestableItem: 0
   HarvestItemIndex: 0
   HarvestClusterIndex: 0
@@ -5407,7 +5676,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 62654
+  instanceID: 2449724
 --- !u!4 &664644636
 Transform:
   m_ObjectHideFlags: 0
@@ -5502,9 +5771,16 @@ MonoBehaviour:
   DefaultScale: 17
   isTool: 0
   ToolQualityLevels: []
-  isItem: 0
-  ItemCat: 0
-  ItemQualities: []
+  isItem: 1
+  ItemCat: 6
+  ItemQualities:
+  - Quality: 0
+    AdjustsHealth: 0
+    HealthAdjustValue: 0
+    AdjustsEnergy: 0
+    EnergyAdjustValue: 0
+    BuyPrice: 0
+    SellPrice: 100
   isStorage: 1
   StorageList:
   - TotalStorageSlots: 36
@@ -5516,6 +5792,8 @@ MonoBehaviour:
   GrowthStages: []
   isBreakable: 0
   EnvironmentValues: []
+  isWeapon: 0
+  WeaponValues: []
   HarvestableItem: 0
   HarvestItemIndex: 0
   HarvestClusterIndex: 0
@@ -5532,7 +5810,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 62666
+  instanceID: 2449736
 --- !u!4 &676053779
 Transform:
   m_ObjectHideFlags: 0
@@ -5618,7 +5896,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 62676
+  instanceID: 2449746
 --- !u!1 &684466175
 GameObject:
   m_ObjectHideFlags: 0
@@ -5668,9 +5946,16 @@ MonoBehaviour:
   DefaultScale: 1
   isTool: 0
   ToolQualityLevels: []
-  isItem: 0
-  ItemCat: 0
-  ItemQualities: []
+  isItem: 1
+  ItemCat: 6
+  ItemQualities:
+  - Quality: 0
+    AdjustsHealth: 0
+    HealthAdjustValue: 0
+    AdjustsEnergy: 0
+    EnergyAdjustValue: 0
+    BuyPrice: 0
+    SellPrice: 30
   isStorage: 0
   StorageList: []
   isGrowableItem: 0
@@ -5681,6 +5966,8 @@ MonoBehaviour:
   GrowthStages: []
   isBreakable: 0
   EnvironmentValues: []
+  isWeapon: 0
+  WeaponValues: []
   HarvestableItem: 0
   HarvestItemIndex: 0
   HarvestClusterIndex: 0
@@ -5697,7 +5984,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 62682
+  instanceID: 2449752
 --- !u!4 &684466178
 Transform:
   m_ObjectHideFlags: 0
@@ -5783,7 +6070,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 62692
+  instanceID: 2449762
 --- !u!1 &702845925
 GameObject:
   m_ObjectHideFlags: 0
@@ -5843,7 +6130,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 62698
+  instanceID: 2449768
 --- !u!4 &702845928
 Transform:
   m_ObjectHideFlags: 0
@@ -5916,7 +6203,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 62706
+  instanceID: 2449776
 --- !u!4 &729905715
 Transform:
   m_ObjectHideFlags: 0
@@ -6033,7 +6320,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 62720
+  instanceID: 2449790
 --- !u!1 &737240873
 GameObject:
   m_ObjectHideFlags: 0
@@ -6106,7 +6393,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 62728
+  instanceID: 2449798
 --- !u!1 &769028652
 GameObject:
   m_ObjectHideFlags: 0
@@ -6217,6 +6504,8 @@ MonoBehaviour:
   GrowthStages: []
   isBreakable: 0
   EnvironmentValues: []
+  isWeapon: 0
+  WeaponValues: []
   HarvestableItem: 0
   HarvestItemIndex: 0
   HarvestClusterIndex: 0
@@ -6233,7 +6522,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 62736
+  instanceID: 2449806
 --- !u!1 &782780638
 GameObject:
   m_ObjectHideFlags: 0
@@ -6276,7 +6565,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 62742
+  instanceID: 2449812
 --- !u!114 &782780641
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6379,7 +6668,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 62752
+  instanceID: 2449822
 --- !u!1 &828965505
 GameObject:
   m_ObjectHideFlags: 0
@@ -6452,7 +6741,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 62760
+  instanceID: 2449830
+--- !u!1 &832866513
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 832866514}
+  m_Layer: 0
+  m_Name: Weapons
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &832866514
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 832866513}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1317715482}
+  m_Father: {fileID: 1337974348}
+  m_RootOrder: 22
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &839248947
 GameObject:
   m_ObjectHideFlags: 0
@@ -6525,7 +6843,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 62768
+  instanceID: 2449842
 --- !u!1 &846776802
 GameObject:
   m_ObjectHideFlags: 0
@@ -6598,7 +6916,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 62776
+  instanceID: 2449850
 --- !u!1 &862514934
 GameObject:
   m_ObjectHideFlags: 0
@@ -6658,7 +6976,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 10
-  instanceID: 62782
+  instanceID: 2449856
 --- !u!4 &862514937
 Transform:
   m_ObjectHideFlags: 0
@@ -6726,7 +7044,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 6
-  instanceID: 62790
+  instanceID: 2449864
 --- !u!4 &863140314
 Transform:
   m_ObjectHideFlags: 0
@@ -6782,7 +7100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 62798
+  instanceID: 2449872
 --- !u!114 &869247367
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6885,7 +7203,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 62808
+  instanceID: 2449882
 --- !u!1 &889436591
 GameObject:
   m_ObjectHideFlags: 0
@@ -6928,7 +7246,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 62814
+  instanceID: 2449888
 --- !u!114 &889436594
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7002,6 +7320,8 @@ MonoBehaviour:
   GrowthStages: []
   isBreakable: 0
   EnvironmentValues: []
+  isWeapon: 0
+  WeaponValues: []
   HarvestableItem: 0
   HarvestItemIndex: 0
   HarvestClusterIndex: 0
@@ -7078,7 +7398,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 62824
+  instanceID: 2449898
 --- !u!1 &907308529
 GameObject:
   m_ObjectHideFlags: 0
@@ -7169,7 +7489,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 62836
+  instanceID: 2449910
 --- !u!114 &911112104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7243,6 +7563,8 @@ MonoBehaviour:
   GrowthStages: []
   isBreakable: 0
   EnvironmentValues: []
+  isWeapon: 0
+  WeaponValues: []
   HarvestableItem: 0
   HarvestItemIndex: 0
   HarvestClusterIndex: 0
@@ -7351,7 +7673,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 62850
+  instanceID: 2449924
 --- !u!1 &946834387
 GameObject:
   m_ObjectHideFlags: 0
@@ -7424,7 +7746,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 62858
+  instanceID: 2449932
 --- !u!1 &947853066
 GameObject:
   m_ObjectHideFlags: 0
@@ -7497,7 +7819,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 62866
+  instanceID: 2449940
 --- !u!1 &983058082
 GameObject:
   m_ObjectHideFlags: 0
@@ -7557,7 +7879,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 62872
+  instanceID: 2449946
 --- !u!4 &983058085
 Transform:
   m_ObjectHideFlags: 0
@@ -7643,7 +7965,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 62882
+  instanceID: 2449956
 --- !u!1 &1001442999
 GameObject:
   m_ObjectHideFlags: 0
@@ -7716,7 +8038,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 62890
+  instanceID: 2449964
 --- !u!1 &1026884239
 GameObject:
   m_ObjectHideFlags: 0
@@ -7802,6 +8124,8 @@ MonoBehaviour:
     ActivateableTypeRequired: 1
     QualityLevelRequired: 0
     ObjectHealth: 15
+  isWeapon: 0
+  WeaponValues: []
   HarvestableItem: 1
   HarvestItemIndex: 34
   HarvestClusterIndex: 0
@@ -7818,7 +8142,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 62896
+  instanceID: 2449970
 --- !u!4 &1026884242
 Transform:
   m_ObjectHideFlags: 0
@@ -7886,7 +8210,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 6
-  instanceID: 62904
+  instanceID: 2449978
 --- !u!4 &1037744386
 Transform:
   m_ObjectHideFlags: 0
@@ -7972,7 +8296,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 62914
+  instanceID: 2449988
 --- !u!1 &1053465270
 GameObject:
   m_ObjectHideFlags: 0
@@ -8045,7 +8369,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 62922
+  instanceID: 2449996
 --- !u!1 &1069764471
 GameObject:
   m_ObjectHideFlags: 0
@@ -8077,6 +8401,7 @@ Transform:
   - {fileID: 1071378048}
   - {fileID: 1988801391}
   - {fileID: 1705398620}
+  - {fileID: 142690110}
   m_Father: {fileID: 1337974348}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8122,7 +8447,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 62932
+  instanceID: 2450006
 --- !u!114 &1071378050
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8225,7 +8550,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 62942
+  instanceID: 2450016
 --- !u!1 &1087104903
 GameObject:
   m_ObjectHideFlags: 0
@@ -8298,7 +8623,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 62950
+  instanceID: 2450024
 --- !u!1 &1101497691
 GameObject:
   m_ObjectHideFlags: 0
@@ -8332,6 +8657,35 @@ Transform:
   - {fileID: 947853067}
   m_Father: {fileID: 1337974348}
   m_RootOrder: 17
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1107126604
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1107126605}
+  m_Layer: 0
+  m_Name: Weapons
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1107126605
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1107126604}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1171818501}
+  m_Father: {fileID: 98179532}
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1117581183
 GameObject:
@@ -8405,7 +8759,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 62962
+  instanceID: 2450040
 --- !u!1 &1118554396
 GameObject:
   m_ObjectHideFlags: 0
@@ -8465,7 +8819,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 62968
+  instanceID: 2450046
 --- !u!4 &1118554399
 Transform:
   m_ObjectHideFlags: 0
@@ -8551,7 +8905,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 62978
+  instanceID: 2450056
 --- !u!1 &1133565266
 GameObject:
   m_ObjectHideFlags: 0
@@ -8684,7 +9038,105 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 62994
+  instanceID: 2450072
+--- !u!1 &1171818498
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1171818501}
+  - component: {fileID: 1171818500}
+  - component: {fileID: 1171818499}
+  m_Layer: 0
+  m_Name: 38 - Iron Sword
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1171818499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1171818498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc1a46eca4a35e5498f3df297015210f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DatabaseUsesNameInsteadOfPrefab: 0
+  Name: Iron Sword
+  MaxStackSize: 1
+  ActivateableType: 7
+  DestroysSoilOnPlacement: 0
+  ToolTipType:
+    GroupType: 3
+    MainLocalizationID: 134
+    SubLocalizationID: 135
+    DescriptionID: 136
+    ContextID: 38
+  DatabaseID: 38
+  LockItem: 1
+  Icon: {fileID: 21300000, guid: 701249558f2f3b84eb42f7e6123b581c, type: 3}
+  ModelPrefab: {fileID: 139746, guid: 294115a70762d224f889f85c52310ddc, type: 2}
+  UsePoolIDForSpawn: 0
+  PoolID: 0
+  DefaultScale: 5
+  isTool: 0
+  ToolQualityLevels: []
+  isItem: 0
+  ItemCat: 0
+  ItemQualities: []
+  isStorage: 0
+  StorageList: []
+  isGrowableItem: 0
+  IsWaterable: 0
+  RequireTilledEarth: 0
+  ResetIndex: 0
+  BreakIndex: 0
+  GrowthStages: []
+  isBreakable: 0
+  EnvironmentValues: []
+  isWeapon: 1
+  WeaponValues:
+  - DamageType: 0
+    EnergyBaseCost: 0
+    ManaCost: 0
+    DamageMin: 2
+    DamageMax: 5
+  HarvestableItem: 0
+  HarvestItemIndex: 0
+  HarvestClusterIndex: 0
+  isWallItem: 0
+--- !u!114 &1171818500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1171818498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 0
+  instanceID: 2450078
+--- !u!4 &1171818501
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1171818498}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1107126605}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1215626842
 GameObject:
   m_ObjectHideFlags: 0
@@ -8758,7 +9210,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 63004
+  instanceID: 2450090
 --- !u!114 &1228010045
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8827,6 +9279,8 @@ MonoBehaviour:
     ActivateableTypeRequired: 1
     QualityLevelRequired: 0
     ObjectHealth: 15
+  isWeapon: 0
+  WeaponValues: []
   HarvestableItem: 1
   HarvestItemIndex: 30
   HarvestClusterIndex: 0
@@ -8903,7 +9357,80 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 63014
+  instanceID: 2450100
+--- !u!1 &1248245481
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1248245484}
+  - component: {fileID: 1248245483}
+  - component: {fileID: 1248245482}
+  m_Layer: 0
+  m_Name: 136 - Iron weapo
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1248245482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1248245481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 766834c6f2c9cf243ab3296f4a43ade1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DatabaseID: 136
+  LockItem: 1
+  Name: Iron weapo
+  DevNotes: 10 - Storage Chest
+  TextValues:
+  - Language: 0
+    stringEntry: Iron weapon from a pre-gun fighting era.  Still very deadly.
+  - Language: 1
+    stringEntry: 
+  - Language: 2
+    stringEntry: 
+  - Language: 3
+    stringEntry: 
+  - Language: 4
+    stringEntry: 
+  - Language: 5
+    stringEntry: 
+  - Language: 6
+    stringEntry: 
+--- !u!114 &1248245483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1248245481}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 3
+  instanceID: 2450106
+--- !u!4 &1248245484
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1248245481}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 469358569}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1254369945
 GameObject:
   m_ObjectHideFlags: 0
@@ -8946,7 +9473,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 63020
+  instanceID: 2450114
 --- !u!114 &1254369948
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9019,6 +9546,8 @@ MonoBehaviour:
   GrowthStages: []
   isBreakable: 0
   EnvironmentValues: []
+  isWeapon: 0
+  WeaponValues: []
   HarvestableItem: 0
   HarvestItemIndex: 0
   HarvestClusterIndex: 0
@@ -9126,7 +9655,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 63034
+  instanceID: 2450128
 --- !u!1 &1290746968
 GameObject:
   m_ObjectHideFlags: 0
@@ -9199,7 +9728,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 63042
+  instanceID: 2450136
 --- !u!1 &1297176232
 GameObject:
   m_ObjectHideFlags: 0
@@ -9291,7 +9820,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 63052
+  instanceID: 2450146
 --- !u!4 &1301492708
 Transform:
   m_ObjectHideFlags: 0
@@ -9340,6 +9869,7 @@ Transform:
   - {fileID: 1995547179}
   - {fileID: 702845928}
   - {fileID: 102032474}
+  - {fileID: 2132218566}
   m_Father: {fileID: 1337974348}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9415,7 +9945,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 63066
+  instanceID: 2450160
 --- !u!1 &1315412316
 GameObject:
   m_ObjectHideFlags: 0
@@ -9488,7 +10018,80 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 63074
+  instanceID: 2450168
+--- !u!1 &1317715479
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1317715482}
+  - component: {fileID: 1317715481}
+  - component: {fileID: 1317715480}
+  m_Layer: 0
+  m_Name: 134 - Iron Sword
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1317715480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1317715479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 766834c6f2c9cf243ab3296f4a43ade1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DatabaseID: 134
+  LockItem: 1
+  Name: Iron Sword
+  DevNotes: 
+  TextValues:
+  - Language: 0
+    stringEntry: Iron Sword
+  - Language: 1
+    stringEntry: 
+  - Language: 2
+    stringEntry: 
+  - Language: 3
+    stringEntry: 
+  - Language: 4
+    stringEntry: 
+  - Language: 5
+    stringEntry: 
+  - Language: 6
+    stringEntry: 
+--- !u!114 &1317715481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1317715479}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 3
+  instanceID: 2450174
+--- !u!4 &1317715482
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1317715479}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 832866514}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1322106185
 GameObject:
   m_ObjectHideFlags: 0
@@ -9588,7 +10191,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 8
-  instanceID: 63086
+  instanceID: 2450188
 --- !u!4 &1324796403
 Transform:
   m_ObjectHideFlags: 0
@@ -9600,6 +10203,71 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 733344064}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1326798922
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1326798925}
+  - component: {fileID: 1326798924}
+  - component: {fileID: 1326798923}
+  m_Layer: 0
+  m_Name: 1 - Skeleton
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1326798923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1326798922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34e9ae3382580044ea6b34989f071da6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DatabaseID: 1
+  LockItem: 1
+  Name: Skeleton
+  PrefabRef: {fileID: 1139220907825138, guid: 3fcee1d9b81f38844ae95e79cfc08e1e, type: 2}
+  UsePoolIDForSpawn: 0
+  PoolID: 0
+  DefaultScale: 1
+  HealthValue: 10
+  Resistances:
+  - Type: 0
+    Value: 0
+--- !u!114 &1326798924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1326798922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 11
+  instanceID: -66843128
+--- !u!4 &1326798925
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1326798922}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 510014713}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1328181116
@@ -9704,6 +10372,8 @@ MonoBehaviour:
   GrowthStages: []
   isBreakable: 0
   EnvironmentValues: []
+  isWeapon: 0
+  WeaponValues: []
   HarvestableItem: 1
   HarvestItemIndex: 6
   HarvestClusterIndex: 0
@@ -9720,7 +10390,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 63096
+  instanceID: 2450198
 --- !u!1 &1329798022
 GameObject:
   m_ObjectHideFlags: 0
@@ -9793,7 +10463,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 63104
+  instanceID: 2450206
 --- !u!1 &1330787844
 GameObject:
   m_ObjectHideFlags: 0
@@ -9878,6 +10548,9 @@ Transform:
   - {fileID: 180225646}
   - {fileID: 1893988408}
   - {fileID: 1571557579}
+  - {fileID: 243703263}
+  - {fileID: 832866514}
+  - {fileID: 469358569}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -10025,7 +10698,13 @@ MonoBehaviour:
   - {fileID: 1301492706}
   - {fileID: 102032472}
   - {fileID: 1786131565}
-  ListCount: 132
+  - {fileID: 256253380}
+  - {fileID: 1893365170}
+  - {fileID: 1317715480}
+  - {fileID: 2132218564}
+  - {fileID: 1248245482}
+  - {fileID: 142690108}
+  ListCount: 138
 --- !u!114 &1337974350
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10151,6 +10830,8 @@ MonoBehaviour:
     ActivateableTypeRequired: 1
     QualityLevelRequired: 0
     ObjectHealth: 15
+  isWeapon: 0
+  WeaponValues: []
   HarvestableItem: 1
   HarvestItemIndex: 0
   HarvestClusterIndex: 1
@@ -10167,7 +10848,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 63124
+  instanceID: 2450226
 --- !u!4 &1343751718
 Transform:
   m_ObjectHideFlags: 0
@@ -10253,7 +10934,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 63134
+  instanceID: 2450236
 --- !u!1 &1345506624
 GameObject:
   m_ObjectHideFlags: 0
@@ -10296,7 +10977,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 63140
+  instanceID: 2450242
 --- !u!114 &1345506627
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10370,6 +11051,8 @@ MonoBehaviour:
   GrowthStages: []
   isBreakable: 0
   EnvironmentValues: []
+  isWeapon: 0
+  WeaponValues: []
   HarvestableItem: 0
   HarvestItemIndex: 0
   HarvestClusterIndex: 0
@@ -10475,7 +11158,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 63154
+  instanceID: 2450256
 --- !u!1 &1351259150
 GameObject:
   m_ObjectHideFlags: 0
@@ -10548,7 +11231,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 63162
+  instanceID: 2450264
 --- !u!1 &1364082331
 GameObject:
   m_ObjectHideFlags: 0
@@ -10621,7 +11304,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 63170
+  instanceID: 2450272
 --- !u!1 &1366259587
 GameObject:
   m_ObjectHideFlags: 0
@@ -10694,7 +11377,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 63178
+  instanceID: 2450280
 --- !u!1 &1367582963
 GameObject:
   m_ObjectHideFlags: 0
@@ -10767,7 +11450,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 63186
+  instanceID: 2450288
 --- !u!1 &1369702741
 GameObject:
   m_ObjectHideFlags: 0
@@ -10840,7 +11523,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 63194
+  instanceID: 2450296
 --- !u!1 &1370439230
 GameObject:
   m_ObjectHideFlags: 0
@@ -10962,7 +11645,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 63208
+  instanceID: 2450310
 --- !u!1 &1405183627
 GameObject:
   m_ObjectHideFlags: 0
@@ -11134,6 +11817,8 @@ MonoBehaviour:
   GrowthStages: []
   isBreakable: 0
   EnvironmentValues: []
+  isWeapon: 0
+  WeaponValues: []
   HarvestableItem: 0
   HarvestItemIndex: 0
   HarvestClusterIndex: 0
@@ -11150,7 +11835,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 63224
+  instanceID: 2450326
 --- !u!1 &1440713918
 GameObject:
   m_ObjectHideFlags: 0
@@ -11223,7 +11908,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 63232
+  instanceID: 2450334
 --- !u!1 &1449750574
 GameObject:
   m_ObjectHideFlags: 0
@@ -11296,7 +11981,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 63240
+  instanceID: 2450342
 --- !u!1 &1450680409
 GameObject:
   m_ObjectHideFlags: 0
@@ -11368,7 +12053,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 63250
+  instanceID: 2450352
 --- !u!114 &1454810879
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11441,7 +12126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 63258
+  instanceID: 2450360
 --- !u!114 &1456368176
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11515,6 +12200,8 @@ MonoBehaviour:
   GrowthStages: []
   isBreakable: 0
   EnvironmentValues: []
+  isWeapon: 0
+  WeaponValues: []
   HarvestableItem: 0
   HarvestItemIndex: 0
   HarvestClusterIndex: 0
@@ -11629,7 +12316,72 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 63272
+  instanceID: 2450374
+--- !u!1 &1460868358
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1460868359}
+  - component: {fileID: 1460868361}
+  - component: {fileID: 1460868360}
+  m_Layer: 0
+  m_Name: 0 - Lyme
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1460868359
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1460868358}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 510014713}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1460868360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1460868358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34e9ae3382580044ea6b34989f071da6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DatabaseID: 0
+  LockItem: 1
+  Name: Lyme
+  PrefabRef: {fileID: 1395054160743932, guid: 49d49774edd55064184f76d2f700fa87, type: 2}
+  UsePoolIDForSpawn: 0
+  PoolID: 0
+  DefaultScale: 1
+  HealthValue: 10
+  Resistances:
+  - Type: 0
+    Value: 0
+--- !u!114 &1460868361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1460868358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 11
+  instanceID: 2450382
 --- !u!1 &1466624027
 GameObject:
   m_ObjectHideFlags: 0
@@ -11689,7 +12441,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 63278
+  instanceID: 2450388
 --- !u!4 &1466624030
 Transform:
   m_ObjectHideFlags: 0
@@ -11793,6 +12545,8 @@ MonoBehaviour:
   GrowthStages: []
   isBreakable: 0
   EnvironmentValues: []
+  isWeapon: 0
+  WeaponValues: []
   HarvestableItem: 0
   HarvestItemIndex: 0
   HarvestClusterIndex: 0
@@ -11809,7 +12563,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 63286
+  instanceID: 2450396
 --- !u!4 &1470222517
 Transform:
   m_ObjectHideFlags: 0
@@ -11895,7 +12649,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 63296
+  instanceID: 2450406
 --- !u!1 &1488660083
 GameObject:
   m_ObjectHideFlags: 0
@@ -12004,7 +12758,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 63308
+  instanceID: 2450418
 --- !u!1 &1502315839
 GameObject:
   m_ObjectHideFlags: 0
@@ -12064,7 +12818,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 63314
+  instanceID: 2450424
 --- !u!4 &1502315842
 Transform:
   m_ObjectHideFlags: 0
@@ -12179,6 +12933,8 @@ MonoBehaviour:
   GrowthStages: []
   isBreakable: 0
   EnvironmentValues: []
+  isWeapon: 0
+  WeaponValues: []
   HarvestableItem: 0
   HarvestItemIndex: 0
   HarvestClusterIndex: 0
@@ -12195,7 +12951,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 63322
+  instanceID: 2450432
 --- !u!4 &1502558392
 Transform:
   m_ObjectHideFlags: 0
@@ -12298,6 +13054,8 @@ MonoBehaviour:
   GrowthStages: []
   isBreakable: 0
   EnvironmentValues: []
+  isWeapon: 0
+  WeaponValues: []
   HarvestableItem: 1
   HarvestItemIndex: 5
   HarvestClusterIndex: 0
@@ -12314,7 +13072,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 63330
+  instanceID: 2450440
 --- !u!4 &1511745342
 Transform:
   m_ObjectHideFlags: 0
@@ -12418,6 +13176,8 @@ MonoBehaviour:
   GrowthStages: []
   isBreakable: 0
   EnvironmentValues: []
+  isWeapon: 0
+  WeaponValues: []
   HarvestableItem: 0
   HarvestItemIndex: 0
   HarvestClusterIndex: 0
@@ -12434,7 +13194,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 63338
+  instanceID: 2450448
 --- !u!4 &1528345311
 Transform:
   m_ObjectHideFlags: 0
@@ -12508,7 +13268,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 63346
+  instanceID: 2450456
 --- !u!4 &1547347344
 Transform:
   m_ObjectHideFlags: 0
@@ -12594,7 +13354,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 63356
+  instanceID: 2450466
 --- !u!1 &1571557578
 GameObject:
   m_ObjectHideFlags: 0
@@ -12730,7 +13490,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 63372
+  instanceID: 2450482
 --- !u!1 &1592455085
 GameObject:
   m_ObjectHideFlags: 0
@@ -12803,7 +13563,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 63380
+  instanceID: 2450490
 --- !u!1 &1610581554
 GameObject:
   m_ObjectHideFlags: 0
@@ -12876,7 +13636,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 63388
+  instanceID: 2450498
 --- !u!1 &1613849535
 GameObject:
   m_ObjectHideFlags: 0
@@ -12949,7 +13709,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 63396
+  instanceID: 2450506
 --- !u!1 &1631441170
 GameObject:
   m_ObjectHideFlags: 0
@@ -13022,7 +13782,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 63404
+  instanceID: 2450514
 --- !u!1 &1637135970
 GameObject:
   m_ObjectHideFlags: 0
@@ -13113,6 +13873,8 @@ MonoBehaviour:
   GrowthStages: []
   isBreakable: 0
   EnvironmentValues: []
+  isWeapon: 0
+  WeaponValues: []
   HarvestableItem: 0
   HarvestItemIndex: 0
   HarvestClusterIndex: 0
@@ -13129,7 +13891,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 63410
+  instanceID: 2450520
 --- !u!4 &1637135973
 Transform:
   m_ObjectHideFlags: 0
@@ -13202,7 +13964,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 5
-  instanceID: 63418
+  instanceID: 2450528
 --- !u!4 &1645614859
 Transform:
   m_ObjectHideFlags: 0
@@ -13346,7 +14108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 63432
+  instanceID: 2450542
 --- !u!1 &1663225526
 GameObject:
   m_ObjectHideFlags: 0
@@ -13432,6 +14194,8 @@ MonoBehaviour:
     ActivateableTypeRequired: 1
     QualityLevelRequired: 0
     ObjectHealth: 15
+  isWeapon: 0
+  WeaponValues: []
   HarvestableItem: 1
   HarvestItemIndex: 33
   HarvestClusterIndex: 0
@@ -13448,7 +14212,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 63438
+  instanceID: 2450548
 --- !u!4 &1663225529
 Transform:
   m_ObjectHideFlags: 0
@@ -13535,7 +14299,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 63448
+  instanceID: 2450558
 --- !u!1 &1673153791
 GameObject:
   m_ObjectHideFlags: 0
@@ -13608,7 +14372,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 63456
+  instanceID: 2450566
 --- !u!1 &1677378387
 GameObject:
   m_ObjectHideFlags: 0
@@ -13681,7 +14445,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 5
-  instanceID: 63464
+  instanceID: 2450574
 --- !u!1 &1686792870
 GameObject:
   m_ObjectHideFlags: 0
@@ -13754,7 +14518,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 63472
+  instanceID: 2450582
 --- !u!1 &1690898328
 GameObject:
   m_ObjectHideFlags: 0
@@ -13827,7 +14591,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 63480
+  instanceID: 2450590
 --- !u!1 &1696380314
 GameObject:
   m_ObjectHideFlags: 0
@@ -13930,6 +14694,8 @@ MonoBehaviour:
   GrowthStages: []
   isBreakable: 0
   EnvironmentValues: []
+  isWeapon: 0
+  WeaponValues: []
   HarvestableItem: 1
   HarvestItemIndex: 7
   HarvestClusterIndex: 0
@@ -13946,7 +14712,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 63488
+  instanceID: 2450598
 --- !u!1 &1701517455
 GameObject:
   m_ObjectHideFlags: 0
@@ -14035,7 +14801,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 63498
+  instanceID: 2450608
 --- !u!4 &1705398620
 Transform:
   m_ObjectHideFlags: 0
@@ -14147,6 +14913,8 @@ MonoBehaviour:
     ActivateableTypeRequired: 1
     QualityLevelRequired: 0
     ObjectHealth: 15
+  isWeapon: 0
+  WeaponValues: []
   HarvestableItem: 1
   HarvestItemIndex: 9
   HarvestClusterIndex: 0
@@ -14163,7 +14931,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 63508
+  instanceID: 2450618
 --- !u!1 &1736991613
 GameObject:
   m_ObjectHideFlags: 0
@@ -14236,7 +15004,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 63516
+  instanceID: 2450626
 --- !u!1 &1747360897
 GameObject:
   m_ObjectHideFlags: 0
@@ -14323,7 +15091,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 10
-  instanceID: 63524
+  instanceID: 2450634
 --- !u!1 &1753353420
 GameObject:
   m_ObjectHideFlags: 0
@@ -14396,7 +15164,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 63532
+  instanceID: 2450642
 --- !u!1 &1782937100
 GameObject:
   m_ObjectHideFlags: 0
@@ -14470,7 +15238,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 63540
+  instanceID: 2450650
 --- !u!1 &1786131564
 GameObject:
   m_ObjectHideFlags: 0
@@ -14530,7 +15298,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 63546
+  instanceID: 2450656
 --- !u!4 &1786131567
 Transform:
   m_ObjectHideFlags: 0
@@ -14616,7 +15384,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 63556
+  instanceID: 2450666
 --- !u!1 &1815548898
 GameObject:
   m_ObjectHideFlags: 0
@@ -14723,7 +15491,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 63568
+  instanceID: 2450678
 --- !u!1 &1825876182
 GameObject:
   m_ObjectHideFlags: 0
@@ -14834,6 +15602,8 @@ MonoBehaviour:
   GrowthStages: []
   isBreakable: 0
   EnvironmentValues: []
+  isWeapon: 0
+  WeaponValues: []
   HarvestableItem: 0
   HarvestItemIndex: 0
   HarvestClusterIndex: 0
@@ -14850,7 +15620,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 63576
+  instanceID: 2450686
 --- !u!1 &1837730739
 GameObject:
   m_ObjectHideFlags: 0
@@ -14946,7 +15716,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 10
-  instanceID: 63586
+  instanceID: 2450696
 --- !u!4 &1838602556
 Transform:
   m_ObjectHideFlags: 0
@@ -15032,7 +15802,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 63596
+  instanceID: 2450706
 --- !u!1 &1846466102
 GameObject:
   m_ObjectHideFlags: 0
@@ -15105,7 +15875,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 63604
+  instanceID: 2450714
 --- !u!1 &1849541681
 GameObject:
   m_ObjectHideFlags: 0
@@ -15178,6 +15948,8 @@ MonoBehaviour:
     ActivateableTypeRequired: 0
     QualityLevelRequired: 0
     ObjectHealth: 0
+  isWeapon: 0
+  WeaponValues: []
   HarvestableItem: 0
   HarvestItemIndex: 0
   HarvestClusterIndex: 0
@@ -15194,7 +15966,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 63610
+  instanceID: 2450720
 --- !u!4 &1849541684
 Transform:
   m_ObjectHideFlags: 0
@@ -15280,7 +16052,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 63620
+  instanceID: 2450730
 --- !u!1 &1879222547
 GameObject:
   m_ObjectHideFlags: 0
@@ -15383,7 +16155,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 7
-  instanceID: 63628
+  instanceID: 2450738
 --- !u!1 &1893027772
 GameObject:
   m_ObjectHideFlags: 0
@@ -15433,9 +16205,16 @@ MonoBehaviour:
   DefaultScale: 1
   isTool: 0
   ToolQualityLevels: []
-  isItem: 0
-  ItemCat: 0
-  ItemQualities: []
+  isItem: 1
+  ItemCat: 6
+  ItemQualities:
+  - Quality: 0
+    AdjustsHealth: 0
+    HealthAdjustValue: 0
+    AdjustsEnergy: 0
+    EnergyAdjustValue: 0
+    BuyPrice: 0
+    SellPrice: 10
   isStorage: 0
   StorageList: []
   isGrowableItem: 0
@@ -15446,6 +16225,8 @@ MonoBehaviour:
   GrowthStages: []
   isBreakable: 0
   EnvironmentValues: []
+  isWeapon: 0
+  WeaponValues: []
   HarvestableItem: 0
   HarvestItemIndex: 0
   HarvestClusterIndex: 0
@@ -15462,7 +16243,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 63634
+  instanceID: 2450744
 --- !u!4 &1893027775
 Transform:
   m_ObjectHideFlags: 0
@@ -15474,6 +16255,79 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1405183628}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1893365169
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1893365172}
+  - component: {fileID: 1893365171}
+  - component: {fileID: 1893365170}
+  m_Layer: 0
+  m_Name: 133 - Residence
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1893365170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1893365169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 766834c6f2c9cf243ab3296f4a43ade1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DatabaseID: 133
+  LockItem: 1
+  Name: Residence
+  DevNotes: 8 - Herb_PoisifferousRoiler
+  TextValues:
+  - Language: 0
+    stringEntry: Residence
+  - Language: 1
+    stringEntry: 
+  - Language: 2
+    stringEntry: 
+  - Language: 3
+    stringEntry: 
+  - Language: 4
+    stringEntry: 
+  - Language: 5
+    stringEntry: 
+  - Language: 6
+    stringEntry: 
+--- !u!114 &1893365171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1893365169}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 3
+  instanceID: 2450752
+--- !u!4 &1893365172
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1893365169}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 243703263}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1893988407
@@ -15548,7 +16402,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 63646
+  instanceID: 2450764
 --- !u!114 &1902128846
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15622,6 +16476,8 @@ MonoBehaviour:
   GrowthStages: []
   isBreakable: 0
   EnvironmentValues: []
+  isWeapon: 0
+  WeaponValues: []
   HarvestableItem: 0
   HarvestItemIndex: 0
   HarvestClusterIndex: 0
@@ -15699,7 +16555,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 63658
+  instanceID: 2450776
 --- !u!114 &1908648037
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15768,6 +16624,8 @@ MonoBehaviour:
     ActivateableTypeRequired: 1
     QualityLevelRequired: 0
     ObjectHealth: 15
+  isWeapon: 0
+  WeaponValues: []
   HarvestableItem: 1
   HarvestItemIndex: 28
   HarvestClusterIndex: 0
@@ -15864,7 +16722,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 10
-  instanceID: 63670
+  instanceID: 2450788
 --- !u!4 &1964282994
 Transform:
   m_ObjectHideFlags: 0
@@ -15950,7 +16808,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 63680
+  instanceID: 2450798
 --- !u!1 &1985819918
 GameObject:
   m_ObjectHideFlags: 0
@@ -16023,7 +16881,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 63688
+  instanceID: 2450806
 --- !u!1 &1988801390
 GameObject:
   m_ObjectHideFlags: 0
@@ -16066,7 +16924,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 63694
+  instanceID: 2450812
 --- !u!114 &1988801393
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16169,7 +17027,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 63704
+  instanceID: 2450822
 --- !u!1 &1991773470
 GameObject:
   m_ObjectHideFlags: 0
@@ -16272,7 +17130,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 63716
+  instanceID: 2450834
 --- !u!1 &1997068649
 GameObject:
   m_ObjectHideFlags: 0
@@ -16345,7 +17203,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 63724
+  instanceID: 2450842
 --- !u!1 &2002398763
 GameObject:
   m_ObjectHideFlags: 0
@@ -16388,7 +17246,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 63730
+  instanceID: 2450848
 --- !u!114 &2002398766
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16457,6 +17315,8 @@ MonoBehaviour:
     ActivateableTypeRequired: 1
     QualityLevelRequired: 0
     ObjectHealth: 15
+  isWeapon: 0
+  WeaponValues: []
   HarvestableItem: 1
   HarvestItemIndex: 32
   HarvestClusterIndex: 0
@@ -16533,7 +17393,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 63740
+  instanceID: 2450858
 --- !u!1 &2007011312
 GameObject:
   m_ObjectHideFlags: 0
@@ -16620,6 +17480,8 @@ MonoBehaviour:
     ActivateableTypeRequired: 0
     QualityLevelRequired: 0
     ObjectHealth: 0
+  isWeapon: 0
+  WeaponValues: []
   HarvestableItem: 0
   HarvestItemIndex: 0
   HarvestClusterIndex: 0
@@ -16636,7 +17498,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 63748
+  instanceID: 2450866
 --- !u!1 &2018851479
 GameObject:
   m_ObjectHideFlags: 0
@@ -16744,7 +17606,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 63760
+  instanceID: 2450878
 --- !u!1 &2041544709
 GameObject:
   m_ObjectHideFlags: 0
@@ -16804,7 +17666,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 5
-  instanceID: 63766
+  instanceID: 2450884
 --- !u!4 &2041544712
 Transform:
   m_ObjectHideFlags: 0
@@ -16890,7 +17752,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 63776
+  instanceID: 2450894
 --- !u!1 &2063523896
 GameObject:
   m_ObjectHideFlags: 0
@@ -16963,7 +17825,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 63784
+  instanceID: 2450902
 --- !u!1 &2067220876
 GameObject:
   m_ObjectHideFlags: 0
@@ -17036,7 +17898,52 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 63792
+  instanceID: 2450910
+--- !u!1 &2068794778
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 2068794780}
+  - component: {fileID: 2068794779}
+  m_Layer: 0
+  m_Name: Enemy Database
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2068794779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2068794778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86a91e5634b55764eb52236a747439c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ItemCatagoryList:
+  - {fileID: 1460868360}
+  - {fileID: 1326798923}
+  ListCount: 2
+--- !u!4 &2068794780
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2068794778}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 510014713}
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2070317662
 GameObject:
   m_ObjectHideFlags: 0
@@ -17085,7 +17992,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 8
-  instanceID: 63798
+  instanceID: 2450922
 --- !u!4 &2070317665
 Transform:
   m_ObjectHideFlags: 0
@@ -17171,7 +18078,80 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 63808
+  instanceID: 2450932
+--- !u!1 &2132218563
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 2132218566}
+  - component: {fileID: 2132218565}
+  - component: {fileID: 2132218564}
+  m_Layer: 0
+  m_Name: 135 - Sword
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2132218564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2132218563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 766834c6f2c9cf243ab3296f4a43ade1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DatabaseID: 135
+  LockItem: 1
+  Name: Sword
+  DevNotes: 
+  TextValues:
+  - Language: 0
+    stringEntry: Sword
+  - Language: 1
+    stringEntry: 
+  - Language: 2
+    stringEntry: 
+  - Language: 3
+    stringEntry: 
+  - Language: 4
+    stringEntry: 
+  - Language: 5
+    stringEntry: 
+  - Language: 6
+    stringEntry: 
+--- !u!114 &2132218565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2132218563}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 3
+  instanceID: 2450938
+--- !u!4 &2132218566
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2132218563}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1302384510}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2140217085
 GameObject:
   m_ObjectHideFlags: 0
@@ -17244,7 +18224,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 63816
+  instanceID: 2450948
 --- !u!1 &2141586112
 GameObject:
   m_ObjectHideFlags: 0
@@ -17317,4 +18297,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 63824
+  instanceID: 2450956

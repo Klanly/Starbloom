@@ -23,7 +23,12 @@ public class DG_ItemObject : MonoBehaviour
         Fish,
         Resource,
         Seeds,
+<<<<<<< .merge_file_a17012
         Fruit
+=======
+        Fruit,
+        Misc
+>>>>>>> .merge_file_a05548
     }
 
     public bool DatabaseUsesNameInsteadOfPrefab;
@@ -174,6 +179,33 @@ public class DG_ItemObject : MonoBehaviour
     #endregion
 
 
+<<<<<<< .merge_file_a17012
+=======
+    #region Weapon
+    [Header("----------------------------------")]
+    public bool isWeapon = false;
+    [Header("Weapon")]
+    [ShowIf("isWeapon")]
+    public Weapon[] WeaponValues;
+
+    [System.Serializable]
+    public class Weapon
+    {
+        public DG_CombatHandler.DamageTypes DamageType;
+
+        [Header("Energy")]
+        public int EnergyBaseCost;
+        public int ManaCost;
+        [Header("Damage")]
+        public int DamageMin;
+        public int DamageMax;
+
+    }
+    #endregion
+
+
+
+>>>>>>> .merge_file_a05548
     [Header("Situational----------------------------------")]
     public bool HarvestableItem;
     [ShowIf("HarvestableItem")]

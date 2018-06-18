@@ -34,7 +34,11 @@ public class DG_FXHandler : MonoBehaviour {
         for(int i = 0; i < COs.Length; i++)
         {
             DG_FXObject.FXClusterObject CO = COs[i];
+<<<<<<< .merge_file_a17904
             GameObject FXObject = QuickFind.PrefabPool.GetPoolItemByFXID(CO.PoolID);
+=======
+            GameObject FXObject = QuickFind.PrefabPool.GetPoolItemByPrefabID(CO.PoolID);
+>>>>>>> .merge_file_a18312
             float ScaleMult = CO.ObjectScale * FXObj.GlobalScale;
             Transform T = FXObject.transform;
 

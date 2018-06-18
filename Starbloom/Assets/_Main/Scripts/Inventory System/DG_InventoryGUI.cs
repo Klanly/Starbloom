@@ -30,6 +30,10 @@ public class DG_InventoryGUI : MonoBehaviour
     public RectTransform InventoryFrame;
     public Vector3 StoragePosition;
     public Vector3 ShopPosition;
+<<<<<<< .merge_file_a10396
+=======
+    public Vector3 ShippingBinPosition;
+>>>>>>> .merge_file_a13732
     Vector3 StartingPosition;
 
 
@@ -42,7 +46,11 @@ public class DG_InventoryGUI : MonoBehaviour
     //InventorySwap Stuff
     [HideInInspector] public DG_InventoryItem CurrentHoverItem;
     [HideInInspector] public bool isFloatingInventoryItem;
+<<<<<<< .merge_file_a10396
     DG_InventoryItem PickedUpItemSlot;
+=======
+    [HideInInspector] public DG_InventoryItem PickedUpItemSlot;
+>>>>>>> .merge_file_a13732
 
     //Equiped Hotbar Slot
     [HideInInspector] public int EquippedHotbarSlot = 0;
@@ -105,7 +113,11 @@ public class DG_InventoryGUI : MonoBehaviour
                     if (ZoomAxis != 0)
                         QuickFind.TooltipHandler.UpdateEquippedNum(-(int)ZoomAxis, false);
                 }
+<<<<<<< .merge_file_a10396
                 if (QuickFind.InputController.MainPlayer.ButtonSet.Interact.Up)
+=======
+                if (QuickFind.InputController.MainPlayer.ButtonSet.Interact.Up && !QuickFind.ShippingBinGUI.BinUIisOpen)
+>>>>>>> .merge_file_a13732
                 {
                     if (isFloatingInventoryItem)
                         QuickFind.InventoryManager.DropOne(PickedUpItemSlot, CurrentHoverItem);
@@ -132,6 +144,7 @@ public class DG_InventoryGUI : MonoBehaviour
 
 
 
+<<<<<<< .merge_file_a10396
     public void OpenStorageUI()
     {
         QuickFind.ContextDetectionHandler.COEncountered = null;
@@ -155,13 +168,36 @@ public class DG_InventoryGUI : MonoBehaviour
         QuickFind.ContextDetectionHandler.LastEncounteredContext = null;
 
         InventoryFrame.localPosition = ShopPosition;
+=======
+    public void OpenStorageUI() { InventoryFrame.localPosition = StoragePosition; OpenOuterUI(); }
+    public void OpenShopUI() { InventoryFrame.localPosition = ShopPosition; OpenOuterUI(); }
+    public void OpenShippingUI() { InventoryFrame.localPosition = ShippingBinPosition; OpenOuterUI(); }
+
+    public void CloseStorageUI() { CloseOuterUI(); }
+    public void CloseShopUI() { CloseOuterUI(); }
+    public void CloseShippingUI() { CloseOuterUI(); }
+
+    void OpenOuterUI()
+    {
+        QuickFind.ContextDetectionHandler.COEncountered = null;
+        QuickFind.ContextDetectionHandler.LastEncounteredContext = null;
+>>>>>>> .merge_file_a13732
         QuickFind.EnableCanvas(UICanvas, true);
         UpdateInventoryVisuals();
         InventoryIsOpen = true;
     }
+<<<<<<< .merge_file_a10396
     public void CloseShopUI()
     {
         InventoryFrame.localPosition = ShopPosition;
+=======
+    void CloseOuterUI()
+    {
+        ClearFloatingObject();
+        QuickFind.TooltipHandler.HideToolTip();
+        
+        InventoryFrame.localPosition = StartingPosition;
+>>>>>>> .merge_file_a13732
         InventoryIsOpen = false;
         QuickFind.EnableCanvas(UICanvas, false);
     }
@@ -331,6 +367,10 @@ public class DG_InventoryGUI : MonoBehaviour
         if (CurrentHoverItem != null && CurrentHoverItem.isTrash) return;
 
         isFloatingInventoryItem = Enabled;
+<<<<<<< .merge_file_a10396
+=======
+        if (QuickFind.ShippingBinGUI.BinUIisOpen) QuickFind.ShippingBinGUI.OpenDropPanel(Enabled);
+>>>>>>> .merge_file_a13732
         if (!Enabled)
             FloatingRect.position = new Vector3(8000, 0, 0);
     }

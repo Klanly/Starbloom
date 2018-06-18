@@ -5,6 +5,16 @@ using UnityEngine;
 
 public class NetworkObjectManager : MonoBehaviour {
 
+<<<<<<< .merge_file_a03484
+=======
+    public enum NetworkObjectTypes
+    {
+        Item,
+        Enemy
+    }
+
+
+>>>>>>> .merge_file_a13368
 
 
     private void Awake()
@@ -108,22 +118,32 @@ public class NetworkObjectManager : MonoBehaviour {
 
 
     //Outgoing
+<<<<<<< .merge_file_a03484
     public void CreateNetSceneObject(   int SceneID, int ObjectID, int ItemLevel, Vector3 Position, float Facing, 
+=======
+    public void CreateNetSceneObject(   int SceneID, NetworkObjectTypes ObjectType, int ObjectID, int ItemLevel, Vector3 Position, float Facing, 
+>>>>>>> .merge_file_a13368
                                         bool GenerateVelocity = false, Vector3 Velocity = new Vector3())
     {
         List<int> IntData = new List<int>();
 
         IntData.Add(SceneID);
+<<<<<<< .merge_file_a03484
 
         int NewObjectID = QuickFind.NetworkObjectManager.GetSceneByID(SceneID).GetValidNextNetworkID();
         IntData.Add(NewObjectID);
         IntData.Add(ObjectID);
         IntData.Add(ItemLevel);
 
+=======
+        int NewObjectID = QuickFind.NetworkObjectManager.GetSceneByID(SceneID).GetValidNextNetworkID();
+        IntData.Add(NewObjectID);
+>>>>>>> .merge_file_a13368
         IntData.Add(QuickFind.ConvertFloatToInt(Position.x));
         IntData.Add(QuickFind.ConvertFloatToInt(Position.y));
         IntData.Add(QuickFind.ConvertFloatToInt(Position.z));
         IntData.Add(QuickFind.ConvertFloatToInt(Facing));
+<<<<<<< .merge_file_a03484
 
         if (GenerateVelocity) IntData.Add(1); else IntData.Add(0);
         if(GenerateVelocity)
@@ -133,6 +153,25 @@ public class NetworkObjectManager : MonoBehaviour {
             IntData.Add(QuickFind.ConvertFloatToInt(Velocity.z));
         }
 
+=======
+        IntData.Add((int)ObjectType);
+        IntData.Add(ObjectID);
+
+        if (ObjectType == NetworkObjectTypes.Item)
+        {
+            IntData.Add(ItemLevel);
+
+            if (GenerateVelocity) IntData.Add(1); else IntData.Add(0);
+            if (GenerateVelocity)
+            {
+                IntData.Add(QuickFind.ConvertFloatToInt(Velocity.x));
+                IntData.Add(QuickFind.ConvertFloatToInt(Velocity.y));
+                IntData.Add(QuickFind.ConvertFloatToInt(Velocity.z));
+            }
+        }
+
+
+>>>>>>> .merge_file_a13368
         QuickFind.NetworkSync.AddNetworkSceneObject(IntData.ToArray());
     }
     //Incoming
@@ -142,6 +181,7 @@ public class NetworkObjectManager : MonoBehaviour {
         NetworkScene NS = GetSceneByID(IncomingData[index]); index++;
         Transform NewObject = new GameObject().transform;
         NewObject.SetParent(NS.transform);
+<<<<<<< .merge_file_a03484
         NetworkObject NO = NewObject.gameObject.AddComponent<NetworkObject>();
 
         NS.NetworkObjectList.Add(NO);
@@ -150,10 +190,18 @@ public class NetworkObjectManager : MonoBehaviour {
         NO.ItemRefID = IncomingData[index]; index++;
         NO.ItemQualityLevel = IncomingData[index]; index++;
 
+=======
+
+        NetworkObject NO = NewObject.gameObject.AddComponent<NetworkObject>();
+        NS.NetworkObjectList.Add(NO);
+
+        NO.NetworkObjectID = IncomingData[index]; index++;
+>>>>>>> .merge_file_a13368
         NO.PositionX = IncomingData[index]; index++;
         NO.PositionY = IncomingData[index]; index++;
         NO.PositionZ = IncomingData[index]; index++;
         NO.YFacing = IncomingData[index]; index++;
+<<<<<<< .merge_file_a03484
 
         DG_ItemObject IO = QuickFind.ItemDatabase.GetItemFromID(IncomingData[2]);
 
@@ -183,6 +231,49 @@ public class NetworkObjectManager : MonoBehaviour {
             NO.SpawnNetworkObject(NS);
 
         QuickFind.ObjectPlacementManager.AwaitingNetResponse = false;
+=======
+        NO.ObjectType = (NetworkObjectTypes)IncomingData[index]; index++;
+        NO.ItemRefID = IncomingData[index]; index++;
+
+
+        if (NO.ObjectType == NetworkObjectTypes.Item)
+        {
+            NO.ItemQualityLevel = IncomingData[index]; index++;
+
+            DG_ItemObject IO = QuickFind.ItemDatabase.GetItemFromID(NO.ItemRefID);
+
+            if (IO.IsWaterable) { NO.isWaterable = true; }
+            if (IO.isStorage)
+            {
+                NO.isStorageContainer = true;
+                NO.StorageSlots = new DG_PlayerCharacters.RucksackSlot[36];
+                for (int i = 0; i < 36; i++) NO.StorageSlots[i] = new DG_PlayerCharacters.RucksackSlot();
+            }
+
+            NewObject.position = QuickFind.ConvertIntsToPosition(NO.PositionX, NO.PositionY, NO.PositionZ);
+            NewObject.eulerAngles = new Vector3(0, QuickFind.ConvertIntToFloat(NO.YFacing), 0);
+
+
+            int GenerateVelocity = IncomingData[index]; index++;
+            if (GenerateVelocity == 1)
+            {
+                Vector3 Velo;
+                Velo.x = QuickFind.ConvertIntToFloat(IncomingData[index]); index++;
+                Velo.y = QuickFind.ConvertIntToFloat(IncomingData[index]); index++;
+                Velo.z = QuickFind.ConvertIntToFloat(IncomingData[index]); index++;
+
+                NO.SpawnNetworkObject(NS, true, Velo);
+            }
+            else
+                NO.SpawnNetworkObject(NS);
+
+            QuickFind.ObjectPlacementManager.AwaitingNetResponse = false;
+        }
+
+
+
+
+>>>>>>> .merge_file_a13368
     }
 
 

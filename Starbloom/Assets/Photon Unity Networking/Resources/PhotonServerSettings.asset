@@ -82,4 +82,9 @@ MonoBehaviour:
   - ReceiveClusterPickEffect
   - ReceiveDestroyEffect
   - ReceiveWallAdjust
+<<<<<<< .merge_file_a09760
+=======
+  - ClearBinReceived
+  - ReceiveEnemyHit
+>>>>>>> .merge_file_a03612
   DisableAutoOpenWizard: 1

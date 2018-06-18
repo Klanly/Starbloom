@@ -35,6 +35,12 @@ public static class QuickFindInEditor
     public static DG_CraftingDictionary GetCraftingCompendium() { return GameObject.Find("Crafting Dictionary").GetComponent<DG_CraftingDictionary>(); }
     public static DG_PrefabPoolDictionary GetPrefabPool() { return GameObject.Find("Prefab Pool Dictionary").GetComponent<DG_PrefabPoolDictionary>(); }
     public static DG_FXHandler GetFXHandler() { return GameObject.Find("FX Handler").GetComponent<DG_FXHandler>(); }
+<<<<<<< .merge_file_a10396
+=======
+    public static DG_EnemyDatabase GetEnemyDatabase() { return GameObject.Find("Enemy Database").GetComponent<DG_EnemyDatabase>(); }
+    public static DG_MusicDatabase GetMusicDatabase() { return GameObject.Find("Music Database").GetComponent<DG_MusicDatabase>(); }
+    public static DG_SFXDatabase GetSFXDatabase() { return GameObject.Find("SFX Database").GetComponent<DG_SFXDatabase>(); }
+>>>>>>> .merge_file_a06780
 
     //Save Data
     public static UserSettings GetEditorUserSettings() { return GameObject.Find("Player Settings").GetComponent<UserSettings>(); }
@@ -89,6 +95,12 @@ public static class QuickFind
     public static DG_FishingGUI FishingGUI = null;
     public static DG_SystemMessageGUI SystemMessageGUI = null;
     public static DG_ShopGUI ShopGUI = null;
+<<<<<<< .merge_file_a10396
+=======
+    public static DG_InteractionGuiPopup GUIPopup = null;
+    public static DG_ShippingBinGUI ShippingBinGUI = null;
+
+>>>>>>> .merge_file_a06780
 
     //GUI - Main Overview
     public static GuiMainGameplay GUI_MainOverview = null;
@@ -138,6 +150,20 @@ public static class QuickFind
     public static DG_FishingRoller FishingRoller = null;
 
 
+<<<<<<< .merge_file_a10396
+=======
+    //Combat
+    public static DG_CombatHandler CombatHandler = null;
+    public static DG_SwordHandler SwordHandler = null;
+
+
+    //Audio
+    public static DG_AudioManager AudioManager = null;
+    public static DG_MusicDatabase MusicDatabase = null;
+    public static DG_SFXDatabase SFXDatabase = null;
+
+
+>>>>>>> .merge_file_a06780
 
 
     //Network
@@ -154,6 +180,10 @@ public static class QuickFind
     public static DG_ColorCodes ColorDatabase = null;
     public static SceneIDList SceneList = null;
     public static DG_TextLanguageFonts LanguageFonts = null;
+<<<<<<< .merge_file_a10396
+=======
+    public static DG_EnemyDatabase EnemyDatabase = null;
+>>>>>>> .merge_file_a06780
 
     //Serialization
     public static DG_LocalDataHandler SaveHandler;
