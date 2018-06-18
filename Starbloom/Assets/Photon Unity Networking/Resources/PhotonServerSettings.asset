@@ -81,4 +81,5 @@ MonoBehaviour:
   - ReceiveTreeFall
   - ReceiveClusterPickEffect
   - ReceiveDestroyEffect
+  - ReceiveWallAdjust
   DisableAutoOpenWizard: 1

@@ -7,9 +7,12 @@ using PixelCrushers.DialogueSystem;
 [RequireComponent(typeof(NPCRelationship)), RequireComponent(typeof(NPCController)), RequireComponent(typeof(ConversationTrigger))]
 public class NPCChat : MonoBehaviour
 {
-	protected NPCController Controller;
-	protected NPCRelationship Relation;
-	protected ConversationTrigger ConversationTrg;
+	[HideInInspector]
+	public NPCController Controller;
+	[HideInInspector]
+	public NPCRelationship Relation;
+	[HideInInspector]
+	public ConversationTrigger ConversationTrg;
 
 	protected int SpeakerPID = -1;
 	protected bool IsBusy = false;
@@ -34,25 +37,10 @@ public class NPCChat : MonoBehaviour
 	protected void OnConversationStart(Transform actor)
 	{
 		IsBusy = true;
-
-		Lua.RegisterFunction("HasTalkedToday", this, typeof(NPCChat).GetMethod("HasTalkedToday"));
-		Lua.RegisterFunction("HasTag", this, typeof(NPCChat).GetMethod("HasTag"));
-		Lua.RegisterFunction("SetTag", this, typeof(NPCChat).GetMethod("SetTag"));
-		Lua.RegisterFunction("RemoveTag", this, typeof(NPCChat).GetMethod("RemoveTag"));
-		Lua.RegisterFunction("AddFriendPoints", this, typeof(NPCChat).GetMethod("AddFriendPoints"));
-		Lua.RegisterFunction("AddLovePoints", this, typeof(NPCChat).GetMethod("AddLovePoints"));
-		Lua.RegisterFunction("AddMarriagePoints", this, typeof(NPCChat).GetMethod("AddMarriagePoints"));
 	}
 
 	protected void OnConversationEnd(Transform actor)
 	{
-		Lua.UnregisterFunction("HasTag");
-		Lua.UnregisterFunction("SetTag");
-		Lua.UnregisterFunction("RemoveTag");
-		Lua.UnregisterFunction("AddFriendPoints");
-		Lua.UnregisterFunction("AddLovePoints");
-		Lua.UnregisterFunction("AddMarriagePoints");
-
 		Relation.PlayerData[SpeakerPID].LastDayTalked = QuickFind.Farm.TotalDays;
 
 		SpeakerPID = -1;
@@ -178,6 +166,8 @@ public class NPCChat : MonoBehaviour
 		ConversationTrg.conversation = c;
 		Relation.PlayerData[SpeakerPID].LastConversation = c;
 
+
+		NPCLuaBinding.CurrentChatAgent = this;
 		ConversationTrg.TryStartConversation(transform);
 	}
 }
