@@ -11,10 +11,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f3758f8f58fdef43803eb9be1df0608, type: 3}
   m_Name: PhotonServerSettings
   m_EditorClassIdentifier: 
-  AppID: 
+  AppID: e9a7f706-d1b5-48ad-979f-fd0deef152da
   VoiceAppID: 
   ChatAppID: 
-  HostType: 0
+  HostType: 1
   PreferredRegion: 0
   EnabledRegions: -1
   Protocol: 0
@@ -26,5 +26,60 @@ MonoBehaviour:
   PunLogging: 0
   NetworkLogging: 1
   RunInBackground: 1
-  RpcList: []
+  RpcList:
+  - Chat
+  - ColorRpc
+  - DestroyRpc
+  - DoJump
+  - Flash
+  - InstantiateRpc
+  - Marco
+  - PickupItemInit
+  - Polo
+  - PunPickup
+  - PunPickupSimple
+  - PunRespawn
+  - RequestForPickupItems
+  - RequestForPickupTimes
+  - SendOutIDList
+  - SetNewID
+  - TaggedPlayer
+  - SendOutWeatherChange
+  - MasterSendForthTimes
+  - MasterSendForthWeather
+  - SendOutTimeByMaster
+  - SendOutTimeByPreset
+  - SendOutWeatherByMaster
+  - SendUserInScene
+  - SendUserPhoton
+  - GatherPlayerData
+  - GetPlayerIntValues
+  - GetPlayerStringValues
+  - NewRucksackValue
+  - GatherWorldObjects
+  - SendOutWorldObjects
+  - SendOutWorldObjectFloats
+  - SendOutWorldObjectInts
+  - CreateSceneObject
+  - RemoveSceneObject
+  - NewStorageValue
+  - UpdateLoadedGame
+  - SendOutTimeByValues
+  - SendOutFutureWeather
+  - LoadPlayerStat
+  - AddSceneObject
+  - SendWatered
+  - SendBreakableHit
+  - SendBreakableBroke
+  - CharacterClaimedMagneticObject
+  - ReceiveSurrogateTilled
+  - UserSetInBed
+  - NewMoneyValueSet
+  - ReceivePlayerMovement
+  - ItemSetInShippingBin
+  - ReceivedHarvestedObject
+  - ReceiveTreeFall
+  - ReceiveClusterPickEffect
+  - ReceiveDestroyEffect
+  - ReceiveWallAdjust
   DisableAutoOpenWizard: 1
