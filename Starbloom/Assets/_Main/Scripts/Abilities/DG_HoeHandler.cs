@@ -6,10 +6,7 @@ public class DG_HoeHandler : MonoBehaviour {
 
 
     public LayerMask UnSafeGroundDetection;
-<<<<<<< .merge_file_a18048
-=======
     public int HoeItemDatabaseNumber = 17;
->>>>>>> .merge_file_a14248
 
 
     DG_PlayerCharacters.RucksackSlot RucksackSlotOpen;
@@ -42,12 +39,7 @@ public class DG_HoeHandler : MonoBehaviour {
     {
         if (isUP && SafeToPlace)
         {
-<<<<<<< .merge_file_a18048
-            //17 is Database item, this may need to be adjusted for different hoe events. Hardcoded for now.
-            QuickFind.NetworkObjectManager.CreateNetSceneObject(QuickFind.NetworkSync.CurrentScene, 17, 0, QuickFind.GridDetection.DetectionPoint.position, 0);
-=======
             QuickFind.NetworkObjectManager.CreateNetSceneObject(QuickFind.NetworkSync.CurrentScene, NetworkObjectManager.NetworkObjectTypes.Item, HoeItemDatabaseNumber, 0, QuickFind.GridDetection.DetectionPoint.position, 0);
->>>>>>> .merge_file_a14248
         }
     }
 

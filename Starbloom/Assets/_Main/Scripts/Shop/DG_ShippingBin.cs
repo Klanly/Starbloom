@@ -12,14 +12,6 @@ public class DG_ShippingBin : MonoBehaviour {
         public int Normal;
         public int High;
         public int Max;
-<<<<<<< .merge_file_a15496
-    }
-
-    List<ShippingBinItem> DailyShippingItems;
-    int NetID = 0;
-
-
-=======
 
         public int GetStackValue()
         { return Low + Normal + High + Max; }
@@ -31,7 +23,6 @@ public class DG_ShippingBin : MonoBehaviour {
 
 
 
->>>>>>> .merge_file_a15332
     private void Awake()
     {
         QuickFind.ShippingBin = this;
@@ -40,19 +31,8 @@ public class DG_ShippingBin : MonoBehaviour {
 
 
 
-<<<<<<< .merge_file_a15496
-    public void SetStackInShippingBin(DG_ContextObject CO)
-    {
-        if (QuickFind.ItemActivateableHandler.CurrentItemDatabaseReference.ActivateableType != HotbarItemHandler.ActivateableTypes.RegularItem)
-            return;
-        DG_PlayerCharacters.RucksackSlot RucksackSlot = QuickFind.ItemActivateableHandler.CurrentRucksackSlot;
-
-
-
-=======
     public void SetStackInShippingBin(DG_PlayerCharacters.RucksackSlot RucksackSlot)
     {
->>>>>>> .merge_file_a15332
         ShippingBinItem SBI = null;
         for (int i = 0; i < DailyShippingItems.Count; i++)
         {
@@ -77,19 +57,11 @@ public class DG_ShippingBin : MonoBehaviour {
         }
 
         QuickFind.NetworkSync.SetItemInShippingBin(SendData);
-<<<<<<< .merge_file_a15496
-        RucksackSlot.ClearRucksack();
-        QuickFind.GUI_Inventory.UpdateInventoryVisuals();
-        CO.GetComponent<DG_UI_WobbleAndFade>().enabled = true;
-    }
-
-=======
         //FX
         ActiveBinObject.GetComponent<DG_UI_WobbleAndFade>().enabled = true;
     }
 
 
->>>>>>> .merge_file_a15332
     public void ItemSetInShippingBin(int[] InData)
     {
         ShippingBinItem SBI = null;
@@ -113,22 +85,7 @@ public class DG_ShippingBin : MonoBehaviour {
     {
         int MoneyMade = 0;
         for(int i = 0; i < DailyShippingItems.Count; i++)
-<<<<<<< .merge_file_a15496
-        {
-            ShippingBinItem SBI = DailyShippingItems[i];
-            DG_ItemObject IO = QuickFind.ItemDatabase.GetItemFromID(SBI.ItemRef);
-            if (SBI.Low > 0)
-                MoneyMade += SBI.Low * IO.GetSellPriceByQuality(0);
-            if (SBI.Normal > 0)
-                MoneyMade += SBI.Normal * IO.GetSellPriceByQuality(1);
-            if (SBI.High > 0)
-                MoneyMade += SBI.High * IO.GetSellPriceByQuality(2);
-            if (SBI.Max > 0)
-                MoneyMade += SBI.Max * IO.GetSellPriceByQuality(3);
-        }
-=======
             MoneyMade += CalculateTotalOfStack(DailyShippingItems[i]);
->>>>>>> .merge_file_a15332
 
         DailyShippingItems.Clear();
         Debug.Log("Total Daily Money Made == " + MoneyMade.ToString());
@@ -138,8 +95,6 @@ public class DG_ShippingBin : MonoBehaviour {
                 QuickFind.MoneyHandler.AddMoney(MoneyMade);
         }
     }
-<<<<<<< .merge_file_a15496
-=======
 
 
     public int CalculateTotalOfStack(ShippingBinItem SBI)
@@ -186,5 +141,4 @@ public class DG_ShippingBin : MonoBehaviour {
     {
         DailyShippingItems.RemoveAt(ItemIndex);
     }
->>>>>>> .merge_file_a15332
 }

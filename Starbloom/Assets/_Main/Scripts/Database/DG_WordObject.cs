@@ -26,11 +26,7 @@ public class DG_WordObject : MonoBehaviour {
     public TextEntry[] TextValues;
 
 
-<<<<<<< .merge_file_a17580
-    [Button(ButtonSizes.Small)]
-=======
     //[Button(ButtonSizes.Small)]
->>>>>>> .merge_file_a11108
     public void UpdateLanguages()
     {
         PopulateLanguageOptions(this);

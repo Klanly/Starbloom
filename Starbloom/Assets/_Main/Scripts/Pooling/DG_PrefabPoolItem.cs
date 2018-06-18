@@ -2,11 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
-<<<<<<< .merge_file_a12932
-
-public class DG_PrefabPoolItem : MonoBehaviour {
-
-=======
 using UnityEngine.Audio;
 
 public class DG_PrefabPoolItem : MonoBehaviour {
@@ -19,7 +14,6 @@ public class DG_PrefabPoolItem : MonoBehaviour {
     }
 
 
->>>>>>> .merge_file_a06092
     [HideInInspector]
     public int DatabaseID;
     [HideInInspector]
@@ -35,16 +29,6 @@ public class DG_PrefabPoolItem : MonoBehaviour {
         public int PrefabID;
     }
 
-<<<<<<< .merge_file_a12932
-
-
-    public string Name;
-    public GameObject PrefabReference;
-
-    [Header("FX Pool Size")]
-    public bool UseMaxPoolValue;
-    public int PoolMaxValue;
-=======
     public string Name;
 
     [Header("Generation Reference")]
@@ -60,19 +44,12 @@ public class DG_PrefabPoolItem : MonoBehaviour {
     [ShowIf("UseMaxPoolValue")]
     public MaxPoolReached HowToHandleMaxPool;
   
->>>>>>> .merge_file_a06092
 
     [Header("GenerateOnStart")]
     public bool GeneratePoolOnStart;
     [ShowIf("GeneratePoolOnStart")]
     public int GenerationValue;
 
-<<<<<<< .merge_file_a12932
-    [Header("Debug")]
-    public bool PrintDebugWhenHitPoolMax;
-
-=======
->>>>>>> .merge_file_a06092
 
 
     List<PoolObject> PrefabPool;
@@ -102,9 +79,6 @@ public class DG_PrefabPoolItem : MonoBehaviour {
     }
     GameObject SpawnNewPrefab(bool SpawnActive, PoolObject PO)
     {
-<<<<<<< .merge_file_a12932
-        GameObject GO = Instantiate(PrefabReference);
-=======
         GameObject GO = null;
         if (!UseSFXObject) GO = Instantiate(PrefabReference);
         else
@@ -114,7 +88,6 @@ public class DG_PrefabPoolItem : MonoBehaviour {
             AS.playOnAwake = false;
             AS.clip = AudioFile;
         }
->>>>>>> .merge_file_a06092
         GO.transform.SetParent(transform);
         DG_PoolLink PL = GO.AddComponent<DG_PoolLink>();
         PL.PoolObjectRef = PO;
@@ -127,27 +100,6 @@ public class DG_PrefabPoolItem : MonoBehaviour {
 
     public GameObject GetAvailablePoolObject()
     {
-<<<<<<< .merge_file_a12932
-        for(int i = 0; i < PrefabPool.Count; i++)
-        {
-            PoolObject PO = PrefabPool[i];
-            if (PO.IsActive) continue;
-            else { PO.IsActive = true; PO.GameObjectRef.SetActive(true); return PO.GameObjectRef; }
-        }
-        if (!UseMaxPoolValue || PrefabPool.Count < PoolMaxValue)
-        {
-            PoolObject PO = GenerateNewPoolObject(true);
-            PO.IsActive = true;
-            return PO.GameObjectRef;
-        }
-
-        if (PrintDebugWhenHitPoolMax) Debug.Log("We have reached our Max Pool Length");
-        return null;
-    }
-
-
-    public GameObject GetFXObjectByIndex()
-=======
         if (!UseMaxPoolValue) return GetPoolPrefabByActive(false);
         else
         {
@@ -174,7 +126,6 @@ public class DG_PrefabPoolItem : MonoBehaviour {
         return PO.GameObjectRef;     
     }
     GameObject GetObjectByIndex()
->>>>>>> .merge_file_a06092
     {
         if (PoolMaxValue == 0) Debug.Log("Pool Max Value Has not been set for an FX Object " + Name);
         PoolObject PO;
@@ -197,14 +148,6 @@ public class DG_PrefabPoolItem : MonoBehaviour {
 
 
 
-<<<<<<< .merge_file_a12932
-    [Button(ButtonSizes.Small)]
-    public void SyncNameToPrefabRef()
-    {
-        Name = PrefabReference.name;
-    }
-=======
     [Button(ButtonSizes.Small)] public void SyncNameToPrefabRef() { Name = PrefabReference.name; }
     [Button(ButtonSizes.Small)] public void SyncNameToAudioFileName() { Name = "SFX - " + AudioFile.name; }
->>>>>>> .merge_file_a06092
 }

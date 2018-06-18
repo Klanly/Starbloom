@@ -22,12 +22,8 @@ public class DG_ContextObject : MonoBehaviour
         ShopInterface,
         ShippingBin,
         BreakableTree,
-<<<<<<< .merge_file_a10996
-        ScenePortal
-=======
         ScenePortal,
         Enemy
->>>>>>> .merge_file_a14280
     }
 
     public ContextTypes Type;

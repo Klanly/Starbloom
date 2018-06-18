@@ -1054,7 +1054,7 @@ MonoBehaviour:
         destinationDialogueID: 6
         isConnector: 0
         priority: 2
-      conditionsString: 
+      conditionsString: not HasTalkedToday()
       userScript: 
       onExecute:
         m_PersistentCalls:
@@ -1698,7 +1698,7 @@ MonoBehaviour:
       conditionPriority: 2
       outgoingLinks: []
       conditionsString: 
-      userScript: 
+      userScript: SetTag("PERSEPHONE_F0_SRVODDS")
       onExecute:
         m_PersistentCalls:
           m_Calls: []

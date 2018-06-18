@@ -286,11 +286,7 @@ public class DG_Inventory : MonoBehaviour {
 
         if (!IsStorage) { LoopIndex = StorageID; FinalIndex = PlayerID; }
 
-<<<<<<< .merge_file_a06868
-        for (int i = 0; i < AlternateSide.Length; i++)
-=======
         for (int i = 0; i < AlternateSideLength; i++)
->>>>>>> .merge_file_a17204
         {
             DG_PlayerCharacters.RucksackSlot RS = AlternateSide[i];
             if (RS.ContainedItem == MoveStack.ContainedItem)
@@ -330,13 +326,8 @@ public class DG_Inventory : MonoBehaviour {
 
                     count = MoveStack.LowValue; for (int iN = 0; iN < count; iN++) { RS.LowValue++; MoveStack.LowValue--; RS.CurrentStackActive = 0; }
                     count = MoveStack.NormalValue; for (int iN = 0; iN < count; iN++) { RS.NormalValue++; MoveStack.NormalValue--; RS.CurrentStackActive = 1; }
-<<<<<<< .merge_file_a06868
-                    count = MoveStack.HighValue; for (int iN = 0; iN < count; iN++) { RS.HighValue++; MoveStack.HighValue--; RS.CurrentStackActive = 0; }
-                    count = MoveStack.MaximumValue; for (int iN = 0; iN < count; iN++) { RS.MaximumValue++; MoveStack.MaximumValue--; RS.CurrentStackActive = 0; }
-=======
                     count = MoveStack.HighValue; for (int iN = 0; iN < count; iN++) { RS.HighValue++; MoveStack.HighValue--; RS.CurrentStackActive = 2; }
                     count = MoveStack.MaximumValue; for (int iN = 0; iN < count; iN++) { RS.MaximumValue++; MoveStack.MaximumValue--; RS.CurrentStackActive = 3; }
->>>>>>> .merge_file_a17204
                     break;
                 }
             }
@@ -354,8 +345,6 @@ public class DG_Inventory : MonoBehaviour {
 
 
 
-<<<<<<< .merge_file_a06868
-=======
     public void ShiftStackToFromShippingBin(DG_ShippingBinItem BinItem)
     {
         DG_ShippingBin.ShippingBinItem ReferenceItem = BinItem.ReferenceItem;
@@ -426,7 +415,6 @@ public class DG_Inventory : MonoBehaviour {
         QuickFind.ShippingBin.UpdateBinItem(ReferenceItem);
     }
 
->>>>>>> .merge_file_a17204
 
 
 

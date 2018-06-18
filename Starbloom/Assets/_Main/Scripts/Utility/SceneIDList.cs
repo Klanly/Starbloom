@@ -5,10 +5,6 @@ using Sirenix.OdinInspector;
 
 public class SceneIDList : MonoBehaviour {
 
-<<<<<<< .merge_file_a07372
-    [ListDrawerSettings(ShowIndexLabels = true)]
-    public List<string> Scenes;
-=======
     [System.Serializable]
     public class SceneIdentity
     {
@@ -28,7 +24,6 @@ public class SceneIDList : MonoBehaviour {
 
     [ListDrawerSettings(ShowIndexLabels = true)]
     public List<SceneIdentity> Scenes;
->>>>>>> .merge_file_a14792
 
 
 
@@ -40,57 +35,36 @@ public class SceneIDList : MonoBehaviour {
 
 
 
-<<<<<<< .merge_file_a07372
-    public int GetSceneIDByString(string ST)
-    {
-        for(int i= 0; i < Scenes.Count; i++)
-        {
-            if (Scenes[i] == ST)
-=======
     public int GetSceneIndexByString(string ST)
     {
         for(int i= 0; i < Scenes.Count; i++)
         {
             if (Scenes[i].SceneName == ST)
->>>>>>> .merge_file_a14792
                 return i;
         }
         Debug.Log("Failed To Find Scene - " + ST);
         if(!Application.isPlaying)
         {
             Debug.Log("Detected Editor Searching for Scene name, and Not Found, Adding to List Now.");
-<<<<<<< .merge_file_a07372
-            Scenes.Add(ST);
-=======
             SceneIdentity SI = new SceneIdentity();
             SI.SceneName = ST;
             Scenes.Add(SI);
->>>>>>> .merge_file_a14792
         }
 
         return -1;
     }
-<<<<<<< .merge_file_a07372
-    public string GetSceneById(int ID)
-=======
     public SceneIdentity GetSceneByString(string ST)
     {
         return Scenes[GetSceneIndexByString(ST)];
     }
 
     public SceneIdentity GetSceneById(int ID)
->>>>>>> .merge_file_a14792
     {
         if (ID < Scenes.Count)
             return Scenes[ID];
         else
         {
             Debug.Log("Scene ID too High - " + ID.ToString());
-<<<<<<< .merge_file_a07372
-            return "";
-        }
-    }
-=======
             return null;
         }
     }
@@ -121,5 +95,4 @@ public class SceneIDList : MonoBehaviour {
 
         return ReturnString;
     }
->>>>>>> .merge_file_a14792
 }

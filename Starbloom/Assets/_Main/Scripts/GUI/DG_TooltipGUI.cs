@@ -37,11 +37,7 @@ public class DG_TooltipGUI : MonoBehaviour {
         EdibleItem,
         Tool,
         Weapon,
-<<<<<<< .merge_file_a16988
-        Equipement,
-=======
         Equipment,
->>>>>>> .merge_file_a02196
         SkillDisplay,
         Person,
         MapItem,
@@ -116,13 +112,6 @@ public class DG_TooltipGUI : MonoBehaviour {
     [ListDrawerSettings(ListElementLabelName = "GroupType", NumberOfItemsPerPage = 16, Expanded = false)]
     public ToolTipGroup[] ToolTipTypes;
 
-<<<<<<< .merge_file_a16988
-    [Header("Localization")]
-    public int HealthLocalizationID = 61;
-    public int EnergyLocalizationID = 62;
-
-=======
->>>>>>> .merge_file_a02196
     [Header("Debug")]
     public bool DebugON = false;
 
@@ -270,8 +259,6 @@ public class DG_TooltipGUI : MonoBehaviour {
                     SetDescription();
                 }
                 break;
-<<<<<<< .merge_file_a16988
-=======
             case ToolTipGroups.Weapon:
                 {
                     SetMain();
@@ -280,7 +267,6 @@ public class DG_TooltipGUI : MonoBehaviour {
                     SetUpCombatStats();
                 }
                 break;
->>>>>>> .merge_file_a02196
         }
     }
 
@@ -303,16 +289,8 @@ public class DG_TooltipGUI : MonoBehaviour {
     {
         DG_TooltipModule Desc = GetModuleByType(ToolTipModules.InventoryStat);
         Desc.TurnOFFSubs();
-<<<<<<< .merge_file_a16988
-
-        DG_ItemObject IO = QuickFind.ItemDatabase.GetItemFromID(ActiveItemObject.ContextID);
-
-        if (IO == null) Debug.Log("trying to hoverover an edible item that has no context ID, be sure to set the context ID to the Item database ID");
-
-=======
         DG_ItemObject IO = QuickFind.ItemDatabase.GetItemFromID(ActiveItemObject.ContextID);
         if (IO == null) Debug.Log("trying to hoverover an edible item that has no context ID, be sure to set the context ID to the Item database ID");
->>>>>>> .merge_file_a02196
         DG_ItemObject.Item Item = IO.GetItemByQuality(ActiveRucksackSlot.CurrentStackActive);
 
         int index = 0;
@@ -323,11 +301,7 @@ public class DG_TooltipGUI : MonoBehaviour {
             DG_ItemsDatabase.GenericIconDatabaseItem ICD = QuickFind.ItemDatabase.GetGenericIconByString("Health");
             Sub.DisplayImage.sprite = ICD.Icon;
             Sub.NumberObject.text = HealthAdjust.ToString(); 
-<<<<<<< .merge_file_a16988
-            Sub.TextObject.text =  QuickFind.WordDatabase.GetWordFromID(HealthLocalizationID);
-=======
             Sub.TextObject.text =  QuickFind.WordDatabase.GetWordFromID(ICD.LocalizationID);
->>>>>>> .merge_file_a02196
 
             Color C = ICD.ColorVariations[0];
             Sub.DisplayImage.color = C;
@@ -339,11 +313,7 @@ public class DG_TooltipGUI : MonoBehaviour {
             DG_ItemsDatabase.GenericIconDatabaseItem ICD = QuickFind.ItemDatabase.GetGenericIconByString("Energy");
             Sub.DisplayImage.sprite = ICD.Icon;
             Sub.NumberObject.text = EnergyAdjust.ToString();
-<<<<<<< .merge_file_a16988
-            Sub.TextObject.text = QuickFind.WordDatabase.GetWordFromID(EnergyLocalizationID);
-=======
             Sub.TextObject.text = QuickFind.WordDatabase.GetWordFromID(ICD.LocalizationID);
->>>>>>> .merge_file_a02196
 
             Color C = ICD.ColorVariations[0];
             Sub.DisplayImage.color = C;
@@ -384,8 +354,6 @@ public class DG_TooltipGUI : MonoBehaviour {
             }
         }
     }
-<<<<<<< .merge_file_a16988
-=======
     void SetUpCombatStats()
     {
         DG_TooltipModule Desc = GetModuleByType(ToolTipModules.InventoryStat);
@@ -412,7 +380,6 @@ public class DG_TooltipGUI : MonoBehaviour {
         }
     }
 
->>>>>>> .merge_file_a02196
 
 
 

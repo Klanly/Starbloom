@@ -4,9 +4,6 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Cam
-  - River
-  - Lake
   - Ocean
   layers:
   - Default
@@ -21,23 +18,19 @@ TagManager:
   - Suimono_Depth
   - Suimono_Screen
   - 
-  - Player
-  - InteractableObject
-  - ScatterObject
-  - Tillable Terrain
-  - Water
-  - WaterableObject
-  - PlaceableTerrain
   - 
   - 
   - 
   - 
   - 
-<<<<<<< .merge_file_a13844
   - 
-=======
-  - DamageObject
->>>>>>> .merge_file_a14096
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
   - 
   - 
   - 

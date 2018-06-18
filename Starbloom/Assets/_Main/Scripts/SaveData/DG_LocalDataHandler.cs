@@ -270,10 +270,7 @@ public class DG_LocalDataHandler : MonoBehaviour {
             Transform Child = NOM.GetChild(i);
             NetworkScene NS = Child.GetComponent<NetworkScene>();
             //
-<<<<<<< .merge_file_a01840
-=======
 
->>>>>>> .merge_file_a17840
             IntData.Add(NS.SceneID);
             IntData.Add(Child.childCount);
             //
@@ -283,52 +280,10 @@ public class DG_LocalDataHandler : MonoBehaviour {
                 //
                 IntData.Add(NO.NetworkObjectID);
                 IntData.Add(NO.ItemRefID);
-<<<<<<< .merge_file_a01840
-                IntData.Add(NO.ItemQualityLevel);
-=======
->>>>>>> .merge_file_a17840
                 IntData.Add(NO.PositionX);
                 IntData.Add(NO.PositionY);
                 IntData.Add(NO.PositionZ);
                 IntData.Add(NO.YFacing);
-<<<<<<< .merge_file_a01840
-
-
-                int isTrue = NO.isWaterable ? 1 : 0; IntData.Add(isTrue);
-                if (isTrue == 1)
-                {
-                    IntData.Add(NO.SurrogateObjectIndex);
-                    int InnerisTrue = NO.HasBeenWatered ? 1 : 0; IntData.Add(InnerisTrue);
-                }
-
-                isTrue = NO.HasHealth ? 1 : 0; IntData.Add(isTrue);
-                if (isTrue == 1)
-                {
-                    IntData.Add(NO.HealthValue);
-                    IntData.Add(NO.GrowthValue);
-                    IntData.Add(NO.ActiveVisual);
-                }
-
-
-                isTrue = NO.isStorageContainer ? 1 : 0; IntData.Add(isTrue);
-                if (isTrue == 1)
-                {
-                    DG_PlayerCharacters.RucksackSlot[] RS = NO.StorageSlots;
-                    isTrue = NO.isTreasureList ? 1 : 0;
-                    IntData.Add(isTrue);
-                    IntData.Add(NO.StorageSlots.Length);
-
-                    for (int iR = 0; iR < NO.StorageSlots.Length; iR++)
-                    {
-                        DG_PlayerCharacters.RucksackSlot RSlot = NO.StorageSlots[iR];
-                        //
-                        IntData.Add(RSlot.ContainedItem);
-                        IntData.Add(RSlot.CurrentStackActive);
-                        IntData.Add(RSlot.LowValue);
-                        IntData.Add(RSlot.NormalValue);
-                        IntData.Add(RSlot.HighValue);
-                        IntData.Add(RSlot.MaximumValue);
-=======
                 IntData.Add((int)NO.ObjectType);
 
                 int HasHealth = NO.HasHealth ? 1 : 0; IntData.Add(HasHealth);
@@ -371,7 +326,6 @@ public class DG_LocalDataHandler : MonoBehaviour {
                             IntData.Add(RSlot.HighValue);
                             IntData.Add(RSlot.MaximumValue);
                         }
->>>>>>> .merge_file_a17840
                     }
                 }
             }
@@ -413,73 +367,17 @@ public class DG_LocalDataHandler : MonoBehaviour {
                 string ChildChild = iN.ToString();                
                 NO.NetworkObjectID = IntValues[Index]; Index++;
                 NO.ItemRefID = IntValues[Index]; Index++;
-<<<<<<< .merge_file_a01840
-                NO.ItemQualityLevel = IntValues[Index]; Index++;
-=======
->>>>>>> .merge_file_a17840
                 NO.PositionX = IntValues[Index]; Index++;
                 NO.PositionY = IntValues[Index]; Index++;
                 NO.PositionZ = IntValues[Index]; Index++;
                 NO.YFacing = IntValues[Index]; Index++;
-<<<<<<< .merge_file_a01840
-=======
                 NO.ObjectType = (NetworkObjectManager.NetworkObjectTypes)IntValues[Index]; Index++;
->>>>>>> .merge_file_a17840
 
                 NO.transform.position = QuickFind.ConvertIntsToPosition(NO.PositionX, NO.PositionY, NO.PositionZ);
                 NO.transform.eulerAngles = new Vector3(0, QuickFind.ConvertIntToFloat(NO.YFacing), 0);
                 //
 
 
-<<<<<<< .merge_file_a01840
-                int BoolValue;
-                BoolValue = IntValues[Index]; Index++;
-                bool isTrue = false; if (BoolValue == 1) isTrue = true; NO.isWaterable = isTrue;
-                if (isTrue)
-                {
-                    NO.SurrogateObjectIndex = IntValues[Index]; Index++;
-                    BoolValue = IntValues[Index]; Index++;
-                    bool InnerisTrue = false; if (BoolValue == 1) InnerisTrue = true; NO.HasBeenWatered = InnerisTrue;
-                }
-
-                
-
-                BoolValue = IntValues[Index]; Index++;
-                isTrue = false; if (BoolValue == 1) isTrue = true; NO.HasHealth = isTrue;
-                if (isTrue)
-                {
-                    NO.HealthValue = IntValues[Index]; Index++;
-                    NO.GrowthValue = IntValues[Index]; Index++;
-                    NO.ActiveVisual = IntValues[Index]; Index++;
-                }
-
-
-
-
-                BoolValue = IntValues[Index]; Index++;
-                isTrue = false; if (BoolValue == 1) isTrue = true; NO.isStorageContainer = isTrue;
-                if (isTrue)
-                {
-                    int Count = 0;
-                    BoolValue = IntValues[Index]; Index++;
-                    isTrue = false; if (BoolValue == 1) isTrue = true; NO.isTreasureList = isTrue;
-                    Count = IntValues[Index]; Index++;
-                    NO.StorageSlots = new DG_PlayerCharacters.RucksackSlot[Count];
-
-                    DG_PlayerCharacters.RucksackSlot[] RS = NO.StorageSlots;
-                    for (int iR = 0; iR < Count; iR++)
-                    {
-                        RS[iR] = new DG_PlayerCharacters.RucksackSlot();
-                        DG_PlayerCharacters.RucksackSlot RSlot = RS[iR];
-                        //
-                        RSlot.ContainedItem = IntValues[Index]; Index++;
-                        RSlot.CurrentStackActive = IntValues[Index]; Index++;
-                        RSlot.LowValue = IntValues[Index]; Index++;
-                        RSlot.NormalValue = IntValues[Index]; Index++;
-                        RSlot.HighValue = IntValues[Index]; Index++;
-                        RSlot.MaximumValue = IntValues[Index]; Index++;
-                    }
-=======
                 int HasHealth = IntValues[Index]; Index++;
                 bool ThisHasHealth = false; if (HasHealth == 1) ThisHasHealth = true; NO.HasHealth = ThisHasHealth;
                 if (ThisHasHealth) { NO.HealthValue = IntValues[Index]; Index++; }
@@ -534,7 +432,6 @@ public class DG_LocalDataHandler : MonoBehaviour {
                         }
                     }
 
->>>>>>> .merge_file_a17840
                 }
             }
         }

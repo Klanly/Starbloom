@@ -38,11 +38,7 @@ public class DG_InteractHandler : MonoBehaviour
                     case DG_ContextObject.ContextTypes.HarvestablePlant: HandleSingleHarvest(CO); break;
                     case DG_ContextObject.ContextTypes.HarvestableTree: HandleClusterHarvest(CO); break;
                     case DG_ContextObject.ContextTypes.ShopInterface: HandleShopInterface(CO); break;
-<<<<<<< .merge_file_a05096
-                    case DG_ContextObject.ContextTypes.ShippingBin: QuickFind.ShippingBin.SetStackInShippingBin(CO); break;
-=======
                     case DG_ContextObject.ContextTypes.ShippingBin: QuickFind.ShippingBinGUI.OpenBinUI(CO); break;
->>>>>>> .merge_file_a03924
                     case DG_ContextObject.ContextTypes.ScenePortal: CO.GetComponent<DG_ScenePortalTrigger>().TriggerSceneChange(); break;
                 }
             }
@@ -93,11 +89,7 @@ public class DG_InteractHandler : MonoBehaviour
         {
             DG_BreakableObjectItem.ItemClump Clump = IC[i];
             for (int iN = 0; iN < Clump.Value; iN++)
-<<<<<<< .merge_file_a05096
-                QuickFind.NetworkObjectManager.CreateNetSceneObject(SceneID, Clump.ItemID, Clump.ItemQuality, SPR.GetSpawnPoint(), 0, true, SPR.RandomVelocity());
-=======
                 QuickFind.NetworkObjectManager.CreateNetSceneObject(SceneID, NetworkObjectManager.NetworkObjectTypes.Item, Clump.ItemID, Clump.ItemQuality, SPR.GetSpawnPoint(), 0, true, SPR.RandomVelocity());
->>>>>>> .merge_file_a03924
         }
 
         //FX

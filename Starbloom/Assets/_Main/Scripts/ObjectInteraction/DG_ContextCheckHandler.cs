@@ -45,15 +45,9 @@ public class DG_ContextCheckHandler : MonoBehaviour {
                 if (QuickFind.WithinDistance(DetectionPoint, QuickFind.PlayerTrans, MouseDistance))
                     AddNewContext(hit);
                 else
-<<<<<<< .merge_file_a11912
-                { ContextHit = false; if (LastEncounteredWobbleScript != null) LastEncounteredWobbleScript.Disable(); }
-            }
-            else { ContextHit = false; if(LastEncounteredWobbleScript != null) LastEncounteredWobbleScript.Disable(); }
-=======
                 { ContextHit = false; }
             }
             else { ContextHit = false; }
->>>>>>> .merge_file_a08072
         }
         else
         {
@@ -63,19 +57,11 @@ public class DG_ContextCheckHandler : MonoBehaviour {
             if (Physics.SphereCast(DetectionPoint.position, SphereCastRadius, DetectionPoint.forward, out hit, SphereCastMaxLength, ContextMask))
                 AddNewContext(hit);
             else
-<<<<<<< .merge_file_a11912
-            { ContextHit = false; LastEncounteredWobbleScript.Disable(); }
-        }
-
-        if (!ContextHit)
-        { LastEncounteredContext = null; if (LastEncounteredWobbleScript != null) LastEncounteredWobbleScript.Disable(); }
-=======
             { ContextHit = false; }
         }
 
         if (!ContextHit)
         { LastEncounteredContext = null; if (LastEncounteredWobbleScript != null) LastEncounteredWobbleScript.Disable(); QuickFind.GUIPopup.HideToolTip(); }
->>>>>>> .merge_file_a08072
     }
 
 
@@ -84,18 +70,10 @@ public class DG_ContextCheckHandler : MonoBehaviour {
     {
         if (hit.transform == LastEncounteredContext) return;
 
-<<<<<<< .merge_file_a11912
-
-
-=======
->>>>>>> .merge_file_a08072
         LastEncounteredContext = hit.transform;
         COEncountered = LastEncounteredContext.GetComponent<DG_ContextObject>();
         ContextHit = true;
 
-<<<<<<< .merge_file_a11912
-        if (LastEncounteredContext.GetComponent<DG_UI_WobbleAndFade>() != null)
-=======
 
 
         if (COEncountered == null) return;
@@ -110,16 +88,11 @@ public class DG_ContextCheckHandler : MonoBehaviour {
         QuickFind.GUIPopup.ShowPopup(COEncountered);
 
         if (AllowWobble && LastEncounteredContext.GetComponent<DG_UI_WobbleAndFade>() != null)
->>>>>>> .merge_file_a08072
         {
             if (LastEncounteredWobbleScript != null) LastEncounteredWobbleScript.Disable();
             LastEncounteredWobbleScript = LastEncounteredContext.GetComponent<DG_UI_WobbleAndFade>();
             LastEncounteredWobbleScript.Enable();
-<<<<<<< .merge_file_a11912
-        }
-=======
         }     
->>>>>>> .merge_file_a08072
     }
 
 

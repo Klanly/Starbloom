@@ -23,12 +23,8 @@ public class DG_ItemObject : MonoBehaviour
         Fish,
         Resource,
         Seeds,
-<<<<<<< .merge_file_a17012
-        Fruit
-=======
         Fruit,
         Misc
->>>>>>> .merge_file_a05548
     }
 
     public bool DatabaseUsesNameInsteadOfPrefab;
@@ -179,8 +175,6 @@ public class DG_ItemObject : MonoBehaviour
     #endregion
 
 
-<<<<<<< .merge_file_a17012
-=======
     #region Weapon
     [Header("----------------------------------")]
     public bool isWeapon = false;
@@ -205,7 +199,6 @@ public class DG_ItemObject : MonoBehaviour
 
 
 
->>>>>>> .merge_file_a05548
     [Header("Situational----------------------------------")]
     public bool HarvestableItem;
     [ShowIf("HarvestableItem")]
