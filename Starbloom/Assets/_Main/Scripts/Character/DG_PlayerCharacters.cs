@@ -147,7 +147,7 @@ public class DG_PlayerCharacters : MonoBehaviour {
     public int Month;
     public int Day;
 
-
+    public int TotalDays { get { return Year * 120 + Month * 30 + Day; } }
 
     [ListDrawerSettings(NumberOfItemsPerPage = 1, Expanded = false)]
     public List<PlayerCharacter> PlayerCharacters;
