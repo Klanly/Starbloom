@@ -4167,11 +4167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SendRate: 0.1
-<<<<<<< .merge_file_a17180
-  SlerpMoveRate: 0.1
-=======
   SlerpMoveRate: 0.18
->>>>>>> .merge_file_a18024
   SlerpTurnRate: 0.3
   MaxDistance: 5
   isPlayer: 0
