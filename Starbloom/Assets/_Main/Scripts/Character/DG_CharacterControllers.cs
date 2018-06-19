@@ -5,7 +5,9 @@ using UnityEngine;
 public class DG_CharacterControllers : Photon.MonoBehaviour
 {
 
-    public GameObject DebugCharacter = null;
+    public GameObject[] DebugCharacters = null;
+
+
 
     private void Awake()
     {

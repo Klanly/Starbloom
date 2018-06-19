@@ -120,7 +120,16 @@ public class DG_GUIMainMenu : Photon.MonoBehaviour
 
     public void GameStart()
     {
-        GameObject newPlayerObject = PhotonNetwork.Instantiate("MainPlayer", Vector3.zero, Quaternion.identity, 0);
+        //Replace this later with a character ID Selection from Main Menu.
+        if (QuickFind.GameSettings.BypassMainMenu && !PhotonNetwork.isMasterClient)
+            QuickFind.NetworkSync.PlayerCharacterID = QuickFind.CharacterManager.GetAvailablePlayerID();
+
+
+        int CharacterGender = QuickFind.Farm.PlayerCharacters[QuickFind.NetworkSync.PlayerCharacterID].Visuals.CharacterGender;
+
+        GameObject newPlayerObject;
+        if(CharacterGender == 0) newPlayerObject = PhotonNetwork.Instantiate("MainPlayer_Male", Vector3.zero, Quaternion.identity, 0);
+        else newPlayerObject = PhotonNetwork.Instantiate("MainPlayer_Female", Vector3.zero, Quaternion.identity, 0);
         DG_CharacterLink CL = newPlayerObject.GetComponent<DG_CharacterLink>();
         CL.ActivatePlayer();
 
@@ -139,9 +148,6 @@ public class DG_GUIMainMenu : Photon.MonoBehaviour
             QuickFind.WeatherHandler.RequestMasterWeather();
             QuickFind.TimeHandler.RequestMasterTimes();
         }
-
-        if (QuickFind.GameSettings.BypassMainMenu && !PhotonNetwork.isMasterClient)
-            QuickFind.NetworkSync.PlayerCharacterID = QuickFind.CharacterManager.GetAvailablePlayerID();
 
         QuickFind.GUI_Inventory.UpdateInventoryVisuals();
         QuickFind.GUI_Inventory.SetHotbarSlot(QuickFind.GUI_Inventory.HotbarSlots[0]);
@@ -167,10 +173,10 @@ public class DG_GUIMainMenu : Photon.MonoBehaviour
         AwaitingResponse = false;
 
 
-        if (QuickFind.CharacterManager.DebugCharacter != null)
+        if (QuickFind.CharacterManager.DebugCharacters != null)
         {
-            for (int i = 0; i < transform.childCount; i++)
-                Destroy(QuickFind.CharacterManager.DebugCharacter);
+            for (int i = 0; i < QuickFind.CharacterManager.DebugCharacters.Length; i++)
+                Destroy(QuickFind.CharacterManager.DebugCharacters[i]);
         }
 
         if (QuickFind.GameSettings.BypassMainMenu)
