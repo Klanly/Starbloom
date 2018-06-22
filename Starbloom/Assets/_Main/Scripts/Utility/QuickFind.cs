@@ -38,6 +38,7 @@ public static class QuickFindInEditor
     public static DG_EnemyDatabase GetEnemyDatabase() { return GameObject.Find("Enemy Database").GetComponent<DG_EnemyDatabase>(); }
     public static DG_MusicDatabase GetMusicDatabase() { return GameObject.Find("Music Database").GetComponent<DG_MusicDatabase>(); }
     public static DG_SFXDatabase GetSFXDatabase() { return GameObject.Find("SFX Database").GetComponent<DG_SFXDatabase>(); }
+    public static DG_ClothingDatabase GetClothingDatabase() { return GameObject.Find("Clothing Database").GetComponent<DG_ClothingDatabase>(); }
 
     //Save Data
     public static UserSettings GetEditorUserSettings() { return GameObject.Find("Player Settings").GetComponent<UserSettings>(); }
@@ -132,6 +133,7 @@ public static class QuickFind
     public static DG_ShippingBin ShippingBin = null;
     public static DG_SceneTransition SceneTransitionHandler = null;
     public static DG_FXHandler FXHandler = null;
+    public static DG_ClothingHairManager ClothingHairManager = null;
 
 
     //Tools
@@ -172,6 +174,8 @@ public static class QuickFind
     public static SceneIDList SceneList = null;
     public static DG_TextLanguageFonts LanguageFonts = null;
     public static DG_EnemyDatabase EnemyDatabase = null;
+    public static DG_ClothingDatabase ClothingDatabase = null;
+
 
     //Serialization
     public static DG_LocalDataHandler SaveHandler;
@@ -246,5 +250,37 @@ public static class QuickFind
     {
         while (DigitNeeded-- > 0) { Number /= 10; }
         return (Number % 10);
+    }
+}
+
+
+[System.Serializable]
+public struct Vector9
+{
+    public Vector3 Pos;
+    public Vector3 Rot;
+    public Vector3 Scale;
+
+
+    public static void Vector9ToTransform(Transform DesiredTransform, Vector9 Vector9Values, bool isLocal)
+    {
+        if (isLocal)
+        {
+            DesiredTransform.localPosition = Vector9Values.Pos;
+            DesiredTransform.localEulerAngles = Vector9Values.Rot;
+            DesiredTransform.localScale = Vector9Values.Scale;
+        }
+        else
+        {
+            DesiredTransform.position = Vector9Values.Pos;
+            DesiredTransform.eulerAngles = Vector9Values.Rot;
+            DesiredTransform.localScale = Vector9Values.Scale;
+        }
+    }
+    public static void SetDefaultChildValues(Transform NewChild)
+    {
+        NewChild.localPosition = Vector3.zero;
+        NewChild.localEulerAngles = Vector3.zero;
+        NewChild.localScale = new Vector3(1, 1, 1);
     }
 }

@@ -28,6 +28,7 @@ public class DuplicateCatcher : MonoBehaviour
         Enemy,
         MusicObject,
         SFXObject,
+        ClothingObject,
     }
 
     public DatabaseType DBType;
@@ -101,6 +102,7 @@ public class DuplicateCatcher : MonoBehaviour
             case DatabaseType.Enemy: { GD.ClassType = typeof(DG_EnemyDatabase); GD.TransformReference = QuickFindInEditor.GetEnemyDatabase().transform; GD.ObjectReference = GD.TransformReference.GetComponent<DG_EnemyDatabase>(); GD.ItemClassType = typeof(DG_EnemyObject); } break;
             case DatabaseType.MusicObject: { GD.ClassType = typeof(DG_MusicDatabase); GD.TransformReference = QuickFindInEditor.GetMusicDatabase().transform; GD.ObjectReference = GD.TransformReference.GetComponent<DG_MusicDatabase>(); GD.ItemClassType = typeof(DG_MusicObject); } break;
             case DatabaseType.SFXObject: { GD.ClassType = typeof(DG_SFXDatabase); GD.TransformReference = QuickFindInEditor.GetSFXDatabase().transform; GD.ObjectReference = GD.TransformReference.GetComponent<DG_SFXDatabase>(); GD.ItemClassType = typeof(DG_SFXObject); } break;
+            case DatabaseType.ClothingObject: { GD.ClassType = typeof(DG_ClothingDatabase); GD.TransformReference = QuickFindInEditor.GetClothingDatabase().transform; GD.ObjectReference = GD.TransformReference.GetComponent<DG_ClothingDatabase>(); GD.ItemClassType = typeof(DG_ClothingObject); } break;
         }
         return GD;
     }
@@ -123,6 +125,7 @@ public class DuplicateCatcher : MonoBehaviour
             case DatabaseType.Enemy: { TO.ClassType = typeof(DG_EnemyObject); TO.ObjectReference = T.GetComponent<DG_EnemyObject>(); } break;
             case DatabaseType.MusicObject: { TO.ClassType = typeof(DG_MusicObject); TO.ObjectReference = T.GetComponent<DG_MusicObject>(); } break;
             case DatabaseType.SFXObject: { TO.ClassType = typeof(DG_SFXObject); TO.ObjectReference = T.GetComponent<DG_SFXObject>(); } break;
+            case DatabaseType.ClothingObject: { TO.ClassType = typeof(DG_ClothingObject); TO.ObjectReference = T.GetComponent<DG_ClothingObject>(); } break;
         }
         return TO;
     }

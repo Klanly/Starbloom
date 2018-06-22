@@ -4,8 +4,18 @@ using UnityEngine;
 
 public class DG_CharacterLink : MonoBehaviour {
 
+    [Header("CharacterBodyReferences")]
+    public Transform MainBodyRef;
+    public Transform SkeletonRoot;
+    [Header("Hair")]
+    public Transform HairAttachpoint;
+    public Vector9 TransformData;
+    public List<CapsuleCollider> HairColliders;
+    [Header("AttachedClothingItems")]
+    public List<DG_ClothingHairManager.AttachedClothing> AttachedClothes;
 
     bool Allow = false;
+
 
 
     private void Awake()
@@ -14,6 +24,7 @@ public class DG_CharacterLink : MonoBehaviour {
         Child.GetComponent<MoveInput>().enabled = false;
         Child.GetComponent<Locomotion>().enabled = false;
         Child.GetComponent<LocomotionAnim>().enabled = false;
+        AttachedClothes = new List<DG_ClothingHairManager.AttachedClothing>();
     }
 
 

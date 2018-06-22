@@ -124,8 +124,7 @@ public class DG_GUIMainMenu : Photon.MonoBehaviour
         if (QuickFind.GameSettings.BypassMainMenu && !PhotonNetwork.isMasterClient)
             QuickFind.NetworkSync.PlayerCharacterID = QuickFind.CharacterManager.GetAvailablePlayerID();
 
-
-        int CharacterGender = QuickFind.Farm.PlayerCharacters[QuickFind.NetworkSync.PlayerCharacterID].Visuals.CharacterGender;
+        int CharacterGender = (int)QuickFind.Farm.PlayerCharacters[QuickFind.NetworkSync.PlayerCharacterID].Visuals.CharacterGender;
 
         GameObject newPlayerObject;
         if(CharacterGender == 0) newPlayerObject = PhotonNetwork.Instantiate("MainPlayer_Male", Vector3.zero, Quaternion.identity, 0);

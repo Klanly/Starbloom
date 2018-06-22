@@ -5,6 +5,13 @@ using Sirenix.OdinInspector;
 
 public class DG_PlayerCharacters : MonoBehaviour {
 
+    public enum GenderValue
+    {
+        Male,
+        Female,
+        Both
+    }
+
 
     private void Awake() { QuickFind.Farm = this; }
 
@@ -55,7 +62,8 @@ public class DG_PlayerCharacters : MonoBehaviour {
     [System.Serializable]
     public class CharacterVisuals
     {
-        public int CharacterGender;
+        public GenderValue CharacterGender;
+        public List<int> EquippedClothingVisuals;
     }
 
 
@@ -147,7 +155,9 @@ public class DG_PlayerCharacters : MonoBehaviour {
     public int Month;
     public int Day;
 
+
     public int TotalDays { get { return Year * 120 + Month * 30 + Day; } }
+
 
     [ListDrawerSettings(NumberOfItemsPerPage = 1, Expanded = false)]
     public List<PlayerCharacter> PlayerCharacters;
