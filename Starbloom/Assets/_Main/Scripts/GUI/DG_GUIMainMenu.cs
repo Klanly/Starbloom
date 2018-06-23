@@ -120,20 +120,33 @@ public class DG_GUIMainMenu : Photon.MonoBehaviour
 
 
 
-    public void GameStart()
+
+
+    public void GameStart(int CharacterID, int CharacterGender)
     {
-        //Replace this later with a character ID Selection from Main Menu.
-        if (QuickFind.GameSettings.BypassMainMenu && !PhotonNetwork.isMasterClient)
-            QuickFind.NetworkSync.PlayerCharacterID = QuickFind.CharacterManager.GetAvailablePlayerID();
+        if (CharacterID == -1) { Debug.Log("No Char was selected, assigning new."); CharacterID = QuickFind.CharacterManager.GetAvailablePlayerID(); }
+        if (CharacterGender == -1) { Debug.Log("No Gender was selected, assigning new."); CharacterGender = Random.Range(0, 2); }
+        AwaitingResponse = true;
 
-        int CharacterGender = (int)QuickFind.Farm.PlayerCharacters[QuickFind.NetworkSync.PlayerCharacterID].Visuals.CharacterGender;
+        int[] OutData = new int[3];
+        OutData[0] = QuickFind.NetworkSync.UserID;
+        OutData[1] = CharacterID;
+        OutData[2] = CharacterGender;
 
-        GameObject newPlayerObject;
-        if(CharacterGender == 0) newPlayerObject = PhotonNetwork.Instantiate("MainPlayer_Male", Vector3.zero, Quaternion.identity, 0);
-        else newPlayerObject = PhotonNetwork.Instantiate("MainPlayer_Female", Vector3.zero, Quaternion.identity, 0);
+        QuickFind.NetworkSync.GenerateNewChar(OutData);
+    }
+    public void ReturnCharacterGenerated(int[] IncomingData)
+    {
+        DG_NetworkSync.Users U = QuickFind.NetworkSync.GetUserByID(IncomingData[0]);
+        U.PlayerCharacterID = IncomingData[1];
+        int CharacterGender = IncomingData[2];
 
-        DG_CharacterLink CL = newPlayerObject.GetComponent<DG_CharacterLink>();
-        CL.ActivatePlayer();
+        QuickFind.CharacterManager.SpawnCharController(CharacterGender, U);
+
+        if (!AwaitingResponse) return;
+        AwaitingResponse = false;
+
+        U.CharacterLink.ActivatePlayer();
 
         if (QuickFind.Farm.PlayerCharacters[QuickFind.NetworkSync.PlayerCharacterID].Name == string.Empty)
             QuickFind.Farm.PlayerCharacters[QuickFind.NetworkSync.PlayerCharacterID].Name = "Default Name " + QuickFind.NetworkSync.PlayerCharacterID.ToString();
@@ -162,10 +175,6 @@ public class DG_GUIMainMenu : Photon.MonoBehaviour
 
         QuickFind.FadeScreen.FadeIn(DG_GUI_FadeScreen.FadeInSpeeds.NormalFade);
     }
-    public void CharacterGenerated()
-    {
-
-    }
 
 
 
@@ -189,7 +198,7 @@ public class DG_GUIMainMenu : Photon.MonoBehaviour
         }
 
         if (QuickFind.GameSettings.BypassMainMenu)
-            GameStart();
+            GameStart(-1,-1);
         else
             OpenCharacterCreationScreen();
     }

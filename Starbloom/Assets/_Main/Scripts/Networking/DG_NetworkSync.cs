@@ -11,8 +11,7 @@ public class DG_NetworkSync : Photon.MonoBehaviour
         public int ID;
         public int PlayerCharacterID;
         public int SceneID;
-        public int PhotonViewID;
-        public Transform PhotonClone;
+        public DG_CharacterLink CharacterLink;
         public DG_MovementSync MoveSync;
     }
 
@@ -21,6 +20,7 @@ public class DG_NetworkSync : Photon.MonoBehaviour
     [HideInInspector] public int CurrentScene;
     [HideInInspector] public int PhotonViewID;
     bool AwaitingSync = false;
+    bool FirstLoaded = false;
 
     public List<Users> UserList;
 
@@ -76,37 +76,22 @@ public class DG_NetworkSync : Photon.MonoBehaviour
             { if (UserList[i].ID == ID) return UserList[i]; }
         return null;
     }
-    public Users GetUserByPhotonViewID(int ID)
-    {
-        for (int i = 0; i < UserList.Count; i++)
-        { if (UserList[i].PhotonViewID == ID) return UserList[i]; }
-        return null;
-    }
     public Users GetUserByPlayerID(int ID)
     {
         for (int i = 0; i < UserList.Count; i++)
         { if (UserList[i].PlayerCharacterID == ID) return UserList[i]; }
         return null;
     }
-    public Transform GetCharacterTransformByPhotonViewID(int ViewID)
+    public Users GetUserByMovementSync(DG_MovementSync Sync)
     {
-        for (int i = 0; i < QuickFind.CharacterManager.transform.childCount; i++)
-        {
-            Transform T = QuickFind.CharacterManager.transform.GetChild(i);
-            PhotonView PV = T.GetComponent<PhotonView>();
-            if (PV.viewID == ViewID) return T;
-        }
+        for (int i = 0; i < UserList.Count; i++)
+        { if (UserList[i].MoveSync == Sync) return UserList[i]; }
         return null;
     }
 
-    public DG_MovementSync GetCharacterMoveSyncByPlayerID(int ID)
+    public DG_MovementSync GetCharacterMoveSyncByUserID(int ID)
     {
-        Users U = GetUserByPlayerID(ID);
-        if(U.MoveSync == null)
-        {
-            if(U.PhotonClone == null) U.PhotonClone = GetCharacterTransformByPhotonViewID(GetUserByPlayerID(ID).PhotonViewID);
-            if (U.PhotonClone != null) U.MoveSync = U.PhotonClone.transform.GetChild(0).GetComponent<DG_MovementSync>();
-        }
+        Users U = GetUserByID(ID);
         return U.MoveSync;
     }
 
@@ -132,46 +117,52 @@ public class DG_NetworkSync : Photon.MonoBehaviour
         UserList.Add(NewUser);
 
         List<int> TransferInts = new List<int>();
+        TransferInts.Add(NewUser.ID);
         TransferInts.Add(UserList.Count);
-        for(int i = 0; i < UserList.Count; i++)
+        for (int i = 0; i < UserList.Count; i++)
         {
             TransferInts.Add(UserList[i].ID);
             TransferInts.Add(UserList[i].PlayerCharacterID);
             TransferInts.Add(UserList[i].SceneID);
-            TransferInts.Add(UserList[i].PhotonViewID);
+            TransferInts.Add((int)QuickFind.Farm.PlayerCharacters[UserList[i].PlayerCharacterID].Visuals.CharacterGender);
         }
+
+        UserList.Remove(NewUser);
 
         PV.RPC("SendOutIDList", PhotonTargets.All, TransferInts.ToArray());
     }
     [PunRPC]
     void SendOutIDList(int[] TransferedIn)
     {
-        UserList.Clear();
-        int UserCount = TransferedIn[0];
-        int index = 1;
+        //UserList.Clear();
+
+        if (UserID == 0) { UserID = TransferedIn[0];}
+
+        int UserCount = TransferedIn[1];
+        if (UserCount == 1) UserList.Clear();
+        int index = 2;
         for(int i = 0; i < UserCount; i++)
         {
+            if (GetUserByID(TransferedIn[index]) != null) { index = index + 4;  continue; }
+
             Users NewUser = new Users();
             NewUser.ID = TransferedIn[index]; index++;
             NewUser.PlayerCharacterID = TransferedIn[index]; index++;
             NewUser.SceneID = TransferedIn[index]; index++;
-            NewUser.PhotonViewID = TransferedIn[index]; index++;
 
-            NewUser.PhotonClone = GetCharacterTransformByPhotonViewID(NewUser.PhotonViewID);
-            if(NewUser.PhotonClone != null)
-                NewUser.MoveSync = NewUser.PhotonClone.GetChild(0).GetComponent<DG_MovementSync>();
-
+            if (NewUser.ID == UserID || FirstLoaded) { UserList.Add(NewUser); index++; continue; }
+            QuickFind.CharacterManager.SpawnCharController(TransferedIn[index], NewUser); index++;
             UserList.Add(NewUser);
         }
-        if (UserID == 0)
-            UserID = UserList[UserList.Count - 1].ID;
-
-        Debug.Log("UserID == " + UserID.ToString());
-        Debug.Log("Connected Online == " + QuickFind.GameSettings.PlayOnline.ToString());
 
         if (AwaitingSync)
         {
             AwaitingSync = false;
+            FirstLoaded = true;
+
+            Debug.Log("UserID == " + UserID.ToString());
+            Debug.Log("Connected Online == " + QuickFind.GameSettings.PlayOnline.ToString());
+
             if (!PhotonNetwork.isMasterClient)
                 QuickFind.NetworkSync.RequestPlayerDataSync();
             else
@@ -179,24 +170,8 @@ public class DG_NetworkSync : Photon.MonoBehaviour
         }
     }
 
-    public void SetPhotonViewID(int PhotonID)
-    {
-        PhotonViewID = PhotonID;
-        int[] IntGroup = new int[3];
-        IntGroup[0] = UserID;
-        IntGroup[1] = PhotonID;
-        IntGroup[2] = PlayerCharacterID;
-        PV.RPC("SendUserPhoton", PhotonTargets.All, IntGroup);
-    }
-    [PunRPC]
-    void SendUserPhoton(int[] IntGroup)
-    {
-        Users U = GetUserByID(IntGroup[0]);
-        U.PhotonViewID = IntGroup[1];
-        U.PlayerCharacterID = IntGroup[2];
-        U.PhotonClone = GetCharacterTransformByPhotonViewID(IntGroup[1]);
-        U.MoveSync = U.PhotonClone.GetChild(0).GetComponent<DG_MovementSync>();
-    }
+
+
 
 
     public void SetSelfInScene(int NewScene)
@@ -234,7 +209,7 @@ public class DG_NetworkSync : Photon.MonoBehaviour
     [PunRPC]
     void ReceivePlayerMovement(int[] InData)
     {
-        GetCharacterMoveSyncByPlayerID(InData[0]).UpdatePlayerPos(InData);
+        GetCharacterMoveSyncByUserID(InData[0]).UpdatePlayerPos(InData);
     }
 
     public void UpdatePlayerAnimationState(int[] OutgoingData)
@@ -244,8 +219,20 @@ public class DG_NetworkSync : Photon.MonoBehaviour
     [PunRPC]
     void ReceivePlayerAnimationState(int[] InData)
     {
-        GetCharacterMoveSyncByPlayerID(InData[0]).AnimSync.UpdatePlayerAnimationState(InData);
+        GetCharacterMoveSyncByUserID(InData[0]).AnimSync.UpdatePlayerAnimationState(InData);
     }
+
+
+    public void GenerateNewChar(int[] OutgoingData)
+    {
+        PV.RPC("NewCharGenerationCalled", PhotonTargets.All, OutgoingData);
+    }
+    [PunRPC]
+    void NewCharGenerationCalled(int[] InData)
+    {
+        QuickFind.MainMenuUI.ReturnCharacterGenerated(InData);
+    }
+
 
 
     #endregion
@@ -502,7 +489,7 @@ public class DG_NetworkSync : Photon.MonoBehaviour
     { PV.RPC("CharacterClaimedMagneticObject", PhotonTargets.All, OutData); }
     [PunRPC]
     public void CharacterClaimedMagneticObject(int[] Data)
-    { GetUserByPlayerID(Data[0]).PhotonClone.GetChild(0).GetComponent<DG_MagnetAttraction>().ClaimObject(Data); }
+    { GetUserByPlayerID(Data[0]).MoveSync.GetComponent<DG_MagnetAttraction>().ClaimObject(Data); }
 
     public void SetTilledSurrogate(int[] OutData)
     { PV.RPC("ReceiveSurrogateTilled", PhotonTargets.All, OutData); }

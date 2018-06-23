@@ -78,14 +78,7 @@ public class ConnectAndJoinRandom : Photon.MonoBehaviour
 
     public void OnPhotonPlayerDisconnected(PhotonPlayer player)
     {
-        for(int i = 0; i < QuickFind.NetworkSync.UserList.Count; i++)
-        {
-            DG_NetworkSync.Users U = QuickFind.NetworkSync.UserList[i];
-            PhotonView PV = U.PhotonClone.GetComponent<PhotonView>();
-            if (PV.ownerId == player.ID)
-                Debug.Log("player " + U.PlayerCharacterID.ToString() + " Disconnected");
-            QuickFind.NetworkSync.UserList.RemoveAt(i);
-        }
+        Debug.Log("Add Logic for this later.");
     }
 
 

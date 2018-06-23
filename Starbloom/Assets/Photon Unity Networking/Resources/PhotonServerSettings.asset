@@ -85,4 +85,5 @@ MonoBehaviour:
   - ClearBinReceived
   - ReceiveEnemyHit
   - ReceivePlayerAnimationState
+  - NewCharGenerationCalled
   DisableAutoOpenWizard: 1

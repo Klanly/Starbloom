@@ -75,7 +75,7 @@ public class DG_MovementSync : MonoBehaviour {
     {
         if (OutData == null) OutData = new int[5];
 
-        OutData[0] = QuickFind.NetworkSync.PlayerCharacterID;
+        OutData[0] = QuickFind.NetworkSync.UserID;
         Vector3 Pos = _T.position;
         float Dir = _T.eulerAngles.y;
         OutData[1] = QuickFind.ConvertFloatToInt(Pos.x);
@@ -102,9 +102,7 @@ public class DG_MovementSync : MonoBehaviour {
         else
         {
             if (QuickFind.NetworkSync == null) return false;
-
-            PhotonView PV = transform.parent.GetComponent<PhotonView>();
-            DG_NetworkSync.Users User = QuickFind.NetworkSync.GetUserByPhotonViewID(PV.viewID);
+            DG_NetworkSync.Users User = QuickFind.NetworkSync.GetUserByMovementSync(this);
             if (User == null) return false;
             else { UserOwner = User; return true; }
         }

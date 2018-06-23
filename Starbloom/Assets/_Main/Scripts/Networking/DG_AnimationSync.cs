@@ -59,7 +59,7 @@ public class DG_AnimationSync : MonoBehaviour {
     {
         if (OutData == null) OutData = new int[3];
 
-        OutData[0] = QuickFind.NetworkSync.PlayerCharacterID;
+        OutData[0] = QuickFind.NetworkSync.UserID;
         OutData[1] = Index;
         OutData[2] = CurrentState;
 

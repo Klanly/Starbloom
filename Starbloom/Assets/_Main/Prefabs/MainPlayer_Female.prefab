@@ -857,7 +857,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4813318121030292}
   - component: {fileID: 114119373513364864}
-  - component: {fileID: 114824815562823750}
   m_Layer: 0
   m_Name: MainPlayer_Female
   m_TagString: Untagged
@@ -3131,8 +3130,7 @@ MonoBehaviour:
     ID: 0
     PlayerCharacterID: 0
     SceneID: 0
-    PhotonViewID: 0
-    PhotonClone: {fileID: 0}
+    CharacterLink: {fileID: 0}
     MoveSync: {fileID: 0}
   Distance: 0
 --- !u!114 &114813838257056568
@@ -3153,32 +3151,6 @@ MonoBehaviour:
     CurrentState: 0
   RunVelocityName: Speed
   isPlayer: 0
---- !u!114 &114824815562823750
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1513781507148194}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ownerId: 0
-  group: 0
-  OwnerShipWasTransfered: 0
-  prefixBackup: -1
-  synchronization: 0
-  onSerializeTransformOption: 3
-  onSerializeRigidBodyOption: 2
-  ownershipTransfer: 0
-  ObservedComponents:
-  - {fileID: 0}
-  ObservedComponentsFoldoutOpen: 1
-  viewIdField: 0
-  instantiationId: -1
-  currentMasterID: -1
-  isRuntimeInstantiated: 0
 --- !u!114 &114878685927936446
 MonoBehaviour:
   m_ObjectHideFlags: 1
