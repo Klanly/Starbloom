@@ -84,4 +84,5 @@ MonoBehaviour:
   - ReceiveWallAdjust
   - ClearBinReceived
   - ReceiveEnemyHit
+  - ReceivePlayerAnimationState
   DisableAutoOpenWizard: 1

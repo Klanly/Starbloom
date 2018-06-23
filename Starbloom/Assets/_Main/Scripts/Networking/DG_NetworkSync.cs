@@ -20,7 +20,7 @@ public class DG_NetworkSync : Photon.MonoBehaviour
     [HideInInspector] public int PlayerCharacterID;
     [HideInInspector] public int CurrentScene;
     [HideInInspector] public int PhotonViewID;
-
+    bool AwaitingSync = false;
 
     public List<Users> UserList;
 
@@ -54,11 +54,9 @@ public class DG_NetworkSync : Photon.MonoBehaviour
         PV = transform.GetComponent<PhotonView>();
         transform.SetParent(QuickFind.NetworkMaster.transform);
         QuickFind.NetworkSync = this;
+
+        AwaitingSync = true;
         PV.RPC("SetNewID", PhotonTargets.MasterClient);
-        if (!PhotonNetwork.isMasterClient)
-            QuickFind.NetworkSync.RequestPlayerDataSync();
-        else
-            QuickFind.MainMenuUI.Connected();
     }
 
 
@@ -170,6 +168,15 @@ public class DG_NetworkSync : Photon.MonoBehaviour
 
         Debug.Log("UserID == " + UserID.ToString());
         Debug.Log("Connected Online == " + QuickFind.GameSettings.PlayOnline.ToString());
+
+        if (AwaitingSync)
+        {
+            AwaitingSync = false;
+            if (!PhotonNetwork.isMasterClient)
+                QuickFind.NetworkSync.RequestPlayerDataSync();
+            else
+                QuickFind.MainMenuUI.Connected();
+        }
     }
 
     public void SetPhotonViewID(int PhotonID)
@@ -228,6 +235,16 @@ public class DG_NetworkSync : Photon.MonoBehaviour
     void ReceivePlayerMovement(int[] InData)
     {
         GetCharacterMoveSyncByPlayerID(InData[0]).UpdatePlayerPos(InData);
+    }
+
+    public void UpdatePlayerAnimationState(int[] OutgoingData)
+    {
+        PV.RPC("ReceivePlayerAnimationState", PhotonTargets.Others, OutgoingData);
+    }
+    [PunRPC]
+    void ReceivePlayerAnimationState(int[] InData)
+    {
+        GetCharacterMoveSyncByPlayerID(InData[0]).AnimSync.UpdatePlayerAnimationState(InData);
     }
 
 

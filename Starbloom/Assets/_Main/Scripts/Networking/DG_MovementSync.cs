@@ -14,10 +14,14 @@ public class DG_MovementSync : MonoBehaviour {
     public float MaxDistance;
 
 
+    public DG_AnimationSync AnimSync;
     [HideInInspector] public bool isPlayer;
+    [HideInInspector] public DG_NetworkSync.Users UserOwner = null;
+    [HideInInspector] public float Distance;
     float Timer;
     Transform _T;
-    DG_NetworkSync.Users UserOwner = null;
+
+
 
     Vector3 KnownPosition;
     Vector3 KnownHeading;
@@ -34,6 +38,8 @@ public class DG_MovementSync : MonoBehaviour {
 
     private void Update()
     {
+        if (QuickFind.NetworkSync == null) return;
+
         if (isPlayer)
         {
             Timer = Timer - Time.deltaTime;
@@ -54,9 +60,10 @@ public class DG_MovementSync : MonoBehaviour {
                 else
                 {
                     int AdditiveSpeedMultiplier = 1;
-                    float Distance = Vector3.Distance(_T.position, KnownPosition);
+                    Distance = Vector3.Distance(_T.position, KnownPosition);
                     if (Distance > 2) AdditiveSpeedMultiplier = (int)Distance;
-                    _T.position = Vector3.MoveTowards(_T.position, KnownPosition, SlerpMoveRate * AdditiveSpeedMultiplier);
+                    float SlerpRate = SlerpMoveRate * AdditiveSpeedMultiplier;
+                    _T.position = Vector3.MoveTowards(_T.position, KnownPosition, SlerpRate);
                 }
                 _T.eulerAngles = QuickFind.AngleLerp(_T.eulerAngles, KnownHeading, SlerpTurnRate);
             }

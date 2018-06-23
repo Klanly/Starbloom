@@ -57,6 +57,7 @@ public class DG_CharacterLink : MonoBehaviour {
         Child.GetComponent<LocomotionAnim>().enabled = true;
         Child.GetComponent<DG_MagnetAttraction>().isOwner = true;
         Child.GetComponent<DG_MovementSync>().isPlayer = true;
+        Child.GetComponent<DG_AnimationSync>().isPlayer = true;
 
         QuickFind.PlayerTrans = Child;
         QuickFind.InputController.MainPlayer.CharLink = this;

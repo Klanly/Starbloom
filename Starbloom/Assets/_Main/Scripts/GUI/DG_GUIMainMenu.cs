@@ -118,6 +118,8 @@ public class DG_GUIMainMenu : Photon.MonoBehaviour
         QuickFind.FadeScreen.FadeOut(DG_GUI_FadeScreen.FadeInSpeeds.QuickFade, this.gameObject, "GameStart");
     }
 
+
+
     public void GameStart()
     {
         //Replace this later with a character ID Selection from Main Menu.
@@ -129,6 +131,7 @@ public class DG_GUIMainMenu : Photon.MonoBehaviour
         GameObject newPlayerObject;
         if(CharacterGender == 0) newPlayerObject = PhotonNetwork.Instantiate("MainPlayer_Male", Vector3.zero, Quaternion.identity, 0);
         else newPlayerObject = PhotonNetwork.Instantiate("MainPlayer_Female", Vector3.zero, Quaternion.identity, 0);
+
         DG_CharacterLink CL = newPlayerObject.GetComponent<DG_CharacterLink>();
         CL.ActivatePlayer();
 
@@ -159,6 +162,13 @@ public class DG_GUIMainMenu : Photon.MonoBehaviour
 
         QuickFind.FadeScreen.FadeIn(DG_GUI_FadeScreen.FadeInSpeeds.NormalFade);
     }
+    public void CharacterGenerated()
+    {
+
+    }
+
+
+
 
 
 
