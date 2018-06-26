@@ -148,8 +148,8 @@ MonoBehaviour:
   FemalePrefabRef: {fileID: 1513781507148194, guid: fb8ea3a1edf410949b0cf372101f4847,
     type: 2}
   DebugCharacters:
-  - {fileID: 171720378}
-  - {fileID: 455070576}
+  - {fileID: 254858813}
+  - {fileID: 502971246}
 --- !u!4 &106225853
 Transform:
   m_ObjectHideFlags: 0
@@ -161,8 +161,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 171720379}
-  - {fileID: 455070577}
+  - {fileID: 254858814}
+  - {fileID: 502971247}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -207,7 +207,7 @@ Transform:
   m_Father: {fileID: 1118935757}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &171720377
+--- !u!1001 &254858812
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -216,11 +216,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4396600582777970, guid: d42e4cb6c131cad4c912d9fc5ddfb9cc, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 1.41
+      value: 0.92
       objectReference: {fileID: 0}
     - target: {fileID: 4396600582777970, guid: d42e4cb6c131cad4c912d9fc5ddfb9cc, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 2.295
       objectReference: {fileID: 0}
     - target: {fileID: 4396600582777970, guid: d42e4cb6c131cad4c912d9fc5ddfb9cc, type: 2}
       propertyPath: m_LocalPosition.z
@@ -249,16 +249,16 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d42e4cb6c131cad4c912d9fc5ddfb9cc, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &171720378 stripped
+--- !u!1 &254858813 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1604403149716064, guid: d42e4cb6c131cad4c912d9fc5ddfb9cc,
     type: 2}
-  m_PrefabInternal: {fileID: 171720377}
---- !u!4 &171720379 stripped
+  m_PrefabInternal: {fileID: 254858812}
+--- !u!4 &254858814 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4396600582777970, guid: d42e4cb6c131cad4c912d9fc5ddfb9cc,
     type: 2}
-  m_PrefabInternal: {fileID: 171720377}
+  m_PrefabInternal: {fileID: 254858812}
 --- !u!1 &438454040
 GameObject:
   m_ObjectHideFlags: 0
@@ -305,58 +305,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &455070575
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 106225853}
-    m_Modifications:
-    - target: {fileID: 4813318121030292, guid: fb8ea3a1edf410949b0cf372101f4847, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -1.01
-      objectReference: {fileID: 0}
-    - target: {fileID: 4813318121030292, guid: fb8ea3a1edf410949b0cf372101f4847, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4813318121030292, guid: fb8ea3a1edf410949b0cf372101f4847, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4813318121030292, guid: fb8ea3a1edf410949b0cf372101f4847, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4813318121030292, guid: fb8ea3a1edf410949b0cf372101f4847, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4813318121030292, guid: fb8ea3a1edf410949b0cf372101f4847, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4813318121030292, guid: fb8ea3a1edf410949b0cf372101f4847, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4813318121030292, guid: fb8ea3a1edf410949b0cf372101f4847, type: 2}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: fb8ea3a1edf410949b0cf372101f4847, type: 2}
-  m_IsPrefabParent: 0
---- !u!1 &455070576 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1513781507148194, guid: fb8ea3a1edf410949b0cf372101f4847,
-    type: 2}
-  m_PrefabInternal: {fileID: 455070575}
---- !u!4 &455070577 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4813318121030292, guid: fb8ea3a1edf410949b0cf372101f4847,
-    type: 2}
-  m_PrefabInternal: {fileID: 455070575}
 --- !u!1 &487331646
 GameObject:
   m_ObjectHideFlags: 0
@@ -459,6 +407,58 @@ MonoBehaviour:
   isStorageContainer: 0
   isTreasureList: 0
   StorageSlots: []
+--- !u!1001 &502971245
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 106225853}
+    m_Modifications:
+    - target: {fileID: 4813318121030292, guid: fb8ea3a1edf410949b0cf372101f4847, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -0.74
+      objectReference: {fileID: 0}
+    - target: {fileID: 4813318121030292, guid: fb8ea3a1edf410949b0cf372101f4847, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 2.422
+      objectReference: {fileID: 0}
+    - target: {fileID: 4813318121030292, guid: fb8ea3a1edf410949b0cf372101f4847, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4813318121030292, guid: fb8ea3a1edf410949b0cf372101f4847, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4813318121030292, guid: fb8ea3a1edf410949b0cf372101f4847, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4813318121030292, guid: fb8ea3a1edf410949b0cf372101f4847, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4813318121030292, guid: fb8ea3a1edf410949b0cf372101f4847, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4813318121030292, guid: fb8ea3a1edf410949b0cf372101f4847, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: fb8ea3a1edf410949b0cf372101f4847, type: 2}
+  m_IsPrefabParent: 0
+--- !u!1 &502971246 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1513781507148194, guid: fb8ea3a1edf410949b0cf372101f4847,
+    type: 2}
+  m_PrefabInternal: {fileID: 502971245}
+--- !u!4 &502971247 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4813318121030292, guid: fb8ea3a1edf410949b0cf372101f4847,
+    type: 2}
+  m_PrefabInternal: {fileID: 502971245}
 --- !u!1 &675496406
 GameObject:
   m_ObjectHideFlags: 0
@@ -1208,23 +1208,18 @@ MonoBehaviour:
   Day: 1
   PlayerCharacters:
   - Name: 
+    CharacterGender: 0
     CurrentEnergy: 0
     MaxEnergy: 0
     CurrentHealth: 0
     MaxHealth: 0
-    Visuals:
-      CharacterGender: 0
-      EquippedClothingVisuals: 
     NonCombatSkillEXP:
       Farming: 0
       Mining: 0
       Foraging: 0
       Fishing: 0
     Equipment:
-      HatId: 0
-      Ring1: 0
-      Ring2: 0
-      Boots: 0
+      EquippedClothing: 
       RuckSackUnlockedSize: 12
       RucksackSlots:
       - ContainedItem: 0
@@ -1447,23 +1442,18 @@ MonoBehaviour:
     Acheivements:
       LargestFishCaught: 000000000000000000000000
   - Name: 
+    CharacterGender: 0
     CurrentEnergy: 0
     MaxEnergy: 0
     CurrentHealth: 0
     MaxHealth: 0
-    Visuals:
-      CharacterGender: 0
-      EquippedClothingVisuals: 
     NonCombatSkillEXP:
       Farming: 0
       Mining: 0
       Foraging: 0
       Fishing: 0
     Equipment:
-      HatId: 0
-      Ring1: 0
-      Ring2: 0
-      Boots: 0
+      EquippedClothing: 
       RuckSackUnlockedSize: 12
       RucksackSlots:
       - ContainedItem: 0
@@ -1686,23 +1676,18 @@ MonoBehaviour:
     Acheivements:
       LargestFishCaught: 000000000000000000000000
   - Name: 
+    CharacterGender: 0
     CurrentEnergy: 0
     MaxEnergy: 0
     CurrentHealth: 0
     MaxHealth: 0
-    Visuals:
-      CharacterGender: 0
-      EquippedClothingVisuals: 
     NonCombatSkillEXP:
       Farming: 0
       Mining: 0
       Foraging: 0
       Fishing: 0
     Equipment:
-      HatId: 0
-      Ring1: 0
-      Ring2: 0
-      Boots: 0
+      EquippedClothing: 
       RuckSackUnlockedSize: 12
       RucksackSlots:
       - ContainedItem: 0
@@ -1925,23 +1910,18 @@ MonoBehaviour:
     Acheivements:
       LargestFishCaught: 000000000000000000000000
   - Name: 
+    CharacterGender: 0
     CurrentEnergy: 0
     MaxEnergy: 0
     CurrentHealth: 0
     MaxHealth: 0
-    Visuals:
-      CharacterGender: 0
-      EquippedClothingVisuals: 
     NonCombatSkillEXP:
       Farming: 0
       Mining: 0
       Foraging: 0
       Fishing: 0
     Equipment:
-      HatId: 0
-      Ring1: 0
-      Ring2: 0
-      Boots: 0
+      EquippedClothing: 
       RuckSackUnlockedSize: 12
       RucksackSlots:
       - ContainedItem: 0

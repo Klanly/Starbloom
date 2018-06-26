@@ -56,7 +56,10 @@ public class DG_MovementSync : MonoBehaviour {
             else
             {
                 if (!QuickFind.WithinDistanceVec(transform.position, KnownPosition, MaxDistance))
+                {
                     _T.position = KnownPosition;
+                    Distance = 0;
+                }
                 else
                 {
                     int AdditiveSpeedMultiplier = 1;

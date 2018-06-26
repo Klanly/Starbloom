@@ -124,7 +124,7 @@ public class DG_NetworkSync : Photon.MonoBehaviour
             TransferInts.Add(UserList[i].ID);
             TransferInts.Add(UserList[i].PlayerCharacterID);
             TransferInts.Add(UserList[i].SceneID);
-            TransferInts.Add((int)QuickFind.Farm.PlayerCharacters[UserList[i].PlayerCharacterID].Visuals.CharacterGender);
+            TransferInts.Add((int)QuickFind.Farm.PlayerCharacters[UserList[i].PlayerCharacterID].CharacterGender);
         }
 
         UserList.Remove(NewUser);
@@ -166,7 +166,7 @@ public class DG_NetworkSync : Photon.MonoBehaviour
             if (!PhotonNetwork.isMasterClient)
                 QuickFind.NetworkSync.RequestPlayerDataSync();
             else
-                QuickFind.MainMenuUI.Connected();
+                QuickFind.GameStartHandler.Connected();
         }
     }
 
@@ -230,7 +230,7 @@ public class DG_NetworkSync : Photon.MonoBehaviour
     [PunRPC]
     void NewCharGenerationCalled(int[] InData)
     {
-        QuickFind.MainMenuUI.ReturnCharacterGenerated(InData);
+        QuickFind.GameStartHandler.ReturnCharacterGenerated(InData);
     }
 
 
@@ -265,7 +265,7 @@ public class DG_NetworkSync : Photon.MonoBehaviour
         QuickFind.SaveHandler.GetIntValues(IntValues, false);
 
         if (!PhotonNetwork.isMasterClient)
-            QuickFind.MainMenuUI.Connected();
+            QuickFind.GameStartHandler.Connected();
     }
 
 

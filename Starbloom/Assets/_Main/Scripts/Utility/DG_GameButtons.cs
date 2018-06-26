@@ -93,6 +93,7 @@ public class DG_GameButtons
     public Button Action;
     public Button Interact;
     public Button Special;
+    public Button Jump;
     ////////////////////////////////////
     [Header("------ Menu Buttons --------------------------------------------")]
     public Button StartBut;
@@ -118,6 +119,7 @@ public class DG_GameButtons
         Action.Check();
         Interact.Check();
         Special.Check();
+        Jump.Check();
         //Start / Select ////////////////////////////////////////////////////////
         StartBut.Check();
         //Joy Axis ////////////////////////////////////////////////////////
@@ -141,6 +143,7 @@ public class DG_GameButtons
         Add(ButtonList, Action);
         Add(ButtonList, Interact);
         Add(ButtonList, Special);
+        Add(ButtonList, Jump);
 
         Add(ButtonList, StartBut);
 
@@ -169,6 +172,7 @@ public class DG_GameButtons
         Set(IncomingData, Action);
         Set(IncomingData, Interact);
         Set(IncomingData, Special);
+        Set(IncomingData, Jump);
 
         Set(IncomingData, StartBut);
     }
@@ -193,6 +197,8 @@ public class DG_GameButtons
         ButtonList.Add(Action);
         ButtonList.Add(Interact);
         ButtonList.Add(Special);
+        ButtonList.Add(Jump);
+
         ButtonList.Add(StartBut);
 
         return ButtonList;

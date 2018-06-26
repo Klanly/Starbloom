@@ -14,23 +14,35 @@ public class DG_CharacterLink : MonoBehaviour {
     [Header("AttachedClothingItems")]
     public List<DG_ClothingHairManager.AttachedClothing> AttachedClothes;
 
+
+    [Header("Debug")]
+    public bool DoNotDisableOnStart = false;
+
     bool Allow = false;
 
 
 
     private void Awake()
     {
-        Transform Child = transform.GetChild(0);
-        Child.GetComponent<MoveInput>().enabled = false;
-        Child.GetComponent<Locomotion>().enabled = false;
-        Child.GetComponent<LocomotionAnim>().enabled = false;
         AttachedClothes = new List<DG_ClothingHairManager.AttachedClothing>();
+        if (!DoNotDisableOnStart)
+        {
+            transform.GetComponent<ECM.Components.CharacterMovement>().enabled = false;
+            transform.GetComponent<ECM.Examples.EthanPlatformerController>().enabled = false;
+        }
     }
 
 
     private void Start()
     {
-        transform.SetParent(QuickFind.CharacterManager.transform);
+        if (!DoNotDisableOnStart)
+            transform.SetParent(QuickFind.CharacterManager.transform);
+        else
+        {
+            QuickFind.PlayerTrans = transform;
+            transform.GetComponent<DG_MovementSync>().enabled = false;
+            QuickFind.PlayerTrans.GetChild(0).GetComponent<DG_AnimationSync>().enabled = false;
+        }
     }
 
 
@@ -51,15 +63,14 @@ public class DG_CharacterLink : MonoBehaviour {
             return;
         }
 
-        Transform Child = transform.GetChild(0);
-        Child.GetComponent<MoveInput>().enabled = true;
-        Child.GetComponent<Locomotion>().enabled = true;
-        Child.GetComponent<LocomotionAnim>().enabled = true;
-        Child.GetComponent<DG_MagnetAttraction>().isOwner = true;
-        Child.GetComponent<DG_MovementSync>().isPlayer = true;
-        Child.GetComponent<DG_AnimationSync>().isPlayer = true;
+        transform.GetComponent<ECM.Components.CharacterMovement>().enabled = true;
+        transform.GetComponent<ECM.Examples.EthanPlatformerController>().enabled = true;
+        transform.GetComponent<DG_MagnetAttraction>().isOwner = true;
+        transform.GetComponent<DG_MovementSync>().isPlayer = true;
 
-        QuickFind.PlayerTrans = Child;
+        QuickFind.PlayerTrans = transform;
+        QuickFind.PlayerTrans.GetChild(0).GetComponent<DG_AnimationSync>().isPlayer = true;
+
         QuickFind.InputController.MainPlayer.CharLink = this;
 
         this.enabled = false;

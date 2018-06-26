@@ -134,6 +134,7 @@ public static class QuickFind
     public static DG_SceneTransition SceneTransitionHandler = null;
     public static DG_FXHandler FXHandler = null;
     public static DG_ClothingHairManager ClothingHairManager = null;
+    public static DG_GameStartHandler GameStartHandler = null;
 
 
     //Tools

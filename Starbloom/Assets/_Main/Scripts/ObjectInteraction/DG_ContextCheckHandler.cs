@@ -29,7 +29,7 @@ public class DG_ContextCheckHandler : MonoBehaviour {
 
     void Update()
     {
-        if (QuickFind.PlayerTrans == null) return;
+        if (QuickFind.GUI_OverviewTabs == null) return;
         if (QuickFind.GUI_OverviewTabs.UIisOpen) return;
         if (QuickFind.GUI_Inventory.InventoryIsOpen) return;
 

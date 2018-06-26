@@ -20,15 +20,13 @@ public class DG_PlayerCharacters : MonoBehaviour {
     public class PlayerCharacter
     {
         public string Name;
+        public GenderValue CharacterGender;
 
         [Header("Stats")]
         public int CurrentEnergy;
         public int MaxEnergy;
         public int CurrentHealth;
         public int MaxHealth;
-
-        [Header("Visuals")]
-        public CharacterVisuals Visuals;
 
         [Header("Total Experience for Each Skill")]
         public NonCombatSkills NonCombatSkillEXP;
@@ -46,24 +44,12 @@ public class DG_PlayerCharacters : MonoBehaviour {
     [System.Serializable]
     public class CharacterEquipment
     {
-        [Header("Equipment Slots -------------------------------------------------------------------------------")]
-        public int HatId;
-        public int Ring1;
-        public int Ring2;
-        public int Boots;
+        public List<int> EquippedClothing;
 
         [Header("Rucksack")]
         public int RuckSackUnlockedSize = 12;
         [ListDrawerSettings(NumberOfItemsPerPage = 12, Expanded = false)]
         public RucksackSlot[] RucksackSlots;
-    }
-
-
-    [System.Serializable]
-    public class CharacterVisuals
-    {
-        public GenderValue CharacterGender;
-        public List<int> EquippedClothingVisuals;
     }
 
 
@@ -139,8 +125,6 @@ public class DG_PlayerCharacters : MonoBehaviour {
 #endif
 
     }
-
-
 
 
 

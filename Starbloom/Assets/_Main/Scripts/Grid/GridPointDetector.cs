@@ -45,6 +45,7 @@ public class GridPointDetector : MonoBehaviour
     }
     void GetDetectionPoint()
     {
+        if (QuickFind.GUI_OverviewTabs == null) return;
         if (QuickFind.GUI_OverviewTabs.UIisOpen) return;
         if (QuickFind.GUI_Inventory.InventoryIsOpen) return;
 

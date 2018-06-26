@@ -35,6 +35,7 @@ public class HotbarItemHandler : MonoBehaviour {
         bool AllowSent = false;
         bool UpEvent = false;
 
+        if (QuickFind.GUI_OverviewTabs == null) return;
         if (QuickFind.GUI_OverviewTabs.UIisOpen || QuickFind.StorageUI.StorageUIOpen)
             return;
 

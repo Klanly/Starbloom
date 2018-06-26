@@ -13,7 +13,7 @@ public class LocomotionAnim : MonoBehaviour
 		if (null == Anim || null == Loco)
 			return;
 
-		Anim.SetFloat("Direction", Loco.Heading);
+		//Anim.SetFloat("Direction", Loco.Heading);
 		Anim.SetFloat("Speed", Loco.CurSpeed);
 	}
 }

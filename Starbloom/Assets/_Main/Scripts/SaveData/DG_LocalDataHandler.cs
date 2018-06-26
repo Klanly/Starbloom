@@ -104,23 +104,26 @@ public class DG_LocalDataHandler : MonoBehaviour {
             DG_PlayerCharacters.PlayerCharacter PC = PlayerData.PlayerCharacters[i];
             DG_PlayerCharacters.CharacterEquipment CE = PC.Equipment;
 
+            IntData.Add((int)PC.CharacterGender);
+
             IntData.Add(PC.NonCombatSkillEXP.Farming);
             IntData.Add(PC.NonCombatSkillEXP.Mining);
             IntData.Add(PC.NonCombatSkillEXP.Foraging);
             IntData.Add(PC.NonCombatSkillEXP.Fishing);
 
+
             //
-            IntData.Add(CE.HatId);
-            IntData.Add(CE.Ring1);
-            IntData.Add(CE.Ring2);
-            IntData.Add(CE.Boots);
+            // Equipment
+            IntData.Add(CE.EquippedClothing.Count);
+            for (int iN = 0; iN < CE.EquippedClothing.Count; iN++)
+                IntData.Add(CE.EquippedClothing[iN]);
+
             //
             // Rucksack
             IntData.Add(CE.RuckSackUnlockedSize);
             for (int iN = 0; iN < CE.RuckSackUnlockedSize; iN++)
             {
                 DG_PlayerCharacters.RucksackSlot RSlot = CE.RucksackSlots[iN];
-                string RuckSackSlot = iN.ToString();
                 //
                 IntData.Add(RSlot.ContainedItem);       
                 IntData.Add(RSlot.CurrentStackActive);  
@@ -167,21 +170,27 @@ public class DG_LocalDataHandler : MonoBehaviour {
             DG_PlayerCharacters.PlayerCharacter PC = PlayerData.PlayerCharacters[i];
             DG_PlayerCharacters.CharacterEquipment CE = PC.Equipment;
 
+            PC.CharacterGender = (DG_PlayerCharacters.GenderValue)IntValues[Index]; Index++;
+
             PC.NonCombatSkillEXP.Farming = IntValues[Index]; Index++;
             PC.NonCombatSkillEXP.Mining = IntValues[Index]; Index++;
             PC.NonCombatSkillEXP.Foraging = IntValues[Index]; Index++;
             PC.NonCombatSkillEXP.Fishing = IntValues[Index]; Index++;
 
-            //
-            CE.HatId = IntValues[Index]; Index++;
-            CE.Ring1 = IntValues[Index]; Index++;
-            CE.Ring2 = IntValues[Index]; Index++;
-            CE.Boots = IntValues[Index]; Index++;
-            //
-            CE.RuckSackUnlockedSize = IntValues[Index]; Index++;
-            //
 
+
+
+            //
+            // Equipment
+            CE.EquippedClothing = new List<int>();
+            int Count = IntValues[Index]; Index++;
+            for (int iN = 0; iN < Count; iN++)
+                { CE.EquippedClothing.Add(IntValues[Index]); Index++; }
+
+            //
             //RuckSack
+            CE.RuckSackUnlockedSize = IntValues[Index]; Index++;
+
             DG_PlayerCharacters.RucksackSlot[] RS = CE.RucksackSlots;
             for (int iN = 0; iN < CE.RuckSackUnlockedSize; iN++)
             {

@@ -22,20 +22,19 @@ public class DG_AnimationSync : MonoBehaviour {
 
 
     int[] OutData = new int[3];
-
+    float StoredDistance;
 
     private void Update()
     {
         if (!isPlayer)
         {
-            float Current = Anim.GetFloat(RunVelocityName);
             float Distance = MoveSync.Distance;
-            if (Distance > 1) Distance = 1;
+            if (Distance > .2f) Distance = 1;
+            if (Distance < .2f) Distance = StoredDistance - .1f;
 
-            if (Current <= Distance) Current += .1f;
-            else Current -= .1f;
-            if (Current < .1f) Anim.SetFloat(RunVelocityName, 0);
-            else Anim.SetFloat(RunVelocityName, Current);
+            StoredDistance = Distance;
+
+            Anim.SetFloat(RunVelocityName, StoredDistance);
         }
         else
         {

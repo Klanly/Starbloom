@@ -161,14 +161,26 @@ public class DG_ClothingHairManager : MonoBehaviour {
 
     
 
-
-    public void SetGameStartDefaultValues(DG_CharacterLink CharLink, int PlayerID, DG_PlayerCharacters.GenderValue Gender)
+    public void PlayerJoined(DG_NetworkSync.Users U)
     {
-        DG_PlayerCharacters.PlayerCharacter PC = QuickFind.Farm.PlayerCharacters[PlayerID];
+        DG_PlayerCharacters.PlayerCharacter PC = QuickFind.Farm.PlayerCharacters[U.PlayerCharacterID];
+        if (PC.Equipment.EquippedClothing.Count == 0) SetGameStartDefaultValues(PC, PC.CharacterGender);
+
+        for(int i = 0; i < PC.Equipment.EquippedClothing.Count; i++)
+            AddClothingItem(U.CharacterLink, PC.Equipment.EquippedClothing[i]);
+    }
+
+    public void SetGameStartDefaultValues(DG_PlayerCharacters.PlayerCharacter PC, DG_PlayerCharacters.GenderValue Gender)
+    {
         if (Gender == DG_PlayerCharacters.GenderValue.Male)
         {
             for (int i = 0; i < MaleDefault.Length; i++)
-                AddClothingItem(CharLink, MaleDefault[i].ID);
+                PC.Equipment.EquippedClothing.Add(MaleDefault[i].ID);
+        }
+        else
+        {
+            for (int i = 0; i < FemaleDefault.Length; i++)
+                PC.Equipment.EquippedClothing.Add(FemaleDefault[i].ID);
         }
     }
 

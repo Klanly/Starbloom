@@ -10574,7 +10574,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db29a685fa2b6f34e8eb8c10e715eb01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MainMenuCam: {fileID: 2059881539}
   UICanvas: {fileID: 476455464}
   StaticTextArray:
   - {fileID: 1235223419}

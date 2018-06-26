@@ -44,6 +44,8 @@ public class DG_CharacterControllers : Photon.MonoBehaviour
         else newPlayerObject = Instantiate(FemalePrefabRef, Vector3.zero, Quaternion.identity);
 
         NewUser.CharacterLink = newPlayerObject.GetComponent<DG_CharacterLink>();
-        NewUser.MoveSync = newPlayerObject.transform.GetChild(0).GetComponent<DG_MovementSync>();
+        NewUser.MoveSync = newPlayerObject.transform.GetComponent<DG_MovementSync>();
+
+        QuickFind.ClothingHairManager.PlayerJoined(NewUser);
     }
 }
