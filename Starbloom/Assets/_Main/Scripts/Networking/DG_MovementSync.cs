@@ -16,7 +16,7 @@ public class DG_MovementSync : MonoBehaviour {
 
     public DG_AnimationSync AnimSync;
     [HideInInspector] public bool isPlayer;
-    [HideInInspector] public DG_NetworkSync.Users UserOwner = null;
+    [System.NonSerialized] public DG_NetworkSync.Users UserOwner;
     [HideInInspector] public float Distance;
     float Timer;
     Transform _T;
@@ -105,7 +105,7 @@ public class DG_MovementSync : MonoBehaviour {
         else
         {
             if (QuickFind.NetworkSync == null) return false;
-            DG_NetworkSync.Users User = QuickFind.NetworkSync.GetUserByMovementSync(this);
+            DG_NetworkSync.Users User = QuickFind.NetworkSync.GetUserByCharacterLink(transform.GetComponent<DG_CharacterLink>());
             if (User == null) return false;
             else { UserOwner = User; return true; }
         }

@@ -12,9 +12,11 @@ public class DG_WateringCan : MonoBehaviour {
     DG_ItemObject ItemDatabaseReference;
     int ActiveSlot;
     GameObject HitObject;
+    DG_ContextObject KnownCO;
 
     [HideInInspector] public bool PlacementActive;
     bool SafeToPlace = false;
+    bool AwaitingResponse;
 
 
 
@@ -44,10 +46,24 @@ public class DG_WateringCan : MonoBehaviour {
         if (isUP && SafeToPlace)
         {
             DG_ContextObject CO = HitObject.GetComponent<DG_ContextObject>();
-            if(CO.Type == DG_ContextObject.ContextTypes.Soil)
-                QuickFind.WateringSystem.WaterObject(CO);
+            if (CO.Type == DG_ContextObject.ContextTypes.Soil)
+            {
+                KnownCO = CO;
+                AwaitingResponse = true;
+                QuickFind.NetworkSync.CharacterLink.FacePlayerAtPosition(CO.transform.position);
+                QuickFind.NetworkSync.CharacterLink.AnimationSync.TriggerToolAnimation();
+            }
         }
     }
+    public void HitAction()
+    {
+        if (!AwaitingResponse) return;
+        AwaitingResponse = false;
+
+        QuickFind.WateringSystem.WaterObject(KnownCO);
+    }
+
+
 
 
     public void SetupForWatering(DG_PlayerCharacters.RucksackSlot Rucksack = null, DG_ItemObject Item = null, int slot = 0)

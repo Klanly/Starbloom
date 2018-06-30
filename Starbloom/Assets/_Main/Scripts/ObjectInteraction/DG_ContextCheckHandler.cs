@@ -18,7 +18,7 @@ public class DG_ContextCheckHandler : MonoBehaviour {
     [System.NonSerialized] public bool ContextHit = false;
     [System.NonSerialized] public DG_ContextObject COEncountered;
     Transform DetectionPoint;
-
+    
 
     private void Awake()
     {

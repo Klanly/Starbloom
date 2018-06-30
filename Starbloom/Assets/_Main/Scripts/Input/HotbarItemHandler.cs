@@ -23,7 +23,6 @@ public class HotbarItemHandler : MonoBehaviour {
     [HideInInspector] public DG_ItemObject CurrentItemDatabaseReference;
 
 
-
     private void Awake()
     {
         QuickFind.ItemActivateableHandler = this;
@@ -36,8 +35,11 @@ public class HotbarItemHandler : MonoBehaviour {
         bool UpEvent = false;
 
         if (QuickFind.GUI_OverviewTabs == null) return;
-        if (QuickFind.GUI_OverviewTabs.UIisOpen || QuickFind.StorageUI.StorageUIOpen)
-            return;
+        if (QuickFind.NetworkSync == null) return;
+
+        if (QuickFind.NetworkSync.CharacterLink.AnimationSync.MidAnimation) return;
+        if (QuickFind.GUI_OverviewTabs.UIisOpen || QuickFind.StorageUI.StorageUIOpen)return;
+
 
         if (QuickFind.InputController.MainPlayer.ButtonSet.Action.Held) AllowSent = true;
         if (QuickFind.InputController.MainPlayer.ButtonSet.Action.Up) { AllowSent = true; UpEvent = true; }
@@ -87,6 +89,8 @@ public class HotbarItemHandler : MonoBehaviour {
         }
 
 
+        if (ItemDatabaseReference.isTool)
+            QuickFind.ClothingHairManager.AddClothingItem(QuickFind.NetworkSync.CharacterLink, ItemDatabaseReference.GetToolByQuality(RucksackSlot.CurrentStackActive).EquipmentID);
     }
     public void SetNoActiveItem()
     {

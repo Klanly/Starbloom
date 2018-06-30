@@ -13,14 +13,12 @@ public class DG_CharacterDebugTool : MonoBehaviour {
     public int HairID;
 
     [Header("Debug")]
-    public bool AutoAddHairOnStart;
     public bool AutoSetPlayerLinkAtStart;
 
 
     public void Start()
     {
         if (AutoSetPlayerLinkAtStart) AutoSetPlayerLink();
-        if (AutoAddHairOnStart) { QuickFind.ClothingHairManager.AddClothingItem(CharLink, HairID); }
     }
     void AutoSetPlayerLink()
     {
@@ -42,12 +40,31 @@ public class DG_CharacterDebugTool : MonoBehaviour {
         public Vector9 FHairPoint;
 
 
-        [Button(ButtonSizes.Medium)]
+        [Button(ButtonSizes.Small)]
         public void CharacterSwap()
         {
             if (Application.isPlaying) return;
             if (Male.activeInHierarchy) { Male.SetActive(false); Female.SetActive(true); Vector9.Vector9ToTransform(DebugSceneHair, FHairPoint, false); }
             else { Male.SetActive(true); Female.SetActive(false); Vector9.Vector9ToTransform(DebugSceneHair, MHairPoint, false); }
+        }
+        [Button(ButtonSizes.Small)]
+        public void AlignHair()
+        {
+            if (Application.isPlaying) return;
+            if (Male.activeInHierarchy)
+            {
+                Transform AttachPoint = Male.GetComponent<DG_CharacterLink>().GetAttachmentByType(DG_ClothingHairManager.ClothHairType.Hair).AttachmentPoint;
+                DebugSceneHair.transform.SetParent(AttachPoint);
+                Vector9.Vector9ToTransform(DebugSceneHair, MHairPoint, true);
+                DebugSceneHair.transform.SetParent(DebugSceneHair.root.parent);
+            }
+            else
+            {
+                Transform AttachPoint = Female.GetComponent<DG_CharacterLink>().GetAttachmentByType(DG_ClothingHairManager.ClothHairType.Hair).AttachmentPoint;
+                DebugSceneHair.transform.SetParent(AttachPoint);
+                Vector9.Vector9ToTransform(DebugSceneHair, FHairPoint, true);
+                DebugSceneHair.transform.SetParent(DebugSceneHair.root.parent);
+            }
         }
     }
 

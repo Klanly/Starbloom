@@ -8,6 +8,7 @@ public class DG_ClothingHairManager : MonoBehaviour {
     public class AttachedClothing
     {
         public ClothHairType Type;
+        public DG_ClothingObject ClothingRef;
         public List<GameObject> ClothingPieces;
     }
 
@@ -23,7 +24,9 @@ public class DG_ClothingHairManager : MonoBehaviour {
         Hair,
         Shirt,
         Pants,
-        Boots
+        Boots,
+
+        RightHand
     }
 
 
@@ -40,18 +43,44 @@ public class DG_ClothingHairManager : MonoBehaviour {
 
 
 
+
+
+
+
     public void AddClothingItem(DG_CharacterLink CharacterRef, int ID)
     {
-        if (!Application.isPlaying) return;
-        Transform Char = CharacterRef.transform.GetChild(0);
+        int UserID = QuickFind.NetworkSync.GetUserByCharacterLink(CharacterRef).ID;
+        ClothingAdd(UserID, ID);
 
-        DG_ClothingObject ClothingObject = QuickFind.ClothingDatabase.GetItemFromID(ID);
-        RemoveClothingPiece(CharacterRef, ClothingObject.Type);
-        AttachNewClothingPiece(ClothingObject, CharacterRef, ClothingObject.Type);
+        int[] OutData = new int[2];
+        OutData[0] = UserID;
+        OutData[1] = ID;
+
+        QuickFind.NetworkSync.SetUserEquipment(OutData);
+    }
+
+    public void NetReceivedClothingAdd(int[] InData)
+    {   
+        ClothingAdd(InData[0], InData[1]);
     }
 
 
-    public void RemoveClothingPiece(DG_CharacterLink CharacterRef, ClothHairType Type)
+
+    public void ClothingAdd(int UserID, int ID)
+    {
+        DG_CharacterLink CharacterRef = QuickFind.NetworkSync.GetCharacterLinkByUserID(UserID);
+        if (!Application.isPlaying) return;
+        Transform Char = CharacterRef.transform.GetChild(0);
+        
+        DG_ClothingObject ClothingObject = QuickFind.ClothingDatabase.GetItemFromID(ID);
+        DG_PlayerCharacters.PlayerCharacter PC = QuickFind.Farm.PlayerCharacters[QuickFind.NetworkSync.GetPlayerIDByUserID(UserID)];
+        RemoveClothingPiece(CharacterRef, ClothingObject.Type, PC);
+        AttachNewClothingPiece(ClothingObject, CharacterRef, ClothingObject.Type, PC);
+    }
+
+
+
+    public void RemoveClothingPiece(DG_CharacterLink CharacterRef, ClothHairType Type, DG_PlayerCharacters.PlayerCharacter PC)
     {
         for(int i = 0; i < CharacterRef.AttachedClothes.Count; i++)
         {
@@ -60,6 +89,7 @@ public class DG_ClothingHairManager : MonoBehaviour {
             {
                 for (int iN = 0; iN < C.ClothingPieces.Count; iN++)
                     Destroy(C.ClothingPieces[iN]);
+                PC.Equipment.EquippedClothing.RemoveAt(PC.Equipment.FindClothingIndexByID(C.ClothingRef.DatabaseID));
                 C.ClothingPieces.Clear();
                 break;
             }
@@ -67,9 +97,20 @@ public class DG_ClothingHairManager : MonoBehaviour {
     }
 
 
-    public void AttachNewClothingPiece(DG_ClothingObject ClothingObject, DG_CharacterLink CharacterRef, ClothHairType Type)
+
+
+
+
+
+
+
+
+    public void AttachNewClothingPiece(DG_ClothingObject ClothingObject, DG_CharacterLink CharacterRef, ClothHairType Type, DG_PlayerCharacters.PlayerCharacter PC)
     {
         AttachedClothing AC = GetAttachedClothingReference(CharacterRef, Type);
+        AC.ClothingRef = ClothingObject;
+        PC.Equipment.EquippedClothing.Add(ClothingObject.DatabaseID);
+
         Transform Char = CharacterRef.transform.GetChild(0);
 
         for (int i = 0; i < ClothingObject.Prefabs.Length; i++)
@@ -77,46 +118,78 @@ public class DG_ClothingHairManager : MonoBehaviour {
             GameObject PrefabRef = ClothingObject.Prefabs[i];
             GameObject Clone = Instantiate(PrefabRef);
 
-            if (Type != ClothHairType.Hair)
+            switch(Type)
             {
-                Clone.transform.SetParent(Char);
-                Clone.transform.localPosition = Char.localPosition;
-                Clone.transform.localEulerAngles = Vector3.zero;
-                Clone.transform.localScale = new Vector3(1, 1, 1);
+                case ClothHairType.Boots: Clothing(Char, Clone, CharacterRef, AC); break;
+                case ClothHairType.Pants: Clothing(Char, Clone, CharacterRef, AC); break;
+                case ClothHairType.Shirt: Clothing(Char, Clone, CharacterRef, AC); break;
 
-                Transform ClothingItem = null;
-                for (int iN = 0; iN < Clone.transform.childCount; iN++)
-                {
-                    if (Clone.transform.GetChild(iN).name != "Body")
-                        ClothingItem = Clone.transform.GetChild(iN);
-                }
+                case ClothHairType.Hair:
+                    {
+                        DG_HairModule HO = Clone.GetComponent<DG_HairModule>();
+                        HO.LoadHairColliders(CharacterRef);
+                        NonSkinnedObject(Clone, CharacterRef, AC, ClothingObject);
+                    }
+                    break;
 
-                CloneDemBones(CharacterRef.MainBodyRef, ClothingItem);
-
-                ClothingItem.SetParent(Char);
-                Vector3 CurScale = ClothingItem.localScale;
-                CurScale.z = 1;
-                ClothingItem.localScale = CurScale;
-                ClothingItem.GetComponent<SkinnedMeshRenderer>().rootBone = CharacterRef.SkeletonRoot;
-
-                Destroy(Clone);
-
-                AC.ClothingPieces.Add(ClothingItem.gameObject);
-            }
-            else
-            {
-                Clone.transform.SetParent(CharacterRef.HairAttachpoint);
-                DG_HairModule HO = Clone.GetComponent<DG_HairModule>();
-                HO.LoadHairColliders(CharacterRef);
-                Vector9.Vector9ToTransform(Clone.transform, CharacterRef.TransformData, true);
-
-                AC.ClothingPieces.Add(Clone);
+                case ClothHairType.RightHand:
+                    {
+                        NonSkinnedObject(Clone, CharacterRef, AC, ClothingObject);
+                        if (!QuickFind.GameSettings.ShowToolOnEquip) Clone.SetActive(false);
+                    }
+                    break;
             }
         }
     }
+    void Clothing(Transform Char, GameObject Clone, DG_CharacterLink CharacterRef, AttachedClothing AC)
+    {
+        Clone.transform.SetParent(Char);
+        Clone.transform.localPosition = Char.localPosition;
+        Clone.transform.localEulerAngles = Vector3.zero;
+        Clone.transform.localScale = new Vector3(1, 1, 1);
+
+        Transform ClothingItem = null;
+        for (int iN = 0; iN < Clone.transform.childCount; iN++)
+        {
+            if (Clone.transform.GetChild(iN).name != "Body")
+                ClothingItem = Clone.transform.GetChild(iN);
+        }
+
+        CloneDemBones(CharacterRef.MainBodyRef, ClothingItem);
+
+        ClothingItem.SetParent(Char);
+        Vector3 CurScale = ClothingItem.localScale;
+        CurScale.z = 1;
+        ClothingItem.localScale = CurScale;
+        ClothingItem.GetComponent<SkinnedMeshRenderer>().rootBone = CharacterRef.SkeletonRoot;
+
+        Destroy(Clone);
+
+        AC.ClothingPieces.Add(ClothingItem.gameObject);
+    }
+
+    void NonSkinnedObject(GameObject Clone, DG_CharacterLink CharacterRef, AttachedClothing AC, DG_ClothingObject ClothingObject)
+    {
+        DG_ClothingObject.CharacterOffsetPoints COP = ClothingObject.CharOffsetPoint[0];
+        DG_CharacterLink.AttachmentPoints AP = CharacterRef.GetAttachmentByType(ClothingObject.Type);
+        Clone.transform.SetParent(AP.AttachmentPoint);
+        Vector9.Vector9ToTransform(Clone.transform, ClothingObject.GetPositionByGender(CharacterRef.Gender), true);
+
+        AC.ClothingPieces.Add(Clone);
+    }
 
 
-    AttachedClothing GetAttachedClothingReference(DG_CharacterLink CharacterRef, ClothHairType Type)
+
+
+
+
+
+
+
+
+
+
+    public AttachedClothing GetAttachedClothingReference(DG_CharacterLink CharacterRef, ClothHairType Type)
     {
         AttachedClothing AC = null;
         for (int i = 0; i < CharacterRef.AttachedClothes.Count; i++)
@@ -133,6 +206,10 @@ public class DG_ClothingHairManager : MonoBehaviour {
         }
         return AC;
     }
+
+
+
+
 
 
     void CloneDemBones(Transform Body, Transform ClothingItem)
@@ -164,24 +241,25 @@ public class DG_ClothingHairManager : MonoBehaviour {
     public void PlayerJoined(DG_NetworkSync.Users U)
     {
         DG_PlayerCharacters.PlayerCharacter PC = QuickFind.Farm.PlayerCharacters[U.PlayerCharacterID];
-        if (PC.Equipment.EquippedClothing.Count == 0) SetGameStartDefaultValues(PC, PC.CharacterGender);
-
-        for(int i = 0; i < PC.Equipment.EquippedClothing.Count; i++)
-            AddClothingItem(U.CharacterLink, PC.Equipment.EquippedClothing[i]);
-    }
-
-    public void SetGameStartDefaultValues(DG_PlayerCharacters.PlayerCharacter PC, DG_PlayerCharacters.GenderValue Gender)
-    {
-        if (Gender == DG_PlayerCharacters.GenderValue.Male)
-        {
-            for (int i = 0; i < MaleDefault.Length; i++)
-                PC.Equipment.EquippedClothing.Add(MaleDefault[i].ID);
-        }
+        if (PC.Equipment.EquippedClothing.Count < 2) SetGameStartDefaultValues(U, PC.CharacterGender);
         else
         {
-            for (int i = 0; i < FemaleDefault.Length; i++)
-                PC.Equipment.EquippedClothing.Add(FemaleDefault[i].ID);
+            for (int i = 0; i < PC.Equipment.EquippedClothing.Count; i++)
+                ClothingAdd(U.ID, PC.Equipment.EquippedClothing[i]);
         }
     }
 
+    public void SetGameStartDefaultValues(DG_NetworkSync.Users U, DG_PlayerCharacters.GenderValue Gender)
+    {
+       if (Gender == DG_PlayerCharacters.GenderValue.Male)
+       {
+           for (int i = 0; i < MaleDefault.Length; i++)
+                ClothingAdd(U.ID, MaleDefault[i].ID);
+       }
+       else
+       {
+           for (int i = 0; i < FemaleDefault.Length; i++)
+                ClothingAdd(U.ID, FemaleDefault[i].ID);
+       }
+    }
 }

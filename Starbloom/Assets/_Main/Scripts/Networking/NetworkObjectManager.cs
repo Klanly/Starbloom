@@ -85,6 +85,7 @@ public class NetworkObjectManager : MonoBehaviour {
     }
     public NetworkObject ScanUpTree(Transform T)
     {
+        if (T == null) { Debug.Log("Network Object Transform is Null, this should not happen."); return null; }
         NetworkObject NO = T.GetComponent<NetworkObject>();
         if (NO == null)
             return ScanUpTree(T.parent);

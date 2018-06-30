@@ -10,7 +10,7 @@ public class DG_CharacterControllers : Photon.MonoBehaviour
 
 
     public GameObject[] DebugCharacters = null;
-
+    [HideInInspector] public bool GameStart = true;
 
 
     private void Awake()
@@ -37,6 +37,13 @@ public class DG_CharacterControllers : Photon.MonoBehaviour
         return 0;
     }
 
+    public void GameStartSpawnClothing()
+    {
+        GameStart = false;
+        for(int i = 0; i < QuickFind.NetworkSync.UserList.Count; i++)
+            QuickFind.ClothingHairManager.PlayerJoined(QuickFind.NetworkSync.UserList[i]);
+    }
+
     public void SpawnCharController(int Gender, DG_NetworkSync.Users NewUser)
     {
         GameObject newPlayerObject;
@@ -44,8 +51,11 @@ public class DG_CharacterControllers : Photon.MonoBehaviour
         else newPlayerObject = Instantiate(FemalePrefabRef, Vector3.zero, Quaternion.identity);
 
         NewUser.CharacterLink = newPlayerObject.GetComponent<DG_CharacterLink>();
-        NewUser.MoveSync = newPlayerObject.transform.GetComponent<DG_MovementSync>();
 
-        QuickFind.ClothingHairManager.PlayerJoined(NewUser);
+        if (NewUser.ID == QuickFind.NetworkSync.UserID) QuickFind.NetworkSync.CharacterLink = NewUser.CharacterLink;
+
+
+        if(!GameStart)
+            QuickFind.ClothingHairManager.PlayerJoined(NewUser);
     }
 }

@@ -113,6 +113,124 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &27234734
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 27234737}
+  - component: {fileID: 27234736}
+  - component: {fileID: 27234735}
+  m_Layer: 0
+  m_Name: 16 - pickaxe02_gold
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &27234735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 27234734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fba5c837b3dea7a4297542c9b7541052, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DatabaseID: 16
+  LockItem: 1
+  Name: pickaxe02_gold
+  Gender: 2
+  Type: 4
+  Prefabs:
+  - {fileID: 183114, guid: a1c14717f64068a46bbbc6c69b642173, type: 2}
+  CharOffsetPoint:
+  - Gender: 0
+    OffsetData:
+      Pos: {x: -0.0009, y: 0.00071, z: 0.00053}
+      Rot: {x: 10.85, y: -4.558, z: 98.576}
+      Scale: {x: 0.02232208, y: 0.02232208, z: 0.02232188}
+  - Gender: 1
+    OffsetData:
+      Pos: {x: -0.0009, y: 0.00071, z: 0.00053}
+      Rot: {x: 10.85, y: -4.558, z: 98.576}
+      Scale: {x: 0.02232208, y: 0.02232208, z: 0.02232188}
+  AnimationNumbers:
+  - AnimationActionState: 1
+    AnimationSubstateValues: 02000000
+    AnimationTransition:
+      Type: 0
+      TransitionTime: 0
+--- !u!114 &27234736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 27234734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 14
+  instanceID: 150480
+--- !u!4 &27234737
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 27234734}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 206946386}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &206946385
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 206946386}
+  m_Layer: 0
+  m_Name: Tools - 2H
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &206946386
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 206946385}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1436179670}
+  - {fileID: 1892696685}
+  - {fileID: 2118497657}
+  - {fileID: 946164150}
+  - {fileID: 1796259105}
+  - {fileID: 977705920}
+  - {fileID: 592225605}
+  - {fileID: 689915697}
+  - {fileID: 1416670962}
+  - {fileID: 1855910332}
+  - {fileID: 1575675514}
+  - {fileID: 27234737}
+  m_Father: {fileID: 456777420}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &456777419
 GameObject:
   m_ObjectHideFlags: 0
@@ -123,7 +241,7 @@ GameObject:
   - component: {fileID: 456777420}
   - component: {fileID: 456777421}
   m_Layer: 0
-  m_Name: Clothing Database
+  m_Name: Equipables Database
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -143,6 +261,8 @@ Transform:
   - {fileID: 1439351244}
   - {fileID: 560943111}
   - {fileID: 1296358288}
+  - {fileID: 206946386}
+  - {fileID: 497348112}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -163,7 +283,55 @@ MonoBehaviour:
   - {fileID: 1899486300}
   - {fileID: 1892575105}
   - {fileID: 1790431434}
-  ListCount: 5
+  - {fileID: 1436179668}
+  - {fileID: 1892696687}
+  - {fileID: 2118497659}
+  - {fileID: 946164152}
+  - {fileID: 1796259107}
+  - {fileID: 977705922}
+  - {fileID: 592225607}
+  - {fileID: 689915699}
+  - {fileID: 1416670964}
+  - {fileID: 1855910334}
+  - {fileID: 1575675516}
+  - {fileID: 27234735}
+  - {fileID: 1142876983}
+  - {fileID: 1021058733}
+  - {fileID: 1375316945}
+  - {fileID: 1930776263}
+  ListCount: 21
+--- !u!1 &497348111
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 497348112}
+  m_Layer: 0
+  m_Name: Tools - Watering Can
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &497348112
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 497348111}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1142876981}
+  - {fileID: 1021058731}
+  - {fileID: 1375316943}
+  - {fileID: 1930776265}
+  m_Father: {fileID: 456777420}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &560943110
 GameObject:
   m_ObjectHideFlags: 0
@@ -193,6 +361,162 @@ Transform:
   m_Father: {fileID: 456777420}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &592225604
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 592225605}
+  - component: {fileID: 592225606}
+  - component: {fileID: 592225607}
+  m_Layer: 0
+  m_Name: 11 - hoe02_silver
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &592225605
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 592225604}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 206946386}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &592225606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 592225604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 14
+  instanceID: 150506
+--- !u!114 &592225607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 592225604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fba5c837b3dea7a4297542c9b7541052, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DatabaseID: 11
+  LockItem: 1
+  Name: hoe02_silver
+  Gender: 2
+  Type: 4
+  Prefabs:
+  - {fileID: 124992, guid: 60d4633ce6e2ba147a1f298eba5254b8, type: 2}
+  CharOffsetPoint:
+  - Gender: 0
+    OffsetData:
+      Pos: {x: -0.0002, y: 0.00084, z: 0.00063}
+      Rot: {x: -169.437, y: 3.416992, z: 86.80299}
+      Scale: {x: 0.02510478, y: 0.02510479, z: 0.02510455}
+  - Gender: 1
+    OffsetData:
+      Pos: {x: -0.0002, y: 0.00084, z: 0.00063}
+      Rot: {x: -169.437, y: 3.416992, z: 86.80299}
+      Scale: {x: 0.02510478, y: 0.02510479, z: 0.02510455}
+  AnimationNumbers:
+  - AnimationActionState: 1
+    AnimationSubstateValues: 02000000
+    AnimationTransition:
+      Type: 0
+      TransitionTime: 0
+--- !u!1 &689915696
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 689915697}
+  - component: {fileID: 689915698}
+  - component: {fileID: 689915699}
+  m_Layer: 0
+  m_Name: 12 - hoe02_gold
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &689915697
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 689915696}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 206946386}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &689915698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 689915696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 14
+  instanceID: 150514
+--- !u!114 &689915699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 689915696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fba5c837b3dea7a4297542c9b7541052, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DatabaseID: 12
+  LockItem: 1
+  Name: hoe02_gold
+  Gender: 2
+  Type: 4
+  Prefabs:
+  - {fileID: 112078, guid: 44bf930909cf66844a3ab16619af193e, type: 2}
+  CharOffsetPoint:
+  - Gender: 0
+    OffsetData:
+      Pos: {x: -0.0002, y: 0.00084, z: 0.00063}
+      Rot: {x: -169.437, y: 3.416992, z: 86.80299}
+      Scale: {x: 0.02510478, y: 0.02510479, z: 0.02510455}
+  - Gender: 1
+    OffsetData:
+      Pos: {x: -0.0002, y: 0.00084, z: 0.00063}
+      Rot: {x: -169.437, y: 3.416992, z: 86.80299}
+      Scale: {x: 0.02510478, y: 0.02510479, z: 0.02510455}
+  AnimationNumbers:
+  - AnimationActionState: 1
+    AnimationSubstateValues: 02000000
+    AnimationTransition:
+      Type: 0
+      TransitionTime: 0
 --- !u!1 &767244528
 GameObject:
   m_ObjectHideFlags: 0
@@ -241,6 +565,18 @@ MonoBehaviour:
   Type: 0
   Prefabs:
   - {fileID: 1004914675155536, guid: c593f84ee1809a241abf2066f7007138, type: 2}
+  CharOffsetPoint:
+  - Gender: 0
+    OffsetData:
+      Pos: {x: 0, y: -0.000959, z: -0.000108}
+      Rot: {x: -92.34, y: -0.00001525879, z: 0}
+      Scale: {x: 0.0008700088, y: 0.00111861, z: 0.0009658622}
+  - Gender: 1
+    OffsetData:
+      Pos: {x: 0.00002230001, y: -0.0009602669, z: -0.00003211132}
+      Rot: {x: -92.034, y: -0.00001525879, z: 0}
+      Scale: {x: 0.0008209795, y: 0.001062445, z: 0.0009658707}
+  AnimationNumbers: []
 --- !u!114 &767244531
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -253,7 +589,319 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 14
-  instanceID: 140028
+  instanceID: 150524
+--- !u!1 &946164149
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 946164150}
+  - component: {fileID: 946164151}
+  - component: {fileID: 946164152}
+  m_Layer: 0
+  m_Name: 8 - axe01_gold
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &946164150
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 946164149}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 206946386}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &946164151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 946164149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 14
+  instanceID: 150530
+--- !u!114 &946164152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 946164149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fba5c837b3dea7a4297542c9b7541052, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DatabaseID: 8
+  LockItem: 1
+  Name: axe01_gold
+  Gender: 2
+  Type: 4
+  Prefabs:
+  - {fileID: 186260, guid: 73d91079f8379b14aab7efb95a19e7d2, type: 2}
+  CharOffsetPoint:
+  - Gender: 0
+    OffsetData:
+      Pos: {x: -0.00057, y: 0.00083, z: 0.00068}
+      Rot: {x: -3.348, y: 177.837, z: 262.266}
+      Scale: {x: 0.02371116, y: 0.02371116, z: 0.02371095}
+  - Gender: 1
+    OffsetData:
+      Pos: {x: -0.00057, y: 0.00083, z: 0.00068}
+      Rot: {x: -3.348, y: 177.837, z: 262.266}
+      Scale: {x: 0.02371116, y: 0.02371116, z: 0.02371095}
+  AnimationNumbers:
+  - AnimationActionState: 1
+    AnimationSubstateValues: 01000000
+    AnimationTransition:
+      Type: 0
+      TransitionTime: 0
+--- !u!1 &977705919
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 977705920}
+  - component: {fileID: 977705921}
+  - component: {fileID: 977705922}
+  m_Layer: 0
+  m_Name: 10 - hoe02_bronze
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &977705920
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 977705919}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 206946386}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &977705921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 977705919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 14
+  instanceID: 150538
+--- !u!114 &977705922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 977705919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fba5c837b3dea7a4297542c9b7541052, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DatabaseID: 10
+  LockItem: 1
+  Name: hoe02_bronze
+  Gender: 2
+  Type: 4
+  Prefabs:
+  - {fileID: 178106, guid: e38b8352182f02a49a21d41c1f0a46b6, type: 2}
+  CharOffsetPoint:
+  - Gender: 0
+    OffsetData:
+      Pos: {x: -0.0002, y: 0.00084, z: 0.00063}
+      Rot: {x: -169.437, y: 3.416992, z: 86.80299}
+      Scale: {x: 0.02510478, y: 0.02510479, z: 0.02510455}
+  - Gender: 1
+    OffsetData:
+      Pos: {x: -0.0002, y: 0.00084, z: 0.00063}
+      Rot: {x: -169.437, y: 3.416992, z: 86.80299}
+      Scale: {x: 0.02510478, y: 0.02510479, z: 0.02510455}
+  AnimationNumbers:
+  - AnimationActionState: 1
+    AnimationSubstateValues: 02000000
+    AnimationTransition:
+      Type: 0
+      TransitionTime: 0
+--- !u!1 &1021058730
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1021058731}
+  - component: {fileID: 1021058732}
+  - component: {fileID: 1021058733}
+  m_Layer: 0
+  m_Name: 18 - SurvivalTools_WateringCan Copper
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1021058731
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1021058730}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 497348112}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1021058732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1021058730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 14
+  instanceID: 150546
+--- !u!114 &1021058733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1021058730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fba5c837b3dea7a4297542c9b7541052, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DatabaseID: 18
+  LockItem: 1
+  Name: SurvivalTools_WateringCan Copper
+  Gender: 2
+  Type: 4
+  Prefabs:
+  - {fileID: 1711145811675354, guid: 0af3333a90c01b94790fe46f911b32da, type: 2}
+  CharOffsetPoint:
+  - Gender: 0
+    OffsetData:
+      Pos: {x: -0.00263, y: 0.00247, z: -0.00013}
+      Rot: {x: 5.887, y: 1.605, z: 150.774}
+      Scale: {x: 0.03879905, y: 0.03879905, z: 0.03879869}
+  - Gender: 1
+    OffsetData:
+      Pos: {x: -0.00263, y: 0.00247, z: -0.00013}
+      Rot: {x: 5.887, y: 1.605, z: 150.774}
+      Scale: {x: 0.03879905, y: 0.03879905, z: 0.03879869}
+  AnimationNumbers:
+  - AnimationActionState: 2
+    AnimationSubstateValues: 03000000
+    AnimationTransition:
+      Type: 0
+      TransitionTime: 0
+--- !u!1 &1142876980
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1142876981}
+  - component: {fileID: 1142876982}
+  - component: {fileID: 1142876983}
+  m_Layer: 0
+  m_Name: 17 - SurvivalTools_WateringCan
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1142876981
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1142876980}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 497348112}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1142876982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1142876980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 14
+  instanceID: 150554
+--- !u!114 &1142876983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1142876980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fba5c837b3dea7a4297542c9b7541052, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DatabaseID: 17
+  LockItem: 1
+  Name: SurvivalTools_WateringCan
+  Gender: 2
+  Type: 4
+  Prefabs:
+  - {fileID: 1711145811675354, guid: bb12d325a6db3154cb82ea05b52e030e, type: 2}
+  CharOffsetPoint:
+  - Gender: 0
+    OffsetData:
+      Pos: {x: -0.00263, y: 0.00247, z: -0.00013}
+      Rot: {x: 5.887, y: 1.605, z: 150.774}
+      Scale: {x: 0.03879905, y: 0.03879905, z: 0.03879869}
+  - Gender: 1
+    OffsetData:
+      Pos: {x: -0.00263, y: 0.00247, z: -0.00013}
+      Rot: {x: 5.887, y: 1.605, z: 150.774}
+      Scale: {x: 0.03879905, y: 0.03879905, z: 0.03879869}
+  AnimationNumbers:
+  - AnimationActionState: 2
+    AnimationSubstateValues: 03000000
+    AnimationTransition:
+      Type: 0
+      TransitionTime: 0
 --- !u!1 &1250105791
 GameObject:
   m_ObjectHideFlags: 0
@@ -262,9 +910,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1250105793}
+  - component: {fileID: 1250105794}
   - component: {fileID: 1250105792}
   m_Layer: 0
-  m_Name: ClothingHairManager
+  m_Name: EquipablesManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -306,6 +955,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1250105794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1250105791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d736ac96af110e340a9f4a33cf310c3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1296358287
 GameObject:
   m_ObjectHideFlags: 0
@@ -334,6 +994,240 @@ Transform:
   - {fileID: 1892575107}
   m_Father: {fileID: 456777420}
   m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1375316942
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1375316943}
+  - component: {fileID: 1375316944}
+  - component: {fileID: 1375316945}
+  m_Layer: 0
+  m_Name: 19 - SurvivalTools_WateringCan Silver
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1375316943
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1375316942}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 497348112}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1375316944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1375316942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 14
+  instanceID: 150574
+--- !u!114 &1375316945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1375316942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fba5c837b3dea7a4297542c9b7541052, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DatabaseID: 19
+  LockItem: 1
+  Name: SurvivalTools_WateringCan Silver
+  Gender: 2
+  Type: 4
+  Prefabs:
+  - {fileID: 1711145811675354, guid: 3b8301ebac212624dbdf46167c7f84b2, type: 2}
+  CharOffsetPoint:
+  - Gender: 0
+    OffsetData:
+      Pos: {x: -0.00263, y: 0.00247, z: -0.00013}
+      Rot: {x: 5.887, y: 1.605, z: 150.774}
+      Scale: {x: 0.03879905, y: 0.03879905, z: 0.03879869}
+  - Gender: 1
+    OffsetData:
+      Pos: {x: -0.00263, y: 0.00247, z: -0.00013}
+      Rot: {x: 5.887, y: 1.605, z: 150.774}
+      Scale: {x: 0.03879905, y: 0.03879905, z: 0.03879869}
+  AnimationNumbers:
+  - AnimationActionState: 2
+    AnimationSubstateValues: 03000000
+    AnimationTransition:
+      Type: 0
+      TransitionTime: 0
+--- !u!1 &1416670961
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1416670962}
+  - component: {fileID: 1416670963}
+  - component: {fileID: 1416670964}
+  m_Layer: 0
+  m_Name: 13 - pickaxe02_blue
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1416670962
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1416670961}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 206946386}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1416670963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1416670961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 14
+  instanceID: 150582
+--- !u!114 &1416670964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1416670961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fba5c837b3dea7a4297542c9b7541052, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DatabaseID: 13
+  LockItem: 1
+  Name: pickaxe02_blue
+  Gender: 2
+  Type: 4
+  Prefabs:
+  - {fileID: 159918, guid: 783b79588429e03439c659aba7f08d22, type: 2}
+  CharOffsetPoint:
+  - Gender: 0
+    OffsetData:
+      Pos: {x: -0.0009, y: 0.00071, z: 0.00053}
+      Rot: {x: 10.85, y: -4.558, z: 98.576}
+      Scale: {x: 0.02232208, y: 0.02232208, z: 0.02232188}
+  - Gender: 1
+    OffsetData:
+      Pos: {x: -0.0009, y: 0.00071, z: 0.00053}
+      Rot: {x: 10.85, y: -4.558, z: 98.576}
+      Scale: {x: 0.02232208, y: 0.02232208, z: 0.02232188}
+  AnimationNumbers:
+  - AnimationActionState: 1
+    AnimationSubstateValues: 02000000
+    AnimationTransition:
+      Type: 0
+      TransitionTime: 0
+--- !u!1 &1436179667
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1436179670}
+  - component: {fileID: 1436179669}
+  - component: {fileID: 1436179668}
+  m_Layer: 0
+  m_Name: 5 - axe01_blue
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1436179668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1436179667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fba5c837b3dea7a4297542c9b7541052, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DatabaseID: 5
+  LockItem: 1
+  Name: axe01_blue
+  Gender: 2
+  Type: 4
+  Prefabs:
+  - {fileID: 1377476664003136, guid: 243f97bf320ac514b8bb4939d4c8f2e8, type: 2}
+  CharOffsetPoint:
+  - Gender: 0
+    OffsetData:
+      Pos: {x: -0.00057, y: 0.00083, z: 0.00068}
+      Rot: {x: -3.348, y: 177.837, z: 262.266}
+      Scale: {x: 0.02371116, y: 0.02371116, z: 0.02371095}
+  - Gender: 1
+    OffsetData:
+      Pos: {x: -0.00057, y: 0.00083, z: 0.00068}
+      Rot: {x: -3.348, y: 177.837, z: 262.266}
+      Scale: {x: 0.02371116, y: 0.02371116, z: 0.02371095}
+  AnimationNumbers:
+  - AnimationActionState: 1
+    AnimationSubstateValues: 01000000
+    AnimationTransition:
+      Type: 0
+      TransitionTime: 0
+--- !u!114 &1436179669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1436179667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 14
+  instanceID: 150590
+--- !u!4 &1436179670
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1436179667}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 206946386}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1439351243
 GameObject:
@@ -364,6 +1258,84 @@ Transform:
   m_Father: {fileID: 456777420}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1575675513
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1575675514}
+  - component: {fileID: 1575675515}
+  - component: {fileID: 1575675516}
+  m_Layer: 0
+  m_Name: 15 - pickaxe02_silver
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1575675514
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1575675513}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 206946386}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1575675515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1575675513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 14
+  instanceID: 150602
+--- !u!114 &1575675516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1575675513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fba5c837b3dea7a4297542c9b7541052, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DatabaseID: 15
+  LockItem: 1
+  Name: pickaxe02_silver
+  Gender: 2
+  Type: 4
+  Prefabs:
+  - {fileID: 136270, guid: ef86a25ab048e3e44a7525d80a26c1e8, type: 2}
+  CharOffsetPoint:
+  - Gender: 0
+    OffsetData:
+      Pos: {x: -0.0009, y: 0.00071, z: 0.00053}
+      Rot: {x: 10.85, y: -4.558, z: 98.576}
+      Scale: {x: 0.02232208, y: 0.02232208, z: 0.02232188}
+  - Gender: 1
+    OffsetData:
+      Pos: {x: -0.0009, y: 0.00071, z: 0.00053}
+      Rot: {x: 10.85, y: -4.558, z: 98.576}
+      Scale: {x: 0.02232208, y: 0.02232208, z: 0.02232188}
+  AnimationNumbers:
+  - AnimationActionState: 1
+    AnimationSubstateValues: 02000000
+    AnimationTransition:
+      Type: 0
+      TransitionTime: 0
 --- !u!1 &1790431433
 GameObject:
   m_ObjectHideFlags: 0
@@ -399,6 +1371,18 @@ MonoBehaviour:
   Type: 0
   Prefabs:
   - {fileID: 1453841506592040, guid: 8ce210d0aed51ad49a39d3cd04dc993f, type: 2}
+  CharOffsetPoint:
+  - Gender: 0
+    OffsetData:
+      Pos: {x: 0, y: -0.000959, z: -0.000108}
+      Rot: {x: -92.34, y: -0.00001525879, z: 0}
+      Scale: {x: 0.0008700088, y: 0.00111861, z: 0.0009658622}
+  - Gender: 1
+    OffsetData:
+      Pos: {x: 0.00002230001, y: -0.0009602669, z: -0.00003211132}
+      Rot: {x: -92.034, y: -0.00001525879, z: 0}
+      Scale: {x: 0.0008209795, y: 0.001062445, z: 0.0009658707}
+  AnimationNumbers: []
 --- !u!114 &1790431435
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -411,7 +1395,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 14
-  instanceID: 140048
+  instanceID: 150610
 --- !u!4 &1790431436
 Transform:
   m_ObjectHideFlags: 0
@@ -425,6 +1409,162 @@ Transform:
   m_Father: {fileID: 1970750462}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1796259104
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1796259105}
+  - component: {fileID: 1796259106}
+  - component: {fileID: 1796259107}
+  m_Layer: 0
+  m_Name: 9 - hoe02_blue
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1796259105
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1796259104}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 206946386}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1796259106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1796259104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 14
+  instanceID: 150618
+--- !u!114 &1796259107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1796259104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fba5c837b3dea7a4297542c9b7541052, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DatabaseID: 9
+  LockItem: 1
+  Name: hoe02_blue
+  Gender: 2
+  Type: 4
+  Prefabs:
+  - {fileID: 152736, guid: 9f25e2bb9cca15947ab2c3ad4301931a, type: 2}
+  CharOffsetPoint:
+  - Gender: 0
+    OffsetData:
+      Pos: {x: -0.0002, y: 0.00084, z: 0.00063}
+      Rot: {x: -169.437, y: 3.416992, z: 86.80299}
+      Scale: {x: 0.02510478, y: 0.02510479, z: 0.02510455}
+  - Gender: 1
+    OffsetData:
+      Pos: {x: -0.0002, y: 0.00084, z: 0.00063}
+      Rot: {x: -169.437, y: 3.416992, z: 86.80299}
+      Scale: {x: 0.02510478, y: 0.02510479, z: 0.02510455}
+  AnimationNumbers:
+  - AnimationActionState: 1
+    AnimationSubstateValues: 02000000
+    AnimationTransition:
+      Type: 0
+      TransitionTime: 0
+--- !u!1 &1855910331
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1855910332}
+  - component: {fileID: 1855910333}
+  - component: {fileID: 1855910334}
+  m_Layer: 0
+  m_Name: 14 - pickaxe02_bronze
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1855910332
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1855910331}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 206946386}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1855910333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1855910331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 14
+  instanceID: 150626
+--- !u!114 &1855910334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1855910331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fba5c837b3dea7a4297542c9b7541052, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DatabaseID: 14
+  LockItem: 1
+  Name: pickaxe02_bronze
+  Gender: 2
+  Type: 4
+  Prefabs:
+  - {fileID: 167010, guid: 8e8266b18e8c7c344a45f29ed8365c52, type: 2}
+  CharOffsetPoint:
+  - Gender: 0
+    OffsetData:
+      Pos: {x: -0.0009, y: 0.00071, z: 0.00053}
+      Rot: {x: 10.85, y: -4.558, z: 98.576}
+      Scale: {x: 0.02232208, y: 0.02232208, z: 0.02232188}
+  - Gender: 1
+    OffsetData:
+      Pos: {x: -0.0009, y: 0.00071, z: 0.00053}
+      Rot: {x: 10.85, y: -4.558, z: 98.576}
+      Scale: {x: 0.02232208, y: 0.02232208, z: 0.02232188}
+  AnimationNumbers:
+  - AnimationActionState: 1
+    AnimationSubstateValues: 02000000
+    AnimationTransition:
+      Type: 0
+      TransitionTime: 0
 --- !u!1 &1892575104
 GameObject:
   m_ObjectHideFlags: 0
@@ -460,6 +1600,8 @@ MonoBehaviour:
   Type: 3
   Prefabs:
   - {fileID: 1361768503832534, guid: 5302c0cc2e019414ebd294d2a8466673, type: 2}
+  CharOffsetPoint: []
+  AnimationNumbers: []
 --- !u!114 &1892575106
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -472,7 +1614,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 14
-  instanceID: 140056
+  instanceID: 150634
 --- !u!4 &1892575107
 Transform:
   m_ObjectHideFlags: 0
@@ -486,6 +1628,84 @@ Transform:
   m_Father: {fileID: 1296358288}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1892696684
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1892696685}
+  - component: {fileID: 1892696686}
+  - component: {fileID: 1892696687}
+  m_Layer: 0
+  m_Name: 6 - axe01_bronze
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1892696685
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1892696684}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 206946386}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1892696686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1892696684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 14
+  instanceID: 150642
+--- !u!114 &1892696687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1892696684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fba5c837b3dea7a4297542c9b7541052, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DatabaseID: 6
+  LockItem: 1
+  Name: axe01_bronze
+  Gender: 2
+  Type: 4
+  Prefabs:
+  - {fileID: 119264, guid: 8edea92d5798f7444aba757305994b08, type: 2}
+  CharOffsetPoint:
+  - Gender: 0
+    OffsetData:
+      Pos: {x: -0.00057, y: 0.00083, z: 0.00068}
+      Rot: {x: -3.348, y: 177.837, z: 262.266}
+      Scale: {x: 0.02371116, y: 0.02371116, z: 0.02371095}
+  - Gender: 1
+    OffsetData:
+      Pos: {x: -0.00057, y: 0.00083, z: 0.00068}
+      Rot: {x: -3.348, y: 177.837, z: 262.266}
+      Scale: {x: 0.02371116, y: 0.02371116, z: 0.02371095}
+  AnimationNumbers:
+  - AnimationActionState: 1
+    AnimationSubstateValues: 01000000
+    AnimationTransition:
+      Type: 0
+      TransitionTime: 0
 --- !u!1 &1899486299
 GameObject:
   m_ObjectHideFlags: 0
@@ -521,6 +1741,8 @@ MonoBehaviour:
   Type: 2
   Prefabs:
   - {fileID: 1482269725209524, guid: 2977e2cb69a9f254b8fc103889ddf2e1, type: 2}
+  CharOffsetPoint: []
+  AnimationNumbers: []
 --- !u!114 &1899486301
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -533,7 +1755,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 14
-  instanceID: 140064
+  instanceID: 150650
 --- !u!4 &1899486302
 Transform:
   m_ObjectHideFlags: 0
@@ -546,6 +1768,84 @@ Transform:
   m_Children: []
   m_Father: {fileID: 560943111}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1930776262
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1930776265}
+  - component: {fileID: 1930776264}
+  - component: {fileID: 1930776263}
+  m_Layer: 0
+  m_Name: 20 - SurvivalTools_WateringCan Gold
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1930776263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1930776262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fba5c837b3dea7a4297542c9b7541052, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DatabaseID: 20
+  LockItem: 1
+  Name: SurvivalTools_WateringCan Gold
+  Gender: 2
+  Type: 4
+  Prefabs:
+  - {fileID: 1711145811675354, guid: 6880732484ef86b41a8e5b2d3783b9c4, type: 2}
+  CharOffsetPoint:
+  - Gender: 0
+    OffsetData:
+      Pos: {x: -0.00263, y: 0.00247, z: -0.00013}
+      Rot: {x: 5.887, y: 1.605, z: 150.774}
+      Scale: {x: 0.03879905, y: 0.03879905, z: 0.03879869}
+  - Gender: 1
+    OffsetData:
+      Pos: {x: -0.00263, y: 0.00247, z: -0.00013}
+      Rot: {x: 5.887, y: 1.605, z: 150.774}
+      Scale: {x: 0.03879905, y: 0.03879905, z: 0.03879869}
+  AnimationNumbers:
+  - AnimationActionState: 2
+    AnimationSubstateValues: 03000000
+    AnimationTransition:
+      Type: 0
+      TransitionTime: 0
+--- !u!114 &1930776264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1930776262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 14
+  instanceID: 150658
+--- !u!4 &1930776265
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1930776262}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 497348112}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1944687444
 GameObject:
@@ -582,6 +1882,8 @@ MonoBehaviour:
   Type: 1
   Prefabs:
   - {fileID: 1839794133647238, guid: 8697556a7ead0454993031d71ef84fbc, type: 2}
+  CharOffsetPoint: []
+  AnimationNumbers: []
 --- !u!114 &1944687446
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -594,7 +1896,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 14
-  instanceID: 140072
+  instanceID: 150666
 --- !u!4 &1944687447
 Transform:
   m_ObjectHideFlags: 0
@@ -638,3 +1940,81 @@ Transform:
   m_Father: {fileID: 456777420}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2118497656
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 2118497657}
+  - component: {fileID: 2118497658}
+  - component: {fileID: 2118497659}
+  m_Layer: 0
+  m_Name: 7 - axe01_silver
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2118497657
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2118497656}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 206946386}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2118497658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2118497656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 14
+  instanceID: 150678
+--- !u!114 &2118497659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2118497656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fba5c837b3dea7a4297542c9b7541052, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DatabaseID: 7
+  LockItem: 1
+  Name: axe01_silver
+  Gender: 2
+  Type: 4
+  Prefabs:
+  - {fileID: 126376, guid: d5151014d1950474d82e344b22cb6e71, type: 2}
+  CharOffsetPoint:
+  - Gender: 0
+    OffsetData:
+      Pos: {x: -0.00057, y: 0.00083, z: 0.00068}
+      Rot: {x: -3.348, y: 177.837, z: 262.266}
+      Scale: {x: 0.02371116, y: 0.02371116, z: 0.02371095}
+  - Gender: 1
+    OffsetData:
+      Pos: {x: -0.00057, y: 0.00083, z: 0.00068}
+      Rot: {x: -3.348, y: 177.837, z: 262.266}
+      Scale: {x: 0.02371116, y: 0.02371116, z: 0.02371095}
+  AnimationNumbers:
+  - AnimationActionState: 1
+    AnimationSubstateValues: 01000000
+    AnimationTransition:
+      Type: 0
+      TransitionTime: 0

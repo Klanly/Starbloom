@@ -6,7 +6,12 @@ public class DG_BreakableObjectsHandler : MonoBehaviour {
 
 
 
-
+    DG_ContextObject KnownCO;
+    NetworkObject KnownNO;
+    DG_ItemObject KnownIO;
+    int KnownToolLevel;
+    DG_PlayerCharacters.RucksackSlot KnownRucksackSlotOpen;
+    bool AwaitingResponse;
 
 
     private void Awake()
@@ -21,19 +26,34 @@ public class DG_BreakableObjectsHandler : MonoBehaviour {
         DG_ItemObject IO = QuickFind.ItemDatabase.GetItemFromID(NO.ItemRefID);
         if (ValidBreakAction(IO, ActivateableType, ToolLevel))
         {
-            if (CO.Type == DG_ContextObject.ContextTypes.HarvestableTree)
-                QuickFind.InteractHandler.HandleClusterHarvest(CO);
-            else
-            {
-                DG_ItemObject ToolIO = QuickFind.ItemDatabase.GetItemFromID(RucksackSlotOpen.ContainedItem);
-                int Hitvalue = ToolIO.ToolQualityLevels[(int)ToolLevel].StrengthValue;
-                int newHealthValue = NO.HealthValue - Hitvalue;
+            KnownCO = CO;
+            KnownNO = NO;
+            KnownIO = IO;
+            KnownToolLevel = (int)ToolLevel;
+            KnownRucksackSlotOpen = RucksackSlotOpen;
+            AwaitingResponse = true;
 
-                if (newHealthValue <= 0) { SendBreak(NO, CO, IO); }
-                else { SendHitData(CO, NO, newHealthValue); }
-            }
+            QuickFind.NetworkSync.CharacterLink.FacePlayerAtPosition(CO.transform.position);
+            QuickFind.NetworkSync.CharacterLink.AnimationSync.TriggerToolAnimation();
         }
         else return;
+    }
+    public void HitAction()
+    {
+        if (!AwaitingResponse) return;
+        AwaitingResponse = false;
+
+        if (KnownCO.Type == DG_ContextObject.ContextTypes.HarvestableTree)
+            QuickFind.InteractHandler.HandleClusterHarvest(KnownCO);
+        else
+        {
+            DG_ItemObject ToolIO = QuickFind.ItemDatabase.GetItemFromID(KnownRucksackSlotOpen.ContainedItem);
+            int Hitvalue = ToolIO.ToolQualityLevels[KnownToolLevel].StrengthValue;
+            int newHealthValue = KnownNO.HealthValue - Hitvalue;
+
+            if (newHealthValue <= 0) { SendBreak(KnownNO, KnownCO, KnownIO); }
+            else { SendHitData(KnownCO, KnownNO, newHealthValue); }
+        }
     }
 
 

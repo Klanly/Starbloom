@@ -185,7 +185,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2449168
+  instanceID: 49016
 --- !u!1 &18402820
 GameObject:
   m_ObjectHideFlags: 0
@@ -258,7 +258,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2449176
+  instanceID: 49024
 --- !u!1 &37325301
 GameObject:
   m_ObjectHideFlags: 0
@@ -333,7 +333,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2449184
+  instanceID: 49032
 --- !u!1 &41691071
 GameObject:
   m_ObjectHideFlags: 0
@@ -376,7 +376,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 2449190
+  instanceID: 49038
 --- !u!114 &41691074
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -498,7 +498,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 2449198
+  instanceID: 49046
 --- !u!114 &49813771
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -645,7 +645,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2449208
+  instanceID: 49056
 --- !u!1 &62073040
 GameObject:
   m_ObjectHideFlags: 0
@@ -718,7 +718,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2449216
+  instanceID: 49064
 --- !u!1 &73578925
 GameObject:
   m_ObjectHideFlags: 0
@@ -771,7 +771,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 10
-  instanceID: 2449222
+  instanceID: 49070
 --- !u!4 &73578928
 Transform:
   m_ObjectHideFlags: 0
@@ -857,7 +857,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2449232
+  instanceID: 49080
 --- !u!1 &76152370
 GameObject:
   m_ObjectHideFlags: 0
@@ -931,7 +931,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2449240
+  instanceID: 49088
 --- !u!1 &81693793
 GameObject:
   m_ObjectHideFlags: 0
@@ -1004,7 +1004,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2449248
+  instanceID: 49096
 --- !u!1 &88464733
 GameObject:
   m_ObjectHideFlags: 0
@@ -1072,7 +1072,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 6
-  instanceID: 2449256
+  instanceID: 49104
 --- !u!1 &97403835
 GameObject:
   m_ObjectHideFlags: 0
@@ -1145,7 +1145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2449264
+  instanceID: 49112
 --- !u!1 &97753043
 GameObject:
   m_ObjectHideFlags: 0
@@ -1410,7 +1410,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2449284
+  instanceID: 49132
 --- !u!4 &102032474
 Transform:
   m_ObjectHideFlags: 0
@@ -1496,7 +1496,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2449294
+  instanceID: 49142
 --- !u!1 &108958417
 GameObject:
   m_ObjectHideFlags: 0
@@ -1569,7 +1569,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2449302
+  instanceID: 49150
 --- !u!1 &109069266
 GameObject:
   m_ObjectHideFlags: 0
@@ -1642,7 +1642,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2449310
+  instanceID: 49158
 --- !u!1 &111903024
 GameObject:
   m_ObjectHideFlags: 0
@@ -1715,7 +1715,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2449318
+  instanceID: 49166
 --- !u!1 &113020234
 GameObject:
   m_ObjectHideFlags: 0
@@ -1818,7 +1818,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2449330
+  instanceID: 49178
 --- !u!1 &118947720
 GameObject:
   m_ObjectHideFlags: 0
@@ -1893,7 +1893,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2449338
+  instanceID: 49186
 --- !u!1 &125984543
 GameObject:
   m_ObjectHideFlags: 0
@@ -1936,7 +1936,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2449344
+  instanceID: 49192
 --- !u!114 &125984546
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2026,7 +2026,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2449352
+  instanceID: 49200
 --- !u!4 &142690110
 Transform:
   m_ObjectHideFlags: 0
@@ -2112,7 +2112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2449362
+  instanceID: 49210
 --- !u!1 &146695317
 GameObject:
   m_ObjectHideFlags: 0
@@ -2185,7 +2185,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2449370
+  instanceID: 49218
 --- !u!1 &148355567
 GameObject:
   m_ObjectHideFlags: 0
@@ -2292,7 +2292,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2449382
+  instanceID: 49230
 --- !u!1 &180225645
 GameObject:
   m_ObjectHideFlags: 0
@@ -2435,7 +2435,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2449398
+  instanceID: 49246
 --- !u!1 &206279743
 GameObject:
   m_ObjectHideFlags: 0
@@ -2508,7 +2508,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2449406
+  instanceID: 49254
 --- !u!1 &207424871
 GameObject:
   m_ObjectHideFlags: 0
@@ -2581,7 +2581,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2449414
+  instanceID: 49262
 --- !u!1 &233886828
 GameObject:
   m_ObjectHideFlags: 0
@@ -2654,7 +2654,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2449422
+  instanceID: 49270
 --- !u!1 &237396867
 GameObject:
   m_ObjectHideFlags: 0
@@ -2727,7 +2727,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2449430
+  instanceID: 49278
 --- !u!1 &242617541
 GameObject:
   m_ObjectHideFlags: 0
@@ -2800,7 +2800,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2449438
+  instanceID: 49286
 --- !u!1 &242946780
 GameObject:
   m_ObjectHideFlags: 0
@@ -2947,7 +2947,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2449456
+  instanceID: 49304
 --- !u!1 &256253377
 GameObject:
   m_ObjectHideFlags: 0
@@ -2990,7 +2990,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2449462
+  instanceID: 49310
 --- !u!114 &256253380
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3123,7 +3123,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2449476
+  instanceID: 49324
 --- !u!1 &275336175
 GameObject:
   m_ObjectHideFlags: 0
@@ -3208,7 +3208,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 2449482
+  instanceID: 49330
 --- !u!4 &275336178
 Transform:
   m_ObjectHideFlags: 0
@@ -3327,7 +3327,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2449496
+  instanceID: 49344
 --- !u!1 &337637629
 GameObject:
   m_ObjectHideFlags: 0
@@ -3400,7 +3400,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2449504
+  instanceID: 49352
 --- !u!1 &344529163
 GameObject:
   m_ObjectHideFlags: 0
@@ -3462,7 +3462,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 8
-  instanceID: 2449512
+  instanceID: 49360
 --- !u!1 &359713187
 GameObject:
   m_ObjectHideFlags: 0
@@ -3551,7 +3551,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2449522
+  instanceID: 49370
 --- !u!4 &369462728
 Transform:
   m_ObjectHideFlags: 0
@@ -3637,7 +3637,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2449532
+  instanceID: 49380
 --- !u!1 &393570843
 GameObject:
   m_ObjectHideFlags: 0
@@ -3710,7 +3710,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2449540
+  instanceID: 49388
 --- !u!1 &412881067
 GameObject:
   m_ObjectHideFlags: 0
@@ -3783,7 +3783,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2449548
+  instanceID: 49396
 --- !u!1 &413799158
 GameObject:
   m_ObjectHideFlags: 0
@@ -3867,7 +3867,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 2449554
+  instanceID: 49402
 --- !u!4 &413799161
 Transform:
   m_ObjectHideFlags: 0
@@ -3987,7 +3987,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2449568
+  instanceID: 49416
 --- !u!1 &455383455
 GameObject:
   m_ObjectHideFlags: 0
@@ -4060,7 +4060,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2449576
+  instanceID: 49424
 --- !u!1 &469358568
 GameObject:
   m_ObjectHideFlags: 0
@@ -4162,7 +4162,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2449588
+  instanceID: 49436
 --- !u!1 &477749471
 GameObject:
   m_ObjectHideFlags: 0
@@ -4205,7 +4205,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 2449594
+  instanceID: 49442
 --- !u!114 &477749474
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4357,7 +4357,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2449604
+  instanceID: 49452
 --- !u!1 &496052511
 GameObject:
   m_ObjectHideFlags: 0
@@ -4430,7 +4430,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2449612
+  instanceID: 49460
 --- !u!1 &496079699
 GameObject:
   m_ObjectHideFlags: 0
@@ -4490,7 +4490,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 10
-  instanceID: 2449618
+  instanceID: 49466
 --- !u!4 &496079702
 Transform:
   m_ObjectHideFlags: 0
@@ -4600,37 +4600,29 @@ MonoBehaviour:
     BuyPrice: 0
     SellPrice: 0
     StrengthValue: 5
-    HasCustomSprite: 0
-    Icon: {fileID: 0}
-    HasCustomModel: 0
-    ModelPrefab: {fileID: 0}
+    Icon: {fileID: 21300000, guid: bf8be130f9a05104d9f0cff89c2d85e8, type: 3}
+    EquipmentID: 13
   - Quality: 1
     EnergyUsageValue: 8
     BuyPrice: 0
     SellPrice: 0
     StrengthValue: 10
-    HasCustomSprite: 1
     Icon: {fileID: 21300000, guid: b43fa9b335c6cae439dc6d6a925ba8b3, type: 3}
-    HasCustomModel: 1
-    ModelPrefab: {fileID: 167010, guid: 8e8266b18e8c7c344a45f29ed8365c52, type: 2}
+    EquipmentID: 14
   - Quality: 2
     EnergyUsageValue: 6
     BuyPrice: 0
     SellPrice: 0
     StrengthValue: 15
-    HasCustomSprite: 1
     Icon: {fileID: 21300000, guid: bf4c007c30961654e8e8a891646ba6c4, type: 3}
-    HasCustomModel: 1
-    ModelPrefab: {fileID: 136270, guid: ef86a25ab048e3e44a7525d80a26c1e8, type: 2}
+    EquipmentID: 15
   - Quality: 3
     EnergyUsageValue: 4
     BuyPrice: 0
     SellPrice: 0
     StrengthValue: 20
-    HasCustomSprite: 1
     Icon: {fileID: 21300000, guid: 02959f34b8badaa4ba8eef7ed142b55b, type: 3}
-    HasCustomModel: 1
-    ModelPrefab: {fileID: 183114, guid: a1c14717f64068a46bbbc6c69b642173, type: 2}
+    EquipmentID: 16
   isItem: 0
   ItemCat: 0
   ItemQualities: []
@@ -4662,7 +4654,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 2449632
+  instanceID: 49480
 --- !u!1 &527002840
 GameObject:
   m_ObjectHideFlags: 0
@@ -4735,7 +4727,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2449640
+  instanceID: 49488
 --- !u!1 &568888680
 GameObject:
   m_ObjectHideFlags: 0
@@ -4790,7 +4782,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 6
-  instanceID: 2449646
+  instanceID: 49494
 --- !u!4 &568888683
 Transform:
   m_ObjectHideFlags: 0
@@ -4907,7 +4899,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2449660
+  instanceID: 49508
 --- !u!1 &604142826
 GameObject:
   m_ObjectHideFlags: 0
@@ -4982,7 +4974,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2449668
+  instanceID: 49516
 --- !u!1 &607181675
 GameObject:
   m_ObjectHideFlags: 0
@@ -5055,7 +5047,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2449676
+  instanceID: 49524
 --- !u!1 &619036614
 GameObject:
   m_ObjectHideFlags: 0
@@ -5163,7 +5155,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 2449682
+  instanceID: 49530
 --- !u!4 &619036617
 Transform:
   m_ObjectHideFlags: 0
@@ -5327,7 +5319,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 2449696
+  instanceID: 49544
 --- !u!1 &631133481
 GameObject:
   m_ObjectHideFlags: 0
@@ -5436,7 +5428,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 2449702
+  instanceID: 49550
 --- !u!4 &631133484
 Transform:
   m_ObjectHideFlags: 0
@@ -5568,7 +5560,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2449718
+  instanceID: 49566
 --- !u!1 &664644633
 GameObject:
   m_ObjectHideFlags: 0
@@ -5676,7 +5668,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 2449724
+  instanceID: 49572
 --- !u!4 &664644636
 Transform:
   m_ObjectHideFlags: 0
@@ -5810,7 +5802,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 2449736
+  instanceID: 49584
 --- !u!4 &676053779
 Transform:
   m_ObjectHideFlags: 0
@@ -5896,7 +5888,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2449746
+  instanceID: 49594
 --- !u!1 &684466175
 GameObject:
   m_ObjectHideFlags: 0
@@ -5984,7 +5976,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 2449752
+  instanceID: 49600
 --- !u!4 &684466178
 Transform:
   m_ObjectHideFlags: 0
@@ -6070,7 +6062,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2449762
+  instanceID: 49610
 --- !u!1 &702845925
 GameObject:
   m_ObjectHideFlags: 0
@@ -6130,7 +6122,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2449768
+  instanceID: 49616
 --- !u!4 &702845928
 Transform:
   m_ObjectHideFlags: 0
@@ -6203,7 +6195,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2449776
+  instanceID: 49624
 --- !u!4 &729905715
 Transform:
   m_ObjectHideFlags: 0
@@ -6320,7 +6312,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2449790
+  instanceID: 49638
 --- !u!1 &737240873
 GameObject:
   m_ObjectHideFlags: 0
@@ -6393,7 +6385,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2449798
+  instanceID: 49646
 --- !u!1 &769028652
 GameObject:
   m_ObjectHideFlags: 0
@@ -6460,37 +6452,29 @@ MonoBehaviour:
     BuyPrice: 0
     SellPrice: 0
     StrengthValue: 5
-    HasCustomSprite: 0
-    Icon: {fileID: 0}
-    HasCustomModel: 0
-    ModelPrefab: {fileID: 0}
+    Icon: {fileID: 21300000, guid: 4d3d0c036615f7446b966de21b95520a, type: 3}
+    EquipmentID: 5
   - Quality: 1
     EnergyUsageValue: 8
     BuyPrice: 0
     SellPrice: 0
     StrengthValue: 10
-    HasCustomSprite: 1
     Icon: {fileID: 21300000, guid: 1e766dbeb6e4d3f4d946d59451548532, type: 3}
-    HasCustomModel: 1
-    ModelPrefab: {fileID: 119264, guid: 8edea92d5798f7444aba757305994b08, type: 2}
+    EquipmentID: 6
   - Quality: 2
     EnergyUsageValue: 6
     BuyPrice: 0
     SellPrice: 0
     StrengthValue: 15
-    HasCustomSprite: 1
     Icon: {fileID: 21300000, guid: dad684b2612a3f74d9f269c431d89935, type: 3}
-    HasCustomModel: 1
-    ModelPrefab: {fileID: 126376, guid: d5151014d1950474d82e344b22cb6e71, type: 2}
+    EquipmentID: 7
   - Quality: 3
     EnergyUsageValue: 4
     BuyPrice: 0
     SellPrice: 0
     StrengthValue: 20
-    HasCustomSprite: 1
     Icon: {fileID: 21300000, guid: 13c689d9086ba9046871c537e0fe0d42, type: 3}
-    HasCustomModel: 1
-    ModelPrefab: {fileID: 186260, guid: 73d91079f8379b14aab7efb95a19e7d2, type: 2}
+    EquipmentID: 8
   isItem: 0
   ItemCat: 0
   ItemQualities: []
@@ -6522,7 +6506,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 2449806
+  instanceID: 49654
 --- !u!1 &782780638
 GameObject:
   m_ObjectHideFlags: 0
@@ -6565,7 +6549,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2449812
+  instanceID: 49660
 --- !u!114 &782780641
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6668,7 +6652,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2449822
+  instanceID: 49670
 --- !u!1 &828965505
 GameObject:
   m_ObjectHideFlags: 0
@@ -6741,7 +6725,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2449830
+  instanceID: 49678
 --- !u!1 &832866513
 GameObject:
   m_ObjectHideFlags: 0
@@ -6843,7 +6827,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2449842
+  instanceID: 49690
 --- !u!1 &846776802
 GameObject:
   m_ObjectHideFlags: 0
@@ -6916,7 +6900,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2449850
+  instanceID: 49698
 --- !u!1 &862514934
 GameObject:
   m_ObjectHideFlags: 0
@@ -6976,7 +6960,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 10
-  instanceID: 2449856
+  instanceID: 49704
 --- !u!4 &862514937
 Transform:
   m_ObjectHideFlags: 0
@@ -7044,7 +7028,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 6
-  instanceID: 2449864
+  instanceID: 49712
 --- !u!4 &863140314
 Transform:
   m_ObjectHideFlags: 0
@@ -7100,7 +7084,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2449872
+  instanceID: 49720
 --- !u!114 &869247367
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7203,7 +7187,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2449882
+  instanceID: 49730
 --- !u!1 &889436591
 GameObject:
   m_ObjectHideFlags: 0
@@ -7246,7 +7230,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 2449888
+  instanceID: 49736
 --- !u!114 &889436594
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7398,7 +7382,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2449898
+  instanceID: 49746
 --- !u!1 &907308529
 GameObject:
   m_ObjectHideFlags: 0
@@ -7489,7 +7473,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 2449910
+  instanceID: 49758
 --- !u!114 &911112104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7673,7 +7657,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2449924
+  instanceID: 49772
 --- !u!1 &946834387
 GameObject:
   m_ObjectHideFlags: 0
@@ -7746,7 +7730,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2449932
+  instanceID: 49780
 --- !u!1 &947853066
 GameObject:
   m_ObjectHideFlags: 0
@@ -7819,7 +7803,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2449940
+  instanceID: 49788
 --- !u!1 &983058082
 GameObject:
   m_ObjectHideFlags: 0
@@ -7879,7 +7863,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2449946
+  instanceID: 49794
 --- !u!4 &983058085
 Transform:
   m_ObjectHideFlags: 0
@@ -7965,7 +7949,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2449956
+  instanceID: 49804
 --- !u!1 &1001442999
 GameObject:
   m_ObjectHideFlags: 0
@@ -8038,7 +8022,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2449964
+  instanceID: 49812
 --- !u!1 &1026884239
 GameObject:
   m_ObjectHideFlags: 0
@@ -8142,7 +8126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 2449970
+  instanceID: 49818
 --- !u!4 &1026884242
 Transform:
   m_ObjectHideFlags: 0
@@ -8210,7 +8194,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 6
-  instanceID: 2449978
+  instanceID: 49826
 --- !u!4 &1037744386
 Transform:
   m_ObjectHideFlags: 0
@@ -8296,7 +8280,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2449988
+  instanceID: 49836
 --- !u!1 &1053465270
 GameObject:
   m_ObjectHideFlags: 0
@@ -8369,7 +8353,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2449996
+  instanceID: 49844
 --- !u!1 &1069764471
 GameObject:
   m_ObjectHideFlags: 0
@@ -8447,7 +8431,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2450006
+  instanceID: 49854
 --- !u!114 &1071378050
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8550,7 +8534,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2450016
+  instanceID: 49864
 --- !u!1 &1087104903
 GameObject:
   m_ObjectHideFlags: 0
@@ -8623,7 +8607,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2450024
+  instanceID: 49872
 --- !u!1 &1101497691
 GameObject:
   m_ObjectHideFlags: 0
@@ -8759,7 +8743,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2450040
+  instanceID: 49888
 --- !u!1 &1118554396
 GameObject:
   m_ObjectHideFlags: 0
@@ -8819,7 +8803,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2450046
+  instanceID: 49894
 --- !u!4 &1118554399
 Transform:
   m_ObjectHideFlags: 0
@@ -8905,7 +8889,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2450056
+  instanceID: 49904
 --- !u!1 &1133565266
 GameObject:
   m_ObjectHideFlags: 0
@@ -9038,7 +9022,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2450072
+  instanceID: 49920
 --- !u!1 &1171818498
 GameObject:
   m_ObjectHideFlags: 0
@@ -9123,7 +9107,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 2450078
+  instanceID: 49926
 --- !u!4 &1171818501
 Transform:
   m_ObjectHideFlags: 0
@@ -9210,7 +9194,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 2450090
+  instanceID: 49938
 --- !u!114 &1228010045
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9357,7 +9341,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2450100
+  instanceID: 49948
 --- !u!1 &1248245481
 GameObject:
   m_ObjectHideFlags: 0
@@ -9417,7 +9401,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2450106
+  instanceID: 49954
 --- !u!4 &1248245484
 Transform:
   m_ObjectHideFlags: 0
@@ -9473,7 +9457,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 2450114
+  instanceID: 49962
 --- !u!114 &1254369948
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9655,7 +9639,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2450128
+  instanceID: 49976
 --- !u!1 &1290746968
 GameObject:
   m_ObjectHideFlags: 0
@@ -9728,7 +9712,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2450136
+  instanceID: 49984
 --- !u!1 &1297176232
 GameObject:
   m_ObjectHideFlags: 0
@@ -9820,7 +9804,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2450146
+  instanceID: 49994
 --- !u!4 &1301492708
 Transform:
   m_ObjectHideFlags: 0
@@ -9945,7 +9929,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2450160
+  instanceID: 50008
 --- !u!1 &1315412316
 GameObject:
   m_ObjectHideFlags: 0
@@ -10018,7 +10002,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2450168
+  instanceID: 50016
 --- !u!1 &1317715479
 GameObject:
   m_ObjectHideFlags: 0
@@ -10078,7 +10062,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2450174
+  instanceID: 50022
 --- !u!4 &1317715482
 Transform:
   m_ObjectHideFlags: 0
@@ -10191,7 +10175,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 8
-  instanceID: 2450188
+  instanceID: 50036
 --- !u!4 &1324796403
 Transform:
   m_ObjectHideFlags: 0
@@ -10256,7 +10240,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 11
-  instanceID: -66843128
+  instanceID: 50044
 --- !u!4 &1326798925
 Transform:
   m_ObjectHideFlags: 0
@@ -10390,7 +10374,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 2450198
+  instanceID: 50054
 --- !u!1 &1329798022
 GameObject:
   m_ObjectHideFlags: 0
@@ -10463,7 +10447,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2450206
+  instanceID: 50062
 --- !u!1 &1330787844
 GameObject:
   m_ObjectHideFlags: 0
@@ -10848,7 +10832,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 2450226
+  instanceID: 50082
 --- !u!4 &1343751718
 Transform:
   m_ObjectHideFlags: 0
@@ -10934,7 +10918,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2450236
+  instanceID: 50092
 --- !u!1 &1345506624
 GameObject:
   m_ObjectHideFlags: 0
@@ -10977,7 +10961,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 2450242
+  instanceID: 50098
 --- !u!114 &1345506627
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11158,7 +11142,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2450256
+  instanceID: 50112
 --- !u!1 &1351259150
 GameObject:
   m_ObjectHideFlags: 0
@@ -11231,7 +11215,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2450264
+  instanceID: 50120
 --- !u!1 &1364082331
 GameObject:
   m_ObjectHideFlags: 0
@@ -11304,7 +11288,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2450272
+  instanceID: 50128
 --- !u!1 &1366259587
 GameObject:
   m_ObjectHideFlags: 0
@@ -11377,7 +11361,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2450280
+  instanceID: 50136
 --- !u!1 &1367582963
 GameObject:
   m_ObjectHideFlags: 0
@@ -11450,7 +11434,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2450288
+  instanceID: 50144
 --- !u!1 &1369702741
 GameObject:
   m_ObjectHideFlags: 0
@@ -11523,7 +11507,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2450296
+  instanceID: 50152
 --- !u!1 &1370439230
 GameObject:
   m_ObjectHideFlags: 0
@@ -11645,7 +11629,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2450310
+  instanceID: 50166
 --- !u!1 &1405183627
 GameObject:
   m_ObjectHideFlags: 0
@@ -11773,37 +11757,29 @@ MonoBehaviour:
     BuyPrice: 0
     SellPrice: 0
     StrengthValue: 0
-    HasCustomSprite: 0
-    Icon: {fileID: 0}
-    HasCustomModel: 0
-    ModelPrefab: {fileID: 0}
+    Icon: {fileID: 21300000, guid: d250ab380cef54d4f98943dd133f375d, type: 3}
+    EquipmentID: 0
   - Quality: 1
     EnergyUsageValue: 8
     BuyPrice: 0
     SellPrice: 0
     StrengthValue: 0
-    HasCustomSprite: 1
     Icon: {fileID: 21300000, guid: dc62ba5621378904e81b486b19d2ae5e, type: 3}
-    HasCustomModel: 1
-    ModelPrefab: {fileID: 109878, guid: a59646a936abc3444b7575eb22569d6f, type: 2}
+    EquipmentID: 0
   - Quality: 2
     EnergyUsageValue: 6
     BuyPrice: 0
     SellPrice: 0
     StrengthValue: 0
-    HasCustomSprite: 1
     Icon: {fileID: 21300000, guid: 2858bdf66d6667b4994731f799ba07d3, type: 3}
-    HasCustomModel: 1
-    ModelPrefab: {fileID: 167600, guid: 62fd021cc3e86864e91169626a771b28, type: 2}
+    EquipmentID: 0
   - Quality: 3
     EnergyUsageValue: 4
     BuyPrice: 0
     SellPrice: 0
     StrengthValue: 0
-    HasCustomSprite: 1
     Icon: {fileID: 21300000, guid: d1efae79809d6f94bb829362c7cae141, type: 3}
-    HasCustomModel: 1
-    ModelPrefab: {fileID: 149808, guid: 562e6d006e191b640b85f5f26201b3e2, type: 2}
+    EquipmentID: 0
   isItem: 0
   ItemCat: 0
   ItemQualities: []
@@ -11835,7 +11811,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 2450326
+  instanceID: 50182
 --- !u!1 &1440713918
 GameObject:
   m_ObjectHideFlags: 0
@@ -11908,7 +11884,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2450334
+  instanceID: 50190
 --- !u!1 &1449750574
 GameObject:
   m_ObjectHideFlags: 0
@@ -11981,7 +11957,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2450342
+  instanceID: 50198
 --- !u!1 &1450680409
 GameObject:
   m_ObjectHideFlags: 0
@@ -12053,7 +12029,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2450352
+  instanceID: 50208
 --- !u!114 &1454810879
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12126,7 +12102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 2450360
+  instanceID: 50216
 --- !u!114 &1456368176
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12316,7 +12292,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2450374
+  instanceID: 50230
 --- !u!1 &1460868358
 GameObject:
   m_ObjectHideFlags: 0
@@ -12381,7 +12357,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 11
-  instanceID: 2450382
+  instanceID: 50238
 --- !u!1 &1466624027
 GameObject:
   m_ObjectHideFlags: 0
@@ -12441,7 +12417,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2450388
+  instanceID: 50244
 --- !u!4 &1466624030
 Transform:
   m_ObjectHideFlags: 0
@@ -12563,7 +12539,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 2450396
+  instanceID: 50252
 --- !u!4 &1470222517
 Transform:
   m_ObjectHideFlags: 0
@@ -12649,7 +12625,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2450406
+  instanceID: 50262
 --- !u!1 &1488660083
 GameObject:
   m_ObjectHideFlags: 0
@@ -12758,7 +12734,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2450418
+  instanceID: 50274
 --- !u!1 &1502315839
 GameObject:
   m_ObjectHideFlags: 0
@@ -12818,7 +12794,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2450424
+  instanceID: 50280
 --- !u!4 &1502315842
 Transform:
   m_ObjectHideFlags: 0
@@ -12886,40 +12862,29 @@ MonoBehaviour:
     BuyPrice: 0
     SellPrice: 0
     StrengthValue: 0
-    HasCustomSprite: 0
-    Icon: {fileID: 0}
-    HasCustomModel: 0
-    ModelPrefab: {fileID: 0}
+    Icon: {fileID: 21300000, guid: 60f95ef9f26dcac478bbcd247fdcac97, type: 3}
+    EquipmentID: 17
   - Quality: 1
     EnergyUsageValue: 8
     BuyPrice: 0
     SellPrice: 0
     StrengthValue: 0
-    HasCustomSprite: 1
     Icon: {fileID: 21300000, guid: e8cecf61b8bfbce4ea8bdaba4a4f88e1, type: 3}
-    HasCustomModel: 1
-    ModelPrefab: {fileID: 1711145811675354, guid: 0af3333a90c01b94790fe46f911b32da,
-      type: 2}
+    EquipmentID: 18
   - Quality: 2
     EnergyUsageValue: 6
     BuyPrice: 0
     SellPrice: 0
     StrengthValue: 0
-    HasCustomSprite: 1
     Icon: {fileID: 21300000, guid: 6c369b5a0b5c5d44cb8dc5964efe99fe, type: 3}
-    HasCustomModel: 1
-    ModelPrefab: {fileID: 1711145811675354, guid: 3b8301ebac212624dbdf46167c7f84b2,
-      type: 2}
+    EquipmentID: 19
   - Quality: 3
     EnergyUsageValue: 4
     BuyPrice: 0
     SellPrice: 0
     StrengthValue: 0
-    HasCustomSprite: 1
     Icon: {fileID: 21300000, guid: efa40010fb0b8bf47a7a21a34b7b0d7b, type: 3}
-    HasCustomModel: 1
-    ModelPrefab: {fileID: 1711145811675354, guid: 6880732484ef86b41a8e5b2d3783b9c4,
-      type: 2}
+    EquipmentID: 20
   isItem: 0
   ItemCat: 0
   ItemQualities: []
@@ -12951,7 +12916,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 2450432
+  instanceID: 50288
 --- !u!4 &1502558392
 Transform:
   m_ObjectHideFlags: 0
@@ -13072,7 +13037,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 2450440
+  instanceID: 50296
 --- !u!4 &1511745342
 Transform:
   m_ObjectHideFlags: 0
@@ -13194,7 +13159,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 2450448
+  instanceID: 50304
 --- !u!4 &1528345311
 Transform:
   m_ObjectHideFlags: 0
@@ -13268,7 +13233,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2450456
+  instanceID: 50312
 --- !u!4 &1547347344
 Transform:
   m_ObjectHideFlags: 0
@@ -13354,7 +13319,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2450466
+  instanceID: 50322
 --- !u!1 &1571557578
 GameObject:
   m_ObjectHideFlags: 0
@@ -13490,7 +13455,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2450482
+  instanceID: 50338
 --- !u!1 &1592455085
 GameObject:
   m_ObjectHideFlags: 0
@@ -13563,7 +13528,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2450490
+  instanceID: 50346
 --- !u!1 &1610581554
 GameObject:
   m_ObjectHideFlags: 0
@@ -13636,7 +13601,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2450498
+  instanceID: 50354
 --- !u!1 &1613849535
 GameObject:
   m_ObjectHideFlags: 0
@@ -13709,7 +13674,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2450506
+  instanceID: 50362
 --- !u!1 &1631441170
 GameObject:
   m_ObjectHideFlags: 0
@@ -13782,7 +13747,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2450514
+  instanceID: 50370
 --- !u!1 &1637135970
 GameObject:
   m_ObjectHideFlags: 0
@@ -13891,7 +13856,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 2450520
+  instanceID: 50376
 --- !u!4 &1637135973
 Transform:
   m_ObjectHideFlags: 0
@@ -13964,7 +13929,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 5
-  instanceID: 2450528
+  instanceID: 50384
 --- !u!4 &1645614859
 Transform:
   m_ObjectHideFlags: 0
@@ -14108,7 +14073,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2450542
+  instanceID: 50398
 --- !u!1 &1663225526
 GameObject:
   m_ObjectHideFlags: 0
@@ -14212,7 +14177,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 2450548
+  instanceID: 50404
 --- !u!4 &1663225529
 Transform:
   m_ObjectHideFlags: 0
@@ -14299,7 +14264,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2450558
+  instanceID: 50414
 --- !u!1 &1673153791
 GameObject:
   m_ObjectHideFlags: 0
@@ -14372,7 +14337,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2450566
+  instanceID: 50422
 --- !u!1 &1677378387
 GameObject:
   m_ObjectHideFlags: 0
@@ -14445,7 +14410,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 5
-  instanceID: 2450574
+  instanceID: 50430
 --- !u!1 &1686792870
 GameObject:
   m_ObjectHideFlags: 0
@@ -14518,7 +14483,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2450582
+  instanceID: 50438
 --- !u!1 &1690898328
 GameObject:
   m_ObjectHideFlags: 0
@@ -14591,7 +14556,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2450590
+  instanceID: 50446
 --- !u!1 &1696380314
 GameObject:
   m_ObjectHideFlags: 0
@@ -14712,7 +14677,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 2450598
+  instanceID: 50454
 --- !u!1 &1701517455
 GameObject:
   m_ObjectHideFlags: 0
@@ -14801,7 +14766,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2450608
+  instanceID: 50464
 --- !u!4 &1705398620
 Transform:
   m_ObjectHideFlags: 0
@@ -14931,7 +14896,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 2450618
+  instanceID: 50474
 --- !u!1 &1736991613
 GameObject:
   m_ObjectHideFlags: 0
@@ -15004,7 +14969,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2450626
+  instanceID: 50482
 --- !u!1 &1747360897
 GameObject:
   m_ObjectHideFlags: 0
@@ -15091,7 +15056,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 10
-  instanceID: 2450634
+  instanceID: 50490
 --- !u!1 &1753353420
 GameObject:
   m_ObjectHideFlags: 0
@@ -15164,7 +15129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2450642
+  instanceID: 50498
 --- !u!1 &1782937100
 GameObject:
   m_ObjectHideFlags: 0
@@ -15238,7 +15203,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2450650
+  instanceID: 50506
 --- !u!1 &1786131564
 GameObject:
   m_ObjectHideFlags: 0
@@ -15298,7 +15263,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2450656
+  instanceID: 50512
 --- !u!4 &1786131567
 Transform:
   m_ObjectHideFlags: 0
@@ -15384,7 +15349,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2450666
+  instanceID: 50522
 --- !u!1 &1815548898
 GameObject:
   m_ObjectHideFlags: 0
@@ -15491,7 +15456,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2450678
+  instanceID: 50534
 --- !u!1 &1825876182
 GameObject:
   m_ObjectHideFlags: 0
@@ -15558,37 +15523,29 @@ MonoBehaviour:
     BuyPrice: 0
     SellPrice: 0
     StrengthValue: 0
-    HasCustomSprite: 0
-    Icon: {fileID: 0}
-    HasCustomModel: 0
-    ModelPrefab: {fileID: 0}
+    Icon: {fileID: 21300000, guid: 7e26e3ac98a522e458000d236987a2db, type: 3}
+    EquipmentID: 9
   - Quality: 1
     EnergyUsageValue: 8
     BuyPrice: 0
     SellPrice: 0
     StrengthValue: 0
-    HasCustomSprite: 1
     Icon: {fileID: 21300000, guid: 0ed3f7b52e37b3f42a9bcc6a8cdcf1a1, type: 3}
-    HasCustomModel: 1
-    ModelPrefab: {fileID: 178106, guid: e38b8352182f02a49a21d41c1f0a46b6, type: 2}
+    EquipmentID: 10
   - Quality: 2
     EnergyUsageValue: 6
     BuyPrice: 0
     SellPrice: 0
     StrengthValue: 0
-    HasCustomSprite: 1
     Icon: {fileID: 21300000, guid: bf1166d57f9aaaf4caaaa133c2cbee6b, type: 3}
-    HasCustomModel: 1
-    ModelPrefab: {fileID: 124992, guid: 60d4633ce6e2ba147a1f298eba5254b8, type: 2}
+    EquipmentID: 11
   - Quality: 3
     EnergyUsageValue: 4
     BuyPrice: 0
     SellPrice: 0
     StrengthValue: 0
-    HasCustomSprite: 1
     Icon: {fileID: 21300000, guid: e22c9c5ef141a72498062c0513cbc414, type: 3}
-    HasCustomModel: 1
-    ModelPrefab: {fileID: 112078, guid: 44bf930909cf66844a3ab16619af193e, type: 2}
+    EquipmentID: 12
   isItem: 0
   ItemCat: 0
   ItemQualities: []
@@ -15620,7 +15577,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 2450686
+  instanceID: 50542
 --- !u!1 &1837730739
 GameObject:
   m_ObjectHideFlags: 0
@@ -15716,7 +15673,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 10
-  instanceID: 2450696
+  instanceID: 50552
 --- !u!4 &1838602556
 Transform:
   m_ObjectHideFlags: 0
@@ -15802,7 +15759,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2450706
+  instanceID: 50562
 --- !u!1 &1846466102
 GameObject:
   m_ObjectHideFlags: 0
@@ -15875,7 +15832,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2450714
+  instanceID: 50570
 --- !u!1 &1849541681
 GameObject:
   m_ObjectHideFlags: 0
@@ -15966,7 +15923,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 2450720
+  instanceID: 50576
 --- !u!4 &1849541684
 Transform:
   m_ObjectHideFlags: 0
@@ -16052,7 +16009,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2450730
+  instanceID: 50586
 --- !u!1 &1879222547
 GameObject:
   m_ObjectHideFlags: 0
@@ -16155,7 +16112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 7
-  instanceID: 2450738
+  instanceID: 50594
 --- !u!1 &1893027772
 GameObject:
   m_ObjectHideFlags: 0
@@ -16243,7 +16200,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 2450744
+  instanceID: 50600
 --- !u!4 &1893027775
 Transform:
   m_ObjectHideFlags: 0
@@ -16316,7 +16273,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2450752
+  instanceID: 50608
 --- !u!4 &1893365172
 Transform:
   m_ObjectHideFlags: 0
@@ -16402,7 +16359,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 2450764
+  instanceID: 50620
 --- !u!114 &1902128846
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16555,7 +16512,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 2450776
+  instanceID: 50632
 --- !u!114 &1908648037
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16722,7 +16679,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 10
-  instanceID: 2450788
+  instanceID: 50644
 --- !u!4 &1964282994
 Transform:
   m_ObjectHideFlags: 0
@@ -16808,7 +16765,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2450798
+  instanceID: 50654
 --- !u!1 &1985819918
 GameObject:
   m_ObjectHideFlags: 0
@@ -16881,7 +16838,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2450806
+  instanceID: 50662
 --- !u!1 &1988801390
 GameObject:
   m_ObjectHideFlags: 0
@@ -16924,7 +16881,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2450812
+  instanceID: 50668
 --- !u!114 &1988801393
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17027,7 +16984,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2450822
+  instanceID: 50678
 --- !u!1 &1991773470
 GameObject:
   m_ObjectHideFlags: 0
@@ -17130,7 +17087,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2450834
+  instanceID: 50690
 --- !u!1 &1997068649
 GameObject:
   m_ObjectHideFlags: 0
@@ -17203,7 +17160,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2450842
+  instanceID: 50698
 --- !u!1 &2002398763
 GameObject:
   m_ObjectHideFlags: 0
@@ -17246,7 +17203,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 2450848
+  instanceID: 50704
 --- !u!114 &2002398766
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17393,7 +17350,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2450858
+  instanceID: 50714
 --- !u!1 &2007011312
 GameObject:
   m_ObjectHideFlags: 0
@@ -17498,7 +17455,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 0
-  instanceID: 2450866
+  instanceID: 50722
 --- !u!1 &2018851479
 GameObject:
   m_ObjectHideFlags: 0
@@ -17606,7 +17563,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2450878
+  instanceID: 50734
 --- !u!1 &2041544709
 GameObject:
   m_ObjectHideFlags: 0
@@ -17666,7 +17623,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 5
-  instanceID: 2450884
+  instanceID: 50740
 --- !u!4 &2041544712
 Transform:
   m_ObjectHideFlags: 0
@@ -17752,7 +17709,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2450894
+  instanceID: 50750
 --- !u!1 &2063523896
 GameObject:
   m_ObjectHideFlags: 0
@@ -17825,7 +17782,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2450902
+  instanceID: 50758
 --- !u!1 &2067220876
 GameObject:
   m_ObjectHideFlags: 0
@@ -17898,7 +17855,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2450910
+  instanceID: 50766
 --- !u!1 &2068794778
 GameObject:
   m_ObjectHideFlags: 0
@@ -17992,7 +17949,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 8
-  instanceID: 2450922
+  instanceID: 50778
 --- !u!4 &2070317665
 Transform:
   m_ObjectHideFlags: 0
@@ -18078,7 +18035,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2450932
+  instanceID: 50788
 --- !u!1 &2132218563
 GameObject:
   m_ObjectHideFlags: 0
@@ -18138,7 +18095,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2450938
+  instanceID: 50794
 --- !u!4 &2132218566
 Transform:
   m_ObjectHideFlags: 0
@@ -18224,7 +18181,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2450948
+  instanceID: 50804
 --- !u!1 &2141586112
 GameObject:
   m_ObjectHideFlags: 0
@@ -18297,4 +18254,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 3
-  instanceID: 2450956
+  instanceID: 50812

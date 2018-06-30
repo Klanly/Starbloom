@@ -14,6 +14,9 @@ public class DG_DebugSettings : MonoBehaviour {
     public bool EnableDebugKeycodes = false;
     public bool ShowGrowthDebug = false;
     public bool DisableAllPoolSpawningAtStart;
+    public bool ForceGender;
+    public DG_PlayerCharacters.GenderValue ForcedGender;
+    public bool ShowToolOnEquip;
 
 
     [HideInInspector] public GameObject LastSelected;

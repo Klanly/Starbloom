@@ -86,4 +86,6 @@ MonoBehaviour:
   - ReceiveEnemyHit
   - ReceivePlayerAnimationState
   - NewCharGenerationCalled
+  - ReceiveAnimationSubState
+  - ReceiveUserEquipment
   DisableAutoOpenWizard: 1

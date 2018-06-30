@@ -49,7 +49,6 @@ public class DG_InventoryGUI : MonoBehaviour
     [HideInInspector] public int EquippedHotbarSlot = 0;
 
 
-
     private void Awake()
     {
         QuickFind.GUI_Inventory = this;
@@ -88,7 +87,7 @@ public class DG_InventoryGUI : MonoBehaviour
             if (!InventoryIsOpen)
             {
                 float ZoomAxis = QuickFind.InputController.MainPlayer.CamZoomAxis;
-                if (ZoomAxis != 0)
+                if (ZoomAxis != 0 && !QuickFind.NetworkSync.CharacterLink.AnimationSync.MidAnimation)
                 {
                     bool Add = false;
                     if (ZoomAxis < 0)
@@ -346,6 +345,8 @@ public class DG_InventoryGUI : MonoBehaviour
 
     public void SetHotbarSlot(DG_InventoryItem PressedItem)
     {
+        if (QuickFind.NetworkSync.CharacterLink.AnimationSync.MidAnimation) return;
+
         HotbarSlots[EquippedHotbarSlot].ActiveHotbarItem.enabled = false;
         EquippedHotbarSlot = PressedItem.SlotID;
         PressedItem.ActiveHotbarItem.enabled = true;

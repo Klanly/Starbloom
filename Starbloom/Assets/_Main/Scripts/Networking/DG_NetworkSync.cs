@@ -12,16 +12,19 @@ public class DG_NetworkSync : Photon.MonoBehaviour
         public int PlayerCharacterID;
         public int SceneID;
         public DG_CharacterLink CharacterLink;
-        public DG_MovementSync MoveSync;
     }
 
-    public int UserID = 0;
-    [HideInInspector] public int PlayerCharacterID;
-    [HideInInspector] public int CurrentScene;
-    [HideInInspector] public int PhotonViewID;
+    public int UserID =  -1;
+    [HideInInspector]
+    public int PlayerCharacterID = -1;
+    [HideInInspector]
+    public int CurrentScene = -1;
+    [HideInInspector]
+    public DG_CharacterLink CharacterLink;
     bool AwaitingSync = false;
     bool FirstLoaded = false;
 
+    [Header("UserList")]
     public List<Users> UserList;
 
 
@@ -82,17 +85,24 @@ public class DG_NetworkSync : Photon.MonoBehaviour
         { if (UserList[i].PlayerCharacterID == ID) return UserList[i]; }
         return null;
     }
-    public Users GetUserByMovementSync(DG_MovementSync Sync)
+    public Users GetUserByCharacterLink(DG_CharacterLink Sync)
     {
         for (int i = 0; i < UserList.Count; i++)
-        { if (UserList[i].MoveSync == Sync) return UserList[i]; }
+        { if (UserList[i].CharacterLink == Sync) return UserList[i]; }
         return null;
     }
+    public int GetPlayerIDByUserID(int UserID)
+    {
+        for (int i = 0; i < UserList.Count; i++)
+        { if (UserList[i].ID == UserID) return UserList[i].PlayerCharacterID; }
+        return -1;
+    }
 
-    public DG_MovementSync GetCharacterMoveSyncByUserID(int ID)
+
+    public DG_CharacterLink GetCharacterLinkByUserID(int ID)
     {
         Users U = GetUserByID(ID);
-        return U.MoveSync;
+        return U.CharacterLink;
     }
 
     #endregion
@@ -136,7 +146,7 @@ public class DG_NetworkSync : Photon.MonoBehaviour
     {
         //UserList.Clear();
 
-        if (UserID == 0) { UserID = TransferedIn[0];}
+        if (UserID == -1) { UserID = TransferedIn[0];}
 
         int UserCount = TransferedIn[1];
         if (UserCount == 1) UserList.Clear();
@@ -209,7 +219,7 @@ public class DG_NetworkSync : Photon.MonoBehaviour
     [PunRPC]
     void ReceivePlayerMovement(int[] InData)
     {
-        GetCharacterMoveSyncByUserID(InData[0]).UpdatePlayerPos(InData);
+        GetCharacterLinkByUserID(InData[0]).MoveSync.UpdatePlayerPos(InData);
     }
 
     public void UpdatePlayerAnimationState(int[] OutgoingData)
@@ -219,7 +229,7 @@ public class DG_NetworkSync : Photon.MonoBehaviour
     [PunRPC]
     void ReceivePlayerAnimationState(int[] InData)
     {
-        GetCharacterMoveSyncByUserID(InData[0]).AnimSync.UpdatePlayerAnimationState(InData);
+        GetCharacterLinkByUserID(InData[0]).MoveSync.AnimSync.UpdatePlayerAnimationState(InData);
     }
 
 
@@ -233,6 +243,17 @@ public class DG_NetworkSync : Photon.MonoBehaviour
         QuickFind.GameStartHandler.ReturnCharacterGenerated(InData);
     }
 
+
+
+    public void TriggerAnimationSubState(int[] OutgoingData)
+    {
+        PV.RPC("ReceiveAnimationSubState", PhotonTargets.Others, OutgoingData);
+    }
+    [PunRPC]
+    void ReceiveAnimationSubState(int[] InData)
+    {
+        GetCharacterLinkByUserID(InData[0]).MoveSync.AnimSync.ReceiveNetAnimation(InData);
+    }
 
 
     #endregion
@@ -342,6 +363,9 @@ public class DG_NetworkSync : Photon.MonoBehaviour
 
     public void ClearBinItem(int OutData) { PV.RPC("ClearBinReceived", PhotonTargets.All, OutData); }
     [PunRPC] void ClearBinReceived(int InData) { QuickFind.ShippingBin.ClearBinItem(InData); }
+
+    public void SetUserEquipment(int[] OutData) { PV.RPC("ReceiveUserEquipment", PhotonTargets.Others, OutData); }
+    [PunRPC] void ReceiveUserEquipment(int[] InData) { QuickFind.ClothingHairManager.NetReceivedClothingAdd(InData); }
 
 
 
@@ -489,7 +513,7 @@ public class DG_NetworkSync : Photon.MonoBehaviour
     { PV.RPC("CharacterClaimedMagneticObject", PhotonTargets.All, OutData); }
     [PunRPC]
     public void CharacterClaimedMagneticObject(int[] Data)
-    { GetUserByPlayerID(Data[0]).MoveSync.GetComponent<DG_MagnetAttraction>().ClaimObject(Data); }
+    { GetUserByPlayerID(Data[0]).CharacterLink.MagnetAttract.ClaimObject(Data); }
 
     public void SetTilledSurrogate(int[] OutData)
     { PV.RPC("ReceiveSurrogateTilled", PhotonTargets.All, OutData); }

@@ -11,6 +11,7 @@ public class ConnectAndJoinRandom : Photon.MonoBehaviour
     [Header("Variables")]
     public bool AutoConnect = true;
     public int Version = 1;
+    public int IdleTimeOut = 300;
     private bool ConnectInUpdate = true;
 
     bool GameStart = true;
@@ -27,6 +28,7 @@ public class ConnectAndJoinRandom : Photon.MonoBehaviour
     {
         PhotonNetwork.autoJoinLobby = false;
         PhotonNetwork.offlineMode = !QuickFind.GameSettings.PlayOnline;
+        PhotonNetwork.BackgroundTimeout = IdleTimeOut;
         GameStart = false;
     }
 

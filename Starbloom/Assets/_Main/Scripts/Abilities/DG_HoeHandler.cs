@@ -14,7 +14,8 @@ public class DG_HoeHandler : MonoBehaviour {
     int ActiveSlot;
     [HideInInspector] public bool PlacementActive;
     bool SafeToPlace = false;
-
+    bool AwaitingResponse;
+    Vector3 StoredPosition;
 
 
     private void Awake()
@@ -39,9 +40,24 @@ public class DG_HoeHandler : MonoBehaviour {
     {
         if (isUP && SafeToPlace)
         {
-            QuickFind.NetworkObjectManager.CreateNetSceneObject(QuickFind.NetworkSync.CurrentScene, NetworkObjectManager.NetworkObjectTypes.Item, HoeItemDatabaseNumber, 0, QuickFind.GridDetection.DetectionPoint.position, 0);
+            AwaitingResponse = true;
+            StoredPosition = QuickFind.GridDetection.DetectionPoint.position;
+            QuickFind.NetworkSync.CharacterLink.FacePlayerAtPosition(StoredPosition);
+            QuickFind.NetworkSync.CharacterLink.AnimationSync.TriggerToolAnimation();
         }
     }
+
+
+    public void HitAction()
+    {
+        if (!AwaitingResponse) return;
+        AwaitingResponse = false;
+
+        QuickFind.NetworkObjectManager.CreateNetSceneObject(QuickFind.NetworkSync.CurrentScene, NetworkObjectManager.NetworkObjectTypes.Item, HoeItemDatabaseNumber, 0, StoredPosition, 0);
+    }
+
+
+
 
 
     public void SetupForHoeing(DG_PlayerCharacters.RucksackSlot Rucksack = null, DG_ItemObject Item = null, int slot = 0)

@@ -45,6 +45,8 @@ public class DG_PlayerCharacters : MonoBehaviour {
     public class CharacterEquipment
     {
         public List<int> EquippedClothing;
+        public int FindClothingIndexByID(int ID) { for (int i = 0; i < EquippedClothing.Count; i++) { if (EquippedClothing[i] == ID) return i; } return -1; }
+
 
         [Header("Rucksack")]
         public int RuckSackUnlockedSize = 12;

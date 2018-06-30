@@ -2273,7 +2273,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1064205268657838}
-  m_LocalRotation: {x: 0.044346638, y: 0.6855288, z: -0.053567976, w: 0.72471666}
+  m_LocalRotation: {x: 0.044346634, y: 0.6855288, z: -0.05356797, w: 0.72471666}
   m_LocalPosition: {x: -0.0000000011303928, y: 0.0030468921, z: -5.5879353e-11}
   m_LocalScale: {x: 1, y: 1.0000001, z: 1}
   m_Children:
@@ -2706,7 +2706,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1467321938206180}
-  m_LocalRotation: {x: 0.084393956, y: -0.033193637, z: 0.0021869494, w: 0.995877}
+  m_LocalRotation: {x: 0.08439396, y: -0.033193637, z: 0.0021869496, w: 0.995877}
   m_LocalPosition: {x: -1.3038516e-10, y: 0.00047468746, z: 0.0000000018253922}
   m_LocalScale: {x: 1, y: 1.0000001, z: 0.99999994}
   m_Children:
@@ -2961,7 +2961,7 @@ Animator:
   m_GameObject: {fileID: 1702906428477936}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 7a4a7a94fe245f04d95b5219b8ca61dc, type: 3}
-  m_Controller: {fileID: 9100000, guid: e2cf68ff4b1ffda45a77f7307dd789b9, type: 2}
+  m_Controller: {fileID: 9100000, guid: a5881489e52ea324f837a39b4c5374ff, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -2994,7 +2994,7 @@ MonoBehaviour:
   _extraJumpTime: 0.5
   _extraJumpPower: 25
   _jumpToleranceTime: 0.15
-  _maxMidAirJumps: 1
+  _maxMidAirJumps: 0
   _useRootMotion: 0
 --- !u!114 &114446412302524988
 MonoBehaviour:
@@ -3007,13 +3007,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b85918064b3a0541a042f913356412c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MoveSync: {fileID: 114638911476736022}
+  MagnetAttract: {fileID: 114634146966337658}
+  AnimationSync: {fileID: 114671617395903624}
+  CharMovement: {fileID: 114927186516925144}
+  CharController: {fileID: 114096861635276944}
+  Gender: 0
   MainBodyRef: {fileID: 4970078282984124}
   SkeletonRoot: {fileID: 4573737540037956}
-  HairAttachpoint: {fileID: 4795468543781792}
-  TransformData:
-    Pos: {x: 0, y: -0.000959, z: -0.000108}
-    Rot: {x: -92.34, y: -0.00001525879, z: 0}
-    Scale: {x: 0.0008700088, y: 0.00111861, z: 0.0009658622}
+  GearAttachPoints:
+  - AttachType: 0
+    AttachmentPoint: {fileID: 4795468543781792}
+  - AttachType: 4
+    AttachmentPoint: {fileID: 4598569964336508}
   HairColliders:
   - {fileID: 136005150100828142}
   AttachedClothes: []
@@ -3071,12 +3077,6 @@ MonoBehaviour:
   MaxDistance: 5
   AnimSync: {fileID: 114671617395903624}
   isPlayer: 0
-  UserOwner:
-    ID: 0
-    PlayerCharacterID: 0
-    SceneID: 0
-    CharacterLink: {fileID: 0}
-    MoveSync: {fileID: 0}
   Distance: 0
 --- !u!114 &114671617395903624
 MonoBehaviour:
@@ -3090,11 +3090,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Anim: {fileID: 95646036969062546}
-  MoveSync: {fileID: 114638911476736022}
+  CharacterLink: {fileID: 114446412302524988}
   AnimationBoolValues:
   - BoolName: OnGround
     CurrentState: 0
-  RunVelocityName: Forward
+  StringValues:
+    BaseState: Grounded
+    RunVelocityName: Forward
+    ActionTriggerBoolName: ActionTrigger
+    ActionState: ActionState
+    SubState: SubState
+  MidAnimation: 0
   isPlayer: 0
 --- !u!114 &114927186516925144
 MonoBehaviour:

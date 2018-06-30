@@ -78,4 +78,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a49d2d901d758634c97f5460882bb480, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UserID: 0
+  UserID: -1
+  PlayerCharacterID: -1
+  CurrentScene: -1
+  CharacterLink: {fileID: 0}
+  UserList: []

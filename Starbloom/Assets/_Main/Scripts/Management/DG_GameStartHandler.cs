@@ -52,7 +52,12 @@ public class DG_GameStartHandler : MonoBehaviour {
             if (PhotonNetwork.isMasterClient) CharacterID = 0;
             else CharacterID = QuickFind.CharacterManager.GetAvailablePlayerID();
         }
-        if (CharacterGender == -1) { Debug.Log("No Gender was selected, assigning new."); CharacterGender = Random.Range(0, 2); }
+        if (CharacterGender == -1)
+        {
+            Debug.Log("No Gender was selected, assigning new.");
+            if(QuickFind.GameSettings.ForceGender) CharacterGender = (int)QuickFind.GameSettings.ForcedGender;
+            else CharacterGender = Random.Range(0, 2);
+        }
         AwaitingResponse = true;
 
         int[] OutData = new int[3];
@@ -72,9 +77,13 @@ public class DG_GameStartHandler : MonoBehaviour {
         QuickFind.CharacterManager.SpawnCharController(CharacterGender, U);
 
         if (!AwaitingResponse) return;
+        if (U.ID != QuickFind.NetworkSync.UserID) return;
         AwaitingResponse = false;
 
+        if (QuickFind.NetworkSync.PlayerCharacterID == -1) QuickFind.NetworkSync.PlayerCharacterID = U.PlayerCharacterID;
+
         U.CharacterLink.ActivatePlayer();
+
 
         if (QuickFind.Farm.PlayerCharacters[QuickFind.NetworkSync.PlayerCharacterID].Name == string.Empty)
             QuickFind.Farm.PlayerCharacters[QuickFind.NetworkSync.PlayerCharacterID].Name = "Default Name " + QuickFind.NetworkSync.PlayerCharacterID.ToString();
@@ -100,6 +109,8 @@ public class DG_GameStartHandler : MonoBehaviour {
         QuickFind.NetworkObjectManager.GenerateObjectData();
         QuickFind.GUI_MainOverview.SetMoneyValue(0, QuickFind.Farm.SharedMoney, true);
         QuickFind.GUI_MainOverview.SetGuiDayValue(QuickFind.Farm.Month, QuickFind.Farm.Day);
+
+        QuickFind.CharacterManager.GameStartSpawnClothing();
 
         QuickFind.FadeScreen.FadeIn(DG_GUI_FadeScreen.FadeInSpeeds.NormalFade);
     }

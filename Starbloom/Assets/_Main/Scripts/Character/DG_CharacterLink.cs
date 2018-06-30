@@ -4,12 +4,27 @@ using UnityEngine;
 
 public class DG_CharacterLink : MonoBehaviour {
 
+    [System.Serializable]
+    public class AttachmentPoints
+    {
+        public DG_ClothingHairManager.ClothHairType AttachType;
+        public Transform AttachmentPoint;
+    }
+
+    [Header("References")]
+    public DG_MovementSync MoveSync;
+    public DG_MagnetAttraction MagnetAttract;
+    public DG_AnimationSync AnimationSync;
+    public ECM.Components.CharacterMovement CharMovement;
+    public ECM.Examples.EthanPlatformerController CharController;
+
     [Header("CharacterBodyReferences")]
+    public DG_PlayerCharacters.GenderValue Gender;
     public Transform MainBodyRef;
     public Transform SkeletonRoot;
+    [Header("AttachPoints")]
+    public AttachmentPoints[] GearAttachPoints;
     [Header("Hair")]
-    public Transform HairAttachpoint;
-    public Vector9 TransformData;
     public List<CapsuleCollider> HairColliders;
     [Header("AttachedClothingItems")]
     public List<DG_ClothingHairManager.AttachedClothing> AttachedClothes;
@@ -19,7 +34,8 @@ public class DG_CharacterLink : MonoBehaviour {
     public bool DoNotDisableOnStart = false;
 
     bool Allow = false;
-
+    Transform TargetingHelper;
+    Transform TargetingHelper2;
 
 
     private void Awake()
@@ -27,8 +43,8 @@ public class DG_CharacterLink : MonoBehaviour {
         AttachedClothes = new List<DG_ClothingHairManager.AttachedClothing>();
         if (!DoNotDisableOnStart)
         {
-            transform.GetComponent<ECM.Components.CharacterMovement>().enabled = false;
-            transform.GetComponent<ECM.Examples.EthanPlatformerController>().enabled = false;
+            CharMovement.enabled = false;
+            CharController.enabled = false;
         }
     }
 
@@ -40,9 +56,14 @@ public class DG_CharacterLink : MonoBehaviour {
         else
         {
             QuickFind.PlayerTrans = transform;
-            transform.GetComponent<DG_MovementSync>().enabled = false;
-            QuickFind.PlayerTrans.GetChild(0).GetComponent<DG_AnimationSync>().enabled = false;
+            MoveSync.enabled = false;
+            AnimationSync.enabled = false;
         }
+
+        TargetingHelper = new GameObject().transform;
+        TargetingHelper2 = new GameObject().transform;
+        TargetingHelper.SetParent(QuickFind.ContextDetectionHandler.transform);
+        TargetingHelper2.SetParent(QuickFind.ContextDetectionHandler.transform);
     }
 
 
@@ -63,16 +84,65 @@ public class DG_CharacterLink : MonoBehaviour {
             return;
         }
 
-        transform.GetComponent<ECM.Components.CharacterMovement>().enabled = true;
-        transform.GetComponent<ECM.Examples.EthanPlatformerController>().enabled = true;
-        transform.GetComponent<DG_MagnetAttraction>().isOwner = true;
-        transform.GetComponent<DG_MovementSync>().isPlayer = true;
+        CharMovement.enabled = true;
+        CharController.enabled = true;
+        MagnetAttract.isOwner = true;
+        MoveSync.isPlayer = true;
 
         QuickFind.PlayerTrans = transform;
-        QuickFind.PlayerTrans.GetChild(0).GetComponent<DG_AnimationSync>().isPlayer = true;
+        AnimationSync.isPlayer = true;
 
         QuickFind.InputController.MainPlayer.CharLink = this;
 
         this.enabled = false;
+    }
+
+
+    public AttachmentPoints GetAttachmentByType(DG_ClothingHairManager.ClothHairType Type)
+    {
+        for(int i = 0; i < GearAttachPoints.Length; i++)
+        {
+            AttachmentPoints AP = GearAttachPoints[i];
+            if (AP.AttachType == Type)
+                return AP;
+        }
+        return null;
+    }
+
+
+
+
+
+
+    public void EnablePlayerMovement(bool isTrue)
+    {
+        CharMovement.enabled = isTrue;
+        CharController.enabled = isTrue;
+
+        if(!isTrue)
+        {
+            CharMovement.velocity = Vector3.zero;
+        }
+
+    }
+
+
+
+
+
+
+
+
+
+    public void FacePlayerAtPosition(Vector3 NewPosition)
+    {
+        TargetingHelper.position = NewPosition;
+        TargetingHelper2.position = transform.position;
+
+        TargetingHelper2.LookAt(TargetingHelper);
+
+        Vector3 CurRot = transform.eulerAngles;
+        CurRot.y = TargetingHelper2.eulerAngles.y;
+        transform.eulerAngles = CurRot;
     }
 }

@@ -114,6 +114,116 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &58373743
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 106225853}
+    m_Modifications:
+    - target: {fileID: 4813318121030292, guid: fb8ea3a1edf410949b0cf372101f4847, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -0.74
+      objectReference: {fileID: 0}
+    - target: {fileID: 4813318121030292, guid: fb8ea3a1edf410949b0cf372101f4847, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 2.422
+      objectReference: {fileID: 0}
+    - target: {fileID: 4813318121030292, guid: fb8ea3a1edf410949b0cf372101f4847, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4813318121030292, guid: fb8ea3a1edf410949b0cf372101f4847, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4813318121030292, guid: fb8ea3a1edf410949b0cf372101f4847, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4813318121030292, guid: fb8ea3a1edf410949b0cf372101f4847, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4813318121030292, guid: fb8ea3a1edf410949b0cf372101f4847, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4813318121030292, guid: fb8ea3a1edf410949b0cf372101f4847, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: fb8ea3a1edf410949b0cf372101f4847, type: 2}
+  m_IsPrefabParent: 0
+--- !u!1 &58373744 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1513781507148194, guid: fb8ea3a1edf410949b0cf372101f4847,
+    type: 2}
+  m_PrefabInternal: {fileID: 58373743}
+--- !u!4 &58373745 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4813318121030292, guid: fb8ea3a1edf410949b0cf372101f4847,
+    type: 2}
+  m_PrefabInternal: {fileID: 58373743}
+--- !u!1 &84773506
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 84773507}
+  - component: {fileID: 84773508}
+  m_Layer: 0
+  m_Name: Rock
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &84773507
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 84773506}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: -6, y: 1.662, z: 8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2110302582}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!114 &84773508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 84773506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NetworkObjectID: 0
+  PositionX: -600
+  PositionY: 166
+  PositionZ: 800
+  YFacing: 18000
+  ObjectType: 0
+  ItemRefID: 19
+  HasHealth: 1
+  HealthValue: 10
+  ItemQualityLevel: 0
+  isWaterable: 0
+  SurrogateObjectIndex: 0
+  HasBeenWatered: 0
+  ActiveVisual: 0
+  GrowthValue: 0
+  isStorageContainer: 0
+  isTreasureList: 0
+  StorageSlots: []
 --- !u!1 &106225851
 GameObject:
   m_ObjectHideFlags: 0
@@ -148,8 +258,9 @@ MonoBehaviour:
   FemalePrefabRef: {fileID: 1513781507148194, guid: fb8ea3a1edf410949b0cf372101f4847,
     type: 2}
   DebugCharacters:
-  - {fileID: 254858813}
-  - {fileID: 502971246}
+  - {fileID: 1264254692}
+  - {fileID: 58373744}
+  GameStart: 1
 --- !u!4 &106225853
 Transform:
   m_ObjectHideFlags: 0
@@ -161,8 +272,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 254858814}
-  - {fileID: 502971247}
+  - {fileID: 1264254693}
+  - {fileID: 58373745}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -207,58 +318,6 @@ Transform:
   m_Father: {fileID: 1118935757}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &254858812
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 106225853}
-    m_Modifications:
-    - target: {fileID: 4396600582777970, guid: d42e4cb6c131cad4c912d9fc5ddfb9cc, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0.92
-      objectReference: {fileID: 0}
-    - target: {fileID: 4396600582777970, guid: d42e4cb6c131cad4c912d9fc5ddfb9cc, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 2.295
-      objectReference: {fileID: 0}
-    - target: {fileID: 4396600582777970, guid: d42e4cb6c131cad4c912d9fc5ddfb9cc, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4396600582777970, guid: d42e4cb6c131cad4c912d9fc5ddfb9cc, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4396600582777970, guid: d42e4cb6c131cad4c912d9fc5ddfb9cc, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4396600582777970, guid: d42e4cb6c131cad4c912d9fc5ddfb9cc, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4396600582777970, guid: d42e4cb6c131cad4c912d9fc5ddfb9cc, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4396600582777970, guid: d42e4cb6c131cad4c912d9fc5ddfb9cc, type: 2}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: d42e4cb6c131cad4c912d9fc5ddfb9cc, type: 2}
-  m_IsPrefabParent: 0
---- !u!1 &254858813 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1604403149716064, guid: d42e4cb6c131cad4c912d9fc5ddfb9cc,
-    type: 2}
-  m_PrefabInternal: {fileID: 254858812}
---- !u!4 &254858814 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4396600582777970, guid: d42e4cb6c131cad4c912d9fc5ddfb9cc,
-    type: 2}
-  m_PrefabInternal: {fileID: 254858812}
 --- !u!1 &438454040
 GameObject:
   m_ObjectHideFlags: 0
@@ -291,6 +350,7 @@ MonoBehaviour:
   CreateNewRoom: 0
   AutoConnect: 1
   Version: 1
+  IdleTimeOut: 300
 --- !u!4 &438454042
 Transform:
   m_ObjectHideFlags: 0
@@ -407,58 +467,6 @@ MonoBehaviour:
   isStorageContainer: 0
   isTreasureList: 0
   StorageSlots: []
---- !u!1001 &502971245
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 106225853}
-    m_Modifications:
-    - target: {fileID: 4813318121030292, guid: fb8ea3a1edf410949b0cf372101f4847, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -0.74
-      objectReference: {fileID: 0}
-    - target: {fileID: 4813318121030292, guid: fb8ea3a1edf410949b0cf372101f4847, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 2.422
-      objectReference: {fileID: 0}
-    - target: {fileID: 4813318121030292, guid: fb8ea3a1edf410949b0cf372101f4847, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4813318121030292, guid: fb8ea3a1edf410949b0cf372101f4847, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4813318121030292, guid: fb8ea3a1edf410949b0cf372101f4847, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4813318121030292, guid: fb8ea3a1edf410949b0cf372101f4847, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4813318121030292, guid: fb8ea3a1edf410949b0cf372101f4847, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4813318121030292, guid: fb8ea3a1edf410949b0cf372101f4847, type: 2}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: fb8ea3a1edf410949b0cf372101f4847, type: 2}
-  m_IsPrefabParent: 0
---- !u!1 &502971246 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1513781507148194, guid: fb8ea3a1edf410949b0cf372101f4847,
-    type: 2}
-  m_PrefabInternal: {fileID: 502971245}
---- !u!4 &502971247 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4813318121030292, guid: fb8ea3a1edf410949b0cf372101f4847,
-    type: 2}
-  m_PrefabInternal: {fileID: 502971245}
 --- !u!1 &675496406
 GameObject:
   m_ObjectHideFlags: 0
@@ -1246,7 +1254,235 @@ MonoBehaviour:
         NormalValue: 0
         HighValue: 0
         MaximumValue: 0
-      - ContainedItem: 3
+      - ContainedItem: 38
+        CurrentStackActive: 0
+        LowValue: 1
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+    CraftsDiscovered: 010000000100000001000000
+    Acheivements:
+      LargestFishCaught: 000000000000000000000000
+  - Name: 
+    CharacterGender: 0
+    CurrentEnergy: 0
+    MaxEnergy: 0
+    CurrentHealth: 0
+    MaxHealth: 0
+    NonCombatSkillEXP:
+      Farming: 0
+      Mining: 0
+      Foraging: 0
+      Fishing: 0
+    Equipment:
+      EquippedClothing: 
+      RuckSackUnlockedSize: 12
+      RucksackSlots:
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 1
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 1
+        CurrentStackActive: 0
+        LowValue: 1
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 2
+        CurrentStackActive: 0
+        LowValue: 1
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 18
         CurrentStackActive: 0
         LowValue: 1
         NormalValue: 0
@@ -1438,234 +1674,6 @@ MonoBehaviour:
         NormalValue: 0
         HighValue: 0
         MaximumValue: 0
-    CraftsDiscovered: 010000000100000001000000
-    Acheivements:
-      LargestFishCaught: 000000000000000000000000
-  - Name: 
-    CharacterGender: 0
-    CurrentEnergy: 0
-    MaxEnergy: 0
-    CurrentHealth: 0
-    MaxHealth: 0
-    NonCombatSkillEXP:
-      Farming: 0
-      Mining: 0
-      Foraging: 0
-      Fishing: 0
-    Equipment:
-      EquippedClothing: 
-      RuckSackUnlockedSize: 12
-      RucksackSlots:
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 1
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 1
-        CurrentStackActive: 0
-        LowValue: 1
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 2
-        CurrentStackActive: 0
-        LowValue: 1
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 18
-        CurrentStackActive: 0
-        LowValue: 1
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 3
-        CurrentStackActive: 0
-        LowValue: 1
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
       - ContainedItem: 0
         CurrentStackActive: 0
         LowValue: 0
@@ -1714,7 +1722,7 @@ MonoBehaviour:
         NormalValue: 0
         HighValue: 0
         MaximumValue: 0
-      - ContainedItem: 3
+      - ContainedItem: 38
         CurrentStackActive: 0
         LowValue: 1
         NormalValue: 0
@@ -1948,7 +1956,7 @@ MonoBehaviour:
         NormalValue: 0
         HighValue: 0
         MaximumValue: 0
-      - ContainedItem: 3
+      - ContainedItem: 38
         CurrentStackActive: 0
         LowValue: 1
         NormalValue: 0
@@ -2147,6 +2155,116 @@ MonoBehaviour:
     TodayWeather: 0
     TomorrowWeather: 0
     TwoDayAwayWeather: 0
+--- !u!1 &1161549039
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1161549040}
+  - component: {fileID: 1161549041}
+  m_Layer: 0
+  m_Name: Rock
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1161549040
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1161549039}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: -5, y: 1.662, z: 8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2110302582}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!114 &1161549041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1161549039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NetworkObjectID: 0
+  PositionX: -500
+  PositionY: 166
+  PositionZ: 800
+  YFacing: 18000
+  ObjectType: 0
+  ItemRefID: 19
+  HasHealth: 1
+  HealthValue: 10
+  ItemQualityLevel: 0
+  isWaterable: 0
+  SurrogateObjectIndex: 0
+  HasBeenWatered: 0
+  ActiveVisual: 0
+  GrowthValue: 0
+  isStorageContainer: 0
+  isTreasureList: 0
+  StorageSlots: []
+--- !u!1001 &1264254691
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 106225853}
+    m_Modifications:
+    - target: {fileID: 4396600582777970, guid: d42e4cb6c131cad4c912d9fc5ddfb9cc, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0.92
+      objectReference: {fileID: 0}
+    - target: {fileID: 4396600582777970, guid: d42e4cb6c131cad4c912d9fc5ddfb9cc, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 2.295
+      objectReference: {fileID: 0}
+    - target: {fileID: 4396600582777970, guid: d42e4cb6c131cad4c912d9fc5ddfb9cc, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4396600582777970, guid: d42e4cb6c131cad4c912d9fc5ddfb9cc, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4396600582777970, guid: d42e4cb6c131cad4c912d9fc5ddfb9cc, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4396600582777970, guid: d42e4cb6c131cad4c912d9fc5ddfb9cc, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4396600582777970, guid: d42e4cb6c131cad4c912d9fc5ddfb9cc, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4396600582777970, guid: d42e4cb6c131cad4c912d9fc5ddfb9cc, type: 2}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: d42e4cb6c131cad4c912d9fc5ddfb9cc, type: 2}
+  m_IsPrefabParent: 0
+--- !u!1 &1264254692 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1604403149716064, guid: d42e4cb6c131cad4c912d9fc5ddfb9cc,
+    type: 2}
+  m_PrefabInternal: {fileID: 1264254691}
+--- !u!4 &1264254693 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4396600582777970, guid: d42e4cb6c131cad4c912d9fc5ddfb9cc,
+    type: 2}
+  m_PrefabInternal: {fileID: 1264254691}
 --- !u!1 &1352009372
 GameObject:
   m_ObjectHideFlags: 0
@@ -2534,6 +2652,64 @@ MonoBehaviour:
   isStorageContainer: 0
   isTreasureList: 0
   StorageSlots: []
+--- !u!1 &1674856751
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1674856752}
+  - component: {fileID: 1674856753}
+  m_Layer: 0
+  m_Name: Rock
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1674856752
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1674856751}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: -7, y: 1.662, z: 8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2110302582}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!114 &1674856753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1674856751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NetworkObjectID: 0
+  PositionX: -700
+  PositionY: 166
+  PositionZ: 800
+  YFacing: 18000
+  ObjectType: 0
+  ItemRefID: 19
+  HasHealth: 1
+  HealthValue: 10
+  ItemQualityLevel: 0
+  isWaterable: 0
+  SurrogateObjectIndex: 0
+  HasBeenWatered: 0
+  ActiveVisual: 0
+  GrowthValue: 0
+  isStorageContainer: 0
+  isTreasureList: 0
+  StorageSlots: []
 --- !u!1001 &1836453460
 Prefab:
   m_ObjectHideFlags: 0
@@ -2541,11 +2717,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 438454042}
     m_Modifications:
-    - target: {fileID: 114217362261212476, guid: fb9fb017398351b44b9429ac9b574522,
-        type: 2}
-      propertyPath: UserList.Array.size
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4559278183740994, guid: fb9fb017398351b44b9429ac9b574522, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2727,6 +2898,9 @@ Transform:
   m_Children:
   - {fileID: 1065796224}
   - {fileID: 2111082842}
+  - {fileID: 1161549040}
+  - {fileID: 84773507}
+  - {fileID: 1674856752}
   m_Father: {fileID: 1904530056}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

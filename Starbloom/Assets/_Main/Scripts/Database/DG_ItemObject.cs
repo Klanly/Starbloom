@@ -75,12 +75,8 @@ public class DG_ItemObject : MonoBehaviour
         public int StrengthValue;
 
         [Header("Visuals")]
-        public bool HasCustomSprite;
-        [ShowIf("HasCustomSprite")]
         public Sprite Icon;
-        public bool HasCustomModel;
-        [ShowIf("HasCustomModel")]
-        public GameObject ModelPrefab;
+        public int EquipmentID;
     }
     #endregion
 
@@ -229,12 +225,7 @@ public class DG_ItemObject : MonoBehaviour
 
     public GameObject GetPrefabReferenceByQuality(int IQL)
     {
-        if (isTool)
-        {
-            if (ToolQualityLevels[IQL].HasCustomModel) return ToolQualityLevels[IQL].ModelPrefab;
-            else return ModelPrefab;
-        }
-        else if (UsePoolIDForSpawn && Application.isPlaying)
+        if (UsePoolIDForSpawn && Application.isPlaying)
             return QuickFind.PrefabPool.GetPoolItemByPrefabID(PoolID);
         else
             return ModelPrefab;
@@ -264,7 +255,7 @@ public class DG_ItemObject : MonoBehaviour
         if (isTool)
         {
             Tool T = GetToolByQuality(IQL);
-            if (T.HasCustomSprite) return T.Icon;
+            return T.Icon;
         }
 
         return Icon;

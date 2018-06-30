@@ -958,7 +958,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19404854, g: 0.22519043, b: 0.26019046, a: 0.6}
+  m_BackGroundColor: {r: 0.20583098, g: 0.2428384, b: 0.2778641, a: 0.6}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -1706,6 +1706,9 @@ MonoBehaviour:
   EnableDebugKeycodes: 0
   ShowGrowthDebug: 0
   DisableAllPoolSpawningAtStart: 0
+  ForceGender: 1
+  ForcedGender: 1
+  ShowToolOnEquip: 0
   LastSelected: {fileID: 0}
 --- !u!114 &1620623746
 MonoBehaviour:
@@ -1764,6 +1767,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc3411606fd656446864a1f1b5c3c6f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Value: 0
 --- !u!1 &1695218838
 GameObject:
   m_ObjectHideFlags: 0

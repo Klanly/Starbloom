@@ -38,7 +38,7 @@ public static class QuickFindInEditor
     public static DG_EnemyDatabase GetEnemyDatabase() { return GameObject.Find("Enemy Database").GetComponent<DG_EnemyDatabase>(); }
     public static DG_MusicDatabase GetMusicDatabase() { return GameObject.Find("Music Database").GetComponent<DG_MusicDatabase>(); }
     public static DG_SFXDatabase GetSFXDatabase() { return GameObject.Find("SFX Database").GetComponent<DG_SFXDatabase>(); }
-    public static DG_ClothingDatabase GetClothingDatabase() { return GameObject.Find("Clothing Database").GetComponent<DG_ClothingDatabase>(); }
+    public static DG_ClothingDatabase GetClothingDatabase() { return GameObject.Find("Equipables Database").GetComponent<DG_ClothingDatabase>(); }
 
     //Save Data
     public static UserSettings GetEditorUserSettings() { return GameObject.Find("Player Settings").GetComponent<UserSettings>(); }
@@ -120,6 +120,9 @@ public static class QuickFind
 
 
 
+    //Effects
+    public static DG_FXHandler FXHandler = null;
+    public static DG_EquipmentAnimationHandler EquipmentFXManager = null;
 
 
     //Managers
@@ -132,7 +135,6 @@ public static class QuickFind
     public static DG_MoneyHandler MoneyHandler = null;
     public static DG_ShippingBin ShippingBin = null;
     public static DG_SceneTransition SceneTransitionHandler = null;
-    public static DG_FXHandler FXHandler = null;
     public static DG_ClothingHairManager ClothingHairManager = null;
     public static DG_GameStartHandler GameStartHandler = null;
 
@@ -283,6 +285,15 @@ public struct Vector9
         NewChild.localPosition = Vector3.zero;
         NewChild.localEulerAngles = Vector3.zero;
         NewChild.localScale = new Vector3(1, 1, 1);
+    }
+
+    public static Vector9 Zero()
+    {
+        Vector9 ReturnValue;
+        ReturnValue.Pos = Vector3.zero;
+        ReturnValue.Rot = Vector3.zero;
+        ReturnValue.Scale = new Vector3(1, 1, 1);
+        return ReturnValue;
     }
 }
 
