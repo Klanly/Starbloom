@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
+
 
 public class DG_DebugSettings : MonoBehaviour {
 
@@ -21,6 +25,8 @@ public class DG_DebugSettings : MonoBehaviour {
 
     [HideInInspector] public GameObject LastSelected;
 
+
+
     private void Awake()
     {
         QuickFind.GameSettings = this;
@@ -37,14 +43,21 @@ public class DG_DebugSettings : MonoBehaviour {
         if (!EnableDebugKeycodes)
             return;
 
-        if (Input.GetKeyUp(KeyCode.Alpha1))
-            SetCharacterDifferentScene();
-        if (Input.GetKeyUp(KeyCode.Alpha2))
-            SetCharacterMainScene();
+
+        if (Input.GetKey(KeyCode.Keypad0)) ShowDebugGameObject(true);
+        if (Input.GetKey(KeyCode.Keypad1)) ShowDebugGameObject(false);
     }
 
-    void SetCharacterDifferentScene()
-    { QuickFind.NetworkSync.SetSelfInScene(1); }
-    void SetCharacterMainScene()
-    { QuickFind.NetworkSync.SetSelfInScene(0); }
+    void ShowDebugGameObject(bool ToDebug)
+    {
+#if UNITY_EDITOR
+        if (ToDebug)
+        {
+            LastSelected = Selection.activeGameObject;
+            Selection.activeGameObject = this.gameObject;
+        }
+        else
+            Selection.activeGameObject = LastSelected;
+#endif
+    }
 }

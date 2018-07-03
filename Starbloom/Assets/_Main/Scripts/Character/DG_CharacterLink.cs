@@ -145,4 +145,11 @@ public class DG_CharacterLink : MonoBehaviour {
         CurRot.y = TargetingHelper2.eulerAngles.y;
         transform.eulerAngles = CurRot;
     }
+
+    public void CenterCharacterX()
+    {
+        Vector3 PlayerAngle = transform.eulerAngles;
+        PlayerAngle.x = 0;
+        transform.eulerAngles = PlayerAngle;
+    }
 }

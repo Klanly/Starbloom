@@ -1,10 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 public class DG_SceneEntryPoints : MonoBehaviour {
-
-
 
 
     [System.Serializable]
@@ -12,12 +11,20 @@ public class DG_SceneEntryPoints : MonoBehaviour {
     {
         public int PortalID;
         public Transform PortalTransformReference;
+        [Button(ButtonSizes.Small)] public void JumpToPoint() { if (!Application.isPlaying) return; QuickFind.PlayerTrans.position = PortalTransformReference.position; QuickFind.PlayerTrans.eulerAngles = PortalTransformReference.eulerAngles; }
     }
 
 
     public PortalPoint[] PortalPoints;
 
 
+
+#if UNITY_EDITOR
+    private void Start()
+    {
+        QuickFind.GameSettings.GetComponent<DG_SceneJumpTool>().LoadScenePortals(this);
+    }
+#endif
 
 
 
@@ -31,9 +38,6 @@ public class DG_SceneEntryPoints : MonoBehaviour {
         Debug.Log("No Portal point found by that ID");
         return null;
     }
-
-
-
 
     void OnDrawGizmos() //Draw Gizmo in Scene view
     {

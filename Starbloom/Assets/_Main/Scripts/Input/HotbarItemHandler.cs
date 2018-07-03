@@ -14,7 +14,7 @@ public class HotbarItemHandler : MonoBehaviour {
         RegularItem,
         PlaceableItem,
         WateringCan,
-        Sword
+        Weapon
     }
 
 
@@ -36,6 +36,7 @@ public class HotbarItemHandler : MonoBehaviour {
 
         if (QuickFind.GUI_OverviewTabs == null) return;
         if (QuickFind.NetworkSync == null) return;
+        if (QuickFind.NetworkSync.CharacterLink == null) return;
 
         if (QuickFind.NetworkSync.CharacterLink.AnimationSync.MidAnimation) return;
         if (QuickFind.GUI_OverviewTabs.UIisOpen || QuickFind.StorageUI.StorageUIOpen)return;
@@ -49,13 +50,12 @@ public class HotbarItemHandler : MonoBehaviour {
             switch(CurrentItemDatabaseReference.ActivateableType)
             {
                 case ActivateableTypes.PlaceableItem: QuickFind.ObjectPlacementManager.InputDetected(UpEvent); break;
-
                 case ActivateableTypes.Axe: QuickFind.PickaxeHandler.InputDetected(UpEvent); break;
                 case ActivateableTypes.FishingPole: QuickFind.FishingHandler.ExternalUpdate(UpEvent); break;
                 case ActivateableTypes.Hoe: QuickFind.HoeHandler.InputDetected(UpEvent); break;
                 case ActivateableTypes.Pickaxe: QuickFind.PickaxeHandler.InputDetected(UpEvent); break;
                 case ActivateableTypes.WateringCan: QuickFind.WateringCanHandler.InputDetected(UpEvent); break;
-                case ActivateableTypes.Sword: QuickFind.SwordHandler.InputDetected(UpEvent); break;
+                case ActivateableTypes.Weapon: QuickFind.CombatHandler.InputDetected(UpEvent); break;
             }
         }
     }
@@ -76,21 +76,24 @@ public class HotbarItemHandler : MonoBehaviour {
         if (QuickFind.HoeHandler.PlacementActive) QuickFind.HoeHandler.CancelHoeing();
         if (QuickFind.WateringCanHandler.PlacementActive) QuickFind.WateringCanHandler.CancelWatering();
         if (QuickFind.PickaxeHandler.PlacementActive) QuickFind.PickaxeHandler.CancelHittingMode();
-        if (QuickFind.SwordHandler.SwordActive) QuickFind.SwordHandler.CancelHittingMode();
+        if (QuickFind.CombatHandler.WeaponActive) QuickFind.CombatHandler.CancelHittingMode();
+
+        QuickFind.TargetingController.TargetingCanvas.gameObject.SetActive(false);
+
 
         switch (ItemDatabaseReference.ActivateableType)
         {
-            case ActivateableTypes.PlaceableItem: QuickFind.ObjectPlacementManager.SetupItemObjectGhost(DG_ObjectPlacement.PlacementType.ItemObject, RucksackSlot, ItemDatabaseReference, Slot); break;
+            case ActivateableTypes.PlaceableItem: QuickFind.ObjectPlacementManager.SetupItemObjectGhost(RucksackSlot, ItemDatabaseReference, Slot); break;
             case ActivateableTypes.Hoe: QuickFind.HoeHandler.SetupForHoeing(RucksackSlot, ItemDatabaseReference, Slot); break;
             case ActivateableTypes.WateringCan: QuickFind.WateringCanHandler.SetupForWatering(RucksackSlot, ItemDatabaseReference, Slot); break;
             case ActivateableTypes.Pickaxe: QuickFind.PickaxeHandler.SetupForHitting(RucksackSlot, ItemDatabaseReference, Slot, ActivateableTypes.Pickaxe); break;
             case ActivateableTypes.Axe: QuickFind.PickaxeHandler.SetupForHitting(RucksackSlot, ItemDatabaseReference, Slot, ActivateableTypes.Axe); break;
-            case ActivateableTypes.Sword: QuickFind.SwordHandler.SetupForHitting(RucksackSlot, ItemDatabaseReference, Slot); break;
+            case ActivateableTypes.Weapon: QuickFind.CombatHandler.SetupForHitting(RucksackSlot, ItemDatabaseReference, Slot); break;
         }
 
 
-        if (ItemDatabaseReference.isTool)
-            QuickFind.ClothingHairManager.AddClothingItem(QuickFind.NetworkSync.CharacterLink, ItemDatabaseReference.GetToolByQuality(RucksackSlot.CurrentStackActive).EquipmentID);
+        if (ItemDatabaseReference.isTool || ItemDatabaseReference.isWeapon)
+            QuickFind.ClothingHairManager.AddClothingItem(QuickFind.NetworkSync.CharacterLink, ItemDatabaseReference.GetClothingID(RucksackSlot));
     }
     public void SetNoActiveItem()
     {

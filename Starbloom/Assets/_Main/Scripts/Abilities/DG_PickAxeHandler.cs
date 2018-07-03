@@ -43,6 +43,8 @@ public class DG_PickAxeHandler : MonoBehaviour {
     {
         if (isUP && SafeToPlace)
         {
+            if (!QuickFind.NetworkSync.CharacterLink.AnimationSync.CharacterIsGrounded()) return;
+
             DG_ContextObject CO = HitObject.GetComponent<DG_ContextObject>();
             QuickFind.BreakableObjectsHandler.TryHitObject(CO, CurrentActive, (DG_ItemObject.ItemQualityLevels)RucksackSlotOpen.CurrentStackActive, RucksackSlotOpen);
         }

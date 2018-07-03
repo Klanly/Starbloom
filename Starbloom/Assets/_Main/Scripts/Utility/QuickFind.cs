@@ -39,6 +39,7 @@ public static class QuickFindInEditor
     public static DG_MusicDatabase GetMusicDatabase() { return GameObject.Find("Music Database").GetComponent<DG_MusicDatabase>(); }
     public static DG_SFXDatabase GetSFXDatabase() { return GameObject.Find("SFX Database").GetComponent<DG_SFXDatabase>(); }
     public static DG_ClothingDatabase GetClothingDatabase() { return GameObject.Find("Equipables Database").GetComponent<DG_ClothingDatabase>(); }
+    public static DG_AnimationDatabase GetAnimationDatabase() { return GameObject.Find("Animation Database").GetComponent<DG_AnimationDatabase>(); }
 
     //Save Data
     public static UserSettings GetEditorUserSettings() { return GameObject.Find("Player Settings").GetComponent<UserSettings>(); }
@@ -120,9 +121,10 @@ public static class QuickFind
 
 
 
-    //Effects
+    //Effects and ANimations
     public static DG_FXHandler FXHandler = null;
     public static DG_EquipmentAnimationHandler EquipmentFXManager = null;
+    public static DG_AnimationStringValues AnimationStringValues = null;
 
 
     //Managers
@@ -151,7 +153,8 @@ public static class QuickFind
 
     //Combat
     public static DG_CombatHandler CombatHandler = null;
-    public static DG_SwordHandler SwordHandler = null;
+    public static DG_TargetingController TargetingController = null;
+    public static DG_CharacterDashController CharacterDashController = null;
 
 
     //Audio
@@ -178,6 +181,7 @@ public static class QuickFind
     public static DG_TextLanguageFonts LanguageFonts = null;
     public static DG_EnemyDatabase EnemyDatabase = null;
     public static DG_ClothingDatabase ClothingDatabase = null;
+    public static DG_AnimationDatabase AnimationDatabase = null;
 
 
     //Serialization
@@ -254,6 +258,27 @@ public static class QuickFind
         while (DigitNeeded-- > 0) { Number /= 10; }
         return (Number % 10);
     }
+
+    public static RaycastHit GetClosestRayHitObject(Vector3 ComparePoint, RaycastHit[] ObjectsDetected)
+    {
+        int NearestIndex = 0;
+        float NearestDistance = float.MaxValue;
+
+
+        for(int i = 0; i < ObjectsDetected.Length; i++)
+        {
+            Vector3 ObjPos = ObjectsDetected[i].point;
+            float Dist = Vector3.Distance(ComparePoint, ObjPos);
+            if(Dist < NearestDistance)
+            {
+                NearestDistance = Dist;
+                NearestIndex = i;
+            }
+        }
+
+        return ObjectsDetected[NearestIndex];
+    }
+
 }
 
 

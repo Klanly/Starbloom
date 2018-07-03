@@ -159,12 +159,7 @@ MonoBehaviour:
       Pos: {x: -0.0009, y: 0.00071, z: 0.00053}
       Rot: {x: 10.85, y: -4.558, z: 98.576}
       Scale: {x: 0.02232208, y: 0.02232208, z: 0.02232188}
-  AnimationNumbers:
-  - AnimationActionState: 1
-    AnimationSubstateValues: 02000000
-    AnimationTransition:
-      Type: 0
-      TransitionTime: 0
+  AnimationDatabaseNumber: 2
 --- !u!114 &27234736
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -177,7 +172,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 14
-  instanceID: 150480
+  instanceID: 51310
 --- !u!4 &27234737
 Transform:
   m_ObjectHideFlags: 0
@@ -263,6 +258,7 @@ Transform:
   - {fileID: 1296358288}
   - {fileID: 206946386}
   - {fileID: 497348112}
+  - {fileID: 528857377}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -299,7 +295,8 @@ MonoBehaviour:
   - {fileID: 1021058733}
   - {fileID: 1375316945}
   - {fileID: 1930776263}
-  ListCount: 21
+  - {fileID: 1733625692}
+  ListCount: 22
 --- !u!1 &497348111
 GameObject:
   m_ObjectHideFlags: 0
@@ -331,6 +328,35 @@ Transform:
   - {fileID: 1930776265}
   m_Father: {fileID: 456777420}
   m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &528857376
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 528857377}
+  m_Layer: 0
+  m_Name: Weapons
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &528857377
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 528857376}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1733625694}
+  m_Father: {fileID: 456777420}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &560943110
 GameObject:
@@ -403,7 +429,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 14
-  instanceID: 150506
+  instanceID: 51340
 --- !u!114 &592225607
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -433,12 +459,7 @@ MonoBehaviour:
       Pos: {x: -0.0002, y: 0.00084, z: 0.00063}
       Rot: {x: -169.437, y: 3.416992, z: 86.80299}
       Scale: {x: 0.02510478, y: 0.02510479, z: 0.02510455}
-  AnimationNumbers:
-  - AnimationActionState: 1
-    AnimationSubstateValues: 02000000
-    AnimationTransition:
-      Type: 0
-      TransitionTime: 0
+  AnimationDatabaseNumber: 1
 --- !u!1 &689915696
 GameObject:
   m_ObjectHideFlags: 0
@@ -481,7 +502,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 14
-  instanceID: 150514
+  instanceID: 51348
 --- !u!114 &689915699
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -511,12 +532,7 @@ MonoBehaviour:
       Pos: {x: -0.0002, y: 0.00084, z: 0.00063}
       Rot: {x: -169.437, y: 3.416992, z: 86.80299}
       Scale: {x: 0.02510478, y: 0.02510479, z: 0.02510455}
-  AnimationNumbers:
-  - AnimationActionState: 1
-    AnimationSubstateValues: 02000000
-    AnimationTransition:
-      Type: 0
-      TransitionTime: 0
+  AnimationDatabaseNumber: 1
 --- !u!1 &767244528
 GameObject:
   m_ObjectHideFlags: 0
@@ -576,7 +592,7 @@ MonoBehaviour:
       Pos: {x: 0.00002230001, y: -0.0009602669, z: -0.00003211132}
       Rot: {x: -92.034, y: -0.00001525879, z: 0}
       Scale: {x: 0.0008209795, y: 0.001062445, z: 0.0009658707}
-  AnimationNumbers: []
+  AnimationDatabaseNumber: 0
 --- !u!114 &767244531
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -589,7 +605,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 14
-  instanceID: 150524
+  instanceID: 51358
 --- !u!1 &946164149
 GameObject:
   m_ObjectHideFlags: 0
@@ -632,7 +648,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 14
-  instanceID: 150530
+  instanceID: 51364
 --- !u!114 &946164152
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -662,12 +678,7 @@ MonoBehaviour:
       Pos: {x: -0.00057, y: 0.00083, z: 0.00068}
       Rot: {x: -3.348, y: 177.837, z: 262.266}
       Scale: {x: 0.02371116, y: 0.02371116, z: 0.02371095}
-  AnimationNumbers:
-  - AnimationActionState: 1
-    AnimationSubstateValues: 01000000
-    AnimationTransition:
-      Type: 0
-      TransitionTime: 0
+  AnimationDatabaseNumber: 0
 --- !u!1 &977705919
 GameObject:
   m_ObjectHideFlags: 0
@@ -710,7 +721,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 14
-  instanceID: 150538
+  instanceID: 51372
 --- !u!114 &977705922
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -740,12 +751,7 @@ MonoBehaviour:
       Pos: {x: -0.0002, y: 0.00084, z: 0.00063}
       Rot: {x: -169.437, y: 3.416992, z: 86.80299}
       Scale: {x: 0.02510478, y: 0.02510479, z: 0.02510455}
-  AnimationNumbers:
-  - AnimationActionState: 1
-    AnimationSubstateValues: 02000000
-    AnimationTransition:
-      Type: 0
-      TransitionTime: 0
+  AnimationDatabaseNumber: 1
 --- !u!1 &1021058730
 GameObject:
   m_ObjectHideFlags: 0
@@ -788,7 +794,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 14
-  instanceID: 150546
+  instanceID: 51380
 --- !u!114 &1021058733
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -818,12 +824,7 @@ MonoBehaviour:
       Pos: {x: -0.00263, y: 0.00247, z: -0.00013}
       Rot: {x: 5.887, y: 1.605, z: 150.774}
       Scale: {x: 0.03879905, y: 0.03879905, z: 0.03879869}
-  AnimationNumbers:
-  - AnimationActionState: 2
-    AnimationSubstateValues: 03000000
-    AnimationTransition:
-      Type: 0
-      TransitionTime: 0
+  AnimationDatabaseNumber: 3
 --- !u!1 &1142876980
 GameObject:
   m_ObjectHideFlags: 0
@@ -866,7 +867,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 14
-  instanceID: 150554
+  instanceID: 51388
 --- !u!114 &1142876983
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -896,12 +897,7 @@ MonoBehaviour:
       Pos: {x: -0.00263, y: 0.00247, z: -0.00013}
       Rot: {x: 5.887, y: 1.605, z: 150.774}
       Scale: {x: 0.03879905, y: 0.03879905, z: 0.03879869}
-  AnimationNumbers:
-  - AnimationActionState: 2
-    AnimationSubstateValues: 03000000
-    AnimationTransition:
-      Type: 0
-      TransitionTime: 0
+  AnimationDatabaseNumber: 3
 --- !u!1 &1250105791
 GameObject:
   m_ObjectHideFlags: 0
@@ -1037,7 +1033,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 14
-  instanceID: 150574
+  instanceID: 51408
 --- !u!114 &1375316945
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1067,12 +1063,7 @@ MonoBehaviour:
       Pos: {x: -0.00263, y: 0.00247, z: -0.00013}
       Rot: {x: 5.887, y: 1.605, z: 150.774}
       Scale: {x: 0.03879905, y: 0.03879905, z: 0.03879869}
-  AnimationNumbers:
-  - AnimationActionState: 2
-    AnimationSubstateValues: 03000000
-    AnimationTransition:
-      Type: 0
-      TransitionTime: 0
+  AnimationDatabaseNumber: 3
 --- !u!1 &1416670961
 GameObject:
   m_ObjectHideFlags: 0
@@ -1115,7 +1106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 14
-  instanceID: 150582
+  instanceID: 51416
 --- !u!114 &1416670964
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1145,12 +1136,7 @@ MonoBehaviour:
       Pos: {x: -0.0009, y: 0.00071, z: 0.00053}
       Rot: {x: 10.85, y: -4.558, z: 98.576}
       Scale: {x: 0.02232208, y: 0.02232208, z: 0.02232188}
-  AnimationNumbers:
-  - AnimationActionState: 1
-    AnimationSubstateValues: 02000000
-    AnimationTransition:
-      Type: 0
-      TransitionTime: 0
+  AnimationDatabaseNumber: 2
 --- !u!1 &1436179667
 GameObject:
   m_ObjectHideFlags: 0
@@ -1197,12 +1183,7 @@ MonoBehaviour:
       Pos: {x: -0.00057, y: 0.00083, z: 0.00068}
       Rot: {x: -3.348, y: 177.837, z: 262.266}
       Scale: {x: 0.02371116, y: 0.02371116, z: 0.02371095}
-  AnimationNumbers:
-  - AnimationActionState: 1
-    AnimationSubstateValues: 01000000
-    AnimationTransition:
-      Type: 0
-      TransitionTime: 0
+  AnimationDatabaseNumber: 0
 --- !u!114 &1436179669
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1215,7 +1196,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 14
-  instanceID: 150590
+  instanceID: 51424
 --- !u!4 &1436179670
 Transform:
   m_ObjectHideFlags: 0
@@ -1300,7 +1281,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 14
-  instanceID: 150602
+  instanceID: 51436
 --- !u!114 &1575675516
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1330,12 +1311,80 @@ MonoBehaviour:
       Pos: {x: -0.0009, y: 0.00071, z: 0.00053}
       Rot: {x: 10.85, y: -4.558, z: 98.576}
       Scale: {x: 0.02232208, y: 0.02232208, z: 0.02232188}
-  AnimationNumbers:
-  - AnimationActionState: 1
-    AnimationSubstateValues: 02000000
-    AnimationTransition:
-      Type: 0
-      TransitionTime: 0
+  AnimationDatabaseNumber: 2
+--- !u!1 &1733625691
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1733625694}
+  - component: {fileID: 1733625693}
+  - component: {fileID: 1733625692}
+  m_Layer: 0
+  m_Name: 21 - sword1h01_grey
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1733625692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1733625691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fba5c837b3dea7a4297542c9b7541052, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DatabaseID: 21
+  LockItem: 1
+  Name: sword1h01_grey
+  Gender: 2
+  Type: 4
+  Prefabs:
+  - {fileID: 139746, guid: 294115a70762d224f889f85c52310ddc, type: 2}
+  CharOffsetPoint:
+  - Gender: 0
+    OffsetData:
+      Pos: {x: -0.00035, y: 0.00089, z: 0.00064}
+      Rot: {x: 23.51, y: 3.809, z: 106.941}
+      Scale: {x: 0.025, y: 0.025, z: 0.025}
+  - Gender: 1
+    OffsetData:
+      Pos: {x: -0.00024, y: 0.00072, z: 0.00041}
+      Rot: {x: 0.437, y: -17.839, z: 108.098}
+      Scale: {x: 0.025, y: 0.025, z: 0.025}
+  AnimationDatabaseNumber: 5
+--- !u!114 &1733625693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1733625691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d33472abc485247a9e2067092d1b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBType: 14
+  instanceID: 51444
+--- !u!4 &1733625694
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1733625691}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 528857377}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1790431433
 GameObject:
   m_ObjectHideFlags: 0
@@ -1382,7 +1431,7 @@ MonoBehaviour:
       Pos: {x: 0.00002230001, y: -0.0009602669, z: -0.00003211132}
       Rot: {x: -92.034, y: -0.00001525879, z: 0}
       Scale: {x: 0.0008209795, y: 0.001062445, z: 0.0009658707}
-  AnimationNumbers: []
+  AnimationDatabaseNumber: 0
 --- !u!114 &1790431435
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1395,7 +1444,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 14
-  instanceID: 150610
+  instanceID: 51452
 --- !u!4 &1790431436
 Transform:
   m_ObjectHideFlags: 0
@@ -1451,7 +1500,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 14
-  instanceID: 150618
+  instanceID: 51460
 --- !u!114 &1796259107
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1481,12 +1530,7 @@ MonoBehaviour:
       Pos: {x: -0.0002, y: 0.00084, z: 0.00063}
       Rot: {x: -169.437, y: 3.416992, z: 86.80299}
       Scale: {x: 0.02510478, y: 0.02510479, z: 0.02510455}
-  AnimationNumbers:
-  - AnimationActionState: 1
-    AnimationSubstateValues: 02000000
-    AnimationTransition:
-      Type: 0
-      TransitionTime: 0
+  AnimationDatabaseNumber: 1
 --- !u!1 &1855910331
 GameObject:
   m_ObjectHideFlags: 0
@@ -1529,7 +1573,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 14
-  instanceID: 150626
+  instanceID: 51468
 --- !u!114 &1855910334
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1559,12 +1603,7 @@ MonoBehaviour:
       Pos: {x: -0.0009, y: 0.00071, z: 0.00053}
       Rot: {x: 10.85, y: -4.558, z: 98.576}
       Scale: {x: 0.02232208, y: 0.02232208, z: 0.02232188}
-  AnimationNumbers:
-  - AnimationActionState: 1
-    AnimationSubstateValues: 02000000
-    AnimationTransition:
-      Type: 0
-      TransitionTime: 0
+  AnimationDatabaseNumber: 2
 --- !u!1 &1892575104
 GameObject:
   m_ObjectHideFlags: 0
@@ -1601,7 +1640,7 @@ MonoBehaviour:
   Prefabs:
   - {fileID: 1361768503832534, guid: 5302c0cc2e019414ebd294d2a8466673, type: 2}
   CharOffsetPoint: []
-  AnimationNumbers: []
+  AnimationDatabaseNumber: 0
 --- !u!114 &1892575106
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1614,7 +1653,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 14
-  instanceID: 150634
+  instanceID: 51476
 --- !u!4 &1892575107
 Transform:
   m_ObjectHideFlags: 0
@@ -1670,7 +1709,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 14
-  instanceID: 150642
+  instanceID: 51484
 --- !u!114 &1892696687
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1700,12 +1739,7 @@ MonoBehaviour:
       Pos: {x: -0.00057, y: 0.00083, z: 0.00068}
       Rot: {x: -3.348, y: 177.837, z: 262.266}
       Scale: {x: 0.02371116, y: 0.02371116, z: 0.02371095}
-  AnimationNumbers:
-  - AnimationActionState: 1
-    AnimationSubstateValues: 01000000
-    AnimationTransition:
-      Type: 0
-      TransitionTime: 0
+  AnimationDatabaseNumber: 0
 --- !u!1 &1899486299
 GameObject:
   m_ObjectHideFlags: 0
@@ -1742,7 +1776,7 @@ MonoBehaviour:
   Prefabs:
   - {fileID: 1482269725209524, guid: 2977e2cb69a9f254b8fc103889ddf2e1, type: 2}
   CharOffsetPoint: []
-  AnimationNumbers: []
+  AnimationDatabaseNumber: 0
 --- !u!114 &1899486301
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1755,7 +1789,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 14
-  instanceID: 150650
+  instanceID: 51492
 --- !u!4 &1899486302
 Transform:
   m_ObjectHideFlags: 0
@@ -1815,12 +1849,7 @@ MonoBehaviour:
       Pos: {x: -0.00263, y: 0.00247, z: -0.00013}
       Rot: {x: 5.887, y: 1.605, z: 150.774}
       Scale: {x: 0.03879905, y: 0.03879905, z: 0.03879869}
-  AnimationNumbers:
-  - AnimationActionState: 2
-    AnimationSubstateValues: 03000000
-    AnimationTransition:
-      Type: 0
-      TransitionTime: 0
+  AnimationDatabaseNumber: 3
 --- !u!114 &1930776264
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1833,7 +1862,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 14
-  instanceID: 150658
+  instanceID: 51500
 --- !u!4 &1930776265
 Transform:
   m_ObjectHideFlags: 0
@@ -1883,7 +1912,7 @@ MonoBehaviour:
   Prefabs:
   - {fileID: 1839794133647238, guid: 8697556a7ead0454993031d71ef84fbc, type: 2}
   CharOffsetPoint: []
-  AnimationNumbers: []
+  AnimationDatabaseNumber: 0
 --- !u!114 &1944687446
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1896,7 +1925,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 14
-  instanceID: 150666
+  instanceID: 51508
 --- !u!4 &1944687447
 Transform:
   m_ObjectHideFlags: 0
@@ -1982,7 +2011,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 14
-  instanceID: 150678
+  instanceID: 51520
 --- !u!114 &2118497659
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2012,9 +2041,4 @@ MonoBehaviour:
       Pos: {x: -0.00057, y: 0.00083, z: 0.00068}
       Rot: {x: -3.348, y: 177.837, z: 262.266}
       Scale: {x: 0.02371116, y: 0.02371116, z: 0.02371095}
-  AnimationNumbers:
-  - AnimationActionState: 1
-    AnimationSubstateValues: 01000000
-    AnimationTransition:
-      Type: 0
-      TransitionTime: 0
+  AnimationDatabaseNumber: 0

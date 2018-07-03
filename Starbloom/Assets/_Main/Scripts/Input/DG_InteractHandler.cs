@@ -5,6 +5,17 @@ using UnityEngine;
 public class DG_InteractHandler : MonoBehaviour
 {
 
+
+
+
+
+
+    DG_ContextObject SavedCO;
+    NetworkObject SavedNO;
+    DG_ItemObject SavedIO;
+    bool AwaitingResponse;
+
+
     private void Awake()
     {
         QuickFind.InteractHandler = this;
@@ -17,9 +28,10 @@ public class DG_InteractHandler : MonoBehaviour
 
         if (QuickFind.InputController.InputState != DG_PlayerInput.CurrentInputState.Default) return;
 
-
         if (QuickFind.InputController.MainPlayer.ButtonSet.Interact.Up)
         {
+            if (!QuickFind.NetworkSync.CharacterLink.AnimationSync.CharacterIsGrounded()) return;
+
             if (QuickFind.ContextDetectionHandler.ContextHit)
             {
                 DG_ContextObject CO = QuickFind.ContextDetectionHandler.COEncountered;
@@ -31,12 +43,12 @@ public class DG_InteractHandler : MonoBehaviour
 
                 switch(CO.Type)
                 {
-                    case DG_ContextObject.ContextTypes.PickupItem: HandlePickUpItem(CO); break;
+                    case DG_ContextObject.ContextTypes.PickupItem: TriggerAnimation(CO); break;
                     case DG_ContextObject.ContextTypes.Conversation: break;
                     case DG_ContextObject.ContextTypes.Treasure: break;
                     case DG_ContextObject.ContextTypes.MoveableStorage: HandleMoveableStorage(CO); break;
-                    case DG_ContextObject.ContextTypes.HarvestablePlant: HandleSingleHarvest(CO); break;
-                    case DG_ContextObject.ContextTypes.HarvestableTree: HandleClusterHarvest(CO); break;
+                    case DG_ContextObject.ContextTypes.HarvestablePlant: TriggerAnimation(CO); break;
+                    case DG_ContextObject.ContextTypes.HarvestableTree: TriggerAnimation(CO); break;
                     case DG_ContextObject.ContextTypes.ShopInterface: HandleShopInterface(CO); break;
                     case DG_ContextObject.ContextTypes.ShippingBin: QuickFind.ShippingBinGUI.OpenBinUI(CO); break;
                     case DG_ContextObject.ContextTypes.ScenePortal: CO.GetComponent<DG_ScenePortalTrigger>().TriggerSceneChange(); break;
@@ -44,6 +56,33 @@ public class DG_InteractHandler : MonoBehaviour
             }
         }
     }
+
+
+    public void TriggerAnimation(DG_ContextObject CO)
+    {
+        AwaitingResponse = true;
+        SavedCO = CO;
+        SavedNO = QuickFind.NetworkObjectManager.ScanUpTree(CO.transform);
+        SavedIO = QuickFind.ItemDatabase.GetItemFromID(SavedNO.ItemRefID);
+        QuickFind.NetworkSync.CharacterLink.FacePlayerAtPosition(CO.transform.position);
+        QuickFind.NetworkSync.CharacterLink.AnimationSync.TriggerAnimation(SavedIO.AnimationInteractID);
+    }
+
+
+
+    public void ReturnInteractionHit()
+    {
+        if (!AwaitingResponse) return; AwaitingResponse = false;
+
+        switch (SavedCO.Type)
+        {
+            case DG_ContextObject.ContextTypes.PickupItem: HandlePickUpItem(SavedCO); break;
+            case DG_ContextObject.ContextTypes.HarvestablePlant: HandleSingleHarvest(SavedCO); break;
+            case DG_ContextObject.ContextTypes.HarvestableTree: HandleClusterHarvest(SavedCO); break;
+        }
+    }
+
+
 
     void HandlePickUpItem(DG_ContextObject CO)
     {
@@ -67,6 +106,8 @@ public class DG_InteractHandler : MonoBehaviour
         }
 
     }
+
+
     void HandleMoveableStorage(DG_ContextObject CO)
     {
         NetworkObject NO = QuickFind.NetworkObjectManager.ScanUpTree(CO.transform);

@@ -80,7 +80,7 @@ public class NetworkObject : MonoBehaviour {
             if (HasBeenWatered) QuickFind.WateringSystem.AdjustWateredObjectVisual(this, true);
             if (IO.isWallItem) Spawn.GetComponent<DG_DynamicWall>().DetermineActiveBoolsByID(ItemQualityLevel);
             if (GenerateVelocity) { DG_MagneticItem MI = Spawn.GetComponent<DG_MagneticItem>(); MI.TriggerStart(Velocity); }
-            if (IO.RequireTilledEarth) { if (PhotonNetwork.isMasterClient) QuickFind.ObjectPlacementManager.SendOutSurrogateSearch(Spawn); }
+            if (IO.RequireTilledEarth) { if (PhotonNetwork.isMasterClient) QuickFind.ObjectPlacementManager.SendOutSurrogateSearch(this); }
         }
         else if(ObjectType == NetworkObjectManager.NetworkObjectTypes.Enemy)
         {

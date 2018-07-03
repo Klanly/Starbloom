@@ -4,6 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using Sirenix.OdinInspector;
 
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
+
 
 public class DG_ItemObject : MonoBehaviour
 {
@@ -29,10 +33,18 @@ public class DG_ItemObject : MonoBehaviour
 
     public bool DatabaseUsesNameInsteadOfPrefab;
     public string Name;
+    public NameChange ChangeName;
+
+
     public int MaxStackSize;
+
+    [Header("Type")]
     public HotbarItemHandler.ActivateableTypes ActivateableType;
+    [ShowIf("ActivateableType", HotbarItemHandler.ActivateableTypes.PlaceableItem)]
     public bool DestroysSoilOnPlacement;
-    
+    [ShowIf("ActivateableType", HotbarItemHandler.ActivateableTypes.PlaceableItem)]
+    public bool ShowPlacementGhost;
+
     [Header("ToolTip Data")]
     public DG_TooltipGUI.ToolTipContainerItem ToolTipType;
 
@@ -190,19 +202,28 @@ public class DG_ItemObject : MonoBehaviour
         public int DamageMin;
         public int DamageMax;
 
+        [Header("Visuals")]
+        public int EquipmentID;
+
     }
     #endregion
 
 
 
-    [Header("Situational----------------------------------")]
+    [Header("----------------------------------")]
     public bool HarvestableItem;
     [ShowIf("HarvestableItem")]
     public int HarvestItemIndex;
     [ShowIf("HarvestableItem")]
     public int HarvestClusterIndex;
+   
 
+
+    [Header("----------------------------------")]
     public bool isWallItem;
+    [Header("----------------------------------")]
+    public int AnimationActionID;
+    public int AnimationInteractID;  //Since Some Objects Have a "plant", and a "Harvest" Animation
 
 
 
@@ -260,6 +281,15 @@ public class DG_ItemObject : MonoBehaviour
 
         return Icon;
     }
+    public int GetClothingID(DG_PlayerCharacters.RucksackSlot RucksackSlot)
+    {
+        if (isTool)
+            return GetToolByQuality(RucksackSlot.CurrentStackActive).EquipmentID;
+        else if (isWeapon)
+            return WeaponValues[0].EquipmentID;
+        else
+            return -1;
+    }
 
     public int GetBuyPriceByQuality(int IQL)
     {
@@ -282,4 +312,29 @@ public class DG_ItemObject : MonoBehaviour
 
     #endregion
 
+
+
+
+    [System.Serializable]
+    public class NameChange
+    {
+        [Button(ButtonSizes.Small)]
+        public void SetName()
+        {
+
+            DG_ItemObject IO = null;
+#if UNITY_EDITOR
+            IO = Selection.activeGameObject.GetComponent<DG_ItemObject>();
+            #endif
+            if (Application.isPlaying) return;
+            if (QuickFindInEditor.GetEditorUserSettings().CurrentLanguage != 0) { Debug.Log("Language Not set to English."); return; } 
+
+            string NewName = string.Empty;
+            NewName += QuickFindInEditor.GetEditorWordDatabase().GetWordFromID(IO.ToolTipType.MainLocalizationID);
+            NewName += " - ";
+            NewName += QuickFindInEditor.GetEditorWordDatabase().GetWordFromID(IO.ToolTipType.SubLocalizationID);
+
+            IO.Name = NewName;
+        }
+    }
 }

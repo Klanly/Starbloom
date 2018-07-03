@@ -345,7 +345,7 @@ public class DG_InventoryGUI : MonoBehaviour
 
     public void SetHotbarSlot(DG_InventoryItem PressedItem)
     {
-        if (QuickFind.NetworkSync.CharacterLink.AnimationSync.MidAnimation) return;
+        if (QuickFind.NetworkSync.CharacterLink.AnimationSync.DisableWeaponSwitching) return;
 
         HotbarSlots[EquippedHotbarSlot].ActiveHotbarItem.enabled = false;
         EquippedHotbarSlot = PressedItem.SlotID;

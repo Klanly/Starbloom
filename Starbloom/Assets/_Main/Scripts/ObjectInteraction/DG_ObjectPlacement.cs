@@ -16,6 +16,10 @@ public class DG_ObjectPlacement : MonoBehaviour {
     public LayerMask SeedPlacementDetection;
     public LayerMask SoilReplaceDetection;
 
+    [Header("Debug")]
+    public bool ShowDebug = false;
+
+
     [HideInInspector] public Transform ObjectGhost;
     [HideInInspector] public bool PlacementActive;
     [HideInInspector] public bool AwaitingNetResponse;
@@ -27,10 +31,17 @@ public class DG_ObjectPlacement : MonoBehaviour {
     Collider DetectedInTheWay;
     NetworkObject SoilObject;
     int ActiveSlot;
+    bool AwaitingResponse;
+
+
+
+    Vector3 SavedPosition;
+    float SavedDirection;
+
+    //Wait for Animation To Complete
+    bool SpawnGhostAfterAnimation;
 
     bool SafeToPlace = false;
-    
-
 
 
     private void Awake()
@@ -46,15 +57,22 @@ public class DG_ObjectPlacement : MonoBehaviour {
             ObjectGhost.position = QuickFind.GridDetection.DetectionPoint.position;
             bool GoodToPlace = false;
             if (ItemDatabaseReference.ItemCat == DG_ItemObject.ItemCatagory.Seeds)
-                GoodToPlace = AreaIsClear(SeedPlacementDetection, ObjectGhost.position);
+                GoodToPlace = AreaIsClear(SeedPlacementDetection, ObjectGhost.position, .45f);
             else
-                GoodToPlace = AreaIsClear(BoxcastDetection, ObjectGhost.position);
+                GoodToPlace = AreaIsClear(BoxcastDetection, ObjectGhost.position, .45f);
 
             QuickFind.GridDetection.GridMesh.enabled = GoodToPlace;
             SetMaterialColors(GoodToPlace);
             SafeToPlace = GoodToPlace;
         }
         else SafeToPlace = false;
+
+        if (SpawnGhostAfterAnimation)
+        {
+            if (QuickFind.NetworkSync.CharacterLink.AnimationSync.MidAnimation) return;
+            SpawnGhostAfterAnimation = false;
+            SetupItemObjectGhost(RucksackSlotOpen, ItemDatabaseReference, ActiveSlot);
+        }
     }
 
 
@@ -66,6 +84,8 @@ public class DG_ObjectPlacement : MonoBehaviour {
     {
         if(isUP && SafeToPlace)
         {
+            if (!QuickFind.NetworkSync.CharacterLink.AnimationSync.CharacterIsGrounded()) return;
+
             if (SoilDetection())
             {
                 if (SoilObject != null && SoilObject.SurrogateObjectIndex != 0) return;
@@ -73,8 +93,15 @@ public class DG_ObjectPlacement : MonoBehaviour {
 
                 AwaitingNetResponse = true;
 
-                if(!ItemDatabaseReference.isWallItem)
-                    QuickFind.NetworkObjectManager.CreateNetSceneObject(QuickFind.NetworkSync.CurrentScene, NetworkObjectManager.NetworkObjectTypes.Item, ItemDatabaseReference.DatabaseID, RucksackSlotOpen.CurrentStackActive, ObjectGhost.position, ObjectGhost.eulerAngles.y);
+                if (!ItemDatabaseReference.isWallItem)
+                {
+                    AwaitingResponse = true;
+                    SavedPosition = ObjectGhost.position;
+                    SavedDirection = ObjectGhost.eulerAngles.y;
+
+                    QuickFind.NetworkSync.CharacterLink.FacePlayerAtPosition(SavedPosition);
+                    QuickFind.NetworkSync.CharacterLink.AnimationSync.TriggerAnimation(ItemDatabaseReference.AnimationActionID);
+                }
                 else
                     ObjectGhost.GetComponent<DG_DynamicWall>().TriggerPlaceWall();
                 DestroyObjectGhost();
@@ -85,10 +112,18 @@ public class DG_ObjectPlacement : MonoBehaviour {
     }
 
 
+    public void PlacementHit()
+    {
+        if (!AwaitingResponse) return; AwaitingResponse = false;
+
+        QuickFind.NetworkObjectManager.CreateNetSceneObject(QuickFind.NetworkSync.CurrentScene, NetworkObjectManager.NetworkObjectTypes.Item, ItemDatabaseReference.DatabaseID, RucksackSlotOpen.CurrentStackActive, SavedPosition, SavedDirection);
+    }
+
+
 
     bool SoilDetection()
     {
-        if (!AreaIsClear(SoilReplaceDetection, QuickFind.GridDetection.DetectionPoint.position))
+        if (!AreaIsClear(SoilReplaceDetection, QuickFind.GridDetection.DetectionPoint.position, .45f))
             SoilObject = QuickFind.NetworkObjectManager.ScanUpTree(DetectedInTheWay.transform);
         else
             SoilObject = null;
@@ -104,28 +139,32 @@ public class DG_ObjectPlacement : MonoBehaviour {
 
 
 
-    public void SetupItemObjectGhost(PlacementType TypeToPlace, DG_PlayerCharacters.RucksackSlot Rucksack = null, DG_ItemObject Item = null, int slot = 0)
+    public void SetupItemObjectGhost(DG_PlayerCharacters.RucksackSlot Rucksack = null, DG_ItemObject Item = null, int slot = 0)
     {
         RucksackSlotOpen = Rucksack;
         ItemDatabaseReference = Item;
         ActiveSlot = slot;
+
+        if (QuickFind.NetworkSync.CharacterLink.AnimationSync.MidAnimation) { SpawnGhostAfterAnimation = true; return; }
+
+        PlacementActive = true;
         QuickFind.GridDetection.ObjectIsPlacing = true;
         QuickFind.GridDetection.GlobalPositioning = false;
 
         GameObject ToDestroy = null;
         if (ObjectGhost != null) ToDestroy = ObjectGhost.gameObject;
 
-        ObjectGhost = Instantiate(Item.ModelPrefab).transform;
-    
+        if(Item.ShowPlacementGhost)
+            ObjectGhost = Instantiate(Item.ModelPrefab).transform;
+        else
+            ObjectGhost = new GameObject().transform;
+
         ObjectGhost.SetParent(transform);
         ObjectGhost.localScale = new Vector3(Item.DefaultScale, Item.DefaultScale, Item.DefaultScale);
 
         TurnOffCollidersLoop(ObjectGhost);
 
         if (Item.isWallItem) ObjectGhost.GetComponent<DG_DynamicWall>().TriggerPlacementMode();
-
-        PlacementActive = true;
-
         if (ToDestroy != null) Destroy(ToDestroy);
     }
     void TurnOffCollidersLoop(Transform T)
@@ -152,16 +191,15 @@ public class DG_ObjectPlacement : MonoBehaviour {
 
 
 
-    public bool AreaIsClear(LayerMask DetectionType, Vector3 CastPoint)
+    public bool AreaIsClear(LayerMask DetectionType, Vector3 CastPoint, float Radius)
     {
         //This will have to be adjusted at a later point to fit larger objects.
+        Collider[] hitColliders = Physics.OverlapSphere(CastPoint, Radius, DetectionType);
 
-        RaycastHit m_Hit;
-        CastPoint.y += 20;
-
-        if (Physics.BoxCast(CastPoint, new Vector3(.5f, .5f, .5f), Vector3.down, out m_Hit, transform.rotation, 21, DetectionType))
-        { DetectedInTheWay = m_Hit.collider; return false; }
-        else { return true; }
+        if (hitColliders.Length > 0)
+        { DetectedInTheWay = hitColliders[0]; return false; }
+        else
+        { return true; }
     }
 
 
@@ -170,18 +208,17 @@ public class DG_ObjectPlacement : MonoBehaviour {
 
 
 
-    public void SendOutSurrogateSearch(GameObject Spawn)
+    public void SendOutSurrogateSearch(NetworkObject Spawn)
     {
-        if (!AreaIsClear(SoilReplaceDetection, Spawn.transform.position))
+        if (!AreaIsClear(SoilReplaceDetection, Spawn.transform.position, .45f))
         {
             DG_ContextObject CO = DetectedInTheWay.GetComponent<DG_ContextObject>();
             NetworkObject NO = QuickFind.NetworkObjectManager.ScanUpTree(CO.transform);
-            NetworkObject NO2 = QuickFind.NetworkObjectManager.ScanUpTree(Spawn.transform);
 
             int[] OutData = new int[3];
             OutData[0] = NO.transform.parent.GetComponent<NetworkScene>().SceneID;
             OutData[1] = NO.NetworkObjectID;
-            OutData[2] = NO2.NetworkObjectID;
+            OutData[2] = Spawn.NetworkObjectID;
             QuickFind.NetworkSync.SetTilledSurrogate(OutData);
         }
         else

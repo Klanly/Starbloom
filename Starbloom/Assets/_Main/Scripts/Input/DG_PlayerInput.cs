@@ -14,7 +14,8 @@ public class DG_PlayerInput : MonoBehaviour {
     public enum ContextDetection
     {
         InfrontPlayer,
-        MousePosition
+        MousePosition,
+        MiddleScreenPosition
     }
     public enum CurrentInputState
     {
@@ -37,7 +38,9 @@ public class DG_PlayerInput : MonoBehaviour {
 
         [HideInInspector] public DG_CharacterLink CharLink;
         [HideInInspector] public InputStateModes InputState = InputStateModes.Normal;
-        [Header("Context Detection")] public ContextDetection Context;
+        [Header("Context Detection")]
+        public ContextDetection Context;
+        public ContextDetection Targeting;
 
 
         [HideInInspector] public bool NoActionThisFrame; //Added to Enable Double clicking with Unity's built in button system.

@@ -246,14 +246,10 @@ public class DG_NetworkSync : Photon.MonoBehaviour
 
 
     public void TriggerAnimationSubState(int[] OutgoingData)
-    {
-        PV.RPC("ReceiveAnimationSubState", PhotonTargets.Others, OutgoingData);
-    }
+    {PV.RPC("ReceiveAnimationSubState", PhotonTargets.Others, OutgoingData);}
     [PunRPC]
     void ReceiveAnimationSubState(int[] InData)
-    {
-        GetCharacterLinkByUserID(InData[0]).MoveSync.AnimSync.ReceiveNetAnimation(InData);
-    }
+    {GetCharacterLinkByUserID(InData[0]).MoveSync.AnimSync.ReceiveNetAnimation(InData);}
 
 
     #endregion

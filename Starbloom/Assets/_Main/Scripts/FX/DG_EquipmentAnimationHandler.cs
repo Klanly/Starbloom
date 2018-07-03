@@ -16,17 +16,18 @@ public class DG_EquipmentAnimationHandler : MonoBehaviour {
         Idle,
         ReSheath
     }
-    public class ActiveEquipmentAnimation
+    public class ActiveAnimation
     {
         public int UserID;
-        public int ClothingID;
+        public int AnimationID;
 
         public DG_AnimationSync AnimationSyncRef;
         public AnimationStates CurrentAnimationState;
         public AnimationType Type;
 
+        //Tool Activate/Deactivate Animation Data
         public GameObject GameObjectLink;
-        public DG_ClothingObject.CharacterOffsetPoints OffsetReference;
+        public Vector3 OriginalScale;
         public bool ActiveTrackingTime;
         public float TransitionTime;
         public float Timer;
@@ -43,7 +44,7 @@ public class DG_EquipmentAnimationHandler : MonoBehaviour {
 
 
 
-    List<ActiveEquipmentAnimation> ActiveAnimations;
+    List<ActiveAnimation> ActiveAnimations;
 
 
 
@@ -52,14 +53,14 @@ public class DG_EquipmentAnimationHandler : MonoBehaviour {
     private void Awake()
     {
         QuickFind.EquipmentFXManager = this;
-        ActiveAnimations = new List<ActiveEquipmentAnimation>();
+        ActiveAnimations = new List<ActiveAnimation>();
     }
 
     private void Update()
     {
         for (int i = 0; i < ActiveAnimations.Count; i++)
         {
-            ActiveEquipmentAnimation AEA = ActiveAnimations[i];
+            ActiveAnimation AEA = ActiveAnimations[i];
             if (AEA.ActiveTrackingTime)
             {
                 switch (AEA.CurrentAnimationState)
@@ -70,7 +71,7 @@ public class DG_EquipmentAnimationHandler : MonoBehaviour {
             }
         }
     }
-    void HandleSheathAnimation(ActiveEquipmentAnimation AEA, bool isUnsheath)
+    void HandleSheathAnimation(ActiveAnimation AEA, bool isUnsheath)
     {
         float NewTime = AEA.Timer - Time.deltaTime;
         if (NewTime < 0)
@@ -83,7 +84,8 @@ public class DG_EquipmentAnimationHandler : MonoBehaviour {
                     case AnimationType.OnOff: AEA.GameObjectLink.SetActive(false); break;
                     case AnimationType.ScaleUpDown: AEA.GameObjectLink.SetActive(false); break;
                 }
-                AEA.AnimationSyncRef.SetAnimationState(false);
+                AEA.AnimationSyncRef.SetMovementControlState(false);
+                AEA.AnimationSyncRef.SetAllowWeaponSwitching(false);
                 ActiveAnimations.Remove(AEA);             
             }
             else
@@ -92,7 +94,7 @@ public class DG_EquipmentAnimationHandler : MonoBehaviour {
                 switch (AEA.Type)
                 {
                     case AnimationType.OnOff: break;
-                    case AnimationType.ScaleUpDown: AEA.GameObjectLink.transform.localScale = AEA.OffsetReference.OffsetData.Scale; break;
+                    case AnimationType.ScaleUpDown: AEA.GameObjectLink.transform.localScale = AEA.OriginalScale; break;
                 }
             }
         }
@@ -113,34 +115,33 @@ public class DG_EquipmentAnimationHandler : MonoBehaviour {
 
 
     //Setup
-    public void SetEquipmentAnimationTracker(int UserID, int ClothingDatabaseID, DG_AnimationSync AnimationSync)
+    public void SetEquipmentAnimationTracker(int UserID, int AnimationID, DG_AnimationSync AnimationSync)
     {
-        DG_ClothingObject CO = QuickFind.ClothingDatabase.GetItemFromID(ClothingDatabaseID);
-        DG_ClothingObject.ClothingAnimationNumbers CAN = CO.AnimationNumbers[0];
-        ActiveEquipmentAnimation AEA = GetAnimationTracker(ClothingDatabaseID, UserID, AnimationSync);
+        DG_AnimationObject AO = QuickFind.AnimationDatabase.GetItemFromID(AnimationID);
+        ActiveAnimation AEA = GetAnimationTracker(AnimationID, UserID, AnimationSync);
 
         AEA.AnimationSyncRef = AnimationSync;
         AEA.CurrentAnimationState = AnimationStates.PreUnSheath;
-        AEA.Type = CAN.AnimationTransition.Type;
+        AEA.Type = AO.SheathUnSheathTransition.Type;
         AEA.ActiveTrackingTime = false;
-        AEA.TransitionTime = CAN.AnimationTransition.TransitionTime;
+        AEA.TransitionTime = AO.SheathUnSheathTransition.TransitionTime;
         AEA.Timer = AEA.TransitionTime;
 
         DG_CharacterLink CL = QuickFind.NetworkSync.GetCharacterLinkByUserID(UserID);
         DG_ClothingHairManager.AttachedClothing AC = QuickFind.ClothingHairManager.GetAttachedClothingReference(CL, DG_ClothingHairManager.ClothHairType.RightHand);
-        AEA.OffsetReference = CO.GetCharOffsetRefByGender(CL.Gender);
+        AEA.OriginalScale = AC.ClothingRef.GetCharOffsetRefByGender(CL.Gender).OffsetData.Scale;
         AEA.GameObjectLink = AC.ClothingPieces[0];
     }
 
     //Get Animation Tracker
-    ActiveEquipmentAnimation GetAnimationTracker(int ClothingDatabaseID, int UserID, DG_AnimationSync AnimationSync)
+    ActiveAnimation GetAnimationTracker(int AnimationID, int UserID, DG_AnimationSync AnimationSync)
     {
-        ActiveEquipmentAnimation Return = null;
+        ActiveAnimation Return = null;
 
         //Clear Old
         for (int i = 0; i < ActiveAnimations.Count; i++)
         {
-            ActiveEquipmentAnimation AEA = ActiveAnimations[i];
+            ActiveAnimation AEA = ActiveAnimations[i];
             if (AEA.AnimationSyncRef == AnimationSync)
             {
                 ActiveAnimations.Remove(AEA);
@@ -151,8 +152,8 @@ public class DG_EquipmentAnimationHandler : MonoBehaviour {
         //Create New
         for (int i = 0; i < ActiveAnimations.Count; i++)
         {
-            ActiveEquipmentAnimation AEA = ActiveAnimations[i];
-            if (AEA.ClothingID == ClothingDatabaseID && AEA.UserID == UserID)
+            ActiveAnimation AEA = ActiveAnimations[i];
+            if (AEA.AnimationID == AnimationID && AEA.UserID == UserID)
             {
                 Return = ActiveAnimations[i];
                 break;
@@ -160,9 +161,9 @@ public class DG_EquipmentAnimationHandler : MonoBehaviour {
         }
         if (Return == null)
         {
-            Return = new ActiveEquipmentAnimation();
+            Return = new ActiveAnimation();
             ActiveAnimations.Add(Return);
-            Return.ClothingID = ClothingDatabaseID;
+            Return.AnimationID = AnimationID;
             Return.UserID = UserID;
         }
         return Return;
@@ -174,14 +175,16 @@ public class DG_EquipmentAnimationHandler : MonoBehaviour {
     //Event
     public void AnimationEvent(DG_AnimationSync AnimationSync)
     {
-        ActiveEquipmentAnimation AEA = null;
+        ActiveAnimation AEA = null;
         for (int i = 0; i < ActiveAnimations.Count; i++)
         {
-            ActiveEquipmentAnimation NewAEA;
+            ActiveAnimation NewAEA;
             NewAEA = ActiveAnimations[i];
             if (NewAEA.AnimationSyncRef == AnimationSync) { AEA = NewAEA; break; }
         }
 
+
+        if (AEA == null) return;
 
         AEA.ActiveTrackingTime = true;
 

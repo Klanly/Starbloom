@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
 
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
+
+
 public class SceneIDList : MonoBehaviour {
 
     [System.Serializable]
@@ -19,6 +24,13 @@ public class SceneIDList : MonoBehaviour {
         public bool AppendFarmName;
         [ShowIf("ShowLocalization")]
         public bool AppendPlayerName;
+
+        [Button(ButtonSizes.Small)]
+        public void JumpToScene()
+        {
+            if (!Application.isPlaying) return;
+            QuickFind.SceneTransitionHandler.TriggerSceneChange(SceneName, 0);
+        }
     }
 
 
@@ -95,4 +107,15 @@ public class SceneIDList : MonoBehaviour {
 
         return ReturnString;
     }
+
+
+
+#if UNITY_EDITOR
+    [HideInEditorMode]
+    [Button(ButtonSizes.Medium)]
+    public void JumpToPortalJumpTool()
+    {
+        Selection.activeGameObject = QuickFind.GameSettings.gameObject;
+    }
+#endif
 }

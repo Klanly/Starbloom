@@ -40,10 +40,14 @@ public class DG_HoeHandler : MonoBehaviour {
     {
         if (isUP && SafeToPlace)
         {
+            if (!QuickFind.NetworkSync.CharacterLink.AnimationSync.CharacterIsGrounded()) return;
+
             AwaitingResponse = true;
             StoredPosition = QuickFind.GridDetection.DetectionPoint.position;
             QuickFind.NetworkSync.CharacterLink.FacePlayerAtPosition(StoredPosition);
-            QuickFind.NetworkSync.CharacterLink.AnimationSync.TriggerToolAnimation();
+
+            DG_ClothingObject Cloth = QuickFind.ClothingHairManager.GetAttachedClothingReference(QuickFind.NetworkSync.CharacterLink, DG_ClothingHairManager.ClothHairType.RightHand).ClothingRef;
+            QuickFind.NetworkSync.CharacterLink.AnimationSync.TriggerAnimation(Cloth.AnimationDatabaseNumber);
         }
     }
 

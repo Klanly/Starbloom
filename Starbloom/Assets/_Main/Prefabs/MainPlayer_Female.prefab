@@ -2459,7 +2459,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1192795281421844}
-  m_LocalRotation: {x: 0.0010714902, y: -0.008985441, z: 0.99823004, w: -0.058779497}
+  m_LocalRotation: {x: 0.0010714902, y: -0.008985442, z: 0.99823004, w: -0.058779504}
   m_LocalPosition: {x: 0.0010148579, y: 0.0008594223, z: -0.00007459842}
   m_LocalScale: {x: 1.0000042, y: 0.99999815, z: 1}
   m_Children:
@@ -3037,7 +3037,7 @@ Animator:
   m_GameObject: {fileID: 1119157945092414}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 73a263dc5268f354eaaa43539b60ae52, type: 3}
-  m_Controller: {fileID: 9100000, guid: a5881489e52ea324f837a39b4c5374ff, type: 2}
+  m_Controller: {fileID: 9100000, guid: e2cf68ff4b1ffda45a77f7307dd789b9, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -3156,15 +3156,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Anim: {fileID: 95309106836199802}
   CharacterLink: {fileID: 114119373513364864}
-  AnimationBoolValues:
-  - BoolName: OnGround
-    CurrentState: 0
-  StringValues:
-    BaseState: Grounded
-    RunVelocityName: Forward
-    ActionTriggerBoolName: ActionTrigger
-    ActionState: ActionState
-    SubState: SubState
   MidAnimation: 0
   isPlayer: 0
 --- !u!114 &114823207918985662

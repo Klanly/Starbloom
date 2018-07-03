@@ -4,55 +4,49 @@ using UnityEngine;
 
 public class DG_AnimationSync : MonoBehaviour {
 
-    [System.Serializable]
-    public class AnimationStringValues
+    public enum AnimationResponseType
     {
-        public string BaseState;
-        public string RunVelocityName;
-        public string ActionTriggerBoolName;
-        public string ActionState;
-        public string SubState;
+        ShowTool,
+        DontShowTool
     }
-
 
     public enum AnimationActionStates
     {
         None,
-        Tool2Handed,
-        WateringCan
+        _1_PullToolFromBack,
+        _2_PullFromPouch,
+        _3_Sword,
+        _4_NoTransition
     }
     public enum AnimationSubStates
     {
         None,
-        SideSwing,
-        OverheadSwing,
-        WateringCanPour
-    }
-
-
-
-    [System.Serializable]
-    public class AnimationBool
-    {
-        public string BoolName;
-        [HideInInspector] public bool CurrentState;
+        _1_SideSwing,
+        _2_OverheadSwing,
+        _3_WateringCanPour,
+        _4_SwordSlashA,
+        _5_SwordSlashB,
+        _6_SwordSlashC,
+        _7_BendDownPickup,
+        _8_HarvestTree,
+        _9_SeedPour,
+        _10_GenericItemPlace
     }
 
 
     public Animator Anim;
     public DG_CharacterLink CharacterLink;
-    public AnimationBool[] AnimationBoolValues;
-    public AnimationStringValues StringValues;
 
     //Animation
+    [HideInInspector] public bool DisableWeaponSwitching = false;
     [HideInInspector] public bool MidAnimation = false;
     [HideInInspector] public bool isPlayer;
 
 
     int[] OutData = new int[3];
     float StoredDistance;
-
-
+    bool isWeapon;
+    DG_AnimationObject SavedAO;
 
 
     private void Update()
@@ -65,13 +59,13 @@ public class DG_AnimationSync : MonoBehaviour {
 
             StoredDistance = Distance;
 
-            Anim.SetFloat(StringValues.RunVelocityName, StoredDistance);
+            Anim.SetFloat(QuickFind.AnimationStringValues.RunVelocityName, StoredDistance);
         }
         else
         {
-            for (int i = 0; i < AnimationBoolValues.Length; i++)
+            for (int i = 0; i < QuickFind.AnimationStringValues.AnimationBoolValues.Length; i++)
             {
-                AnimationBool AB = AnimationBoolValues[i];
+                DG_AnimationStringValues.AnimationBool AB = QuickFind.AnimationStringValues.AnimationBoolValues[i];
                 bool AnimatorState = Anim.GetBool(AB.BoolName);
 
                 if (AnimatorState != AB.CurrentState)
@@ -101,35 +95,30 @@ public class DG_AnimationSync : MonoBehaviour {
         bool Value = false;
         if (InData[2] == 1) Value = true;
 
-        Anim.SetBool(AnimationBoolValues[InData[1]].BoolName, Value);
+        Anim.SetBool(QuickFind.AnimationStringValues.AnimationBoolValues[InData[1]].BoolName, Value);
     }
 
 
 
 
 
-
-
-
-
-    public void TriggerToolAnimation()
+    public void TriggerAnimation(int AnimationID)
     {
         if (!CharacterLink.CharController.isActiveAndEnabled) return;
 
-        DG_ClothingObject CO = QuickFind.ClothingHairManager.GetAttachedClothingReference(QuickFind.NetworkSync.CharacterLink, DG_ClothingHairManager.ClothHairType.RightHand).ClothingRef;
-        DG_ClothingObject.ClothingAnimationNumbers CAN = CO.AnimationNumbers[0];
-        int Random = UnityEngine.Random.Range(0, CAN.AnimationSubstateValues.Length);
-        int AnimationSubStateNum = (int)CAN.AnimationSubstateValues[Random];
+        DG_AnimationObject AO = QuickFind.AnimationDatabase.GetItemFromID(AnimationID);
+        int Random = UnityEngine.Random.Range(0, AO.AnimationSubstateValues.Length);
+        int AnimationSubStateNum = (int)AO.AnimationSubstateValues[Random];
 
         int UserID = QuickFind.NetworkSync.UserID;
 
-        PlayAnimation(UserID, AnimationSubStateNum, CO.DatabaseID);
+        PlayAnimation(UserID, AnimationSubStateNum, AnimationID);
 
         if (OutData == null) OutData = new int[3];
 
         OutData[0] = UserID;
         OutData[1] = AnimationSubStateNum;
-        OutData[2] = CO.DatabaseID;
+        OutData[2] = AnimationID;
 
         QuickFind.NetworkSync.TriggerAnimationSubState(OutData);
     }
@@ -141,18 +130,22 @@ public class DG_AnimationSync : MonoBehaviour {
     }
 
 
-    public void PlayAnimation(int UserID, int SubStateID, int ClothingObjectID)
+    public void PlayAnimation(int UserID, int SubStateID, int AnimationID)
     {
-        DG_ClothingObject CO = QuickFind.ClothingDatabase.GetItemFromID(ClothingObjectID);
-        DG_ClothingObject.ClothingAnimationNumbers CAN = CO.AnimationNumbers[0];
+        DG_AnimationObject AO = QuickFind.AnimationDatabase.GetItemFromID(AnimationID);
+        SavedAO = AO;
+        QuickFind.EquipmentFXManager.SetEquipmentAnimationTracker(UserID, AnimationID, this);
 
-        QuickFind.EquipmentFXManager.SetEquipmentAnimationTracker(UserID, ClothingObjectID, this);
+        Anim.SetInteger(QuickFind.AnimationStringValues.ActionState, (int)AO.AnimationActionState);
+        Anim.SetInteger(QuickFind.AnimationStringValues.SubState, SubStateID);
+        Anim.SetBool(QuickFind.AnimationStringValues.ActionTriggerBoolName, true);
 
-        Anim.SetInteger(StringValues.ActionState, (int)CAN.AnimationActionState);
-        Anim.SetInteger(StringValues.SubState, SubStateID);
-        Anim.SetBool(StringValues.ActionTriggerBoolName, true);
+        isWeapon = AO.isWeapon;
+        if (isWeapon) Anim.SetBool(QuickFind.AnimationStringValues.AttackTriggerBoolName, true);
 
-        SetAnimationState(true);
+        SetMovementControlState(true);
+        if(AO.ResponseType == AnimationResponseType.ShowTool)
+            SetAllowWeaponSwitching(true);
     }
 
 
@@ -162,13 +155,19 @@ public class DG_AnimationSync : MonoBehaviour {
 
 
 
-    public void SetAnimationState(bool isTrue)
-    {
-        MidAnimation = isTrue;
 
+
+    public void SetMovementControlState(bool isTrue)
+    {
         if (CharacterLink != QuickFind.NetworkSync.CharacterLink) return;
         CharacterLink.EnablePlayerMovement(!isTrue);
+        MidAnimation = isTrue;
     }
+    public void SetAllowWeaponSwitching(bool isTrue)
+    {
+        DisableWeaponSwitching = isTrue;      
+    }
+
 
 
 
@@ -176,29 +175,80 @@ public class DG_AnimationSync : MonoBehaviour {
 
     ///////////////////////////////////////////////////////////////////////////////////////////
     // EVENTS CALLED FROM MECHANIM
+
+    ///////////
     public void WeaponSwitch()
     {
-        QuickFind.EquipmentFXManager.AnimationEvent(this);
+        if (SavedAO.ResponseType == AnimationResponseType.ShowTool)
+        {
+            QuickFind.EquipmentFXManager.AnimationEvent(this);
+        }
     }
+
+    ///////////
     public void Hit()
     {
-        if (CharacterLink.MoveSync.UserOwner != null) return; 
+        if (CharacterLink.MoveSync.UserOwner != null) return;
 
-        QuickFind.BreakableObjectsHandler.HitAction();
-        QuickFind.HoeHandler.HitAction();
-        QuickFind.WateringCanHandler.HitAction();
+        if (SavedAO.ResponseType == AnimationResponseType.ShowTool)
+        {
+            QuickFind.BreakableObjectsHandler.HitAction();
+            QuickFind.HoeHandler.HitAction();
+            QuickFind.WateringCanHandler.HitAction();
+            QuickFind.CombatHandler.HitAction();
+
+            Anim.SetBool(QuickFind.AnimationStringValues.HoldAttackTriggerName, false);
+        }
+        if (SavedAO.ResponseType == AnimationResponseType.DontShowTool)
+        {
+            QuickFind.InteractHandler.ReturnInteractionHit();
+            QuickFind.ObjectPlacementManager.PlacementHit();
+        }
+
+        SetMovementControlState(false);    
     }
 
+    ///////////
     public void ToolActionComplete()
     {
-        QuickFind.EquipmentFXManager.AnimationEvent(this);
+        if (SavedAO.ResponseType == AnimationResponseType.ShowTool)
+        {
+            QuickFind.EquipmentFXManager.AnimationEvent(this);
+            Anim.SetBool(QuickFind.AnimationStringValues.HoldAttackTriggerName, false);
+        }
     }
 
+    ///////////
     public void ResetTrigger()
     {
-        Anim.SetBool(StringValues.ActionTriggerBoolName, false);
+        Anim.SetBool(QuickFind.AnimationStringValues.ActionTriggerBoolName, false);
+    }
+
+    ///////////
+    public void ResetAttackingTrigger()
+    {
+        Anim.SetBool(QuickFind.AnimationStringValues.AttackTriggerBoolName, false);
+        Anim.SetBool(QuickFind.AnimationStringValues.HoldAttackTriggerName, true);
     }
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //Get Functions
+    public bool CharacterIsGrounded()
+    {
+        return Anim.GetBool(QuickFind.AnimationStringValues.GroundedBool);
+    }
 }

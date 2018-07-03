@@ -13,16 +13,6 @@ public class DG_ClothingObject : MonoBehaviour {
         public Vector9 OffsetData;
     }
 
-    [System.Serializable]
-    public class ClothingAnimationNumbers
-    {
-        public DG_AnimationSync.AnimationActionStates AnimationActionState;
-        public DG_AnimationSync.AnimationSubStates[] AnimationSubstateValues;
-        public DG_EquipmentAnimationHandler.EquipmentAnimationData AnimationTransition;
-    }
-
-
-
     [HideInInspector] public int DatabaseID;
     [HideInInspector] public bool LockItem;
 
@@ -34,7 +24,7 @@ public class DG_ClothingObject : MonoBehaviour {
     public DG_ClothingHairManager.ClothHairType Type;
     public GameObject[] Prefabs;
     public CharacterOffsetPoints[] CharOffsetPoint;
-    public ClothingAnimationNumbers[] AnimationNumbers;
+    public int AnimationDatabaseNumber;
 
 
 

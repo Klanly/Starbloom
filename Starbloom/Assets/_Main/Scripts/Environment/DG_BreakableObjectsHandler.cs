@@ -34,7 +34,8 @@ public class DG_BreakableObjectsHandler : MonoBehaviour {
             AwaitingResponse = true;
 
             QuickFind.NetworkSync.CharacterLink.FacePlayerAtPosition(CO.transform.position);
-            QuickFind.NetworkSync.CharacterLink.AnimationSync.TriggerToolAnimation();
+            DG_ClothingObject Cloth = QuickFind.ClothingHairManager.GetAttachedClothingReference(QuickFind.NetworkSync.CharacterLink, DG_ClothingHairManager.ClothHairType.RightHand).ClothingRef;
+            QuickFind.NetworkSync.CharacterLink.AnimationSync.TriggerAnimation(Cloth.AnimationDatabaseNumber);
         }
         else return;
     }

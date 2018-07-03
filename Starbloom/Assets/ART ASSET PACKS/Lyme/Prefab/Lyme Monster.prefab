@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4948874297551188}
-  m_Layer: 13
+  m_Layer: 24
   m_Name: mon_lyme_Bone03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34,7 +34,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4340600877268254}
-  m_Layer: 13
+  m_Layer: 24
   m_Name: mon_lyme_Bone01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49,7 +49,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4286824997181382}
-  m_Layer: 13
+  m_Layer: 24
   m_Name: mon_lyme_Bone11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -64,7 +64,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4647493586540138}
-  m_Layer: 13
+  m_Layer: 24
   m_Name: mon_lyme_Bone16
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -79,7 +79,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4487805489429346}
-  m_Layer: 13
+  m_Layer: 24
   m_Name: mon_lyme_connectBone01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4733508979249426}
-  m_Layer: 13
+  m_Layer: 24
   m_Name: mon_lyme_Bone05
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -109,7 +109,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4177563008829266}
-  m_Layer: 13
+  m_Layer: 24
   m_Name: mon_lyme_Bone18
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -124,7 +124,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4548864415854456}
-  m_Layer: 13
+  m_Layer: 24
   m_Name: mon_lyme_connectBone06
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -139,7 +139,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4053834763415306}
-  m_Layer: 13
+  m_Layer: 24
   m_Name: mon_lyme_Bone10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -158,7 +158,7 @@ GameObject:
   - component: {fileID: 95692258659065844}
   - component: {fileID: 135019215146999544}
   - component: {fileID: 54499279583923836}
-  m_Layer: 13
+  m_Layer: 24
   m_Name: Lyme Monster
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -173,7 +173,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4012487317543680}
-  m_Layer: 13
+  m_Layer: 24
   m_Name: World_Center_Mon_Lyme
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -188,7 +188,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4429227266067684}
-  m_Layer: 13
+  m_Layer: 24
   m_Name: mon_lyme_Bone14
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -203,7 +203,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4083759542999924}
-  m_Layer: 13
+  m_Layer: 24
   m_Name: mon_lyme_connectBone03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -219,7 +219,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4839632606295878}
   - component: {fileID: 137599069049916472}
-  m_Layer: 13
+  m_Layer: 24
   m_Name: Monster_Lyme
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -234,7 +234,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4288448839362568}
-  m_Layer: 13
+  m_Layer: 24
   m_Name: mon_lyme_Bone06
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -249,7 +249,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4662929534895480}
-  m_Layer: 13
+  m_Layer: 24
   m_Name: mon_lyme_Bone08
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -264,7 +264,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4990083197045106}
-  m_Layer: 13
+  m_Layer: 24
   m_Name: mon_lyme_Bone02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -279,7 +279,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4758792545945586}
-  m_Layer: 13
+  m_Layer: 24
   m_Name: mon_lyme_Bone12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -294,7 +294,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4833165083011832}
-  m_Layer: 13
+  m_Layer: 24
   m_Name: mon_lyme_Bone19
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -309,7 +309,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4189612724263400}
-  m_Layer: 13
+  m_Layer: 24
   m_Name: mon_lyme_connectBone04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -324,7 +324,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4282831674437752}
-  m_Layer: 13
+  m_Layer: 24
   m_Name: mon_lyme_Bone04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -339,7 +339,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4080051348466346}
-  m_Layer: 13
+  m_Layer: 24
   m_Name: mon_lyme_Bone15
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -354,7 +354,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4521905046568534}
-  m_Layer: 13
+  m_Layer: 24
   m_Name: mon_lyme_Bone07
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -369,7 +369,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4051199854699072}
-  m_Layer: 13
+  m_Layer: 24
   m_Name: mon_lyme_Bone17
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -384,7 +384,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4116275761966774}
-  m_Layer: 13
+  m_Layer: 24
   m_Name: mon_lyme_Bone13
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -399,7 +399,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4820322009745314}
-  m_Layer: 13
+  m_Layer: 24
   m_Name: mon_lyme_connectBone02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -414,7 +414,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4168579383661140}
-  m_Layer: 13
+  m_Layer: 24
   m_Name: mon_lyme_Bone09
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -429,7 +429,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4575214847296832}
-  m_Layer: 13
+  m_Layer: 24
   m_Name: mon_lyme_connectBone05
   m_TagString: Untagged
   m_Icon: {fileID: 0}

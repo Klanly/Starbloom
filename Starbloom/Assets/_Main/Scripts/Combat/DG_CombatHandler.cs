@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class DG_CombatHandler : MonoBehaviour {
 
+
+    public enum EquipmentSetups
+    {
+        SingleSword
+    }
+
+
     public enum DamageTypes
     {
         Slashing
@@ -13,6 +20,12 @@ public class DG_CombatHandler : MonoBehaviour {
     [HideInInspector] public DG_PlayerCharacters.RucksackSlot RucksackSlotOpen;
     [HideInInspector] public DG_ItemObject ItemDatabaseReference;
     [HideInInspector] public int ActiveSlot;
+    [HideInInspector] public bool WeaponActive;
+    EquipmentSetups ActiveEquipmentSetup;
+    bool AwaitingResponse;
+    
+
+
 
 
 
@@ -20,6 +33,64 @@ public class DG_CombatHandler : MonoBehaviour {
     {
         QuickFind.CombatHandler = this;
     }
+
+
+
+
+
+    public void InputDetected(bool isUP)
+    {
+        if (isUP)
+        {
+            AwaitingResponse = true;
+
+            DG_CharacterDashController.DashTypes DashType = DG_CharacterDashController.DashTypes.SimpleDash;  //Make this procedural based on weapon.
+            QuickFind.CombatHandler.TriggerMeleeDash(DashType);
+
+            DG_ClothingObject Cloth = QuickFind.ClothingHairManager.GetAttachedClothingReference(QuickFind.NetworkSync.CharacterLink, DG_ClothingHairManager.ClothHairType.RightHand).ClothingRef;
+            QuickFind.NetworkSync.CharacterLink.AnimationSync.TriggerAnimation(Cloth.AnimationDatabaseNumber);
+        }
+    }
+    public void HitAction()
+    {
+        if (!AwaitingResponse) return;
+        AwaitingResponse = false;
+
+        QuickFind.NetworkSync.CharacterLink.CenterCharacterX();
+
+        if (QuickFind.TargetingController.PlayerTarget != null)
+            MeleeHitTrigger(QuickFind.TargetingController.PlayerTarget.GetComponent<DG_ContextObject>());
+    }
+
+
+
+    public void SetupForHitting(DG_PlayerCharacters.RucksackSlot Rucksack = null, DG_ItemObject Item = null, int slot = 0)
+    {
+        QuickFind.CombatHandler.RucksackSlotOpen = Rucksack;
+        QuickFind.CombatHandler.ItemDatabaseReference = Item;
+        QuickFind.CombatHandler.ActiveSlot = slot;
+
+        ActiveEquipmentSetup = EquipmentSetups.SingleSword;
+        WeaponActive = true;
+    }
+
+    public void CancelHittingMode()
+    {
+        WeaponActive = false;
+    }
+
+
+
+
+
+
+
+    public void TriggerMeleeDash(DG_CharacterDashController.DashTypes DashType)
+    {
+        if (QuickFind.TargetingController.PlayerTarget != null) QuickFind.PlayerTrans.LookAt(QuickFind.TargetingController.PlayerTarget);
+        QuickFind.CharacterDashController.DashAction(QuickFind.PlayerTrans, DashType, (QuickFind.TargetingController.PlayerTarget != null), QuickFind.TargetingController.PlayerTarget);
+    }
+
 
 
 
