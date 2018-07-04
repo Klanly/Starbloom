@@ -11,19 +11,23 @@ public class DG_DebugSettings : MonoBehaviour {
 
     [Header("Network")]
     public bool PlayOnline = true;
-    public bool BypassMainMenu = false;
-    
-    [Header("Debug Tools")]
+    [Header("Build Convenience")]
     public bool DisableAudio = false;
+    [Header("Debug Tools")]
+    public bool BypassMainMenu = false;
     public bool EnableDebugKeycodes = false;
-    public bool ShowGrowthDebug = false;
     public bool DisableAllPoolSpawningAtStart;
-    public bool ForceGender;
-    public DG_PlayerCharacters.GenderValue ForcedGender;
-    public bool ShowToolOnEquip;
+    [Header("Character")]
+    public DG_PlayerCharacters.GenderValue GeneratedGender;
+    public bool DontHideGear;
+    [Header("Time Saving")]
+    public bool DisableAnimations;
+    public bool AllowActionsOnHold;
+    public bool AllowUIOnHold;
+    public bool ForceInstantFade;
 
 
-    [HideInInspector] public GameObject LastSelected;
+
 
 
 
@@ -40,24 +44,15 @@ public class DG_DebugSettings : MonoBehaviour {
 
     private void Update()
     {
-        if (!EnableDebugKeycodes)
-            return;
+        if (!EnableDebugKeycodes) return;
 
-
-        if (Input.GetKey(KeyCode.Keypad0)) ShowDebugGameObject(true);
-        if (Input.GetKey(KeyCode.Keypad1)) ShowDebugGameObject(false);
+        if (Input.GetKey(KeyCode.Keypad0)) ShowDebugGameObject();
     }
 
-    void ShowDebugGameObject(bool ToDebug)
+    void ShowDebugGameObject()
     {
 #if UNITY_EDITOR
-        if (ToDebug)
-        {
-            LastSelected = Selection.activeGameObject;
-            Selection.activeGameObject = this.gameObject;
-        }
-        else
-            Selection.activeGameObject = LastSelected;
+        Selection.activeGameObject = this.gameObject;
 #endif
     }
 }

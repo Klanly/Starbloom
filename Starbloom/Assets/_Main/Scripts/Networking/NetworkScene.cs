@@ -14,6 +14,7 @@ public class NetworkScene : MonoBehaviour {
 
 
     public int SceneID;
+    public int SceneOwnerID;
     [HideInInspector]
     public List<NetworkObject> TempNetworkObjectList;
     [HideInInspector]
@@ -120,6 +121,27 @@ public class NetworkScene : MonoBehaviour {
         }
         return null;
     }
+
+
+
+
+
+
+
+
+    //Scene Ownership
+
+    public void UserEnteredScene(int InData)
+    {
+        if (SceneOwnerID == 0) SceneOwnerID = InData;
+    }
+    public void UserLeftScene()
+    {
+        SceneOwnerID = 0;
+        if (QuickFind.NetworkSync.CurrentScene == SceneID) QuickFind.NetworkSync.SetSelfInScene(SceneID);
+    }
+
+
 
 
 

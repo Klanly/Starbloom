@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 63c6570257cd26a47985b7372fb17f12
+labels:
+- Character
+- Navigation
+- Node
+- NodeAI
+- Pathfinding
+timeCreated: 1507231494
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

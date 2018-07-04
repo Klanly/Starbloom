@@ -41,7 +41,10 @@ public class DG_PickAxeHandler : MonoBehaviour {
 
     public void InputDetected(bool isUP)
     {
-        if (isUP && SafeToPlace)
+        bool AllowAction = false;
+        if (isUP || QuickFind.GameSettings.AllowActionsOnHold) AllowAction = true;
+
+        if (AllowAction && SafeToPlace)
         {
             if (!QuickFind.NetworkSync.CharacterLink.AnimationSync.CharacterIsGrounded()) return;
 

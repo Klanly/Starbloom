@@ -102,7 +102,10 @@ public class DG_NetworkSync : Photon.MonoBehaviour
     public DG_CharacterLink GetCharacterLinkByUserID(int ID)
     {
         Users U = GetUserByID(ID);
-        return U.CharacterLink;
+        if (U != null)
+            return U.CharacterLink;
+        else
+            return null;
     }
 
     #endregion
@@ -186,17 +189,23 @@ public class DG_NetworkSync : Photon.MonoBehaviour
 
     public void SetSelfInScene(int NewScene)
     {
+        int SceneLeaving = QuickFind.NetworkSync.CurrentScene;
         QuickFind.NetworkSync.CurrentScene = NewScene;
         CurrentScene = NewScene;
-        int[] IntGroup = new int[2];
+        int[] IntGroup = new int[3];
         IntGroup[0] = UserID;
         IntGroup[1] = NewScene;
+        IntGroup[2] = SceneLeaving;
         PV.RPC("SendUserInScene", PhotonTargets.All, IntGroup);
     }
     [PunRPC] void SendUserInScene(int[] IntGroup)
     {
-        Users U = GetUserByID(IntGroup[0]);
+        int ID = IntGroup[0];
+        Users U = GetUserByID(ID);
         U.SceneID = IntGroup[1];
+        int SceneLeaving = IntGroup[2];
+        if (SceneLeaving != -1) QuickFind.NetworkObjectManager.GetSceneByID(SceneLeaving).UserLeftScene();
+        QuickFind.NetworkObjectManager.GetSceneByID(U.SceneID).UserEnteredScene(ID);
     }
 
 
@@ -219,7 +228,8 @@ public class DG_NetworkSync : Photon.MonoBehaviour
     [PunRPC]
     void ReceivePlayerMovement(int[] InData)
     {
-        GetCharacterLinkByUserID(InData[0]).MoveSync.UpdatePlayerPos(InData);
+        DG_CharacterLink CL = GetCharacterLinkByUserID(InData[0]);
+        if(CL != null) CL.MoveSync.UpdatePlayerPos(InData);
     }
 
     public void UpdatePlayerAnimationState(int[] OutgoingData)
@@ -574,6 +584,17 @@ public class DG_NetworkSync : Photon.MonoBehaviour
     [PunRPC]
     void ReceiveEnemyHit(int[] Data)
     { QuickFind.CombatHandler.ReceiveHitData(Data); }
+
+    public void SendAILocationSync(int[] OutData)
+    { PV.RPC("ReceiveAILocationSync", PhotonTargets.Others, OutData); }
+    [PunRPC]
+    void ReceiveAILocationSync(int[] Data)
+    {
+        NetworkObject NO = QuickFind.NetworkObjectManager.GetItemByID(Data[0], Data[1]);
+        NO.transform.GetChild(0).GetComponent<DG_AIMovementSync>().UpdatePlayerPos(Data);
+    }
+
+
     #endregion
 
 

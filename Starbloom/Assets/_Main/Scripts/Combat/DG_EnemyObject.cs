@@ -30,4 +30,7 @@ public class DG_EnemyObject : MonoBehaviour {
     [Header("Resistance")]
     [InfoBox("Resistances are percentage 0 - 100.  100 will be full resistant, Beyond 100 Will Heal the Enemy, Below 0 will Amplified Damage.")]
     public EnemyResistances[] Resistances;
+
+
+    [Button(ButtonSizes.Small)] public void SetNameToPrefab() { Name = PrefabRef.name; }
 }

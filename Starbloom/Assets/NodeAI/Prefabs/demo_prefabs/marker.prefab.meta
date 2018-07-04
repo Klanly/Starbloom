@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 3c56dcfe969a38c43b58d15edb7b4672
+labels:
+- Node
+- NodeAI
+- path
+- waypoint
+- navigation
+- pathfinding
+- procedural
+- dynamic
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -33,7 +33,9 @@ public class DG_ItemObject : MonoBehaviour
 
     public bool DatabaseUsesNameInsteadOfPrefab;
     public string Name;
+#if UNITY_EDITOR
     public NameChange ChangeName;
+#endif
 
 
     public int MaxStackSize;
@@ -315,6 +317,8 @@ public class DG_ItemObject : MonoBehaviour
 
 
 
+
+#if UNITY_EDITOR
     [System.Serializable]
     public class NameChange
     {
@@ -323,11 +327,11 @@ public class DG_ItemObject : MonoBehaviour
         {
 
             DG_ItemObject IO = null;
-#if UNITY_EDITOR
             IO = Selection.activeGameObject.GetComponent<DG_ItemObject>();
-            #endif
+            if (QuickFindInEditor.GetEditorUserSettings().CurrentLanguage != 0) { Debug.Log("Language Not set to English."); return; }
+
             if (Application.isPlaying) return;
-            if (QuickFindInEditor.GetEditorUserSettings().CurrentLanguage != 0) { Debug.Log("Language Not set to English."); return; } 
+            
 
             string NewName = string.Empty;
             NewName += QuickFindInEditor.GetEditorWordDatabase().GetWordFromID(IO.ToolTipType.MainLocalizationID);
@@ -337,4 +341,7 @@ public class DG_ItemObject : MonoBehaviour
             IO.Name = NewName;
         }
     }
+#endif
+
+
 }

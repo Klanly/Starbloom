@@ -14,6 +14,9 @@ public class SceneIDList : MonoBehaviour {
     public class SceneIdentity
     {
         public string SceneName;
+        public NetworkScene SceneLink;
+
+
 
         public bool ShowLocalization;
 
@@ -26,7 +29,7 @@ public class SceneIDList : MonoBehaviour {
         public bool AppendPlayerName;
 
         [Button(ButtonSizes.Small)]
-        public void JumpToScene()
+        public void JumpToScene_InGame()
         {
             if (!Application.isPlaying) return;
             QuickFind.SceneTransitionHandler.TriggerSceneChange(SceneName, 0);
@@ -34,7 +37,7 @@ public class SceneIDList : MonoBehaviour {
     }
 
 
-    [ListDrawerSettings(ShowIndexLabels = true)]
+    [ListDrawerSettings(ShowIndexLabels = true, NumberOfItemsPerPage = 4)]
     public List<SceneIdentity> Scenes;
 
 
@@ -107,6 +110,20 @@ public class SceneIDList : MonoBehaviour {
 
         return ReturnString;
     }
+
+
+    public NetworkScene GetSceneByID(int index)
+    {
+        for (int i = 0; i < Scenes.Count; i++)
+        {
+            SceneIdentity SI = Scenes[i];
+            NetworkScene NS = SI.SceneLink;
+            if (NS.SceneID == index)
+                return NS;
+        }
+        return null;
+    }
+
 
 
 

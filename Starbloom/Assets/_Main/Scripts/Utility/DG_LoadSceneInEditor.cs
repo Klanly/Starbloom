@@ -24,14 +24,13 @@ public class DG_LoadSceneInEditor : MonoBehaviour
     public class SceneLink
     {
         [Header("-----------------------------------------------")]
-        public bool DebugDoNotLoad = false;
+        public bool NoEditorEditLoad = false;
+        public bool NoEditorPlayLoad = false;
+        public bool NoBuildLoad = false;
         public string SceneName;
         [Multiline(5)]
         public string EditorSceneFolderPath;
     }
-
-    public bool LoadAdditiveSceneInEditor = false;
-    public bool LoadAdditiveSceneOnPlay = false;
 
     [ListDrawerSettings(ShowIndexLabels = true, ListElementLabelName = "SceneName")]
     public SceneLink[] AdditiveSceneLinks;
@@ -49,15 +48,16 @@ public class DG_LoadSceneInEditor : MonoBehaviour
         //Editor
 
 #if UNITY_EDITOR
-        if (!Application.isPlaying && LoadAdditiveSceneInEditor)
+        if (!Application.isPlaying)
         {
             scenecount = EditorSceneManager.sceneCount;
             loadScene = true;
             for (int ind = 0; ind < AdditiveSceneLinks.Length; ind++)
             {
                 SceneLink AdditiveScene = AdditiveSceneLinks[ind];
-                if (AdditiveScene.DebugDoNotLoad)
-                    continue;
+
+                if (AdditiveScene.NoEditorEditLoad) continue;
+
                 for (int i = 0; i < scenecount; i++)
                 {
                     Scene SC = EditorSceneManager.GetSceneAt(i);
@@ -76,15 +76,22 @@ public class DG_LoadSceneInEditor : MonoBehaviour
 
         //Build
 
-        if (Application.isPlaying && LoadAdditiveSceneOnPlay)
+        if (Application.isPlaying)
         {
             scenecount = SceneManager.sceneCount;
             loadScene = true;
             for (int ind = 0; ind < AdditiveSceneLinks.Length; ind++)
             {
                 SceneLink AdditiveScene = AdditiveSceneLinks[ind];
-                if (AdditiveScene.DebugDoNotLoad)
-                    continue;
+
+                bool IsEditor = false;
+
+#if UNITY_EDITOR
+                if (AdditiveScene.NoEditorPlayLoad && Application.isEditor) { IsEditor = true; continue; }
+#endif
+
+                if(!IsEditor && AdditiveScene.NoBuildLoad) continue;
+
                 for (int i = 0; i < scenecount; i++)
                 {
                     Scene SC = SceneManager.GetSceneAt(i);
@@ -98,17 +105,5 @@ public class DG_LoadSceneInEditor : MonoBehaviour
                     SceneManager.LoadScene(AdditiveScene.SceneName, LoadSceneMode.Additive);
             }
         }
-    }
-
-
-
-
-    [ButtonGroup]
-    public void LoadInEditor()
-    {
-        bool LE = LoadAdditiveSceneInEditor;
-        LoadAdditiveSceneInEditor = true;
-        Start();
-        LoadAdditiveSceneInEditor = LE;
     }
 }

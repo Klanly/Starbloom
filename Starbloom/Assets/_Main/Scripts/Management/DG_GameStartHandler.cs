@@ -55,7 +55,7 @@ public class DG_GameStartHandler : MonoBehaviour {
         if (CharacterGender == -1)
         {
             Debug.Log("No Gender was selected, assigning new.");
-            if(QuickFind.GameSettings.ForceGender) CharacterGender = (int)QuickFind.GameSettings.ForcedGender;
+            if(QuickFind.GameSettings.GeneratedGender != DG_PlayerCharacters.GenderValue.Both) CharacterGender = (int)QuickFind.GameSettings.GeneratedGender;
             else CharacterGender = Random.Range(0, 2);
         }
         AwaitingResponse = true;
@@ -111,6 +111,8 @@ public class DG_GameStartHandler : MonoBehaviour {
         QuickFind.GUI_MainOverview.SetGuiDayValue(QuickFind.Farm.Month, QuickFind.Farm.Day);
 
         QuickFind.CharacterManager.GameStartSpawnClothing();
+
+        QuickFind.PathfindingGeneration.GenerateNavMesh();
 
         QuickFind.FadeScreen.FadeIn(DG_GUI_FadeScreen.FadeInSpeeds.NormalFade);
     }

@@ -40,7 +40,10 @@ public class DG_CombatHandler : MonoBehaviour {
 
     public void InputDetected(bool isUP)
     {
-        if (isUP)
+        bool AllowAction = false;
+        if (isUP || QuickFind.GameSettings.AllowActionsOnHold) AllowAction = true;
+
+        if (AllowAction)
         {
             AwaitingResponse = true;
 

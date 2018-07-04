@@ -195,6 +195,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SaveFileName: Debug
+  PrintDebug: 0
 --- !u!4 &155133447
 Transform:
   m_ObjectHideFlags: 0
@@ -259,8 +260,9 @@ GameObject:
   m_Component:
   - component: {fileID: 438454042}
   - component: {fileID: 438454041}
+  - component: {fileID: 438454043}
   m_Layer: 0
-  m_Name: Network
+  m_Name: Network Master
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -297,6 +299,28 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &438454043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 438454040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04612c3676e1cf248b9549df2ad9bace, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SyncRates:
+  - Type: 0
+    SendRate: 0.1
+    SlerpMoveRate: 0.18
+    SlerpTurnRate: 0.3
+    MaxDistance: 5
+  - Type: 1
+    SendRate: 0.1
+    SlerpMoveRate: 0.18
+    SlerpTurnRate: 0.3
+    MaxDistance: 5
 --- !u!1 &487331646
 GameObject:
   m_ObjectHideFlags: 0
@@ -338,6 +362,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SceneID: 3
+  SceneOwnerID: 0
   TempNetworkObjectList: []
   NetworkObjectList: []
   JunkObject: {fileID: 0}
@@ -381,6 +406,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Scene: {fileID: 0}
   NetworkObjectID: 0
   PositionX: -444
   PositionY: 216
@@ -439,6 +465,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Scene: {fileID: 0}
   NetworkObjectID: 0
   PositionX: -269
   PositionY: 225
@@ -497,6 +524,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Scene: {fileID: 0}
   NetworkObjectID: 0
   PositionX: 300
   PositionY: 226
@@ -569,45 +597,45 @@ MonoBehaviour:
     NormalValue: 0
     HighValue: 0
     MaximumValue: 0
-  - ContainedItem: 0
+  - ContainedItem: 7
     CurrentStackActive: 0
-    LowValue: 0
+    LowValue: 500
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 35
+    CurrentStackActive: 0
+    LowValue: 500
+    NormalValue: 0
+    HighValue: 0
+    MaximumValue: 0
+  - ContainedItem: 37
+    CurrentStackActive: 0
+    LowValue: 200
     NormalValue: 0
     HighValue: 0
     MaximumValue: 0
   - ContainedItem: 0
     CurrentStackActive: 0
-    LowValue: 0
+    LowValue: 1
     NormalValue: 0
     HighValue: 0
     MaximumValue: 0
-  - ContainedItem: 0
+  - ContainedItem: 1
     CurrentStackActive: 0
-    LowValue: 0
+    LowValue: 1
     NormalValue: 0
     HighValue: 0
     MaximumValue: 0
-  - ContainedItem: 0
+  - ContainedItem: 2
     CurrentStackActive: 0
-    LowValue: 0
+    LowValue: 1
     NormalValue: 0
     HighValue: 0
     MaximumValue: 0
-  - ContainedItem: 0
+  - ContainedItem: 18
     CurrentStackActive: 0
-    LowValue: 0
-    NormalValue: 0
-    HighValue: 0
-    MaximumValue: 0
-  - ContainedItem: 0
-    CurrentStackActive: 0
-    LowValue: 0
-    NormalValue: 0
-    HighValue: 0
-    MaximumValue: 0
-  - ContainedItem: 0
-    CurrentStackActive: 0
-    LowValue: 0
+    LowValue: 1
     NormalValue: 0
     HighValue: 0
     MaximumValue: 0
@@ -782,6 +810,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SceneID: 1
+  SceneOwnerID: 0
   TempNetworkObjectList: []
   NetworkObjectList: []
   JunkObject: {fileID: 0}
@@ -816,6 +845,7 @@ Transform:
   - {fileID: 736236433}
   - {fileID: 1921503014}
   - {fileID: 1515060413}
+  - {fileID: 1146434327}
   m_Father: {fileID: 1904530056}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -831,6 +861,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SceneID: 2
+  SceneOwnerID: 0
   TempNetworkObjectList: []
   NetworkObjectList: []
   JunkObject: {fileID: 0}
@@ -874,6 +905,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Scene: {fileID: 0}
   NetworkObjectID: 0
   PositionX: -4200
   PositionY: 165
@@ -966,25 +998,25 @@ MonoBehaviour:
     MaximumValue: 0
   - ContainedItem: 0
     CurrentStackActive: 0
-    LowValue: 0
+    LowValue: 1
     NormalValue: 0
     HighValue: 0
     MaximumValue: 0
-  - ContainedItem: 0
+  - ContainedItem: 1
     CurrentStackActive: 0
-    LowValue: 0
+    LowValue: 1
     NormalValue: 0
     HighValue: 0
     MaximumValue: 0
-  - ContainedItem: 0
+  - ContainedItem: 2
     CurrentStackActive: 0
-    LowValue: 0
+    LowValue: 1
     NormalValue: 0
     HighValue: 0
     MaximumValue: 0
-  - ContainedItem: 0
+  - ContainedItem: 18
     CurrentStackActive: 0
-    LowValue: 0
+    LowValue: 1
     NormalValue: 0
     HighValue: 0
     MaximumValue: 0
@@ -1118,7 +1150,7 @@ GameObject:
   - component: {fileID: 1118935757}
   - component: {fileID: 1118935758}
   m_Layer: 0
-  m_Name: Farm
+  m_Name: Farm Data
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1130,7 +1162,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1118935756}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1172,39 +1204,39 @@ MonoBehaviour:
       EquippedClothing: 
       RuckSackUnlockedSize: 12
       RucksackSlots:
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 1
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 1
-        CurrentStackActive: 0
-        LowValue: 1
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 2
-        CurrentStackActive: 0
-        LowValue: 1
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 18
-        CurrentStackActive: 0
-        LowValue: 1
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
       - ContainedItem: 38
         CurrentStackActive: 0
         LowValue: 1
         NormalValue: 0
         HighValue: 0
         MaximumValue: 0
-      - ContainedItem: 4
+      - ContainedItem: 0
         CurrentStackActive: 0
-        LowValue: 50
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
         NormalValue: 0
         HighValue: 0
         MaximumValue: 0
@@ -2097,6 +2129,65 @@ MonoBehaviour:
     TodayWeather: 0
     TomorrowWeather: 0
     TwoDayAwayWeather: 0
+--- !u!1 &1146434326
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1146434327}
+  - component: {fileID: 1146434328}
+  m_Layer: 0
+  m_Name: Testing AI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1146434327
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1146434326}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -3, y: 2.1699998, z: -8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 967766994}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1146434328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1146434326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Scene: {fileID: 0}
+  NetworkObjectID: 0
+  PositionX: -300
+  PositionY: 216
+  PositionZ: -800
+  YFacing: 0
+  ObjectType: 1
+  ItemRefID: 2
+  HasHealth: 1
+  HealthValue: 10
+  ItemQualityLevel: 0
+  isWaterable: 0
+  SurrogateObjectIndex: 0
+  HasBeenWatered: 0
+  ActiveVisual: 0
+  GrowthValue: 0
+  isStorageContainer: 0
+  isTreasureList: 0
+  StorageSlots: []
 --- !u!1001 &1197456946
 Prefab:
   m_ObjectHideFlags: 0
@@ -2192,6 +2283,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Scene: {fileID: 0}
   NetworkObjectID: 0
   PositionX: 0
   PositionY: 0
@@ -2508,6 +2600,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Scene: {fileID: 0}
   NetworkObjectID: 0
   PositionX: 1100
   PositionY: 234
@@ -2536,64 +2629,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4396600582777970, guid: 694749cbffc49514c8bca212f4773ede,
     type: 2}
   m_PrefabInternal: {fileID: 411460663}
---- !u!1 &1793795472
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1793795473}
-  - component: {fileID: 1793795474}
-  m_Layer: 0
-  m_Name: Herb_FireWort
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1793795473
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1793795472}
-  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: -4, y: 1.662, z: 2}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 2110302582}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!114 &1793795474
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1793795472}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  NetworkObjectID: 0
-  PositionX: -400
-  PositionY: 166
-  PositionZ: 200
-  YFacing: 18000
-  ObjectType: 0
-  ItemRefID: 7
-  HasHealth: 1
-  HealthValue: 10
-  ItemQualityLevel: 0
-  isWaterable: 0
-  SurrogateObjectIndex: 0
-  HasBeenWatered: 0
-  ActiveVisual: 0
-  GrowthValue: 0
-  isStorageContainer: 0
-  isTreasureList: 0
-  StorageSlots: []
 --- !u!1001 &1836453460
 Prefab:
   m_ObjectHideFlags: 0
@@ -2659,9 +2694,11 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1904530056}
+  - component: {fileID: 1904530059}
   - component: {fileID: 1904530057}
+  - component: {fileID: 1904530058}
   m_Layer: 0
-  m_Name: NetworkObjectData
+  m_Name: Network Scenes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2696,64 +2733,53 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DisplayPreviewsInSceneView: 1
---- !u!1 &1916752841
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1916752842}
-  - component: {fileID: 1916752843}
-  m_Layer: 0
-  m_Name: Herb_FireWort
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1916752842
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1916752841}
-  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: -3, y: 1.662, z: 2}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 2110302582}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!114 &1916752843
+--- !u!114 &1904530058
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1916752841}
+  m_GameObject: {fileID: 1904530055}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
+  m_Script: {fileID: 11500000, guid: 7df83536e2dbf494c8b8f32d480f5bf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NetworkObjectID: 0
-  PositionX: -300
-  PositionY: 166
-  PositionZ: 200
-  YFacing: 18000
-  ObjectType: 0
-  ItemRefID: 7
-  HasHealth: 1
-  HealthValue: 10
-  ItemQualityLevel: 0
-  isWaterable: 0
-  SurrogateObjectIndex: 0
-  HasBeenWatered: 0
-  ActiveVisual: 0
-  GrowthValue: 0
-  isStorageContainer: 0
-  isTreasureList: 0
-  StorageSlots: []
+  Scenes:
+  - SceneName: DebugFarm
+    SceneLink: {fileID: 2110302583}
+    ShowLocalization: 0
+    LocalizationID: 132
+    AppendFarmName: 1
+    AppendPlayerName: 0
+  - SceneName: DebugHouse
+    SceneLink: {fileID: 776955344}
+    ShowLocalization: 0
+    LocalizationID: 133
+    AppendFarmName: 0
+    AppendPlayerName: 1
+  - SceneName: Farm
+    SceneLink: {fileID: 967766995}
+    ShowLocalization: 0
+    LocalizationID: 132
+    AppendFarmName: 1
+    AppendPlayerName: 0
+  - SceneName: House
+    SceneLink: {fileID: 487331648}
+    ShowLocalization: 0
+    LocalizationID: 133
+    AppendFarmName: 0
+    AppendPlayerName: 1
+--- !u!114 &1904530059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1904530055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 391a386c57f9e744ca60304db3ee6f1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1921503013
 GameObject:
   m_ObjectHideFlags: 0
@@ -2794,6 +2820,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Scene: {fileID: 0}
   NetworkObjectID: 0
   PositionX: 1000
   PositionY: 234
@@ -2803,6 +2830,65 @@ MonoBehaviour:
   ItemRefID: 19
   HasHealth: 1
   HealthValue: 15
+  ItemQualityLevel: 0
+  isWaterable: 0
+  SurrogateObjectIndex: 0
+  HasBeenWatered: 0
+  ActiveVisual: 0
+  GrowthValue: 0
+  isStorageContainer: 0
+  isTreasureList: 0
+  StorageSlots: []
+--- !u!1 &1961300702
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1961300703}
+  - component: {fileID: 1961300704}
+  m_Layer: 0
+  m_Name: Testing AI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1961300703
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1961300702}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: -17, y: 1.662, z: 8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2110302582}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!114 &1961300704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1961300702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Scene: {fileID: 0}
+  NetworkObjectID: 0
+  PositionX: -1700
+  PositionY: 166
+  PositionZ: 800
+  YFacing: 18000
+  ObjectType: 1
+  ItemRefID: 2
+  HasHealth: 1
+  HealthValue: 10
   ItemQualityLevel: 0
   isWaterable: 0
   SurrogateObjectIndex: 0
@@ -2835,11 +2921,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2037784800}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: -2, y: 1.662, z: 2}
+  m_LocalPosition: {x: -60, y: 1.662, z: 2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2110302582}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!114 &2037784802
 MonoBehaviour:
@@ -2852,8 +2938,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Scene: {fileID: 0}
   NetworkObjectID: 0
-  PositionX: -200
+  PositionX: -6000
   PositionY: 166
   PositionZ: 200
   YFacing: 18000
@@ -2897,10 +2984,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1065796224}
-  - {fileID: 2111082842}
   - {fileID: 2037784801}
-  - {fileID: 1916752842}
-  - {fileID: 1793795473}
+  - {fileID: 2111082842}
+  - {fileID: 1961300703}
   m_Father: {fileID: 1904530056}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2916,6 +3002,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SceneID: 0
+  SceneOwnerID: 0
   TempNetworkObjectList: []
   NetworkObjectList: []
   JunkObject: {fileID: 0}
@@ -2942,11 +3029,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2111082841}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -60, y: 1.662, z: 8}
+  m_LocalPosition: {x: -14, y: 1.662, z: 8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2110302582}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!114 &2111082843
 MonoBehaviour:
@@ -2959,8 +3046,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Scene: {fileID: 0}
   NetworkObjectID: 0
-  PositionX: -6000
+  PositionX: -1400
   PositionY: 166
   PositionZ: 800
   YFacing: 18000

@@ -13,6 +13,9 @@ using UnityEditor;
 
 public class NetworkObject : MonoBehaviour {
 
+    //
+    [HideInInspector] public NetworkScene Scene;
+
     [HideInInspector]
     public int NetworkObjectID;
     [Header("---------------------------------------------------------------")]
@@ -61,6 +64,7 @@ public class NetworkObject : MonoBehaviour {
 
     public void SpawnNetworkObject(NetworkScene NS, bool GenerateVelocity = false, Vector3 Velocity = new Vector3())
     {
+        Scene = NS;
         GameObject Prefab = null;
         GameObject Spawn = null;
         float Scale = 1;
@@ -146,7 +150,23 @@ public class NetworkObject : MonoBehaviour {
 
 
 
+
+
 #if UNITY_EDITOR
+
+
+    [Button(ButtonSizes.Small)]
+    public void JumpToDatabaseReference()
+    {
+        if (ObjectType == NetworkObjectManager.NetworkObjectTypes.Enemy)
+            Selection.activeGameObject = QuickFindInEditor.GetEnemyDatabase().GetItemFromID(ItemRefID).gameObject;
+        if(ObjectType == NetworkObjectManager.NetworkObjectTypes.Item)
+            Selection.activeGameObject = QuickFindInEditor.GetEditorItemDatabase().GetItemFromID(ItemRefID).gameObject;
+    }
+
+
+
+
     void OnDrawGizmos() //Draw Gizmo in Scene view
     {
         if (Application.isPlaying)

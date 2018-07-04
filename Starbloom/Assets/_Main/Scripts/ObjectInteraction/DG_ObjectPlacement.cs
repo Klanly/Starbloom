@@ -82,7 +82,10 @@ public class DG_ObjectPlacement : MonoBehaviour {
 
     public void InputDetected(bool isUP)
     {
-        if(isUP && SafeToPlace)
+        bool AllowAction = false;
+        if (isUP || QuickFind.GameSettings.AllowActionsOnHold) AllowAction = true;
+
+        if (AllowAction && SafeToPlace)
         {
             if (!QuickFind.NetworkSync.CharacterLink.AnimationSync.CharacterIsGrounded()) return;
 
@@ -99,8 +102,13 @@ public class DG_ObjectPlacement : MonoBehaviour {
                     SavedPosition = ObjectGhost.position;
                     SavedDirection = ObjectGhost.eulerAngles.y;
 
-                    QuickFind.NetworkSync.CharacterLink.FacePlayerAtPosition(SavedPosition);
-                    QuickFind.NetworkSync.CharacterLink.AnimationSync.TriggerAnimation(ItemDatabaseReference.AnimationActionID);
+                    if (QuickFind.GameSettings.DisableAnimations)
+                        PlacementHit();
+                    else
+                    {
+                        QuickFind.NetworkSync.CharacterLink.FacePlayerAtPosition(SavedPosition);
+                        QuickFind.NetworkSync.CharacterLink.AnimationSync.TriggerAnimation(ItemDatabaseReference.AnimationActionID);
+                    }
                 }
                 else
                     ObjectGhost.GetComponent<DG_DynamicWall>().TriggerPlaceWall();

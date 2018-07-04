@@ -51,10 +51,14 @@ public class DG_WordDatabase : MonoBehaviour {
     public string GetWordByLanguage(DG_WordObject.TextEntry[] TextArray)
     {
         DG_TextLanguageFonts.Languages CurrentLanguage;
-        if(Application.isPlaying)
-            CurrentLanguage = (DG_TextLanguageFonts.Languages)QuickFind.UserSettings.CurrentLanguage;
-        else
+
+#if UNITY_EDITOR
+        if (!Application.isPlaying)
             CurrentLanguage = (DG_TextLanguageFonts.Languages)QuickFindInEditor.GetEditorUserSettings().CurrentLanguage;
+        else
+#endif
+            CurrentLanguage = (DG_TextLanguageFonts.Languages)QuickFind.UserSettings.CurrentLanguage;
+
 
         for (int i = 0; i < TextArray.Length; i++)
         {

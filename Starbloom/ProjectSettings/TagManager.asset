@@ -8,6 +8,8 @@ TagManager:
   - River
   - Lake
   - Ocean
+  - Enemy
+  - floor
   layers:
   - Default
   - TransparentFX
@@ -35,7 +37,7 @@ TagManager:
   - 
   - AttackableTarget
   - 
-  - 
+  - NavMeshRemoval
   - 
   - 
   - 

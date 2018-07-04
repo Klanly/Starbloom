@@ -27,8 +27,10 @@ public class DG_InteractHandler : MonoBehaviour
     {
 
         if (QuickFind.InputController.InputState != DG_PlayerInput.CurrentInputState.Default) return;
+        bool AllowHold = false;
+        if (QuickFind.GameSettings.AllowActionsOnHold && QuickFind.InputController.MainPlayer.ButtonSet.Interact.Held) AllowHold = true;
 
-        if (QuickFind.InputController.MainPlayer.ButtonSet.Interact.Up)
+        if (QuickFind.InputController.MainPlayer.ButtonSet.Interact.Up || AllowHold)
         {
             if (!QuickFind.NetworkSync.CharacterLink.AnimationSync.CharacterIsGrounded()) return;
 
@@ -64,8 +66,14 @@ public class DG_InteractHandler : MonoBehaviour
         SavedCO = CO;
         SavedNO = QuickFind.NetworkObjectManager.ScanUpTree(CO.transform);
         SavedIO = QuickFind.ItemDatabase.GetItemFromID(SavedNO.ItemRefID);
-        QuickFind.NetworkSync.CharacterLink.FacePlayerAtPosition(CO.transform.position);
-        QuickFind.NetworkSync.CharacterLink.AnimationSync.TriggerAnimation(SavedIO.AnimationInteractID);
+
+        if (QuickFind.GameSettings.DisableAnimations)
+            ReturnInteractionHit();
+        else
+        {
+            QuickFind.NetworkSync.CharacterLink.FacePlayerAtPosition(CO.transform.position);
+            QuickFind.NetworkSync.CharacterLink.AnimationSync.TriggerAnimation(SavedIO.AnimationInteractID);
+        }
     }
 
 

@@ -135,7 +135,7 @@ public class DG_ClothingHairManager : MonoBehaviour {
                 case ClothHairType.RightHand:
                     {
                         NonSkinnedObject(Clone, CharacterRef, AC, ClothingObject);
-                        if (!QuickFind.GameSettings.ShowToolOnEquip) Clone.SetActive(false);
+                        if (!QuickFind.GameSettings.DontHideGear) Clone.SetActive(false);
                     }
                     break;
             }

@@ -139,36 +139,74 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5786f569c0f1454cbdb8bdfc53c9207, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LoadAdditiveSceneInEditor: 1
-  LoadAdditiveSceneOnPlay: 1
   AdditiveSceneLinks:
-  - DebugDoNotLoad: 0
-    SceneName: ProceduralEnvironment
+  - NoEditorEditLoad: 0
+    NoEditorPlayLoad: 0
+    NoBuildLoad: 0
+    SceneName: Pathfinding
     EditorSceneFolderPath: Assets/_Main/Scenes/Additive/
-  - DebugDoNotLoad: 0
+  - NoEditorEditLoad: 0
+    NoEditorPlayLoad: 0
+    NoBuildLoad: 0
     SceneName: InGameHUD
     EditorSceneFolderPath: Assets/_Main/Scenes/Additive/
-  - DebugDoNotLoad: 0
-    SceneName: Management
+  - NoEditorEditLoad: 1
+    NoEditorPlayLoad: 1
+    NoBuildLoad: 1
+    SceneName: DialogueHUD
     EditorSceneFolderPath: Assets/_Main/Scenes/Additive/
-  - DebugDoNotLoad: 0
-    SceneName: Management-Abilities
-    EditorSceneFolderPath: Assets/_Main/Scenes/Additive/
-  - DebugDoNotLoad: 0
-    SceneName: Database_Items
-    EditorSceneFolderPath: Assets/_Main/Scenes/Additive/
-  - DebugDoNotLoad: 0
-    SceneName: CharacterCreation
-    EditorSceneFolderPath: Assets/_Main/Scenes/Additive/
-  - DebugDoNotLoad: 0
+  - NoEditorEditLoad: 0
+    NoEditorPlayLoad: 0
+    NoBuildLoad: 0
     SceneName: Networking
     EditorSceneFolderPath: Assets/_Main/Scenes/Additive/
-  - DebugDoNotLoad: 0
+  - NoEditorEditLoad: 0
+    NoEditorPlayLoad: 0
+    NoBuildLoad: 0
+    SceneName: Management
+    EditorSceneFolderPath: Assets/_Main/Scenes/Additive/
+  - NoEditorEditLoad: 0
+    NoEditorPlayLoad: 0
+    NoBuildLoad: 0
+    SceneName: Management-Abilities
+    EditorSceneFolderPath: Assets/_Main/Scenes/Additive/
+  - NoEditorEditLoad: 0
+    NoEditorPlayLoad: 0
+    NoBuildLoad: 0
+    SceneName: Database_Items
+    EditorSceneFolderPath: Assets/_Main/Scenes/Additive/
+  - NoEditorEditLoad: 0
+    NoEditorPlayLoad: 0
+    NoBuildLoad: 0
+    SceneName: CharacterCreation
+    EditorSceneFolderPath: Assets/_Main/Scenes/Additive/
+  - NoEditorEditLoad: 0
+    NoEditorPlayLoad: 0
+    NoBuildLoad: 0
+    SceneName: ProceduralEnvironment
+    EditorSceneFolderPath: Assets/_Main/Scenes/Additive/
+  - NoEditorEditLoad: 0
+    NoEditorPlayLoad: 0
+    NoBuildLoad: 0
+    SceneName: Database
+    EditorSceneFolderPath: Assets/_Main/Scenes/Additive/
+  - NoEditorEditLoad: 0
+    NoEditorPlayLoad: 0
+    NoBuildLoad: 0
+    SceneName: NPC
+    EditorSceneFolderPath: Assets/_Main/Scenes/Additive/
+  - NoEditorEditLoad: 0
+    NoEditorPlayLoad: 0
+    NoBuildLoad: 0
     SceneName: Pooling
     EditorSceneFolderPath: Assets/_Main/Scenes/Additive/
-  - DebugDoNotLoad: 0
+  - NoEditorEditLoad: 0
+    NoEditorPlayLoad: 0
+    NoBuildLoad: 0
     SceneName: Fade Handler
     EditorSceneFolderPath: Assets/_Main/Scenes/Additive/
-  - DebugDoNotLoad: 0
+  - NoEditorEditLoad: 0
+    NoEditorPlayLoad: 0
+    NoBuildLoad: 0
     SceneName: Audio
     EditorSceneFolderPath: Assets/_Main/Scenes/Additive/

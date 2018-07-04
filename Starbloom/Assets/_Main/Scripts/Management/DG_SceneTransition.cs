@@ -37,9 +37,9 @@ public class DG_SceneTransition : MonoBehaviour {
         LoadingPortalID = PortalValue;
 
         //Unload Network Objects
-        NetworkScene NS = QuickFind.NetworkObjectManager.GetSceneByID(QuickFind.NetworkSync.CurrentScene);
-        for (int i = 0; i < NS.NetworkObjectList.Count; i++)
-            NS.NetworkObjectList[i].gameObject.SetActive(false);
+        CreateNetworkObjects(false);
+
+        QuickFind.PathfindingGeneration.NavMeshIsGenerated = false;
 
         QuickFind.FadeScreen.FadeOut(DG_GUI_FadeScreen.FadeInSpeeds.QuickFade, this.gameObject, "FadeEnded");
     }
@@ -59,10 +59,6 @@ public class DG_SceneTransition : MonoBehaviour {
 
         //Load Network Objects;
         QuickFind.NetworkSync.SetSelfInScene(NetworkSceneIndexLoading);
-        NetworkScene NS = QuickFind.NetworkObjectManager.GetSceneByID(QuickFind.NetworkSync.CurrentScene);
-        for (int i = 0; i < NS.NetworkObjectList.Count; i++)
-            NS.NetworkObjectList[i].gameObject.SetActive(true);
-
 
         //Set Player, and Cam.
         GameObject[] goArray = LoadScene.GetRootGameObjects();
@@ -74,6 +70,8 @@ public class DG_SceneTransition : MonoBehaviour {
         QuickFind.PlayerTrans.eulerAngles = PP.PortalTransformReference.eulerAngles;
         QuickFind.PlayerCam.InstantSetCameraAngle(PP.PortalTransformReference.GetChild(0).eulerAngles);
 
+        QuickFind.PathfindingGeneration.SceneChange(SceneUnloading);
+
 
         QuickFind.FadeScreen.FadeIn(DG_GUI_FadeScreen.FadeInSpeeds.QuickFade, this.gameObject, "FadeInEnded");
     }
@@ -81,5 +79,36 @@ public class DG_SceneTransition : MonoBehaviour {
     public void FadeInEnded()
     {
         Transitioning = false;
+    }
+
+
+
+
+
+    public void NavMeshLoaded()
+    {
+        CreateNetworkObjects(true);
+    }
+    void CreateNetworkObjects(bool isEnable)
+    {
+        NetworkScene NS = QuickFind.NetworkObjectManager.GetSceneByID(QuickFind.NetworkSync.CurrentScene);
+        for (int i = 0; i < NS.NetworkObjectList.Count; i++)
+        {
+            NetworkObject NO = NS.NetworkObjectList[i];
+            if (!isEnable)
+            {
+                if (NO.ObjectType == NetworkObjectManager.NetworkObjectTypes.Enemy)
+                    Destroy(NO.transform.GetChild(0).gameObject);
+                else
+                    NO.gameObject.SetActive(false);
+            }
+            else
+            {
+                if (NO.ObjectType == NetworkObjectManager.NetworkObjectTypes.Enemy)
+                    NO.SpawnNetworkObject(NS);
+                else
+                    NO.gameObject.SetActive(true);
+            }           
+        }
     }
 }

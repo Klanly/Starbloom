@@ -94,14 +94,7 @@ public class NetworkObjectManager : MonoBehaviour {
     }
     public NetworkScene GetSceneByID(int index)
     {
-        for (int i = 0; i < transform.childCount; i++)
-        {
-            Transform Child = transform.GetChild(i);
-            NetworkScene NS = Child.GetComponent<NetworkScene>();
-            if (NS.SceneID == index)
-                return NS;
-        }
-        return null;
+        return QuickFind.SceneList.GetSceneByID(index);
     }
 
 

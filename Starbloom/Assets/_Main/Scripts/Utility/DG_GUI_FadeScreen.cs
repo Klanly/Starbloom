@@ -87,6 +87,8 @@ public class DG_GUI_FadeScreen : MonoBehaviour {
 
     public void FadeOut(FadeInSpeeds Speed, GameObject ReturnObj = null, string ReturnMessage = "")
     {
+        if (QuickFind.GameSettings.ForceInstantFade) Speed = FadeInSpeeds.Instant;
+
         ReturnO = ReturnObj;
         ReturnM = ReturnMessage;
         CurrentSpeedTime = GetNewSpeedTime(FadeOutTimes, Speed);
@@ -94,6 +96,8 @@ public class DG_GUI_FadeScreen : MonoBehaviour {
     }
     public void FadeIn(FadeInSpeeds Speed, GameObject ReturnObj = null, string ReturnMessage = "")
     {
+        if (QuickFind.GameSettings.ForceInstantFade) Speed = FadeInSpeeds.Instant;
+
         ReturnO = ReturnObj;
         ReturnM = ReturnMessage;
         CurrentSpeedTime = GetNewSpeedTime(FadeInTimes, Speed);

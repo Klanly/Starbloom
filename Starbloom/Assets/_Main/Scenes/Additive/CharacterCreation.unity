@@ -172,7 +172,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 14
-  instanceID: 51310
+  instanceID: 3678976
 --- !u!4 &27234737
 Transform:
   m_ObjectHideFlags: 0
@@ -429,7 +429,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 14
-  instanceID: 51340
+  instanceID: 3679006
 --- !u!114 &592225607
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -502,7 +502,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 14
-  instanceID: 51348
+  instanceID: 3679014
 --- !u!114 &689915699
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -605,7 +605,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 14
-  instanceID: 51358
+  instanceID: 3679024
 --- !u!1 &946164149
 GameObject:
   m_ObjectHideFlags: 0
@@ -648,7 +648,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 14
-  instanceID: 51364
+  instanceID: 3679030
 --- !u!114 &946164152
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -721,7 +721,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 14
-  instanceID: 51372
+  instanceID: 3679038
 --- !u!114 &977705922
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -794,7 +794,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 14
-  instanceID: 51380
+  instanceID: 3679046
 --- !u!114 &1021058733
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -867,7 +867,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 14
-  instanceID: 51388
+  instanceID: 3679054
 --- !u!114 &1142876983
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -926,12 +926,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a0afeffb91c49e4c95a6a8ba5d71a3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaleDefault:
-  - ClothType: 0
-    ID: 0
+  MaleDefault: []
   FemaleDefault:
-  - ClothType: 0
-    ID: 0
   - ClothType: 1
     ID: 1
   - ClothType: 2
@@ -1033,7 +1029,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 14
-  instanceID: 51408
+  instanceID: 3679074
 --- !u!114 &1375316945
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1106,7 +1102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 14
-  instanceID: 51416
+  instanceID: 3679082
 --- !u!114 &1416670964
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1196,7 +1192,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 14
-  instanceID: 51424
+  instanceID: 3679090
 --- !u!4 &1436179670
 Transform:
   m_ObjectHideFlags: 0
@@ -1281,7 +1277,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 14
-  instanceID: 51436
+  instanceID: 3679102
 --- !u!114 &1575675516
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1371,7 +1367,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 14
-  instanceID: 51444
+  instanceID: 3679110
 --- !u!4 &1733625694
 Transform:
   m_ObjectHideFlags: 0
@@ -1444,7 +1440,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 14
-  instanceID: 51452
+  instanceID: 3679118
 --- !u!4 &1790431436
 Transform:
   m_ObjectHideFlags: 0
@@ -1500,7 +1496,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 14
-  instanceID: 51460
+  instanceID: 3679126
 --- !u!114 &1796259107
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1573,7 +1569,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 14
-  instanceID: 51468
+  instanceID: 3679134
 --- !u!114 &1855910334
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1653,7 +1649,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 14
-  instanceID: 51476
+  instanceID: 3679142
 --- !u!4 &1892575107
 Transform:
   m_ObjectHideFlags: 0
@@ -1709,7 +1705,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 14
-  instanceID: 51484
+  instanceID: 3679150
 --- !u!114 &1892696687
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1789,7 +1785,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 14
-  instanceID: 51492
+  instanceID: 3679158
 --- !u!4 &1899486302
 Transform:
   m_ObjectHideFlags: 0
@@ -1862,7 +1858,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 14
-  instanceID: 51500
+  instanceID: 3679166
 --- !u!4 &1930776265
 Transform:
   m_ObjectHideFlags: 0
@@ -1925,7 +1921,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 14
-  instanceID: 51508
+  instanceID: 3679174
 --- !u!4 &1944687447
 Transform:
   m_ObjectHideFlags: 0
@@ -2011,7 +2007,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 14
-  instanceID: 51520
+  instanceID: 3679186
 --- !u!114 &2118497659
 MonoBehaviour:
   m_ObjectHideFlags: 0

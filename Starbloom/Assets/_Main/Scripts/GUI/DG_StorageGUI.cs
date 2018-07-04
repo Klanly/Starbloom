@@ -50,7 +50,10 @@ public class DG_StorageGUI : MonoBehaviour {
 
         if (!StorageUIOpen || QuickFind.GUI_Inventory.isFloatingInventoryItem || QuickFind.ShippingBinGUI.BinUIisOpen) return;
 
-        if (QuickFind.InputController.MainPlayer.ButtonSet.Interact.Up)
+        bool AllowHold = false;
+        if (QuickFind.GameSettings.AllowUIOnHold && QuickFind.InputController.MainPlayer.ButtonSet.Interact.Held) AllowHold = true;
+
+        if (QuickFind.InputController.MainPlayer.ButtonSet.Interact.Up || AllowHold)
             QuickFind.InventoryManager.ShiftStackToFromStorage();
     }
 

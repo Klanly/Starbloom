@@ -38,16 +38,23 @@ public class DG_HoeHandler : MonoBehaviour {
 
     public void InputDetected(bool isUP)
     {
-        if (isUP && SafeToPlace)
+        bool AllowAction = false;
+        if (isUP || QuickFind.GameSettings.AllowActionsOnHold) AllowAction = true;
+
+        if (AllowAction && SafeToPlace)
         {
             if (!QuickFind.NetworkSync.CharacterLink.AnimationSync.CharacterIsGrounded()) return;
 
             AwaitingResponse = true;
             StoredPosition = QuickFind.GridDetection.DetectionPoint.position;
-            QuickFind.NetworkSync.CharacterLink.FacePlayerAtPosition(StoredPosition);
-
-            DG_ClothingObject Cloth = QuickFind.ClothingHairManager.GetAttachedClothingReference(QuickFind.NetworkSync.CharacterLink, DG_ClothingHairManager.ClothHairType.RightHand).ClothingRef;
-            QuickFind.NetworkSync.CharacterLink.AnimationSync.TriggerAnimation(Cloth.AnimationDatabaseNumber);
+            if (QuickFind.GameSettings.DisableAnimations)
+                HitAction();
+            else
+            {
+                QuickFind.NetworkSync.CharacterLink.FacePlayerAtPosition(StoredPosition);
+                DG_ClothingObject Cloth = QuickFind.ClothingHairManager.GetAttachedClothingReference(QuickFind.NetworkSync.CharacterLink, DG_ClothingHairManager.ClothHairType.RightHand).ClothingRef;
+                QuickFind.NetworkSync.CharacterLink.AnimationSync.TriggerAnimation(Cloth.AnimationDatabaseNumber);
+            }
         }
     }
 

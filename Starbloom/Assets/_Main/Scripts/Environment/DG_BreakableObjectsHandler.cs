@@ -33,9 +33,14 @@ public class DG_BreakableObjectsHandler : MonoBehaviour {
             KnownRucksackSlotOpen = RucksackSlotOpen;
             AwaitingResponse = true;
 
-            QuickFind.NetworkSync.CharacterLink.FacePlayerAtPosition(CO.transform.position);
-            DG_ClothingObject Cloth = QuickFind.ClothingHairManager.GetAttachedClothingReference(QuickFind.NetworkSync.CharacterLink, DG_ClothingHairManager.ClothHairType.RightHand).ClothingRef;
-            QuickFind.NetworkSync.CharacterLink.AnimationSync.TriggerAnimation(Cloth.AnimationDatabaseNumber);
+            if (QuickFind.GameSettings.DisableAnimations)
+                HitAction();
+            else
+            {
+                QuickFind.NetworkSync.CharacterLink.FacePlayerAtPosition(CO.transform.position);
+                DG_ClothingObject Cloth = QuickFind.ClothingHairManager.GetAttachedClothingReference(QuickFind.NetworkSync.CharacterLink, DG_ClothingHairManager.ClothHairType.RightHand).ClothingRef;
+                QuickFind.NetworkSync.CharacterLink.AnimationSync.TriggerAnimation(Cloth.AnimationDatabaseNumber);
+            }
         }
         else return;
     }

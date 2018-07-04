@@ -4,17 +4,8 @@ using UnityEngine;
 
 public class DG_MovementSync : MonoBehaviour {
 
-
-    [Header("Network Send Rate")]
-    public float SendRate;
-
-    [Header("Catch up Values")]
-    public float SlerpMoveRate;
-    public float SlerpTurnRate;
-    public float MaxDistance;
-
-
     public DG_AnimationSync AnimSync;
+    DG_NetworkSyncRates.SyncRateModule SyncRate;
     [HideInInspector] public bool isPlayer;
     [System.NonSerialized] public DG_NetworkSync.Users UserOwner;
     [HideInInspector] public float Distance;
@@ -39,13 +30,14 @@ public class DG_MovementSync : MonoBehaviour {
     private void Update()
     {
         if (QuickFind.NetworkSync == null) return;
+        if (SyncRate == null) SyncRate = QuickFind.NetworkSyncRates.GetSyncModuleByType(DG_NetworkSyncRates.SyncRateTypes.Player);
 
         if (isPlayer)
         {
             Timer = Timer - Time.deltaTime;
             if (Timer < 0)
             {
-                Timer = SendRate;
+                Timer = SyncRate.SendRate;
                 SendOutPlayerPosition();
             }
         }
@@ -55,7 +47,7 @@ public class DG_MovementSync : MonoBehaviour {
                 transform.position = new Vector3(0, 10000, 0);
             else
             {
-                if (!QuickFind.WithinDistanceVec(transform.position, KnownPosition, MaxDistance))
+                if (!QuickFind.WithinDistanceVec(transform.position, KnownPosition, SyncRate.MaxDistance))
                 {
                     _T.position = KnownPosition;
                     Distance = 0;
@@ -65,10 +57,10 @@ public class DG_MovementSync : MonoBehaviour {
                     int AdditiveSpeedMultiplier = 1;
                     Distance = Vector3.Distance(_T.position, KnownPosition);
                     if (Distance > 2) AdditiveSpeedMultiplier = (int)Distance;
-                    float SlerpRate = SlerpMoveRate * AdditiveSpeedMultiplier;
+                    float SlerpRate = SyncRate.SlerpMoveRate * AdditiveSpeedMultiplier;
                     _T.position = Vector3.MoveTowards(_T.position, KnownPosition, SlerpRate);
                 }
-                _T.eulerAngles = QuickFind.AngleLerp(_T.eulerAngles, KnownHeading, SlerpTurnRate);
+                _T.eulerAngles = QuickFind.AngleLerp(_T.eulerAngles, KnownHeading, SyncRate.SlerpTurnRate);
             }
         }
     }

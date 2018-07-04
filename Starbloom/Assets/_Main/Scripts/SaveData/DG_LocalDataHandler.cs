@@ -16,6 +16,9 @@ public class DG_LocalDataHandler : MonoBehaviour {
     string CacheDirectory;
     string SaveDirectory;
 
+    [Header("Debug")]
+    public bool PrintDebug;
+
 
     private void Awake()
     {
@@ -148,12 +151,16 @@ public class DG_LocalDataHandler : MonoBehaviour {
         if (ToDisk)
             SaveInts(IntData.ToArray(), SaveDirectory + "/CharInts");
 
+        if (PrintDebug) PrintFileSentSize(IntData.Count, false, ToDisk);
+
         return IntData;
     }
     public void GetIntValues(int[] IntValues, bool FromDisk)
     {
         if (FromDisk)
             IntValues = LoadInts(SaveDirectory + "/CharInts");
+
+        if (PrintDebug) PrintFileSentSize(IntValues.Length, false, FromDisk);
 
         int Index = 0;
         int PlayerCount = 0;
@@ -270,22 +277,20 @@ public class DG_LocalDataHandler : MonoBehaviour {
     public List<int> GatherWorldInts(bool ToDisk)
     {
         List<int> IntData = new List<int>();
-        Transform NOM = QuickFind.NetworkObjectManager.transform;
         //
-        IntData.Add(NOM.childCount);
+        IntData.Add(QuickFind.SceneList.Scenes.Count);
         //
-        for (int i = 0; i < NOM.childCount; i++)
+        for (int i = 0; i < QuickFind.SceneList.Scenes.Count; i++)
         {
-            Transform Child = NOM.GetChild(i);
-            NetworkScene NS = Child.GetComponent<NetworkScene>();
+            NetworkScene NS = QuickFind.SceneList.Scenes[i].SceneLink;
             //
-
             IntData.Add(NS.SceneID);
-            IntData.Add(Child.childCount);
+            if(!ToDisk) IntData.Add(NS.SceneOwnerID);
+            IntData.Add(NS.NetworkObjectList.Count);
             //
-            for (int iN = 0; iN < Child.childCount; iN++)
+            for (int iN = 0; iN < NS.NetworkObjectList.Count; iN++)
             {
-                NetworkObject NO = Child.GetChild(iN).GetComponent<NetworkObject>();
+                NetworkObject NO = NS.NetworkObjectList[iN];
                 //
                 IntData.Add(NO.NetworkObjectID);
                 IntData.Add(NO.ItemRefID);
@@ -342,6 +347,8 @@ public class DG_LocalDataHandler : MonoBehaviour {
         if (ToDisk)
             SaveInts(IntData.ToArray(), SaveDirectory + "/WorldInts");
 
+        if (PrintDebug) PrintFileSentSize(IntData.Count, true, ToDisk);
+
 
         return IntData;
     }
@@ -350,18 +357,19 @@ public class DG_LocalDataHandler : MonoBehaviour {
         if (FromDisk)
             IntValues = LoadInts(SaveDirectory + "/WorldInts");
 
+        if (PrintDebug) PrintFileSentSize(IntValues.Length, false, FromDisk);
+
         int Index = 0;
         int SceneCount = 0;
-        Transform NOM = QuickFind.NetworkObjectManager.transform;
 
         SceneCount = IntValues[Index]; Index++;
         //
         for (int i = 0; i < SceneCount; i++)
         {
-            int SceneID;
-            SceneID = IntValues[Index]; Index++;
-            //
+            int SceneID = IntValues[Index]; Index++;
             NetworkScene NS = QuickFind.NetworkObjectManager.GetSceneByID(SceneID);
+            if(!FromDisk) NS.SceneOwnerID = IntValues[Index]; Index++;
+
             NS.JunkObject = new GameObject();
             Transform Child = NS.transform;
             int count;
@@ -475,6 +483,23 @@ public class DG_LocalDataHandler : MonoBehaviour {
         string SaveFileBaseLocation = KnownDirectory + FileName;
         if (File.Exists(SaveFileBaseLocation)) return true;
         else return false;
+    }
+
+    void PrintFileSentSize(int Count, bool Sent, bool FromDisk)
+    {
+        int ByteSize = Count * 4;
+        string Print = string.Empty;
+        if (!Sent) Print += "Bytes Received";
+        else Print += "Bytes Sent";
+        Print += " - ";
+        if (!FromDisk) Print += "From Master";
+        else Print += "From Disk";
+        Print += " - ";
+        Print += ByteSize.ToString();
+        Print += " - KB - ";
+        Print += (ByteSize / 1000).ToString();
+
+        Debug.Log(Print);
     }
     #endregion
 

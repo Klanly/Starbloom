@@ -88,4 +88,5 @@ MonoBehaviour:
   - NewCharGenerationCalled
   - ReceiveAnimationSubState
   - ReceiveUserEquipment
+  - ReceiveAILocationSync
   DisableAutoOpenWizard: 1

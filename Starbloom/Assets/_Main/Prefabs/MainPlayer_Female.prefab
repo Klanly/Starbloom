@@ -3116,7 +3116,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _groundMask:
     serializedVersion: 2
-    m_Bits: 303105
+    m_Bits: 67411969
   _groundLimit: 89
   _stepOffset: 0.33
   _ledgeOffset: 0.33
@@ -3156,6 +3156,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Anim: {fileID: 95309106836199802}
   CharacterLink: {fileID: 114119373513364864}
+  DisableWeaponSwitching: 0
   MidAnimation: 0
   isPlayer: 0
 --- !u!114 &114823207918985662

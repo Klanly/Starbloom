@@ -43,7 +43,10 @@ public class DG_WateringCan : MonoBehaviour {
 
     public void InputDetected(bool isUP)
     {
-        if (isUP && SafeToPlace)
+        bool AllowAction = false;
+        if (isUP || QuickFind.GameSettings.AllowActionsOnHold) AllowAction = true;
+
+        if (AllowAction && SafeToPlace)
         {
             if (!QuickFind.NetworkSync.CharacterLink.AnimationSync.CharacterIsGrounded()) return;
 
@@ -52,9 +55,14 @@ public class DG_WateringCan : MonoBehaviour {
             {
                 KnownCO = CO;
                 AwaitingResponse = true;
-                QuickFind.NetworkSync.CharacterLink.FacePlayerAtPosition(CO.transform.position);
-                DG_ClothingObject Cloth = QuickFind.ClothingHairManager.GetAttachedClothingReference(QuickFind.NetworkSync.CharacterLink, DG_ClothingHairManager.ClothHairType.RightHand).ClothingRef;
-                QuickFind.NetworkSync.CharacterLink.AnimationSync.TriggerAnimation(Cloth.AnimationDatabaseNumber);
+                if (QuickFind.GameSettings.DisableAnimations)
+                    HitAction();
+                else
+                {
+                    QuickFind.NetworkSync.CharacterLink.FacePlayerAtPosition(CO.transform.position);
+                    DG_ClothingObject Cloth = QuickFind.ClothingHairManager.GetAttachedClothingReference(QuickFind.NetworkSync.CharacterLink, DG_ClothingHairManager.ClothHairType.RightHand).ClothingRef;
+                    QuickFind.NetworkSync.CharacterLink.AnimationSync.TriggerAnimation(Cloth.AnimationDatabaseNumber);
+                }
             }
         }
     }

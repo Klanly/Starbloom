@@ -260,7 +260,7 @@ Transform:
   - {fileID: 2126961905}
   - {fileID: 815388411}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &134032896
 GameObject:
@@ -455,7 +455,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &680966592
 GameObject:
@@ -1069,7 +1069,7 @@ Transform:
   m_Children:
   - {fileID: 1307435960}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 20, y: 0, z: 0}
 --- !u!114 &1076293942
 MonoBehaviour:
@@ -1141,7 +1141,7 @@ Transform:
   m_Children:
   - {fileID: 2059881538}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1253344214
 GameObject:
@@ -1174,7 +1174,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19402504, g: 0.22515519, b: 0.2601552, a: 0.6}
+  m_BackGroundColor: {r: 0.19407178, g: 0.2252253, b: 0.2602253, a: 0.6}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -1635,79 +1635,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1458579799}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1535058563
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1535058565}
-  - component: {fileID: 1535058566}
-  - component: {fileID: 1535058564}
-  m_Layer: 0
-  m_Name: Scene Transition
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1535058564
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1535058563}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7df83536e2dbf494c8b8f32d480f5bf5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Scenes:
-  - SceneName: DebugFarm
-    ShowLocalization: 0
-    LocalizationID: 132
-    AppendFarmName: 1
-    AppendPlayerName: 0
-  - SceneName: DebugHouse
-    ShowLocalization: 0
-    LocalizationID: 133
-    AppendFarmName: 0
-    AppendPlayerName: 1
-  - SceneName: Farm
-    ShowLocalization: 0
-    LocalizationID: 132
-    AppendFarmName: 1
-    AppendPlayerName: 0
-  - SceneName: House
-    ShowLocalization: 0
-    LocalizationID: 133
-    AppendFarmName: 0
-    AppendPlayerName: 1
---- !u!4 &1535058565
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1535058563}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1535058566
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1535058563}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 391a386c57f9e744ca60304db3ee6f1d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1568945606
 GameObject:
   m_ObjectHideFlags: 0
@@ -1917,16 +1844,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71db83065fb78444d8871f4fbc218db5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayOnline: 0
-  BypassMainMenu: 1
+  PlayOnline: 1
   DisableAudio: 0
+  BypassMainMenu: 1
   EnableDebugKeycodes: 1
-  ShowGrowthDebug: 0
   DisableAllPoolSpawningAtStart: 0
-  ForceGender: 1
-  ForcedGender: 1
-  ShowToolOnEquip: 0
-  LastSelected: {fileID: 0}
+  GeneratedGender: 2
+  DontHideGear: 0
+  DisableAnimations: 0
+  AllowActionsOnHold: 0
+  AllowUIOnHold: 0
+  ForceInstantFade: 0
 --- !u!114 &1620623746
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1941,7 +1869,6 @@ MonoBehaviour:
   Player: 0
   ItemID: 1
   QualityLevel: 0
-  GrowthLevel: 0
 --- !u!114 &1620623747
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2426,7 +2353,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1978687871
 MonoBehaviour:

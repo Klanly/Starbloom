@@ -28,7 +28,7 @@ public static class QuickFindInEditor
     public static DG_ItemsDatabase GetEditorItemDatabase() { return GameObject.Find("Item Database").GetComponent<DG_ItemsDatabase>(); }
     public static DG_CharacterDatabase GetEditorCharacterDatabase() { return GameObject.Find("Character Database").GetComponent<DG_CharacterDatabase>(); }
     public static DG_ColorCodes GetEditorColorCodes() { return GameObject.Find("Color Database").GetComponent<DG_ColorCodes>(); }
-    public static SceneIDList GetEditorSceneList() { return GameObject.Find("Scene Transition").GetComponent<SceneIDList>(); }
+    public static SceneIDList GetEditorSceneList() { return GameObject.Find("Network Scenes").GetComponent<SceneIDList>(); }
     public static DG_FishingCompendium GetEditorFishingCompendium() { return GameObject.Find("Fish Atlas").GetComponent<DG_FishingCompendium>(); }
     public static DG_BreakableObjectsAtlas GetBreakableObjectsCompendium() { return GameObject.Find("Cluster Rewards Atlas").GetComponent<DG_BreakableObjectsAtlas>(); }
     public static DG_ShopAtlas GetShopCompendium() { return GameObject.Find("Shop Type Atlas").GetComponent<DG_ShopAtlas>(); }
@@ -40,6 +40,7 @@ public static class QuickFindInEditor
     public static DG_SFXDatabase GetSFXDatabase() { return GameObject.Find("SFX Database").GetComponent<DG_SFXDatabase>(); }
     public static DG_ClothingDatabase GetClothingDatabase() { return GameObject.Find("Equipables Database").GetComponent<DG_ClothingDatabase>(); }
     public static DG_AnimationDatabase GetAnimationDatabase() { return GameObject.Find("Animation Database").GetComponent<DG_AnimationDatabase>(); }
+    public static DG_PathfindingGenerationHandler GetPathfindingGeneration() { return GameObject.Find("PathFinding Generation").GetComponent<DG_PathfindingGenerationHandler>(); }
 
     //Save Data
     public static UserSettings GetEditorUserSettings() { return GameObject.Find("Player Settings").GetComponent<UserSettings>(); }
@@ -139,6 +140,7 @@ public static class QuickFind
     public static DG_SceneTransition SceneTransitionHandler = null;
     public static DG_ClothingHairManager ClothingHairManager = null;
     public static DG_GameStartHandler GameStartHandler = null;
+    public static DG_PathfindingGenerationHandler PathfindingGeneration = null;
 
 
     //Tools
@@ -169,6 +171,9 @@ public static class QuickFind
     public static ConnectAndJoinRandom NetworkMaster = null;
     public static DG_NetworkSync NetworkSync = null;
     public static NetworkObjectManager NetworkObjectManager = null;
+    public static DG_NetworkSyncRates NetworkSyncRates = null;
+
+
 
     //Database
     public static DG_DialogueManager DialogueManager = null;
