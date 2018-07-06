@@ -195,7 +195,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SaveFileName: Debug
-  PrintDebug: 0
+  PrintDebug: 1
 --- !u!4 &155133447
 Transform:
   m_ObjectHideFlags: 0
@@ -845,7 +845,7 @@ Transform:
   - {fileID: 736236433}
   - {fileID: 1921503014}
   - {fileID: 1515060413}
-  - {fileID: 1146434327}
+  - {fileID: 2077755358}
   m_Father: {fileID: 1904530056}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1162,7 +1162,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1118935756}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2129,65 +2129,6 @@ MonoBehaviour:
     TodayWeather: 0
     TomorrowWeather: 0
     TwoDayAwayWeather: 0
---- !u!1 &1146434326
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1146434327}
-  - component: {fileID: 1146434328}
-  m_Layer: 0
-  m_Name: Testing AI
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1146434327
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1146434326}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3, y: 2.1699998, z: -8}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 967766994}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1146434328
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1146434326}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Scene: {fileID: 0}
-  NetworkObjectID: 0
-  PositionX: -300
-  PositionY: 216
-  PositionZ: -800
-  YFacing: 0
-  ObjectType: 1
-  ItemRefID: 2
-  HasHealth: 1
-  HealthValue: 10
-  ItemQualityLevel: 0
-  isWaterable: 0
-  SurrogateObjectIndex: 0
-  HasBeenWatered: 0
-  ActiveVisual: 0
-  GrowthValue: 0
-  isStorageContainer: 0
-  isTreasureList: 0
-  StorageSlots: []
 --- !u!1001 &1197456946
 Prefab:
   m_ObjectHideFlags: 0
@@ -2946,6 +2887,65 @@ MonoBehaviour:
   YFacing: 18000
   ObjectType: 0
   ItemRefID: 7
+  HasHealth: 1
+  HealthValue: 10
+  ItemQualityLevel: 0
+  isWaterable: 0
+  SurrogateObjectIndex: 0
+  HasBeenWatered: 0
+  ActiveVisual: 0
+  GrowthValue: 0
+  isStorageContainer: 0
+  isTreasureList: 0
+  StorageSlots: []
+--- !u!1 &2077755357
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 2077755358}
+  - component: {fileID: 2077755359}
+  m_Layer: 0
+  m_Name: Testing AI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2077755358
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2077755357}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -3, y: 2.1699998, z: -8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 967766994}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2077755359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2077755357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Scene: {fileID: 0}
+  NetworkObjectID: 0
+  PositionX: -300
+  PositionY: 216
+  PositionZ: -800
+  YFacing: 0
+  ObjectType: 1
+  ItemRefID: 2
   HasHealth: 1
   HealthValue: 10
   ItemQualityLevel: 0

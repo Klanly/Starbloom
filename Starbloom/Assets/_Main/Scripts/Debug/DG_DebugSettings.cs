@@ -13,18 +13,18 @@ public class DG_DebugSettings : MonoBehaviour {
     public bool PlayOnline = true;
     [Header("Build Convenience")]
     public bool DisableAudio = false;
-    [Header("Debug Tools")]
-    public bool BypassMainMenu = false;
-    public bool EnableDebugKeycodes = false;
-    public bool DisableAllPoolSpawningAtStart;
     [Header("Character")]
     public DG_PlayerCharacters.GenderValue GeneratedGender;
     public bool DontHideGear;
     [Header("Time Saving")]
+    public bool BypassMainMenu = false;
     public bool DisableAnimations;
     public bool AllowActionsOnHold;
     public bool AllowUIOnHold;
     public bool ForceInstantFade;
+    [Header("Debug Tools")]
+    public bool EnableDebugKeycodes = false;
+    public bool DisableAllPoolSpawningAtStart;
 
 
 

@@ -16,10 +16,6 @@ public class DG_SceneJumpTool : MonoBehaviour {
         [Button(ButtonSizes.Small)] public void TransistionToScene() { Portal.TriggerSceneChange(); }
     }
 
-
-
-    [HideInEditorMode]
-    public DG_SceneEntryPoints.PortalPoint[] PortalPoints;
     [HideInEditorMode]
     public List<ScenePortals> SceneTransistionList;
 
@@ -38,8 +34,6 @@ public class DG_SceneJumpTool : MonoBehaviour {
 
     public void LoadScenePortals(DG_SceneEntryPoints EntryPointsScript)
     {
-        PortalPoints = EntryPointsScript.PortalPoints;
-
         SceneTransistionList.Clear();
 
         DG_ScenePortalTrigger[] allObjects = UnityEngine.Object.FindObjectsOfType<DG_ScenePortalTrigger>();

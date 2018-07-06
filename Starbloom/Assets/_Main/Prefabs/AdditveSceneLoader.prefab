@@ -87,7 +87,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 0b1af9419dc8fd0458d208780f7d6704, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -143,17 +143,12 @@ MonoBehaviour:
   - NoEditorEditLoad: 0
     NoEditorPlayLoad: 0
     NoBuildLoad: 0
-    SceneName: Pathfinding
+    SceneName: AI
     EditorSceneFolderPath: Assets/_Main/Scenes/Additive/
   - NoEditorEditLoad: 0
     NoEditorPlayLoad: 0
     NoBuildLoad: 0
     SceneName: InGameHUD
-    EditorSceneFolderPath: Assets/_Main/Scenes/Additive/
-  - NoEditorEditLoad: 1
-    NoEditorPlayLoad: 1
-    NoBuildLoad: 1
-    SceneName: DialogueHUD
     EditorSceneFolderPath: Assets/_Main/Scenes/Additive/
   - NoEditorEditLoad: 0
     NoEditorPlayLoad: 0
@@ -185,15 +180,10 @@ MonoBehaviour:
     NoBuildLoad: 0
     SceneName: ProceduralEnvironment
     EditorSceneFolderPath: Assets/_Main/Scenes/Additive/
-  - NoEditorEditLoad: 0
-    NoEditorPlayLoad: 0
-    NoBuildLoad: 0
-    SceneName: Database
-    EditorSceneFolderPath: Assets/_Main/Scenes/Additive/
-  - NoEditorEditLoad: 0
-    NoEditorPlayLoad: 0
-    NoBuildLoad: 0
-    SceneName: NPC
+  - NoEditorEditLoad: 1
+    NoEditorPlayLoad: 1
+    NoBuildLoad: 1
+    SceneName: Dialogue
     EditorSceneFolderPath: Assets/_Main/Scenes/Additive/
   - NoEditorEditLoad: 0
     NoEditorPlayLoad: 0

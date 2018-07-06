@@ -27,20 +27,11 @@ EditorBuildSettings:
     path: Assets/_Main/Scenes/Additive/Fade Handler.unity
     guid: c5d1df5096f2a28449063409c388695d
   - enabled: 1
-    path: Assets/_Main/Scenes/Additive/Database.unity
-    guid: 0e6f1071888e4234383fe8d7d2ff332d
-  - enabled: 1
     path: Assets/_Main/Scenes/Additive/Database_Items.unity
     guid: fcbcf9c89e91fdf469c1c8e45ee8d1db
   - enabled: 1
-    path: Assets/_Main/Scenes/Additive/NPC.unity
-    guid: 97fa59059e993074e89bdee568d6c9ef
-  - enabled: 1
     path: Assets/_Main/Scenes/Additive/Management-Abilities.unity
     guid: 6387fb58dcdfec64ab624e8c7a6ddeb3
-  - enabled: 1
-    path: Assets/_Main/Scenes/Additive/DialogueHUD.unity
-    guid: 2beeb4d7d00661543a6c8accfab0a786
   - enabled: 1
     path: Assets/_Main/Scenes/Additive/Pooling.unity
     guid: 075add518e1215142891ea4c4e24f26f
@@ -51,6 +42,9 @@ EditorBuildSettings:
     path: Assets/_Main/Scenes/Additive/Audio.unity
     guid: edfc746ad82455e4d9c66c13a89c565a
   - enabled: 1
-    path: Assets/_Main/Scenes/Additive/Pathfinding.unity
-    guid: 7fd4245efbeec4849bfa88df348329ab
+    path: Assets/_Main/Scenes/Additive/AI.unity
+    guid: 96803cd44e93b6e4891c0b87db8ca49e
+  - enabled: 1
+    path: Assets/_Main/Scenes/Additive/Dialogue.unity
+    guid: c46fedaaced12bc49ad5ff1ec28d9fbc
   m_configObjects: {}

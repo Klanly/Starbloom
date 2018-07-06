@@ -476,15 +476,15 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4933585094930952}
+  - component: {fileID: 114715798726586476}
   - component: {fileID: 114600021269256074}
   - component: {fileID: 114743207135592710}
-  - component: {fileID: 114715798726586476}
-  - component: {fileID: 114739116649982634}
-  - component: {fileID: 114325387891842774}
+  - component: {fileID: 114377052890738362}
   - component: {fileID: 33829758617919274}
   - component: {fileID: 136883930271770002}
   - component: {fileID: 95875630996734122}
   - component: {fileID: 195713833658945184}
+  - component: {fileID: 54695808172026730}
   m_Layer: 24
   m_Name: Testing AI
   m_TagString: Enemy
@@ -840,23 +840,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1865102401807830
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4748944160757372}
-  - component: {fileID: 33666558748184734}
-  - component: {fileID: 23341082070929344}
-  m_Layer: 24
-  m_Name: Cone
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &1870692571225178
 GameObject:
   m_ObjectHideFlags: 1
@@ -980,7 +963,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4151760476514878}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4105825376662056
 Transform:
@@ -1034,7 +1017,6 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4748944160757372}
   - {fileID: 4682465440363980}
   - {fileID: 4090248093918128}
   - {fileID: 4681959564056310}
@@ -1492,7 +1474,7 @@ Transform:
   m_Children:
   - {fileID: 4806967935500184}
   m_Father: {fileID: 4151760476514878}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4682465440363980
 Transform:
@@ -1505,7 +1487,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 2.6934433}
   m_Children: []
   m_Father: {fileID: 4151760476514878}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4734206745816820
 Transform:
@@ -1518,19 +1500,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4308579439550206}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4748944160757372
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1865102401807830}
-  m_LocalRotation: {x: -0.00000037252897, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.03, z: -0.0030136108}
-  m_LocalScale: {x: 1, y: 1, z: 2.6934433}
-  m_Children: []
-  m_Father: {fileID: 4151760476514878}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4754885353022188
@@ -1777,41 +1746,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!23 &23341082070929344
-MeshRenderer:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1865102401807830}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 4294967295
-  m_Materials:
-  - {fileID: 2100000, guid: 7ca33b89973a9a442bf1655fe3d81ff0, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
 --- !u!23 &23611670791542598
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -1897,13 +1831,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1460988848205902}
   m_Mesh: {fileID: 4300002, guid: 3974b181f8f59754ca61fd0985a39b73, type: 3}
---- !u!33 &33666558748184734
-MeshFilter:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1865102401807830}
-  m_Mesh: {fileID: 4300000, guid: f0429a1714b405746923fd42b512a3cf, type: 3}
 --- !u!33 &33829758617919274
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -1918,6 +1845,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1062458064636572}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!54 &54695808172026730
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1455744706472234}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!82 &82988745018426624
 AudioSource:
   m_ObjectHideFlags: 1
@@ -2025,7 +1967,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 5a247b2635b2ebd4fbe23d74b732f83f, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
@@ -2067,7 +2009,7 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!114 &114325387891842774
+--- !u!114 &114377052890738362
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -2075,12 +2017,37 @@ MonoBehaviour:
   m_GameObject: {fileID: 1455744706472234}
   m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7e20de74e27f174f8414ef40ea29b99, type: 3}
+  m_Script: {fileID: 11500000, guid: e39e48200cd6f85459b9f6c4ecdfce6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  useIK: 1
-  lookOffset: 2
-  m_Animator: {fileID: 0}
+  MovementSettings:
+    stopDistanceAdjust: 0.5
+    walkSpeed: 2
+    RunSpeed: 4
+    m_StationaryTurnSpeed: 180
+    m_MovingTurnSpeed: 360
+    rotateSpeed: 7
+    smoothMove: 0.2
+    UseWander: 1
+    Wander:
+    - wanderPauseTimeLow: 3
+      wanderPauseTimeHigh: 6
+      wanderRadius: 25
+    UseNodeWander: 1
+    NodeWander:
+    - followSequence: 0
+      nodeWanderPauseTimeLow: 3
+      nodeWanderPauseTimeHigh: 6
+  DebugSetBehaviourType: 0
+  CurrentState: 0
+  CurrentMovementState: 0
+  TargetPosition: {fileID: 0}
+  NodePosition: {fileID: 0}
+  DistanceToTarget: 0
+  agent: {fileID: 0}
+  findWanderSpotTimeOutMax: 1000
+  timeOutClock: 0
+  nodeWanderSequenceID: 0
 --- !u!114 &114600021269256074
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2093,8 +2060,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NetSyncType: 1
-  AnimSync: {fileID: 114743207135592710}
   Distance: 0
+  isController: 0
 --- !u!114 &114715798726586476
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2107,98 +2074,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Type: 14
---- !u!114 &114739116649982634
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1455744706472234}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 447a94a010444ac419446e11a645da10, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  aiType: 0
-  chaseType: 1
-  interactionLayers:
-    serializedVersion: 2
-    m_Bits: 1
-  enemyLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  myBody: {fileID: 4151760476514878}
-  wanderSettings:
-    wanderPauseTimeLow: 3
-    wanderPauseTimeHigh: 6
-    wanderRadius: 25
-  nodeWanderSettings:
-    useNodeGroup: 0
-    nodeGroupName: 
-    followSequence: 0
-    nodeWanderPauseTimeLow: 6
-    nodeWanderPauseTimeHigh: 6
-  wayPointSettings:
-    patrolStopTimeLow: 4
-    patrolStopTimeHigh: 8
-    useCustomWPTime: 0
-    wayPointStopTime: 
-    useWayPointScript: 0
-    wayPoints: []
-  speedSettings:
-    chaseSpeed: 5
-    walkSpeed: 2.5
-    m_MovingTurnSpeed: 360
-    m_StationaryTurnSpeed: 180
-    m_MoveSpeedMultiplier: 0.5
-    m_AnimSpeedMultiplier: 1
-    rotateSpeed: 7
-    smoothMove: 0.2
-  distanceSettings:
-    stoppingDistanceHigh: 2.1
-    stoppingDistanceLow: 2.1
-    attackingDistance: 25
-    personalAwarenessDistance: 0
-  markerSettings:
-    myMark: {fileID: 1865102401807830}
-    markActiveOnAlert: 1
-    markerUnawareColor: {r: 0, g: 1, b: 0, a: 1}
-    markerCautionColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    markerAttackColor: {r: 1, g: 0, b: 0, a: 1}
-  detectionSettings:
-    omniVision: 0
-    normalVisionDistance: 40
-    pursueVisionDistance: 100
-    visionDistance: 40
-    viewAngle: 110
-    reactionTimeLow: 0.5
-    reactionTimeHigh: 5
-    reactionTimeSmooth: 0.15
-    searchTime: 10
-    campTime: 2
-    alertOtherAgents: 1
-    heightOffset: 0
-    myEyes: {fileID: 4682465440363980}
-  advancedSettings:
-    holdGround: 0
-    wakeUpTimeOut: 60
-    debugTarget: 1
-    debugColor: {r: 0.85294116, g: 0.14424738, b: 0.7747401, a: 0.609}
-    playerUpdateInterval: 0.1
-    stopDistanceAdjust: 0.5
-    positionChangeLow: 5
-    positionChangeHigh: 10
-  canSeePlayer: 0
-  chase: 0
-  checkingForPlayer: 0
-  attackOk: 0
-  pauseMovement: 0
-  target: {fileID: 0}
-  targetWayPoint: {fileID: 0}
-  distance: 0
-  playerDistance: 0
-  stoppingDistance: 0
-  agent: {fileID: 0}
-  nManager: {fileID: 0}
 --- !u!114 &114743207135592710
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2210,6 +2085,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c69e547d85285a4b815c87b3098db84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Anim: {fileID: 95875630996734122}
+  MovementSync: {fileID: 114600021269256074}
+  CurrentStateMovementAnimationSpeed: 0.5
+  MidAnimation: 0
 --- !u!120 &120746127527581240
 LineRenderer:
   m_ObjectHideFlags: 1

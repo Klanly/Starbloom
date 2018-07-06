@@ -258,7 +258,6 @@ Transform:
   - {fileID: 1017073428}
   - {fileID: 1337580522}
   - {fileID: 2126961905}
-  - {fileID: 815388411}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -487,57 +486,6 @@ Transform:
   m_Father: {fileID: 1620623744}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &815388410
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 815388411}
-  - component: {fileID: 815388412}
-  m_Layer: 0
-  m_Name: Animation String Values
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &815388411
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 815388410}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 92244914}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &815388412
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 815388410}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2d1b28b078ff3145b596729df46d7a1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BaseState: Grounded
-  RunVelocityName: Forward
-  ActionTriggerBoolName: ActionTrigger
-  ActionState: ActionState
-  SubState: SubState
-  GroundedBool: OnGround
-  AttackTriggerBoolName: Attacking
-  HoldAttackTriggerName: HoldAttackState
-  AnimationBoolValues:
-  - BoolName: OnGround
-    CurrentState: 0
 --- !u!1 &816782337
 GameObject:
   m_ObjectHideFlags: 0
@@ -1174,7 +1122,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19407178, g: 0.2252253, b: 0.2602253, a: 0.6}
+  m_BackGroundColor: {r: 0.1970468, g: 0.22968782, b: 0.26468787, a: 0.6}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -1846,15 +1794,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayOnline: 1
   DisableAudio: 0
-  BypassMainMenu: 1
-  EnableDebugKeycodes: 1
-  DisableAllPoolSpawningAtStart: 0
   GeneratedGender: 2
   DontHideGear: 0
+  BypassMainMenu: 1
   DisableAnimations: 0
   AllowActionsOnHold: 0
   AllowUIOnHold: 0
   ForceInstantFade: 0
+  EnableDebugKeycodes: 1
+  DisableAllPoolSpawningAtStart: 0
 --- !u!114 &1620623746
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1900,6 +1848,8 @@ MonoBehaviour:
     Minute: 0
   TimePresets:
     PresetTime: 0
+  DebugSeason: 0
+  DebugWeather: 0
 --- !u!114 &1620623749
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -9,6 +9,12 @@ public class Debug_AdjustTime : MonoBehaviour {
     public SimulateDayEnd NewDay;
     public SetSpecificTime TimeSpecific;
     public SetTime TimePresets;
+    [Header("Weather")]
+    public WeatherHandler.Seasons DebugSeason;
+    public WeatherHandler.WeatherTyps DebugWeather;
+    [ButtonGroup]
+    public void ChangeSeason()
+    { QuickFind.NetworkSync.AdjustWeather((int)DebugSeason, (int)DebugWeather); }
 
 
 

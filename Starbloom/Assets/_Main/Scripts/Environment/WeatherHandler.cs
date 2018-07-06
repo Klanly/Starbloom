@@ -120,15 +120,6 @@ public class WeatherHandler : MonoBehaviour
     public WeatherSetting[] WinterWeather;
 
 
-    [Header("Debug")]
-    public Seasons DebugSeason;
-    public WeatherTyps DebugWeather;
-    [ButtonGroup]
-    public void ChangeSeason()
-    { QuickFind.NetworkSync.AdjustWeather((int)DebugSeason, (int)DebugWeather); }
-
-
-
 
 
     private void Awake()

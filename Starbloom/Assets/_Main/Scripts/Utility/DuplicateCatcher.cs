@@ -29,7 +29,9 @@ public class DuplicateCatcher : MonoBehaviour
         MusicObject,
         SFXObject,
         ClothingObject,
-        AnimationObject
+        AnimationObject,
+        SceneEntryPoint,
+        ScenePathNode
     }
 
     public DatabaseType DBType;
@@ -105,6 +107,8 @@ public class DuplicateCatcher : MonoBehaviour
             case DatabaseType.SFXObject: { GD.ClassType = typeof(DG_SFXDatabase); GD.TransformReference = QuickFindInEditor.GetSFXDatabase().transform; GD.ObjectReference = GD.TransformReference.GetComponent<DG_SFXDatabase>(); GD.ItemClassType = typeof(DG_SFXObject); } break;
             case DatabaseType.ClothingObject: { GD.ClassType = typeof(DG_ClothingDatabase); GD.TransformReference = QuickFindInEditor.GetClothingDatabase().transform; GD.ObjectReference = GD.TransformReference.GetComponent<DG_ClothingDatabase>(); GD.ItemClassType = typeof(DG_ClothingObject); } break;
             case DatabaseType.AnimationObject: { GD.ClassType = typeof(DG_AnimationDatabase); GD.TransformReference = QuickFindInEditor.GetAnimationDatabase().transform; GD.ObjectReference = GD.TransformReference.GetComponent<DG_AnimationDatabase>(); GD.ItemClassType = typeof(DG_AnimationObject); } break;
+            case DatabaseType.SceneEntryPoint: { GD.ClassType = typeof(DG_SceneEntryPoints); GD.TransformReference = QuickFindInEditor.SceneEntryPoints().transform; GD.ObjectReference = GD.TransformReference.GetComponent<DG_SceneEntryPoints>(); GD.ItemClassType = typeof(DG_SceneEntryObject); } break;
+            case DatabaseType.ScenePathNode: { GD.ClassType = typeof(DG_ScenePathNodes); GD.TransformReference = QuickFindInEditor.ScenePathNodes().transform; GD.ObjectReference = GD.TransformReference.GetComponent<DG_ScenePathNodes>(); GD.ItemClassType = typeof(DG_ScenePathNode); } break;
         }
         return GD;
     }
@@ -129,6 +133,8 @@ public class DuplicateCatcher : MonoBehaviour
             case DatabaseType.SFXObject: { TO.ClassType = typeof(DG_SFXObject); TO.ObjectReference = T.GetComponent<DG_SFXObject>(); } break;
             case DatabaseType.ClothingObject: { TO.ClassType = typeof(DG_ClothingObject); TO.ObjectReference = T.GetComponent<DG_ClothingObject>(); } break;
             case DatabaseType.AnimationObject: { TO.ClassType = typeof(DG_AnimationObject); TO.ObjectReference = T.GetComponent<DG_AnimationObject>(); } break;
+            case DatabaseType.SceneEntryPoint: { TO.ClassType = typeof(DG_SceneEntryObject); TO.ObjectReference = T.GetComponent<DG_SceneEntryObject>(); } break;
+            case DatabaseType.ScenePathNode: { TO.ClassType = typeof(DG_ScenePathNode); TO.ObjectReference = T.GetComponent<DG_ScenePathNode>(); } break;
         }
         return TO;
     }

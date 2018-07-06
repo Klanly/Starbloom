@@ -61,14 +61,10 @@ public class DG_SceneTransition : MonoBehaviour {
         QuickFind.NetworkSync.SetSelfInScene(NetworkSceneIndexLoading);
 
         //Set Player, and Cam.
-        GameObject[] goArray = LoadScene.GetRootGameObjects();
-        for (int i = 0; i < goArray.Length; i++)
-        { if (goArray[i].name == "Scene Transition Entry Points") { LoadingSceneEntryPoints = goArray[i].GetComponent<DG_SceneEntryPoints>(); break; } }
-
-        DG_SceneEntryPoints.PortalPoint PP = LoadingSceneEntryPoints.GetStartingPositionByID(LoadingPortalID);
-        QuickFind.PlayerTrans.position = PP.PortalTransformReference.position;
-        QuickFind.PlayerTrans.eulerAngles = PP.PortalTransformReference.eulerAngles;
-        QuickFind.PlayerCam.InstantSetCameraAngle(PP.PortalTransformReference.GetChild(0).eulerAngles);
+        DG_SceneEntryObject Portal = QuickFind.SceneEntryPoints.GetItemFromID(LoadingPortalID);
+        QuickFind.PlayerTrans.position = Portal.transform.position;
+        QuickFind.PlayerTrans.eulerAngles = Portal.transform.eulerAngles;
+        QuickFind.PlayerCam.InstantSetCameraAngle(Portal.CameraFacing);
 
         QuickFind.PathfindingGeneration.SceneChange(SceneUnloading);
 

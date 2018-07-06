@@ -5,25 +5,27 @@ using UnityEngine;
 public class DG_AIMovementSync : MonoBehaviour {
 
     public DG_NetworkSyncRates.SyncRateTypes NetSyncType;
-    public DG_AIAnimationSync AnimSync;
 
     [HideInInspector] public float Distance;
     DG_NetworkSyncRates.SyncRateModule Sync;
-    bool isController = false;  
+    [HideInInspector] public bool isController = false;  
     float Timer;
     Transform _T;
     NetworkObject RelayNetworkObject;
-    node_AIMovement MovementScript;
+    DG_AIEntity MovementScript;
 
     Vector3 KnownPosition;
     Vector3 KnownHeading;
     int[] OutData;
 
 
+
     private void Start()
     {
+        if (transform.parent == null) { Debug.Log("AI Object Left In Scene, Destroying"); Destroy(gameObject); return; }
+
         _T = transform;
-        MovementScript = transform.GetComponent<node_AIMovement>();
+        MovementScript = transform.GetComponent<DG_AIEntity>();
         if (RelayNetworkObject == null) RelayNetworkObject = transform.parent.GetComponent<NetworkObject>();
         KnownPosition = QuickFind.ConvertIntsToPosition(RelayNetworkObject.PositionX, RelayNetworkObject.PositionY, RelayNetworkObject.PositionZ);
         KnownHeading.y = QuickFind.ConvertIntToFloat(RelayNetworkObject.YFacing);
@@ -35,6 +37,7 @@ public class DG_AIMovementSync : MonoBehaviour {
         if (Sync == null) Sync = QuickFind.NetworkSyncRates.GetSyncModuleByType(NetSyncType);
         CheckIfYouAreOwner();
 
+
         if (isController)
         {
             Timer = Timer - Time.deltaTime;
@@ -44,23 +47,27 @@ public class DG_AIMovementSync : MonoBehaviour {
                 SendOutAIPosition();
             }
         }
+
+
+        if (!QuickFind.WithinDistanceVec(transform.position, KnownPosition, Sync.MaxDistance))
+        {
+            _T.position = KnownPosition;
+            Distance = 0;
+        }
         else
         {
-            if (!QuickFind.WithinDistanceVec(transform.position, KnownPosition, Sync.MaxDistance))
-            {
-                _T.position = KnownPosition;
-                Distance = 0;
-            }
-            else
+            Distance = Vector3.Distance(_T.position, KnownPosition);
+
+            if (!isController)
             {
                 int AdditiveSpeedMultiplier = 1;
-                Distance = Vector3.Distance(_T.position, KnownPosition);
                 if (Distance > 2) AdditiveSpeedMultiplier = (int)Distance;
                 float SlerpRate = Sync.SlerpMoveRate * AdditiveSpeedMultiplier;
                 _T.position = Vector3.MoveTowards(_T.position, KnownPosition, SlerpRate);
             }
-            _T.eulerAngles = QuickFind.AngleLerp(_T.eulerAngles, KnownHeading, Sync.SlerpTurnRate);
         }
+        if (!isController)
+            _T.eulerAngles = QuickFind.AngleLerp(_T.eulerAngles, KnownHeading, Sync.SlerpTurnRate);
     }
 
 
@@ -78,6 +85,8 @@ public class DG_AIMovementSync : MonoBehaviour {
         RelayNetworkObject.PositionY = QuickFind.ConvertFloatToInt(Pos.y);
         RelayNetworkObject.PositionZ = QuickFind.ConvertFloatToInt(Pos.z);
         RelayNetworkObject.YFacing = QuickFind.ConvertFloatToInt(Dir);
+
+        KnownPosition = QuickFind.ConvertIntsToPosition(RelayNetworkObject.PositionX, RelayNetworkObject.PositionY, RelayNetworkObject.PositionZ);
 
         OutData[2] = RelayNetworkObject.PositionX;
         OutData[3] = RelayNetworkObject.PositionY;
@@ -101,7 +110,7 @@ public class DG_AIMovementSync : MonoBehaviour {
 
 
 
-    void CheckIfYouAreOwner()
+    public void CheckIfYouAreOwner()
     {
         if(QuickFind.NetworkSync.UserID == RelayNetworkObject.Scene.SceneOwnerID)
         {
@@ -112,8 +121,6 @@ public class DG_AIMovementSync : MonoBehaviour {
                 isController = true;
                 transform.GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = true;
                 MovementScript.enabled = true;
-                transform.GetComponent<node_AIAnimation>().enabled = true;
-
             }
         }
     }

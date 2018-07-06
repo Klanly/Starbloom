@@ -77,9 +77,9 @@ public class CameraLogic : MonoBehaviour {
         }
     }
 
-    public void InstantSetCameraAngle(Vector3 Euler)
+    public void InstantSetCameraAngle(float CameraFacing)
     {
-        transform.eulerAngles = new Vector3(30, Euler.y, 0);
+        transform.eulerAngles = new Vector3(30, CameraFacing, 0);
     }
 
 

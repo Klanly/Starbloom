@@ -143,10 +143,10 @@ public class PhotonView : Photon.MonoBehaviour
 
 #if UNITY_EDITOR
     // Suppressing compiler warning "this variable is never used". Only used in the CustomEditor, only in Editor
-    #pragma warning disable 0414
+    
     [SerializeField]
     bool ObservedComponentsFoldoutOpen = true;
-    #pragma warning restore 0414
+    
 #endif
 
     [SerializeField]

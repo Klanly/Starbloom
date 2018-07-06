@@ -807,7 +807,7 @@ internal class NetworkingPeer : LoadBalancingPeer, IPhotonPeerListener
         #endif
 
 
-        #pragma warning disable 0162    // the library variant defines if we should use PUN's SocketUdp variant (at all)
+        // the library variant defines if we should use PUN's SocketUdp variant (at all)
         if (PhotonPeer.NoSocket)
         {
             #if !UNITY_EDITOR && (UNITY_PS3 || UNITY_ANDROID)
@@ -828,7 +828,7 @@ internal class NetworkingPeer : LoadBalancingPeer, IPhotonPeerListener
                 Debug.Log("No socket implementation set for 'NoSocket' assembly. Please check your settings.");
             }
         }
-        #pragma warning restore 0162
+        
 
         if (PhotonHandler.PingImplementation == null)
         {

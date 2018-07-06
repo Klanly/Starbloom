@@ -41,6 +41,8 @@ public static class QuickFindInEditor
     public static DG_ClothingDatabase GetClothingDatabase() { return GameObject.Find("Equipables Database").GetComponent<DG_ClothingDatabase>(); }
     public static DG_AnimationDatabase GetAnimationDatabase() { return GameObject.Find("Animation Database").GetComponent<DG_AnimationDatabase>(); }
     public static DG_PathfindingGenerationHandler GetPathfindingGeneration() { return GameObject.Find("PathFinding Generation").GetComponent<DG_PathfindingGenerationHandler>(); }
+    public static DG_SceneEntryPoints SceneEntryPoints() { return GameObject.Find("Scene Transition Entry Points").GetComponent<DG_SceneEntryPoints>(); }
+    public static DG_ScenePathNodes ScenePathNodes() { return GameObject.Find("Scene Path Nodes").GetComponent<DG_ScenePathNodes>(); }
 
     //Save Data
     public static UserSettings GetEditorUserSettings() { return GameObject.Find("Player Settings").GetComponent<UserSettings>(); }
@@ -140,7 +142,10 @@ public static class QuickFind
     public static DG_SceneTransition SceneTransitionHandler = null;
     public static DG_ClothingHairManager ClothingHairManager = null;
     public static DG_GameStartHandler GameStartHandler = null;
+
+    //AI
     public static DG_PathfindingGenerationHandler PathfindingGeneration = null;
+    public static DG_AI_Master AIMasterRef = null;
 
 
     //Tools
@@ -187,6 +192,10 @@ public static class QuickFind
     public static DG_EnemyDatabase EnemyDatabase = null;
     public static DG_ClothingDatabase ClothingDatabase = null;
     public static DG_AnimationDatabase AnimationDatabase = null;
+
+    //Scene Objects
+    public static DG_SceneEntryPoints SceneEntryPoints = null;
+    public static DG_ScenePathNodes ScenePathNodes = null;
 
 
     //Serialization
