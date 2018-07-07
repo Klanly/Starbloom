@@ -14,7 +14,7 @@ public class DG_WateringCan : MonoBehaviour {
     GameObject HitObject;
     DG_ContextObject KnownCO;
 
-    [HideInInspector] public bool PlacementActive;
+    [System.NonSerialized] public bool PlacementActive;
     bool SafeToPlace = false;
     bool AwaitingResponse;
 

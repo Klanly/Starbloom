@@ -23,7 +23,7 @@ public class DG_ControllerMenuItem : MonoBehaviour {
     public TMPro.TextMeshProUGUI KeyboardText = null;
     public TMPro.TextMeshProUGUI ControllerText = null;
 
-    [HideInInspector] public bool isActive = false;
+    [System.NonSerialized] public bool isActive = false;
 
 
     private void Awake()

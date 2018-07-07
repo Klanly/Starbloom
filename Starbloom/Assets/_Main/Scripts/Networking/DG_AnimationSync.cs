@@ -38,9 +38,9 @@ public class DG_AnimationSync : MonoBehaviour {
     public DG_CharacterLink CharacterLink;
 
     //Animation
-    [HideInInspector] public bool DisableWeaponSwitching = false;
-    [HideInInspector] public bool MidAnimation = false;
-    [HideInInspector] public bool isPlayer;
+    [System.NonSerialized] public bool DisableWeaponSwitching = false;
+    [System.NonSerialized] public bool MidAnimation = false;
+    [System.NonSerialized] public bool isPlayer;
 
 
     int[] OutData = new int[3];

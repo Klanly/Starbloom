@@ -477,9 +477,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4933585094930952}
   - component: {fileID: 114715798726586476}
-  - component: {fileID: 114600021269256074}
   - component: {fileID: 114743207135592710}
   - component: {fileID: 114377052890738362}
+  - component: {fileID: 114348269924878050}
   - component: {fileID: 33829758617919274}
   - component: {fileID: 136883930271770002}
   - component: {fileID: 95875630996734122}
@@ -1858,7 +1858,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!82 &82988745018426624
 AudioSource:
@@ -2009,6 +2009,20 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &114348269924878050
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1455744706472234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c60de8185b1f90e488ee041391d7be9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StartDetectionBehaviour: 3
+  CurrentDetectionBehaviour: 0
+  DetectedTarget: {fileID: 0}
 --- !u!114 &114377052890738362
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2020,48 +2034,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e39e48200cd6f85459b9f6c4ecdfce6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MovementSettings:
-    stopDistanceAdjust: 0.5
-    walkSpeed: 2
-    RunSpeed: 4
-    m_StationaryTurnSpeed: 180
-    m_MovingTurnSpeed: 360
-    rotateSpeed: 7
-    smoothMove: 0.2
-    UseWander: 1
-    Wander:
-    - wanderPauseTimeLow: 3
-      wanderPauseTimeHigh: 6
-      wanderRadius: 25
-    UseNodeWander: 1
-    NodeWander:
-    - followSequence: 0
-      nodeWanderPauseTimeLow: 3
-      nodeWanderPauseTimeHigh: 6
-  DebugSetBehaviourType: 0
-  CurrentState: 0
-  CurrentMovementState: 0
-  TargetPosition: {fileID: 0}
-  NodePosition: {fileID: 0}
-  DistanceToTarget: 0
-  agent: {fileID: 0}
-  findWanderSpotTimeOutMax: 1000
-  timeOutClock: 0
-  nodeWanderSequenceID: 0
---- !u!114 &114600021269256074
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1455744706472234}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c58f5ded27e5e0c4b9f6b889d97eaba1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  NetSyncType: 1
-  Distance: 0
-  isController: 0
+  StartMovementBehaviour: 2
+  CurrentMovementBehaviour: 0
+  nodeWanderSequenceID: -1
 --- !u!114 &114715798726586476
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2086,9 +2061,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Anim: {fileID: 95875630996734122}
-  MovementSync: {fileID: 114600021269256074}
-  CurrentStateMovementAnimationSpeed: 0.5
-  MidAnimation: 0
 --- !u!120 &120746127527581240
 LineRenderer:
   m_ObjectHideFlags: 1
@@ -2318,4 +2290,4 @@ NavMeshAgent:
   m_Height: 2
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
+  m_ObstacleAvoidanceType: 2

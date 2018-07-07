@@ -61,7 +61,7 @@ public class DG_GUINameChange : MonoBehaviour {
     public int DebugCharIDVal;
 
 
-    [HideInInspector] public bool NameChangeIsOpen = false;
+    [System.NonSerialized] public bool NameChangeIsOpen = false;
     bool InLetterRegion = true;
     int CurrentRow = 0;
     int CurrentColumn = 0;

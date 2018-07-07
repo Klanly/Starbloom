@@ -20,12 +20,11 @@ public class node_ConditionalWayPointHandler : MonoBehaviour {
 	[HideInInspector]
 	public bool atConditionalWayPoint;
 
-	private node_AIMovement myaiMovement;
+	private DG_AIEntity myaiMovement;
 	private float wayPointDistance;
 
 	void Awake () {
-		myaiMovement = this.GetComponent<node_AIMovement>();
-		myWayPoints = myaiMovement.wayPointSettings.wayPoints;
+		myaiMovement = this.GetComponent<DG_AIEntity>();
 		if(myTargetWayPoint == null || usePatrol){
 			myTargetWayPoint = myWayPoints[0];
 		}
@@ -33,7 +32,7 @@ public class node_ConditionalWayPointHandler : MonoBehaviour {
 
 	void Update () {
 		wayPointDistance = Vector3.Distance(transform.position, myTargetWayPoint.position);
-		if(wayPointDistance <= myaiMovement.advancedSettings.stopDistanceAdjust + myaiMovement.agent.stoppingDistance && myaiMovement.agent.speed != 0){
+		if(wayPointDistance <= myaiMovement.MovementSettings.stopDistanceAdjust + myaiMovement.agent.stoppingDistance && myaiMovement.agent.speed != 0){
 			wayPointHit();
 		}
 		if(atConditionalWayPoint){
@@ -41,8 +40,8 @@ public class node_ConditionalWayPointHandler : MonoBehaviour {
 				myTargetWayPoint.GetComponent<node_WayPointConditional>().atThisWayPoint = false;
 				myTargetWayPoint.GetComponent<node_WayPointConditional>().moveToNextWayPoint = false;
 				myTargetWayPoint = myTargetWayPoint.GetComponent<node_WayPointConditional>().nextWayPointConditional;
-				myaiMovement.targetWayPoint = myTargetWayPoint;
-				myaiMovement.agent.speed = myaiMovement.speedSettings.walkSpeed;
+				//myaiMovement.TargetPosition = myTargetWayPoint;
+				myaiMovement.agent.speed = myaiMovement.MovementSettings.walkSpeed;
 				myaiMovement.agent.SetDestination(myTargetWayPoint.position);
 				atConditionalWayPoint = false;
 			}
@@ -66,8 +65,8 @@ public class node_ConditionalWayPointHandler : MonoBehaviour {
 			if(!myTargetWayPoint.GetComponent<node_WayPointConditional>().conditionalWayPoint){
 				myTargetWayPoint.GetComponent<node_WayPointConditional>().atThisWayPoint = false;
 				myTargetWayPoint = myWayPoints[wayPointIndex];
-				myaiMovement.targetWayPoint = myTargetWayPoint;
-				myaiMovement.agent.speed = myaiMovement.speedSettings.walkSpeed;
+				//myaiMovement.TargetPosition = myTargetWayPoint;
+				myaiMovement.agent.speed = myaiMovement.MovementSettings.walkSpeed;
 			}
 		}
 	}

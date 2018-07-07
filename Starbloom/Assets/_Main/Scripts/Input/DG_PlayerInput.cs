@@ -36,23 +36,23 @@ public class DG_PlayerInput : MonoBehaviour {
             ControllerChangeMenu
         }
 
-        [HideInInspector] public DG_CharacterLink CharLink;
-        [HideInInspector] public InputStateModes InputState = InputStateModes.Normal;
+        [System.NonSerialized] public DG_CharacterLink CharLink;
+        [System.NonSerialized] public InputStateModes InputState = InputStateModes.Normal;
         [Header("Context Detection")]
         public ContextDetection Context;
         public ContextDetection Targeting;
 
 
-        [HideInInspector] public bool NoActionThisFrame; //Added to Enable Double clicking with Unity's built in button system.
-        [HideInInspector] public bool Moveable = true;
-        [HideInInspector] public bool InVehicle = false;
-        [HideInInspector] public bool ShowCursor = true;
+        [System.NonSerialized] public bool NoActionThisFrame; //Added to Enable Double clicking with Unity's built in button system.
+        [System.NonSerialized] public bool Moveable = true;
+        [System.NonSerialized] public bool InVehicle = false;
+        [System.NonSerialized] public bool ShowCursor = true;
 
-        [HideInInspector] public float VerticalAxis;
-        [HideInInspector] public float HorizontalAxis;
-        [HideInInspector] public float CamVerticalAxis;
-        [HideInInspector] public float CamHorizontalAxis;
-        [HideInInspector] public float CamZoomAxis;
+        [System.NonSerialized] public float VerticalAxis;
+        [System.NonSerialized] public float HorizontalAxis;
+        [System.NonSerialized] public float CamVerticalAxis;
+        [System.NonSerialized] public float CamHorizontalAxis;
+        [System.NonSerialized] public float CamZoomAxis;
 
         [Header("Button Set")] public DG_GameButtons ButtonSet;
     }
@@ -70,7 +70,7 @@ public class DG_PlayerInput : MonoBehaviour {
     [Header("Players")]
     public Player MainPlayer;
 
-    [HideInInspector] public CurrentInputState InputState;
+    [System.NonSerialized] public CurrentInputState InputState;
 
 
     private void Awake()

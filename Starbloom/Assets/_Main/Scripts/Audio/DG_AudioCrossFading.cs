@@ -27,13 +27,13 @@ public class DG_AudioCrossFading : MonoBehaviour
     public class MusicObject
     {
         public AudioSource AudioSource;
-        [HideInInspector] public int MusicID;
-        [HideInInspector] public bool IsPlaying = false;
-        [HideInInspector] public bool IsFading = false;
-        [HideInInspector] public bool IsFadingOut = false;
-        [HideInInspector] public float FadeTime;
-        [HideInInspector] public float FadeTimer;
-        [HideInInspector] public float FinalVolume;
+        [System.NonSerialized] public int MusicID;
+        [System.NonSerialized] public bool IsPlaying = false;
+        [System.NonSerialized] public bool IsFading = false;
+        [System.NonSerialized] public bool IsFadingOut = false;
+        [System.NonSerialized] public float FadeTime;
+        [System.NonSerialized] public float FadeTimer;
+        [System.NonSerialized] public float FinalVolume;
     }
 
     public MusicObject Source1;

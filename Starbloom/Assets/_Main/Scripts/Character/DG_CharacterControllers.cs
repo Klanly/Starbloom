@@ -10,7 +10,7 @@ public class DG_CharacterControllers : Photon.MonoBehaviour
 
 
     public GameObject[] DebugCharacters = null;
-    [HideInInspector] public bool GameStart = true;
+    [System.NonSerialized] public bool GameStart = true;
 
 
     private void Awake()

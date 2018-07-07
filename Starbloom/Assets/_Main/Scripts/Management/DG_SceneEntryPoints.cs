@@ -10,20 +10,6 @@ public class DG_SceneEntryPoints : MonoBehaviour {
     public DG_SceneEntryObject[] ItemCatagoryList;
     [HideInInspector]
     public int ListCount;
-    [Header("CAREFUL WITH THIS")]
-    public bool AllowNewSceneReset;
-
-    [Button(ButtonSizes.Small)]
-    public void ResetForNewScene()
-    {
-        DG_SceneEntryObject SEO = ItemCatagoryList[0];
-        int Count = ItemCatagoryList.Length;
-        for (int i = 1; i < Count; i++) { if (ItemCatagoryList[1] != null ) DestroyImmediate(ItemCatagoryList[1].gameObject); }
-        ItemCatagoryList = new DG_SceneEntryObject[1];
-        ListCount = 1;
-        ItemCatagoryList[0] = SEO;
-        SEO.DatabaseID = 0;
-    }
 
 
 

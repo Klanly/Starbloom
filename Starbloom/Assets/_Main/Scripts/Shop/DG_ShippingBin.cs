@@ -17,8 +17,8 @@ public class DG_ShippingBin : MonoBehaviour {
         { return Low + Normal + High + Max; }
     }
 
-    [HideInInspector] public List<ShippingBinItem> DailyShippingItems;
-    [HideInInspector] public DG_ContextObject ActiveBinObject;
+    [System.NonSerialized] public List<ShippingBinItem> DailyShippingItems;
+    [System.NonSerialized] public DG_ContextObject ActiveBinObject;
     int NetID = 0;
 
 

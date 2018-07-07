@@ -24,7 +24,7 @@ public class DG_ShopGuiItem : MonoBehaviour {
 
 
 
-    [HideInInspector] public DG_ShopAtlasObject.SeasonalGood SeasonalGoodsRef;
+    [System.NonSerialized] public DG_ShopAtlasObject.SeasonalGood SeasonalGoodsRef;
 
 
 

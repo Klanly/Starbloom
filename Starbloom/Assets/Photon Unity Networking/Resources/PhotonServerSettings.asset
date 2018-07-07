@@ -89,4 +89,5 @@ MonoBehaviour:
   - ReceiveAnimationSubState
   - ReceiveUserEquipment
   - ReceiveAILocationSync
+  - ReceiveAIDestination
   DisableAutoOpenWizard: 1

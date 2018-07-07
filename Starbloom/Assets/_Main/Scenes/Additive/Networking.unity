@@ -150,7 +150,6 @@ MonoBehaviour:
   DebugCharacters:
   - {fileID: 1776617526}
   - {fileID: 768275627}
-  GameStart: 1
 --- !u!4 &106225853
 Transform:
   m_ObjectHideFlags: 0
@@ -280,8 +279,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GameID: DefaultRoom
-  RequestedCharacterNum: -1
-  CreateNewRoom: 0
   AutoConnect: 1
   Version: 1
   IdleTimeOut: 300
@@ -312,11 +309,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SyncRates:
   - Type: 0
-    SendRate: 0.1
-    SlerpMoveRate: 0.18
-    SlerpTurnRate: 0.3
-    MaxDistance: 5
-  - Type: 1
     SendRate: 0.1
     SlerpMoveRate: 0.18
     SlerpTurnRate: 0.3
@@ -363,9 +355,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SceneID: 3
   SceneOwnerID: 0
-  TempNetworkObjectList: []
-  NetworkObjectList: []
-  JunkObject: {fileID: 0}
 --- !u!1 &492757118
 GameObject:
   m_ObjectHideFlags: 0
@@ -406,8 +395,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Scene: {fileID: 0}
-  NetworkObjectID: 0
   PositionX: -444
   PositionY: 216
   PositionZ: -800
@@ -465,8 +452,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Scene: {fileID: 0}
-  NetworkObjectID: 0
   PositionX: -269
   PositionY: 225
   PositionZ: -1156
@@ -524,8 +509,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Scene: {fileID: 0}
-  NetworkObjectID: 0
   PositionX: 300
   PositionY: 226
   PositionZ: 200
@@ -811,9 +794,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SceneID: 1
   SceneOwnerID: 0
-  TempNetworkObjectList: []
-  NetworkObjectList: []
-  JunkObject: {fileID: 0}
 --- !u!1 &967766993
 GameObject:
   m_ObjectHideFlags: 0
@@ -862,9 +842,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SceneID: 2
   SceneOwnerID: 0
-  TempNetworkObjectList: []
-  NetworkObjectList: []
-  JunkObject: {fileID: 0}
 --- !u!1 &1065796223
 GameObject:
   m_ObjectHideFlags: 0
@@ -905,8 +882,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Scene: {fileID: 0}
-  NetworkObjectID: 0
   PositionX: -4200
   PositionY: 165
   PositionZ: 800
@@ -2224,8 +2199,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Scene: {fileID: 0}
-  NetworkObjectID: 0
   PositionX: 0
   PositionY: 0
   PositionZ: 0
@@ -2499,8 +2472,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 771c751c525ce52458ba51d4fa764655, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DailyShippingItems: []
-  ActiveBinObject: {fileID: 0}
 --- !u!1 &1515060412
 GameObject:
   m_ObjectHideFlags: 0
@@ -2541,8 +2512,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Scene: {fileID: 0}
-  NetworkObjectID: 0
   PositionX: 1100
   PositionY: 234
   PositionZ: -1200
@@ -2761,8 +2730,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Scene: {fileID: 0}
-  NetworkObjectID: 0
   PositionX: 1000
   PositionY: 234
   PositionZ: -1300
@@ -2820,8 +2787,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Scene: {fileID: 0}
-  NetworkObjectID: 0
   PositionX: -1700
   PositionY: 166
   PositionZ: 800
@@ -2879,8 +2844,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Scene: {fileID: 0}
-  NetworkObjectID: 0
   PositionX: -6000
   PositionY: 166
   PositionZ: 200
@@ -2938,8 +2901,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Scene: {fileID: 0}
-  NetworkObjectID: 0
   PositionX: -300
   PositionY: 216
   PositionZ: -800
@@ -3003,9 +2964,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SceneID: 0
   SceneOwnerID: 0
-  TempNetworkObjectList: []
-  NetworkObjectList: []
-  JunkObject: {fileID: 0}
 --- !u!1 &2111082841
 GameObject:
   m_ObjectHideFlags: 0
@@ -3046,8 +3004,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Scene: {fileID: 0}
-  NetworkObjectID: 0
   PositionX: -1400
   PositionY: 166
   PositionZ: 800

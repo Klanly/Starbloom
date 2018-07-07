@@ -14,11 +14,11 @@ public class DG_StorageGUI : MonoBehaviour {
     public RectTransform HotbarGrid = null;
 
 
-    [HideInInspector] public NetworkObject ActiveStorage;
-    [HideInInspector] public DG_InventoryItem[] StorageSlots;
+    [System.NonSerialized] public NetworkObject ActiveStorage;
+    [System.NonSerialized] public DG_InventoryItem[] StorageSlots;
 
-    [HideInInspector] public bool isTreasureUI = false;
-    [HideInInspector] public bool StorageUIOpen = false;
+    [System.NonSerialized] public bool isTreasureUI = false;
+    [System.NonSerialized] public bool StorageUIOpen = false;
 
 
     bool Wait1 = false;

@@ -14,10 +14,9 @@ using UnityEditor;
 public class NetworkObject : MonoBehaviour {
 
     //
-    [HideInInspector] public NetworkScene Scene;
+    [System.NonSerialized] public NetworkScene Scene;
+    [System.NonSerialized] public int NetworkObjectID;
 
-    [HideInInspector]
-    public int NetworkObjectID;
     [Header("---------------------------------------------------------------")]
     public int PositionX;
     public int PositionY;
@@ -93,8 +92,24 @@ public class NetworkObject : MonoBehaviour {
             if (EO.UsePoolIDForSpawn && Application.isPlaying) Spawn = Prefab;
             else Spawn = Instantiate(Prefab);
             Scale = EO.DefaultScale;
-
             HasHealth = true; HealthValue = EO.HealthValue;
+
+
+
+            DG_AIEntity EntityScript = Spawn.GetComponent<DG_AIEntity>();
+            if (EntityScript != null)
+            {
+                EntityScript.RelayNetworkObject = this;
+                EntityScript.GetNavAgent();
+                EntityScript.SetMovementSettings(EO.MovementSettings);
+                EntityScript.enabled = true;
+            }
+            DG_AIEntityDetection DetectionScript = Spawn.GetComponent<DG_AIEntityDetection>();
+            if (DetectionScript != null)
+            {
+                DetectionScript.DetectionSettings = EO.DetectionSettings;
+            }
+
         }
 
 

@@ -6,26 +6,27 @@ public class DG_AIAnimationSync : MonoBehaviour {
 
 
     public Animator Anim;
-    public DG_AIMovementSync MovementSync;
-    public float CurrentStateMovementAnimationSpeed = .5f;
-
-    //Animation
-    [HideInInspector] public bool MidAnimation = false;
-
+    DG_AIEntity AIObject;
 
     int[] OutData = new int[3];
-    float StoredDistance;
+    float StoredSpeed;
 
+    private void Awake()
+    {
+        AIObject = transform.GetComponent<DG_AIEntity>();
+    }
+
+    private void Start() { if (!QuickFind.GameStartHandler.GameHasStarted) { Debug.Log("AI Object Left In Scene, Destroying"); Destroy(gameObject); return; } }
 
 
     private void Update()
     {
-        float Distance = MovementSync.Distance;
-        if (Distance > .1f) Distance = CurrentStateMovementAnimationSpeed;
-        if (Distance < .1f) Distance = StoredDistance - .01f;
+        if (AIObject.DestinationReached) StoredSpeed -= 0.01f;
+        else if (AIObject.agent.speed == AIObject.MovementSettings.walkSpeed) StoredSpeed = .5f;
+        else if (AIObject.agent.speed == AIObject.MovementSettings.RunSpeed) StoredSpeed = 1;
 
-        StoredDistance = Distance;
-        Anim.SetFloat(QuickFind.AnimationStringValues.RunVelocityName, StoredDistance);
+        if (StoredSpeed < 0) StoredSpeed = 0;
+        Anim.SetFloat(QuickFind.AnimationStringValues.RunVelocityName, StoredSpeed);
 
 
         //if (MovementSync.isController)

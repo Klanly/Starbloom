@@ -15,7 +15,7 @@ public class DG_PickAxeHandler : MonoBehaviour {
 
     GameObject HitObject;
 
-    [HideInInspector] public bool PlacementActive;
+    [System.NonSerialized] public bool PlacementActive;
     bool SafeToPlace = false;
 
 

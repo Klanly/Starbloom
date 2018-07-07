@@ -146,65 +146,36 @@ MonoBehaviour:
   PrintButtonPressed: 0
   EnableMoveTowardsMouse: 0
   MainPlayer:
-    CharLink: {fileID: 0}
-    InputState: 0
     Context: 1
     Targeting: 2
-    NoActionThisFrame: 0
-    Moveable: 1
-    InVehicle: 0
-    ShowCursor: 1
-    VerticalAxis: 0
-    HorizontalAxis: 0
-    CamVerticalAxis: 0
-    CamHorizontalAxis: 0
-    CamZoomAxis: 0
     ButtonSet:
       UpDir:
         MainKey: 119
         AltKey: 273
-        Held: 0
-        Up: 0
       DownDir:
         MainKey: 115
         AltKey: 274
-        Held: 0
-        Up: 0
       LeftDir:
         MainKey: 97
         AltKey: 276
-        Held: 0
-        Up: 0
       RightDir:
         MainKey: 100
         AltKey: 275
-        Held: 0
-        Up: 0
       Action:
         MainKey: 323
         AltKey: 330
-        Held: 0
-        Up: 0
       Interact:
         MainKey: 324
         AltKey: 331
-        Held: 0
-        Up: 0
       Special:
         MainKey: 113
         AltKey: 332
-        Held: 0
-        Up: 0
       Jump:
         MainKey: 32
         AltKey: 0
-        Held: 0
-        Up: 0
       StartBut:
         MainKey: 101
         AltKey: 0
-        Held: 0
-        Up: 0
       JoyVert:
         Inverted: 1
         InputString: JoyVert
@@ -241,7 +212,6 @@ MonoBehaviour:
         Held: 0
         Up: 0
         Positive: 0
-  InputState: 0
 --- !u!4 &92244914
 Transform:
   m_ObjectHideFlags: 0
@@ -441,8 +411,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MainMenuCam: {fileID: 2059881539}
-  PlayerID: -1
-  CharacterGender: -1
 --- !u!4 &580821917
 Transform:
   m_ObjectHideFlags: 0
@@ -1122,7 +1090,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.1970468, g: 0.22968782, b: 0.26468787, a: 0.6}
+  m_BackGroundColor: {r: 0.19431783, g: 0.22559437, b: 0.26059437, a: 0.6}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -1495,9 +1463,6 @@ MonoBehaviour:
   ShowGridDisplay: 0
   GridDisplay: {fileID: 1730668925}
   GridMesh: {fileID: 1730668926}
-  DetectionPoint: {fileID: 0}
-  ObjectIsPlacing: 0
-  GlobalPositioning: 0
 --- !u!1 &1458579799
 GameObject:
   m_ObjectHideFlags: 0
@@ -1653,14 +1618,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90a6f0035aa726442a1999455b0f39ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentRucksackSlot:
-    ContainedItem: 0
-    CurrentStackActive: 0
-    LowValue: 0
-    NormalValue: 0
-    HighValue: 0
-    MaximumValue: 0
-  CurrentItemDatabaseReference: {fileID: 0}
 --- !u!1 &1590473974
 GameObject:
   m_ObjectHideFlags: 0
@@ -1873,7 +1830,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 407a1650b9d958f4b9634db383272846, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PortalPoints: []
   SceneTransistionList: []
 --- !u!1 &1695218838
 GameObject:

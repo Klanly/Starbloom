@@ -16,8 +16,8 @@ public class DG_GameButtons
         public KeyCode MainKey;
         public KeyCode AltKey;
 
-        [HideInInspector] public bool Held;
-        [HideInInspector] public bool Up;
+        [System.NonSerialized] public bool Held;
+        [System.NonSerialized] public bool Up;
 
         public void Check()
         {
@@ -35,13 +35,13 @@ public class DG_GameButtons
         public bool InvertedAlt = false;
         public string AltInputString;
 
-        //[HideInInspector]
+        //[System.NonSerialized]
         public float Value;
-        //[HideInInspector]
+        //[System.NonSerialized]
         public bool Held;
-        //[HideInInspector]
+        //[System.NonSerialized]
         public bool Up;
-        //[HideInInspector]
+        //[System.NonSerialized]
         public bool Positive;
 
         public void Check(JoyAxis Joy)

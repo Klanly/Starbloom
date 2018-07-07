@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class DG_MagneticItem : MonoBehaviour {
 
-    [HideInInspector] public bool Claimed = false;
-    [HideInInspector] public bool AllowMagnetic = false;
+    [System.NonSerialized] public bool Claimed = false;
+    [System.NonSerialized] public bool AllowMagnetic = false;
 
     public bool RandomizeRotationOnEnable;
     float WaitTimer;

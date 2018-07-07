@@ -20,12 +20,12 @@ public class DG_ObjectPlacement : MonoBehaviour {
     public bool ShowDebug = false;
 
 
-    [HideInInspector] public Transform ObjectGhost;
-    [HideInInspector] public bool PlacementActive;
-    [HideInInspector] public bool AwaitingNetResponse;
+    [System.NonSerialized] public Transform ObjectGhost;
+    [System.NonSerialized] public bool PlacementActive;
+    [System.NonSerialized] public bool AwaitingNetResponse;
 
-    [HideInInspector] public DG_PlayerCharacters.RucksackSlot RucksackSlotOpen;
-    [HideInInspector] public DG_ItemObject ItemDatabaseReference;
+    [System.NonSerialized] public DG_PlayerCharacters.RucksackSlot RucksackSlotOpen;
+    [System.NonSerialized] public DG_ItemObject ItemDatabaseReference;
 
     PlacementType CurrentPlacementType;
     Collider DetectedInTheWay;

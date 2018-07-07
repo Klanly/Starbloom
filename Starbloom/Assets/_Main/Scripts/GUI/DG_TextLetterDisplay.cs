@@ -7,9 +7,9 @@ public class DG_TextLetterDisplay : MonoBehaviour {
     public TMPro.TextMeshProUGUI TextLetter = null;
     public UnityEngine.UI.Image Underline = null;
 
-    [HideInInspector] public bool CurrentlyActive = false;
-    [HideInInspector] public bool HasLetter = false;
-    [HideInInspector] public bool IsSpace = false;
+    [System.NonSerialized] public bool CurrentlyActive = false;
+    [System.NonSerialized] public bool HasLetter = false;
+    [System.NonSerialized] public bool IsSpace = false;
 
     float Timer;
 

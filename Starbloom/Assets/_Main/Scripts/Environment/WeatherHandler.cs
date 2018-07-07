@@ -98,8 +98,8 @@ public class WeatherHandler : MonoBehaviour
 
 
 
-    [HideInInspector] public Seasons CurrentSeason = Seasons.Spring;
-    [HideInInspector] public WeatherTyps CurrentWeather = WeatherTyps.Clear;
+    [System.NonSerialized] public Seasons CurrentSeason = Seasons.Spring;
+    [System.NonSerialized] public WeatherTyps CurrentWeather = WeatherTyps.Clear;
 
 
     [Header("Chance Rolls")]

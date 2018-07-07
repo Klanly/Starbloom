@@ -8,7 +8,7 @@ public class DG_AnimationStringValues : MonoBehaviour {
     public class AnimationBool
     {
         public string BoolName;
-        [HideInInspector] public bool CurrentState;
+        [System.NonSerialized] public bool CurrentState;
     }
 
 

@@ -7,15 +7,17 @@ using UnityEngine.SceneManagement;
 
 public class DG_PathfindingGenerationHandler : MonoBehaviour
 {
-    public NavMeshSurface myNavMeshSurface;
+    
 
     Scene UnloadedScene;
-    [HideInInspector] public bool NavMeshIsGenerated = false;
+    [System.NonSerialized] public bool NavMeshIsGenerated = false;
+    [System.NonSerialized] public NavMeshSurface myNavMeshSurface;
 
 
     private void Awake()
     {
         QuickFind.PathfindingGeneration = this;
+        myNavMeshSurface = transform.GetComponent<NavMeshSurface>();
         this.enabled = false;
     }
 

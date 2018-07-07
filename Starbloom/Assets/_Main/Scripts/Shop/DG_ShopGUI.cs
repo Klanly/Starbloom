@@ -10,7 +10,7 @@ public class DG_ShopGUI : MonoBehaviour {
     public DG_UICustomGridScroll GridScroll;
     [Header("Canvases")]
     public CanvasGroup UICanvas = null;
-    [HideInInspector] public bool ShopUIisOpen = false;
+    [System.NonSerialized] public bool ShopUIisOpen = false;
 
 
 

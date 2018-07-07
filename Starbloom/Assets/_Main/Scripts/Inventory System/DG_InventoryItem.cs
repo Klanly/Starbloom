@@ -23,10 +23,10 @@ public class DG_InventoryItem : MonoBehaviour {
     [Header("Trash")]
     public bool isTrash = false;
 
-    [HideInInspector] public bool isMirror;
-    [HideInInspector] public int SlotID;
-    [HideInInspector] public bool ContainsItem = false;
-    [HideInInspector] public bool IsStorageSlot = false;
+    [System.NonSerialized] public bool isMirror;
+    [System.NonSerialized] public int SlotID;
+    [System.NonSerialized] public bool ContainsItem = false;
+    [System.NonSerialized] public bool IsStorageSlot = false;
 
     float Timer;
     bool ScaleUp = true;

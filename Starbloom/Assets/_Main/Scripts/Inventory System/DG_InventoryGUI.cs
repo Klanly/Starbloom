@@ -34,19 +34,19 @@ public class DG_InventoryGUI : MonoBehaviour
     Vector3 StartingPosition;
 
 
-    [HideInInspector] public bool InventoryIsOpen;
+    [System.NonSerialized] public bool InventoryIsOpen;
 
 
-    [HideInInspector] public DG_InventoryItem[] GuiItemSlots;
-    [HideInInspector] public DG_InventoryItem[] HotbarSlots;
+    [System.NonSerialized] public DG_InventoryItem[] GuiItemSlots;
+    [System.NonSerialized] public DG_InventoryItem[] HotbarSlots;
 
     //InventorySwap Stuff
-    [HideInInspector] public DG_InventoryItem CurrentHoverItem;
-    [HideInInspector] public bool isFloatingInventoryItem;
-    [HideInInspector] public DG_InventoryItem PickedUpItemSlot;
+    [System.NonSerialized] public DG_InventoryItem CurrentHoverItem;
+    [System.NonSerialized] public bool isFloatingInventoryItem;
+    [System.NonSerialized] public DG_InventoryItem PickedUpItemSlot;
 
     //Equiped Hotbar Slot
-    [HideInInspector] public int EquippedHotbarSlot = 0;
+    [System.NonSerialized] public int EquippedHotbarSlot = 0;
 
 
     private void Awake()

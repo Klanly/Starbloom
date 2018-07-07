@@ -15,12 +15,9 @@ public class DG_NetworkSync : Photon.MonoBehaviour
     }
 
     public int UserID =  -1;
-    [HideInInspector]
-    public int PlayerCharacterID = -1;
-    [HideInInspector]
-    public int CurrentScene = -1;
-    [HideInInspector]
-    public DG_CharacterLink CharacterLink;
+    [System.NonSerialized] public int PlayerCharacterID = -1;
+    [System.NonSerialized] public int CurrentScene = -1;
+    [System.NonSerialized] public DG_CharacterLink CharacterLink;
     bool AwaitingSync = false;
     bool FirstLoaded = false;
 
@@ -585,13 +582,13 @@ public class DG_NetworkSync : Photon.MonoBehaviour
     void ReceiveEnemyHit(int[] Data)
     { QuickFind.CombatHandler.ReceiveHitData(Data); }
 
-    public void SendAILocationSync(int[] OutData)
-    { PV.RPC("ReceiveAILocationSync", PhotonTargets.Others, OutData); }
+    public void SendAIDestination(int[] OutData)
+    { PV.RPC("ReceiveAIDestination", PhotonTargets.All, OutData); }
     [PunRPC]
-    void ReceiveAILocationSync(int[] Data)
+    void ReceiveAIDestination(int[] Data)
     {
         NetworkObject NO = QuickFind.NetworkObjectManager.GetItemByID(Data[0], Data[1]);
-        NO.transform.GetChild(0).GetComponent<DG_AIMovementSync>().UpdatePlayerPos(Data);
+        NO.transform.GetChild(0).GetComponent<DG_AIEntity>().ReceiveAgentDestination(Data);
     }
 
 

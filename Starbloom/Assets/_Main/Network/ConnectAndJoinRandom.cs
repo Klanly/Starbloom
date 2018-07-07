@@ -5,8 +5,8 @@ using UnityEngine;
 public class ConnectAndJoinRandom : Photon.MonoBehaviour
 {
     public string GameID = "DefaultRoomName";
-    [HideInInspector] public int RequestedCharacterNum = -1;
-    [HideInInspector] public bool CreateNewRoom;
+    [System.NonSerialized] public int RequestedCharacterNum = -1;
+    [System.NonSerialized] public bool CreateNewRoom;
 
     [Header("Variables")]
     public bool AutoConnect = true;

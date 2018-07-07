@@ -12,7 +12,7 @@ public class DG_HoeHandler : MonoBehaviour {
     DG_PlayerCharacters.RucksackSlot RucksackSlotOpen;
     DG_ItemObject ItemDatabaseReference;
     int ActiveSlot;
-    [HideInInspector] public bool PlacementActive;
+    [System.NonSerialized] public bool PlacementActive;
     bool SafeToPlace = false;
     bool AwaitingResponse;
     Vector3 StoredPosition;

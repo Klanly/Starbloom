@@ -17,10 +17,10 @@ public class DG_CombatHandler : MonoBehaviour {
     }
 
 
-    [HideInInspector] public DG_PlayerCharacters.RucksackSlot RucksackSlotOpen;
-    [HideInInspector] public DG_ItemObject ItemDatabaseReference;
-    [HideInInspector] public int ActiveSlot;
-    [HideInInspector] public bool WeaponActive;
+    [System.NonSerialized] public DG_PlayerCharacters.RucksackSlot RucksackSlotOpen;
+    [System.NonSerialized] public DG_ItemObject ItemDatabaseReference;
+    [System.NonSerialized] public int ActiveSlot;
+    [System.NonSerialized] public bool WeaponActive;
     EquipmentSetups ActiveEquipmentSetup;
     bool AwaitingResponse;
     

@@ -25,7 +25,7 @@ public class DG_SkillsGUI : MonoBehaviour {
     [Header("Localization")]
     public SkillTagLocalization[] Localization;
 
-    [HideInInspector] public GUICatgories OpenSkillTab = GUICatgories.NonCombat;
+    [System.NonSerialized] public GUICatgories OpenSkillTab = GUICatgories.NonCombat;
 
 
 

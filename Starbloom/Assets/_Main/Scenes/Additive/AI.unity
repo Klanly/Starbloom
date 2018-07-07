@@ -281,8 +281,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc0a3dc15d3a09e4c88b3428a1a21da5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myNavMeshSurface: {fileID: 1096584868}
-  NavMeshIsGenerated: 0
 --- !u!114 &1096584871
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -294,45 +292,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b564a0011ae48334c838048ffea28f49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1001 &2081510670
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4933585094930952, guid: c986977890efd084da4affd520e49177, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -19.07
-      objectReference: {fileID: 0}
-    - target: {fileID: 4933585094930952, guid: c986977890efd084da4affd520e49177, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 2.87
-      objectReference: {fileID: 0}
-    - target: {fileID: 4933585094930952, guid: c986977890efd084da4affd520e49177, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 4933585094930952, guid: c986977890efd084da4affd520e49177, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4933585094930952, guid: c986977890efd084da4affd520e49177, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4933585094930952, guid: c986977890efd084da4affd520e49177, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4933585094930952, guid: c986977890efd084da4affd520e49177, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4933585094930952, guid: c986977890efd084da4affd520e49177, type: 2}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: c986977890efd084da4affd520e49177, type: 2}
-  m_IsPrefabParent: 0

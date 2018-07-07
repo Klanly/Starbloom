@@ -9,9 +9,9 @@ public class DG_GameStartHandler : MonoBehaviour {
     public Camera MainMenuCam = null;
 
     bool AwaitingResponse = true;
-    [HideInInspector] public int PlayerID = -1;
-    [HideInInspector] public int CharacterGender = -1;
-
+    [System.NonSerialized] public int PlayerID = -1;
+    [System.NonSerialized] public int CharacterGender = -1;
+    [System.NonSerialized] public bool GameHasStarted = false;
 
 
     private void Awake() { QuickFind.GameStartHandler = this; }
@@ -78,10 +78,16 @@ public class DG_GameStartHandler : MonoBehaviour {
 
         if (!AwaitingResponse) return;
         if (U.ID != QuickFind.NetworkSync.UserID) return;
+
+
+
+
         AwaitingResponse = false;
+        GameHasStarted = true;
+
+
 
         if (QuickFind.NetworkSync.PlayerCharacterID == -1) QuickFind.NetworkSync.PlayerCharacterID = U.PlayerCharacterID;
-
         U.CharacterLink.ActivatePlayer();
 
 
@@ -103,15 +109,11 @@ public class DG_GameStartHandler : MonoBehaviour {
 
         QuickFind.GUI_Inventory.UpdateInventoryVisuals();
         QuickFind.GUI_Inventory.SetHotbarSlot(QuickFind.GUI_Inventory.HotbarSlots[0]);
-
         QuickFind.NetworkSync.SetSelfInScene(QuickFind.SceneList.GetSceneIndexByString(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name));
-
         QuickFind.NetworkObjectManager.GenerateObjectData();
         QuickFind.GUI_MainOverview.SetMoneyValue(0, QuickFind.Farm.SharedMoney, true);
         QuickFind.GUI_MainOverview.SetGuiDayValue(QuickFind.Farm.Month, QuickFind.Farm.Day);
-
         QuickFind.CharacterManager.GameStartSpawnClothing();
-
         QuickFind.PathfindingGeneration.GenerateNavMesh();
 
         QuickFind.FadeScreen.FadeIn(DG_GUI_FadeScreen.FadeInSpeeds.NormalFade);

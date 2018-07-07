@@ -23,7 +23,7 @@ public class DG_ShippingBinItem : MonoBehaviour {
     bool EndLoop = false;
 
 
-    [HideInInspector] public DG_ShippingBin.ShippingBinItem ReferenceItem;
+    [System.NonSerialized] public DG_ShippingBin.ShippingBinItem ReferenceItem;
 
 
     private void Awake()

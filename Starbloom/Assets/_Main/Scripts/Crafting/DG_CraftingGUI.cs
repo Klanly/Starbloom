@@ -19,7 +19,7 @@ public class DG_CraftingGUI : MonoBehaviour {
     private void Awake() { QuickFind.GUI_Crafting = this; }
     private void Start() { QuickFind.EnableCanvas(UICanvas, false); transform.localPosition = Vector3.zero; }
 
-    [HideInInspector] public DG_CraftButton CurrentHoverItem = null;
+    [System.NonSerialized] public DG_CraftButton CurrentHoverItem = null;
 
 
     public void OpenUI()

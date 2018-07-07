@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DG_SkillTrackerItem : MonoBehaviour {
 
-    [HideInInspector] public DG_SkillTracker.SkillTags SkillTag;
+    [System.NonSerialized] public DG_SkillTracker.SkillTags SkillTag;
 
     public UnityEngine.UI.Image Icon;
     public TMPro.TextMeshProUGUI TitleText;

@@ -6,10 +6,10 @@ using UnityEngine.UI;
 public class DG_GUIContextHandler : MonoBehaviour {
 
     //Menu Controller Selection.
-    [HideInInspector] public bool isDialogueOption;
-    [HideInInspector] public int ControllerMenuPosition;
-    [HideInInspector] public Image CurrentSelectedObject;
-    [HideInInspector] public Image[] CurrentSelectableObjects;
+    [System.NonSerialized] public bool isDialogueOption;
+    [System.NonSerialized] public int ControllerMenuPosition;
+    [System.NonSerialized] public Image CurrentSelectedObject;
+    [System.NonSerialized] public Image[] CurrentSelectableObjects;
 
     private void Awake()
     {

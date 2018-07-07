@@ -10,8 +10,8 @@ public class DG_CraftButton : MonoBehaviour {
     public Image HoverOverImage = null;
     public Image ActiveHotbarItem = null;
 
-    [HideInInspector] public int CraftDatabaseID;
-    [HideInInspector] public bool AbleToCraft;
+    [System.NonSerialized] public int CraftDatabaseID;
+    [System.NonSerialized] public bool AbleToCraft;
 
     [Header("Icon Scale Effect")]
     public float ScaleSize;

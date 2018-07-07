@@ -15,7 +15,7 @@ public class DG_TextLetterGroup : MonoBehaviour {
         public Transform RowRoot;
         public DG_TextLetterDisplay[] Column;
     }
-    [HideInInspector] public LetterRow[] Row;
+    [System.NonSerialized] public LetterRow[] Row;
 
     
     public int ColumnMaxCount;

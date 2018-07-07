@@ -14,8 +14,8 @@ public class DG_MagnetAttraction : MonoBehaviour {
     public float BaseMagnetRange;
     public float PullSpeed;
 
-    [HideInInspector] public bool isOwner = false;
-    [HideInInspector] public List<MagneticTracker> MagnetObjects;
+    [System.NonSerialized] public bool isOwner = false;
+    [System.NonSerialized] public List<MagneticTracker> MagnetObjects;
     Transform AdjustedHeight;
 
 

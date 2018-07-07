@@ -24,7 +24,7 @@ public class DG_SFXObject : MonoBehaviour {
     [Header("Pieces")]
     public SFXItem[] SFXPieces;
 
-    [HideInInspector] public int Index = 0;
+    [System.NonSerialized] public int Index = 0;
 
 
     [System.Serializable]

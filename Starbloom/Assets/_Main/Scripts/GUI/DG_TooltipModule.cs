@@ -5,7 +5,7 @@ using Sirenix.OdinInspector;
 
 public class DG_TooltipModule : MonoBehaviour {
 
-    [HideInInspector] public bool isActive = true;
+    [System.NonSerialized] public bool isActive = true;
 
     public DG_TooltipGUI.ToolTipModules ModuleType;
     public TMPro.TextMeshProUGUI TextObject;
@@ -15,7 +15,7 @@ public class DG_TooltipModule : MonoBehaviour {
     [ShowIf("HasSubItems")]
     public bool SkipLast = false;
 
-    //[HideInInspector]
+    //[System.NonSerialized]
     public List<DG_TooltipSubItem> SubList;
 
 

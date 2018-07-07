@@ -6,9 +6,9 @@ public class DG_MovementSync : MonoBehaviour {
 
     public DG_AnimationSync AnimSync;
     DG_NetworkSyncRates.SyncRateModule SyncRate;
-    [HideInInspector] public bool isPlayer;
+    [System.NonSerialized] public bool isPlayer;
     [System.NonSerialized] public DG_NetworkSync.Users UserOwner;
-    [HideInInspector] public float Distance;
+    [System.NonSerialized] public float Distance;
     float Timer;
     Transform _T;
 

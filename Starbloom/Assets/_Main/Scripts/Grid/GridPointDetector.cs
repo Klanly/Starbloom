@@ -21,9 +21,9 @@ public class GridPointDetector : MonoBehaviour
     Transform PlayerPointHelper2;
     bool GridPointSet;
 
-    [HideInInspector] public Transform DetectionPoint;
-    [HideInInspector] public bool ObjectIsPlacing = false;
-    [HideInInspector] public bool GlobalPositioning = false;
+    [System.NonSerialized] public Transform DetectionPoint;
+    [System.NonSerialized] public bool ObjectIsPlacing = false;
+    [System.NonSerialized] public bool GlobalPositioning = false;
 
 
     private void Awake()

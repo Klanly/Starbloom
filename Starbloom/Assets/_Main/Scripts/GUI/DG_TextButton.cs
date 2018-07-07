@@ -8,7 +8,7 @@ public class DG_TextButton : MonoBehaviour {
     public UnityEngine.UI.Image Arrow = null;
     public DG_GUINameChange.NameChangeGuiOptions GuiOption;
 
-    [HideInInspector] public bool CurrentlyActive = false;
+    [System.NonSerialized] public bool CurrentlyActive = false;
 
 
     float Timer;

@@ -10,7 +10,7 @@ public class DG_ShippingBinGUI : MonoBehaviour {
     [Header("Canvases")]
     public GameObject DropPanel = null;
     public CanvasGroup UICanvas = null;
-    [HideInInspector] public bool BinUIisOpen = false;
+    [System.NonSerialized] public bool BinUIisOpen = false;
 
 
     private void Awake()

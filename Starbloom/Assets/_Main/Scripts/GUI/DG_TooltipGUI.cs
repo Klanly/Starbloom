@@ -117,14 +117,14 @@ public class DG_TooltipGUI : MonoBehaviour {
 
 
 
-    [HideInInspector] public bool DisplayTooltip = false;
-    [HideInInspector] public bool IsQualitySelection = false;
+    [System.NonSerialized] public bool DisplayTooltip = false;
+    [System.NonSerialized] public bool IsQualitySelection = false;
     float DefaultX;
     List<DG_TooltipModule> Modules;
 
     //Context Per UI Type
-    [HideInInspector] public DG_InventoryItem HoveredInventoryItem;
-    [HideInInspector] public DG_PlayerCharacters.RucksackSlot ActiveRucksackSlot;
+    [System.NonSerialized] public DG_InventoryItem HoveredInventoryItem;
+    [System.NonSerialized] public DG_PlayerCharacters.RucksackSlot ActiveRucksackSlot;
     ToolTipGroup ActiveToolTipGroup;
     ToolTipContainerItem ActiveItemObject;
 

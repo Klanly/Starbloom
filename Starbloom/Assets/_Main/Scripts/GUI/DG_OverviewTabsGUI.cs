@@ -21,7 +21,7 @@ public class DG_OverviewTabsGUI : MonoBehaviour {
     public Transform[] TabUIs;
 
 
-    [HideInInspector] public bool UIisOpen = false;
+    [System.NonSerialized] public bool UIisOpen = false;
 
 
     private void Awake()

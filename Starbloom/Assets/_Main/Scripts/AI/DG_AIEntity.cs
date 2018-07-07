@@ -6,7 +6,7 @@ using Sirenix.OdinInspector;
 
 public class DG_AIEntity : MonoBehaviour {
 
-    #region CustomClasses
+    #region Variables
 
     [System.Serializable]
     public class MovementOptions
@@ -20,97 +20,66 @@ public class DG_AIEntity : MonoBehaviour {
         public float rotateSpeed = 7.0f;
         public float smoothMove = 0.2f;
 
-        [Header("MovementTypes")]
-        public bool UseWander;
-        [ShowIf("UseWander")]
-        public WanderOptions[] Wander;
-
-        public bool UseNodeWander;
-        [ShowIf("UseNodeWander")]
-        public NodeWanderOptions[] NodeWander;
-
-
-
-
-        [System.Serializable]
-        public class WanderOptions
-        {
-            public float wanderPauseTimeLow = 3.0f;
-            public float wanderPauseTimeHigh = 6.0f;
-            public float wanderRadius = 25.0f;
-        }
-        [System.Serializable]
-        public class NodeWanderOptions
-        {
-            public bool followSequence;
-            public float nodeWanderPauseTimeLow = 6.0f;
-            public float nodeWanderPauseTimeHigh = 6.0f;
-        }
+        [Header("Node Logic")]
+        public bool FollowSequence;
+        public int SpecificNode = -1;
+        [Header("Position Scan")]
+        public float NewPositionRadius = 25.0f;
+        public float NodeLingerRange = 3.0f;
     }
-    #endregion
 
-    #region Enums
-
-    public enum AIBehaviourType
+    //Movement
+    public enum MovementBehaviour
     {
-        Move_Wander,
-        Move_NodeWander,
-        Move_Guard
-    }
-    public enum MovementStates
-    {
-        DontMove,
-        WalkToTarget,
-        RunToTarget,
-        WaitBeforeNextMove
-    }
-    public enum AIDetectionType
-    {
-        SightAndRange,
-        SightOnly,
-        RangeOnly,
-        GodAwareness
+        Guard,
+
+        Wander,
+        WanderNearNode,
+
+        WalkToNode,
+        RunToNode
     }
 
-    #endregion
 
-    #region Variables
-
-    public MovementOptions MovementSettings;
-
-    [Header("Debug")]  
-    [ReadOnly] public AIBehaviourType CurrentState;
-    [ReadOnly] public MovementStates CurrentMovementState;
-    [ReadOnly] public Transform TargetPosition;
-    [ReadOnly] public float DistanceToTarget;
-    public AIBehaviourType DebugSetBehaviourType;
+    [Header("Network")]
+    [System.NonSerialized] public NetworkObject RelayNetworkObject;
+    Vector3 KnownDestination;
+    float NodeID;
+    int[] OutMovementData;
 
 
-    [HideInInspector] public NavMeshAgent agent;
-    [HideInInspector] public int findWanderSpotTimeOutMax = 1000;//how many times attempts to find a new wander spot before escaping to guard mode. You should never hit this point, but its here just in case.
-    [HideInInspector] public int timeOutClock = 0; //used to keep track of wander spot attempts
-    [HideInInspector] public int nodeWanderSequenceID = -1; //used to keep track of node targets when wandering through a sequence of nodes
+    [Header("Movement")]
+    public MovementBehaviour StartMovementBehaviour;
 
-    RaycastHit hit;
+    [ReadOnly] public MovementBehaviour CurrentMovementBehaviour;
+    [ReadOnly] public int nodeWanderSequenceID = -1;
+
+    [System.NonSerialized] public MovementOptions MovementSettings;
+    [System.NonSerialized] public NavMeshAgent agent;
+    [System.NonSerialized] public bool DestinationReached = false;
     bool WaitingForTimer;
     float Timer;
+    Transform _T;
+
 
     #endregion
 
 
-    private void OnEnable()
-    {     
-        agent = gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>();
+    void Update()
+    {
+        if (_T == null) InitialLoad();
+        HandleMovementUpdate();
+    }
+
+
+    private void InitialLoad()
+    {
+        _T = transform;
+        CurrentMovementBehaviour = StartMovementBehaviour;
         GetNextPosition();
         agent.updateRotation = false;
         agent.updatePosition = true;
     }
-
-    void Update()
-    {
-        HandleMovementUpdate();
-    }
-
 
 
     #region Movement
@@ -121,95 +90,60 @@ public class DG_AIEntity : MonoBehaviour {
 
         if (WaitingForTimer) { Timer -= Time.deltaTime; if (Timer < 0) { WaitingForTimer = false; GetNextPosition(); } }
 
-        if (CurrentMovementState != MovementStates.DontMove)
+        if (agent.speed != 0)
         {
-            bool DestinationReached = false;
+            DestinationReached = false;
             float RandTime = 0;
-            if (TargetPosition == null) DestinationReached = true;
-            else
-            {
-                DistanceToTarget = Vector3.Distance(transform.position, new Vector3(TargetPosition.position.x, transform.position.y, TargetPosition.position.z));
-                if (DistanceToTarget <= agent.stoppingDistance + MovementSettings.stopDistanceAdjust && agent.speed != 0)
-                {
-                    DestinationReached = true;
-                    if (CurrentState == AIBehaviourType.Move_NodeWander)
-                        RandTime = Random.Range(MovementSettings.NodeWander[0].nodeWanderPauseTimeLow, MovementSettings.NodeWander[0].nodeWanderPauseTimeHigh);
-                    if (CurrentState == AIBehaviourType.Move_Wander)
-                        RandTime = Random.Range(MovementSettings.Wander[0].wanderPauseTimeLow, MovementSettings.Wander[0].wanderPauseTimeHigh);
-                }
-            }
-            if (DestinationReached)
-            {
-                WaitingForTimer = true;
-                agent.speed = 0;
-                Timer = RandTime;
-            }
-        }
+            Vector3 Destination = agent.destination;
 
-        //Move Entity
-        if (agent.remainingDistance > agent.stoppingDistance) Move(agent.desiredVelocity, false, false);
-        else Move(Vector3.zero, false, false);
+            float DistanceToTarget = Vector3.Distance(transform.position, new Vector3(Destination.x, transform.position.y, Destination.z));
+            if (DistanceToTarget <= agent.stoppingDistance + MovementSettings.stopDistanceAdjust)
+            { DestinationReached = true; RandTime = Random.Range(0, MovementSettings.NodeLingerRange); }
+            if (DestinationReached) { WaitingForTimer = true; agent.speed = 0; Timer = RandTime; }
+            //Move Entity
+            if (agent.remainingDistance > agent.stoppingDistance) Move(agent.desiredVelocity);
+            else Move(Vector3.zero);
+        }
     }
 
     public void GetNextPosition()
     {
-        if (CurrentState == DG_AIEntity.AIBehaviourType.Move_NodeWander)
+        if (!CheckIfYouAreOwner()) return;
+        if (CurrentMovementBehaviour == MovementBehaviour.WalkToNode || CurrentMovementBehaviour == MovementBehaviour.WanderNearNode || CurrentMovementBehaviour == MovementBehaviour.RunToNode)
         {
-            if (!MovementSettings.NodeWander[0].followSequence)
-                TargetPosition = QuickFind.ScenePathNodes.ItemCatagoryList[Random.Range(0, QuickFind.ScenePathNodes.ItemCatagoryList.Length)].transform;
-            if (MovementSettings.NodeWander[0].followSequence)
+            Vector3 NodePosition;
+            if (MovementSettings.SpecificNode != -1) NodePosition = QuickFind.ScenePathNodes.ItemCatagoryList[MovementSettings.SpecificNode].transform.position;
+            if (!MovementSettings.FollowSequence) NodePosition = QuickFind.ScenePathNodes.ItemCatagoryList[Random.Range(0, QuickFind.ScenePathNodes.ItemCatagoryList.Length)].transform.position;
+            else
             {
-                TargetPosition = QuickFind.ScenePathNodes.GetItemFromID(nodeWanderSequenceID).transform;
+                NodePosition = QuickFind.ScenePathNodes.GetItemFromID(nodeWanderSequenceID).transform.position;
                 nodeWanderSequenceID += 1;
                 if (nodeWanderSequenceID >= QuickFind.ScenePathNodes.ItemCatagoryList.Length) nodeWanderSequenceID = 0;
             }
-            CurrentMovementState = DG_AIEntity.MovementStates.WalkToTarget;
-            agent.SetDestination(TargetPosition.position);
-            agent.speed = MovementSettings.walkSpeed;
+            if (CurrentMovementBehaviour == MovementBehaviour.WanderNearNode) FindWanderPoint(NodePosition);
+            else SetAgentDestination(NodePosition);
         }
-
-
-        if (CurrentState == DG_AIEntity.AIBehaviourType.Move_Wander)
-        {
-            if (TargetPosition == null) NewTarget();
-            Vector3 point;
-            CurrentMovementState = DG_AIEntity.MovementStates.WaitBeforeNextMove;
-            timeOutClock = 0;
-            while (CurrentMovementState == DG_AIEntity.MovementStates.WaitBeforeNextMove && timeOutClock < findWanderSpotTimeOutMax)
-            {
-                if (RandomPoint(transform.position, MovementSettings.Wander[0].wanderRadius, out point))
-                {
-                    NavMeshPath path = new NavMeshPath();
-                    agent.CalculatePath(point, path);
-                    if (path.status == NavMeshPathStatus.PathPartial || path.status == NavMeshPathStatus.PathInvalid) timeOutClock += 1;
-                    else
-                    {
-                        TargetPosition.position = point;
-                        agent.SetDestination(TargetPosition.position);// = targetWayPoint;
-                        CurrentMovementState = DG_AIEntity.MovementStates.WalkToTarget;
-                    }
-                }
-                else timeOutClock += 1;
-            }
-            if (timeOutClock >= findWanderSpotTimeOutMax)
-            {
-                Debug.Log("valid wander spot could not be found. Agent using guard mode.");
-                CurrentState = DG_AIEntity.AIBehaviourType.Move_Guard;
-            }
-
-            if (CurrentMovementState == DG_AIEntity.MovementStates.WalkToTarget) agent.speed = MovementSettings.walkSpeed;
-        }
-        if (CurrentState == DG_AIEntity.AIBehaviourType.Move_Guard)
-        {
-            if (TargetPosition == null) NewTarget();
-            TargetPosition.position = transform.position;
-            TargetPosition.rotation = transform.rotation;
-            CurrentMovementState = DG_AIEntity.MovementStates.DontMove;
-            agent.speed = 0;
-        }
+        if (CurrentMovementBehaviour == MovementBehaviour.Wander) FindWanderPoint(transform.position);
+        if (CurrentMovementBehaviour == MovementBehaviour.Guard) SetAgentDestination(_T.position);
     }
 
-    public void Move(Vector3 move, bool crouch, bool jump)
+    void FindWanderPoint(Vector3 CenterPoint)
+    {
+        Vector3 point;
+        for (int i = 0; i < 100; i++)
+        {
+            if (RandomPoint(CenterPoint, MovementSettings.NewPositionRadius, out point))
+            {
+                NavMeshPath path = new NavMeshPath();
+                agent.CalculatePath(point, path);
+                if (path.status == NavMeshPathStatus.PathPartial || path.status == NavMeshPathStatus.PathInvalid) continue;
+                else { SetAgentDestination(point); return; }
+            }
+        }
+        Debug.Log("valid wander spot could not be found. Agent using guard mode.");
+        ChangeMovementBehaviourState(MovementBehaviour.Guard);
+    }
+    public void Move(Vector3 move)
     {
         if (move.magnitude > 1f) move.Normalize();
         move = transform.InverseTransformDirection(move);
@@ -220,30 +154,47 @@ public class DG_AIEntity : MonoBehaviour {
         transform.Rotate(0, m_TurnAmount * turnSpeed * Time.deltaTime, 0);
     }
 
+    //Net
+    void SetAgentDestination(Vector3 Position)
+    {
+        if (OutMovementData == null) OutMovementData = new int[6];
+        OutMovementData[0] = QuickFind.NetworkSync.CurrentScene;
+        OutMovementData[1] = RelayNetworkObject.NetworkObjectID;
+        OutMovementData[2] = QuickFind.ConvertFloatToInt(Position.x);
+        OutMovementData[3] = QuickFind.ConvertFloatToInt(Position.y);
+        OutMovementData[4] = QuickFind.ConvertFloatToInt(Position.z);
+        OutMovementData[5] = (int)CurrentMovementBehaviour;
+        QuickFind.NetworkSync.SendAIDestination(OutMovementData);
+    }
+    public void ReceiveAgentDestination(int[] InData)
+    {
+        Vector3 Position = QuickFind.ConvertIntsToPosition(InData[2], InData[3], InData[4]);
+        agent.SetDestination(Position);
+        CurrentMovementBehaviour = (MovementBehaviour)InData[5];
+        switch(CurrentMovementBehaviour)
+        {
+            case MovementBehaviour.WalkToNode: agent.speed = MovementSettings.walkSpeed; break;
+            case MovementBehaviour.Wander: agent.speed = MovementSettings.walkSpeed; break;
+            case MovementBehaviour.WanderNearNode: agent.speed = MovementSettings.walkSpeed; break;
+            case MovementBehaviour.Guard: agent.speed = MovementSettings.walkSpeed; break;
+
+            case MovementBehaviour.RunToNode: agent.speed = MovementSettings.RunSpeed; break;
+        }
+    }
+
     #endregion
 
 
+    #region Set Values
+    public void SetMovementSettings(MovementOptions Settings) {MovementSettings = Settings;}
+    void ChangeMovementBehaviourState(MovementBehaviour Behaviour) { CurrentMovementBehaviour = Behaviour; GetNextPosition(); }
 
+    [Button(ButtonSizes.Small)] public void DebugShiftMovementState() { ChangeMovementBehaviourState(StartMovementBehaviour); }
 
-
-
+    #endregion
 
     #region UTIL
-    //***********************RANDOM POINT************************************	
-    void NewTarget()
-    {
-        TargetPosition = new GameObject().transform;
-        TargetPosition.SetParent(QuickFind.AIMasterRef.transform);
-    }
-
-    void ChangeBehaviourState(AIBehaviourType BehaviourState)
-    {
-        if (CurrentState == AIBehaviourType.Move_NodeWander) TargetPosition = null; 
-        else Destroy(TargetPosition.gameObject);
-        CurrentState = BehaviourState;
-        CurrentMovementState = MovementStates.WaitBeforeNextMove;
-    }
-
+    public void GetNavAgent() { agent = gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>(); agent.enabled = true; }
     public bool RandomPoint(Vector3 center, float range, out Vector3 result)
     {
         for (int i = 0; i < 30; i++)
@@ -260,10 +211,11 @@ public class DG_AIEntity : MonoBehaviour {
         return false;
     }
 
-    [Button(ButtonSizes.Small)]
-    public void ChangeToDebugBehaviourState()
+    //Network
+    public bool CheckIfYouAreOwner()
     {
-        ChangeBehaviourState(DebugSetBehaviourType);
+        if (QuickFind.NetworkSync.UserID == RelayNetworkObject.Scene.SceneOwnerID) return true;
+        else return false;
     }
     #endregion
 }

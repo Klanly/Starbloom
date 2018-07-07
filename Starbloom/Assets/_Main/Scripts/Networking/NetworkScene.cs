@@ -15,13 +15,13 @@ public class NetworkScene : MonoBehaviour {
 
     public int SceneID;
     public int SceneOwnerID;
-    [HideInInspector]
+    [System.NonSerialized]
     public List<NetworkObject> TempNetworkObjectList;
-    [HideInInspector]
+    [System.NonSerialized]
     public List<NetworkObject> NetworkObjectList;
 
 
-    [HideInInspector] public GameObject JunkObject;
+    [System.NonSerialized] public GameObject JunkObject;
 
     int wait1 = 0;
 

@@ -18,8 +18,8 @@ public class NA_DialogueGUIController : MonoBehaviour
         AwaitingChoice
     }
 
-    [HideInInspector] public GUIStates GUIState;
-    [HideInInspector] public DialogueStates DialogueState;
+    [System.NonSerialized] public GUIStates GUIState;
+    [System.NonSerialized] public DialogueStates DialogueState;
 
 
     [Header("GUI")]
@@ -33,8 +33,8 @@ public class NA_DialogueGUIController : MonoBehaviour
     public Image[] ControllerSelectionDisplays;
 
 
-    [HideInInspector] public NodeLink ActiveDialogue;
-    [HideInInspector] public NodeLink.Window[] PathChoices;
+    [System.NonSerialized] public NodeLink ActiveDialogue;
+    [System.NonSerialized] public NodeLink.Window[] PathChoices;
 
     private void Awake()
     {
