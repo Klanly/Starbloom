@@ -8,16 +8,21 @@ public class DG_NetworkSync : Photon.MonoBehaviour
     [System.Serializable]
     public class Users
     {
-        public int ID;
-        public int PlayerCharacterID;
-        public int SceneID;
-        public DG_CharacterLink CharacterLink;
+        [Header("Network")]
+        [ReadOnly] public int ID; //Note User ID is Assigned From Photon Network ID.
+        [Header("Character")]
+        [ReadOnly] public int PlayerCharacterID;
+        [ReadOnly] public int SceneID;
+        [ReadOnly] public DG_CharacterLink CharacterLink;
+
     }
 
-    public int UserID =  -1;
-    [System.NonSerialized] public int PlayerCharacterID = -1;
-    [System.NonSerialized] public int CurrentScene = -1;
+    [ReadOnly] public int UserID =  -1;
+    [ReadOnly] public int PlayerCharacterID = -1;
+    [ReadOnly] public int CurrentScene = -1;
     [System.NonSerialized] public DG_CharacterLink CharacterLink;
+    [System.NonSerialized] public PhotonView PV;
+
     bool AwaitingSync = false;
     bool FirstLoaded = false;
 
@@ -27,7 +32,7 @@ public class DG_NetworkSync : Photon.MonoBehaviour
 
 
 
-    PhotonView PV;
+
 
 
 
@@ -56,7 +61,8 @@ public class DG_NetworkSync : Photon.MonoBehaviour
         QuickFind.NetworkSync = this;
 
         AwaitingSync = true;
-        PV.RPC("SetNewID", PhotonTargets.MasterClient);
+        PhotonPlayer PP = PhotonNetwork.player;
+        PV.RPC("SetNewID", PhotonTargets.MasterClient, PP.ID);
     }
 
 
@@ -94,8 +100,6 @@ public class DG_NetworkSync : Photon.MonoBehaviour
         { if (UserList[i].ID == UserID) return UserList[i].PlayerCharacterID; }
         return -1;
     }
-
-
     public DG_CharacterLink GetCharacterLinkByUserID(int ID)
     {
         Users U = GetUserByID(ID);
@@ -113,17 +117,11 @@ public class DG_NetworkSync : Photon.MonoBehaviour
     //////////////////////////////////////////////////////
 
     [PunRPC]
-    void SetNewID()
+    void SetNewID(int PhotonID)
     {
         Users NewUser = new Users();
 
-        int NewID;
-        if (UserList.Count != 0)
-            NewID = UserList[UserList.Count - 1].ID + 1;
-        else
-            NewID = 1;
-
-        NewUser.ID = NewID;
+        NewUser.ID = PhotonID;
         UserList.Add(NewUser);
 
         List<int> TransferInts = new List<int>();
@@ -182,28 +180,18 @@ public class DG_NetworkSync : Photon.MonoBehaviour
 
 
 
+    public void NetSetUserInScene(int[] OutData)
+    { PV.RPC("SendUserInScene", PhotonTargets.Others, OutData);}
+    [PunRPC] void SendUserInScene(int[] InData)
+    { QuickFind.SceneTransitionHandler.RemoteSetUserInScene(InData); }
+
+    public void UserRequestingOwnership(int[] OutData)
+    { PV.RPC("OwnershipRequestReceived", PhotonTargets.All, OutData); }
+    [PunRPC]
+    void OwnershipRequestReceived(int[] InData)
+    { QuickFind.NetworkObjectManager.GetSceneByID(InData[0]).ReceivedMasterRequest(InData[1]); }
 
 
-    public void SetSelfInScene(int NewScene)
-    {
-        int SceneLeaving = QuickFind.NetworkSync.CurrentScene;
-        QuickFind.NetworkSync.CurrentScene = NewScene;
-        CurrentScene = NewScene;
-        int[] IntGroup = new int[3];
-        IntGroup[0] = UserID;
-        IntGroup[1] = NewScene;
-        IntGroup[2] = SceneLeaving;
-        PV.RPC("SendUserInScene", PhotonTargets.All, IntGroup);
-    }
-    [PunRPC] void SendUserInScene(int[] IntGroup)
-    {
-        int ID = IntGroup[0];
-        Users U = GetUserByID(ID);
-        U.SceneID = IntGroup[1];
-        int SceneLeaving = IntGroup[2];
-        if (SceneLeaving != -1) QuickFind.NetworkObjectManager.GetSceneByID(SceneLeaving).UserLeftScene();
-        QuickFind.NetworkObjectManager.GetSceneByID(U.SceneID).UserEnteredScene(ID);
-    }
 
 
     public void SetUserInBed(int OutData)
@@ -215,7 +203,6 @@ public class DG_NetworkSync : Photon.MonoBehaviour
     {
         Bed.AddSleepingPlayer(InData);
     }
-
 
 
     public void UpdatePlayerMovement(int[] OutgoingData)
@@ -268,7 +255,8 @@ public class DG_NetworkSync : Photon.MonoBehaviour
     //////////////////////////////////////////////////////
     public void RequestPlayerDataSync()
     {
-        PV.RPC("GatherPlayerData", PhotonTargets.MasterClient, PV.ownerId);
+        PhotonPlayer PP = PhotonNetwork.player;
+        PV.RPC("GatherPlayerData", PhotonTargets.MasterClient, PP.ID);
     }
     [PunRPC]
     void GatherPlayerData(int PhotonOwnerID)
@@ -454,7 +442,9 @@ public class DG_NetworkSync : Photon.MonoBehaviour
 
     #region World Objects
     public void RequestWorldObjects()
-    { PV.RPC("GatherWorldObjects", PhotonTargets.MasterClient, PV.ownerId); }
+    {
+        PV.RPC("GatherWorldObjects", PhotonTargets.MasterClient, UserID);
+    }
     [PunRPC]
     void GatherWorldObjects(int ReturnPhotonOwner)
     {
@@ -575,7 +565,7 @@ public class DG_NetworkSync : Photon.MonoBehaviour
 
 
 
-    #region Enemies
+    #region AI Units
     public void SendEnemyHit(int[] OutData)
     { PV.RPC("ReceiveEnemyHit", PhotonTargets.All, OutData); }
     [PunRPC]
@@ -590,6 +580,24 @@ public class DG_NetworkSync : Photon.MonoBehaviour
         NetworkObject NO = QuickFind.NetworkObjectManager.GetItemByID(Data[0], Data[1]);
         NO.transform.GetChild(0).GetComponent<DG_AIEntity>().ReceiveAgentDestination(Data);
     }
+
+
+    public void RequestAIPositionsFromOwner(int[] OutData)
+    { PV.RPC("ReceiveRequestAILocations", PhotonTargets.Others, OutData); }
+    [PunRPC]
+    void ReceiveRequestAILocations(int[] InData)
+    { QuickFind.SceneTransitionHandler.AIPositionsRequested(InData); }
+
+
+
+    public void ReturnAIPositionsToReqester(int ReturnID, int[] OutData)
+    {
+        PhotonPlayer PP = PhotonPlayer.Find(ReturnID); //This is correct
+        PV.RPC("ReceiveReturnAIPositions", PP, OutData);
+    }
+    [PunRPC]
+    void ReceiveReturnAIPositions(int[] InData)
+    { QuickFind.SceneTransitionHandler.AIPositionsReceived(InData); }
 
 
     #endregion

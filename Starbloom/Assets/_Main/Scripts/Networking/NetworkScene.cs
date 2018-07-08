@@ -22,7 +22,6 @@ public class NetworkScene : MonoBehaviour {
 
 
     [System.NonSerialized] public GameObject JunkObject;
-
     int wait1 = 0;
 
     private void Awake()
@@ -37,6 +36,7 @@ public class NetworkScene : MonoBehaviour {
         wait1 = wait1 - 1;
         if(wait1 < 0)
         {
+
             LoadAfterFrame();
             this.enabled = false;
         }
@@ -57,11 +57,12 @@ public class NetworkScene : MonoBehaviour {
     {
         for (int i = 0; i < TempNetworkObjectList.Count; i++)
         {
+            NetworkObject ListNO = TempNetworkObjectList[i];
             GameObject GO = new GameObject();
             GO.transform.SetParent(transform);
             NetworkObject NO = GO.AddComponent<NetworkObject>();
             NetworkObjectList.Add(NO);
-            NetworkObject ListNO = TempNetworkObjectList[i];
+            
             NO.Clone(NO, ListNO);
             if (NO.NetworkObjectID == 0) NO.NetworkObjectID = GetValidNextNetworkID();
             NO.transform.position = new Vector3(((float)NO.PositionX / 100), ((float)NO.PositionY / 100), ((float)NO.PositionZ / 100));
@@ -73,7 +74,11 @@ public class NetworkScene : MonoBehaviour {
                 QuickFind.NetworkGrowthHandler.SetActiveVisual(QuickFind.NetworkObjectManager.GetSceneByID(SceneID), NO, false);
             }
             else
-                NO.SpawnNetworkObject(QuickFind.NetworkObjectManager.GetSceneByID(SceneID));
+            {
+                bool InitializeAI = false;
+                if (SceneID == QuickFind.NetworkSync.CurrentScene) InitializeAI = true;
+                NO.SpawnNetworkObject(QuickFind.NetworkObjectManager.GetSceneByID(SceneID), InitializeAI);
+            }
         }
         DestroyTempObjects();
     }
@@ -91,6 +96,7 @@ public class NetworkScene : MonoBehaviour {
             NetworkObject NOT = JunkObject.AddComponent<NetworkObject>();
             NO.Clone(NOT, NO);
             TempNetworkObjectList.Add(NO);
+
             Destroy(transform.GetChild(i).gameObject);
         }
     }
@@ -119,6 +125,7 @@ public class NetworkScene : MonoBehaviour {
             if (NO.NetworkObjectID == ID)
                 return NO;
         }
+        Debug.Log("Network Object Not Found");
         return null;
     }
 
@@ -129,16 +136,31 @@ public class NetworkScene : MonoBehaviour {
 
 
 
+
     //Scene Ownership
-
-    public void UserEnteredScene(int InData)
+    public void SelfEnteredScene()
     {
-        if (SceneOwnerID == 0) SceneOwnerID = InData;
+        if (SceneOwnerID == 0 && !SomeoneElseIsInThisScene()) RequestsSceneMaster(QuickFind.NetworkSync.UserID);
     }
-    public void UserLeftScene()
+    public void UserLeftScene(DG_NetworkSync.Users U)
     {
-        SceneOwnerID = 0;
-        if (QuickFind.NetworkSync.CurrentScene == SceneID) QuickFind.NetworkSync.SetSelfInScene(SceneID);
+        if (SceneOwnerID == U.ID) SceneOwnerID = 0;
+        if (QuickFind.NetworkSync.UserID != SceneOwnerID && QuickFind.NetworkSync.CurrentScene == SceneID) RequestsSceneMaster(QuickFind.NetworkSync.UserID);
+    }
+
+
+
+    public void RequestsSceneMaster(int UserID)
+    {
+        int[] IntGroup = new int[2];
+        IntGroup[0] = SceneID;
+        IntGroup[1] = UserID;
+        QuickFind.NetworkSync.UserRequestingOwnership(IntGroup);
+    }
+    public void ReceivedMasterRequest(int NewOwner)
+    {
+        if (SceneOwnerID == 0)
+            SceneOwnerID = NewOwner;
     }
 
 
@@ -146,6 +168,28 @@ public class NetworkScene : MonoBehaviour {
 
 
 
+
+
+
+    public bool SomeoneElseIsInThisScene()
+    {
+        for (int i = 0; i < QuickFind.NetworkSync.UserList.Count; i++)
+        {
+            DG_NetworkSync.Users U = QuickFind.NetworkSync.UserList[i];
+            if (U.ID == QuickFind.NetworkSync.UserID) continue;
+            if (U.SceneID == SceneID) return true;
+        }
+        return false;
+    }
+    public bool AnyoneIsInThisScene()
+    {
+        for (int i = 0; i < QuickFind.NetworkSync.UserList.Count; i++)
+        {
+            DG_NetworkSync.Users U = QuickFind.NetworkSync.UserList[i];
+            if (U.SceneID == SceneID) return true;
+        }
+        return false;
+    }
 
 
 

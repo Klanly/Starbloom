@@ -15,6 +15,7 @@ public class DG_ObjectPlacement : MonoBehaviour {
     public LayerMask BoxcastDetection;
     public LayerMask SeedPlacementDetection;
     public LayerMask SoilReplaceDetection;
+    public int SeedPlantCancelLayer;
 
     [Header("Debug")]
     public bool ShowDebug = false;
@@ -56,8 +57,8 @@ public class DG_ObjectPlacement : MonoBehaviour {
         {
             ObjectGhost.position = QuickFind.GridDetection.DetectionPoint.position;
             bool GoodToPlace = false;
-            if (ItemDatabaseReference.ItemCat == DG_ItemObject.ItemCatagory.Seeds)
-                GoodToPlace = AreaIsClear(SeedPlacementDetection, ObjectGhost.position, .45f);
+            if (ItemDatabaseReference.RequireTilledEarth)
+                GoodToPlace = AreaIsOkForSeedPlacement(SeedPlacementDetection, ObjectGhost.position, .45f);
             else
                 GoodToPlace = AreaIsClear(BoxcastDetection, ObjectGhost.position, .45f);
 
@@ -199,6 +200,21 @@ public class DG_ObjectPlacement : MonoBehaviour {
 
 
 
+
+    public bool AreaIsOkForSeedPlacement(LayerMask DetectionType, Vector3 CastPoint, float Radius)
+    {
+        //This will have to be adjusted at a later point to fit larger objects.
+        Collider[] hitColliders = Physics.OverlapSphere(CastPoint, Radius, DetectionType);
+
+        if (hitColliders.Length > 0)
+        {
+            for (int i = 0; i < hitColliders.Length; i++)
+            { if (hitColliders[i].gameObject.layer == SeedPlantCancelLayer) return false; }
+            return true;
+        }
+        else
+        { return false; }
+    }
     public bool AreaIsClear(LayerMask DetectionType, Vector3 CastPoint, float Radius)
     {
         //This will have to be adjusted at a later point to fit larger objects.

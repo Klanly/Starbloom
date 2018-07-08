@@ -147,6 +147,9 @@ public class DG_LocalDataHandler : MonoBehaviour {
                 IntData.Add(FishAward);
             }
         }
+            
+
+
 
         if (ToDisk)
             SaveInts(IntData.ToArray(), SaveDirectory + "/CharInts");
@@ -448,7 +451,6 @@ public class DG_LocalDataHandler : MonoBehaviour {
                             RSlot.MaximumValue = IntValues[Index]; Index++;
                         }
                     }
-
                 }
             }
         }

@@ -16865,7 +16865,7 @@ RectTransform:
   - {fileID: 703902397}
   - {fileID: 1465566635}
   - {fileID: 793127659}
-  - {fileID: 1606138565}
+  - {fileID: 1000761997}
   - {fileID: 181270237}
   - {fileID: 1664185933}
   - {fileID: 1320638823}
@@ -20106,25 +20106,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8eeeb895f52fe424987882c3b67b8bb5, type: 2}
   m_IsPrefabParent: 0
---- !u!224 &1000761997
+--- !u!224 &1000761997 stripped
 RectTransform:
-  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 224153342353399008, guid: 8eeeb895f52fe424987882c3b67b8bb5,
     type: 2}
   m_PrefabInternal: {fileID: 1000761996}
-  m_GameObject: {fileID: 2029650465}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1606138565}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &1002270041
 Prefab:
   m_ObjectHideFlags: 0
@@ -33777,35 +33763,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TextWordID: 69
---- !u!1 &1606138564
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 1000761996}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1606138565}
-  m_Layer: 0
-  m_Name: Missing Prefab
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1606138565
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 1000761996}
-  m_GameObject: {fileID: 1606138564}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1000761997}
-  m_Father: {fileID: 799562441}
-  m_RootOrder: 19
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1619905175
 GameObject:
   m_ObjectHideFlags: 0
@@ -43729,21 +43686,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &2029650465
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 1000761996}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1000761997}
-  m_Layer: 0
-  m_Name: Missing Prefab (Dummy)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1001 &2038072660
 Prefab:
   m_ObjectHideFlags: 0

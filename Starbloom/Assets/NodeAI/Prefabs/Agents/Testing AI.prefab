@@ -477,13 +477,15 @@ GameObject:
   m_Component:
   - component: {fileID: 4933585094930952}
   - component: {fileID: 114715798726586476}
-  - component: {fileID: 114743207135592710}
   - component: {fileID: 114377052890738362}
+  - component: {fileID: 114428417862517318}
+  - component: {fileID: 114171051838745050}
   - component: {fileID: 114348269924878050}
+  - component: {fileID: 114743207135592710}
+  - component: {fileID: 195713833658945184}
   - component: {fileID: 33829758617919274}
   - component: {fileID: 136883930271770002}
   - component: {fileID: 95875630996734122}
-  - component: {fileID: 195713833658945184}
   - component: {fileID: 54695808172026730}
   m_Layer: 24
   m_Name: Testing AI
@@ -2009,6 +2011,18 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &114171051838745050
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1455744706472234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9bae0b0634d0c34e8172b15cbf27a33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CurrentCombatBehaviour: 0
 --- !u!114 &114348269924878050
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2020,7 +2034,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c60de8185b1f90e488ee041391d7be9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartDetectionBehaviour: 3
   CurrentDetectionBehaviour: 0
   DetectedTarget: {fileID: 0}
 --- !u!114 &114377052890738362
@@ -2029,12 +2042,22 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1455744706472234}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e39e48200cd6f85459b9f6c4ecdfce6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartMovementBehaviour: 2
+--- !u!114 &114428417862517318
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1455744706472234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a17f98820f90a1c4ab8ba85831bfc9d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   CurrentMovementBehaviour: 0
   nodeWanderSequenceID: -1
 --- !u!114 &114715798726586476

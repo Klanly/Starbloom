@@ -186,10 +186,10 @@ public class NetworkObjectManager : MonoBehaviour {
                 Velo.y = QuickFind.ConvertIntToFloat(IncomingData[index]); index++;
                 Velo.z = QuickFind.ConvertIntToFloat(IncomingData[index]); index++;
 
-                NO.SpawnNetworkObject(NS, true, Velo);
+                NO.SpawnNetworkObject(NS, false, true, Velo);
             }
             else
-                NO.SpawnNetworkObject(NS);
+                NO.SpawnNetworkObject(NS, false);
 
             QuickFind.ObjectPlacementManager.AwaitingNetResponse = false;
         }

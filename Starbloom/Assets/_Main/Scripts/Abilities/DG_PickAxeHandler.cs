@@ -73,31 +73,61 @@ public class DG_PickAxeHandler : MonoBehaviour {
 
     public bool PickaxeObjectFound()
     {
-        RaycastHit m_Hit;
-        Vector3 CastPoint = QuickFind.GridDetection.DetectionPoint.position;
-        CastPoint.y += 20;
 
-        if (Physics.BoxCast(CastPoint, new Vector3(.5f, .5f, .5f), Vector3.down, out m_Hit, transform.rotation, 21, PickaxeObjectDetection))
+        Vector3 CastPoint = QuickFind.GridDetection.DetectionPoint.position;
+        Collider[] hitColliders = Physics.OverlapSphere(CastPoint, .45f, PickaxeObjectDetection); //DetermineRadiusLater
+
+        if (hitColliders.Length > 0)
         {
-            HitObject = m_Hit.collider.gameObject;
+            HitObject = hitColliders[0].gameObject;
             DG_ContextObject CO = HitObject.GetComponent<DG_ContextObject>();
             if (CO == null) return false;
 
-            if(CurrentActive == HotbarItemHandler.ActivateableTypes.Pickaxe)
+            if (CurrentActive == HotbarItemHandler.ActivateableTypes.Pickaxe)
             {
                 if (CO.Type == DG_ContextObject.ContextTypes.Breakable)
                     return true;
             }
             if (CurrentActive == HotbarItemHandler.ActivateableTypes.Axe)
             {
-                if ( CO.Type == DG_ContextObject.ContextTypes.HarvestablePlant || CO.Type == DG_ContextObject.ContextTypes.HarvestableTree || CO.Type == DG_ContextObject.ContextTypes.BreakableTree)
+                if (CO.Type == DG_ContextObject.ContextTypes.HarvestablePlant || CO.Type == DG_ContextObject.ContextTypes.HarvestableTree || CO.Type == DG_ContextObject.ContextTypes.BreakableTree)
                     return true;
             }
             return false;
         }
         else
-        {
-            return false;
-        }
+        { return false; }
+
+
+
+        //Old Method
+
+
+        //RaycastHit m_Hit;
+        //
+        //CastPoint.y += 20;
+        //
+        //if (Physics.BoxCast(CastPoint, new Vector3(.5f, .5f, .5f), Vector3.down, out m_Hit, transform.rotation, 21, PickaxeObjectDetection))
+        //{
+        //    HitObject = m_Hit.collider.gameObject;
+        //    DG_ContextObject CO = HitObject.GetComponent<DG_ContextObject>();
+        //    if (CO == null) return false;
+        //
+        //    if(CurrentActive == HotbarItemHandler.ActivateableTypes.Pickaxe)
+        //    {
+        //        if (CO.Type == DG_ContextObject.ContextTypes.Breakable)
+        //            return true;
+        //    }
+        //    if (CurrentActive == HotbarItemHandler.ActivateableTypes.Axe)
+        //    {
+        //        if ( CO.Type == DG_ContextObject.ContextTypes.HarvestablePlant || CO.Type == DG_ContextObject.ContextTypes.HarvestableTree || CO.Type == DG_ContextObject.ContextTypes.BreakableTree)
+        //            return true;
+        //    }
+        //    return false;
+        //}
+        //else
+        //{
+        //    return false;
+        //}
     }
 }

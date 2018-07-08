@@ -16,14 +16,14 @@ public class DG_AIAnimationSync : MonoBehaviour {
         AIObject = transform.GetComponent<DG_AIEntity>();
     }
 
-    private void Start() { if (!QuickFind.GameStartHandler.GameHasStarted) { Debug.Log("AI Object Left In Scene, Destroying"); Destroy(gameObject); return; } }
+    private void Start() { if (gameObject.scene.name != "Networking") { Debug.Log("AI Object Left In Scene, Destroying"); Destroy(gameObject); return; } }
 
 
     private void Update()
     {
-        if (AIObject.DestinationReached) StoredSpeed -= 0.01f;
-        else if (AIObject.agent.speed == AIObject.MovementSettings.walkSpeed) StoredSpeed = .5f;
-        else if (AIObject.agent.speed == AIObject.MovementSettings.RunSpeed) StoredSpeed = 1;
+        if (AIObject.RelayNetworkObject.AICharData[0].DestinationReached) StoredSpeed -= 0.01f;
+        else if (AIObject.Movement.agent.speed == AIObject.Movement.MovementSettings.walkSpeed) StoredSpeed = .5f;
+        else if (AIObject.Movement.agent.speed == AIObject.Movement.MovementSettings.RunSpeed) StoredSpeed = 1;
 
         if (StoredSpeed < 0) StoredSpeed = 0;
         Anim.SetFloat(QuickFind.AnimationStringValues.RunVelocityName, StoredSpeed);

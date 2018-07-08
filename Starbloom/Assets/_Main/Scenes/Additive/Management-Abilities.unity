@@ -392,22 +392,12 @@ MonoBehaviour:
     m_Bits: 10039
   SeedPlacementDetection:
     serializedVersion: 2
-    m_Bits: 272183
+    m_Bits: 139264
   SoilReplaceDetection:
     serializedVersion: 2
     m_Bits: 131072
+  SeedPlantCancelLayer: 13
   ShowDebug: 0
-  ObjectGhost: {fileID: 0}
-  PlacementActive: 0
-  AwaitingNetResponse: 0
-  RucksackSlotOpen:
-    ContainedItem: 0
-    CurrentStackActive: 0
-    LowValue: 0
-    NormalValue: 0
-    HighValue: 0
-    MaximumValue: 0
-  ItemDatabaseReference: {fileID: 0}
 --- !u!4 &278522465
 Transform:
   m_ObjectHideFlags: 0
@@ -465,7 +455,6 @@ MonoBehaviour:
   PickaxeObjectDetection:
     serializedVersion: 2
     m_Bits: 8192
-  PlacementActive: 0
 --- !u!114 &377467727
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -655,7 +644,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 403255
   HoeItemDatabaseNumber: 17
-  PlacementActive: 0
 --- !u!1 &826267293
 GameObject:
   m_ObjectHideFlags: 0
@@ -1027,16 +1015,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aecfc05238261864faafb83301014445, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RucksackSlotOpen:
-    ContainedItem: 0
-    CurrentStackActive: 0
-    LowValue: 0
-    NormalValue: 0
-    HighValue: 0
-    MaximumValue: 0
-  ItemDatabaseReference: {fileID: 0}
-  ActiveSlot: 0
-  WeaponActive: 0
 --- !u!1 &1819080178
 GameObject:
   m_ObjectHideFlags: 0
@@ -1262,7 +1240,6 @@ MonoBehaviour:
   WaterableObjectDetection:
     serializedVersion: 2
     m_Bits: 131072
-  PlacementActive: 0
 --- !u!4 &2028877873
 Transform:
   m_ObjectHideFlags: 0

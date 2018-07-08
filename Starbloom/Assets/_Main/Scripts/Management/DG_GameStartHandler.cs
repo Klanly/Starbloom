@@ -48,13 +48,11 @@ public class DG_GameStartHandler : MonoBehaviour {
     {
         if (CharacterID == -1)
         {
-            Debug.Log("No Char was selected, assigning new.");
             if (PhotonNetwork.isMasterClient) CharacterID = 0;
             else CharacterID = QuickFind.CharacterManager.GetAvailablePlayerID();
         }
         if (CharacterGender == -1)
         {
-            Debug.Log("No Gender was selected, assigning new.");
             if(QuickFind.GameSettings.GeneratedGender != DG_PlayerCharacters.GenderValue.Both) CharacterGender = (int)QuickFind.GameSettings.GeneratedGender;
             else CharacterGender = Random.Range(0, 2);
         }
@@ -109,7 +107,7 @@ public class DG_GameStartHandler : MonoBehaviour {
 
         QuickFind.GUI_Inventory.UpdateInventoryVisuals();
         QuickFind.GUI_Inventory.SetHotbarSlot(QuickFind.GUI_Inventory.HotbarSlots[0]);
-        QuickFind.NetworkSync.SetSelfInScene(QuickFind.SceneList.GetSceneIndexByString(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name));
+        QuickFind.SceneTransitionHandler.SetSelfInScene(QuickFind.SceneList.GetSceneIndexByString(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name));
         QuickFind.NetworkObjectManager.GenerateObjectData();
         QuickFind.GUI_MainOverview.SetMoneyValue(0, QuickFind.Farm.SharedMoney, true);
         QuickFind.GUI_MainOverview.SetGuiDayValue(QuickFind.Farm.Month, QuickFind.Farm.Day);

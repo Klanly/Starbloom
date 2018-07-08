@@ -95,11 +95,23 @@ public class DG_WateringCan : MonoBehaviour {
 
     public bool WaterableObjectFound()
     {
-        RaycastHit m_Hit;
         Vector3 CastPoint = QuickFind.GridDetection.DetectionPoint.position;
-        CastPoint.y += 20;
+        Collider[] hitColliders = Physics.OverlapSphere(CastPoint, .45f, WaterableObjectDetection); //DetermineRadiusLater
 
-        if (Physics.BoxCast(CastPoint, new Vector3(.5f, .5f, .5f), Vector3.down, out m_Hit, transform.rotation, 21, WaterableObjectDetection)) { HitObject = m_Hit.collider.gameObject; return true; }
+        if (hitColliders.Length > 0)
+        { HitObject = hitColliders[0].gameObject; return true; }
         else return false;
+
+
+
+
+        //Old Method
+
+
+        //RaycastHit m_Hit;
+        //CastPoint.y += 20;
+        //
+        //if (Physics.BoxCast(CastPoint, new Vector3(.5f, .5f, .5f), Vector3.down, out m_Hit, transform.rotation, 21, WaterableObjectDetection)) { HitObject = m_Hit.collider.gameObject; return true; }
+        //else return false;
     }
 }

@@ -239,8 +239,6 @@ public static class QuickFind
     public static int ConvertFloatToInt(float Incoming) { return (int)(Incoming * 100); }
     public static float ConvertIntToFloat(int Incoming) { return (float)Incoming / 100; }
     public static Vector3 ConvertIntsToPosition(int IncomingX, int IncomingY, int IncomingZ) { return new Vector3(ConvertIntToFloat(IncomingX), ConvertIntToFloat(IncomingY), ConvertIntToFloat(IncomingZ)); }
-
-
     public static Vector3 AngleLerp(Vector3 StartAngle, Vector3 FinishAngle, float t)
     {
         float xLerp = Mathf.LerpAngle(StartAngle.x, FinishAngle.x, t);
@@ -249,7 +247,6 @@ public static class QuickFind
         Vector3 Lerped = new Vector3(xLerp, yLerp, zLerp);
         return Lerped;
     }
-
     public static int GetNextValueInArray(int current, int ArrayLength, bool Add, bool CanLoop)
     {
         int Return = current;
@@ -259,41 +256,57 @@ public static class QuickFind
     }
     public static void EnableCanvas(CanvasGroup C, bool isTrue)
     { float value = 0; if (isTrue) value = 1; C.alpha = value; C.interactable = isTrue; C.blocksRaycasts = isTrue; }
-
     public static int GetIfWithinBounds(int IncomingValue, int Min, int ArrayLength)
     {
         if (IncomingValue < Min) return Min;
         if (IncomingValue >= ArrayLength) return ArrayLength - 1;
         return IncomingValue;
     }
-
     public static int GetIntAtDigit(int Number, int DigitNeeded)
     {
         while (DigitNeeded-- > 0) { Number /= 10; }
         return (Number % 10);
     }
-
     public static RaycastHit GetClosestRayHitObject(Vector3 ComparePoint, RaycastHit[] ObjectsDetected)
     {
-        int NearestIndex = 0;
-        float NearestDistance = float.MaxValue;
-
-
+        int NearestIndex = 0; float NearestDistance = float.MaxValue;
         for(int i = 0; i < ObjectsDetected.Length; i++)
         {
             Vector3 ObjPos = ObjectsDetected[i].point;
             float Dist = Vector3.Distance(ComparePoint, ObjPos);
-            if(Dist < NearestDistance)
-            {
-                NearestDistance = Dist;
-                NearestIndex = i;
-            }
+            if(Dist < NearestDistance) { NearestDistance = Dist; NearestIndex = i; }
         }
-
         return ObjectsDetected[NearestIndex];
     }
-
+    public static Transform GetClosestCharacter(Vector3 ComparePoint, float MaxRange)
+    {
+        int NearestIndex = -1;
+        float NearestDistance = MaxRange;
+        for (int i = 0; i < QuickFind.NetworkSync.UserList.Count; i++)
+        {
+            Vector3 ObjPos = QuickFind.NetworkSync.UserList[i].CharacterLink._T.position;
+            float Dist = Vector3.Distance(ComparePoint, ObjPos);
+            if (Dist < NearestDistance) { NearestDistance = Dist; NearestIndex = i; }
+        }
+        if (NearestIndex == -1) return null;
+        else return QuickFind.NetworkSync.UserList[NearestIndex].CharacterLink._T;
+    }
+    public static float GetRelativeAngleInDegrees(Transform SourceObject, Transform TargetObject)
+    {
+        Vector3 targetDir = TargetObject.position - SourceObject.position;
+        return Vector3.Angle(targetDir, SourceObject.forward);
+    }
+    public static bool TargetCanSeeOtherTarget(Transform SourceObject, Transform TargetObject, float VisionAngleRange, float VisionDistance)
+    {
+        if (WithinDistance(SourceObject, TargetObject, VisionDistance) && GetRelativeAngleInDegrees(SourceObject, TargetObject) < VisionAngleRange)
+            return true;
+        else
+            return false;
+    }
 }
+
+
+
 
 
 [System.Serializable]

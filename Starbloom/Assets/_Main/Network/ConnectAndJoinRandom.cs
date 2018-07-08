@@ -70,6 +70,7 @@ public class ConnectAndJoinRandom : Photon.MonoBehaviour
 
 
 
+
     public void OnJoinedRoom()
     {
         if (PhotonNetwork.isMasterClient)
@@ -80,7 +81,10 @@ public class ConnectAndJoinRandom : Photon.MonoBehaviour
 
     public void OnPhotonPlayerDisconnected(PhotonPlayer player)
     {
-        Debug.Log("Add Logic for this later.");
+        DG_NetworkSync.Users U = QuickFind.NetworkSync.GetUserByID(player.ID);
+        QuickFind.NetworkObjectManager.GetSceneByID(U.SceneID).UserLeftScene(U);
+        Destroy(U.CharacterLink.gameObject);
+        QuickFind.NetworkSync.UserList.Remove(U);
     }
 
 

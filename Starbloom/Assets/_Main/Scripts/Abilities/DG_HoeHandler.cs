@@ -89,11 +89,23 @@ public class DG_HoeHandler : MonoBehaviour {
 
     public bool ThisPlaceisSafeToPlaceObject()
     {
-        RaycastHit m_Hit;
+        
         Vector3 CastPoint = QuickFind.GridDetection.DetectionPoint.position;
-        CastPoint.y += 20;
 
-        if (Physics.BoxCast(CastPoint, new Vector3(.5f, .5f, .5f), Vector3.down, out m_Hit, transform.rotation, 21, UnSafeGroundDetection)) return false;
+        Collider[] hitColliders = Physics.OverlapSphere(CastPoint, .45f, UnSafeGroundDetection); //DetermineRadiusLater
+
+        if (hitColliders.Length > 0) return false;
         else return true;
+
+
+
+
+        //Old Method
+
+        //RaycastHit m_Hit;
+        //CastPoint.y += 20;
+        //
+        //if (Physics.BoxCast(CastPoint, new Vector3(.5f, .5f, .5f), Vector3.down, out m_Hit, transform.rotation, 21, UnSafeGroundDetection)) return false;
+        //else return true;
     }
 }

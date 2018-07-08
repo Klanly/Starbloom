@@ -121,6 +121,7 @@ public class SceneIDList : MonoBehaviour {
             if (NS.SceneID == index)
                 return NS;
         }
+        Debug.Log("Scene Not Found");
         return null;
     }
 

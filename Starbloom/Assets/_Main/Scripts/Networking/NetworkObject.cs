@@ -55,13 +55,14 @@ public class NetworkObject : MonoBehaviour {
     [ListDrawerSettings(NumberOfItemsPerPage = 12)]
     public DG_PlayerCharacters.RucksackSlot[] StorageSlots;
     /////////////////////////////////////////////////////////////////////////////////////
+    [ShowIf("ObjectType", NetworkObjectManager.NetworkObjectTypes.Enemy)]
+    public DG_AIEntity.AIDestinationTransfer[] AICharData; 
 
 
 
 
 
-
-    public void SpawnNetworkObject(NetworkScene NS, bool GenerateVelocity = false, Vector3 Velocity = new Vector3())
+    public void SpawnNetworkObject(NetworkScene NS, bool SpawnAI, bool GenerateVelocity = false, Vector3 Velocity = new Vector3())
     {
         Scene = NS;
         GameObject Prefab = null;
@@ -85,7 +86,7 @@ public class NetworkObject : MonoBehaviour {
             if (GenerateVelocity) { DG_MagneticItem MI = Spawn.GetComponent<DG_MagneticItem>(); MI.TriggerStart(Velocity); }
             if (IO.RequireTilledEarth) { if (PhotonNetwork.isMasterClient) QuickFind.ObjectPlacementManager.SendOutSurrogateSearch(this); }
         }
-        else if(ObjectType == NetworkObjectManager.NetworkObjectTypes.Enemy)
+        else if(SpawnAI && ObjectType == NetworkObjectManager.NetworkObjectTypes.Enemy)
         {
             DG_EnemyObject EO = QuickFind.EnemyDatabase.GetItemFromID(ItemRefID);
             Prefab = EO.PrefabRef;
@@ -95,23 +96,41 @@ public class NetworkObject : MonoBehaviour {
             HasHealth = true; HealthValue = EO.HealthValue;
 
 
-
             DG_AIEntity EntityScript = Spawn.GetComponent<DG_AIEntity>();
             if (EntityScript != null)
             {
-                EntityScript.RelayNetworkObject = this;
-                EntityScript.GetNavAgent();
-                EntityScript.SetMovementSettings(EO.MovementSettings);
-                EntityScript.enabled = true;
-            }
-            DG_AIEntityDetection DetectionScript = Spawn.GetComponent<DG_AIEntityDetection>();
-            if (DetectionScript != null)
-            {
-                DetectionScript.DetectionSettings = EO.DetectionSettings;
-            }
+                if (QuickFind.SceneTransitionHandler.AwaitingAIObjects.Count != 0)
+                    QuickFind.SceneTransitionHandler.CheckIfObjectIsTheOneWaiting(this);
 
+                EntityScript.Load();
+                if (EntityScript.Movement != null)
+                {
+                    EntityScript.RelayNetworkObject = this;
+                    EntityScript.Movement.GetNavAgent();
+                    EntityScript.Movement.SetMovementSettings(EO.MovementSettings);
+
+                    if (AICharData == null) AICharData = new DG_AIEntity.AIDestinationTransfer[1];
+                    if (AICharData[0] == null) AICharData[0] = new DG_AIEntity.AIDestinationTransfer();
+                    else
+                    {
+                        DG_AIEntity.AIDestinationTransfer DT = AICharData[0];
+                        EntityScript.Movement.ResumeMoveOrderOnInitialize = !DT.DestinationReached;
+                    }
+                }
+
+                if (EntityScript.Detection != null)
+                {
+                    EntityScript.Detection.DetectionSettings = EO.DetectionSettings;
+                }
+                if (EntityScript.Combat != null)
+                {
+                    EntityScript.Combat.CombatSettings = EO.CombatSettings;
+                }
+
+            }
         }
 
+        if (Spawn == null) return;
 
         Transform T = Spawn.transform;
         T.SetParent(transform);

@@ -26,8 +26,9 @@ public class DG_EnemyObject : MonoBehaviour {
     public int PoolID;
     public float DefaultScale = 1;
     [Header("AI Shared Variables")]
-    public DG_AIEntity.MovementOptions MovementSettings;
+    public DG_AIEntityMovement.MovementOptions MovementSettings;
     public DG_AIEntityDetection.DetectionOptions DetectionSettings;
+    public DG_AIEntityCombat.CombatOptions CombatSettings;
     [Header("Health")]
     public int HealthValue;
     [Header("Resistance")]

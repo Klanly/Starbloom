@@ -79,15 +79,23 @@ MonoBehaviour:
   - ItemSetInShippingBin
   - ReceivedHarvestedObject
   - ReceiveTreeFall
+  - ReceiveTreeImpact
   - ReceiveClusterPickEffect
   - ReceiveDestroyEffect
   - ReceiveWallAdjust
   - ClearBinReceived
+  - GatherEnemyObjects
+  - GetEnemyIntValues
   - ReceiveEnemyHit
   - ReceivePlayerAnimationState
   - NewCharGenerationCalled
-  - ReceiveAnimationSubState
   - ReceiveUserEquipment
+  - ReceiveAnimationSubState
+  - ReceiveItemInteractionSubState
   - ReceiveAILocationSync
+  - ReceiveSceneOwner
   - ReceiveAIDestination
+  - ReceiveRequestAILocations
+  - ReceiveReturnAIPositions
+  - OwnershipRequestReceived
   DisableAutoOpenWizard: 1
