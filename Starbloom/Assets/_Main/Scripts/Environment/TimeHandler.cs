@@ -30,6 +30,7 @@ public class TimeHandler : MonoBehaviour
 		public int currentSecond = 0;
 		public int currentMinute = 45;
 		public int currentHour = 5;
+        [Button] public void DebugSetTime() { QuickFind.TimeHandler.AdjustTimeByPreset((int)PresetTime); }
 	}
 
 
@@ -52,17 +53,18 @@ public class TimeHandler : MonoBehaviour
 
     private void Update()
     {
-        Tenkoku.Core.TenkokuModule TimeModule = QuickFind.WeatherModule;
+        if (QuickFind.WeatherController == null) return;
 
         bool TimeChanged = false;
 
-        int Hour = TimeModule.currentHour;
-        if(Hour != KnownHour) { KnownHour = Hour; TimeChanged = true; if (null != OnNewHour) OnNewHour(KnownHour); }
+        int Hour = QuickFind.WeatherController.GameTime.Hours;
+        if (Hour != KnownHour) { KnownHour = Hour; TimeChanged = true; if (null != OnNewHour) OnNewHour(KnownHour); }
 
-        int TenMinute = (int)(TimeModule.currentMinute / 10);
+        int TenMinute = (int)(QuickFind.WeatherController.GameTime.Minutes / 10);
         int TenMult = TenMinute * 10;
         if (KnownTenMinute != TenMult) { KnownTenMinute = TenMult; TimeChanged = true; if (null != OnNewTenMinute) OnNewHour(KnownTenMinute); }
 
+        if (QuickFind.GUI_MainOverview == null) return;
         if (TimeChanged) QuickFind.GUI_MainOverview.SetGuiTimeValue(KnownHour, KnownTenMinute);
     }
 
@@ -71,55 +73,32 @@ public class TimeHandler : MonoBehaviour
 
 
 
-    public int GetCurrentHour() { return QuickFind.WeatherModule.currentHour; }
-    public int GetCurrentDay() { return QuickFind.WeatherModule.currentDay; }
-    public int GetCurrentYear() { return QuickFind.WeatherModule.currentYear; }
+    public int GetCurrentHour() { return QuickFind.WeatherController.GameTime.Hours; }
 	public void RequestMasterTimes() { QuickFind.NetworkSync.RequestMasterTime(); }
 
 
 	public void SyncTimeToMaster()
 	{
 		List<float> TimeValues = new List<float>();
-		Tenkoku.Core.TenkokuModule TimeModule = QuickFind.WeatherModule;
 
-		TimeValues.Add(TimeModule.currentSecond);
-		TimeValues.Add(TimeModule.currentMinute);
-		TimeValues.Add(TimeModule.currentHour);
-		TimeValues.Add(TimeModule.currentDay);
-		TimeValues.Add(TimeModule.currentMonth);
-		TimeValues.Add(TimeModule.currentYear);
-		TimeValues.Add(TimeModule.setLatitude);
-		TimeValues.Add(TimeModule.setLongitude);
-		TimeValues.Add(TimeModule.timeCompression);
+		TimeValues.Add(QuickFind.WeatherController.GameTime.Seconds);
+		TimeValues.Add(QuickFind.WeatherController.GameTime.Minutes);
+		TimeValues.Add(QuickFind.WeatherController.GameTime.Hours);
 
 		QuickFind.NetworkSync.SyncTimeToMaster(TimeValues.ToArray());
 	}
 	public void GetMasterTimes(float[] Times)
 	{
-		Tenkoku.Core.TenkokuModule TimeModule = QuickFind.WeatherModule;
-		TimeModule.currentSecond = (int)Times[0];
-		TimeModule.currentMinute = (int)Times[1];
-		TimeModule.currentHour = (int)Times[2];
-		TimeModule.currentDay = (int)Times[3];
-		TimeModule.currentMonth = (int)Times[4];
-		TimeModule.currentYear = (int)Times[5];
-		TimeModule.setLatitude = Times[6];
-		TimeModule.setLongitude = Times[7];
-		TimeModule.timeCompression = Times[8];
-	}
+		int currentSecond = (int)Times[0];
+		int currentMinute = (int)Times[1];
+		int currentHour = (int)Times[2];
 
-    public void AdjustTimeByValues(int Year, int Month, int Day, int Hour, int Minute)
-    {
-        QuickFind.Farm.Year = Year;
-        QuickFind.Farm.Month = Month;
-        QuickFind.Farm.Day = Day;
-
-        Tenkoku.Core.TenkokuModule TimeModule = QuickFind.WeatherModule;
-
-        TimeModule.currentHour = Hour;
-        TimeModule.currentMinute = Minute;
-        TimeModule.currentSecond = 0;
+        AdjustTimeByValues(currentHour, currentMinute, currentSecond);
     }
+
+
+
+
 
     public void AdjustTimeByPreset(int TimePreset)
     {
@@ -133,14 +112,22 @@ public class TimeHandler : MonoBehaviour
 
         SetTime(TP);
     }
+
     void SetTime(TimePreset TP)
     {
-        Tenkoku.Core.TenkokuModule TimeModule = QuickFind.WeatherModule;
-
-        TimeModule.currentSecond = TP.currentSecond;
-        TimeModule.currentMinute = TP.currentMinute;
-        TimeModule.currentHour = TP.currentHour;
+        AdjustTimeByValues(TP.currentHour, TP.currentMinute, TP.currentSecond);
     }
+
+    public void AdjustTimeByValues(int Hour, int Minute, int Second, int Year = 0, int Month = 0, int Day = 0)
+    {
+        QuickFind.Farm.Year = Year;
+        QuickFind.Farm.Month = Month;
+        QuickFind.Farm.Day = Day;
+
+        QuickFind.WeatherController.SetInternalTime(2018, ((Month - 1) * 30) + Day, Hour, Minute, Second);
+    }
+
+
 
 
 

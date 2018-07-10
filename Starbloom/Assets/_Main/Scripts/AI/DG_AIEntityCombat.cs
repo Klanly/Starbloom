@@ -14,6 +14,13 @@ public class DG_AIEntityCombat : MonoBehaviour {
         public CombatBehaviour DefaultCombatBehaviour;
         public CombatBehaviour DebugCombatBehaviour;
 
+        [Header("Surround")]
+        public float MoveWithinRange = 8;
+        public float SurroundUpdateRate = .6f;
+
+        [Header("AttackPosition")]
+        public float AttackRange = 4;
+        public float MoveToUpdateRate = .3f;
     }
 
 
@@ -24,7 +31,8 @@ public class DG_AIEntityCombat : MonoBehaviour {
         InitialLoad,
 
         WaitingForDetection,
-        MovingToPosition,
+        MovingToSurroundArea,
+        MovingToAttackRange,
         ChooseAttack,
         AttackTrigger,
         AwaitingAttackDuration,
@@ -37,6 +45,7 @@ public class DG_AIEntityCombat : MonoBehaviour {
 
     [System.NonSerialized] public DG_AIEntity Entity;
     [System.NonSerialized] public CombatOptions CombatSettings;
+    bool WaitingForTimer;
     float WaitTimer;
 
     #endregion
@@ -63,19 +72,53 @@ public class DG_AIEntityCombat : MonoBehaviour {
 
 
 
-
     #region Combat
 
     void HandleCombatUpdate()
     {
-
+        if (WaitingForTimer) { WaitTimer -= Time.deltaTime; if (WaitTimer < 0) { WaitingForTimer = false; } }
+        else ChoseNextAttackState();
     }
 
     public void ChoseNextAttackState()
     {
-        
+        if (!Entity.CheckIfYouAreOwner()) return;
+        if (CurrentCombatBehaviour == CombatBehaviour.WaitingForDetection && Entity.Detection.DetectedTarget != null) CurrentCombatBehaviour = CombatBehaviour.MovingToSurroundArea;
+        if (CurrentCombatBehaviour == CombatBehaviour.MovingToSurroundArea)
+        {
+            if (!QuickFind.WithinDistance(Entity.Detection.DetectedTarget, Entity._T, CombatSettings.MoveWithinRange))
+            {
+                Vector3 NewPos = Entity.FindRandomNavMeshPoint(Entity.Detection.DetectedTarget.position, CombatSettings.MoveWithinRange);
+                Entity.Movement.RequestedMoveLocation = NewPos;
+                Entity.Movement.ChangeMovementBehaviourState(DG_AIEntityMovement.MovementBehaviour.RunToTargetLocation);
+                WaitingForTimer = true; WaitTimer = CombatSettings.SurroundUpdateRate;
+            }
+            else CurrentCombatBehaviour = CombatBehaviour.MovingToAttackRange;
+        }
+        if (CurrentCombatBehaviour == CombatBehaviour.MovingToAttackRange)
+        {
+            if (!QuickFind.WithinDistance(Entity.Detection.DetectedTarget, Entity._T, CombatSettings.AttackRange))
+            {
+                Entity.Movement.ChangeMovementBehaviourState(DG_AIEntityMovement.MovementBehaviour.WalkToDetectedTarget);
+                WaitingForTimer = true; WaitTimer = CombatSettings.MoveToUpdateRate;
+            }
+            else CurrentCombatBehaviour = CombatBehaviour.ChooseAttack;
+        }
+        if (CurrentCombatBehaviour == CombatBehaviour.ChooseAttack)
+        {
+            Entity.Movement.ChangeMovementBehaviourState(DG_AIEntityMovement.MovementBehaviour.Stopped);
 
+        }
     }
+    #endregion
+
+    #region IncomingMessages
+    public void TargetLocationReached()
+    {
+        Debug.Log("We have Reached Attack Range");
+        ChoseNextAttackState();
+    }
+
     #endregion
 
 

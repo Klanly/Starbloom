@@ -92,6 +92,7 @@ public class DG_CharacterLink : MonoBehaviour {
         MoveSync.isPlayer = true;
 
         QuickFind.PlayerTrans = _T;
+        QuickFind.WeatherController.Player = gameObject;
         AnimationSync.isPlayer = true;
 
         QuickFind.InputController.MainPlayer.CharLink = this;

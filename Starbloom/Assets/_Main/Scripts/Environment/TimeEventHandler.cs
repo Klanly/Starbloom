@@ -23,11 +23,13 @@ public class TimeEventHandler
 
 	protected void UpdateTimes( bool _fireEvents = true )
 	{
-		Tenkoku.Core.TenkokuModule timeModule = QuickFind.WeatherModule;
-		mTimeEvents.NotifyMinute(timeModule.currentMinute, _fireEvents);
-		mTimeEvents.NotifyHour(timeModule.currentHour, _fireEvents);
-		mTimeEvents.NotifyDay(timeModule.currentDay, _fireEvents);
-		mTimeEvents.NotifyMonth(timeModule.currentMonth, _fireEvents);
-		mTimeEvents.NotifyYear(timeModule.currentYear, _fireEvents);
+        Debug.Log("Replaced With Enviro. Fix later");
+
+		//Tenkoku.Core.TenkokuModule timeModule = QuickFind.WeatherModule;
+		//mTimeEvents.NotifyMinute(timeModule.currentMinute, _fireEvents);
+		//mTimeEvents.NotifyHour(timeModule.currentHour, _fireEvents);
+		//mTimeEvents.NotifyDay(timeModule.currentDay, _fireEvents);
+		//mTimeEvents.NotifyMonth(timeModule.currentMonth, _fireEvents);
+		//mTimeEvents.NotifyYear(timeModule.currentYear, _fireEvents);
 	}
 }

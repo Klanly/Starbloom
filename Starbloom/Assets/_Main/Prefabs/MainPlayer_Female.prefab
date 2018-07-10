@@ -860,7 +860,7 @@ GameObject:
   - component: {fileID: 136873037213009690}
   m_Layer: 12
   m_Name: MainPlayer_Female
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3102,7 +3102,6 @@ MonoBehaviour:
     m_Bits: 16384
   BaseMagnetRange: 1.2
   PullSpeed: 7
-  isOwner: 0
 --- !u!114 &114533449246600842
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3156,9 +3155,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Anim: {fileID: 95309106836199802}
   CharacterLink: {fileID: 114119373513364864}
-  DisableWeaponSwitching: 0
-  MidAnimation: 0
-  isPlayer: 0
 --- !u!114 &114823207918985662
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3196,13 +3192,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b99425724abeeee48b84db5066ca730c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SendRate: 0.1
-  SlerpMoveRate: 0.18
-  SlerpTurnRate: 0.3
-  MaxDistance: 5
   AnimSync: {fileID: 114813838257056568}
-  isPlayer: 0
-  Distance: 0
 --- !u!136 &136241962583982790
 CapsuleCollider:
   m_ObjectHideFlags: 1

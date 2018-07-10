@@ -183,10 +183,8 @@ public class FakeRainDropCollision : MonoBehaviour
                 }
                 else if (AllowSuimonoCheck) //Check if Hitting Water.
                 {
-                    Vector3 hp = hit.point;
-                    float SuimonoHeight = QuickFind.WaterModule.SuimonoGetHeight(hp, "height");
                     ParticleSystem PS = RipplePool[getIndex(false)];
-                    PS.transform.position = new Vector3(hp.x, SuimonoHeight, hp.z);
+                    PS.transform.position = hit.point;
                     PS.Play();
                 }
             }

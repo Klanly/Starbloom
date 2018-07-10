@@ -28,7 +28,7 @@ public class DG_NetworkSync : Photon.MonoBehaviour
 
     [Header("UserList")]
     public List<Users> UserList;
-
+    int[] UsersInScene;
 
 
 
@@ -107,6 +107,26 @@ public class DG_NetworkSync : Photon.MonoBehaviour
             return U.CharacterLink;
         else
             return null;
+    }
+    public void RefreshUsersIDsInScene(bool ExcludeSelf)
+    {
+        if (UsersInScene == null) UsersInScene = new int[4];
+        for (int i = 0; i < UsersInScene.Length; i++)
+        {
+            if (i >= UserList.Count) { UsersInScene[i] = -1; continue;  }
+
+            Users U = UserList[i];
+
+            if (U.SceneID == CurrentScene)
+            {
+                if (ExcludeSelf && U.ID != UserID)
+                    UsersInScene[i] = -1;
+                else
+                    UsersInScene[i] = i;
+            }
+            else
+                UsersInScene[i] = -1;
+        }
     }
 
     #endregion
@@ -573,7 +593,17 @@ public class DG_NetworkSync : Photon.MonoBehaviour
     { QuickFind.CombatHandler.ReceiveHitData(Data); }
 
     public void SendAIDestination(int[] OutData)
-    { PV.RPC("ReceiveAIDestination", PhotonTargets.All, OutData); }
+    {
+        RefreshUsersIDsInScene(false);
+        for(int i = 0; i < UsersInScene.Length; i++)
+        {
+            if(UsersInScene[i] != -1)
+            {
+                PhotonPlayer PP = PhotonPlayer.Find(UserList[UsersInScene[i]].ID);
+                PV.RPC("ReceiveAIDestination", PP, OutData);
+            }
+        }
+    }
     [PunRPC]
     void ReceiveAIDestination(int[] Data)
     {

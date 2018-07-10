@@ -2804,63 +2804,6 @@ MonoBehaviour:
   isStorageContainer: 0
   isTreasureList: 0
   StorageSlots: []
---- !u!1 &1961300702
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1961300703}
-  - component: {fileID: 1961300704}
-  m_Layer: 0
-  m_Name: Testing AI
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1961300703
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1961300702}
-  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: -17, y: 1.662, z: 8}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 2110302582}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!114 &1961300704
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1961300702}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PositionX: -1700
-  PositionY: 166
-  PositionZ: 800
-  YFacing: 18000
-  ObjectType: 1
-  ItemRefID: 2
-  HasHealth: 1
-  HealthValue: 10
-  ItemQualityLevel: 0
-  isWaterable: 0
-  SurrogateObjectIndex: 0
-  HasBeenWatered: 0
-  ActiveVisual: 0
-  GrowthValue: 0
-  isStorageContainer: 0
-  isTreasureList: 0
-  StorageSlots: []
 --- !u!1 &2037784800
 GameObject:
   m_ObjectHideFlags: 0
@@ -3005,7 +2948,6 @@ Transform:
   - {fileID: 2037784801}
   - {fileID: 1472835038}
   - {fileID: 2111082842}
-  - {fileID: 1961300703}
   m_Father: {fileID: 1904530056}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3032,7 +2974,7 @@ GameObject:
   - component: {fileID: 2111082842}
   - component: {fileID: 2111082843}
   m_Layer: 0
-  m_Name: Skeleton Enemy
+  m_Name: Testing AI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3045,7 +2987,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2111082841}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -14, y: 1.662, z: 8}
+  m_LocalPosition: {x: -30, y: 1.662, z: -16}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2110302582}
@@ -3062,12 +3004,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e300c0665268e4d906f006f385023d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PositionX: -1400
+  PositionX: -3000
   PositionY: 166
-  PositionZ: 800
+  PositionZ: -1600
   YFacing: 18000
   ObjectType: 1
-  ItemRefID: 1
+  ItemRefID: 2
   HasHealth: 1
   HealthValue: 10
   ItemQualityLevel: 0

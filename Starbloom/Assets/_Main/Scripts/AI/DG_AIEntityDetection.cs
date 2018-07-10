@@ -70,6 +70,7 @@ public class DG_AIEntityDetection : MonoBehaviour
 
     void GetNextDetection()
     {
+        if (CurrentDetectionBehaviour == DetectionBehaviour.Detect_NotDetecting) return;
         if (DetectedTarget == null)
         {
             bool TargetNotFound = true;
@@ -98,7 +99,6 @@ public class DG_AIEntityDetection : MonoBehaviour
 
     void SetDetectedTarget(Transform NewTarget)
     {
-        //Debug.Log("Player Detected");
         DetectedTarget = NewTarget;
     }
 

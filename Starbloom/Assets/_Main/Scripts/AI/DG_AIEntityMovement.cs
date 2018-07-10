@@ -46,7 +46,9 @@ public class DG_AIEntityMovement : MonoBehaviour {
         RunToNode,
         //Go To a new Location
         WalkToTargetLocation,
-        RunToTargetLocation
+        RunToTargetLocation,
+        WalkToDetectedTarget,
+        RunToDetectedTarget
     }
 
     //Movement
@@ -57,6 +59,8 @@ public class DG_AIEntityMovement : MonoBehaviour {
     [System.NonSerialized] public MovementOptions MovementSettings;
     [System.NonSerialized] public NavMeshAgent agent;
     [System.NonSerialized] public bool ResumeMoveOrderOnInitialize = false;
+
+    [System.NonSerialized] public Vector3 RequestedMoveLocation;
     bool WaitingForTimer;
     float Timer;
 
@@ -107,6 +111,7 @@ public class DG_AIEntityMovement : MonoBehaviour {
             float DistanceToTarget = Vector3.Distance(transform.position, new Vector3(Destination.x, transform.position.y, Destination.z));
             if (DistanceToTarget <= agent.stoppingDistance + MovementSettings.stopDistanceAdjust)
             {
+                //Reached Destination
                 Entity.RelayNetworkObject.AICharData[0].DestinationReached = true;
                 RandTime = Random.Range(0, MovementSettings.NodeLingerRange);
             }
@@ -131,28 +136,21 @@ public class DG_AIEntityMovement : MonoBehaviour {
                 nodeWanderSequenceID += 1;
                 if (nodeWanderSequenceID >= QuickFind.ScenePathNodes.ItemCatagoryList.Length) nodeWanderSequenceID = 0;
             }
-            if (CurrentMovementBehaviour == MovementBehaviour.WanderNearNode) FindWanderPoint(NodePosition);
+            if (CurrentMovementBehaviour == MovementBehaviour.WanderNearNode) Entity.SetAgentDestination(Entity.FindRandomNavMeshPoint(NodePosition, MovementSettings.NewPositionRadius), (int)CurrentMovementBehaviour);
             else Entity.SetAgentDestination(NodePosition, (int)CurrentMovementBehaviour);
         }
-        if (CurrentMovementBehaviour == MovementBehaviour.Wander) FindWanderPoint(transform.position);
+        //General Point Assigned From External Script.
+        if (CurrentMovementBehaviour == MovementBehaviour.WalkToTargetLocation || CurrentMovementBehaviour == MovementBehaviour.RunToTargetLocation)
+            Entity.SetAgentDestination(RequestedMoveLocation, (int)CurrentMovementBehaviour);
+        //Target Transform Assigned From External Script.
+        if (CurrentMovementBehaviour == MovementBehaviour.WalkToDetectedTarget || CurrentMovementBehaviour == MovementBehaviour.RunToDetectedTarget)
+            Entity.SetAgentDestination(Entity.Detection.DetectedTarget.position, (int)CurrentMovementBehaviour);
+
+        if (CurrentMovementBehaviour == MovementBehaviour.Wander) Entity.SetAgentDestination(Entity.FindRandomNavMeshPoint(transform.position, MovementSettings.NewPositionRadius), (int)CurrentMovementBehaviour);
         if (CurrentMovementBehaviour == MovementBehaviour.Stopped) Entity.SetAgentDestination(Entity._T.position, (int)CurrentMovementBehaviour);
     }
 
-    void FindWanderPoint(Vector3 CenterPoint)
-    {
-        Vector3 point;
-        for (int i = 0; i < 100; i++)
-        {
-            if (RandomPoint(CenterPoint, MovementSettings.NewPositionRadius, out point))
-            {
-                NavMeshPath path = new NavMeshPath();
-                agent.CalculatePath(point, path);
-                if (path.status == NavMeshPathStatus.PathPartial || path.status == NavMeshPathStatus.PathInvalid) continue;
-                else { Entity.SetAgentDestination(point, (int)CurrentMovementBehaviour); return; }
-            }
-        }
-        Debug.Log("valid wander spot could not be found. Agent using guard mode.");
-    }
+
     public void Move(Vector3 move)
     {
         if (move.magnitude > 1f) move.Normalize();
@@ -176,8 +174,12 @@ public class DG_AIEntityMovement : MonoBehaviour {
             case MovementBehaviour.Wander: agent.speed = MovementSettings.walkSpeed; break;
             case MovementBehaviour.WanderNearNode: agent.speed = MovementSettings.walkSpeed; break;
             case MovementBehaviour.Stopped: agent.speed = MovementSettings.walkSpeed; break;
+            case MovementBehaviour.WalkToDetectedTarget: agent.speed = MovementSettings.walkSpeed; break;
+            case MovementBehaviour.WalkToTargetLocation: agent.speed = MovementSettings.walkSpeed; break;
 
             case MovementBehaviour.RunToNode: agent.speed = MovementSettings.RunSpeed; break;
+            case MovementBehaviour.RunToDetectedTarget: agent.speed = MovementSettings.RunSpeed; break;
+            case MovementBehaviour.RunToTargetLocation: agent.speed = MovementSettings.RunSpeed; break;
         }
     }
 
@@ -186,7 +188,7 @@ public class DG_AIEntityMovement : MonoBehaviour {
 
     #region Set Values
     public void SetMovementSettings(MovementOptions Settings) { MovementSettings = Settings; }
-    void ChangeMovementBehaviourState(MovementBehaviour Behaviour) { CurrentMovementBehaviour = Behaviour; GetNextPosition(); }
+    public void ChangeMovementBehaviourState(MovementBehaviour Behaviour) { CurrentMovementBehaviour = Behaviour; GetNextPosition(); }
 
     [Button(ButtonSizes.Small)] [HideInEditorMode] public void SetToDebugMovementState() { ChangeMovementBehaviourState(MovementSettings.DebugMovementBehaviour); }
 
@@ -194,20 +196,5 @@ public class DG_AIEntityMovement : MonoBehaviour {
 
     #region UTIL
     public void GetNavAgent() { agent = gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>(); agent.enabled = true; }
-    public bool RandomPoint(Vector3 center, float range, out Vector3 result)
-    {
-        for (int i = 0; i < 30; i++)
-        {
-            Vector3 randomPoint = center + Random.insideUnitSphere * range;
-            NavMeshHit hit;
-            if (NavMesh.SamplePosition(randomPoint, out hit, 1.0f, NavMesh.AllAreas))
-            {
-                result = hit.position;
-                return true;
-            }
-        }
-        result = Vector3.zero;
-        return false;
-    }
     #endregion
 }

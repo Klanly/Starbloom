@@ -854,7 +854,7 @@ GameObject:
   - component: {fileID: 136565697742736474}
   m_Layer: 12
   m_Name: MainPlayer_Male
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3059,7 +3059,6 @@ MonoBehaviour:
     m_Bits: 16384
   BaseMagnetRange: 1.2
   PullSpeed: 7
-  isOwner: 0
 --- !u!114 &114638911476736022
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3071,13 +3070,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b99425724abeeee48b84db5066ca730c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SendRate: 0.1
-  SlerpMoveRate: 0.18
-  SlerpTurnRate: 0.3
-  MaxDistance: 5
   AnimSync: {fileID: 114671617395903624}
-  isPlayer: 0
-  Distance: 0
 --- !u!114 &114671617395903624
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3091,9 +3084,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Anim: {fileID: 95646036969062546}
   CharacterLink: {fileID: 114446412302524988}
-  DisableWeaponSwitching: 0
-  MidAnimation: 0
-  isPlayer: 0
 --- !u!114 &114927186516925144
 MonoBehaviour:
   m_ObjectHideFlags: 1

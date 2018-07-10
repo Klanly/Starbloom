@@ -197,7 +197,6 @@ public class WeatherHandler : MonoBehaviour
     public void SyncWeatherToMaster()
     {
         List<int> WeatherValues = new List<int>();
-        Tenkoku.Core.TenkokuModule TimeModule = QuickFind.WeatherModule;
         WeatherValues.Add((int)CurrentSeason);
         WeatherValues.Add((int)CurrentWeather);
 
@@ -238,45 +237,12 @@ public class WeatherHandler : MonoBehaviour
     }
     void SetWeatherValues(WeatherSetting Weather)
     {
-        Tenkoku.Core.TenkokuModule WeatherModule = QuickFind.WeatherModule;
+        Debug.Log("Assign Weather preset for Enviro.");
 
-        WeatherModule.weather_cloudAltoStratusAmt = Weather.weather_cloudAltoStratusAmt;
-        WeatherModule.weather_cloudCirrusAmt = Weather.weather_cloudCirrusAmt;
-        WeatherModule.weather_cloudCumulusAmt = Weather.weather_cloudCumulusAmt;
-        WeatherModule.weather_cloudScale = Weather.weather_cloudScale;
-        WeatherModule.weather_cloudSpeed = Weather.weather_cloudSpeed;
-        WeatherModule.weather_OvercastDarkeningAmt = Weather.weather_OvercastDarkeningAmt;
-        WeatherModule.weather_OvercastAmt = Weather.weather_OvercastAmt;
-        WeatherModule.weather_RainAmt = Weather.weather_RainAmt;
-        WeatherModule.weather_lightning = Weather.weather_lightning;
-        WeatherModule.weather_SnowAmt = Weather.weather_SnowAmt;
-        WeatherModule.weather_WindAmt = Weather.weather_WindAmt;
-        WeatherModule.weather_WindDir = Weather.weather_WindDir;
-        WeatherModule.weather_FogAmt = Weather.weather_FogAmt;
-        WeatherModule.weather_FogHeight = Weather.weather_FogHeight;
-        WeatherModule.weather_temperature = Weather.weather_temperature;
-        WeatherModule.weather_humidity = Weather.weather_humidity;
-        WeatherModule.weather_rainbow = Weather.weather_rainbow;
+        if (Weather.weather_RainAmt > 0) QuickFind.RainDropHandler.IsRaining = true;
+        else QuickFind.RainDropHandler.IsRaining = false;
 
 
-        if (WeatherModule.weather_RainAmt > 0)
-            QuickFind.RainDropHandler.IsRaining = true;
-        else
-            QuickFind.RainDropHandler.IsRaining = false;
-
-
-        Suimono.Core.SuimonoObject Suimono = QuickFind.WaterObject;
-
-        Suimono.beaufortScale = Weather.Water.beaufortScale;
-        Suimono.flowSpeed = Weather.Water.flowSpeed;
-        Suimono.waveScale = Weather.Water.waveScale;
-        Suimono.heightProjection = Weather.Water.heightProjection;
-        Suimono.overallBright = Weather.Water.overallBright;
-        Suimono.overallTransparency = Weather.Water.overallTransparency;
-        Suimono.reflectTerm = Weather.Water.reflectTerm;
-        Suimono.reflectSharpen = Weather.Water.reflectSharpen;
-        Suimono.roughness = Weather.Water.roughness;
-        Suimono.roughness2 = Weather.Water.roughness2;
-        Suimono.specularColor = Weather.Water.specularColor;      
+        Debug.Log("Adjust Settings for Aquas.");  
     }
 }
