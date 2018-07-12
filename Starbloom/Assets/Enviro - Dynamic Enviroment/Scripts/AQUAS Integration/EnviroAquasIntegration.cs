@@ -45,37 +45,40 @@ public class EnviroAquasIntegration : MonoBehaviour {
 		SetupEnviroWithAQUAS ();
 	}
 
-	void Update () 
-	{
-         if (EnviroSky.instance == null)
+    void Update()
+    {
+        if (EnviroSky.instance == null)
             return;
 
-		//Check if we are underwater! Deactivate the workaround plane and enviro fog.
-		if (waterObject != null && aquasUnderWater != null) {
-			if (aquasUnderWater.underWater && !isUnderWater) {
-				if (deactivateEnviroFogUnderwater) {
-					EnviroSky.instance.fogSettings.distanceFog = false;
-					EnviroSky.instance.fogSettings.heightFog = false;
-					EnviroSky.instance.customFogIntensity = underwaterFogColorInfluence;
-                    
-				}
-				EnviroSky.instance.updateFogDensity = false;
-                EnviroSky.instance.Audio.ambientSFXVolumeMod = -1f;
-				isUnderWater = true;
-			} else if (!aquasUnderWater.underWater && isUnderWater) {
-				if (deactivateEnviroFogUnderwater) {
-					EnviroSky.instance.updateFogDensity = true;
-					EnviroSky.instance.fogSettings.distanceFog = defaultDistanceFog;
-					EnviroSky.instance.fogSettings.heightFog = defaultHeightFog;
-					RenderSettings.fogDensity = EnviroSky.instance.Weather.currentActiveWeatherPreset.fogDensity;
-					EnviroSky.instance.customFogColor = aquasUnderWater.underWaterParameters.fogColor;
-					EnviroSky.instance.customFogIntensity = 0f;
-				}
-                EnviroSky.instance.Audio.ambientSFXVolumeMod = 0f;
-				isUnderWater = false;
-			}
-		}
-	}
+        //Check if we are underwater! Deactivate the workaround plane and enviro fog.
+        if (QuickFind.UnderwaterTrigger.isUnderwater && !isUnderWater)
+        {
+            if (deactivateEnviroFogUnderwater)
+            {
+                EnviroSky.instance.fogSettings.distanceFog = false;
+                EnviroSky.instance.fogSettings.heightFog = false;
+                EnviroSky.instance.customFogIntensity = underwaterFogColorInfluence;
+
+            }
+            EnviroSky.instance.updateFogDensity = false;
+            EnviroSky.instance.Audio.ambientSFXVolumeMod = -1f;
+            isUnderWater = true;
+        }
+        else if (!QuickFind.UnderwaterTrigger.isUnderwater && isUnderWater)
+        {
+            if (deactivateEnviroFogUnderwater)
+            {
+                EnviroSky.instance.updateFogDensity = true;
+                EnviroSky.instance.fogSettings.distanceFog = defaultDistanceFog;
+                EnviroSky.instance.fogSettings.heightFog = defaultHeightFog;
+                RenderSettings.fogDensity = EnviroSky.instance.Weather.currentActiveWeatherPreset.fogDensity;
+                EnviroSky.instance.customFogColor = aquasUnderWater.underWaterParameters.fogColor;
+                EnviroSky.instance.customFogIntensity = 0f;
+            }
+            EnviroSky.instance.Audio.ambientSFXVolumeMod = 0f;
+            isUnderWater = false;
+        }
+    }
 
 	public void SetupEnviroWithAQUAS ()
 	{

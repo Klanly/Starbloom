@@ -389,13 +389,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BoxcastDetection:
     serializedVersion: 2
-    m_Bits: 10039
+    m_Bits: 8209
   SeedPlacementDetection:
     serializedVersion: 2
-    m_Bits: 139264
+    m_Bits: 8192
   SoilReplaceDetection:
     serializedVersion: 2
-    m_Bits: 131072
+    m_Bits: 65536
   SeedPlantCancelLayer: 13
   ShowDebug: 0
 --- !u!4 &278522465
@@ -642,7 +642,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UnSafeGroundDetection:
     serializedVersion: 2
-    m_Bits: 403255
+    m_Bits: 73745
   HoeItemDatabaseNumber: 17
 --- !u!1 &826267293
 GameObject:
@@ -1239,7 +1239,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WaterableObjectDetection:
     serializedVersion: 2
-    m_Bits: 131072
+    m_Bits: 65536
 --- !u!4 &2028877873
 Transform:
   m_ObjectHideFlags: 0

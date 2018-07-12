@@ -128,16 +128,16 @@ public class AQUAS_LensEffects : MonoBehaviour {
 
         //Set up the post processing on the camera
 #if UNITY_POST_PROCESSING_STACK_V1 && AQUAS_PRESENT
-        if (gameObjects.mainCamera.GetComponent<PostProcessingBehaviour>() == null)
-        {
-            gameObjects.mainCamera.AddComponent<PostProcessingBehaviour>();
-        }
+        //if (gameObjects.mainCamera.GetComponent<PostProcessingBehaviour>() == null)
+        //{
+        //    gameObjects.mainCamera.AddComponent<PostProcessingBehaviour>();
+        //}
 
-        postProcessing = gameObjects.mainCamera.GetComponent<PostProcessingBehaviour>();
+        postProcessing = QuickFind.PlayerCam.MainCam.GetComponent<PostProcessingBehaviour>();
 #endif
 
 #if UNITY_POST_PROCESSING_STACK_V2 && UNITY_EDITOR && AQUAS_PRESENT
-        if (gameObjects.mainCamera.GetComponent<PostProcessLayer>() == null)
+        if (QuickFind.PlayerCam.MainCam.GetComponent<PostProcessLayer>() == null)
         {
             EditorUtility.DisplayDialog("No Post Process Layer detected", "The camera object is missing a Post Process Layer and a Post Process Volume. In the Editor AQUAS will try to add them when entering play mode. However it is recommended that you add them manually before entering playmode, or else they will be missing in the build.", "Got It!");
 
@@ -171,13 +171,13 @@ public class AQUAS_LensEffects : MonoBehaviour {
             postProcessing.volumeLayer = LayerMask.NameToLayer("Everything");
         }
 
-        if (gameObjects.mainCamera.GetComponent<PostProcessVolume>() == null)
+        if (QuickFind.PlayerCam.MainCam.GetComponent<PostProcessVolume>() == null)
         {
-            gameObjects.mainCamera.AddComponent<PostProcessVolume>();
-            gameObjects.mainCamera.GetComponent<PostProcessVolume>().isGlobal = true;
+            QuickFind.PlayerCam.MainCam.gameObject.AddComponent<PostProcessVolume>();
+            QuickFind.PlayerCam.MainCam.GetComponent<PostProcessVolume>().isGlobal = true;
         }
         
-        postProcessingVolume = gameObjects.mainCamera.GetComponent<PostProcessVolume>();
+        postProcessingVolume = QuickFind.PlayerCam.MainCam.GetComponent<PostProcessVolume>();
 #endif
 
 
@@ -193,7 +193,7 @@ public class AQUAS_LensEffects : MonoBehaviour {
         waterLensAudio = gameObjects.waterLens.GetComponent<AudioSource>();
         airLensAudio = gameObjects.airLens.GetComponent<AudioSource>();
         audioComp = GetComponent<AudioSource>();
-        cameraAudio = gameObjects.mainCamera.GetComponent<AudioSource>();
+        cameraAudio = QuickFind.PlayerCam.MainCam.GetComponent<AudioSource>();
 
         bubbleBehaviour = gameObjects.bubble.GetComponent<AQUAS_BubbleBehaviour>();
 
@@ -263,12 +263,12 @@ public class AQUAS_LensEffects : MonoBehaviour {
     //</summary>
     void Update () {
 
-        CheckIfStillUnderWater();
+        //CheckIfStillUnderWater();
 
         ///<summary>
         ///define behaviour under water & reset timer
         ///</summary>
-        if (underWater) {
+        if (QuickFind.UnderwaterTrigger.isUnderwater) {
 #region Underwater Behaviour
         
             t=0;
@@ -519,121 +519,121 @@ public class AQUAS_LensEffects : MonoBehaviour {
     //Works with circular and squared planes
     //<returns>underWater</returns>
     //</summary>
-	bool CheckIfUnderWater(int waterPlanesCount){
-		
-		if (!gameObjects.useSquaredPlanes) {
-
-			for (int i=0; i < waterPlanesCount; i++) {
-
-				if (Mathf.Pow ((transform.position.x - gameObjects.waterPlanes[i].transform.position.x), 2) + Mathf.Pow ((transform.position.z - gameObjects.waterPlanes[i].transform.position.z), 2) < Mathf.Pow (gameObjects.waterPlanes[i].GetComponent<Renderer> ().bounds.extents.x, 2)) {
-
-                    if (activePlane != lastActivePlane)
-                    {
-                        if (gameObjects.waterPlanes[activePlane].transform.Find("PrimaryCausticsProjector") != null)
-                        {
-                            primaryCausticsProjector = gameObjects.waterPlanes[activePlane].transform.Find("PrimaryCausticsProjector").GetComponent<Projector>();
-                            primaryAquasCaustics = gameObjects.waterPlanes[activePlane].transform.Find("PrimaryCausticsProjector").GetComponent<AQUAS_Caustics>();
-                        }
-
-                        if (gameObjects.waterPlanes[activePlane].transform.Find("SecondaryCausticsProjector") != null)
-                        {
-                            secondaryCausticsProjector = gameObjects.waterPlanes[activePlane].transform.Find("SecondaryCausticsProjector").GetComponent<Projector>();
-                            secondaryAquasCaustics = gameObjects.waterPlanes[activePlane].transform.Find("SecondaryCausticsProjector").GetComponent<AQUAS_Caustics>();
-                        }
-
-                        lastActivePlane = activePlane;
-                    }
-
-                    activePlane = i;
-
-                    if (transform.position.y < gameObjects.waterPlanes[i].transform.position.y) {
-
-						waterPlaneMaterial = gameObjects.waterPlanes[i].GetComponent<Renderer> ().material;
-						activePlane = i;
-						return true;
-						//break;
-					}
-				}
-			}
-		} else {
-
-			for (int i=0; i < waterPlanesCount; i++) {
-
-				if (Mathf.Abs(transform.position.x - gameObjects.waterPlanes[i].transform.position.x) < gameObjects.waterPlanes[i].GetComponent<Renderer>().bounds.extents.x && Mathf.Abs(transform.position.z - gameObjects.waterPlanes[i].transform.position.z)  < gameObjects.waterPlanes[i].GetComponent<Renderer> ().bounds.extents.z) {
-
-                    if (activePlane != lastActivePlane)
-                    {
-                        if (gameObjects.waterPlanes[activePlane].transform.Find("PrimaryCausticsProjector") != null)
-                        {
-                            primaryCausticsProjector = gameObjects.waterPlanes[activePlane].transform.Find("PrimaryCausticsProjector").GetComponent<Projector>();
-                            primaryAquasCaustics = gameObjects.waterPlanes[activePlane].transform.Find("PrimaryCausticsProjector").GetComponent<AQUAS_Caustics>();
-                        }
-
-                        if (gameObjects.waterPlanes[activePlane].transform.Find("SecondaryCausticsProjector") != null)
-                        {
-                            secondaryCausticsProjector = gameObjects.waterPlanes[activePlane].transform.Find("SecondaryCausticsProjector").GetComponent<Projector>();
-                            secondaryAquasCaustics = gameObjects.waterPlanes[activePlane].transform.Find("SecondaryCausticsProjector").GetComponent<AQUAS_Caustics>();
-                        }
-
-                        lastActivePlane = activePlane;
-                    }
-
-                    activePlane = i;
-                    
-                    if (transform.position.y < gameObjects.waterPlanes[i].transform.position.y) {
-
-						waterPlaneMaterial = gameObjects.waterPlanes[0].GetComponent<Renderer> ().material;
-						activePlane = i;
-						return true;
-						//break;
-					}
-				}
-			}
-		}
-		return false;
-	}
+	//bool CheckIfUnderWater(int waterPlanesCount){
+	//	
+	//	if (!gameObjects.useSquaredPlanes) {
+    //
+	//		for (int i=0; i < waterPlanesCount; i++) {
+    //
+	//			if (Mathf.Pow ((transform.position.x - gameObjects.waterPlanes[i].transform.position.x), 2) + Mathf.Pow ((transform.position.z - gameObjects.waterPlanes[i].transform.position.z), 2) < Mathf.Pow (gameObjects.waterPlanes[i].GetComponent<Renderer> ().bounds.extents.x, 2)) {
+    //
+    //                if (activePlane != lastActivePlane)
+    //                {
+    //                    if (gameObjects.waterPlanes[activePlane].transform.Find("PrimaryCausticsProjector") != null)
+    //                    {
+    //                        primaryCausticsProjector = gameObjects.waterPlanes[activePlane].transform.Find("PrimaryCausticsProjector").GetComponent<Projector>();
+    //                        primaryAquasCaustics = gameObjects.waterPlanes[activePlane].transform.Find("PrimaryCausticsProjector").GetComponent<AQUAS_Caustics>();
+    //                    }
+    //
+    //                    if (gameObjects.waterPlanes[activePlane].transform.Find("SecondaryCausticsProjector") != null)
+    //                    {
+    //                        secondaryCausticsProjector = gameObjects.waterPlanes[activePlane].transform.Find("SecondaryCausticsProjector").GetComponent<Projector>();
+    //                        secondaryAquasCaustics = gameObjects.waterPlanes[activePlane].transform.Find("SecondaryCausticsProjector").GetComponent<AQUAS_Caustics>();
+    //                    }
+    //
+    //                    lastActivePlane = activePlane;
+    //                }
+    //
+    //                activePlane = i;
+    //
+    //                if (transform.position.y < gameObjects.waterPlanes[i].transform.position.y) {
+    //
+	//					waterPlaneMaterial = gameObjects.waterPlanes[i].GetComponent<Renderer> ().material;
+	//					activePlane = i;
+	//					return true;
+	//					//break;
+	//				}
+	//			}
+	//		}
+	//	} else {
+    //
+	//		for (int i=0; i < waterPlanesCount; i++) {
+    //
+	//			if (Mathf.Abs(transform.position.x - gameObjects.waterPlanes[i].transform.position.x) < gameObjects.waterPlanes[i].GetComponent<Renderer>().bounds.extents.x && Mathf.Abs(transform.position.z - gameObjects.waterPlanes[i].transform.position.z)  < gameObjects.waterPlanes[i].GetComponent<Renderer> ().bounds.extents.z) {
+    //
+    //                if (activePlane != lastActivePlane)
+    //                {
+    //                    if (gameObjects.waterPlanes[activePlane].transform.Find("PrimaryCausticsProjector") != null)
+    //                    {
+    //                        primaryCausticsProjector = gameObjects.waterPlanes[activePlane].transform.Find("PrimaryCausticsProjector").GetComponent<Projector>();
+    //                        primaryAquasCaustics = gameObjects.waterPlanes[activePlane].transform.Find("PrimaryCausticsProjector").GetComponent<AQUAS_Caustics>();
+    //                    }
+    //
+    //                    if (gameObjects.waterPlanes[activePlane].transform.Find("SecondaryCausticsProjector") != null)
+    //                    {
+    //                        secondaryCausticsProjector = gameObjects.waterPlanes[activePlane].transform.Find("SecondaryCausticsProjector").GetComponent<Projector>();
+    //                        secondaryAquasCaustics = gameObjects.waterPlanes[activePlane].transform.Find("SecondaryCausticsProjector").GetComponent<AQUAS_Caustics>();
+    //                    }
+    //
+    //                    lastActivePlane = activePlane;
+    //                }
+    //
+    //                activePlane = i;
+    //                
+    //                if (transform.position.y < gameObjects.waterPlanes[i].transform.position.y) {
+    //
+	//					waterPlaneMaterial = gameObjects.waterPlanes[0].GetComponent<Renderer> ().material;
+	//					activePlane = i;
+	//					return true;
+	//					//break;
+	//				}
+	//			}
+	//		}
+	//	}
+	//	return false;
+	//}
 
     //<summary>
     //Once underwater, checks if still underwater
     //</summary>
-    void CheckIfStillUnderWater() {
-
-        if (!gameObjects.useSquaredPlanes)
-        {
-
-            if (underWater && Mathf.Pow((transform.position.x - gameObjects.waterPlanes[activePlane].transform.position.x), 2) + Mathf.Pow((transform.position.z - gameObjects.waterPlanes[activePlane].transform.position.z), 2) > Mathf.Pow(gameObjects.waterPlanes[activePlane].GetComponent<Renderer>().bounds.extents.x, 2))
-            {
-                underWater = false;
-            }
-
-            else if (underWater && transform.position.y > gameObjects.waterPlanes[activePlane].transform.position.y)
-            {
-                underWater = false;
-            }
-
-            else if (!underWater)
-            {
-                underWater = CheckIfUnderWater(gameObjects.waterPlanes.Count);
-            }
-        }
-        else {
-
-            if (underWater && Mathf.Abs(transform.position.x - gameObjects.waterPlanes[activePlane].transform.position.x) > gameObjects.waterPlanes[activePlane].GetComponent<Renderer>().bounds.extents.x || underWater && Mathf.Abs(transform.position.z - gameObjects.waterPlanes[activePlane].transform.position.z) > gameObjects.waterPlanes[activePlane].GetComponent<Renderer>().bounds.extents.z)
-            {
-                underWater = false;
-            }
-
-            else if (underWater && transform.position.y > gameObjects.waterPlanes[activePlane].transform.position.y)
-            {
-                underWater = false;
-            }
-
-            else if (!underWater)
-            {
-                underWater = CheckIfUnderWater(gameObjects.waterPlanes.Count);
-            }
-        }
-    }
+    //void CheckIfStillUnderWater() {
+    //
+    //    if (!gameObjects.useSquaredPlanes)
+    //    {
+    //
+    //        if (underWater && Mathf.Pow((transform.position.x - gameObjects.waterPlanes[activePlane].transform.position.x), 2) + Mathf.Pow((transform.position.z - gameObjects.waterPlanes[activePlane].transform.position.z), 2) > Mathf.Pow(gameObjects.waterPlanes[activePlane].GetComponent<Renderer>().bounds.extents.x, 2))
+    //        {
+    //            underWater = false;
+    //        }
+    //
+    //        else if (underWater && transform.position.y > gameObjects.waterPlanes[activePlane].transform.position.y)
+    //        {
+    //            underWater = false;
+    //        }
+    //
+    //        else if (!underWater)
+    //        {
+    //            underWater = CheckIfUnderWater(gameObjects.waterPlanes.Count);
+    //        }
+    //    }
+    //    else {
+    //
+    //        if (underWater && Mathf.Abs(transform.position.x - gameObjects.waterPlanes[activePlane].transform.position.x) > gameObjects.waterPlanes[activePlane].GetComponent<Renderer>().bounds.extents.x || underWater && Mathf.Abs(transform.position.z - gameObjects.waterPlanes[activePlane].transform.position.z) > gameObjects.waterPlanes[activePlane].GetComponent<Renderer>().bounds.extents.z)
+    //        {
+    //            underWater = false;
+    //        }
+    //
+    //        else if (underWater && transform.position.y > gameObjects.waterPlanes[activePlane].transform.position.y)
+    //        {
+    //            underWater = false;
+    //        }
+    //
+    //        else if (!underWater)
+    //        {
+    //            underWater = CheckIfUnderWater(gameObjects.waterPlanes.Count);
+    //        }
+    //    }
+    //}
 
     //<summary>
     //Handles the image sequence for the wet lens effect
@@ -654,6 +654,8 @@ public class AQUAS_LensEffects : MonoBehaviour {
     //Small bubbles parameters & randomization are based on bubble parameters but are not directly controllable
     //</summary>
     void BubbleSpawner() {
+
+        return;
 
         //Applies spawning rules for initial dive
 #region Spawn for initial dive

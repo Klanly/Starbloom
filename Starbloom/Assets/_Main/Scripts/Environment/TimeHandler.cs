@@ -27,7 +27,6 @@ public class TimeHandler : MonoBehaviour
 	{
 		[Header("Data")]
 		public TimePresetEnums PresetTime;
-		public int currentSecond = 0;
 		public int currentMinute = 45;
 		public int currentHour = 5;
         [Button] public void DebugSetTime() { QuickFind.TimeHandler.AdjustTimeByPreset((int)PresetTime); }
@@ -36,7 +35,8 @@ public class TimeHandler : MonoBehaviour
 
 
 
-
+    public int DayStartHour = 6;
+    public int DayStartMinute = 0;
 	[ListDrawerSettings(ShowIndexLabels = true, ListElementLabelName = "PresetTime", NumberOfItemsPerPage = 8, Expanded = false)]
 	public TimePreset[] TimePresets;
 
@@ -81,19 +81,17 @@ public class TimeHandler : MonoBehaviour
 	{
 		List<float> TimeValues = new List<float>();
 
-		TimeValues.Add(QuickFind.WeatherController.GameTime.Seconds);
-		TimeValues.Add(QuickFind.WeatherController.GameTime.Minutes);
 		TimeValues.Add(QuickFind.WeatherController.GameTime.Hours);
+		TimeValues.Add(QuickFind.WeatherController.GameTime.Minutes);
 
-		QuickFind.NetworkSync.SyncTimeToMaster(TimeValues.ToArray());
+        QuickFind.NetworkSync.SyncTimeToMaster(TimeValues.ToArray());
 	}
 	public void GetMasterTimes(float[] Times)
 	{
-		int currentSecond = (int)Times[0];
-		int currentMinute = (int)Times[1];
-		int currentHour = (int)Times[2];
+		int Hour = (int)Times[0];
+		int Minute = (int)Times[1];
 
-        AdjustTimeByValues(currentHour, currentMinute, currentSecond);
+        AdjustTimeByValues(Hour, Minute);
     }
 
 
@@ -115,16 +113,17 @@ public class TimeHandler : MonoBehaviour
 
     void SetTime(TimePreset TP)
     {
-        AdjustTimeByValues(TP.currentHour, TP.currentMinute, TP.currentSecond);
+        AdjustTimeByValues(TP.currentHour, TP.currentMinute);
     }
 
-    public void AdjustTimeByValues(int Hour, int Minute, int Second, int Year = 0, int Month = 0, int Day = 0)
-    {
-        QuickFind.Farm.Year = Year;
-        QuickFind.Farm.Month = Month;
-        QuickFind.Farm.Day = Day;
 
-        QuickFind.WeatherController.SetInternalTime(2018, ((Month - 1) * 30) + Day, Hour, Minute, Second);
+    public void AdjustTimeByValues(int Hour, int Minute, int Year = 0, int Month = 0, int Day = 0)
+    {
+        if(Year != 0) QuickFind.Farm.Year = Year;
+        if(Month != 0) QuickFind.Farm.Month = Month;
+        if(Day != 0) QuickFind.Farm.Day = Day;
+
+        QuickFind.WeatherController.SetInternalTime(QuickFind.Farm.Year, QuickFind.Farm.Day, Hour, Minute, 0);
     }
 
 
@@ -166,7 +165,7 @@ public class TimeHandler : MonoBehaviour
 			}
 		}
 
-		QuickFind.NetworkSync.AdjustTimeByValues(year, Month, Day, 6, 0);
+        QuickFind.NetworkSync.AdjustTimeByValues(DayStartHour, DayStartMinute, year, Month, Day);
 		QuickFind.WeatherHandler.SetNewDayWeather(ForceRain);
 	}
 

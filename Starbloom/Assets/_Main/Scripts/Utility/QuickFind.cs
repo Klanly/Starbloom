@@ -206,13 +206,9 @@ public static class QuickFind
     //Environment
     public static TimeHandler TimeHandler = null;
     public static WeatherHandler WeatherHandler = null;
-
-
     public static EnviroSky WeatherController = null;
-    //public static Tenkoku.Core.TenkokuModule WeatherModule = null;
-    //public static Suimono.Core.SuimonoModule WaterModule = null;
-    //public static Suimono.Core.SuimonoObject WaterObject = null;
-
+    public static CloudsGenerator CloudGeneration = null;
+    public static DG_EnvironmentUnderwaterTrigger UnderwaterTrigger = null;
     public static FakeRainDropCollision RainDropHandler = null;
 
 

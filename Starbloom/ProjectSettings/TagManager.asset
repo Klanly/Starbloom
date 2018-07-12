@@ -19,21 +19,21 @@ TagManager:
   - UI
   - 
   - 
-  - Suimono_Water
-  - Suimono_Depth
-  - Suimono_Screen
   - Clouds
+  - CloudReflection
+  - Lights
+  - 
   - Player
   - InteractableObject
   - ScatterObject
   - Tillable Terrain
-  - Water
   - WaterableObject
-  - PlaceableTerrain
   - 
   - 
   - 
-  - CloudReflection
+  - 
+  - 
+  - 
   - 
   - AttackableTarget
   - 

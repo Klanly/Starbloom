@@ -247,6 +247,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114545301537339994, guid: 694749cbffc49514c8bca212f4773ede,
+        type: 2}
+      propertyPath: _groundMask.m_Bits
+      value: 67149825
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 694749cbffc49514c8bca212f4773ede, type: 2}
   m_IsPrefabParent: 0
@@ -2101,9 +2106,9 @@ MonoBehaviour:
     Acheivements:
       LargestFishCaught: 000000000000000000000000
   Weather:
-    TodayWeather: 0
-    TomorrowWeather: 0
-    TwoDayAwayWeather: 0
+    TodayWeather: 4
+    TomorrowWeather: 4
+    TwoDayAwayWeather: 2
 --- !u!1001 &1197456946
 Prefab:
   m_ObjectHideFlags: 0

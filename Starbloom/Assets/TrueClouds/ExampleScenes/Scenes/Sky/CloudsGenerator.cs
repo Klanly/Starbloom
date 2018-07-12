@@ -6,60 +6,83 @@ using Sirenix.OdinInspector;
 
 public class CloudsGenerator : MonoBehaviour
 {
+    public enum CloudTypes
+    {
+        None,
+        Basic,
+        Cloudy,
+        Storm
+    }
+    [System.Serializable]
+    public class CloudGenerationModule
+    {
+        public CloudTypes Type;
+        public GenerationValue GenValues;
+    }
+
     [System.Serializable]
     public class GenerationValue
     {
         public float Density = 2;
         public float ScaleMultiplier = 1;
-        public Vector3 StartPos = Vector3.zero;
-        public Vector3 EndPos = new Vector3(100, 0, 100);
-        public GameObject[] Prefabs = new GameObject[0];
+    }
+    [System.Serializable]
+    public class CloudObject
+    {
+        public Transform _T;
+        public float Speed;
     }
 
 
     [Header("Generation")]
-    public bool GenerationEnabled = false;
-    public GenerationValue GenerationValues;
+    public CloudTypes CurrentCloudType;
+    public CloudGenerationModule[] GenerationModules;
+    public GameObject CloudPrefab;
+    public Vector3 StartPos = Vector3.zero;
+    public Vector3 EndPos = new Vector3(100, 0, 100);
     public Texture2D HeightMap;
-    public Transform[] GeneratedClouds;
+    public CloudObject[] GeneratedClouds;
     [Header("Runtime")]
     public Vector3 CloudDirection;
-    public float CloudSpeed;
+    public float CloudSpeedLow;
+    public float CloudSpeedHigh;
     [Header("Debug")]
     public bool GenerateOnStart;
 
+    GenerationValue CurrentGenValue;
 
+    private void Awake()
+    {
+        QuickFind.CloudGeneration = this;
+    }
 
     private void Start()
     {
-        if (GenerateOnStart) GenerateClouds();
+        if (GenerateOnStart) { GenerateCloudsByType(CurrentCloudType); }
     }
 
 
-    [Button(ButtonSizes.Large)]
-    void GenerateClouds()
+    void CloudGeneration()
     {
-        if (!GenerationEnabled) return;
-
         int count = GeneratedClouds.Length;
         if (Application.isPlaying)
-        { for (int i = 0; i < count; i++) Destroy(GeneratedClouds[i].gameObject); }
+        { for (int i = 0; i < count; i++) {if (GeneratedClouds[i]._T != null) Destroy(GeneratedClouds[i]._T.gameObject); } }
         else
-        { for (int i = 0; i < count; i++) DestroyImmediate(GeneratedClouds[0].gameObject); }
+        { for (int i = 0; i < count; i++) { if (GeneratedClouds[0]._T != null) DestroyImmediate(GeneratedClouds[0]._T.gameObject); } }
 
-        List<Transform> LoadedClouds = new List<Transform>();
+        List<CloudObject> LoadedClouds = new List<CloudObject>();
 
         int cnt = 0;
-        Vector3 curPos = GenerationValues.StartPos;
-        while (curPos.z < GenerationValues.EndPos.z)
+        Vector3 curPos = StartPos;
+        while (curPos.z < EndPos.z)
         {
-            curPos.z += Random.Range(GenerationValues.Density / 2, GenerationValues.Density * 1.5f);
-            curPos.x = GenerationValues.StartPos.x;
-            while (curPos.x < GenerationValues.EndPos.x)
+            curPos.z += Random.Range(CurrentGenValue.Density / 2, CurrentGenValue.Density * 1.5f);
+            curPos.x = StartPos.x;
+            while (curPos.x < EndPos.x)
             {
-                curPos.x += Random.Range(GenerationValues.Density / 5, GenerationValues.Density * 5);
-                int x = (int)(HeightMap.width * curPos.x / (GenerationValues.EndPos - GenerationValues.StartPos).x);
-                int y = (int)(HeightMap.height * curPos.z / (GenerationValues.EndPos - GenerationValues.StartPos).x);
+                curPos.x += Random.Range(CurrentGenValue.Density / 5, CurrentGenValue.Density * 5);
+                int x = (int)(HeightMap.width * curPos.x / (EndPos - StartPos).x);
+                int y = (int)(HeightMap.height * curPos.z / (EndPos - StartPos).x);
                 if (HeightMap.GetPixel(x, y).g < 0.75f)
                 {
                     continue;
@@ -68,15 +91,18 @@ public class CloudsGenerator : MonoBehaviour
                 float width = HeightMap.GetPixel(x, y).b * 40;
                 height *= 5;
                 width *= 5;
-                curPos.y = 150;
-                int id = Random.Range(0, GenerationValues.Prefabs.Length);
+                curPos.y = Random.Range(StartPos.y, EndPos.y);
                 cnt++;
-                GameObject placed = (GameObject)Instantiate(GenerationValues.Prefabs[id], curPos, Quaternion.identity);
-                LoadedClouds.Add(placed.transform);
+                GameObject placed = (GameObject)Instantiate(CloudPrefab, curPos, Quaternion.identity);
+                CloudObject CO = new CloudObject();
+                CO._T = placed.transform;
+                LoadedClouds.Add(CO);
+                GenerateCloudSpeed(CO);
+
                 placed.transform.localScale = new Vector3(
-                    width * GenerationValues.ScaleMultiplier,
-                    10 * GenerationValues.ScaleMultiplier,
-                    width * GenerationValues.ScaleMultiplier
+                    width * CurrentGenValue.ScaleMultiplier,
+                    10 * CurrentGenValue.ScaleMultiplier,
+                    width * CurrentGenValue.ScaleMultiplier
                     );
                 placed.transform.parent = transform;
             }
@@ -86,30 +112,57 @@ public class CloudsGenerator : MonoBehaviour
         Debug.Log(cnt);
     }
 
-    [Button(ButtonSizes.Small)]
-    public void EnableShadowCasters()
-    {
-        for (int i = 0; i < GeneratedClouds.Length; i++)
-            GeneratedClouds[i].GetChild(1).gameObject.SetActive(true);
-    }
-    [Button(ButtonSizes.Small)]
-    public void DisableShadowCasters()
-    {
-        for (int i = 0; i < GeneratedClouds.Length; i++)
-            GeneratedClouds[i].GetChild(1).gameObject.SetActive(false);
-    }
+
 
     void Update()
     {
-        for(int i = 0; i < GeneratedClouds.Length; i++)
+        float DeltaTime = Time.deltaTime;
+
+        for (int i = 0; i < GeneratedClouds.Length; i++)
         {
-            Transform Child = GeneratedClouds[i];
-            Vector3 Pos = Child.localPosition;
-            if (Pos.x < GenerationValues.StartPos.x) Pos.x = GenerationValues.EndPos.x;
-            if (Pos.z < GenerationValues.StartPos.z) Pos.z = GenerationValues.EndPos.z;
-            if (Pos.x > GenerationValues.EndPos.x) Pos.x = GenerationValues.StartPos.x;
-            if (Pos.z > GenerationValues.EndPos.z) Pos.z = GenerationValues.StartPos.z;
-            Child.localPosition = Pos;
+            CloudObject CO = GeneratedClouds[i];
+            Vector3 Pos = CO._T.localPosition;
+            Pos += CloudDirection * GeneratedClouds[i].Speed * DeltaTime;
+            if (Pos.x < StartPos.x) { Pos.x = EndPos.x; GenerateCloudSpeed(CO); }
+            if (Pos.z < StartPos.z) { Pos.z = EndPos.z; GenerateCloudSpeed(CO); }
+            if (Pos.x > EndPos.x) { Pos.x = StartPos.x; GenerateCloudSpeed(CO); }
+            if (Pos.z > EndPos.z) { Pos.z = StartPos.z; GenerateCloudSpeed(CO); }
+            CO._T.localPosition = Pos;
         }
+    }
+
+    void GenerateCloudSpeed(CloudObject CO)
+    {
+        CO.Speed = Random.Range(CloudSpeedLow, CloudSpeedHigh);
+    }
+
+
+
+
+    public void GenerateCloudsByType(CloudTypes Type)
+    {
+        CurrentCloudType = Type;
+        if (CurrentCloudType != CloudTypes.None)
+        {
+            GetCurrentGenValue();
+            CloudGeneration();
+        }
+    }
+    void GetCurrentGenValue()
+    {
+        for(int i = 0; i < GenerationModules.Length; i++ )
+        {
+            if (GenerationModules[i].Type == CurrentCloudType)
+                CurrentGenValue = GenerationModules[i].GenValues;
+        }
+    }
+
+
+
+    [Button(ButtonSizes.Small)]
+    public void RefreshCloudType()
+    {
+        if(Application.isPlaying)
+            GenerateCloudsByType(CurrentCloudType);
     }
 }

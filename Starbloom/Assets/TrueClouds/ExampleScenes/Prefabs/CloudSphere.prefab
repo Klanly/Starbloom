@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4507937580073346}
   - component: {fileID: 33114537827503392}
   - component: {fileID: 23229167274427132}
-  m_Layer: 22
+  m_Layer: 9
   m_Name: CloudReflection
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 4841242442525364}
   - component: {fileID: 33512884926516552}
   - component: {fileID: 23443340724009502}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CloudShadowCast
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 4293798905149228}
   - component: {fileID: 33349313212135476}
   - component: {fileID: 23043308917098330}
-  m_Layer: 11
+  m_Layer: 8
   m_Name: CloudSphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -85,7 +85,7 @@ Transform:
   m_GameObject: {fileID: 1235273941494814}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 4293798905149228}
   m_RootOrder: 0

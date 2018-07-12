@@ -46,7 +46,10 @@ public class DG_DebugSettings : MonoBehaviour {
     {
         if (!EnableDebugKeycodes) return;
 
-        if (Input.GetKey(KeyCode.Keypad0)) ShowDebugGameObject();
+        if (Input.GetKey(KeyCode.Keypad9)) ShowDebugGameObject();
+        if (Input.GetKey(KeyCode.Keypad0)) JumptoScenePoint(0);
+        if (Input.GetKey(KeyCode.Keypad1)) JumptoScenePoint(1);
+        if (Input.GetKey(KeyCode.Keypad2)) JumptoScenePoint(2);
     }
 
     void ShowDebugGameObject()
@@ -54,5 +57,12 @@ public class DG_DebugSettings : MonoBehaviour {
 #if UNITY_EDITOR
         Selection.activeGameObject = this.gameObject;
 #endif
+    }
+    void JumptoScenePoint(int ScenePointValue)
+    {
+        DG_SceneEntryObject Portal = QuickFind.SceneEntryPoints.GetItemFromID(ScenePointValue);
+        QuickFind.PlayerTrans.position = Portal.transform.position;
+        QuickFind.PlayerTrans.eulerAngles = Portal.transform.eulerAngles;
+        QuickFind.PlayerCam.InstantSetCameraAngle(Portal.CameraFacing);
     }
 }

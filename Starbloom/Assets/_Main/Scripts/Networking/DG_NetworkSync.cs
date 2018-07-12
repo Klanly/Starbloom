@@ -431,9 +431,9 @@ public class DG_NetworkSync : Photon.MonoBehaviour
     public void AdjustTimeByPreset(int Time){ PV.RPC("SendOutTimeByPreset", PhotonTargets.All, Time); }
     [PunRPC] void SendOutTimeByPreset(int Time){  QuickFind.TimeHandler.AdjustTimeByPreset(Time); }
 
-    public void AdjustTimeByValues(int Year, int Month, int Day, int Hour, int Minute)
+    public void AdjustTimeByValues(int Hour, int Minute, int Year, int Month, int Day)
     {
-        int[] OutInts = new int[5]; OutInts[0] = Year;  OutInts[1] = Month; OutInts[2] = Day; OutInts[3] = Hour; OutInts[4] = Minute;
+        int[] OutInts = new int[5]; OutInts[0] = Hour;  OutInts[1] = Minute; OutInts[2] = Year; OutInts[3] = Month; OutInts[4] = Day;
         PV.RPC("SendOutTimeByValues", PhotonTargets.All, OutInts);
     }
 

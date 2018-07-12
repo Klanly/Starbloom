@@ -1353,7 +1353,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71db83065fb78444d8871f4fbc218db5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayOnline: 1
+  PlayOnline: 0
   DisableAudio: 0
   GeneratedGender: 2
   DontHideGear: 0
@@ -1878,6 +1878,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TextSpeed: 0.04
   CurrentLanguage: 0
+  GlobalDisableCloudRendering: 0
+  GlobalDisableWaterReflection: 0
 --- !u!1 &2059881537
 GameObject:
   m_ObjectHideFlags: 0

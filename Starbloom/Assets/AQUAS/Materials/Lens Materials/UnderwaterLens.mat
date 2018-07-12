@@ -68,7 +68,7 @@ Material:
     - _Cutout1: 0
     - _Cutout2: 0
     - _DetailNormalMapScale: 1
-    - _DistortionIntensity: 0.3
+    - _DistortionIntensity: 0.02
     - _DistortionSpeed: 3
     - _DstBlend: 0
     - _Glossiness: 0.5

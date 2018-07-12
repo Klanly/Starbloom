@@ -201,49 +201,49 @@ public class EnviroCloudsLayer
 [ExecuteInEditMode]
 public class EnviroSky : MonoBehaviour
 {
-	private static EnviroSky _instance; // Creat a static instance for easy access!
+    private static EnviroSky _instance; // Creat a static instance for easy access!
 
-	public static EnviroSky instance
-	{
-		get
-		{
-			//If _instance hasn't been set yet, we grab it from the scene!
-			//This will only happen the first time this reference is used.
-			if(_instance == null)
-				_instance = GameObject.FindObjectOfType<EnviroSky>();
-			return _instance;
-		}
-	}
+    public static EnviroSky instance
+    {
+        get
+        {
+            //If _instance hasn't been set yet, we grab it from the scene!
+            //This will only happen the first time this reference is used.
+            if (_instance == null)
+                _instance = GameObject.FindObjectOfType<EnviroSky>();
+            return _instance;
+        }
+    }
 
-	public string prefabVersion = "2.0.3";
+    public string prefabVersion = "2.0.3";
 
-	[Tooltip("Assign your player gameObject here. Required Field! or enable AssignInRuntime!")]
-	public GameObject Player;
-	[Tooltip("Assign your main camera here. Required Field! or enable AssignInRuntime!")]
-	public Camera PlayerCamera;
-	[Tooltip("If enabled Enviro will search for your Player and Camera by Tag!")]
-	public bool AssignInRuntime;
-	[Tooltip("Your Player Tag")]
-	public string PlayerTag = "";
-	[Tooltip("Your CameraTag")]
-	public string CameraTag = "MainCamera";
+    [Tooltip("Assign your player gameObject here. Required Field! or enable AssignInRuntime!")]
+    public GameObject Player;
+    [Tooltip("Assign your main camera here. Required Field! or enable AssignInRuntime!")]
+    public Camera PlayerCamera;
+    [Tooltip("If enabled Enviro will search for your Player and Camera by Tag!")]
+    public bool AssignInRuntime;
+    [Tooltip("Your Player Tag")]
+    public string PlayerTag = "";
+    [Tooltip("Your CameraTag")]
+    public string CameraTag = "MainCamera";
     [Header("General")]
     [Tooltip("Enable this when using singlepass rendering.")]
     public bool dontDestroy = false;
     [Header("Camera Settings")]
-	[Tooltip("Enable HDR Rendering. You want to use a third party tonemapping effect for best results!")]
-	public bool HDR = true;
-	[Header("Layer Setup")]
-	[Tooltip("This is the layer id forfor the moon.")]
-	public int moonRenderingLayer = 29;
-	[Tooltip("This is the layer id for additional satellites like moons, planets.")]
-	public int satelliteRenderingLayer = 30;
-	[Tooltip("Activate to set recommended maincamera clear flag.")]
-	public bool setCameraClearFlags = true;
-	[Header("Virtual Reality")]
-	[Tooltip("Enable this when using singlepass rendering.")]
-	public bool singlePassVR = false;
-	[Tooltip("Enable this to activate volume lighing")]
+    [Tooltip("Enable HDR Rendering. You want to use a third party tonemapping effect for best results!")]
+    public bool HDR = true;
+    [Header("Layer Setup")]
+    [Tooltip("This is the layer id forfor the moon.")]
+    public int moonRenderingLayer = 29;
+    [Tooltip("This is the layer id for additional satellites like moons, planets.")]
+    public int satelliteRenderingLayer = 30;
+    [Tooltip("Activate to set recommended maincamera clear flag.")]
+    public bool setCameraClearFlags = true;
+    [Header("Virtual Reality")]
+    [Tooltip("Enable this when using singlepass rendering.")]
+    public bool singlePassVR = false;
+    [Tooltip("Enable this to activate volume lighing")]
     [HideInInspector]
     public bool volumeLighting = true;
     [Tooltip("Enable this to activate global scattering fog. Disabled will also disable volume lighting")]
@@ -251,34 +251,34 @@ public class EnviroSky : MonoBehaviour
     public bool globalFog = true;
 
     [Header("Profile")]
-	public EnviroProfile profile = null;
-	// Parameters
-	[Header("Control")]
-	public EnviroTime GameTime = null;
-	public EnviroAudio Audio = null;
-	public EnviroWeather Weather = null;
-	public EnviroSeasons Seasons = null;
-	public EnviroFogging Fog = null;
-	public EnviroLightshafts LightShafts = null;
+    public EnviroProfile profile = null;
+    // Parameters
+    [Header("Control")]
+    public EnviroTime GameTime = null;
+    public EnviroAudio Audio = null;
+    public EnviroWeather Weather = null;
+    public EnviroSeasons Seasons = null;
+    public EnviroFogging Fog = null;
+    public EnviroLightshafts LightShafts = null;
 
-	[Header("Components")]
-	public EnviroComponents Components = null;
+    [Header("Components")]
+    public EnviroComponents Components = null;
 
-	//Runtime Settings
-	[HideInInspector]public bool started;
-	[HideInInspector]public bool isNight = true;
-	// Runtime profile
-	[HideInInspector]public EnviroLightSettings lightSettings = new EnviroLightSettings();
-    [HideInInspector]public EnviroVolumeLightingSettings volumeLightSettings = new EnviroVolumeLightingSettings();
-    [HideInInspector]public EnviroSkySettings skySettings = new EnviroSkySettings();
-	[HideInInspector]public EnviroCloudSettings cloudsSettings = new EnviroCloudSettings();
-	[HideInInspector]public EnviroWeatherSettings weatherSettings = new EnviroWeatherSettings();
-	[HideInInspector]public EnviroFogSettings fogSettings = new EnviroFogSettings();
-	[HideInInspector]public EnviroLightShaftsSettings lightshaftsSettings = new EnviroLightShaftsSettings();
-	[HideInInspector]public EnviroSeasonSettings seasonsSettings = new EnviroSeasonSettings();
-	[HideInInspector]public EnviroAudioSettings audioSettings = new EnviroAudioSettings();
-	[HideInInspector]public EnviroSatellitesSettings satelliteSettings = new EnviroSatellitesSettings();
-	[HideInInspector]public EnviroQualitySettings qualitySettings = new EnviroQualitySettings();
+    //Runtime Settings
+    [HideInInspector] public bool started;
+    [HideInInspector] public bool isNight = true;
+    // Runtime profile
+    [HideInInspector] public EnviroLightSettings lightSettings = new EnviroLightSettings();
+    [HideInInspector] public EnviroVolumeLightingSettings volumeLightSettings = new EnviroVolumeLightingSettings();
+    [HideInInspector] public EnviroSkySettings skySettings = new EnviroSkySettings();
+    [HideInInspector] public EnviroCloudSettings cloudsSettings = new EnviroCloudSettings();
+    [HideInInspector] public EnviroWeatherSettings weatherSettings = new EnviroWeatherSettings();
+    [HideInInspector] public EnviroFogSettings fogSettings = new EnviroFogSettings();
+    [HideInInspector] public EnviroLightShaftsSettings lightshaftsSettings = new EnviroLightShaftsSettings();
+    [HideInInspector] public EnviroSeasonSettings seasonsSettings = new EnviroSeasonSettings();
+    [HideInInspector] public EnviroAudioSettings audioSettings = new EnviroAudioSettings();
+    [HideInInspector] public EnviroSatellitesSettings satelliteSettings = new EnviroSatellitesSettings();
+    [HideInInspector] public EnviroQualitySettings qualitySettings = new EnviroQualitySettings();
 
     public enum EnviroCloudsMode
     {
@@ -295,80 +295,80 @@ public class EnviroSky : MonoBehaviour
     private Material cloudShadows;
 
     // Camera Components
-    [HideInInspector]public Camera moonCamera;
-    [HideInInspector]public Camera satCamera;
+    [HideInInspector] public Camera moonCamera;
+    [HideInInspector] public Camera satCamera;
     //[HideInInspector]public GameObject renderCameraHolder;
-	[HideInInspector]public EnviroVolumeLight directVolumeLight;
-	[HideInInspector]public EnviroLightShafts lightShaftsScriptSun;
-	[HideInInspector]public EnviroLightShafts lightShaftsScriptMoon;
-	[HideInInspector]public EnviroSkyRendering EnviroSkyRender;
-	// Weather SFX
-	[HideInInspector]public GameObject EffectsHolder;
-	[HideInInspector]public EnviroAudioSource AudioSourceWeather;
-	[HideInInspector]public EnviroAudioSource AudioSourceWeather2;
-	[HideInInspector]public EnviroAudioSource AudioSourceAmbient;
-	[HideInInspector]public EnviroAudioSource AudioSourceAmbient2;
-	[HideInInspector]public AudioSource AudioSourceThunder;
-    [HideInInspector]public EnviroAudioSource AudioSourceZone;
+    [HideInInspector] public EnviroVolumeLight directVolumeLight;
+    [HideInInspector] public EnviroLightShafts lightShaftsScriptSun;
+    [HideInInspector] public EnviroLightShafts lightShaftsScriptMoon;
+    [HideInInspector] public EnviroSkyRendering EnviroSkyRender;
+    // Weather SFX
+    [HideInInspector] public GameObject EffectsHolder;
+    [HideInInspector] public EnviroAudioSource AudioSourceWeather;
+    [HideInInspector] public EnviroAudioSource AudioSourceWeather2;
+    [HideInInspector] public EnviroAudioSource AudioSourceAmbient;
+    [HideInInspector] public EnviroAudioSource AudioSourceAmbient2;
+    [HideInInspector] public AudioSource AudioSourceThunder;
+    [HideInInspector] public EnviroAudioSource AudioSourceZone;
     // Vegeation Growth
-    [HideInInspector]public List<EnviroVegetationInstance> EnviroVegetationInstances = new List<EnviroVegetationInstance>(); // All EnviroInstance that getting updated at the moment.
-	//Sky runtime
-	[HideInInspector]public Color currentWeatherSkyMod;
-	[HideInInspector]public Color currentWeatherLightMod;
-	[HideInInspector]public Color currentWeatherFogMod;
+    [HideInInspector] public List<EnviroVegetationInstance> EnviroVegetationInstances = new List<EnviroVegetationInstance>(); // All EnviroInstance that getting updated at the moment.
+                                                                                                                              //Sky runtime
+    [HideInInspector] public Color currentWeatherSkyMod;
+    [HideInInspector] public Color currentWeatherLightMod;
+    [HideInInspector] public Color currentWeatherFogMod;
     //Interior Mods
-	[HideInInspector]public Color currentInteriorDirectLightMod;
-	[HideInInspector]public Color currentInteriorAmbientLightMod;
-	[HideInInspector]public Color currentInteriorAmbientEQLightMod;
-	[HideInInspector]public Color currentInteriorAmbientGRLightMod;
-    [HideInInspector]public Color currentInteriorSkyboxMod;
-    [HideInInspector]public Color currentInteriorFogColorMod = new Color(0,0,0,0);
-    [HideInInspector]public float currentInteriorFogMod = 1f;
-    [HideInInspector]public float currentInteriorWeatherEffectMod = 1f;
-    [HideInInspector]public float currentInteriorZoneAudioVolume = 1f;
-    [HideInInspector]public float currentInteriorZoneAudioFadingSpeed = 1f;
+    [HideInInspector] public Color currentInteriorDirectLightMod;
+    [HideInInspector] public Color currentInteriorAmbientLightMod;
+    [HideInInspector] public Color currentInteriorAmbientEQLightMod;
+    [HideInInspector] public Color currentInteriorAmbientGRLightMod;
+    [HideInInspector] public Color currentInteriorSkyboxMod;
+    [HideInInspector] public Color currentInteriorFogColorMod = new Color(0, 0, 0, 0);
+    [HideInInspector] public float currentInteriorFogMod = 1f;
+    [HideInInspector] public float currentInteriorWeatherEffectMod = 1f;
+    [HideInInspector] public float currentInteriorZoneAudioVolume = 1f;
+    [HideInInspector] public float currentInteriorZoneAudioFadingSpeed = 1f;
 
     //VolueLighting
-    [HideInInspector]public float globalVolumeLightIntensity;
+    [HideInInspector] public float globalVolumeLightIntensity;
     //clouds runtime
-    [HideInInspector]public EnviroWeatherCloudsConfig cloudsConfig;
-	[HideInInspector]public float thunder = 0f;
-	// Satellites
-	[HideInInspector]public List<GameObject> satellites = new List<GameObject>();
-	[HideInInspector]public List<GameObject> satellitesRotation = new List<GameObject>();
-	// Used from other Enviro componets
-	[HideInInspector]public DateTime dateTime;
-	[HideInInspector]public float internalHour;
-	[HideInInspector]public float currentHour;
-	[HideInInspector]public float currentDay;
-	[HideInInspector]public float currentYear;
-	[HideInInspector]public double currentTimeInHours;
-	// Render Textures
-	[HideInInspector]public RenderTexture cloudsRenderTarget;
-    [HideInInspector]public RenderTexture flatCloudsRenderTarget;
-    [HideInInspector]public Material flatCloudsMat;
-    [HideInInspector]public RenderTexture weatherMap;
-    [HideInInspector]public RenderTexture moonRenderTarget;
-	[HideInInspector]public RenderTexture satRenderTarget;
-	// Moon Phase
-	[HideInInspector]public float customMoonPhase = 0.0f;
-	//AQUAS Fog Handling
-	[HideInInspector]public bool updateFogDensity = true;
-	[HideInInspector]public Color customFogColor = Color.black;
-	[HideInInspector]public float customFogIntensity = 0f;
+    [HideInInspector] public EnviroWeatherCloudsConfig cloudsConfig;
+    [HideInInspector] public float thunder = 0f;
+    // Satellites
+    [HideInInspector] public List<GameObject> satellites = new List<GameObject>();
+    [HideInInspector] public List<GameObject> satellitesRotation = new List<GameObject>();
+    // Used from other Enviro componets
+    [HideInInspector] public DateTime dateTime;
+    [HideInInspector] public float internalHour;
+    [HideInInspector] public float currentHour;
+    [HideInInspector] public float currentDay;
+    [HideInInspector] public float currentYear;
+    [HideInInspector] public double currentTimeInHours;
+    // Render Textures
+    [HideInInspector] public RenderTexture cloudsRenderTarget;
+    [HideInInspector] public RenderTexture flatCloudsRenderTarget;
+    [HideInInspector] public Material flatCloudsMat;
+    [HideInInspector] public RenderTexture weatherMap;
+    [HideInInspector] public RenderTexture moonRenderTarget;
+    [HideInInspector] public RenderTexture satRenderTarget;
+    // Moon Phase
+    [HideInInspector] public float customMoonPhase = 0.0f;
+    //AQUAS Fog Handling
+    [HideInInspector] public bool updateFogDensity = true;
+    [HideInInspector] public Color customFogColor = Color.black;
+    [HideInInspector] public float customFogIntensity = 0f;
     // Profile
-	[HideInInspector]public bool profileLoaded = false;
-	[HideInInspector]public bool interiorMode = false;
-    [HideInInspector]public EnviroInterior lastInteriorZone;
+    [HideInInspector] public bool profileLoaded = false;
+    [HideInInspector] public bool interiorMode = false;
+    [HideInInspector] public EnviroInterior lastInteriorZone;
     //Wind
-    [HideInInspector]public Vector2 cloudAnim;
-    [HideInInspector]public Vector2 cloudAnimNonScaled;
+    [HideInInspector] public Vector2 cloudAnim;
+    [HideInInspector] public Vector2 cloudAnimNonScaled;
 
     //private
     private Material skyMat;
     private Transform DomeTransform;
-	private Transform SunTransform;
-	private Light MainLight;
+    private Transform SunTransform;
+    [HideInInspector] public Light MainLight;
 	private Transform MoonTransform;
 	private Renderer MoonRenderer;
 	private Material MoonShader;

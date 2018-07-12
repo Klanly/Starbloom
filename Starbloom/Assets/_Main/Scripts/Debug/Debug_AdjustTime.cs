@@ -34,7 +34,7 @@ public class Debug_AdjustTime : MonoBehaviour {
         public int Day;
         public int Hour;
         public int Minute;
-        [ButtonGroup] public void ChangeToSpecificTime() { QuickFind.NetworkSync.AdjustTimeByValues(Year, Month, Day, Hour, Minute); }
+        [ButtonGroup] public void ChangeToSpecificTime() { QuickFind.NetworkSync.AdjustTimeByValues(Hour, Minute, Year, Month, Day); }
     }
 
     [System.Serializable]

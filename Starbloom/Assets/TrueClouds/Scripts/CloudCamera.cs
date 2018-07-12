@@ -250,8 +250,8 @@ namespace TrueClouds
         private RenderTexture GetTemporaryTexture(int divider, FilterMode mode)
         {
             RenderTexture res = RenderTexture.GetTemporary(
-                (int)_camera.pixelRect.size.x / divider, 
-                (int)_camera.pixelRect.size.y / divider,
+                (int)_camera.pixelRect.size.x + 100 / divider, 
+                (int)_camera.pixelRect.size.y + 100 / divider,
                 16, 
                 RenderTextureFormat.ARGB32, 
                 RenderTextureReadWrite.Linear);

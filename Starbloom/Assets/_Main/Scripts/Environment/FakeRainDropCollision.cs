@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class FakeRainDropCollision : MonoBehaviour
 {
+    enum Type
+    {
+        Splash,
+        Ripple
+    }
 
     public bool LoadPoolsOnStart = false;
     public bool IsRaining = false;
@@ -11,7 +16,9 @@ public class FakeRainDropCollision : MonoBehaviour
     public Transform ParticleContainer = null;
     public GameObject SplashRef = null;
     public GameObject RippleRef = null;
-
+    [Header("Raycast Data")]
+    public LayerMask RaycastMask;
+    public LayerMask RippleMask;
     [Header("Pooling")]
     public int SplashPoolSize = 300;
     public int RipplePoolSize = 100;
@@ -20,18 +27,27 @@ public class FakeRainDropCollision : MonoBehaviour
     List<ParticleSystem> RipplePool;
     int RipplePoolIndex = 0;
 
-    [Header("Generic Data")]
-    public float DropletRadius = 50f;
-
     [Header("Dynamic Rain Data")]
     public float UpdateRate = .1f;
-    public int AmountPerUpdate = 10;
+    [Header("TurnOffRipples")]
     public int AmountPerRippleOffUpdate = 10;
 
-    [Header("Raycast Data")]
-    public float RaycastMaxDistance;
-    public LayerMask RaycastMask;
-    public int WaterLayer;
+
+    [Header("Rain")]
+    public float DropletRadius = 50f;
+    public float RippleRadius = 150f;
+    public int AmountPerUpdate = 10;
+    public int RipplePerUpdate = 10;
+    [Header("ThunderStorm")]
+    public float StormDropletRadius = 50f;
+    public float StormRippleRadius = 150f;
+    public int StormAmountPerUpdate = 10;
+    public int StormRipplePerUpdate = 10;
+
+
+
+
+
 
 
     bool PoolsLoaded = false;
@@ -71,23 +87,7 @@ public class FakeRainDropCollision : MonoBehaviour
             RipplePool.Add(PS);
         }
     }
-    int getIndex(bool isSplash)
-    {
-        if (isSplash)
-        {
-            SplashpoolIndex++;
-            if (SplashpoolIndex == SplashPoolSize)
-                SplashpoolIndex = 0;
-            return SplashpoolIndex;
-        }
-        else
-        {
-            RipplePoolIndex++;
-            if (RipplePoolIndex == RipplePoolSize)
-                RipplePoolIndex = 0;
-            return RipplePoolIndex;
-        }
-    }
+
     bool CheckSplashOff()
     {
         bool splashoff = false;
@@ -120,9 +120,9 @@ public class FakeRainDropCollision : MonoBehaviour
 
             for (int i = 0; i < AmountPerRippleOffUpdate; i++)
             {
-                ParticleSystem PS = SplashPool[getIndex(true)];
+                ParticleSystem PS = SplashPool[getIndex(Type.Splash)];
                 PS.Stop();
-                PS = RipplePool[getIndex(false)];
+                PS = RipplePool[getIndex(Type.Ripple)];
                 PS.Stop();
 
                 TurnOffSplashCount++;
@@ -137,7 +137,7 @@ public class FakeRainDropCollision : MonoBehaviour
     {
         if (QuickFind.PlayerTrans == null) return;
 
-            if (!IsRaining)
+        if (!IsRaining)
         {
             if (StartedRaining)
                 TurnOffRipples();
@@ -151,43 +151,77 @@ public class FakeRainDropCollision : MonoBehaviour
         TurnOffSplashCount = 0;
         TurnOffRipplesCount = 0;
 
-        Timer = Timer - Time.deltaTime;
-        bool AllowSuimonoCheck = false;
-
-
         Vector3 CamPos = QuickFind.PlayerTrans.position;
         Vector3 CamOffset = new Vector3(CamPos.x, 100, CamPos.z);
+
+        Timer = Timer - Time.deltaTime;
+        bool isThunderstorm = (QuickFind.WeatherHandler.CurrentWeather == WeatherHandler.WeatherTyps.Thunderstorm);
 
         if (Timer < 0)
         {
             Timer = UpdateRate;
-            AllowSuimonoCheck = true;
+            int Amount;
+            float Radius;
+
+            if (QuickFind.PlayerCam.MainCam.transform.position.y > QuickFind.UnderwaterTrigger.WaterLevel)
+            {
+                Amount = AmountPerUpdate;  Radius = DropletRadius;
+                if (isThunderstorm) { Amount = StormAmountPerUpdate; Radius = StormDropletRadius; }
+                RaycastDetectionLoop(RaycastMask, Amount, CamOffset, Radius, Type.Splash, QuickFind.UnderwaterTrigger.WaterLevel);
+            }
+
+            Amount = RipplePerUpdate; Radius = RippleRadius;
+            if (isThunderstorm) { Amount = StormRipplePerUpdate; Radius = StormRippleRadius; }
+            RaycastDetectionLoop(RippleMask, Amount, CamOffset, Radius, Type.Ripple, -50);
         }
-        for (int i = 0; i < AmountPerUpdate; i++)
+    }
+    void RaycastDetectionLoop(LayerMask Mask, int Count, Vector3 CamOffset, float Radius, Type EffectType, float MinimumY)
+    {
+        for (int i = 0; i < Count; i++)
         {
 
             Vector3 RandomDirection = new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f));
-            Vector3 RandomPoint = CamOffset + RandomDirection * Random.Range(1, DropletRadius);
+            Vector3 RandomPoint = CamOffset + RandomDirection * Random.Range(1, Radius);
 
             Ray ray = new Ray(RandomPoint, -Vector3.up);
             RaycastHit hit;
 
-            if (Physics.Raycast(ray, out hit, RaycastMaxDistance, RaycastMask, QueryTriggerInteraction.Ignore))
+            if (Physics.Raycast(ray, out hit, 150, Mask, QueryTriggerInteraction.Collide))
             {
-                if (hit.collider.gameObject.layer != WaterLayer)
-                {
-                    Vector3 hp = hit.point;
-                    ParticleSystem PS = SplashPool[getIndex(true)];
-                    PS.transform.position = hp;
-                    PS.Play();
-                }
-                else if (AllowSuimonoCheck) //Check if Hitting Water.
-                {
-                    ParticleSystem PS = RipplePool[getIndex(false)];
-                    PS.transform.position = hit.point;
-                    PS.Play();
-                }
+                if (hit.point.y < MinimumY) continue;
+
+                ParticleSystem PS = GetPS(EffectType);
+                PS.transform.position = hit.point;
+                PS.Play();
             }
+        }
+    }
+
+    ParticleSystem GetPS(Type EffectType)
+    {
+        if (EffectType == Type.Splash)
+            return SplashPool[getIndex(EffectType)];
+        if (EffectType == Type.Ripple)
+            return RipplePool[getIndex(EffectType)];
+
+        return null;
+    }
+
+    int getIndex(Type EffectType)
+    {
+        if (EffectType == Type.Splash)
+        {
+            SplashpoolIndex++;
+            if (SplashpoolIndex == SplashPoolSize)
+                SplashpoolIndex = 0;
+            return SplashpoolIndex;
+        }
+        else
+        {
+            RipplePoolIndex++;
+            if (RipplePoolIndex == RipplePoolSize)
+                RipplePoolIndex = 0;
+            return RipplePoolIndex;
         }
     }
 }

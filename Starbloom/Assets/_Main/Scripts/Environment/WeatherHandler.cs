@@ -17,11 +17,14 @@ public class WeatherHandler : MonoBehaviour
     public enum WeatherTyps
     {
         Clear,
-        Overcast,
+        Fog,
         Raining,
         Thunderstorm,
         Snowing,
-        All
+        HeavySnow,
+        All,
+        LightClouds,
+        Cloudy
     }
 
     [System.Serializable]
@@ -29,57 +32,9 @@ public class WeatherHandler : MonoBehaviour
     {
         [Header("Data")]
         public WeatherTyps Weather;
-
-
-        [Header("Clouds")]
-        public float weather_cloudAltoStratusAmt = 0.0f;
-        public float weather_cloudCirrusAmt = 0.0f;
-        public float weather_cloudCumulusAmt = 0.2f;
-        public float weather_cloudScale = 0.5f;
-        public float weather_cloudSpeed = 0.0f;
-        public float weather_OvercastDarkeningAmt = 1.0f;
-        public float weather_OvercastAmt = 0.0f;
-        [Header("Rain")]
-        public float weather_RainAmt = 0.0f;
-        public float weather_lightning = 0.0f;
-        [Header("Snow")]
-        public float weather_SnowAmt = 0.0f;
-        [Header("Wind")]
-        public float weather_WindAmt = 0.0f;
-        public float weather_WindDir = 0.0f;
-        [Header("Fog")]
-        public float weather_FogAmt = 0.0f;
-        public float weather_FogHeight = 0.0f;
-        [Header("Temperature")]
-        public float weather_temperature = 75.0f;
-        [Header("Humidity")]
-        public float weather_humidity = 0.25f;
-        [Header("Rainbow")]
-        public float weather_rainbow = 0.0f;
-
-
-        public WaterSettings Water;
-
-
-        [System.Serializable]
-        public class WaterSettings
-        {
-            [Header("Waves")]
-            public float beaufortScale;
-            public float flowSpeed;
-            public float waveScale;
-            public float heightProjection;
-            [Header("Bright")]
-            public float overallBright;
-            public float overallTransparency;
-            [Header("Reflect")]
-            public float reflectTerm;
-            public float reflectSharpen;
-            [Header("Specular")]
-            public float roughness;
-            public float roughness2;
-            public Color specularColor;
-        }
+        public CloudsGenerator.CloudTypes CloudType;
+        public EnviroWeatherPreset PresetValue;
+        [Button(ButtonSizes.Small)] public void ChangeWeather() { QuickFind.NetworkSync.AdjustWeather((int)QuickFind.WeatherHandler.CurrentSeason, (int)Weather); }
     }
 
 
@@ -98,8 +53,8 @@ public class WeatherHandler : MonoBehaviour
 
 
 
-    [System.NonSerialized] public Seasons CurrentSeason = Seasons.Spring;
-    [System.NonSerialized] public WeatherTyps CurrentWeather = WeatherTyps.Clear;
+    [ReadOnly] public Seasons CurrentSeason = Seasons.Spring;
+    [ReadOnly] public WeatherTyps CurrentWeather = WeatherTyps.Clear;
 
 
     [Header("Chance Rolls")]
@@ -237,12 +192,10 @@ public class WeatherHandler : MonoBehaviour
     }
     void SetWeatherValues(WeatherSetting Weather)
     {
-        Debug.Log("Assign Weather preset for Enviro.");
+        QuickFind.WeatherController.SetWeatherOverwrite(Weather.PresetValue);
+        QuickFind.CloudGeneration.GenerateCloudsByType(Weather.CloudType);
 
-        if (Weather.weather_RainAmt > 0) QuickFind.RainDropHandler.IsRaining = true;
+        if (Weather.PresetValue.wetnessLevel > 0) QuickFind.RainDropHandler.IsRaining = true;
         else QuickFind.RainDropHandler.IsRaining = false;
-
-
-        Debug.Log("Adjust Settings for Aquas.");  
     }
 }

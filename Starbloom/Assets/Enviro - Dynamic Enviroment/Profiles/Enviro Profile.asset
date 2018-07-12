@@ -1000,7 +1000,7 @@ MonoBehaviour:
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
     blurRadius: 6
-    intensity: 0.6
+    intensity: 0.1
     maxRadius: 10
   seasonsSettings:
     SpringInDays: 90
@@ -1022,12 +1022,12 @@ MonoBehaviour:
   qualitySettings:
     GlobalParticleEmissionRates: 1
     UpdateInterval: 0.5
-  viewMode: 3
-  showPlayerSetup: 1
+  viewMode: 2
+  showPlayerSetup: 0
   showRenderingSetup: 0
   showComponentsSetup: 0
   showTimeUI: 1
   showWeatherUI: 1
   showAudioUI: 0
-  showEffectsUI: 1
+  showEffectsUI: 0
   modified: 1

@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4506806252551138}
   - component: {fileID: 33691530330400652}
   - component: {fileID: 23389303903924704}
-  m_Layer: 17
+  m_Layer: 16
   m_Name: TilledArea1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 4518409768060106}
   - component: {fileID: 114528744457946090}
   - component: {fileID: 65236023012619118}
-  m_Layer: 17
+  m_Layer: 16
   m_Name: TilledArea1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -137,8 +137,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 538995c128d53fe48a7051ffbb220cf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ContextID: 0
   Type: 7
-  AllowScaling: 0
-  ScaleAmount: 1.05
-  ScaleSpeed: 0.5

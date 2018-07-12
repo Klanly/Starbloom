@@ -34,9 +34,15 @@ public class DG_AudioManager : MonoBehaviour {
     private void Awake() { QuickFind.AudioManager = this; }
 
 
+    private void Update()
+    {
+        if (QuickFind.UnderwaterTrigger.isUnderwater) SetAudioZone(AudioFXZoneTypes.Underwater);
+        else SetAudioZone(AudioFXZoneTypes.Normal);
+    }
 
     public void SetAudioZone(AudioFXZoneTypes NewZone)
     {
+        if (CurrentAudioFXZone == NewZone) return;
         CurrentAudioFXZone = NewZone;
 
         if(MusicHandler.MusicIsCurrentlyPlaying())

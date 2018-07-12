@@ -8,6 +8,9 @@ public class UserSettings : MonoBehaviour {
     //Gameplay
     public float TextSpeed = .04f;
     public int CurrentLanguage = 0;
+    //Graphics
+    public bool GlobalDisableCloudRendering = false;
+    public bool GlobalDisableWaterReflection = false;
 
 
 

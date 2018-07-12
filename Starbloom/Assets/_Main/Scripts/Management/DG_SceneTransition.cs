@@ -23,6 +23,7 @@ public class DG_SceneTransition : MonoBehaviour {
     int LoadingPortalID;
     DG_SceneEntryPoints LoadingSceneEntryPoints;
     bool Transitioning = false;
+    Material Skybox;
 
     int[] RequestInts;
     List<int> AITransferData;
@@ -55,6 +56,8 @@ public class DG_SceneTransition : MonoBehaviour {
 
         QuickFind.PathfindingGeneration.NavMeshIsGenerated = false;
 
+        Skybox = RenderSettings.skybox;
+
         QuickFind.FadeScreen.FadeOut(DG_GUI_FadeScreen.FadeInSpeeds.QuickFade, this.gameObject, "FadeEnded");
     }
 
@@ -70,6 +73,8 @@ public class DG_SceneTransition : MonoBehaviour {
         SceneManager.sceneLoaded -= OnLevelFinishedLoading;
         Scene LoadScene = SceneManager.GetSceneByName(SceneLoading);
         SceneManager.SetActiveScene(LoadScene);
+
+        RenderSettings.skybox = Skybox;
 
         //Load Network Objects;
         SetSelfInScene(NetworkSceneIndexLoading);
