@@ -10,7 +10,7 @@ GameObject:
   - component: {fileID: 446086}
   - component: {fileID: 3390192}
   - component: {fileID: 2374846}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: axe02_bronze
   m_TagString: Untagged
   m_Icon: {fileID: 0}

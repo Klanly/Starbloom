@@ -98,4 +98,5 @@ MonoBehaviour:
   - ReceiveRequestAILocations
   - ReceiveReturnAIPositions
   - OwnershipRequestReceived
+  - ReceivePlayerHit
   DisableAutoOpenWizard: 1

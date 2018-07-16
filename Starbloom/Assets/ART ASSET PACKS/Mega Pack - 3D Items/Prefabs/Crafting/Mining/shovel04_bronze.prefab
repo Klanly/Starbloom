@@ -10,7 +10,7 @@ GameObject:
   - component: {fileID: 446996}
   - component: {fileID: 3365696}
   - component: {fileID: 2323702}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: shovel04_bronze
   m_TagString: Untagged
   m_Icon: {fileID: 0}

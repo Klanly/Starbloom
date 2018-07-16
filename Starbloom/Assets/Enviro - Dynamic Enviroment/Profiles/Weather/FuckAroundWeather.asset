@@ -28,17 +28,17 @@ MonoBehaviour:
     alphaCoef: 3.5
     scatteringCoef: 0.1
     density: 2
-    coverage: -1
-    coverageHeight: 1.513
+    coverage: 0.06
+    coverageHeight: 2
     raymarchingScale: 1
-    cloudType: 0.8
+    cloudType: 1
     cirrusAlpha: 1
     cirrusCoverage: 0
     cirrusColorPow: 2.03
-    flatAlpha: 1
-    flatCoverage: 0
+    flatAlpha: 2
+    flatCoverage: 1
     flatSoftness: 0.75
-    flatBrightness: 0.75
+    flatBrightness: 1
     flatColorPow: 1
   fogStartDistance: 0
   fogDistance: 90
@@ -137,7 +137,7 @@ MonoBehaviour:
   FogScatteringIntensity: 1
   fogSunBlocking: 0
   effectSystems: []
-  WindStrenght: 0.274
+  WindStrenght: 0.01
   wetnessLevel: 0
   snowLevel: 0
   isLightningStorm: 0

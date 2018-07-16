@@ -10,7 +10,7 @@ GameObject:
   - component: {fileID: 484556}
   - component: {fileID: 3397312}
   - component: {fileID: 2346434}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: scissors01_bronze
   m_TagString: Untagged
   m_Icon: {fileID: 0}

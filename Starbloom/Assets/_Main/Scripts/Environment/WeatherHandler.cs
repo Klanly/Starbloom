@@ -32,7 +32,6 @@ public class WeatherHandler : MonoBehaviour
     {
         [Header("Data")]
         public WeatherTyps Weather;
-        public CloudsGenerator.CloudTypes CloudType;
         public EnviroWeatherPreset PresetValue;
         [Button(ButtonSizes.Small)] public void ChangeWeather() { QuickFind.NetworkSync.AdjustWeather((int)QuickFind.WeatherHandler.CurrentSeason, (int)Weather); }
     }
@@ -52,9 +51,12 @@ public class WeatherHandler : MonoBehaviour
 
 
 
-
-    [ReadOnly] public Seasons CurrentSeason = Seasons.Spring;
-    [ReadOnly] public WeatherTyps CurrentWeather = WeatherTyps.Clear;
+    [ReadOnly]
+    public Seasons CurrentSeason = Seasons.Spring;
+    [ReadOnly]
+    public WeatherTyps CurrentWeather = WeatherTyps.Clear;
+    public GlobalSnowEffect.GlobalSnow SnowRend;
+    public GameObject EnviroVFXContainer;
 
 
     [Header("Chance Rolls")]
@@ -125,7 +127,7 @@ public class WeatherHandler : MonoBehaviour
         }
         switch (Month)
         {
-            case 1:return RollSeason(SpringChanceRolls);
+            case 1: return RollSeason(SpringChanceRolls);
             case 2: return RollSeason(SummerChanceRolls);
             case 3: return RollSeason(FallChanceRolls);
             case 4: return RollSeason(WinterChanceRolls);
@@ -135,7 +137,7 @@ public class WeatherHandler : MonoBehaviour
     public int RollSeason(SeasonalWeatherRolls SeasonChanceRolls)
     {
         float Roll = Random.Range(0f, 1f);
-        for(int i = 0; i < SeasonChanceRolls.Rolls.Length; i++)
+        for (int i = 0; i < SeasonChanceRolls.Rolls.Length; i++)
         {
             if (Roll < SeasonChanceRolls.Rolls[i].Percent)
                 return (int)SeasonChanceRolls.Rolls[i].Type;
@@ -193,9 +195,30 @@ public class WeatherHandler : MonoBehaviour
     void SetWeatherValues(WeatherSetting Weather)
     {
         QuickFind.WeatherController.SetWeatherOverwrite(Weather.PresetValue);
-        QuickFind.CloudGeneration.GenerateCloudsByType(Weather.CloudType);
+
+        //Check Particles
+        CheckEnvironmentFX();
 
         if (Weather.PresetValue.wetnessLevel > 0) QuickFind.RainDropHandler.IsRaining = true;
         else QuickFind.RainDropHandler.IsRaining = false;
+    }
+
+
+
+
+    public void CheckEnvironmentFX()
+    {
+        CheckParticles();
+        CheckShowShader();
+    }
+    void CheckParticles()
+    {
+        if (EnviroVFXContainer == null) EnviroVFXContainer = QuickFind.WeatherController.EffectsHolder;
+        EnviroVFXContainer.SetActive(QuickFind.SceneList.GetSceneById(QuickFind.NetworkSync.CurrentScene).AllowEnvironmentParticles);
+    }
+
+    void CheckShowShader()
+    {
+        SnowRend.enabled = (CurrentSeason == Seasons.Winter && QuickFind.SceneList.GetSceneById(QuickFind.NetworkSync.CurrentScene).AllowSnowShader);
     }
 }

@@ -6,17 +6,8 @@ using Sirenix.OdinInspector;
 public class DG_EnvironmentColorSync : MonoBehaviour {
 
     [ReadOnly] public float V;
-    [Header("Cloud Values")]
-    public TrueClouds.CloudCamera CloudPostScript;
-    public AQUAS_Reflection ReflectionScript;
-    public float LightLighten;
-    public float LightenVMultiplier;
-    public Color RainLightColor;
-    public float ShadowDarken;
-    public float DarkenVMultiplier;
-    public Color RainDarkColor;
-    public float RainSunHeightMultiplier;
     [Header("Water Values")]
+    public AQUAS_Reflection ReflectionScript;
     public Transform Sun;
     public MeshRenderer WaterRend;
     public float SpecularBase;
@@ -37,23 +28,34 @@ public class DG_EnvironmentColorSync : MonoBehaviour {
     [Header("UnderWater Values")]
     public float AboveWaterDensity;
     public float BelowWaterDensity;
+    [Header("Snow Values")]
+    public float BaseExposureLevel;
+    public float ExposureMultiplier;
+    public float BaseRoughness;
+    public float RoughnessMulitplier;
+
+
+    [System.NonSerialized] public bool AllowSnowUpdate = false;
 
     bool isFog;
     bool isRain;
+    bool isSnow;
     float SunHeight;
+    EnviroWeatherPreset weatherType;
+
+    private void Awake()
+    {
+        QuickFind.EnvironmentColorSync = this;
+    }
 
     private void Update()
     {
         if (QuickFind.WeatherController == null || QuickFind.WeatherController.Weather == null || QuickFind.WeatherController.Weather.currentActiveWeatherPreset == null) return;
-        EnviroWeatherPreset weatherType = QuickFind.WeatherController.Weather.currentActiveWeatherPreset;
+        weatherType = QuickFind.WeatherController.Weather.currentActiveWeatherPreset;
 
         isFog = (weatherType.fogDistance < 100);
         isRain = (weatherType.wetnessLevel > 0);
         SunHeight = Sun.position.y;
-
-        //Disable Clouds if necessary
-        if (QuickFind.CloudGeneration.CurrentCloudType == CloudsGenerator.CloudTypes.None || QuickFind.UserSettings.GlobalDisableCloudRendering) CloudPostScript.enabled = false;
-        else CloudPostScript.enabled = true;
 
         //Disable Reflections if necessary
         if (isFog || isRain || QuickFind.UserSettings.GlobalDisableWaterReflection) ReflectionScript.enabled = false;
@@ -66,58 +68,10 @@ public class DG_EnvironmentColorSync : MonoBehaviour {
         float S;
         Color.RGBToHSV(AmbientLight, out H, out S, out V);
 
-        if (CloudPostScript.enabled) AdjustClouds(MainLight, V);
         if (WaterRend.gameObject.activeInHierarchy) AdjustWater(V, AmbientLight);
 
         AdjustUnderWater();
-
-    }
-    void AdjustClouds(Color MainLight, float V)
-    {
-        //
-        float AdditiveLit = LightLighten * (V + LightenVMultiplier);
-
-        Color LitLighting;
-        if (!isRain)
-        {
-            LitLighting = MainLight;
-            LitLighting.r += AdditiveLit;
-            LitLighting.g += AdditiveLit;
-            LitLighting.b += AdditiveLit;
-        }
-        else
-        {
-            float TimeOfDayOffset = RainSunHeightMultiplier * SunHeight;
-            LitLighting = RainLightColor;
-            LitLighting.r += TimeOfDayOffset;
-            LitLighting.g += TimeOfDayOffset;
-            LitLighting.b += TimeOfDayOffset;
-        }
-
-
-        CloudPostScript.LightColor = LitLighting;
-
-        //
-        float AdditiveDark = ShadowDarken * (V + DarkenVMultiplier);
-
-        Color ShadowLighting;
-        if (!isRain)
-        {
-            ShadowLighting = MainLight;
-            ShadowLighting.r -= AdditiveDark;
-            ShadowLighting.g -= AdditiveDark;
-            ShadowLighting.b -= AdditiveDark;
-        }
-        else
-        {
-            float TimeOfDayOffset = RainSunHeightMultiplier * SunHeight;
-            ShadowLighting = RainDarkColor;
-            ShadowLighting.r += TimeOfDayOffset;
-            ShadowLighting.g += TimeOfDayOffset;
-            ShadowLighting.b += TimeOfDayOffset;
-        }
-
-        CloudPostScript.ShadowColor = ShadowLighting;
+        AdjustSnow(V);
     }
     void AdjustWater(float V, Color AmbientLight)
     {
@@ -166,5 +120,25 @@ public class DG_EnvironmentColorSync : MonoBehaviour {
         {
             WaterRend.material.SetFloat("_Density", AboveWaterDensity);
         }
+    }
+
+    void AdjustSnow(float V)
+    {
+        if (QuickFind.WeatherHandler.CurrentSeason != WeatherHandler.Seasons.Winter) return;
+        if (QuickFind.SnowHandler == null) return;
+        if (!QuickFind.SnowHandler.isActiveAndEnabled) return;
+        if (!AllowSnowUpdate) return;
+        AllowSnowUpdate = false;
+
+        isSnow = (weatherType.snowLevel > 0);
+
+        QuickFind.SnowHandler.maxExposure = BaseExposureLevel + (V * ExposureMultiplier);
+
+        if (isFog || isSnow)
+            QuickFind.SnowHandler.smoothness = 0;
+        else
+            QuickFind.SnowHandler.smoothness = BaseRoughness + (V * RoughnessMulitplier);
+
+
     }
 }

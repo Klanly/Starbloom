@@ -10,7 +10,7 @@ GameObject:
   - component: {fileID: 480580}
   - component: {fileID: 3314140}
   - component: {fileID: 2304548}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: gem04_red
   m_TagString: Untagged
   m_Icon: {fileID: 0}

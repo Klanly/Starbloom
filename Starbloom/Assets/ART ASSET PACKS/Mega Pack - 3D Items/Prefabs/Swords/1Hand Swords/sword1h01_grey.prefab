@@ -10,7 +10,7 @@ GameObject:
   - component: {fileID: 408740}
   - component: {fileID: 3310568}
   - component: {fileID: 2394576}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: sword1h01_grey
   m_TagString: Untagged
   m_Icon: {fileID: 0}

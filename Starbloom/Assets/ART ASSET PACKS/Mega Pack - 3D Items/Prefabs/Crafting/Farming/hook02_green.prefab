@@ -10,7 +10,7 @@ GameObject:
   - component: {fileID: 475734}
   - component: {fileID: 3369110}
   - component: {fileID: 2385358}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: hook02_green
   m_TagString: Untagged
   m_Icon: {fileID: 0}

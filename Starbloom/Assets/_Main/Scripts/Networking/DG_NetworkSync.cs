@@ -590,7 +590,7 @@ public class DG_NetworkSync : Photon.MonoBehaviour
     { PV.RPC("ReceiveEnemyHit", PhotonTargets.All, OutData); }
     [PunRPC]
     void ReceiveEnemyHit(int[] Data)
-    { QuickFind.CombatHandler.ReceiveHitData(Data); }
+    { QuickFind.CombatHandler.ReceiveEnemyHitData(Data); }
 
     public void SendAIDestination(int[] OutData)
     {
@@ -664,6 +664,15 @@ public class DG_NetworkSync : Photon.MonoBehaviour
     {
         QuickFind.SkillTracker.IncomingSetSkillExp(ReceivedInts);
     }
+
+    public void SendPlayerHit(int[] OutData)
+    { PV.RPC("ReceivePlayerHit", PhotonTargets.All, OutData); }
+    [PunRPC]
+    void ReceivePlayerHit(int[] Data)
+    { QuickFind.CombatHandler.ReceivePlayerHitData(Data); }
+
+
+
     #endregion
 
 

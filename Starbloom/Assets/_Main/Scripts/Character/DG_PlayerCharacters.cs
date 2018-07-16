@@ -23,10 +23,7 @@ public class DG_PlayerCharacters : MonoBehaviour {
         public GenderValue CharacterGender;
 
         [Header("Stats")]
-        public int CurrentEnergy;
-        public int MaxEnergy;
-        public int CurrentHealth;
-        public int MaxHealth;
+        public EnergyLevels Energies;
 
         [Header("Total Experience for Each Skill")]
         public NonCombatSkills NonCombatSkillEXP;
@@ -40,6 +37,18 @@ public class DG_PlayerCharacters : MonoBehaviour {
         [Header("Acheivements")]
         public CharacterAchievements Acheivements;
     }
+
+
+
+    [System.Serializable]
+    public class EnergyLevels
+    {
+        public int CurrentEnergy;
+        public int MaxEnergy;
+        public int CurrentHealth;
+        public int MaxHealth;
+    }
+
 
     [System.Serializable]
     public class CharacterEquipment

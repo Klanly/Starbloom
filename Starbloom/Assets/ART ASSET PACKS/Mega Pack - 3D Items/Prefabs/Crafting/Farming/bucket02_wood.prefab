@@ -10,7 +10,7 @@ GameObject:
   - component: {fileID: 467912}
   - component: {fileID: 3395514}
   - component: {fileID: 2346094}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: bucket02_wood
   m_TagString: Untagged
   m_Icon: {fileID: 0}

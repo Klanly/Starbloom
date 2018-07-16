@@ -25,6 +25,7 @@ public class DG_AIEntity : MonoBehaviour {
     [System.NonSerialized] public DG_AIEntityMovement Movement;
     [System.NonSerialized] public DG_AIEntityCombat Combat;
     [System.NonSerialized] public DG_AIEntityDetection Detection;
+    [System.NonSerialized] public DG_AIAnimationSync AnimationSync;
 
 
     Vector3 KnownDestination;
@@ -136,5 +137,14 @@ public class DG_AIEntity : MonoBehaviour {
         result = Vector3.zero;
         return false;
     }
+    public Vector3 AcceptableNavMeshPoint(Vector3 Position)
+    {
+        NavMeshHit hit;
+        if (NavMesh.SamplePosition(Position, out hit, 1.0f, NavMesh.AllAreas))
+            return hit.position;
+        else
+            return Vector3.zero;
+    }
+
     #endregion
 }

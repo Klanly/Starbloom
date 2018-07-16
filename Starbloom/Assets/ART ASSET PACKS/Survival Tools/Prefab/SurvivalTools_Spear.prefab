@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33987875044888980}
   - component: {fileID: 23469956455985030}
   - component: {fileID: 95333443362028156}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: SurvivalTools_Spear
   m_TagString: Untagged
   m_Icon: {fileID: 0}

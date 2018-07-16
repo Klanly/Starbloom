@@ -14,7 +14,10 @@ public class Debug_AdjustTime : MonoBehaviour {
     public WeatherHandler.WeatherTyps DebugWeather;
     [ButtonGroup]
     public void ChangeSeason()
-    { QuickFind.NetworkSync.AdjustWeather((int)DebugSeason, (int)DebugWeather); }
+    {
+        QuickFind.NetworkSync.AdjustTimeByValues(QuickFind.TimeHandler.GetCurrentHour(), 0, QuickFind.Farm.Year, ((int)DebugSeason + 1), QuickFind.Farm.Day);
+        QuickFind.NetworkSync.AdjustWeather((int)DebugSeason, (int)DebugWeather);
+    }
 
 
 

@@ -195,14 +195,12 @@ public class DG_ItemObject : MonoBehaviour
     [System.Serializable]
     public class Weapon
     {
-        public DG_CombatHandler.DamageTypes DamageType;
+        [Header("Damage")]
+        public DG_CombatHandler.Damages DamageValues;
 
         [Header("Energy")]
         public int EnergyBaseCost;
         public int ManaCost;
-        [Header("Damage")]
-        public int DamageMin;
-        public int DamageMax;
 
         [Header("Visuals")]
         public int EquipmentID;

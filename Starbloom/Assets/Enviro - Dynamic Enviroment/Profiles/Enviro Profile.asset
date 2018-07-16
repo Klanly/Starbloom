@@ -271,7 +271,7 @@ MonoBehaviour:
     Resolution: 1
     dirVolumeLighting: 1
     SampleCount: 8
-    ScatteringCoef: 0.075
+    ScatteringCoef: 0.02
     ExtinctionCoef: 0.09
     Anistropy: 0.55
     MaxRayLength: 5
@@ -870,7 +870,7 @@ MonoBehaviour:
     height: 25
     heightFogIntensity: 1
     heightDensity: 1
-    noiseIntensity: 1
+    noiseIntensity: 0.5
     noiseIntensityOffset: 0.3
     noiseScale: 0.001
     noiseVelocity: {x: 3, y: 1.5}
@@ -878,7 +878,7 @@ MonoBehaviour:
     g: 5
     fogDitheringScale: 240
     fogDitheringIntensity: 0.5
-    skyFogIntensity: 1.4319986
+    skyFogIntensity: 0.456
   lightshaftsSettings:
     resolution: 1
     screenBlendMode: 0
@@ -1000,7 +1000,7 @@ MonoBehaviour:
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
     blurRadius: 6
-    intensity: 0.1
+    intensity: 0.12
     maxRadius: 10
   seasonsSettings:
     SpringInDays: 90
@@ -1022,12 +1022,12 @@ MonoBehaviour:
   qualitySettings:
     GlobalParticleEmissionRates: 1
     UpdateInterval: 0.5
-  viewMode: 2
+  viewMode: 3
   showPlayerSetup: 0
-  showRenderingSetup: 0
+  showRenderingSetup: 1
   showComponentsSetup: 0
   showTimeUI: 1
   showWeatherUI: 1
   showAudioUI: 0
-  showEffectsUI: 0
+  showEffectsUI: 1
   modified: 1

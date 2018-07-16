@@ -28,14 +28,20 @@ public class DG_EnvironmentUnderwaterTrigger : MonoBehaviour {
 
         bool AboveWater = (QuickFind.PlayerCam.MainCam.transform.position.y > WaterLevel);
 
-        RainVFX.SetActive(AboveWater);
-        ThunderstormVFX.SetActive(AboveWater);
-        isUnderwater = !AboveWater;
+        if (AboveWater == isUnderwater)
+        {
+            RainVFX.SetActive(AboveWater);
+            ThunderstormVFX.SetActive(AboveWater);
+            isUnderwater = !AboveWater;
+        }
     }
 
     void GetObjects()
     {
-        RainVFX = GameObject.Find("RAIN");
-        ThunderstormVFX = GameObject.Find("RAINSTORM");
+        Transform VFX = QuickFind.WeatherController.EffectsHolder.transform.Find("VFX");
+        if (VFX == null) return;
+        if (VFX.Find("RAIN") == null) return;
+        RainVFX = VFX.Find("RAIN").gameObject;
+        ThunderstormVFX = VFX.Find("RAINSTORM").gameObject;
     }
 }

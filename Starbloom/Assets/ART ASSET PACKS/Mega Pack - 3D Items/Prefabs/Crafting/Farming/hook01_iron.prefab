@@ -10,7 +10,7 @@ GameObject:
   - component: {fileID: 468122}
   - component: {fileID: 3362206}
   - component: {fileID: 2383188}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: hook01_iron
   m_TagString: Untagged
   m_Icon: {fileID: 0}

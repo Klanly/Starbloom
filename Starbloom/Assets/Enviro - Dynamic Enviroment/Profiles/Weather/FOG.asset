@@ -32,11 +32,11 @@ MonoBehaviour:
     coverageHeight: 1.513
     raymarchingScale: 1
     cloudType: 0.8
-    cirrusAlpha: 1
-    cirrusCoverage: 0
-    cirrusColorPow: 2.03
+    cirrusAlpha: 0.54
+    cirrusCoverage: 1
+    cirrusColorPow: 1.21
     flatAlpha: 1
-    flatCoverage: 0
+    flatCoverage: 1
     flatSoftness: 0.75
     flatBrightness: 0.75
     flatColorPow: 1
@@ -132,7 +132,7 @@ MonoBehaviour:
     m_NumAlphaKeys: 4
   volumeLightIntensity: 1
   heightFogDensity: 1.95
-  SkyFogHeight: 0.31
+  SkyFogHeight: 1.17
   SkyFogIntensity: 2
   FogScatteringIntensity: 1
   fogSunBlocking: 0

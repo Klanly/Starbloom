@@ -1062,7 +1062,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DetectionMask:
     serializedVersion: 2
-    m_Bits: 294912
+    m_Bits: 32768
   MaxDistance: 1.4
   ShowGridDisplay: 0
   GridDisplay: {fileID: 1730668925}
@@ -1353,9 +1353,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71db83065fb78444d8871f4fbc218db5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayOnline: 0
-  DisableAudio: 0
-  GeneratedGender: 2
+  PlayOnline: 1
+  DisableAudio: 1
+  GeneratedGender: 0
   DontHideGear: 0
   BypassMainMenu: 1
   DisableAnimations: 0
@@ -1364,6 +1364,7 @@ MonoBehaviour:
   ForceInstantFade: 0
   EnableDebugKeycodes: 1
   DisableAllPoolSpawningAtStart: 0
+  ShowAttackHitboxes: 1
 --- !u!114 &1620623746
 MonoBehaviour:
   m_ObjectHideFlags: 0

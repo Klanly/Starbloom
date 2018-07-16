@@ -12,7 +12,7 @@ public class DG_AnimationStringValues : MonoBehaviour {
     }
 
 
-
+    [Header("Player Anim")]
     public string BaseState;
     public string RunVelocityName;
     public string ActionTriggerBoolName;
@@ -23,6 +23,10 @@ public class DG_AnimationStringValues : MonoBehaviour {
     public string AttackTriggerBoolName;
     public string HoldAttackTriggerName;
 
+    [Header("Enemy Anim")]
+    public string EnemyActionTriggerBoolName;
+    public string EnemyTypeIntName;
+    public string EnemyAnimationStateName;
 
 
     public AnimationBool[] AnimationBoolValues;

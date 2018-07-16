@@ -10,12 +10,8 @@ public class DG_EnemyObject : MonoBehaviour {
     public string Name;
 
 
-    [System.Serializable]
-    public class EnemyResistances
-    {
-        public DG_CombatHandler.DamageTypes Type;
-        public int Value;
-    }
+
+
 
 
 
@@ -31,9 +27,13 @@ public class DG_EnemyObject : MonoBehaviour {
     public DG_AIEntityCombat.CombatOptions CombatSettings;
     [Header("Health")]
     public int HealthValue;
+
+    [Header("Damages")]
+    public DG_CombatHandler.Damages Damage;
+
     [Header("Resistance")]
     [InfoBox("Resistances are percentage 0 - 100.  100 will be full resistant, Beyond 100 Will Heal the Enemy, Below 0 will Amplified Damage.")]
-    public EnemyResistances[] Resistances;
+    public DG_CombatHandler.Resistances[] EnemyResistances;
 
 
     [Button(ButtonSizes.Small)] public void SetNameToPrefab() { Name = PrefabRef.name; }

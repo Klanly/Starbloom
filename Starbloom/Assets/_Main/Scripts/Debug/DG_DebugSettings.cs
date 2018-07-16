@@ -25,6 +25,7 @@ public class DG_DebugSettings : MonoBehaviour {
     [Header("Debug Tools")]
     public bool EnableDebugKeycodes = false;
     public bool DisableAllPoolSpawningAtStart;
+    public bool ShowAttackHitboxes;
 
 
 
@@ -38,7 +39,10 @@ public class DG_DebugSettings : MonoBehaviour {
     private void Start()
     {
         if (DisableAudio)
+        {
             QuickFind.AudioManager.MasterMixerGroup.audioMixer.SetFloat("MasterVolume", -80f);
+            AudioListener.volume = 0;
+        }
     }
 
 

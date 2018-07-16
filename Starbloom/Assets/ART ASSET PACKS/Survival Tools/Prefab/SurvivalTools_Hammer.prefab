@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33865887807743240}
   - component: {fileID: 23447801266596970}
   - component: {fileID: 95873657992831028}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: SurvivalTools_Hammer
   m_TagString: Untagged
   m_Icon: {fileID: 0}

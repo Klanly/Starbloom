@@ -10,7 +10,7 @@ GameObject:
   - component: {fileID: 426052}
   - component: {fileID: 3354594}
   - component: {fileID: 2395354}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: tong01_iron
   m_TagString: Untagged
   m_Icon: {fileID: 0}

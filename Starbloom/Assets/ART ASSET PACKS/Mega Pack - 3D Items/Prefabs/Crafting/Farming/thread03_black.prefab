@@ -10,7 +10,7 @@ GameObject:
   - component: {fileID: 444520}
   - component: {fileID: 3332786}
   - component: {fileID: 2336524}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: thread03_black
   m_TagString: Untagged
   m_Icon: {fileID: 0}

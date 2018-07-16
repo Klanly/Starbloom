@@ -10,7 +10,7 @@ GameObject:
   - component: {fileID: 436084}
   - component: {fileID: 3386290}
   - component: {fileID: 2380054}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: scissors01_blue
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -38,6 +38,8 @@ public class EnviroAquasIntegration : MonoBehaviour {
 
 		if(GameObject.Find ("UnderWaterCameraEffects") != null)
 			aquasUnderWater = GameObject.Find ("UnderWaterCameraEffects").GetComponent<AQUAS_LensEffects> ();
+
+        if (aquasUnderWater == null) { this.enabled = false; return; }
 	
 		defaultDistanceFog = EnviroSky.instance.fogSettings.distanceFog;
 		defaultHeightFog = EnviroSky.instance.fogSettings.heightFog;

@@ -367,11 +367,11 @@ public class DG_TooltipGUI : MonoBehaviour {
             DG_TooltipSubItem Sub = Desc.GetSubItem(i);
 
 
-            Sub.NumberObject.text = Weapon.DamageMin.ToString() + "-" + Weapon.DamageMax.ToString();
+            Sub.NumberObject.text = Weapon.DamageValues.DamageMin.ToString() + "-" + Weapon.DamageValues.DamageMax.ToString();
 
 
             DG_ItemsDatabase.GenericIconDatabaseItem ICD = null;
-            if(Weapon.DamageType == DG_CombatHandler.DamageTypes.Slashing)
+            if(Weapon.DamageValues.DamageType == DG_CombatHandler.DamageTypes.Slashing)
                 ICD = QuickFind.ItemDatabase.GetGenericIconByString("Slashing");
 
             Sub.DisplayImage.sprite = ICD.Icon;

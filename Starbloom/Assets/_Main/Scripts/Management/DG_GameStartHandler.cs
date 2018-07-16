@@ -112,8 +112,8 @@ public class DG_GameStartHandler : MonoBehaviour {
         QuickFind.GUI_MainOverview.SetMoneyValue(0, QuickFind.Farm.SharedMoney, true);
         QuickFind.GUI_MainOverview.SetGuiDayValue(QuickFind.Farm.Month, QuickFind.Farm.Day);
         QuickFind.CharacterManager.GameStartSpawnClothing();
+        //
         QuickFind.PathfindingGeneration.GenerateNavMesh();
-
         QuickFind.FadeScreen.FadeIn(DG_GUI_FadeScreen.FadeInSpeeds.NormalFade);
     }
 

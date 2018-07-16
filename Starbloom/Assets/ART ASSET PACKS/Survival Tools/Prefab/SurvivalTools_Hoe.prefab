@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33165398855775106}
   - component: {fileID: 23471539000024712}
   - component: {fileID: 95400018288315188}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: SurvivalTools_Hoe
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -5,66 +5,45 @@ using UnityEngine;
 public class DG_AIAnimationSync : MonoBehaviour {
 
 
+    public DG_AIEntity Entity;
     public Animator Anim;
-    DG_AIEntity AIObject;
+
 
     int[] OutData = new int[3];
     float StoredSpeed;
 
+
     private void Awake()
     {
-        AIObject = transform.GetComponent<DG_AIEntity>();
+        Entity.AnimationSync = this;
     }
 
-    private void Start() { if (gameObject.scene.name != "Networking") { Debug.Log("AI Object Left In Scene, Destroying"); Destroy(gameObject); return; } }
+    private void Start() { if (gameObject.scene.name != "Networking") { Debug.Log("AI Object Left In Scene, Destroying"); Destroy(Entity.gameObject); return; } }
 
 
     private void Update()
     {
-        if (AIObject.RelayNetworkObject.AICharData[0].DestinationReached) StoredSpeed -= 0.01f;
-        else if (AIObject.Movement.agent.speed == AIObject.Movement.MovementSettings.walkSpeed) StoredSpeed = .5f;
-        else if (AIObject.Movement.agent.speed == AIObject.Movement.MovementSettings.RunSpeed) StoredSpeed = 1;
+        if (Entity.RelayNetworkObject.AICharData[0].DestinationReached || Entity.Movement.CurrentMovementBehaviour == DG_AIEntityMovement.MovementBehaviour.Stopped) StoredSpeed -= 0.01f;
+        else if (Entity.Movement.agent.speed == Entity.Movement.MovementSettings.walkSpeed) StoredSpeed = .5f;
+        else if (Entity.Movement.agent.speed == Entity.Movement.MovementSettings.RunSpeed) StoredSpeed = 1;
+        else if (Entity.Movement.agent.speed == Entity.Movement.MovementSettings.SurroundSpeed) StoredSpeed = 1;
 
         if (StoredSpeed < 0) StoredSpeed = 0;
         Anim.SetFloat(QuickFind.AnimationStringValues.RunVelocityName, StoredSpeed);
-
-
-        //if (MovementSync.isController)
-        //{
-        //    for (int i = 0; i < QuickFind.AnimationStringValues.AnimationBoolValues.Length; i++)
-        //    {
-        //        DG_AnimationStringValues.AnimationBool AB = QuickFind.AnimationStringValues.AnimationBoolValues[i];
-        //        bool AnimatorState = Anim.GetBool(AB.BoolName);
-        //
-        //        if (AnimatorState != AB.CurrentState)
-        //        {
-        //            AB.CurrentState = !AB.CurrentState;
-        //            int StateInt = AB.CurrentState ? 1 : 0;
-        //            ShiftAnimationState(i, StateInt);
-        //        }
-        //    }
-        //}
     }
 
-
-    void ShiftAnimationState(int Index, int CurrentState)
+    public void PlayAnimation(int AnimationState)
     {
-        if (OutData == null) OutData = new int[3];
-
-        OutData[0] = QuickFind.NetworkSync.UserID;
-        OutData[1] = Index;
-        OutData[2] = CurrentState;
-
-        QuickFind.NetworkSync.UpdatePlayerAnimationState(OutData);
+        Anim.SetInteger(QuickFind.AnimationStringValues.EnemyTypeIntName, Entity.Combat.CombatSettings.EnemyAnimationType);
+        Anim.SetInteger(QuickFind.AnimationStringValues.EnemyAnimationStateName, AnimationState);
+        Anim.SetBool(QuickFind.AnimationStringValues.EnemyActionTriggerBoolName, true);      
     }
 
-    public void UpdatePlayerAnimationState(int[] InData)
+
+
+    public void RemoveActionTrigger()
     {
-        bool Value = false;
-        if (InData[2] == 1) Value = true;
-
-        Anim.SetBool(QuickFind.AnimationStringValues.AnimationBoolValues[InData[1]].BoolName, Value);
+        Anim.SetBool(QuickFind.AnimationStringValues.EnemyActionTriggerBoolName, false);
     }
-
 
 }

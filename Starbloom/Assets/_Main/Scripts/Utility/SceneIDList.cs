@@ -27,6 +27,9 @@ public class SceneIDList : MonoBehaviour {
         public bool AppendFarmName;
         [ShowIf("ShowLocalization")]
         public bool AppendPlayerName;
+        [Header("Visuals")]
+        public bool AllowEnvironmentParticles;
+        public bool AllowSnowShader;
 
         [Button(ButtonSizes.Small)]
         public void JumpToScene_InGame()

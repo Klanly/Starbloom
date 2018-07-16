@@ -40,6 +40,7 @@ public class DG_AIEntityDetection : MonoBehaviour
     //Detection
     [ReadOnly] public DetectionBehaviour CurrentDetectionBehaviour;
     [ReadOnly] public Transform DetectedTarget;
+    [ReadOnly] public float RangeFromTarget;
 
     [System.NonSerialized] public DG_AIEntity Entity;
     [System.NonSerialized] public DetectionOptions DetectionSettings;
@@ -66,6 +67,7 @@ public class DG_AIEntityDetection : MonoBehaviour
         if (CurrentDetectionBehaviour == DetectionBehaviour.InitialLoad) InitialLoad();
         if (!Entity.CheckIfYouAreOwner()) return;
         if (CurrentDetectionBehaviour != DetectionBehaviour.Detect_NotDetecting) { ScanTimer -= Time.deltaTime; if (ScanTimer < 0) { GetNextDetection(); } }
+        if (DetectedTarget != null) RangeFromTarget = Vector3.Distance(Entity._T.position, DetectedTarget.position);
     }
 
     void GetNextDetection()

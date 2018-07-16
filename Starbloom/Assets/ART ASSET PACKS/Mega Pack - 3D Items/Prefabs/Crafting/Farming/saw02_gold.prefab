@@ -10,7 +10,7 @@ GameObject:
   - component: {fileID: 413162}
   - component: {fileID: 3362638}
   - component: {fileID: 2392806}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: saw02_gold
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -5,6 +5,25 @@ using UnityEngine;
 public class DG_CombatHandler : MonoBehaviour {
 
 
+
+    [System.Serializable]
+    public class Damages
+    {
+        public DG_CombatHandler.DamageTypes DamageType;
+        public int DamageMin;
+        public int DamageMax;
+    }
+
+    [System.Serializable]
+    public class Resistances
+    {
+        public DG_CombatHandler.DamageTypes Type;
+        public int Value;
+    }
+
+
+
+
     public enum EquipmentSetups
     {
         SingleSword
@@ -21,11 +40,16 @@ public class DG_CombatHandler : MonoBehaviour {
     [System.NonSerialized] public DG_ItemObject ItemDatabaseReference;
     [System.NonSerialized] public int ActiveSlot;
     [System.NonSerialized] public bool WeaponActive;
+    public Transform EnemySurroundHelper = null;
+    public Transform EnemySurroundNewPoint = null;
+    public float PlayerWeaponDashDistance;
+    public float PlayerWeaponDashTime;
+    public GameObject PlayerDashAttackHitboxes;
     EquipmentSetups ActiveEquipmentSetup;
     bool AwaitingResponse;
-    
 
-
+    int[] Sent;
+    int[] PlayerSent;
 
 
 
@@ -47,23 +71,28 @@ public class DG_CombatHandler : MonoBehaviour {
         {
             AwaitingResponse = true;
 
-            DG_CharacterDashController.DashTypes DashType = DG_CharacterDashController.DashTypes.SimpleDash;  //Make this procedural based on weapon.
-            QuickFind.CombatHandler.TriggerMeleeDash(DashType);
+            QuickFind.CombatHandler.TriggerMeleeDash(PlayerWeaponDashTime, PlayerWeaponDashDistance);
+            PlayerDashAttackHitboxes.SetActive(true);
 
             DG_ClothingObject Cloth = QuickFind.ClothingHairManager.GetAttachedClothingReference(QuickFind.NetworkSync.CharacterLink, DG_ClothingHairManager.ClothHairType.RightHand).ClothingRef;
             QuickFind.NetworkSync.CharacterLink.AnimationSync.TriggerAnimation(Cloth.AnimationDatabaseNumber);
         }
     }
-    public void HitAction()
+    public void DashComplete()
     {
         if (!AwaitingResponse) return;
         AwaitingResponse = false;
 
         QuickFind.NetworkSync.CharacterLink.CenterCharacterX();
-
-        if (QuickFind.TargetingController.PlayerTarget != null)
-            MeleeHitTrigger(QuickFind.TargetingController.PlayerTarget.GetComponent<DG_ContextObject>());
+        PlayerDashAttackHitboxes.SetActive(false);
     }
+
+
+
+
+
+
+
 
 
 
@@ -88,11 +117,13 @@ public class DG_CombatHandler : MonoBehaviour {
 
 
 
-    public void TriggerMeleeDash(DG_CharacterDashController.DashTypes DashType)
+    public void TriggerMeleeDash(float DashTime, float NoTargetDistance)
     {
         if (QuickFind.TargetingController.PlayerTarget != null) QuickFind.PlayerTrans.LookAt(QuickFind.TargetingController.PlayerTarget);
-        QuickFind.CharacterDashController.DashAction(QuickFind.PlayerTrans, DashType, (QuickFind.TargetingController.PlayerTarget != null), QuickFind.TargetingController.PlayerTarget);
+        QuickFind.CharacterDashController.DashAction(QuickFind.PlayerTrans, DashTime, NoTargetDistance, true, this.gameObject);
     }
+
+
 
 
 
@@ -102,13 +133,10 @@ public class DG_CombatHandler : MonoBehaviour {
         NetworkObject NO = QuickFind.NetworkObjectManager.ScanUpTree(CO.transform);
         DG_EnemyObject EO = QuickFind.EnemyDatabase.GetItemFromID(NO.ItemRefID);
 
-
         //New Health Value
-        int Hitvalue = CalculateDamageValue(ItemDatabaseReference, EO);
-        int newHealthValue = NO.HealthValue - Hitvalue;
-
+        int newHealthValue = CalculateEnemyHealthAfterDamage(NO, EO);
         if (newHealthValue <= 0) { SendKill(NO, CO, EO); }
-        else { SendHitData(CO, NO, newHealthValue); }
+        else { SendEnemyHitData(CO, NO, newHealthValue); }
     }
     public void RangedHitTrigger(DG_PlayerCharacters.RucksackSlot RucksackSlotOpen, DG_ItemObject ItemDatabaseReference)
     {
@@ -118,21 +146,65 @@ public class DG_CombatHandler : MonoBehaviour {
 
 
 
-    int CalculateDamageValue(DG_ItemObject WeaponReference, DG_EnemyObject EnemyReference)
-    {
-        DG_ItemObject.Weapon Wep = WeaponReference.WeaponValues[0];
-        DamageTypes Type = Wep.DamageType;
 
-        int HitAmount = Random.Range(Wep.DamageMin, (Wep.DamageMax + 1));
-        for(int i = 0; i < EnemyReference.Resistances.Length; i++)
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    public void ObjectHitReturn(Collider EnemyHit)
+    {
+        //Todo, determine what kind of attack is being done.
+        MeleeHitTrigger(QuickFind.TargetingController.PlayerTarget.GetComponent<DG_ContextObject>());
+    }
+    public int CalculateEnemyHealthAfterDamage(NetworkObject NO, DG_EnemyObject EO)
+    {
+        DG_ItemObject.Weapon Wep = ItemDatabaseReference.WeaponValues[0];
+        int HitAmount = Random.Range(Wep.DamageValues.DamageMin, (Wep.DamageValues.DamageMax + 1));
+        HitAmount = ScanResistances(HitAmount, EO.EnemyResistances, Wep.DamageValues.DamageType);
+        return NO.HealthValue - HitAmount;
+    }
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    public void PlayerHitReturn(Transform EnemyStriking, Collider PlayerHit)
+    {
+        DG_CharacterLink CharLink = PlayerHit.GetComponent<DG_CharacterLink>();
+        if (!CharLink.MoveSync.isPlayer) return;
+
+        NetworkObject NO = QuickFind.NetworkObjectManager.ScanUpTree(EnemyStriking);
+        DG_EnemyObject EO = QuickFind.EnemyDatabase.GetItemFromID(NO.ItemRefID);
+
+        DG_NetworkSync.Users U = QuickFind.NetworkSync.GetUserByCharacterLink(CharLink);
+        DG_PlayerCharacters.PlayerCharacter PC = QuickFind.Farm.PlayerCharacters[U.PlayerCharacterID];
+        int CurrentHealth = PC.Energies.CurrentHealth;
+        int DamageReceived = CalculatePlayerDamageReceived(EO, PC);
+        CurrentHealth -= DamageReceived;
+
+        if (CurrentHealth <= 0) { Debug.Log("Do something when player runs out of health"); }
+        else { SendPlayerHitData(U, CurrentHealth); }
+    }
+    public int CalculatePlayerDamageReceived(DG_EnemyObject EO, DG_PlayerCharacters.PlayerCharacter PC)
+    {
+        Damages Damage = EO.Damage;
+        int HitAmount = Random.Range(Damage.DamageMin, (Damage.DamageMax + 1));
+        for (int i = 0; i < PC.Equipment.EquippedClothing.Count; i++)
+            HitAmount = ScanResistances(HitAmount, QuickFind.ClothingDatabase.GetItemFromID(PC.Equipment.EquippedClothing[i]).ClothingResistances, Damage.DamageType);
+        return HitAmount;
+    }
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    public int ScanResistances(int CurrentHitAmount, Resistances[] ResistanceArray, DamageTypes DamageType)
+    {
+        int HitAmount = CurrentHitAmount;
+        for (int i = 0; i < ResistanceArray.Length; i++)
         {
-            DG_EnemyObject.EnemyResistances R = EnemyReference.Resistances[i];
-            if (Type == R.Type)
+            Resistances R = ResistanceArray[i];
+            if (DamageType == R.Type)
             {
                 //Resistance Calculation.  Positive will reduce incoming damage, Negative will Amplify Incoming Damage.
                 float Multiplier = ((float)R.Value / 100);
                 int SubtractValue = Mathf.RoundToInt(((float)HitAmount * Multiplier));
-                HitAmount = HitAmount - SubtractValue; 
+                HitAmount = HitAmount - SubtractValue;
             }
         }
         return HitAmount;
@@ -144,9 +216,11 @@ public class DG_CombatHandler : MonoBehaviour {
 
 
 
-    void SendHitData(DG_ContextObject CO, NetworkObject NO, int NewHealthValue)
+    /////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    void SendEnemyHitData(DG_ContextObject CO, NetworkObject NO, int NewHealthValue)
     {
-        int[] Sent = new int[3];
+        if(Sent == null) Sent = new int[3];
         Sent[0] = QuickFind.NetworkSync.CurrentScene;
         Sent[1] = NO.NetworkObjectID;
         Sent[2] = NewHealthValue;
@@ -154,7 +228,7 @@ public class DG_CombatHandler : MonoBehaviour {
         QuickFind.NetworkSync.SendEnemyHit(Sent);
     }
 
-    public void ReceiveHitData(int[] Data)
+    public void ReceiveEnemyHitData(int[] Data)
     {
         NetworkObject NO = QuickFind.NetworkObjectManager.GetItemByID(Data[0], Data[1]);
         NO.HealthValue = Data[2];
@@ -163,6 +237,33 @@ public class DG_CombatHandler : MonoBehaviour {
         //FX
         Transform Child = NO.transform.GetChild(0);
         Debug.Log("Trigger Enemy Hit FX");
+        //Child.GetComponent<DG_FXContextObjectReference>().TriggerImpact();
+    }
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    void SendPlayerHitData(DG_NetworkSync.Users U, int NewHealthValue)
+    {
+        if(PlayerSent == null) PlayerSent = new int[2];
+        PlayerSent[0] = U.ID;
+        PlayerSent[1] = NewHealthValue;
+
+        QuickFind.NetworkSync.SendPlayerHit(PlayerSent);
+    }
+
+    public void ReceivePlayerHitData(int[] Data)
+    {
+        DG_NetworkSync.Users U = QuickFind.NetworkSync.GetUserByID(Data[0]);
+        DG_PlayerCharacters.PlayerCharacter PC = QuickFind.Farm.PlayerCharacters[U.PlayerCharacterID];
+        PC.Energies.CurrentHealth = Data[1];
+
+        //Update Healthbar
+        if (U.ID == QuickFind.NetworkSync.UserID)
+            QuickFind.GUI_MainOverview.SetGuiHealthValue((float)PC.Energies.CurrentHealth / (float)PC.Energies.MaxHealth);
+
+        //FX
+        DG_CharacterLink CharLink = U.CharacterLink;
+        Debug.Log("Trigger Player Hit FX");
         //Child.GetComponent<DG_FXContextObjectReference>().TriggerImpact();
     }
 

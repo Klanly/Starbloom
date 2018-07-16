@@ -10,7 +10,7 @@ GameObject:
   - component: {fileID: 482470}
   - component: {fileID: 3342954}
   - component: {fileID: 2325808}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ore02_silver
   m_TagString: Untagged
   m_Icon: {fileID: 0}

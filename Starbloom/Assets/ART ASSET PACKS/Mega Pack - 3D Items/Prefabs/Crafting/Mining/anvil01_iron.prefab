@@ -10,7 +10,7 @@ GameObject:
   - component: {fileID: 421356}
   - component: {fileID: 3340652}
   - component: {fileID: 2388488}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: anvil01_iron
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -22,13 +22,13 @@ TagManager:
   - Clouds
   - CloudReflection
   - Lights
-  - 
+  - NavMeshRemoval
   - Player
   - InteractableObject
   - ScatterObject
   - Tillable Terrain
   - WaterableObject
-  - 
+  - CameraPostVolume
   - 
   - 
   - 
@@ -36,8 +36,8 @@ TagManager:
   - 
   - 
   - AttackableTarget
-  - 
-  - NavMeshRemoval
+  - EnemyStrikeCollider
+  - PlayerStrikeColider
   - 
   - 
   - 

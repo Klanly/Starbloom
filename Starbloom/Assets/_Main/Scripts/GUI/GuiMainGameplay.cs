@@ -29,6 +29,10 @@ public class GuiMainGameplay : MonoBehaviour {
     public TMPro.TextMeshProUGUI TimeText = null;
     public DG_TextStatic StaticText = null;
 
+    [Header("Energy/Health/Mana Bars")]
+    public UnityEngine.UI.Image EnergyBar;
+    public UnityEngine.UI.Image HealthBar;
+
 
 
 
@@ -141,9 +145,14 @@ public class GuiMainGameplay : MonoBehaviour {
 
 
 
-    public void SetGuiEnergyValue(int NewEnergyValue)
+    public void SetGuiEnergyValue(float NewEnergyPercentage)
     {
+        EnergyBar.fillAmount = NewEnergyPercentage;
+    }
 
+    public void SetGuiHealthValue(float NewHealthPercentage)
+    {
+        HealthBar.fillAmount = NewHealthPercentage;
     }
 
 }

@@ -34,9 +34,10 @@ public class DG_CharacterLink : MonoBehaviour {
     public bool DoNotDisableOnStart = false;
 
     bool Allow = false;
-    [System.NonSerialized] public Transform _T;
     Transform TargetingHelper;
     Transform TargetingHelper2;
+
+    [System.NonSerialized] public Transform _T;
 
 
     private void Awake()
@@ -93,6 +94,10 @@ public class DG_CharacterLink : MonoBehaviour {
 
         QuickFind.PlayerTrans = _T;
         AnimationSync.isPlayer = true;
+        QuickFind.CombatHandler.PlayerDashAttackHitboxes.transform.SetParent(_T);
+        QuickFind.CombatHandler.PlayerDashAttackHitboxes.transform.localPosition = Vector3.zero;
+        QuickFind.CombatHandler.PlayerDashAttackHitboxes.transform.localRotation = Quaternion.identity;
+        QuickFind.CombatHandler.PlayerDashAttackHitboxes.SetActive(false);
 
         QuickFind.InputController.MainPlayer.CharLink = this;
 

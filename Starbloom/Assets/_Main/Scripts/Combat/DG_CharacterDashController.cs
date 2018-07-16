@@ -5,31 +5,23 @@ using UnityEngine;
 public class DG_CharacterDashController : MonoBehaviour {
 
 
-    public enum DashTypes
+    public class DashingObject
     {
-        SimpleDash
+        public bool inUse;
+        public float TotalTime;
+        public float Timer;
+        public Transform CurrentMovingChar;
+        public Transform CurrentTarget;
+        public Transform DashHelper1;
+        public Transform DashHelper2;
+        public GameObject MessageReturn;
     }
 
-    [System.Serializable]
-    public class DashTimes
-    {
-        public DashTypes Type;
-        public float Time;
-        public float NoTargetDashDistance;
-    }
-
-    public DashTimes[] DashTimeRefs;
     public Transform DashHelper;
-
-
-
-    float TotalTime;
-    float Timer;
-    Transform CurrentMovingChar;
-    Transform CurrentTarget;
     Transform TrueTarget;
-    Transform DashHelper1;
-    Transform DashHelper2;
+    List<DashingObject> DashingObjects;
+    public LayerMask DashBlockingMask;
+
 
 
 
@@ -37,59 +29,78 @@ public class DG_CharacterDashController : MonoBehaviour {
 
     private void Awake()
     {
+        DashingObjects = new List<DashingObject>();
         QuickFind.CharacterDashController = this;
-        DashHelper1 = new GameObject().transform;
-        DashHelper2 = new GameObject().transform;
-        DashHelper1.SetParent(transform);
-        DashHelper2.SetParent(transform);
         TrueTarget = DashHelper.GetChild(0);
-        this.enabled = false;
     }
 
 
     private void Update()
     {
-        DashHelper.position = CurrentTarget.position;
-        DashHelper.LookAt(CurrentMovingChar);
 
-        Timer -= Time.deltaTime;
-        if (Timer < 0)
-        { Timer = 0; this.enabled = false; }
-        float Percentage = 1 - (Timer / TotalTime);
-        CurrentMovingChar.position = Vector3.Lerp(DashHelper1.position, TrueTarget.position, Percentage);
+        for(int i = 0; i < DashingObjects.Count; i++)
+        {
+            DashingObject DO = DashingObjects[i];
+            if (!DO.inUse) continue;
+            if(DO.CurrentMovingChar == null) { DO.inUse = false; continue; }
+
+            DashHelper.position = DO.CurrentTarget.position;
+            DashHelper.LookAt(DO.CurrentMovingChar);
+
+            DO.Timer -= Time.deltaTime;
+            if (DO.Timer < 0)
+            {
+                DO.Timer = 0;
+                DO.inUse = false;
+                if(DO.MessageReturn != null) DO.MessageReturn.SendMessage("DashComplete");
+            }
+            float Percentage = 1 - (DO.Timer / DO.TotalTime);
+            DO.CurrentMovingChar.position = Vector3.Lerp(DO.DashHelper1.position, TrueTarget.position, Percentage);
+        }
     }
 
 
 
 
-    public void DashAction(Transform Character, DashTypes DashType, bool HasTarget = false, Transform Target = null)
+    public void DashAction(Transform Character, float DashTime, float DashDistance, bool DoRaycast = false, GameObject ReturnObject = null)
     {
-        CurrentMovingChar = Character;
+        DashingObject DO = GetDashObjectController(Character);
+        DO.inUse = true;
+        DO.MessageReturn = ReturnObject;
+        DO.CurrentMovingChar = Character;
+        DO.TotalTime = DashTime;
+        DO.Timer = DashTime;
+        DO.DashHelper1.position = Character.position;
+        DO.DashHelper2.position = DO.DashHelper1.position;
+        DO.DashHelper2.eulerAngles = Character.eulerAngles;
 
-        DashTimes DT = null;
-        for (int i = 0; i < DashTimeRefs.Length; i++)
-        { if (DashTimeRefs[i].Type == DashType) { DT = DashTimeRefs[i]; break; } }
-
-        TotalTime = DT.Time;
-        Timer = DT.Time;
-
-        DashHelper1.position = Character.position;
-        if (HasTarget)
-            CurrentTarget = Target;
+        RaycastHit hit;
+        if (DoRaycast && Physics.Raycast(DO.DashHelper2.position, DO.DashHelper2.forward, out hit, DashDistance, DashBlockingMask))
+            DO.DashHelper2.position = hit.point;
         else
+            DO.DashHelper2.Translate(Vector3.forward * DashDistance);
+
+        DO.CurrentTarget = DO.DashHelper2;
+    }
+
+    public DashingObject GetDashObjectController(Transform Character)
+    {
+        DashingObject DO;
+        for (int i = 0; i < DashingObjects.Count; i++)
         {
-            DashHelper2.position = DashHelper1.position;
-            DashHelper2.eulerAngles = Character.eulerAngles;
-
-            RaycastHit hit;
-            if (Physics.Raycast(DashHelper2.position, DashHelper2.forward, out hit, DT.NoTargetDashDistance))
-                DashHelper2.position = hit.point;
-            else
-                DashHelper2.Translate(Vector3.forward * DT.NoTargetDashDistance);
-
-            CurrentTarget = DashHelper2;
+            DO = DashingObjects[i];
+            if (!DO.inUse || Character == DO.CurrentMovingChar) return DO;
         }
 
-        this.enabled = true;
+        DO = new DashingObject();
+
+        DO.DashHelper1 = new GameObject().transform;
+        DO.DashHelper2 = new GameObject().transform;
+        DO.DashHelper1.SetParent(transform);
+        DO.DashHelper2.SetParent(transform);
+
+        DashingObjects.Add(DO);
+        return DO;
     }
+
 }

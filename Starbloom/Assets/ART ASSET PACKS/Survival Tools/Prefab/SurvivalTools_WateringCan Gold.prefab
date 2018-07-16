@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4418745816371332}
   - component: {fileID: 33269336721465508}
   - component: {fileID: 23132889806398566}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: SurvivalTools_WateringCan Gold
   m_TagString: Untagged
   m_Icon: {fileID: 0}

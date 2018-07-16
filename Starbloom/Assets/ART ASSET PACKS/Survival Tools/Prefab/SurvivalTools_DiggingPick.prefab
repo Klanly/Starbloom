@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33168697206651260}
   - component: {fileID: 23349591840226064}
   - component: {fileID: 95381381704459932}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: SurvivalTools_DiggingPick
   m_TagString: Untagged
   m_Icon: {fileID: 0}

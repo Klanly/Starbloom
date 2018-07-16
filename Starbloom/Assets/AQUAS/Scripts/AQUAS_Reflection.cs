@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 
 [AddComponentMenu("AQUAS/Reflection")]
-[ExecuteInEditMode] // Make mirror live-update even when not in play mode
+//[ExecuteInEditMode] // Make mirror live-update even when not in play mode
 public class AQUAS_Reflection : MonoBehaviour
 {
     #region Variables

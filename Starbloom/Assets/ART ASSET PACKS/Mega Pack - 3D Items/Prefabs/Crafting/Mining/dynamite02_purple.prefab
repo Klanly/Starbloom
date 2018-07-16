@@ -10,7 +10,7 @@ GameObject:
   - component: {fileID: 474576}
   - component: {fileID: 3369376}
   - component: {fileID: 2375248}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: dynamite02_purple
   m_TagString: Untagged
   m_Icon: {fileID: 0}

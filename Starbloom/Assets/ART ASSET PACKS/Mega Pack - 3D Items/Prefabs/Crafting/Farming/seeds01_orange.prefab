@@ -10,7 +10,7 @@ GameObject:
   - component: {fileID: 492040}
   - component: {fileID: 3310004}
   - component: {fileID: 2383408}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: seeds01_orange
   m_TagString: Untagged
   m_Icon: {fileID: 0}

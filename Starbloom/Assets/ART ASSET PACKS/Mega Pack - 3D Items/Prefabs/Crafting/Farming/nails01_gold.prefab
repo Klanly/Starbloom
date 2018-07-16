@@ -10,7 +10,7 @@ GameObject:
   - component: {fileID: 449782}
   - component: {fileID: 3356878}
   - component: {fileID: 2370450}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: nails01_gold
   m_TagString: Untagged
   m_Icon: {fileID: 0}

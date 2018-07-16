@@ -22,24 +22,24 @@ MonoBehaviour:
   winter: 0
   possibiltyInWinter: 100
   cloudsConfig:
-    topColor: {r: 0.29411763, g: 0.29411763, b: 0.29411763, a: 1}
-    bottomColor: {r: 0.14705884, g: 0.14705884, b: 0.14705884, a: 1}
+    topColor: {r: 0, g: 0, b: 0, a: 1}
+    bottomColor: {r: 0, g: 0, b: 0, a: 1}
     skyBlending: 1
-    alphaCoef: 3.14
-    scatteringCoef: 0.027
-    density: 1.844
-    coverage: 2
-    coverageHeight: 2
+    alphaCoef: 4
+    scatteringCoef: 0.02
+    density: 1.67
+    coverage: 0.63
+    coverageHeight: 1.4
     raymarchingScale: 1
     cloudType: 1
     cirrusAlpha: 0
     cirrusCoverage: 0
     cirrusColorPow: 1
-    flatAlpha: 1.188
-    flatCoverage: 0.886
-    flatSoftness: 0.785
-    flatBrightness: 0.34
-    flatColorPow: 2.41
+    flatAlpha: 1
+    flatCoverage: 1
+    flatSoftness: 1
+    flatBrightness: 0
+    flatColorPow: 5
   fogStartDistance: 0
   fogDistance: 0
   fogDensity: 0.0001
@@ -105,7 +105,7 @@ MonoBehaviour:
     serializedVersion: 2
     key0: {r: 0, g: 0, b: 0, a: 1}
     key1: {r: 0, g: 0, b: 0, a: 1}
-    key2: {r: 0.09019608, g: 0.09019608, b: 0.09019608, a: 1}
+    key2: {r: 0.09019608, g: 0.09019608, b: 0.09019608, a: 0.9411765}
     key3: {r: 0.12156863, g: 0.12156863, b: 0.12156863, a: 1}
     key4: {r: 0.12156863, g: 0.12156863, b: 0.12156863, a: 0}
     key5: {r: 0, g: 0, b: 0, a: 0}
@@ -140,7 +140,7 @@ MonoBehaviour:
   - prefab: {fileID: 1000010755747430, guid: 345f0b3a653208b47b4c607a213b3f46, type: 2}
     localPositionOffset: {x: 0, y: 25, z: 0}
     localRotationOffset: {x: -90, y: 0, z: -180}
-  WindStrenght: 0.5
+  WindStrenght: 0.02
   wetnessLevel: 0.458
   snowLevel: 0
   isLightningStorm: 0

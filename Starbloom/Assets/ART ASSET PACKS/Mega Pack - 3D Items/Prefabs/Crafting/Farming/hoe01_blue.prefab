@@ -10,7 +10,7 @@ GameObject:
   - component: {fileID: 476570}
   - component: {fileID: 3373610}
   - component: {fileID: 2388786}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: hoe01_blue
   m_TagString: Untagged
   m_Icon: {fileID: 0}

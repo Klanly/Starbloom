@@ -10,7 +10,7 @@ GameObject:
   - component: {fileID: 415866}
   - component: {fileID: 3327304}
   - component: {fileID: 2343042}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: saw02_silver
   m_TagString: Untagged
   m_Icon: {fileID: 0}

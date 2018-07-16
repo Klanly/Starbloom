@@ -10,7 +10,7 @@ GameObject:
   - component: {fileID: 456996}
   - component: {fileID: 3371382}
   - component: {fileID: 2338990}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: blower01_wood
   m_TagString: Untagged
   m_Icon: {fileID: 0}

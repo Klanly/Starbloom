@@ -493,6 +493,9 @@ public class EnviroSky : MonoBehaviour
 				Init ();
 			}
         }
+
+        if(Application.isPlaying)
+            EffectsHolder.SetActive(false);
     }
 
 	void OnEnable()

@@ -1,11 +1,13 @@
-﻿#if UNITY_EDITOR
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Reflection;
 using System;
 using Sirenix.OdinInspector;
+
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 
 
 
@@ -37,7 +39,7 @@ public class DuplicateCatcher : MonoBehaviour
     public DatabaseType DBType;
     [HideInInspector] public int instanceID = 0;
 
-
+#if UNITY_EDITOR
     void Awake()
     {
         if (Application.isPlaying) return;
@@ -265,7 +267,7 @@ public class DuplicateCatcher : MonoBehaviour
         }
     }
 
-
+#endif
 }
 
-#endif
+

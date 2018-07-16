@@ -5,6 +5,7 @@ using Sirenix.OdinInspector;
 
 #if UNITY_EDITOR
 using UnityEditor;
+#endif
 
 public class DG_SceneJumpTool : MonoBehaviour {
 
@@ -19,11 +20,16 @@ public class DG_SceneJumpTool : MonoBehaviour {
     [HideInEditorMode]
     public List<ScenePortals> SceneTransistionList;
 
+#if UNITY_EDITOR
     [HideInEditorMode]
     [Button(ButtonSizes.Medium)]
     public void JumpToCompleteSceneList()
     {
+
+
         Selection.activeGameObject = QuickFind.SceneList.gameObject;
+
+
     }
 
 
@@ -45,6 +51,7 @@ public class DG_SceneJumpTool : MonoBehaviour {
             SceneTransistionList.Add(SP);
         }
     }
-}
 
 #endif
+}
+

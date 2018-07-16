@@ -10,7 +10,7 @@ GameObject:
   - component: {fileID: 419970}
   - component: {fileID: 3311862}
   - component: {fileID: 2301458}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: blower01_silver
   m_TagString: Untagged
   m_Icon: {fileID: 0}

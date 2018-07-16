@@ -10,7 +10,7 @@ GameObject:
   - component: {fileID: 453030}
   - component: {fileID: 3375712}
   - component: {fileID: 2375094}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: scissors02_silver
   m_TagString: Untagged
   m_Icon: {fileID: 0}

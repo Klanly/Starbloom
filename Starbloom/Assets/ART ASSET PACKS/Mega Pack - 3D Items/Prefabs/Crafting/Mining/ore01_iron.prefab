@@ -10,7 +10,7 @@ GameObject:
   - component: {fileID: 488636}
   - component: {fileID: 3338464}
   - component: {fileID: 2389330}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ore01_iron
   m_TagString: Untagged
   m_Icon: {fileID: 0}

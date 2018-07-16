@@ -21,6 +21,7 @@ public static class QuickFindInEditor
             return GameObject.Find("NodeViewerOptions").GetComponent<NodeViewOptions>();
         }
     }
+
     //Database
     public static DG_DialogueManager GetEditorDialogueManager() { return GameObject.Find("Dialogue Tree Database").GetComponent<DG_DialogueManager>(); }
     public static DG_WordDatabase GetEditorWordDatabase() { return GameObject.Find("Word Database").GetComponent<DG_WordDatabase>(); }
@@ -207,16 +208,15 @@ public static class QuickFind
     public static TimeHandler TimeHandler = null;
     public static WeatherHandler WeatherHandler = null;
     public static EnviroSky WeatherController = null;
-    public static CloudsGenerator CloudGeneration = null;
     public static DG_EnvironmentUnderwaterTrigger UnderwaterTrigger = null;
     public static FakeRainDropCollision RainDropHandler = null;
+    public static DG_EnvironmentColorSync EnvironmentColorSync = null;
+    public static GlobalSnowEffect.GlobalSnow SnowHandler = null;
 
 
 
     //Pooling
     public static DG_PrefabPoolDictionary PrefabPool = null;
-
-
 
 
 

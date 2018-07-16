@@ -10,7 +10,7 @@ GameObject:
   - component: {fileID: 446136}
   - component: {fileID: 3314450}
   - component: {fileID: 2395112}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: fishingpole01_blue
   m_TagString: Untagged
   m_Icon: {fileID: 0}

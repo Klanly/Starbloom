@@ -10,7 +10,7 @@ GameObject:
   - component: {fileID: 402582}
   - component: {fileID: 3358550}
   - component: {fileID: 2302978}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: needle01_bronze
   m_TagString: Untagged
   m_Icon: {fileID: 0}

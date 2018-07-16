@@ -62,7 +62,7 @@ public class TimeHandler : MonoBehaviour
 
         int TenMinute = (int)(QuickFind.WeatherController.GameTime.Minutes / 10);
         int TenMult = TenMinute * 10;
-        if (KnownTenMinute != TenMult) { KnownTenMinute = TenMult; TimeChanged = true; if (null != OnNewTenMinute) OnNewHour(KnownTenMinute); }
+        if (KnownTenMinute != TenMult) { KnownTenMinute = TenMult; TimeChanged = true; if (null != OnNewTenMinute) OnNewHour(KnownTenMinute); QuickFind.EnvironmentColorSync.AllowSnowUpdate = true; }
 
         if (QuickFind.GUI_MainOverview == null) return;
         if (TimeChanged) QuickFind.GUI_MainOverview.SetGuiTimeValue(KnownHour, KnownTenMinute);

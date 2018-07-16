@@ -10,7 +10,7 @@ GameObject:
   - component: {fileID: 476134}
   - component: {fileID: 3357272}
   - component: {fileID: 2322296}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: bucket01_silver
   m_TagString: Untagged
   m_Icon: {fileID: 0}

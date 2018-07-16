@@ -943,6 +943,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4970078282984124}
   - component: {fileID: 137788356173241176}
+  - component: {fileID: 114498193164143028}
   m_Layer: 12
   m_Name: Main Body
   m_TagString: Untagged
@@ -3024,6 +3025,19 @@ MonoBehaviour:
   - {fileID: 136005150100828142}
   AttachedClothes: []
   DoNotDisableOnStart: 0
+--- !u!114 &114498193164143028
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1660127651583650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a6cc214006114e55ae3f52eb2cb4434, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rendHasSubmeshes: 1
+  layer: 12
 --- !u!114 &114545301537339994
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3037,7 +3051,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _groundMask:
     serializedVersion: 2
-    m_Bits: 67411969
+    m_Bits: 67149825
   _groundLimit: 89
   _stepOffset: 0.33
   _ledgeOffset: 0.33
@@ -3084,6 +3098,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Anim: {fileID: 95646036969062546}
   CharacterLink: {fileID: 114446412302524988}
+  LeftFootPoint: {fileID: 4796669311748134}
+  RightFootPoint: {fileID: 4379748061109610}
+  FootPrintRadius: 0.12
 --- !u!114 &114927186516925144
 MonoBehaviour:
   m_ObjectHideFlags: 1

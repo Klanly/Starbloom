@@ -74,9 +74,9 @@ MonoBehaviour:
     m_NumAlphaKeys: 4
   weatherLightMod:
     serializedVersion: 2
-    key0: {r: 0, g: 0, b: 0, a: 0.30588236}
+    key0: {r: 0, g: 0, b: 0, a: 0.20784314}
     key1: {r: 0, g: 0, b: 0, a: 1}
-    key2: {r: 0.3962264, g: 0.3943574, b: 0.3943574, a: 1}
+    key2: {r: 0.1792453, g: 0.1792453, b: 0.1792453, a: 1}
     key3: {r: 0.1981132, g: 0.1981132, b: 0.1981132, a: 1}
     key4: {r: 0, g: 0, b: 0, a: 1}
     key5: {r: 0, g: 0, b: 0, a: 0}
@@ -140,7 +140,7 @@ MonoBehaviour:
   - prefab: {fileID: 1000010197746070, guid: 8bb020f87d2cd0e4d86ee7420259c2b2, type: 2}
     localPositionOffset: {x: 0, y: 25, z: 0}
     localRotationOffset: {x: -90, y: 0, z: -180}
-  WindStrenght: 0.635
+  WindStrenght: 0.1
   wetnessLevel: 1
   snowLevel: 0
   isLightningStorm: 1

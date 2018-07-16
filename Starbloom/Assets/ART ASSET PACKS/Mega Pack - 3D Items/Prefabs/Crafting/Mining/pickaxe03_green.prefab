@@ -10,7 +10,7 @@ GameObject:
   - component: {fileID: 452718}
   - component: {fileID: 3300566}
   - component: {fileID: 2369364}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: pickaxe03_green
   m_TagString: Untagged
   m_Icon: {fileID: 0}

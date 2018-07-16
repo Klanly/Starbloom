@@ -14,13 +14,26 @@ public class DG_AIEntityCombat : MonoBehaviour {
         public CombatBehaviour DefaultCombatBehaviour;
         public CombatBehaviour DebugCombatBehaviour;
 
-        [Header("Surround")]
+        [Header("Move To Range")]
         public float MoveWithinRange = 8;
-        public float SurroundUpdateRate = .6f;
 
-        [Header("AttackPosition")]
-        public float AttackRange = 4;
-        public float MoveToUpdateRate = .3f;
+        [Header("Surround Behaviour")]
+        public float SurroundRange = 8;
+        public float SurroundDefaultDirectionAmount = 10;
+
+        [Header("Attack Warning")]
+        public float AttackWarningTime = 1;
+        public float PostWarningDelayTime = .5f;
+
+        [Header("Attack Travel Distance")]
+        public float AttackTravelTime = .3f;
+        public float AttackTravelDistance = 10;
+
+        [Header("Animation Values")]
+        public int EnemyAnimationType;
+        public int AttackWarningAnim;
+        public int AttackAnim;
+        public int AttackCompleteAnim;
     }
 
 
@@ -30,13 +43,23 @@ public class DG_AIEntityCombat : MonoBehaviour {
     {
         InitialLoad,
 
+        //Idle, or Move Within General Range of Character
         WaitingForDetection,
-        MovingToSurroundArea,
-        MovingToAttackRange,
-        ChooseAttack,
+        MovingToWithinTargetRange,
+        
+        //Waiting Between Attack Behaviour.
+        AwaitingSurroundMovementOrder,
+        SurroundMovementReceived,
+
+        //Attack Warning
+        AnimationAttackWarning,
+        PostWarningDelay,
+
+        //Attack
         AttackTrigger,
-        AwaitingAttackDuration,
-        AwaitingCooldown
+
+        //Attack Complete
+        AttackComplete
     }
 
 
@@ -45,13 +68,14 @@ public class DG_AIEntityCombat : MonoBehaviour {
 
     [System.NonSerialized] public DG_AIEntity Entity;
     [System.NonSerialized] public CombatOptions CombatSettings;
-    bool WaitingForTimer;
+    public GameObject AttackHitbox;
     float WaitTimer;
 
     #endregion
 
     private void Awake()
     {
+        AttackHitbox.SetActive(false);
         this.enabled = false;
     }
 
@@ -76,40 +100,92 @@ public class DG_AIEntityCombat : MonoBehaviour {
 
     void HandleCombatUpdate()
     {
-        if (WaitingForTimer) { WaitTimer -= Time.deltaTime; if (WaitTimer < 0) { WaitingForTimer = false; } }
-        else ChoseNextAttackState();
+        if (!Entity.CheckIfYouAreOwner()) return;
+        if (CurrentCombatBehaviour == CombatBehaviour.AwaitingSurroundMovementOrder) return;
+
+        //Awaiting Players in Range
+        if (CurrentCombatBehaviour == CombatBehaviour.WaitingForDetection && Entity.Detection.DetectedTarget != null)
+        {
+            CurrentCombatBehaviour = CombatBehaviour.MovingToWithinTargetRange;
+            Entity.Movement.ChangeMovementBehaviourState(DG_AIEntityMovement.MovementBehaviour.RunToDetectedTarget);
+        }
+
+        //Moving To Player in Range.
+        if (CurrentCombatBehaviour == CombatBehaviour.MovingToWithinTargetRange)
+        {
+            if (Entity.Detection.RangeFromTarget < CombatSettings.MoveWithinRange)
+            {
+                CurrentCombatBehaviour = CombatBehaviour.AwaitingSurroundMovementOrder;
+                Entity.Movement.ChangeMovementBehaviourState(DG_AIEntityMovement.MovementBehaviour.RunAroundTarget);
+            }
+        }
+
+        //AwaitingCoolDownBehaviour
+        if (CurrentCombatBehaviour == CombatBehaviour.SurroundMovementReceived)
+        {
+            CurrentCombatBehaviour = CombatBehaviour.AnimationAttackWarning;
+            Entity.Movement.ChangeMovementBehaviourState(DG_AIEntityMovement.MovementBehaviour.StopAndRotateToTarget);
+            WaitTimer = CombatSettings.AttackWarningTime;
+
+            //Play Warning Animation / FX
+            Entity.AnimationSync.PlayAnimation(CombatSettings.AttackWarningAnim);
+        }
+
+
+        //Attack Warning Behaviour
+        if (CurrentCombatBehaviour == CombatBehaviour.AnimationAttackWarning)
+        {
+            if (WaitTimer > 0) WaitTimer -= Time.deltaTime;
+            else
+            {
+                CurrentCombatBehaviour = CombatBehaviour.PostWarningDelay;
+                Entity.Movement.ChangeMovementBehaviourState(DG_AIEntityMovement.MovementBehaviour.Stopped);
+                WaitTimer = CombatSettings.PostWarningDelayTime;
+            }
+        }
+
+        //Post Delay Attack Trigger
+        if (CurrentCombatBehaviour == CombatBehaviour.PostWarningDelay)
+        {
+            if (WaitTimer > 0) WaitTimer -= Time.deltaTime;
+            else
+            {
+                CurrentCombatBehaviour = CombatBehaviour.AttackTrigger;
+                Entity.AnimationSync.PlayAnimation(CombatSettings.AttackAnim);
+                AttackHitbox.SetActive(true);
+                QuickFind.CharacterDashController.DashAction(Entity._T, CombatSettings.AttackTravelTime, CombatSettings.AttackTravelDistance, false, Entity.gameObject);
+            }
+        }
+
+        //Attack Behaviour
+        if (CurrentCombatBehaviour == CombatBehaviour.AttackTrigger)
+        {
+            //Debug.Log("Scanning for Counter Attack");
+        }
+
+        //Attack Behaviour
+        if (CurrentCombatBehaviour == CombatBehaviour.AttackComplete)
+        {
+            CurrentCombatBehaviour = CombatBehaviour.WaitingForDetection;
+            AttackHitbox.SetActive(false);
+            Entity.AnimationSync.PlayAnimation(CombatSettings.AttackCompleteAnim);
+        }
+
     }
+
 
     public void ChoseNextAttackState()
     {
-        if (!Entity.CheckIfYouAreOwner()) return;
-        if (CurrentCombatBehaviour == CombatBehaviour.WaitingForDetection && Entity.Detection.DetectedTarget != null) CurrentCombatBehaviour = CombatBehaviour.MovingToSurroundArea;
-        if (CurrentCombatBehaviour == CombatBehaviour.MovingToSurroundArea)
-        {
-            if (!QuickFind.WithinDistance(Entity.Detection.DetectedTarget, Entity._T, CombatSettings.MoveWithinRange))
-            {
-                Vector3 NewPos = Entity.FindRandomNavMeshPoint(Entity.Detection.DetectedTarget.position, CombatSettings.MoveWithinRange);
-                Entity.Movement.RequestedMoveLocation = NewPos;
-                Entity.Movement.ChangeMovementBehaviourState(DG_AIEntityMovement.MovementBehaviour.RunToTargetLocation);
-                WaitingForTimer = true; WaitTimer = CombatSettings.SurroundUpdateRate;
-            }
-            else CurrentCombatBehaviour = CombatBehaviour.MovingToAttackRange;
-        }
-        if (CurrentCombatBehaviour == CombatBehaviour.MovingToAttackRange)
-        {
-            if (!QuickFind.WithinDistance(Entity.Detection.DetectedTarget, Entity._T, CombatSettings.AttackRange))
-            {
-                Entity.Movement.ChangeMovementBehaviourState(DG_AIEntityMovement.MovementBehaviour.WalkToDetectedTarget);
-                WaitingForTimer = true; WaitTimer = CombatSettings.MoveToUpdateRate;
-            }
-            else CurrentCombatBehaviour = CombatBehaviour.ChooseAttack;
-        }
-        if (CurrentCombatBehaviour == CombatBehaviour.ChooseAttack)
-        {
-            Entity.Movement.ChangeMovementBehaviourState(DG_AIEntityMovement.MovementBehaviour.Stopped);
 
-        }
     }
+
+
+    public void DashComplete()
+    {
+        CurrentCombatBehaviour = CombatBehaviour.AttackComplete; 
+    }
+
+
     #endregion
 
     #region IncomingMessages
@@ -129,4 +205,7 @@ public class DG_AIEntityCombat : MonoBehaviour {
     [Button(ButtonSizes.Small)] [HideInEditorMode] public void SetToDebugCombatState() { ChangeCombatBehaviourState(CombatSettings.DebugCombatBehaviour); }
 
     #endregion
+
+
+
 }

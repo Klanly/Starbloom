@@ -160,6 +160,7 @@ MonoBehaviour:
       Rot: {x: 10.85, y: -4.558, z: 98.576}
       Scale: {x: 0.02232208, y: 0.02232208, z: 0.02232188}
   AnimationDatabaseNumber: 2
+  ClothingResistances: []
 --- !u!114 &27234736
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -172,7 +173,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 14
-  instanceID: 3678976
+  instanceID: 249386
 --- !u!4 &27234737
 Transform:
   m_ObjectHideFlags: 0
@@ -429,7 +430,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 14
-  instanceID: 3679006
+  instanceID: 249416
 --- !u!114 &592225607
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -460,6 +461,7 @@ MonoBehaviour:
       Rot: {x: -169.437, y: 3.416992, z: 86.80299}
       Scale: {x: 0.02510478, y: 0.02510479, z: 0.02510455}
   AnimationDatabaseNumber: 1
+  ClothingResistances: []
 --- !u!1 &689915696
 GameObject:
   m_ObjectHideFlags: 0
@@ -502,7 +504,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 14
-  instanceID: 3679014
+  instanceID: 249424
 --- !u!114 &689915699
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -533,6 +535,7 @@ MonoBehaviour:
       Rot: {x: -169.437, y: 3.416992, z: 86.80299}
       Scale: {x: 0.02510478, y: 0.02510479, z: 0.02510455}
   AnimationDatabaseNumber: 1
+  ClothingResistances: []
 --- !u!1 &767244528
 GameObject:
   m_ObjectHideFlags: 0
@@ -593,6 +596,7 @@ MonoBehaviour:
       Rot: {x: -92.034, y: -0.00001525879, z: 0}
       Scale: {x: 0.0008209795, y: 0.001062445, z: 0.0009658707}
   AnimationDatabaseNumber: 0
+  ClothingResistances: []
 --- !u!114 &767244531
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -605,7 +609,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 14
-  instanceID: 3679024
+  instanceID: 249434
 --- !u!1 &946164149
 GameObject:
   m_ObjectHideFlags: 0
@@ -648,7 +652,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 14
-  instanceID: 3679030
+  instanceID: 249440
 --- !u!114 &946164152
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -679,6 +683,7 @@ MonoBehaviour:
       Rot: {x: -3.348, y: 177.837, z: 262.266}
       Scale: {x: 0.02371116, y: 0.02371116, z: 0.02371095}
   AnimationDatabaseNumber: 0
+  ClothingResistances: []
 --- !u!1 &977705919
 GameObject:
   m_ObjectHideFlags: 0
@@ -721,7 +726,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 14
-  instanceID: 3679038
+  instanceID: 249448
 --- !u!114 &977705922
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -752,6 +757,7 @@ MonoBehaviour:
       Rot: {x: -169.437, y: 3.416992, z: 86.80299}
       Scale: {x: 0.02510478, y: 0.02510479, z: 0.02510455}
   AnimationDatabaseNumber: 1
+  ClothingResistances: []
 --- !u!1 &1021058730
 GameObject:
   m_ObjectHideFlags: 0
@@ -794,7 +800,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 14
-  instanceID: 3679046
+  instanceID: 249456
 --- !u!114 &1021058733
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -825,6 +831,7 @@ MonoBehaviour:
       Rot: {x: 5.887, y: 1.605, z: 150.774}
       Scale: {x: 0.03879905, y: 0.03879905, z: 0.03879869}
   AnimationDatabaseNumber: 3
+  ClothingResistances: []
 --- !u!1 &1142876980
 GameObject:
   m_ObjectHideFlags: 0
@@ -867,7 +874,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 14
-  instanceID: 3679054
+  instanceID: 249464
 --- !u!114 &1142876983
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -898,6 +905,7 @@ MonoBehaviour:
       Rot: {x: 5.887, y: 1.605, z: 150.774}
       Scale: {x: 0.03879905, y: 0.03879905, z: 0.03879869}
   AnimationDatabaseNumber: 3
+  ClothingResistances: []
 --- !u!1 &1250105791
 GameObject:
   m_ObjectHideFlags: 0
@@ -1029,7 +1037,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 14
-  instanceID: 3679074
+  instanceID: 249484
 --- !u!114 &1375316945
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1060,6 +1068,7 @@ MonoBehaviour:
       Rot: {x: 5.887, y: 1.605, z: 150.774}
       Scale: {x: 0.03879905, y: 0.03879905, z: 0.03879869}
   AnimationDatabaseNumber: 3
+  ClothingResistances: []
 --- !u!1 &1416670961
 GameObject:
   m_ObjectHideFlags: 0
@@ -1102,7 +1111,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 14
-  instanceID: 3679082
+  instanceID: 249492
 --- !u!114 &1416670964
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1133,6 +1142,7 @@ MonoBehaviour:
       Rot: {x: 10.85, y: -4.558, z: 98.576}
       Scale: {x: 0.02232208, y: 0.02232208, z: 0.02232188}
   AnimationDatabaseNumber: 2
+  ClothingResistances: []
 --- !u!1 &1436179667
 GameObject:
   m_ObjectHideFlags: 0
@@ -1180,6 +1190,7 @@ MonoBehaviour:
       Rot: {x: -3.348, y: 177.837, z: 262.266}
       Scale: {x: 0.02371116, y: 0.02371116, z: 0.02371095}
   AnimationDatabaseNumber: 0
+  ClothingResistances: []
 --- !u!114 &1436179669
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1192,7 +1203,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 14
-  instanceID: 3679090
+  instanceID: 249500
 --- !u!4 &1436179670
 Transform:
   m_ObjectHideFlags: 0
@@ -1277,7 +1288,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 14
-  instanceID: 3679102
+  instanceID: 249512
 --- !u!114 &1575675516
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1308,6 +1319,7 @@ MonoBehaviour:
       Rot: {x: 10.85, y: -4.558, z: 98.576}
       Scale: {x: 0.02232208, y: 0.02232208, z: 0.02232188}
   AnimationDatabaseNumber: 2
+  ClothingResistances: []
 --- !u!1 &1733625691
 GameObject:
   m_ObjectHideFlags: 0
@@ -1355,6 +1367,7 @@ MonoBehaviour:
       Rot: {x: 0.437, y: -17.839, z: 108.098}
       Scale: {x: 0.025, y: 0.025, z: 0.025}
   AnimationDatabaseNumber: 5
+  ClothingResistances: []
 --- !u!114 &1733625693
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1367,7 +1380,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 14
-  instanceID: 3679110
+  instanceID: 249520
 --- !u!4 &1733625694
 Transform:
   m_ObjectHideFlags: 0
@@ -1428,6 +1441,7 @@ MonoBehaviour:
       Rot: {x: -92.034, y: -0.00001525879, z: 0}
       Scale: {x: 0.0008209795, y: 0.001062445, z: 0.0009658707}
   AnimationDatabaseNumber: 0
+  ClothingResistances: []
 --- !u!114 &1790431435
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1440,7 +1454,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 14
-  instanceID: 3679118
+  instanceID: 249528
 --- !u!4 &1790431436
 Transform:
   m_ObjectHideFlags: 0
@@ -1496,7 +1510,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 14
-  instanceID: 3679126
+  instanceID: 249536
 --- !u!114 &1796259107
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1527,6 +1541,7 @@ MonoBehaviour:
       Rot: {x: -169.437, y: 3.416992, z: 86.80299}
       Scale: {x: 0.02510478, y: 0.02510479, z: 0.02510455}
   AnimationDatabaseNumber: 1
+  ClothingResistances: []
 --- !u!1 &1855910331
 GameObject:
   m_ObjectHideFlags: 0
@@ -1569,7 +1584,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 14
-  instanceID: 3679134
+  instanceID: 249544
 --- !u!114 &1855910334
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1600,6 +1615,7 @@ MonoBehaviour:
       Rot: {x: 10.85, y: -4.558, z: 98.576}
       Scale: {x: 0.02232208, y: 0.02232208, z: 0.02232188}
   AnimationDatabaseNumber: 2
+  ClothingResistances: []
 --- !u!1 &1892575104
 GameObject:
   m_ObjectHideFlags: 0
@@ -1637,6 +1653,7 @@ MonoBehaviour:
   - {fileID: 1361768503832534, guid: 5302c0cc2e019414ebd294d2a8466673, type: 2}
   CharOffsetPoint: []
   AnimationDatabaseNumber: 0
+  ClothingResistances: []
 --- !u!114 &1892575106
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1649,7 +1666,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 14
-  instanceID: 3679142
+  instanceID: 249552
 --- !u!4 &1892575107
 Transform:
   m_ObjectHideFlags: 0
@@ -1705,7 +1722,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 14
-  instanceID: 3679150
+  instanceID: 249560
 --- !u!114 &1892696687
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1736,6 +1753,7 @@ MonoBehaviour:
       Rot: {x: -3.348, y: 177.837, z: 262.266}
       Scale: {x: 0.02371116, y: 0.02371116, z: 0.02371095}
   AnimationDatabaseNumber: 0
+  ClothingResistances: []
 --- !u!1 &1899486299
 GameObject:
   m_ObjectHideFlags: 0
@@ -1773,6 +1791,7 @@ MonoBehaviour:
   - {fileID: 1482269725209524, guid: 2977e2cb69a9f254b8fc103889ddf2e1, type: 2}
   CharOffsetPoint: []
   AnimationDatabaseNumber: 0
+  ClothingResistances: []
 --- !u!114 &1899486301
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1785,7 +1804,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 14
-  instanceID: 3679158
+  instanceID: 249568
 --- !u!4 &1899486302
 Transform:
   m_ObjectHideFlags: 0
@@ -1846,6 +1865,7 @@ MonoBehaviour:
       Rot: {x: 5.887, y: 1.605, z: 150.774}
       Scale: {x: 0.03879905, y: 0.03879905, z: 0.03879869}
   AnimationDatabaseNumber: 3
+  ClothingResistances: []
 --- !u!114 &1930776264
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1858,7 +1878,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 14
-  instanceID: 3679166
+  instanceID: 249576
 --- !u!4 &1930776265
 Transform:
   m_ObjectHideFlags: 0
@@ -1909,6 +1929,7 @@ MonoBehaviour:
   - {fileID: 1839794133647238, guid: 8697556a7ead0454993031d71ef84fbc, type: 2}
   CharOffsetPoint: []
   AnimationDatabaseNumber: 0
+  ClothingResistances: []
 --- !u!114 &1944687446
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1921,7 +1942,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 14
-  instanceID: 3679174
+  instanceID: 249584
 --- !u!4 &1944687447
 Transform:
   m_ObjectHideFlags: 0
@@ -2007,7 +2028,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 14
-  instanceID: 3679186
+  instanceID: 249596
 --- !u!114 &2118497659
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2038,3 +2059,4 @@ MonoBehaviour:
       Rot: {x: -3.348, y: 177.837, z: 262.266}
       Scale: {x: 0.02371116, y: 0.02371116, z: 0.02371095}
   AnimationDatabaseNumber: 0
+  ClothingResistances: []

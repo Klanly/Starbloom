@@ -25,6 +25,7 @@ public class DG_ClothingObject : MonoBehaviour {
     public GameObject[] Prefabs;
     public CharacterOffsetPoints[] CharOffsetPoint;
     public int AnimationDatabaseNumber;
+    public DG_CombatHandler.Resistances[] ClothingResistances;
 
 
 

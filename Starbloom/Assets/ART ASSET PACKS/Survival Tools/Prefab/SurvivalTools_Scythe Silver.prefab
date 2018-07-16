@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4506198436486866}
   - component: {fileID: 33078345243778094}
   - component: {fileID: 23189104459167542}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: SurvivalTools_Scythe Silver
   m_TagString: Untagged
   m_Icon: {fileID: 0}

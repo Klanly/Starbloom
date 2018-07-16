@@ -10,7 +10,7 @@ GameObject:
   - component: {fileID: 488088}
   - component: {fileID: 3390186}
   - component: {fileID: 2333390}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: bar02_gold
   m_TagString: Untagged
   m_Icon: {fileID: 0}

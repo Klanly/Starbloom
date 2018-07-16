@@ -114,6 +114,80 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!21 &2214201
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Female_Skin (Instance) (Instance)
+  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: _EMISSION _PARALLAXMAP
+  m_LightmapFlags: 1
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BumpMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailAlbedoMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailMask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailNormalMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissionMap:
+        m_Texture: {fileID: 2800000, guid: 4c8fb101df7b7a140a63c879e21398aa, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 4c8fb101df7b7a140a63c879e21398aa, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MetallicGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OcclusionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ParallaxMap:
+        m_Texture: {fileID: 2800000, guid: 3f64bc15e2fae5d44b1543637d8b074a, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _BumpScale: 1
+    - _Cutoff: 0.5
+    - _DetailNormalMapScale: 1
+    - _DstBlend: 0
+    - _GlossMapScale: 1
+    - _Glossiness: 0
+    - _GlossyReflections: 1
+    - _Metallic: 0
+    - _Mode: 0
+    - _OcclusionStrength: 1
+    - _Parallax: 0.005
+    - _SmoothnessTextureChannel: 0
+    - _SpecularHighlights: 1
+    - _SrcBlend: 1
+    - _UVSec: 0
+    - _ZWrite: 1
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _EmissionColor: {r: 0.40566036, g: 0.40566036, b: 0.40566036, a: 1}
 --- !u!1 &106225851
 GameObject:
   m_ObjectHideFlags: 0
@@ -208,53 +282,154 @@ Transform:
   m_Father: {fileID: 1118935757}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &411460663
-Prefab:
+--- !u!21 &191552674
+Material:
+  serializedVersion: 6
   m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 106225853}
-    m_Modifications:
-    - target: {fileID: 4396600582777970, guid: 694749cbffc49514c8bca212f4773ede, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0.92
-      objectReference: {fileID: 0}
-    - target: {fileID: 4396600582777970, guid: 694749cbffc49514c8bca212f4773ede, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 2.295
-      objectReference: {fileID: 0}
-    - target: {fileID: 4396600582777970, guid: 694749cbffc49514c8bca212f4773ede, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4396600582777970, guid: 694749cbffc49514c8bca212f4773ede, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4396600582777970, guid: 694749cbffc49514c8bca212f4773ede, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4396600582777970, guid: 694749cbffc49514c8bca212f4773ede, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4396600582777970, guid: 694749cbffc49514c8bca212f4773ede, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4396600582777970, guid: 694749cbffc49514c8bca212f4773ede, type: 2}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114545301537339994, guid: 694749cbffc49514c8bca212f4773ede,
-        type: 2}
-      propertyPath: _groundMask.m_Bits
-      value: 67149825
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 694749cbffc49514c8bca212f4773ede, type: 2}
-  m_IsPrefabParent: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Female_Skin (Instance) (Instance)
+  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: _EMISSION _PARALLAXMAP
+  m_LightmapFlags: 1
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BumpMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailAlbedoMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailMask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailNormalMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissionMap:
+        m_Texture: {fileID: 2800000, guid: 4c8fb101df7b7a140a63c879e21398aa, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 4c8fb101df7b7a140a63c879e21398aa, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MetallicGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OcclusionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ParallaxMap:
+        m_Texture: {fileID: 2800000, guid: 3f64bc15e2fae5d44b1543637d8b074a, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _BumpScale: 1
+    - _Cutoff: 0.5
+    - _DetailNormalMapScale: 1
+    - _DstBlend: 0
+    - _GlossMapScale: 1
+    - _Glossiness: 0
+    - _GlossyReflections: 1
+    - _Metallic: 0
+    - _Mode: 0
+    - _OcclusionStrength: 1
+    - _Parallax: 0.005
+    - _SmoothnessTextureChannel: 0
+    - _SpecularHighlights: 1
+    - _SrcBlend: 1
+    - _UVSec: 0
+    - _ZWrite: 1
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _EmissionColor: {r: 0.40566036, g: 0.40566036, b: 0.40566036, a: 1}
+--- !u!21 &433886740
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Female_Fur (Instance) (Instance)
+  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BumpMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailAlbedoMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailMask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailNormalMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: b02619d6e104e674e83051d954c9466b, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MetallicGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OcclusionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ParallaxMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _BumpScale: 1
+    - _Cutoff: 0.5
+    - _DetailNormalMapScale: 1
+    - _DstBlend: 0
+    - _GlossMapScale: 1
+    - _Glossiness: 0
+    - _GlossyReflections: 1
+    - _Metallic: 0
+    - _Mode: 0
+    - _OcclusionStrength: 1
+    - _Parallax: 0.02
+    - _SmoothnessTextureChannel: 0
+    - _SpecularHighlights: 1
+    - _SrcBlend: 1
+    - _UVSec: 0
+    - _ZWrite: 1
+    m_Colors:
+    - _Color: {r: 0.11320752, g: 0.11053753, b: 0.11053753, a: 1}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &438454040
 GameObject:
   m_ObjectHideFlags: 0
@@ -318,6 +493,80 @@ MonoBehaviour:
     SlerpMoveRate: 0.18
     SlerpTurnRate: 0.3
     MaxDistance: 5
+--- !u!21 &451892673
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: MaleSkin (Instance) (Instance)
+  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: _EMISSION _PARALLAXMAP
+  m_LightmapFlags: 1
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BumpMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailAlbedoMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailMask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailNormalMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissionMap:
+        m_Texture: {fileID: 2800000, guid: 2e5dbad26984041449802e27eeaf0975, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 2e5dbad26984041449802e27eeaf0975, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MetallicGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OcclusionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ParallaxMap:
+        m_Texture: {fileID: 2800000, guid: 28df4189c2a24ce469abd143c1e117fa, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _BumpScale: 1
+    - _Cutoff: 0.5
+    - _DetailNormalMapScale: 1
+    - _DstBlend: 0
+    - _GlossMapScale: 1
+    - _Glossiness: 0
+    - _GlossyReflections: 1
+    - _Metallic: 0
+    - _Mode: 0
+    - _OcclusionStrength: 1
+    - _Parallax: 0.005
+    - _SmoothnessTextureChannel: 0
+    - _SpecularHighlights: 1
+    - _SrcBlend: 1
+    - _UVSec: 0
+    - _ZWrite: 1
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _EmissionColor: {r: 0.32987696, g: 0.32987696, b: 0.32987696, a: 1}
 --- !u!1 &487331646
 GameObject:
   m_ObjectHideFlags: 0
@@ -417,6 +666,80 @@ MonoBehaviour:
   isStorageContainer: 0
   isTreasureList: 0
   StorageSlots: []
+--- !u!21 &667894731
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: MaleSkin (Instance) (Instance)
+  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: _EMISSION _PARALLAXMAP
+  m_LightmapFlags: 1
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BumpMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailAlbedoMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailMask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailNormalMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissionMap:
+        m_Texture: {fileID: 2800000, guid: 2e5dbad26984041449802e27eeaf0975, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 2e5dbad26984041449802e27eeaf0975, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MetallicGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OcclusionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ParallaxMap:
+        m_Texture: {fileID: 2800000, guid: 28df4189c2a24ce469abd143c1e117fa, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _BumpScale: 1
+    - _Cutoff: 0.5
+    - _DetailNormalMapScale: 1
+    - _DstBlend: 0
+    - _GlossMapScale: 1
+    - _Glossiness: 0
+    - _GlossyReflections: 1
+    - _Metallic: 0
+    - _Mode: 0
+    - _OcclusionStrength: 1
+    - _Parallax: 0.005
+    - _SmoothnessTextureChannel: 0
+    - _SpecularHighlights: 1
+    - _SrcBlend: 1
+    - _UVSec: 0
+    - _ZWrite: 1
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _EmissionColor: {r: 0.32987696, g: 0.32987696, b: 0.32987696, a: 1}
 --- !u!1 &675496406
 GameObject:
   m_ObjectHideFlags: 0
@@ -474,6 +797,80 @@ MonoBehaviour:
   isStorageContainer: 0
   isTreasureList: 0
   StorageSlots: []
+--- !u!21 &720193573
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Female_Skin (Instance) (Instance)
+  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: _EMISSION _PARALLAXMAP
+  m_LightmapFlags: 1
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BumpMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailAlbedoMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailMask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailNormalMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissionMap:
+        m_Texture: {fileID: 2800000, guid: 4c8fb101df7b7a140a63c879e21398aa, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 4c8fb101df7b7a140a63c879e21398aa, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MetallicGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OcclusionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ParallaxMap:
+        m_Texture: {fileID: 2800000, guid: 3f64bc15e2fae5d44b1543637d8b074a, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _BumpScale: 1
+    - _Cutoff: 0.5
+    - _DetailNormalMapScale: 1
+    - _DstBlend: 0
+    - _GlossMapScale: 1
+    - _Glossiness: 0
+    - _GlossyReflections: 1
+    - _Metallic: 0
+    - _Mode: 0
+    - _OcclusionStrength: 1
+    - _Parallax: 0.005
+    - _SmoothnessTextureChannel: 0
+    - _SpecularHighlights: 1
+    - _SrcBlend: 1
+    - _UVSec: 0
+    - _ZWrite: 1
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _EmissionColor: {r: 0.40566036, g: 0.40566036, b: 0.40566036, a: 1}
 --- !u!1 &736236432
 GameObject:
   m_ObjectHideFlags: 0
@@ -751,12 +1148,12 @@ MonoBehaviour:
 GameObject:
   m_PrefabParentObject: {fileID: 1513781507148194, guid: a9b8090e0c01a3742ae5320779bd94c3,
     type: 2}
-  m_PrefabInternal: {fileID: 1197456946}
+  m_PrefabInternal: {fileID: 1879173726}
 --- !u!4 &768275628 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4813318121030292, guid: a9b8090e0c01a3742ae5320779bd94c3,
     type: 2}
-  m_PrefabInternal: {fileID: 1197456946}
+  m_PrefabInternal: {fileID: 1879173726}
 --- !u!1 &776955342
 GameObject:
   m_ObjectHideFlags: 0
@@ -799,6 +1196,81 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SceneID: 1
   SceneOwnerID: 0
+--- !u!21 &841660835
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: MaleFur (Instance) (Instance)
+  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: _ALPHABLEND_ON
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: 3000
+  stringTagMap:
+    RenderType: Transparent
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BumpMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailAlbedoMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailMask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailNormalMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 2e5dbad26984041449802e27eeaf0975, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MetallicGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OcclusionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ParallaxMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _BumpScale: 1
+    - _Cutoff: 0
+    - _DetailNormalMapScale: 1
+    - _DstBlend: 10
+    - _GlossMapScale: 1
+    - _Glossiness: 0
+    - _GlossyReflections: 1
+    - _Metallic: 0
+    - _Mode: 2
+    - _OcclusionStrength: 1
+    - _Parallax: 0.005
+    - _SmoothnessTextureChannel: 0
+    - _SpecularHighlights: 1
+    - _SrcBlend: 5
+    - _UVSec: 0
+    - _ZWrite: 0
+    m_Colors:
+    - _Color: {r: 0.16037738, g: 0.16037738, b: 0.16037738, a: 1}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &967766993
 GameObject:
   m_ObjectHideFlags: 0
@@ -847,6 +1319,80 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SceneID: 2
   SceneOwnerID: 0
+--- !u!21 &1020057310
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: MaleSkin Privates Region (Instance) (Instance)
+  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: _PARALLAXMAP
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BumpMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailAlbedoMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailMask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailNormalMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissionMap:
+        m_Texture: {fileID: 2800000, guid: 2e5dbad26984041449802e27eeaf0975, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 2e5dbad26984041449802e27eeaf0975, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MetallicGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OcclusionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ParallaxMap:
+        m_Texture: {fileID: 2800000, guid: 28df4189c2a24ce469abd143c1e117fa, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _BumpScale: 1
+    - _Cutoff: 0.5
+    - _DetailNormalMapScale: 1
+    - _DstBlend: 0
+    - _GlossMapScale: 1
+    - _Glossiness: 0
+    - _GlossyReflections: 1
+    - _Metallic: 0
+    - _Mode: 0
+    - _OcclusionStrength: 1
+    - _Parallax: 0.005
+    - _SmoothnessTextureChannel: 0
+    - _SpecularHighlights: 1
+    - _SrcBlend: 1
+    - _UVSec: 0
+    - _ZWrite: 1
+    m_Colors:
+    - _Color: {r: 0, g: 0, b: 0, a: 1}
+    - _EmissionColor: {r: 0.32987696, g: 0.32987696, b: 0.32987696, a: 1}
 --- !u!1 &1065796223
 GameObject:
   m_ObjectHideFlags: 0
@@ -1120,6 +1666,80 @@ MonoBehaviour:
     NormalValue: 0
     HighValue: 0
     MaximumValue: 0
+--- !u!21 &1112713998
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Female_Skin (Instance) (Instance)
+  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: _EMISSION _PARALLAXMAP
+  m_LightmapFlags: 1
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BumpMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailAlbedoMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailMask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailNormalMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissionMap:
+        m_Texture: {fileID: 2800000, guid: 4c8fb101df7b7a140a63c879e21398aa, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 4c8fb101df7b7a140a63c879e21398aa, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MetallicGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OcclusionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ParallaxMap:
+        m_Texture: {fileID: 2800000, guid: 3f64bc15e2fae5d44b1543637d8b074a, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _BumpScale: 1
+    - _Cutoff: 0.5
+    - _DetailNormalMapScale: 1
+    - _DstBlend: 0
+    - _GlossMapScale: 1
+    - _Glossiness: 0
+    - _GlossyReflections: 1
+    - _Metallic: 0
+    - _Mode: 0
+    - _OcclusionStrength: 1
+    - _Parallax: 0.005
+    - _SmoothnessTextureChannel: 0
+    - _SpecularHighlights: 1
+    - _SrcBlend: 1
+    - _UVSec: 0
+    - _ZWrite: 1
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _EmissionColor: {r: 0.40566036, g: 0.40566036, b: 0.40566036, a: 1}
 --- !u!1 &1118935756
 GameObject:
   m_ObjectHideFlags: 0
@@ -1171,10 +1791,11 @@ MonoBehaviour:
   PlayerCharacters:
   - Name: 
     CharacterGender: 0
-    CurrentEnergy: 0
-    MaxEnergy: 0
-    CurrentHealth: 0
-    MaxHealth: 0
+    Energies:
+      CurrentEnergy: 1000
+      MaxEnergy: 1000
+      CurrentHealth: 1000
+      MaxHealth: 1000
     NonCombatSkillEXP:
       Farming: 0
       Mining: 0
@@ -1405,244 +2026,11 @@ MonoBehaviour:
       LargestFishCaught: 000000000000000000000000
   - Name: 
     CharacterGender: 0
-    CurrentEnergy: 0
-    MaxEnergy: 0
-    CurrentHealth: 0
-    MaxHealth: 0
-    NonCombatSkillEXP:
-      Farming: 0
-      Mining: 0
-      Foraging: 0
-      Fishing: 0
-    Equipment:
-      EquippedClothing: 
-      RuckSackUnlockedSize: 12
-      RucksackSlots:
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 1
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 1
-        CurrentStackActive: 0
-        LowValue: 1
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 2
-        CurrentStackActive: 0
-        LowValue: 1
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 18
-        CurrentStackActive: 0
-        LowValue: 1
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 38
-        CurrentStackActive: 0
-        LowValue: 1
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-    CraftsDiscovered: 010000000100000001000000
-    Acheivements:
-      LargestFishCaught: 000000000000000000000000
-  - Name: 
-    CharacterGender: 0
-    CurrentEnergy: 0
-    MaxEnergy: 0
-    CurrentHealth: 0
-    MaxHealth: 0
+    Energies:
+      CurrentEnergy: 1000
+      MaxEnergy: 1000
+      CurrentHealth: 1000
+      MaxHealth: 1000
     NonCombatSkillEXP:
       Farming: 0
       Mining: 0
@@ -1873,10 +2261,246 @@ MonoBehaviour:
       LargestFishCaught: 000000000000000000000000
   - Name: 
     CharacterGender: 0
-    CurrentEnergy: 0
-    MaxEnergy: 0
-    CurrentHealth: 0
-    MaxHealth: 0
+    Energies:
+      CurrentEnergy: 1000
+      MaxEnergy: 1000
+      CurrentHealth: 1000
+      MaxHealth: 1000
+    NonCombatSkillEXP:
+      Farming: 0
+      Mining: 0
+      Foraging: 0
+      Fishing: 0
+    Equipment:
+      EquippedClothing: 
+      RuckSackUnlockedSize: 12
+      RucksackSlots:
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 1
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 1
+        CurrentStackActive: 0
+        LowValue: 1
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 2
+        CurrentStackActive: 0
+        LowValue: 1
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 18
+        CurrentStackActive: 0
+        LowValue: 1
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 38
+        CurrentStackActive: 0
+        LowValue: 1
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+    CraftsDiscovered: 010000000100000001000000
+    Acheivements:
+      LargestFishCaught: 000000000000000000000000
+  - Name: 
+    CharacterGender: 0
+    Energies:
+      CurrentEnergy: 1000
+      MaxEnergy: 1000
+      CurrentHealth: 1000
+      MaxHealth: 1000
     NonCombatSkillEXP:
       Farming: 0
       Mining: 0
@@ -2109,48 +2733,80 @@ MonoBehaviour:
     TodayWeather: 4
     TomorrowWeather: 4
     TwoDayAwayWeather: 2
---- !u!1001 &1197456946
-Prefab:
+--- !u!21 &1267073418
+Material:
+  serializedVersion: 6
   m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 106225853}
-    m_Modifications:
-    - target: {fileID: 4813318121030292, guid: a9b8090e0c01a3742ae5320779bd94c3, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -0.74
-      objectReference: {fileID: 0}
-    - target: {fileID: 4813318121030292, guid: a9b8090e0c01a3742ae5320779bd94c3, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 2.422
-      objectReference: {fileID: 0}
-    - target: {fileID: 4813318121030292, guid: a9b8090e0c01a3742ae5320779bd94c3, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4813318121030292, guid: a9b8090e0c01a3742ae5320779bd94c3, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4813318121030292, guid: a9b8090e0c01a3742ae5320779bd94c3, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4813318121030292, guid: a9b8090e0c01a3742ae5320779bd94c3, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4813318121030292, guid: a9b8090e0c01a3742ae5320779bd94c3, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4813318121030292, guid: a9b8090e0c01a3742ae5320779bd94c3, type: 2}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: a9b8090e0c01a3742ae5320779bd94c3, type: 2}
-  m_IsPrefabParent: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: MaleSkin (Instance) (Instance)
+  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: _EMISSION _PARALLAXMAP
+  m_LightmapFlags: 1
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BumpMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailAlbedoMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailMask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailNormalMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissionMap:
+        m_Texture: {fileID: 2800000, guid: 2e5dbad26984041449802e27eeaf0975, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 2e5dbad26984041449802e27eeaf0975, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MetallicGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OcclusionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ParallaxMap:
+        m_Texture: {fileID: 2800000, guid: 28df4189c2a24ce469abd143c1e117fa, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _BumpScale: 1
+    - _Cutoff: 0.5
+    - _DetailNormalMapScale: 1
+    - _DstBlend: 0
+    - _GlossMapScale: 1
+    - _Glossiness: 0
+    - _GlossyReflections: 1
+    - _Metallic: 0
+    - _Mode: 0
+    - _OcclusionStrength: 1
+    - _Parallax: 0.005
+    - _SmoothnessTextureChannel: 0
+    - _SpecularHighlights: 1
+    - _SrcBlend: 1
+    - _UVSec: 0
+    - _ZWrite: 1
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _EmissionColor: {r: 0.32987696, g: 0.32987696, b: 0.32987696, a: 1}
 --- !u!1 &1352009372
 GameObject:
   m_ObjectHideFlags: 0
@@ -2591,16 +3247,167 @@ MonoBehaviour:
   isStorageContainer: 0
   isTreasureList: 0
   StorageSlots: []
+--- !u!21 &1637777961
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: MaleSkin (Instance) (Instance)
+  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: _EMISSION _PARALLAXMAP
+  m_LightmapFlags: 1
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BumpMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailAlbedoMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailMask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailNormalMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissionMap:
+        m_Texture: {fileID: 2800000, guid: 2e5dbad26984041449802e27eeaf0975, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 2e5dbad26984041449802e27eeaf0975, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MetallicGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OcclusionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ParallaxMap:
+        m_Texture: {fileID: 2800000, guid: 28df4189c2a24ce469abd143c1e117fa, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _BumpScale: 1
+    - _Cutoff: 0.5
+    - _DetailNormalMapScale: 1
+    - _DstBlend: 0
+    - _GlossMapScale: 1
+    - _Glossiness: 0
+    - _GlossyReflections: 1
+    - _Metallic: 0
+    - _Mode: 0
+    - _OcclusionStrength: 1
+    - _Parallax: 0.005
+    - _SmoothnessTextureChannel: 0
+    - _SpecularHighlights: 1
+    - _SrcBlend: 1
+    - _UVSec: 0
+    - _ZWrite: 1
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _EmissionColor: {r: 0.32987696, g: 0.32987696, b: 0.32987696, a: 1}
+--- !u!1001 &1768585246
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 106225853}
+    m_Modifications:
+    - target: {fileID: 4396600582777970, guid: 694749cbffc49514c8bca212f4773ede, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0.92
+      objectReference: {fileID: 0}
+    - target: {fileID: 4396600582777970, guid: 694749cbffc49514c8bca212f4773ede, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 2.295
+      objectReference: {fileID: 0}
+    - target: {fileID: 4396600582777970, guid: 694749cbffc49514c8bca212f4773ede, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4396600582777970, guid: 694749cbffc49514c8bca212f4773ede, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4396600582777970, guid: 694749cbffc49514c8bca212f4773ede, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4396600582777970, guid: 694749cbffc49514c8bca212f4773ede, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4396600582777970, guid: 694749cbffc49514c8bca212f4773ede, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4396600582777970, guid: 694749cbffc49514c8bca212f4773ede, type: 2}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 137788356173241176, guid: 694749cbffc49514c8bca212f4773ede,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 667894731}
+    - target: {fileID: 137788356173241176, guid: 694749cbffc49514c8bca212f4773ede,
+        type: 2}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2104426654}
+    - target: {fileID: 137788356173241176, guid: 694749cbffc49514c8bca212f4773ede,
+        type: 2}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 451892673}
+    - target: {fileID: 137788356173241176, guid: 694749cbffc49514c8bca212f4773ede,
+        type: 2}
+      propertyPath: m_Materials.Array.data[3]
+      value: 
+      objectReference: {fileID: 1637777961}
+    - target: {fileID: 137788356173241176, guid: 694749cbffc49514c8bca212f4773ede,
+        type: 2}
+      propertyPath: m_Materials.Array.data[4]
+      value: 
+      objectReference: {fileID: 1020057310}
+    - target: {fileID: 137788356173241176, guid: 694749cbffc49514c8bca212f4773ede,
+        type: 2}
+      propertyPath: m_Materials.Array.data[5]
+      value: 
+      objectReference: {fileID: 841660835}
+    - target: {fileID: 137788356173241176, guid: 694749cbffc49514c8bca212f4773ede,
+        type: 2}
+      propertyPath: m_Materials.Array.data[6]
+      value: 
+      objectReference: {fileID: 1267073418}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 694749cbffc49514c8bca212f4773ede, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1776617526 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1604403149716064, guid: 694749cbffc49514c8bca212f4773ede,
     type: 2}
-  m_PrefabInternal: {fileID: 411460663}
+  m_PrefabInternal: {fileID: 1768585246}
 --- !u!4 &1776617527 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4396600582777970, guid: 694749cbffc49514c8bca212f4773ede,
     type: 2}
-  m_PrefabInternal: {fileID: 411460663}
+  m_PrefabInternal: {fileID: 1768585246}
 --- !u!1001 &1836453460
 Prefab:
   m_ObjectHideFlags: 0
@@ -2658,6 +3465,83 @@ Transform:
   m_PrefabParentObject: {fileID: 4559278183740994, guid: fb9fb017398351b44b9429ac9b574522,
     type: 2}
   m_PrefabInternal: {fileID: 1836453460}
+--- !u!1001 &1879173726
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 106225853}
+    m_Modifications:
+    - target: {fileID: 4813318121030292, guid: a9b8090e0c01a3742ae5320779bd94c3, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -0.74
+      objectReference: {fileID: 0}
+    - target: {fileID: 4813318121030292, guid: a9b8090e0c01a3742ae5320779bd94c3, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 2.422
+      objectReference: {fileID: 0}
+    - target: {fileID: 4813318121030292, guid: a9b8090e0c01a3742ae5320779bd94c3, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4813318121030292, guid: a9b8090e0c01a3742ae5320779bd94c3, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4813318121030292, guid: a9b8090e0c01a3742ae5320779bd94c3, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4813318121030292, guid: a9b8090e0c01a3742ae5320779bd94c3, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4813318121030292, guid: a9b8090e0c01a3742ae5320779bd94c3, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4813318121030292, guid: a9b8090e0c01a3742ae5320779bd94c3, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 137164940394836234, guid: a9b8090e0c01a3742ae5320779bd94c3,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 191552674}
+    - target: {fileID: 137164940394836234, guid: a9b8090e0c01a3742ae5320779bd94c3,
+        type: 2}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2214201}
+    - target: {fileID: 137164940394836234, guid: a9b8090e0c01a3742ae5320779bd94c3,
+        type: 2}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2108726445}
+    - target: {fileID: 137164940394836234, guid: a9b8090e0c01a3742ae5320779bd94c3,
+        type: 2}
+      propertyPath: m_Materials.Array.data[3]
+      value: 
+      objectReference: {fileID: 720193573}
+    - target: {fileID: 137164940394836234, guid: a9b8090e0c01a3742ae5320779bd94c3,
+        type: 2}
+      propertyPath: m_Materials.Array.data[4]
+      value: 
+      objectReference: {fileID: 2146342362}
+    - target: {fileID: 137164940394836234, guid: a9b8090e0c01a3742ae5320779bd94c3,
+        type: 2}
+      propertyPath: m_Materials.Array.data[5]
+      value: 
+      objectReference: {fileID: 433886740}
+    - target: {fileID: 137164940394836234, guid: a9b8090e0c01a3742ae5320779bd94c3,
+        type: 2}
+      propertyPath: m_Materials.Array.data[6]
+      value: 
+      objectReference: {fileID: 1112713998}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: a9b8090e0c01a3742ae5320779bd94c3, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1904530055
 GameObject:
   m_ObjectHideFlags: 0
@@ -2723,24 +3607,32 @@ MonoBehaviour:
     LocalizationID: 132
     AppendFarmName: 1
     AppendPlayerName: 0
+    AllowEnvironmentParticles: 1
+    AllowSnowShader: 1
   - SceneName: DebugHouse
     SceneLink: {fileID: 776955344}
     ShowLocalization: 0
     LocalizationID: 133
     AppendFarmName: 0
     AppendPlayerName: 1
+    AllowEnvironmentParticles: 0
+    AllowSnowShader: 0
   - SceneName: Farm
     SceneLink: {fileID: 967766995}
     ShowLocalization: 0
     LocalizationID: 132
     AppendFarmName: 1
     AppendPlayerName: 0
+    AllowEnvironmentParticles: 1
+    AllowSnowShader: 1
   - SceneName: House
     SceneLink: {fileID: 487331648}
     ShowLocalization: 0
     LocalizationID: 133
     AppendFarmName: 0
     AppendPlayerName: 1
+    AllowEnvironmentParticles: 0
+    AllowSnowShader: 0
 --- !u!114 &1904530059
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2923,6 +3815,154 @@ MonoBehaviour:
   isStorageContainer: 0
   isTreasureList: 0
   StorageSlots: []
+--- !u!21 &2104426654
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: MaleSkin (Instance) (Instance)
+  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: _EMISSION _PARALLAXMAP
+  m_LightmapFlags: 1
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BumpMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailAlbedoMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailMask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailNormalMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissionMap:
+        m_Texture: {fileID: 2800000, guid: 2e5dbad26984041449802e27eeaf0975, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 2e5dbad26984041449802e27eeaf0975, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MetallicGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OcclusionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ParallaxMap:
+        m_Texture: {fileID: 2800000, guid: 28df4189c2a24ce469abd143c1e117fa, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _BumpScale: 1
+    - _Cutoff: 0.5
+    - _DetailNormalMapScale: 1
+    - _DstBlend: 0
+    - _GlossMapScale: 1
+    - _Glossiness: 0
+    - _GlossyReflections: 1
+    - _Metallic: 0
+    - _Mode: 0
+    - _OcclusionStrength: 1
+    - _Parallax: 0.005
+    - _SmoothnessTextureChannel: 0
+    - _SpecularHighlights: 1
+    - _SrcBlend: 1
+    - _UVSec: 0
+    - _ZWrite: 1
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _EmissionColor: {r: 0.32987696, g: 0.32987696, b: 0.32987696, a: 1}
+--- !u!21 &2108726445
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Female_Skin (Instance) (Instance)
+  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: _EMISSION _PARALLAXMAP
+  m_LightmapFlags: 1
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BumpMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailAlbedoMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailMask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailNormalMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissionMap:
+        m_Texture: {fileID: 2800000, guid: 4c8fb101df7b7a140a63c879e21398aa, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 4c8fb101df7b7a140a63c879e21398aa, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MetallicGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OcclusionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ParallaxMap:
+        m_Texture: {fileID: 2800000, guid: 3f64bc15e2fae5d44b1543637d8b074a, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _BumpScale: 1
+    - _Cutoff: 0.5
+    - _DetailNormalMapScale: 1
+    - _DstBlend: 0
+    - _GlossMapScale: 1
+    - _Glossiness: 0
+    - _GlossyReflections: 1
+    - _Metallic: 0
+    - _Mode: 0
+    - _OcclusionStrength: 1
+    - _Parallax: 0.005
+    - _SmoothnessTextureChannel: 0
+    - _SpecularHighlights: 1
+    - _SrcBlend: 1
+    - _UVSec: 0
+    - _ZWrite: 1
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _EmissionColor: {r: 0.40566036, g: 0.40566036, b: 0.40566036, a: 1}
 --- !u!1 &2110302581
 GameObject:
   m_ObjectHideFlags: 0
@@ -2979,7 +4019,7 @@ GameObject:
   - component: {fileID: 2111082842}
   - component: {fileID: 2111082843}
   m_Layer: 0
-  m_Name: Testing AI
+  m_Name: Goblin_rouge_b
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3014,9 +4054,9 @@ MonoBehaviour:
   PositionZ: -1600
   YFacing: 18000
   ObjectType: 1
-  ItemRefID: 2
+  ItemRefID: 1
   HasHealth: 1
-  HealthValue: 10
+  HealthValue: 100
   ItemQualityLevel: 0
   isWaterable: 0
   SurrogateObjectIndex: 0
@@ -3026,3 +4066,77 @@ MonoBehaviour:
   isStorageContainer: 0
   isTreasureList: 0
   StorageSlots: []
+--- !u!21 &2146342362
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Female_Skin Privates Regions (Instance) (Instance)
+  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: _PARALLAXMAP
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BumpMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailAlbedoMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailMask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailNormalMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissionMap:
+        m_Texture: {fileID: 2800000, guid: 4c8fb101df7b7a140a63c879e21398aa, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 4c8fb101df7b7a140a63c879e21398aa, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MetallicGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OcclusionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ParallaxMap:
+        m_Texture: {fileID: 2800000, guid: 3f64bc15e2fae5d44b1543637d8b074a, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _BumpScale: 1
+    - _Cutoff: 0.5
+    - _DetailNormalMapScale: 1
+    - _DstBlend: 0
+    - _GlossMapScale: 1
+    - _Glossiness: 0
+    - _GlossyReflections: 1
+    - _Metallic: 0
+    - _Mode: 0
+    - _OcclusionStrength: 1
+    - _Parallax: 0.005
+    - _SmoothnessTextureChannel: 0
+    - _SpecularHighlights: 1
+    - _SrcBlend: 1
+    - _UVSec: 0
+    - _ZWrite: 1
+    m_Colors:
+    - _Color: {r: 0, g: 0, b: 0, a: 1}
+    - _EmissionColor: {r: 0.40566036, g: 0.40566036, b: 0.40566036, a: 1}

@@ -82,10 +82,10 @@ public class DG_ClothingHairManager : MonoBehaviour {
 
     public void RemoveClothingPiece(DG_CharacterLink CharacterRef, ClothHairType Type, DG_PlayerCharacters.PlayerCharacter PC)
     {
-        for(int i = 0; i < CharacterRef.AttachedClothes.Count; i++)
+        for (int i = 0; i < CharacterRef.AttachedClothes.Count; i++)
         {
             AttachedClothing C = CharacterRef.AttachedClothes[i];
-            if(C.Type == Type)
+            if (C.Type == Type)
             {
                 for (int iN = 0; iN < C.ClothingPieces.Count; iN++)
                     Destroy(C.ClothingPieces[iN]);
@@ -95,8 +95,6 @@ public class DG_ClothingHairManager : MonoBehaviour {
             }
         }
     }
-
-
 
 
 
@@ -139,6 +137,9 @@ public class DG_ClothingHairManager : MonoBehaviour {
                     }
                     break;
             }
+
+            
+        
         }
     }
     void Clothing(Transform Char, GameObject Clone, DG_CharacterLink CharacterRef, AttachedClothing AC)

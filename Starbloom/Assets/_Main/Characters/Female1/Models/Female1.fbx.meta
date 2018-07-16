@@ -291,7 +291,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: MBlab_cornea1529428022.2194562
-    second: {fileID: 2100000, guid: f06c0ce91fafb9b4b829bd984c415d94, type: 2}
+    second: {fileID: 2100000, guid: 9c6251d56f5894844adc93e526e772f5, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -326,7 +326,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: MBlab_fur1529428022.2194562
-    second: {fileID: 2100000, guid: d731b6b0687d2da4f99ddc7bd2938453, type: 2}
+    second: {fileID: 2100000, guid: ad7f46d0b76a74c44915aa5554424120, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -361,7 +361,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: MBlab_generic1529428022.2194562
-    second: {fileID: 2100000, guid: 365d6a5de7a7e134387b53bef6b73f6b, type: 2}
+    second: {fileID: 2100000, guid: 564d8c710d561984f9de5fd6b9af8e7a, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -396,7 +396,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: MBlab_human_eyes1529428022.2194562
-    second: {fileID: 2100000, guid: 7c56f46eede5f99459ead66be787ba57, type: 2}
+    second: {fileID: 2100000, guid: 35d5e9349520b5b469212b1405cc44e9, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -431,7 +431,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: MBlab_human_skin1529428022.2194562
-    second: {fileID: 2100000, guid: ecc6925b39f45324fbb5020b84631c39, type: 2}
+    second: {fileID: 2100000, guid: de4bb38672c00d04a9de92d90c38a332, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -466,7 +466,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: MBlab_human_teeth1529428022.2194562
-    second: {fileID: 2100000, guid: 07d30da8ec7a46a4f9a425f372ded7e6, type: 2}
+    second: {fileID: 2100000, guid: 95aff88c630bd4c469be40053b2a2b3e, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -501,7 +501,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: MBlab_pupil1529428022.2194562
-    second: {fileID: 2100000, guid: 0783939ccac2e57429abe80360996cb9, type: 2}
+    second: {fileID: 2100000, guid: 441d68efe9f34434c885a0ba719fa9ac, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -518,7 +518,7 @@ ModelImporter:
       name: Material__sci_outfit_1.002
     second: {fileID: 2100000, guid: 0212107df6aa25246997e61faca96595, type: 2}
   materials:
-    importMaterials: 1
+    importMaterials: 0
     materialName: 0
     materialSearch: 1
     materialLocation: 0

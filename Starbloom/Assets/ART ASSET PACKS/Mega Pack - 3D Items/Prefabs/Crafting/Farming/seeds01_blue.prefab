@@ -10,7 +10,7 @@ GameObject:
   - component: {fileID: 431400}
   - component: {fileID: 3324528}
   - component: {fileID: 2363278}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: seeds01_blue (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91,7 +91,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4114740390382764}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: seeds01_blue
   m_TagString: Untagged
   m_Icon: {fileID: 0}

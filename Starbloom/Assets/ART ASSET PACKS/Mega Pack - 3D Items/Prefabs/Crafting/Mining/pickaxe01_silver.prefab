@@ -10,7 +10,7 @@ GameObject:
   - component: {fileID: 439782}
   - component: {fileID: 3312780}
   - component: {fileID: 2317586}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: pickaxe01_silver
   m_TagString: Untagged
   m_Icon: {fileID: 0}

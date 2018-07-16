@@ -78,6 +78,7 @@ public class DG_SceneTransition : MonoBehaviour {
 
         //Load Network Objects;
         SetSelfInScene(NetworkSceneIndexLoading);
+        QuickFind.WeatherHandler.CheckEnvironmentFX();
 
         //Set Player, and Cam.
         DG_SceneEntryObject Portal = QuickFind.SceneEntryPoints.GetItemFromID(LoadingPortalID);

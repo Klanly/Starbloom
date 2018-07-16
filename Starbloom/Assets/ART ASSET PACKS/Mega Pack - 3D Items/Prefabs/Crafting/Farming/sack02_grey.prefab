@@ -10,7 +10,7 @@ GameObject:
   - component: {fileID: 496686}
   - component: {fileID: 3399984}
   - component: {fileID: 2315226}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: sack02_grey
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -36,6 +36,10 @@ public class DG_AnimationSync : MonoBehaviour {
 
     public Animator Anim;
     public DG_CharacterLink CharacterLink;
+    public Transform LeftFootPoint;
+    public Transform RightFootPoint;
+    public float FootPrintRadius;
+
 
     //Animation
     [System.NonSerialized] public bool DisableWeaponSwitching = false;
@@ -195,7 +199,6 @@ public class DG_AnimationSync : MonoBehaviour {
             QuickFind.BreakableObjectsHandler.HitAction();
             QuickFind.HoeHandler.HitAction();
             QuickFind.WateringCanHandler.HitAction();
-            QuickFind.CombatHandler.HitAction();
 
             Anim.SetBool(QuickFind.AnimationStringValues.HoldAttackTriggerName, false);
         }
@@ -234,6 +237,16 @@ public class DG_AnimationSync : MonoBehaviour {
 
 
 
+
+    ///////////
+    public void FootLeft(int Value)
+    {
+        if(QuickFind.SnowHandler.isActiveAndEnabled) QuickFind.SnowHandler.MarkSnowAt(LeftFootPoint.position, FootPrintRadius);
+    }
+    public void FootRight(int Value)
+    {
+        if (QuickFind.SnowHandler.isActiveAndEnabled) QuickFind.SnowHandler.MarkSnowAt(RightFootPoint.position, FootPrintRadius);
+    }
 
 
 

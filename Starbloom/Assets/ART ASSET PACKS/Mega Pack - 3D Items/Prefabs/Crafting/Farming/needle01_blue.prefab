@@ -10,7 +10,7 @@ GameObject:
   - component: {fileID: 461816}
   - component: {fileID: 3363096}
   - component: {fileID: 2305846}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: needle01_blue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
