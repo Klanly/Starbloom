@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 
 #if UNITY_EDITOR
@@ -14,32 +15,20 @@ public class NetworkScene : MonoBehaviour {
 
 
     public int SceneID;
-    public int SceneOwnerID;
+    [ReadOnly]public int ScenePlayerOwnerID = -3;
     [System.NonSerialized]
     public List<NetworkObject> TempNetworkObjectList;
     [System.NonSerialized]
     public List<NetworkObject> NetworkObjectList;
 
-
     [System.NonSerialized] public GameObject JunkObject;
-    int wait1 = 0;
 
     private void Awake()
     {
         NetworkObjectList = new List<NetworkObject>();
         TempNetworkObjectList = new List<NetworkObject>();
+        ScenePlayerOwnerID = -3;
         this.enabled = false;
-    }
-
-    private void Update()
-    {
-        wait1 = wait1 - 1;
-        if(wait1 < 0)
-        {
-
-            LoadAfterFrame();
-            this.enabled = false;
-        }
     }
 
 
@@ -50,11 +39,6 @@ public class NetworkScene : MonoBehaviour {
 
     public void LoadSceneObjects()
     {
-        wait1 = 2;
-        this.enabled = true;
-    }
-    void LoadAfterFrame()
-    {
         for (int i = 0; i < TempNetworkObjectList.Count; i++)
         {
             NetworkObject ListNO = TempNetworkObjectList[i];
@@ -62,7 +46,7 @@ public class NetworkScene : MonoBehaviour {
             GO.transform.SetParent(transform);
             NetworkObject NO = GO.AddComponent<NetworkObject>();
             NetworkObjectList.Add(NO);
-            
+
             NO.Clone(NO, ListNO);
             if (NO.NetworkObjectID == 0) NO.NetworkObjectID = GetValidNextNetworkID();
             NO.transform.position = new Vector3(((float)NO.PositionX / 100), ((float)NO.PositionY / 100), ((float)NO.PositionZ / 100));
@@ -74,14 +58,11 @@ public class NetworkScene : MonoBehaviour {
                 QuickFind.NetworkGrowthHandler.SetActiveVisual(QuickFind.NetworkObjectManager.GetSceneByID(SceneID), NO, false);
             }
             else
-            {
-                bool InitializeAI = false;
-                if (SceneID == QuickFind.NetworkSync.CurrentScene) InitializeAI = true;
-                NO.SpawnNetworkObject(QuickFind.NetworkObjectManager.GetSceneByID(SceneID), InitializeAI);
-            }
+                NO.SpawnNetworkObject(QuickFind.NetworkObjectManager.GetSceneByID(SceneID), false);
         }
         DestroyTempObjects();
     }
+
     public void DestroyTempObjects()
     {
         TempNetworkObjectList.Clear();
@@ -138,29 +119,47 @@ public class NetworkScene : MonoBehaviour {
 
 
     //Scene Ownership
-    public void SelfEnteredScene()
+    public void SelfEnteredScene(int PlayerID)
     {
-        if (SceneOwnerID == 0 && !SomeoneElseIsInThisScene()) RequestsSceneMaster(QuickFind.NetworkSync.UserID);
+        if (ScenePlayerOwnerID == -3 && SomeoneElseIsInThisScene(PlayerID) == -1)
+        {
+            List<DG_NetworkSync.Users> Users = QuickFind.NetworkSync.GetUsersByNetID(QuickFind.NetworkSync.NetID);
+            for(int i = 0; i < Users.Count; i ++)
+            {
+                if(Users[i].SceneID == SceneID)
+                {
+                    RequestsSceneMaster(Users[i].PlayerCharacterID);
+                    break;
+                }
+            }
+            
+        }
     }
     public void UserLeftScene(DG_NetworkSync.Users U)
     {
-        if (SceneOwnerID == U.ID) SceneOwnerID = 0;
-        if (QuickFind.NetworkSync.UserID != SceneOwnerID && QuickFind.NetworkSync.CurrentScene == SceneID) RequestsSceneMaster(QuickFind.NetworkSync.UserID);
+        if (ScenePlayerOwnerID == U.PlayerCharacterID) ScenePlayerOwnerID = -3;
+        List<DG_NetworkSync.Users> Users = QuickFind.NetworkSync.GetUsersByNetID(QuickFind.NetworkSync.NetID);
+        for (int i = 0; i < Users.Count; i++)
+        {
+            DG_NetworkSync.Users NewU = Users[i];
+            if (NewU.PlayerCharacterID != ScenePlayerOwnerID && NewU.SceneID == SceneID)
+            { RequestsSceneMaster(NewU.PlayerCharacterID); break; }
+        }
     }
 
 
 
-    public void RequestsSceneMaster(int UserID)
+    public void RequestsSceneMaster(int PlayerID)
     {
         int[] IntGroup = new int[2];
         IntGroup[0] = SceneID;
-        IntGroup[1] = UserID;
+        IntGroup[1] = PlayerID;
         QuickFind.NetworkSync.UserRequestingOwnership(IntGroup);
     }
     public void ReceivedMasterRequest(int NewOwner)
     {
-        if (SceneOwnerID == 0)
-            SceneOwnerID = NewOwner;
+        if (ScenePlayerOwnerID == -3)
+            ScenePlayerOwnerID = NewOwner;
     }
 
 
@@ -171,15 +170,15 @@ public class NetworkScene : MonoBehaviour {
 
 
 
-    public bool SomeoneElseIsInThisScene()
+    public int SomeoneElseIsInThisScene(int PlayerRequesting)
     {
         for (int i = 0; i < QuickFind.NetworkSync.UserList.Count; i++)
         {
             DG_NetworkSync.Users U = QuickFind.NetworkSync.UserList[i];
-            if (U.ID == QuickFind.NetworkSync.UserID) continue;
-            if (U.SceneID == SceneID) return true;
+            if (U.PlayerCharacterID == PlayerRequesting) continue;
+            if (U.SceneID == SceneID) return U.PlayerCharacterID;
         }
-        return false;
+        return -1;
     }
     public bool AnyoneIsInThisScene()
     {

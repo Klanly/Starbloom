@@ -62,7 +62,7 @@ public static class QuickFind
     public static DG_PlayerCharacters Farm = null;
     public static DG_DebugSettings GameSettings = null;
     public static UserSettings UserSettings = null;
-
+    public static DG_LocalCoopMaster LocalCoopController = null;
 
 
 
@@ -284,12 +284,12 @@ public static class QuickFind
         float NearestDistance = MaxRange;
         for (int i = 0; i < QuickFind.NetworkSync.UserList.Count; i++)
         {
-            Vector3 ObjPos = QuickFind.NetworkSync.UserList[i].CharacterLink._T.position;
+            Vector3 ObjPos = QuickFind.NetworkSync.UserList[i].CharacterLink.PlayerTrans.position;
             float Dist = Vector3.Distance(ComparePoint, ObjPos);
             if (Dist < NearestDistance) { NearestDistance = Dist; NearestIndex = i; }
         }
         if (NearestIndex == -1) return null;
-        else return QuickFind.NetworkSync.UserList[NearestIndex].CharacterLink._T;
+        else return QuickFind.NetworkSync.UserList[NearestIndex].CharacterLink.PlayerTrans;
     }
     public static float GetRelativeAngleInDegrees(Transform SourceObject, Transform TargetObject)
     {

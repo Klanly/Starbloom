@@ -100,7 +100,7 @@ public class DG_TooltipGUI : MonoBehaviour {
 
 
 
-
+    public bool isPlayer1;
 
     [Header("Floating QualitySelection")]
     public RectTransform FloatingQualitySelect;
@@ -172,7 +172,10 @@ public class DG_TooltipGUI : MonoBehaviour {
     {
         AddRucksack(isUP, CanLoop, ActiveRucksackSlot.CurrentStackActive);
 
-        DG_PlayerCharacters.CharacterEquipment Equipment = QuickFind.Farm.PlayerCharacters[QuickFind.NetworkSync.PlayerCharacterID].Equipment;
+        int PlayerID = QuickFind.NetworkSync.Player1PlayerCharacter;
+        if (!isPlayer1) PlayerID = QuickFind.NetworkSync.Player2PlayerCharacter;
+
+        DG_PlayerCharacters.CharacterEquipment Equipment = QuickFind.Farm.PlayerCharacters[PlayerID].Equipment;
         QuickFind.GUI_Inventory.UpdateRucksackSlotVisual(HoveredInventoryItem, ActiveRucksackSlot);
         GenerateQualitySelectionGrid();
         GenerateToolTip();
@@ -330,6 +333,8 @@ public class DG_TooltipGUI : MonoBehaviour {
         DG_CraftingDictionaryItem CDI = QuickFind.CraftingDictionary.GetItemFromID(ActiveItemObject.ContextID);
         DG_ItemObject IO = QuickFind.ItemDatabase.GetItemFromID(CDI.ItemCreatedRef);
 
+        int PlayerID = QuickFind.NetworkSync.Player1PlayerCharacter;
+        if (!isPlayer1) PlayerID = QuickFind.NetworkSync.Player2PlayerCharacter;
 
         int index = 0;
         for (int i = 0; i < CDI.IngredientList.Length; i++)
@@ -342,7 +347,7 @@ public class DG_TooltipGUI : MonoBehaviour {
             Sub.TextObject.text = QuickFind.WordDatabase.GetWordFromID(IngredientObject.ToolTipType.MainLocalizationID);
 
             DG_ItemsDatabase.GenericIconDatabaseItem ICD = QuickFind.ItemDatabase.GetGenericIconByString("TextColor");
-            if (QuickFind.InventoryManager.TotalInventoryCountOfItem(IngredientObject.DatabaseID) < I.Value)
+            if (QuickFind.InventoryManager.TotalInventoryCountOfItem(IngredientObject.DatabaseID, PlayerID) < I.Value)
             {
                 Sub.TextObject.color = ICD.ColorVariations[1];  //Not Enough Color
                 Sub.NumberObject.color = ICD.ColorVariations[1];

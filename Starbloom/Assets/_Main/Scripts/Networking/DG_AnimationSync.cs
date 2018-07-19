@@ -58,8 +58,8 @@ public class DG_AnimationSync : MonoBehaviour {
         if (!isPlayer)
         {
             float Distance = CharacterLink.MoveSync.Distance;
-            if (Distance > .2f) Distance = 1;
-            if (Distance < .2f) Distance = StoredDistance - .1f;
+            if (Distance > .1f) Distance = 1;
+            if (Distance < .1f) Distance = StoredDistance - .1f;
 
             StoredDistance = Distance;
 
@@ -87,7 +87,7 @@ public class DG_AnimationSync : MonoBehaviour {
     {
         if (OutData == null) OutData = new int[3];
 
-        OutData[0] = QuickFind.NetworkSync.UserID;
+        OutData[0] = CharacterLink.PlayerID;
         OutData[1] = Index;
         OutData[2] = CurrentState;
 
@@ -114,13 +114,11 @@ public class DG_AnimationSync : MonoBehaviour {
         int Random = UnityEngine.Random.Range(0, AO.AnimationSubstateValues.Length);
         int AnimationSubStateNum = (int)AO.AnimationSubstateValues[Random];
 
-        int UserID = QuickFind.NetworkSync.UserID;
-
-        PlayAnimation(UserID, AnimationSubStateNum, AnimationID);
+        PlayAnimation(CharacterLink.PlayerID, AnimationSubStateNum, AnimationID);
 
         if (OutData == null) OutData = new int[3];
 
-        OutData[0] = UserID;
+        OutData[0] = CharacterLink.PlayerID;
         OutData[1] = AnimationSubStateNum;
         OutData[2] = AnimationID;
 
@@ -134,11 +132,11 @@ public class DG_AnimationSync : MonoBehaviour {
     }
 
 
-    public void PlayAnimation(int UserID, int SubStateID, int AnimationID)
+    public void PlayAnimation(int PlayerID, int SubStateID, int AnimationID)
     {
         DG_AnimationObject AO = QuickFind.AnimationDatabase.GetItemFromID(AnimationID);
         SavedAO = AO;
-        QuickFind.EquipmentFXManager.SetEquipmentAnimationTracker(UserID, AnimationID, this);
+        QuickFind.EquipmentFXManager.SetEquipmentAnimationTracker(PlayerID, AnimationID, this);
 
         Anim.SetInteger(QuickFind.AnimationStringValues.ActionState, (int)AO.AnimationActionState);
         Anim.SetInteger(QuickFind.AnimationStringValues.SubState, SubStateID);
@@ -163,7 +161,7 @@ public class DG_AnimationSync : MonoBehaviour {
 
     public void SetMovementControlState(bool isTrue)
     {
-        if (CharacterLink != QuickFind.NetworkSync.CharacterLink) return;
+        if (CharacterLink != QuickFind.NetworkSync.GetCharacterLinkByPlayerID(CharacterLink.PlayerID)) return;
         CharacterLink.EnablePlayerMovement(!isTrue);
         MidAnimation = isTrue;
     }
@@ -192,20 +190,23 @@ public class DG_AnimationSync : MonoBehaviour {
     ///////////
     public void Hit()
     {
+        int PlayerID = CharacterLink.PlayerID;
+
         if (CharacterLink.MoveSync.UserOwner != null) return;
 
         if (SavedAO.ResponseType == AnimationResponseType.ShowTool)
         {
-            QuickFind.BreakableObjectsHandler.HitAction();
-            QuickFind.HoeHandler.HitAction();
-            QuickFind.WateringCanHandler.HitAction();
+            QuickFind.BreakableObjectsHandler.HitAction(PlayerID);
+            QuickFind.HoeHandler.HitAction(PlayerID);
+            QuickFind.WateringCanHandler.HitAction(PlayerID);
 
             Anim.SetBool(QuickFind.AnimationStringValues.HoldAttackTriggerName, false);
         }
         if (SavedAO.ResponseType == AnimationResponseType.DontShowTool)
         {
-            QuickFind.InteractHandler.ReturnInteractionHit();
-            QuickFind.ObjectPlacementManager.PlacementHit();
+            QuickFind.InteractHandler.ReturnInteractionHit(PlayerID);
+
+            QuickFind.ObjectPlacementManager.PlacementHit(QuickFind.ObjectPlacementManager.GetCRPByPlayerID(PlayerID), QuickFind.NetworkSync.GetUserByCharacterLink(CharacterLink).SceneID);
         }
 
         SetMovementControlState(false);    

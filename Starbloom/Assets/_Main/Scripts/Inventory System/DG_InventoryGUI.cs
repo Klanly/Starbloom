@@ -3,14 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-//This Script should probably be split, since it is acting as both a inventory Manager, and GUI Manager.
-
-
-
 
 public class DG_InventoryGUI : MonoBehaviour
 {
 
+    public bool isPlayer1;
 
     [Header("Canvases")]
     public CanvasGroup UICanvas = null;
@@ -33,8 +30,8 @@ public class DG_InventoryGUI : MonoBehaviour
     public Vector3 ShippingBinPosition;
     Vector3 StartingPosition;
 
-
     [System.NonSerialized] public bool InventoryIsOpen;
+    [System.NonSerialized] public bool OuterInventoryIsOpen;
 
 
     [System.NonSerialized] public DG_InventoryItem[] GuiItemSlots;
@@ -57,13 +54,13 @@ public class DG_InventoryGUI : MonoBehaviour
         int Count = HotbarGrid.childCount + NonHotbarGrid.childCount;
         GuiItemSlots = new DG_InventoryItem[Count];
         for (int i = 0; i < HotbarGrid.childCount; i++)
-        { GuiItemSlots[index] = HotbarGrid.GetChild(i).GetComponent<DG_InventoryItem>(); GuiItemSlots[index].SlotID = index; index++; }
+        { GuiItemSlots[index] = HotbarGrid.GetChild(i).GetComponent<DG_InventoryItem>(); GuiItemSlots[index].SlotID = index; GuiItemSlots[index].isPlayer1 = isPlayer1; index++; }
         for (int i = 0; i < NonHotbarGrid.childCount; i++)
-        { GuiItemSlots[index] = NonHotbarGrid.GetChild(i).GetComponent<DG_InventoryItem>(); GuiItemSlots[index].SlotID = index; index++; }
+        { GuiItemSlots[index] = NonHotbarGrid.GetChild(i).GetComponent<DG_InventoryItem>(); GuiItemSlots[index].SlotID = index; GuiItemSlots[index].isPlayer1 = isPlayer1; index++; }
 
         HotbarSlots = new DG_InventoryItem[HotbarMirrorGrid.childCount];
         for (int i = 0; i < HotbarSlots.Length; i++)
-        { HotbarSlots[i] = HotbarMirrorGrid.GetChild(i).GetComponent<DG_InventoryItem>(); HotbarSlots[i].isMirror = true; HotbarSlots[i].SlotID = i; HotbarSlots[i].Disabled.enabled = false; }
+        { HotbarSlots[i] = HotbarMirrorGrid.GetChild(i).GetComponent<DG_InventoryItem>(); HotbarSlots[i].isMirror = true; HotbarSlots[i].SlotID = i; HotbarSlots[i].Disabled.enabled = false; HotbarSlots[i].isPlayer1 = isPlayer1; }
 
         StartingPosition = InventoryFrame.localPosition;
     }
@@ -84,10 +81,13 @@ public class DG_InventoryGUI : MonoBehaviour
 
         if (QuickFind.NetworkSync != null)
         {
+            int PlayerID = QuickFind.NetworkSync.Player1PlayerCharacter;
+            if (!isPlayer1) PlayerID = QuickFind.NetworkSync.Player2PlayerCharacter;
+
             if (!InventoryIsOpen)
             {
-                float ZoomAxis = QuickFind.InputController.MainPlayer.CamZoomAxis;
-                if (ZoomAxis != 0 && !QuickFind.NetworkSync.CharacterLink.AnimationSync.MidAnimation)
+                float ZoomAxis = QuickFind.InputController.GetPlayerByPlayerID(PlayerID).CamZoomAxis;
+                if (ZoomAxis != 0 && !QuickFind.NetworkSync.GetCharacterLinkByPlayerID(PlayerID).AnimationSync.MidAnimation)
                 {
                     bool Add = false;
                     if (ZoomAxis < 0)
@@ -101,14 +101,14 @@ public class DG_InventoryGUI : MonoBehaviour
                 bool Quality = QuickFind.TooltipHandler.IsQualitySelection;
                 if (Quality)
                 {
-                    float ZoomAxis = QuickFind.InputController.MainPlayer.CamZoomAxis;
+                    float ZoomAxis = QuickFind.InputController.GetPlayerByPlayerID(PlayerID).CamZoomAxis;
                     if (ZoomAxis != 0)
                         QuickFind.TooltipHandler.UpdateEquippedNum(-(int)ZoomAxis, false);
                 }
-                if (QuickFind.InputController.MainPlayer.ButtonSet.Interact.Up && !QuickFind.ShippingBinGUI.BinUIisOpen)
+                if (QuickFind.InputController.GetPlayerByPlayerID(PlayerID).ButtonSet.Action.Up && !QuickFind.ShippingBinGUI.BinUIisOpen)
                 {
                     if (isFloatingInventoryItem)
-                        QuickFind.InventoryManager.DropOne(PickedUpItemSlot, CurrentHoverItem);
+                        QuickFind.InventoryManager.DropOne(PickedUpItemSlot, CurrentHoverItem, PlayerID);
                     else if (!QuickFind.StorageUI.StorageUIOpen && Quality)
                         QuickFind.TooltipHandler.UpdateEquippedNum(1, true);
                 }
@@ -142,19 +142,33 @@ public class DG_InventoryGUI : MonoBehaviour
 
     void OpenOuterUI()
     {
+        int PlayerID = QuickFind.NetworkSync.Player1PlayerCharacter;
+        if (!isPlayer1) PlayerID = QuickFind.NetworkSync.Player2PlayerCharacter;
+        DG_CharacterLink CharLink = QuickFind.NetworkSync.GetCharacterLinkByPlayerID(PlayerID);
+
+        QuickFind.PlayerCam.EnableCamera(CharLink.PlayerCam, false, true);
+
         QuickFind.ContextDetectionHandler.COEncountered = null;
         QuickFind.ContextDetectionHandler.LastEncounteredContext = null;
         QuickFind.EnableCanvas(UICanvas, true);
         UpdateInventoryVisuals();
         InventoryIsOpen = true;
+        OuterInventoryIsOpen = true;
     }
     void CloseOuterUI()
     {
+        int PlayerID = QuickFind.NetworkSync.Player1PlayerCharacter;
+        if (!isPlayer1) PlayerID = QuickFind.NetworkSync.Player2PlayerCharacter;
+        DG_CharacterLink CharLink = QuickFind.NetworkSync.GetCharacterLinkByPlayerID(PlayerID);
+
+        QuickFind.PlayerCam.EnableCamera(CharLink.PlayerCam, true);
+
         ClearFloatingObject();
         QuickFind.TooltipHandler.HideToolTip();
         
         InventoryFrame.localPosition = StartingPosition;
         InventoryIsOpen = false;
+        OuterInventoryIsOpen = false;
         QuickFind.EnableCanvas(UICanvas, false);
     }
 
@@ -166,7 +180,10 @@ public class DG_InventoryGUI : MonoBehaviour
 
     public void UpdateInventoryVisuals()
     {
-        DG_PlayerCharacters.CharacterEquipment Equipment = QuickFind.Farm.PlayerCharacters[QuickFind.NetworkSync.PlayerCharacterID].Equipment;
+        int PlayerID = QuickFind.NetworkSync.Player1PlayerCharacter;
+        if (!isPlayer1) PlayerID = QuickFind.NetworkSync.Player2PlayerCharacter;
+
+        DG_PlayerCharacters.CharacterEquipment Equipment = QuickFind.Farm.PlayerCharacters[PlayerID].Equipment;
         for (int i = 0; i < Equipment.RucksackSlots.Length; i++)
         {
             if (i < Equipment.RuckSackUnlockedSize)
@@ -185,6 +202,8 @@ public class DG_InventoryGUI : MonoBehaviour
         if (RucksackSlot.GetStackValue() == 0)
         {
             GuiSlot.ContainsItem = false;
+
+            GuiSlot.isPlayer1 = isPlayer1;
             GuiSlot.Icon.sprite = DefaultNullSprite;
             GuiSlot.AmountText.text = string.Empty;
             GuiSlot.QualityAmountText.text = string.Empty;
@@ -252,28 +271,30 @@ public class DG_InventoryGUI : MonoBehaviour
         //This is an Inventory Item, and we want to handle user moving item somewhere.
         else
         {
+            int PlayerID = QuickFind.NetworkSync.Player1PlayerCharacter;
+            if (!isPlayer1) PlayerID = QuickFind.NetworkSync.Player2PlayerCharacter;
+
             if (isFloatingInventoryItem) //We already have an item held, so we must Swap Items
             {
-                int ID = QuickFind.NetworkSync.PlayerCharacterID;
                 AdjustFloatingInventoryUI(false);
 
-                DG_PlayerCharacters.RucksackSlot RucksackSlotA = QuickFind.InventoryManager.GetRuckSackSlotInventoryItem(PickedUpItemSlot);
-                DG_PlayerCharacters.RucksackSlot RucksackSlotB = QuickFind.InventoryManager.GetRuckSackSlotInventoryItem(PressedItem);
-                int IndexA = ID;
-                int IndexB = ID;
+                DG_PlayerCharacters.RucksackSlot RucksackSlotA = QuickFind.InventoryManager.GetRuckSackSlotInventoryItem(PickedUpItemSlot, PlayerID);
+                DG_PlayerCharacters.RucksackSlot RucksackSlotB = QuickFind.InventoryManager.GetRuckSackSlotInventoryItem(PressedItem, PlayerID);
+                int IndexA = PlayerID;
+                int IndexB = PlayerID;
                 if (PickedUpItemSlot.IsStorageSlot) IndexA = QuickFind.StorageUI.ActiveStorage.transform.GetSiblingIndex();
                 if (PressedItem.IsStorageSlot) IndexB = QuickFind.StorageUI.ActiveStorage.transform.GetSiblingIndex();
 
                 if(RucksackSlotA.ContainedItem != RucksackSlotB.ContainedItem)
-                    QuickFind.InventoryManager.SwapInventoryItems(RucksackSlotA, RucksackSlotB, PickedUpItemSlot, PressedItem, IndexA, IndexB);
+                    QuickFind.InventoryManager.SwapInventoryItems(RucksackSlotA, RucksackSlotB, PickedUpItemSlot, PressedItem, IndexA, IndexB, PlayerID);
                 else
-                    QuickFind.InventoryManager.DropStackOntoStack(RucksackSlotA, RucksackSlotB, PickedUpItemSlot, PressedItem, IndexA, IndexB);
+                    QuickFind.InventoryManager.DropStackOntoStack(RucksackSlotA, RucksackSlotB, PickedUpItemSlot, PressedItem, IndexA, IndexB, PlayerID);
 
                 PressedItem.ItemHoverIn();
             }
             else
             {
-                DG_PlayerCharacters.RucksackSlot RucksackSlotA = QuickFind.InventoryManager.GetRuckSackSlotInventoryItem(PressedItem);
+                DG_PlayerCharacters.RucksackSlot RucksackSlotA = QuickFind.InventoryManager.GetRuckSackSlotInventoryItem(PressedItem, PlayerID);
                 if (RucksackSlotA.GetStackValue() != 0)
                 { AdjustFloatingInventoryUI(true); PickupItem(PressedItem); }
             }
@@ -294,7 +315,10 @@ public class DG_InventoryGUI : MonoBehaviour
     {
         if (PickedUpItemSlot == null) return;
 
-        DG_PlayerCharacters.RucksackSlot RucksackSlot = QuickFind.InventoryManager.GetRuckSackSlotInventoryItem(PickedUpItemSlot);
+        int PlayerID = QuickFind.NetworkSync.Player1PlayerCharacter;
+        if (!isPlayer1) PlayerID = QuickFind.NetworkSync.Player2PlayerCharacter;
+
+        DG_PlayerCharacters.RucksackSlot RucksackSlot = QuickFind.InventoryManager.GetRuckSackSlotInventoryItem(PickedUpItemSlot, PlayerID);
         DG_ItemObject Object = QuickFind.ItemDatabase.GetItemFromID(RucksackSlot.ContainedItem);
         FloatingItem.AmountText.text = RucksackSlot.GetStackValue().ToString();
         FloatingItem.Icon.sprite = Object.GetItemSpriteByQuality(RucksackSlot.CurrentStackActive);
@@ -345,20 +369,23 @@ public class DG_InventoryGUI : MonoBehaviour
 
     public void SetHotbarSlot(DG_InventoryItem PressedItem)
     {
-        if (QuickFind.NetworkSync.CharacterLink.AnimationSync.DisableWeaponSwitching) return;
+        int PlayerID = QuickFind.NetworkSync.Player1PlayerCharacter;
+        if (!isPlayer1) PlayerID = QuickFind.NetworkSync.Player2PlayerCharacter;
+
+        if (QuickFind.NetworkSync.GetCharacterLinkByPlayerID(PlayerID).AnimationSync.DisableWeaponSwitching) return;
 
         HotbarSlots[EquippedHotbarSlot].ActiveHotbarItem.enabled = false;
         EquippedHotbarSlot = PressedItem.SlotID;
         PressedItem.ActiveHotbarItem.enabled = true;
 
 
-        DG_PlayerCharacters.CharacterEquipment Equipment = QuickFind.Farm.PlayerCharacters[QuickFind.NetworkSync.PlayerCharacterID].Equipment;
+        DG_PlayerCharacters.CharacterEquipment Equipment = QuickFind.Farm.PlayerCharacters[PlayerID].Equipment;
         if (Equipment.RucksackSlots[EquippedHotbarSlot].GetStackValue() == 0)
             QuickFind.ItemActivateableHandler.SetNoActiveItem();
         else
         {
             DG_ItemObject Object = QuickFind.ItemDatabase.GetItemFromID(Equipment.RucksackSlots[EquippedHotbarSlot].ContainedItem);
-            QuickFind.ItemActivateableHandler.SetCurrentActiveItem(Equipment.RucksackSlots[EquippedHotbarSlot], Object, EquippedHotbarSlot);
+            QuickFind.ItemActivateableHandler.SetCurrentActiveItem(Equipment.RucksackSlots[EquippedHotbarSlot], Object, EquippedHotbarSlot, PlayerID);
         }
     }
 }

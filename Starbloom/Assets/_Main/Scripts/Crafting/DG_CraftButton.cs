@@ -11,6 +11,7 @@ public class DG_CraftButton : MonoBehaviour {
     public Image ActiveHotbarItem = null;
 
     [System.NonSerialized] public int CraftDatabaseID;
+    [System.NonSerialized] public int PlayerID;
     [System.NonSerialized] public bool AbleToCraft;
 
     [Header("Icon Scale Effect")]
@@ -58,7 +59,7 @@ public class DG_CraftButton : MonoBehaviour {
     public void ItemPressed()
     {
         if (!AbleToCraft) return;
-        QuickFind.GUI_Crafting.CraftButtonPressed(this);
+        QuickFind.GUI_Crafting.CraftButtonPressed(this, PlayerID);
     }
 
 

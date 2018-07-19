@@ -105,7 +105,7 @@ public class DG_Inventory : MonoBehaviour {
         return null;
     }
 
-    public void SwapInventoryItems(DG_PlayerCharacters.RucksackSlot RucksackSlotA, DG_PlayerCharacters.RucksackSlot RucksackSlotB, DG_InventoryItem SlotA, DG_InventoryItem SlotB, int ObjectIndexA, int ObjectIndexB)
+    public void SwapInventoryItems(DG_PlayerCharacters.RucksackSlot RucksackSlotA, DG_PlayerCharacters.RucksackSlot RucksackSlotB, DG_InventoryItem SlotA, DG_InventoryItem SlotB, int ObjectIndexA, int ObjectIndexB, int PlayerID)
     {
         int ContainedItem = RucksackSlotA.ContainedItem;
         int CurrentStackActive = RucksackSlotA.CurrentStackActive;
@@ -115,18 +115,18 @@ public class DG_Inventory : MonoBehaviour {
         int MaximumValue = RucksackSlotA.MaximumValue;
 
         if (!SlotB.isTrash)
-            SetItemValueInRucksack(RucksackSlotA, ObjectIndexA, SlotA.SlotID, RucksackSlotB.ContainedItem, RucksackSlotB.CurrentStackActive, RucksackSlotB.LowValue, RucksackSlotB.NormalValue, RucksackSlotB.HighValue, RucksackSlotB.MaximumValue, SlotA.IsStorageSlot);
+            SetItemValueInRucksack(RucksackSlotA, ObjectIndexA, SlotA.SlotID, RucksackSlotB.ContainedItem, RucksackSlotB.CurrentStackActive, RucksackSlotB.LowValue, RucksackSlotB.NormalValue, RucksackSlotB.HighValue, RucksackSlotB.MaximumValue, SlotA.IsStorageSlot, PlayerID);
         else
         {
-            SetItemValueInRucksack(RucksackSlotA, ObjectIndexA, SlotA.SlotID, 0, 0, 0, 0, 0, 0, SlotA.IsStorageSlot);
+            SetItemValueInRucksack(RucksackSlotA, ObjectIndexA, SlotA.SlotID, 0, 0, 0, 0, 0, 0, SlotA.IsStorageSlot, PlayerID);
             QuickFind.GUI_Inventory.ClearFloatingObject();
         }
 
-        if (!SlotB.isTrash) SetItemValueInRucksack(RucksackSlotB, ObjectIndexB, SlotB.SlotID, ContainedItem, CurrentStackActive, LowValue, NormalValue, HighValue, MaximumValue, SlotB.IsStorageSlot);
+        if (!SlotB.isTrash) SetItemValueInRucksack(RucksackSlotB, ObjectIndexB, SlotB.SlotID, ContainedItem, CurrentStackActive, LowValue, NormalValue, HighValue, MaximumValue, SlotB.IsStorageSlot, PlayerID);
     }
 
     public void SetItemValueInRucksack(DG_PlayerCharacters.RucksackSlot RucksackSlot, int ObjectIndex, int Slot,
-        int ContainedItem, int CurrentStackActive, int LowValue, int NormalValue, int HighValue, int MaximumValue, bool isStorage)
+        int ContainedItem, int CurrentStackActive, int LowValue, int NormalValue, int HighValue, int MaximumValue, bool isStorage, int PlayerID)
     {
         RucksackSlot.ContainedItem = ContainedItem;
         RucksackSlot.CurrentStackActive = CurrentStackActive;
@@ -138,7 +138,7 @@ public class DG_Inventory : MonoBehaviour {
         if(!isStorage)
             QuickFind.NetworkSync.SetRucksackValue(ObjectIndex, Slot, ContainedItem, CurrentStackActive, LowValue, NormalValue, HighValue, MaximumValue);
         else if(!QuickFind.StorageUI.isTreasureUI)
-            QuickFind.NetworkSync.SetStorageValue(QuickFind.NetworkSync.CurrentScene, ObjectIndex, Slot, ContainedItem, CurrentStackActive, LowValue, NormalValue, HighValue, MaximumValue);
+            QuickFind.NetworkSync.SetStorageValue(QuickFind.NetworkSync.GetUserByPlayerID(PlayerID).SceneID, ObjectIndex, Slot, ContainedItem, CurrentStackActive, LowValue, NormalValue, HighValue, MaximumValue);
         else
             QuickFind.GUI_Inventory.UpdateInventoryVisuals();
     }
@@ -150,22 +150,22 @@ public class DG_Inventory : MonoBehaviour {
 
 
 
-    public DG_PlayerCharacters.RucksackSlot GetRuckSackSlotInventoryItem(DG_InventoryItem II)
+    public DG_PlayerCharacters.RucksackSlot GetRuckSackSlotInventoryItem(DG_InventoryItem II, int PlayerID)
     {
         if (!II.IsStorageSlot)
         {
-            DG_PlayerCharacters.CharacterEquipment Equipment = QuickFind.Farm.PlayerCharacters[QuickFind.NetworkSync.PlayerCharacterID].Equipment;
+            DG_PlayerCharacters.CharacterEquipment Equipment = QuickFind.Farm.PlayerCharacters[PlayerID].Equipment;
             return Equipment.RucksackSlots[II.SlotID];
         }
         else
             return QuickFind.StorageUI.ActiveStorage.StorageSlots[II.SlotID];
     }
-    public DG_ItemObject GetItemByInventoryItem(DG_InventoryItem II)
+    public DG_ItemObject GetItemByInventoryItem(DG_InventoryItem II, int PlayerID)
     {
         DG_PlayerCharacters.RucksackSlot RucksackSlot = null;
         if (!II.IsStorageSlot)
         {
-            DG_PlayerCharacters.CharacterEquipment Equipment = QuickFind.Farm.PlayerCharacters[QuickFind.NetworkSync.PlayerCharacterID].Equipment;
+            DG_PlayerCharacters.CharacterEquipment Equipment = QuickFind.Farm.PlayerCharacters[PlayerID].Equipment;
             RucksackSlot = Equipment.RucksackSlots[II.SlotID];     
         }
         else
@@ -183,14 +183,13 @@ public class DG_Inventory : MonoBehaviour {
 
 
 
-    public void DropOne(DG_InventoryItem FromItem, DG_InventoryItem ToItem)
+    public void DropOne(DG_InventoryItem FromItem, DG_InventoryItem ToItem, int PlayerID)
     {
-        DG_PlayerCharacters.RucksackSlot From = GetRuckSackSlotInventoryItem(FromItem);
-        DG_PlayerCharacters.RucksackSlot To = GetRuckSackSlotInventoryItem(ToItem);
+        DG_PlayerCharacters.RucksackSlot From = GetRuckSackSlotInventoryItem(FromItem, PlayerID);
+        DG_PlayerCharacters.RucksackSlot To = GetRuckSackSlotInventoryItem(ToItem, PlayerID);
 
-        int ID = QuickFind.NetworkSync.PlayerCharacterID;
-        int IndexA = ID;
-        int IndexB = ID;
+        int IndexA = PlayerID;
+        int IndexB = PlayerID;
         if (FromItem.IsStorageSlot) IndexA = QuickFind.StorageUI.ActiveStorage.transform.GetSiblingIndex();
         if (ToItem.IsStorageSlot) IndexB = QuickFind.StorageUI.ActiveStorage.transform.GetSiblingIndex();
 
@@ -206,26 +205,25 @@ public class DG_Inventory : MonoBehaviour {
                 To.AddStackQualityValue(QualityLevel, 1);
             }
 
-            SetItemValueInRucksack(From, IndexA, FromItem.SlotID, From.ContainedItem, From.CurrentStackActive, From.LowValue, From.NormalValue, From.HighValue, From.MaximumValue, FromItem.IsStorageSlot);
-            if (!ToItem.isTrash && To != null) SetItemValueInRucksack(To, IndexB, ToItem.SlotID, To.ContainedItem, To.CurrentStackActive, To.LowValue, To.NormalValue, To.HighValue, To.MaximumValue, ToItem.IsStorageSlot);
+            SetItemValueInRucksack(From, IndexA, FromItem.SlotID, From.ContainedItem, From.CurrentStackActive, From.LowValue, From.NormalValue, From.HighValue, From.MaximumValue, FromItem.IsStorageSlot, PlayerID);
+            if (!ToItem.isTrash && To != null) SetItemValueInRucksack(To, IndexB, ToItem.SlotID, To.ContainedItem, To.CurrentStackActive, To.LowValue, To.NormalValue, To.HighValue, To.MaximumValue, ToItem.IsStorageSlot, PlayerID);
         }
     }
 
-    public void DestroyRucksackItem(DG_PlayerCharacters.RucksackSlot From, int SlotID)
+    public void DestroyRucksackItem(DG_PlayerCharacters.RucksackSlot From, int SlotID, int PlayerID)
     {
-        int ID = QuickFind.NetworkSync.PlayerCharacterID;
-        int IndexA = ID;
+        int IndexA = PlayerID;
         //int ItemID = From.ContainedItem;
         DG_ItemObject.ItemQualityLevels QualityLevel = (DG_ItemObject.ItemQualityLevels)From.CurrentStackActive;
         if (From.GetNumberOfQuality(QualityLevel) > 0)
         {
             From.AddStackQualityValue(QualityLevel, -1);
-            SetItemValueInRucksack(From, IndexA, SlotID, From.ContainedItem, From.CurrentStackActive, From.LowValue, From.NormalValue, From.HighValue, From.MaximumValue, false);
+            SetItemValueInRucksack(From, IndexA, SlotID, From.ContainedItem, From.CurrentStackActive, From.LowValue, From.NormalValue, From.HighValue, From.MaximumValue, false, PlayerID);
         }
     }
 
 
-    public void DropStackOntoStack(DG_PlayerCharacters.RucksackSlot From, DG_PlayerCharacters.RucksackSlot To, DG_InventoryItem SlotA, DG_InventoryItem SlotB, int ObjectIndexA, int ObjectIndexB)
+    public void DropStackOntoStack(DG_PlayerCharacters.RucksackSlot From, DG_PlayerCharacters.RucksackSlot To, DG_InventoryItem SlotA, DG_InventoryItem SlotB, int ObjectIndexA, int ObjectIndexB, int PlayerID)
     {
         DG_ItemObject IO = QuickFind.ItemDatabase.GetItemFromID(From.ContainedItem);
         int MaxStack = IO.MaxStackSize;
@@ -237,8 +235,8 @@ public class DG_Inventory : MonoBehaviour {
         count = From.MaximumValue; for (int iN = 0; iN < count; iN++) { if (StackValue == MaxStack) break; To.MaximumValue++; From.MaximumValue--; StackValue++;}
 
 
-        SetItemValueInRucksack(From, ObjectIndexA, SlotA.SlotID, From.ContainedItem, From.CurrentStackActive, From.LowValue, From.NormalValue, From.HighValue, From.MaximumValue, SlotA.IsStorageSlot);
-        if (!SlotB.isTrash) SetItemValueInRucksack(To, ObjectIndexB, SlotB.SlotID, To.ContainedItem, To.CurrentStackActive, To.LowValue, To.NormalValue, To.HighValue, To.MaximumValue, SlotB.IsStorageSlot);
+        SetItemValueInRucksack(From, ObjectIndexA, SlotA.SlotID, From.ContainedItem, From.CurrentStackActive, From.LowValue, From.NormalValue, From.HighValue, From.MaximumValue, SlotA.IsStorageSlot, PlayerID);
+        if (!SlotB.isTrash) SetItemValueInRucksack(To, ObjectIndexB, SlotB.SlotID, To.ContainedItem, To.CurrentStackActive, To.LowValue, To.NormalValue, To.HighValue, To.MaximumValue, SlotB.IsStorageSlot, PlayerID);
     }
 
 
@@ -247,7 +245,7 @@ public class DG_Inventory : MonoBehaviour {
 
 
 
-    public void ShiftStackToFromStorage()
+    public void ShiftStackToFromStorage(int PlayerID)
     {
         ExchangeItems.Clear();
 
@@ -255,15 +253,15 @@ public class DG_Inventory : MonoBehaviour {
         DG_InventoryItem[] InventorySlots = QuickFind.GUI_Inventory.GuiItemSlots;
 
 
-        DG_PlayerCharacters.RucksackSlot MoveStack = GetRuckSackSlotInventoryItem(CurrentHoverItem);
+        DG_PlayerCharacters.RucksackSlot MoveStack = GetRuckSackSlotInventoryItem(CurrentHoverItem, PlayerID);
         DG_PlayerCharacters.RucksackSlot[] AlternateSide;
         bool IsStorage;
         int AlternateSideLength = 36;
         if (CurrentHoverItem.IsStorageSlot)
         {
             IsStorage = true;
-            AlternateSide = QuickFind.Farm.PlayerCharacters[QuickFind.NetworkSync.PlayerCharacterID].Equipment.RucksackSlots;
-            AlternateSideLength = QuickFind.Farm.PlayerCharacters[QuickFind.NetworkSync.PlayerCharacterID].Equipment.RuckSackUnlockedSize;
+            AlternateSide = QuickFind.Farm.PlayerCharacters[PlayerID].Equipment.RucksackSlots;
+            AlternateSideLength = QuickFind.Farm.PlayerCharacters[PlayerID].Equipment.RuckSackUnlockedSize;
         }
         else
         {
@@ -275,11 +273,10 @@ public class DG_Inventory : MonoBehaviour {
 
 
 
-        DG_ItemObject IO = GetItemByInventoryItem(QuickFind.GUI_Inventory.CurrentHoverItem);
+        DG_ItemObject IO = GetItemByInventoryItem(QuickFind.GUI_Inventory.CurrentHoverItem, PlayerID);
 
         int MaxStack = IO.MaxStackSize;
         int MoveStackValue = MoveStack.GetStackValue();
-        int PlayerID = QuickFind.NetworkSync.PlayerCharacterID;
         int StorageID = QuickFind.StorageUI.ActiveStorage.transform.GetSiblingIndex();
         int LoopIndex = PlayerID;
         int FinalIndex = StorageID;
@@ -337,15 +334,15 @@ public class DG_Inventory : MonoBehaviour {
         for (int i = 0; i < ExchangeItems.Count; i++)
         {
             DG_PlayerCharacters.RucksackSlot RS = ExchangeItems[i].RS;
-            SetItemValueInRucksack(RS, LoopIndex, ExchangeItems[i].index, RS.ContainedItem, RS.CurrentStackActive, RS.LowValue, RS.NormalValue, RS.HighValue, RS.MaximumValue, !IsStorage);
+            SetItemValueInRucksack(RS, LoopIndex, ExchangeItems[i].index, RS.ContainedItem, RS.CurrentStackActive, RS.LowValue, RS.NormalValue, RS.HighValue, RS.MaximumValue, !IsStorage, PlayerID);
         }
 
-        SetItemValueInRucksack(MoveStack, FinalIndex, CurrentHoverItem.SlotID, MoveStack.ContainedItem, MoveStack.CurrentStackActive, MoveStack.LowValue, MoveStack.NormalValue, MoveStack.HighValue, MoveStack.MaximumValue, IsStorage);
+        SetItemValueInRucksack(MoveStack, FinalIndex, CurrentHoverItem.SlotID, MoveStack.ContainedItem, MoveStack.CurrentStackActive, MoveStack.LowValue, MoveStack.NormalValue, MoveStack.HighValue, MoveStack.MaximumValue, IsStorage, PlayerID);
     }
 
 
 
-    public void ShiftStackToFromShippingBin(DG_ShippingBinItem BinItem)
+    public void ShiftStackToFromShippingBin(DG_ShippingBinItem BinItem, int PlayerID)
     {
         DG_ShippingBin.ShippingBinItem ReferenceItem = BinItem.ReferenceItem;
 
@@ -353,10 +350,9 @@ public class DG_Inventory : MonoBehaviour {
 
         int MaxStack = IO.MaxStackSize;
         int MoveStackValue = ReferenceItem.GetStackValue();
-        int PlayerID = QuickFind.NetworkSync.PlayerCharacterID;
 
-        DG_PlayerCharacters.RucksackSlot[] AlternateSide = QuickFind.Farm.PlayerCharacters[QuickFind.NetworkSync.PlayerCharacterID].Equipment.RucksackSlots;
-        int AlternateSideLength = QuickFind.Farm.PlayerCharacters[QuickFind.NetworkSync.PlayerCharacterID].Equipment.RuckSackUnlockedSize;
+        DG_PlayerCharacters.RucksackSlot[] AlternateSide = QuickFind.Farm.PlayerCharacters[PlayerID].Equipment.RucksackSlots;
+        int AlternateSideLength = QuickFind.Farm.PlayerCharacters[PlayerID].Equipment.RuckSackUnlockedSize;
 
         for (int i = 0; i < AlternateSideLength; i++)
         {
@@ -409,7 +405,7 @@ public class DG_Inventory : MonoBehaviour {
         for (int i = 0; i < ExchangeItems.Count; i++)
         {
             DG_PlayerCharacters.RucksackSlot RS = ExchangeItems[i].RS;
-            SetItemValueInRucksack(RS, QuickFind.NetworkSync.PlayerCharacterID, ExchangeItems[i].index, RS.ContainedItem, RS.CurrentStackActive, RS.LowValue, RS.NormalValue, RS.HighValue, RS.MaximumValue, false);
+            SetItemValueInRucksack(RS, PlayerID, ExchangeItems[i].index, RS.ContainedItem, RS.CurrentStackActive, RS.LowValue, RS.NormalValue, RS.HighValue, RS.MaximumValue, false, PlayerID);
         }
 
         QuickFind.ShippingBin.UpdateBinItem(ReferenceItem);
@@ -425,9 +421,9 @@ public class DG_Inventory : MonoBehaviour {
 
 
 
-    public int TotalInventoryCountOfItem(int ItemID)
+    public int TotalInventoryCountOfItem(int ItemID, int PlayerID)
     {
-        DG_PlayerCharacters.CharacterEquipment Equipment = QuickFind.Farm.PlayerCharacters[QuickFind.NetworkSync.PlayerCharacterID].Equipment;
+        DG_PlayerCharacters.CharacterEquipment Equipment = QuickFind.Farm.PlayerCharacters[PlayerID].Equipment;
         DG_PlayerCharacters.RucksackSlot[] Rucksack = Equipment.RucksackSlots;
 
         int TotalCount = 0;
@@ -442,11 +438,11 @@ public class DG_Inventory : MonoBehaviour {
     }
 
 
-    public void SubtractNumberOfItemFromRucksack(int ItemID, int Value)
+    public void SubtractNumberOfItemFromRucksack(int ItemID, int Value, int PlayerID)
     {
         SubtractItems.Clear();
 
-        DG_PlayerCharacters.CharacterEquipment Equipment = QuickFind.Farm.PlayerCharacters[QuickFind.NetworkSync.PlayerCharacterID].Equipment;
+        DG_PlayerCharacters.CharacterEquipment Equipment = QuickFind.Farm.PlayerCharacters[PlayerID].Equipment;
         DG_PlayerCharacters.RucksackSlot[] Rucksack = Equipment.RucksackSlots;
 
         for (int i = 0; i < Equipment.RuckSackUnlockedSize; i++)
@@ -468,11 +464,10 @@ public class DG_Inventory : MonoBehaviour {
             }
         }
 
-        int PlayerID = QuickFind.NetworkSync.PlayerCharacterID;
         for (int i = 0; i < SubtractItems.Count; i++)
         {
             SubtractItem EI = SubtractItems[i];
-            SetItemValueInRucksack(EI.RS, PlayerID, EI.SlotIndex, EI.RS.ContainedItem, EI.RS.CurrentStackActive, EI.RS.LowValue, EI.RS.NormalValue, EI.RS.HighValue, EI.RS.MaximumValue, false);
+            SetItemValueInRucksack(EI.RS, PlayerID, EI.SlotIndex, EI.RS.ContainedItem, EI.RS.CurrentStackActive, EI.RS.LowValue, EI.RS.NormalValue, EI.RS.HighValue, EI.RS.MaximumValue, false, PlayerID);
         }
     }
 }

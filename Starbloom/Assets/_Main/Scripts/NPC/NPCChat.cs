@@ -103,7 +103,7 @@ public class NPCChat : MonoBehaviour
 
 	public string GetConversationName()
 	{
-		return GetConversationName(QuickFind.NetworkSync.PlayerCharacterID);
+		return GetConversationName(QuickFind.NetworkSync.Player1PlayerCharacter);
 	}
 
 	public string GetConversationName(int _pid)
@@ -144,7 +144,7 @@ public class NPCChat : MonoBehaviour
 	[Button("Debug Talk")]
 	public void Talk()
 	{
-		Talk(QuickFind.NetworkSync.PlayerCharacterID);
+		Talk(QuickFind.NetworkSync.Player1PlayerCharacter);
 	}
 
 	public void Talk(int _pid)

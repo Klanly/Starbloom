@@ -13,7 +13,7 @@ public class MoveInput : MonoBehaviour
 		if (null == MoveController)
 			MoveController = GetComponent<Locomotion>();
 
-		DG_PlayerInput.Player MP = QuickFind.InputController.MainPlayer;
+		DG_PlayerInput.Player MP = QuickFind.InputController.GetPlayerByPlayerID(QuickFind.NetworkSync.Player1PlayerCharacter);
 		if (MP.VerticalAxis != 0 || MP.HorizontalAxis != 0)
 			InputDetected = true;
 			
@@ -21,7 +21,7 @@ public class MoveInput : MonoBehaviour
 		if (inputVec.magnitude > 1f)
 			inputVec.Normalize();
 
-		inputVec = Quaternion.Euler(0f, QuickFind.PlayerCam.MainCam.transform.rotation.eulerAngles.y, 0f) * inputVec; 
+		inputVec = Quaternion.Euler(0f, MP.CharLink.PlayerCam.CamTrans.eulerAngles.y, 0f) * inputVec; 
 
 		MoveController.SetInput( inputVec );
 	}

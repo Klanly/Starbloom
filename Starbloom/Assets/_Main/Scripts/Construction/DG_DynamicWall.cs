@@ -31,11 +31,13 @@ public class DG_DynamicWall : MonoBehaviour {
     bool EastActive = false;
     bool WestActive = false;
 
+    public int PlayerID;
+    public int DatabaseID;
 
     private void Awake() { this.enabled = false; }
     private void Update() { RaycastDirections(false); }
 
-    public void TriggerPlacementMode() { this.enabled = true; }
+    public void TriggerPlacementMode(int ItemID, int Player) { this.enabled = true; DatabaseID = ItemID; PlayerID = Player; }
     public void TriggerPlaceWall() { this.enabled = false; RaycastDirections(true); }
 
 
@@ -63,7 +65,7 @@ public class DG_DynamicWall : MonoBehaviour {
             { WestActive = true; if (SendOutNetMessage) OutGoingWallMessage(WallMessage.East); }  
 
         if (SendOutNetMessage)
-            QuickFind.NetworkObjectManager.CreateNetSceneObject(QuickFind.NetworkSync.CurrentScene, NetworkObjectManager.NetworkObjectTypes.Item, QuickFind.ObjectPlacementManager.ItemDatabaseReference.DatabaseID, DetermineVisualID(), transform.position, 0);
+            QuickFind.NetworkObjectManager.CreateNetSceneObject(QuickFind.NetworkSync.GetUserByPlayerID(PlayerID).SceneID, NetworkObjectManager.NetworkObjectTypes.Item, DatabaseID, DetermineVisualID(), transform.position, 0);
         else
             SetActiveChildren();
     }

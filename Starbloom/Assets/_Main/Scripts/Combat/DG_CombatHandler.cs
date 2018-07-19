@@ -62,7 +62,7 @@ public class DG_CombatHandler : MonoBehaviour {
 
 
 
-    public void InputDetected(bool isUP)
+    public void InputDetected(bool isUP, int PlayerID)
     {
         bool AllowAction = false;
         if (isUP || QuickFind.GameSettings.AllowActionsOnHold) AllowAction = true;
@@ -74,8 +74,10 @@ public class DG_CombatHandler : MonoBehaviour {
             QuickFind.CombatHandler.TriggerMeleeDash(PlayerWeaponDashTime, PlayerWeaponDashDistance);
             PlayerDashAttackHitboxes.SetActive(true);
 
-            DG_ClothingObject Cloth = QuickFind.ClothingHairManager.GetAttachedClothingReference(QuickFind.NetworkSync.CharacterLink, DG_ClothingHairManager.ClothHairType.RightHand).ClothingRef;
-            QuickFind.NetworkSync.CharacterLink.AnimationSync.TriggerAnimation(Cloth.AnimationDatabaseNumber);
+            DG_CharacterLink CL = QuickFind.NetworkSync.GetCharacterLinkByPlayerID(PlayerID);
+
+            DG_ClothingObject Cloth = QuickFind.ClothingHairManager.GetAttachedClothingReference(CL, DG_ClothingHairManager.ClothHairType.RightHand).ClothingRef;
+            CL.AnimationSync.TriggerAnimation(Cloth.AnimationDatabaseNumber);
         }
     }
     public void DashComplete()
@@ -83,7 +85,10 @@ public class DG_CombatHandler : MonoBehaviour {
         if (!AwaitingResponse) return;
         AwaitingResponse = false;
 
-        QuickFind.NetworkSync.CharacterLink.CenterCharacterX();
+        //Not sure how else to handle this from a callback without changing dash controller completely.
+        for(int i = 0; i < QuickFind.NetworkSync.UserList.Count; i++)
+            QuickFind.NetworkSync.UserList[i].CharacterLink.CenterCharacterX();
+
         PlayerDashAttackHitboxes.SetActive(false);
     }
 
@@ -167,7 +172,7 @@ public class DG_CombatHandler : MonoBehaviour {
 
     public void PlayerHitReturn(Transform EnemyStriking, Collider PlayerHit)
     {
-        DG_CharacterLink CharLink = PlayerHit.GetComponent<DG_CharacterLink>();
+        DG_CharacterLink CharLink = PlayerHit.transform.parent.GetComponent<DG_CharacterLink>();
         if (!CharLink.MoveSync.isPlayer) return;
 
         NetworkObject NO = QuickFind.NetworkObjectManager.ScanUpTree(EnemyStriking);
@@ -221,7 +226,7 @@ public class DG_CombatHandler : MonoBehaviour {
     void SendEnemyHitData(DG_ContextObject CO, NetworkObject NO, int NewHealthValue)
     {
         if(Sent == null) Sent = new int[3];
-        Sent[0] = QuickFind.NetworkSync.CurrentScene;
+        Sent[0] = NO.Scene.SceneID;
         Sent[1] = NO.NetworkObjectID;
         Sent[2] = NewHealthValue;
 
@@ -245,7 +250,7 @@ public class DG_CombatHandler : MonoBehaviour {
     void SendPlayerHitData(DG_NetworkSync.Users U, int NewHealthValue)
     {
         if(PlayerSent == null) PlayerSent = new int[2];
-        PlayerSent[0] = U.ID;
+        PlayerSent[0] = U.PlayerCharacterID;
         PlayerSent[1] = NewHealthValue;
 
         QuickFind.NetworkSync.SendPlayerHit(PlayerSent);
@@ -253,13 +258,12 @@ public class DG_CombatHandler : MonoBehaviour {
 
     public void ReceivePlayerHitData(int[] Data)
     {
-        DG_NetworkSync.Users U = QuickFind.NetworkSync.GetUserByID(Data[0]);
+        DG_NetworkSync.Users U = QuickFind.NetworkSync.GetUserByPlayerID(Data[0]);
         DG_PlayerCharacters.PlayerCharacter PC = QuickFind.Farm.PlayerCharacters[U.PlayerCharacterID];
         PC.Energies.CurrentHealth = Data[1];
 
         //Update Healthbar
-        if (U.ID == QuickFind.NetworkSync.UserID)
-            QuickFind.GUI_MainOverview.SetGuiHealthValue((float)PC.Energies.CurrentHealth / (float)PC.Energies.MaxHealth);
+        QuickFind.GUI_MainOverview.SetGuiHealthValue((float)PC.Energies.CurrentHealth / (float)PC.Energies.MaxHealth);
 
         //FX
         DG_CharacterLink CharLink = U.CharacterLink;
@@ -272,14 +276,13 @@ public class DG_CombatHandler : MonoBehaviour {
 
     void SendKill(NetworkObject NO, DG_ContextObject CO, DG_EnemyObject EO)
     {
-        int[] OutData = new int[2];
-        NetworkScene NS = NO.transform.parent.GetComponent<NetworkScene>();
-        OutData[0] = NS.SceneID;
-        OutData[1] = NO.NetworkObjectID;
+        //int[] OutData = new int[2];
+        //OutData[0] = NO.Scene.SceneID;
+        //OutData[1] = NO.NetworkObjectID;
 
         Debug.Log("Trigger Enemy Destroy FX");
         //QuickFind.NetworkSync.PlayDestroyEffect(OutData);
-        QuickFind.NetworkSync.RemoveNetworkSceneObject(QuickFind.NetworkSync.CurrentScene, NO.NetworkObjectID);
+        QuickFind.NetworkSync.RemoveNetworkSceneObject(NO.Scene.SceneID, NO.NetworkObjectID);
 
         //EXP
         Debug.Log("Reward Player EXP");

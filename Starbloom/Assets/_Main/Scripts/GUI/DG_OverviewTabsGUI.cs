@@ -13,13 +13,13 @@ public class DG_OverviewTabsGUI : MonoBehaviour {
         Crafting
     }
 
+    public bool isPlayer1;
 
     public Transform TabGrid = null;
     [Header("Canvases")]
     public CanvasGroup UICanvas = null;
 
     public Transform[] TabUIs;
-
 
     [System.NonSerialized] public bool UIisOpen = false;
 
@@ -41,21 +41,30 @@ public class DG_OverviewTabsGUI : MonoBehaviour {
 
     public void OpenUI()
     {
+        if (QuickFind.GUI_Inventory.OuterInventoryIsOpen) return;
+
         QuickFind.ContextDetectionHandler.COEncountered = null;
         QuickFind.ContextDetectionHandler.LastEncounteredContext = null;
+
+        int PlayerID = QuickFind.NetworkSync.Player1PlayerCharacter;
+        if (!isPlayer1) PlayerID = QuickFind.NetworkSync.Player2PlayerCharacter;
+
+        DG_CharacterLink CharLink = QuickFind.NetworkSync.GetCharacterLinkByPlayerID(PlayerID);
 
         UIisOpen = !UIisOpen;
         QuickFind.EnableCanvas(UICanvas, UIisOpen);
         if (UIisOpen)
         {
+            QuickFind.PlayerCam.EnableCamera(CharLink.PlayerCam, false, true);
             QuickFind.GUI_Inventory.OpenUI();
             SetTab(TabType.Inventory);
-            QuickFind.InputController.InputState = DG_PlayerInput.CurrentInputState.InMenu;
+            QuickFind.InputController.GetPlayerByPlayerID(PlayerID).CurrentInputState = DG_PlayerInput.CurrentInputState.InMenu;
         }
         else
         {
+            QuickFind.PlayerCam.EnableCamera(CharLink.PlayerCam, true);
             CloseAllTabs();
-            QuickFind.InputController.InputState = DG_PlayerInput.CurrentInputState.Default;
+            QuickFind.InputController.GetPlayerByPlayerID(PlayerID).CurrentInputState = DG_PlayerInput.CurrentInputState.Default;
         }
     }
 
@@ -68,13 +77,16 @@ public class DG_OverviewTabsGUI : MonoBehaviour {
 
     public void TabHit(DG_GUITab Tab)
     {
-        switch(Tab.Type)
+        int PlayerID = QuickFind.NetworkSync.Player1PlayerCharacter;
+        if (!isPlayer1) PlayerID = QuickFind.NetworkSync.Player2PlayerCharacter;
+
+        switch (Tab.Type)
         {
             case TabType.Inventory: QuickFind.GUI_Inventory.OpenUI(); break;
             case TabType.Skills: QuickFind.GUI_Skills.OpenUI(); break;
             case TabType.Relationship: break;
             case TabType.Map: break;
-            case TabType.Crafting: QuickFind.GUI_Crafting.OpenUI(); break;
+            case TabType.Crafting: QuickFind.GUI_Crafting.OpenUI(PlayerID); break;
         }
         SetTab(Tab.Type);
     }

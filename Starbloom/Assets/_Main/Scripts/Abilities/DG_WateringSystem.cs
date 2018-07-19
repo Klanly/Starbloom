@@ -15,13 +15,13 @@ public class DG_WateringSystem : MonoBehaviour {
 
 
 
-    public void WaterObject(DG_ContextObject CO)
+    public void WaterObject(DG_ContextObject CO, int PlayerID)
     {
         NetworkObject No = QuickFind.NetworkObjectManager.ScanUpTree(CO.transform);
         if (!No.HasBeenWatered)
         {
             int[] Sent = new int[2];
-            Sent[0] = QuickFind.NetworkSync.CurrentScene;
+            Sent[0] = QuickFind.NetworkSync.GetUserByPlayerID(PlayerID).SceneID;
             Sent[1] = No.NetworkObjectID;
 
             QuickFind.NetworkSync.WaterNetworkObject(Sent);

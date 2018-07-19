@@ -17,7 +17,7 @@ public class DG_SkillsGUI : MonoBehaviour {
 
 
 
-
+    public bool isPlayer1;
     [Header("Canvases")]
     public CanvasGroup UICanvas = null;
     [Header("Reference")]
@@ -82,7 +82,9 @@ public class DG_SkillsGUI : MonoBehaviour {
                 STI.TitleText.text = QuickFind.WordDatabase.GetWordFromID(Localization[i].LocalizationID);
         }
 
-        int PlayerID = QuickFind.NetworkSync.PlayerCharacterID;
+        int PlayerID = QuickFind.NetworkSync.Player1PlayerCharacter;
+        if (!isPlayer1) PlayerID = QuickFind.NetworkSync.Player2PlayerCharacter;
+
         int SkillExp = QuickFind.SkillTracker.GetSkillExp(SkillTag, PlayerID);
         int SkillLevel = QuickFind.SkillTracker.GetSkillLevel(SkillTag, PlayerID, SkillExp);
 

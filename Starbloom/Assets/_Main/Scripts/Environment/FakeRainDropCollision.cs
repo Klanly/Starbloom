@@ -135,44 +135,51 @@ public class FakeRainDropCollision : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (QuickFind.PlayerTrans == null) return;
-
-        if (!IsRaining)
+        for (int i = 0; i < QuickFind.InputController.Players.Length; i++)
         {
-            if (StartedRaining)
-                TurnOffRipples();
-            return;
-        }
-        if (!PoolsLoaded)
-            LoadPools();
+            DG_PlayerInput.Player P = QuickFind.InputController.Players[i];
+            if (P.CharLink == null) continue;
 
 
-        StartedRaining = true;
-        TurnOffSplashCount = 0;
-        TurnOffRipplesCount = 0;
+            if (QuickFind.PlayerTrans == null) return;
 
-        Vector3 CamPos = QuickFind.PlayerTrans.position;
-        Vector3 CamOffset = new Vector3(CamPos.x, 100, CamPos.z);
-
-        Timer = Timer - Time.deltaTime;
-        bool isThunderstorm = (QuickFind.WeatherHandler.CurrentWeather == WeatherHandler.WeatherTyps.Thunderstorm);
-
-        if (Timer < 0)
-        {
-            Timer = UpdateRate;
-            int Amount;
-            float Radius;
-
-            if (QuickFind.PlayerCam.MainCam.transform.position.y > QuickFind.UnderwaterTrigger.WaterLevel)
+            if (!IsRaining)
             {
-                Amount = AmountPerUpdate;  Radius = DropletRadius;
-                if (isThunderstorm) { Amount = StormAmountPerUpdate; Radius = StormDropletRadius; }
-                RaycastDetectionLoop(RaycastMask, Amount, CamOffset, Radius, Type.Splash, QuickFind.UnderwaterTrigger.WaterLevel);
+                if (StartedRaining)
+                    TurnOffRipples();
+                return;
             }
+            if (!PoolsLoaded)
+                LoadPools();
 
-            Amount = RipplePerUpdate; Radius = RippleRadius;
-            if (isThunderstorm) { Amount = StormRipplePerUpdate; Radius = StormRippleRadius; }
-            RaycastDetectionLoop(RippleMask, Amount, CamOffset, Radius, Type.Ripple, -50);
+
+            StartedRaining = true;
+            TurnOffSplashCount = 0;
+            TurnOffRipplesCount = 0;
+
+            Vector3 CamPos = QuickFind.PlayerTrans.position;
+            Vector3 CamOffset = new Vector3(CamPos.x, 100, CamPos.z);
+
+            Timer = Timer - Time.deltaTime;
+            bool isThunderstorm = (QuickFind.WeatherHandler.CurrentWeather == WeatherHandler.WeatherTyps.Thunderstorm);
+
+            if (Timer < 0)
+            {
+                Timer = UpdateRate;
+                int Amount;
+                float Radius;
+
+                if (P.CharLink.PlayerCam.CamTrans.position.y > QuickFind.UnderwaterTrigger.WaterLevel)
+                {
+                    Amount = AmountPerUpdate; Radius = DropletRadius;
+                    if (isThunderstorm) { Amount = StormAmountPerUpdate; Radius = StormDropletRadius; }
+                    RaycastDetectionLoop(RaycastMask, Amount, CamOffset, Radius, Type.Splash, QuickFind.UnderwaterTrigger.WaterLevel);
+                }
+
+                Amount = RipplePerUpdate; Radius = RippleRadius;
+                if (isThunderstorm) { Amount = StormRipplePerUpdate; Radius = StormRippleRadius; }
+                RaycastDetectionLoop(RippleMask, Amount, CamOffset, Radius, Type.Ripple, -50);
+            }
         }
     }
     void RaycastDetectionLoop(LayerMask Mask, int Count, Vector3 CamOffset, float Radius, Type EffectType, float MinimumY)

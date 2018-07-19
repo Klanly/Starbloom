@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DG_BasicCharMovement : Photon.MonoBehaviour
+public class DG_BasicCharMovement : MonoBehaviour
 {
+    public DG_CharacterLink CharLink;
     public Animator Anim = null;
     public Rigidbody rb = null;
 
@@ -30,14 +31,16 @@ public class DG_BasicCharMovement : Photon.MonoBehaviour
     private void FixedUpdate()
     {
         bool inputDetected = false;
-        DG_PlayerInput.Player MP = QuickFind.InputController.MainPlayer;
+
+        DG_PlayerInput.Player MP = QuickFind.InputController.GetPlayerByPlayerID(CharLink.PlayerID);
+
         if (MP.VerticalAxis != 0 || MP.HorizontalAxis != 0)
             inputDetected = true;
 
 
         if (MP.Moveable && inputDetected)
         {
-            Transform Camera = QuickFind.PlayerCam.transform;
+            Transform Camera = MP.CharLink.PlayerCam.CamTrans;
             Vector3 forward = Camera.transform.forward;
             var right = Camera.transform.right;
 
@@ -59,7 +62,7 @@ public class DG_BasicCharMovement : Photon.MonoBehaviour
             Vector3 CurrentVel = rb.velocity;
             Vector3 NewVel = Vector3.zero;
             NewVel.y = CurrentVel.y;
-            rb.velocity = NewVel;        
+            rb.velocity = NewVel;
             Anim.SetBool("Moving", false);
         }
         SetFacing();

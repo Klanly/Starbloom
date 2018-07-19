@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class DG_ShippingBinGUI : MonoBehaviour {
 
+    public bool isPlayer1;
+
     [Header("Grid")]
     public RectTransform DisplayGrid = null;
     public DG_UICustomGridScroll GridScroll;
@@ -11,6 +13,7 @@ public class DG_ShippingBinGUI : MonoBehaviour {
     public GameObject DropPanel = null;
     public CanvasGroup UICanvas = null;
     [System.NonSerialized] public bool BinUIisOpen = false;
+
 
 
     private void Awake()
@@ -31,7 +34,10 @@ public class DG_ShippingBinGUI : MonoBehaviour {
     {
         if (QuickFind.GUI_Inventory.isFloatingInventoryItem) return;
 
-        if (QuickFind.InputController.MainPlayer.ButtonSet.Interact.Up && QuickFind.GUI_Inventory.CurrentHoverItem != null)
+        int PlayerID = QuickFind.NetworkSync.Player1PlayerCharacter;
+        if (!isPlayer1) PlayerID = QuickFind.NetworkSync.Player2PlayerCharacter;
+
+        if (QuickFind.InputController.GetPlayerByPlayerID(PlayerID).ButtonSet.SecondaryAction.Up && QuickFind.GUI_Inventory.CurrentHoverItem != null)
         {
             DG_InventoryItem CurrentHoverItem = QuickFind.GUI_Inventory.CurrentHoverItem;
             SetItem(CurrentHoverItem);
@@ -78,12 +84,15 @@ public class DG_ShippingBinGUI : MonoBehaviour {
     }
     void SetItem(DG_InventoryItem II)
     {
-        DG_PlayerCharacters.RucksackSlot RS = QuickFind.InventoryManager.GetRuckSackSlotInventoryItem(II);
+        int PlayerID = QuickFind.NetworkSync.Player1PlayerCharacter;
+        if (!isPlayer1) PlayerID = QuickFind.NetworkSync.Player2PlayerCharacter;
+
+        DG_PlayerCharacters.RucksackSlot RS = QuickFind.InventoryManager.GetRuckSackSlotInventoryItem(II, PlayerID);
         DG_ItemObject Object = QuickFind.ItemDatabase.GetItemFromID(RS.ContainedItem);
         if (!Object.isItem) { return; }
 
         QuickFind.ShippingBin.SetStackInShippingBin(RS);
-        QuickFind.InventoryManager.SetItemValueInRucksack(RS, QuickFind.NetworkSync.PlayerCharacterID, II.SlotID, 0, 0, 0, 0, 0, 0, false);
+        QuickFind.InventoryManager.SetItemValueInRucksack(RS, PlayerID, II.SlotID, 0, 0, 0, 0, 0, 0, false, PlayerID);
         QuickFind.GUI_Inventory.ClearFloatingObject();
         DropPanel.SetActive(false);
         II.ContainsItem = false;
@@ -94,7 +103,10 @@ public class DG_ShippingBinGUI : MonoBehaviour {
 
     public void BinItemPressed(DG_ShippingBinItem BinItem)
     {
-        QuickFind.InventoryManager.ShiftStackToFromShippingBin(BinItem);
+        int PlayerID = QuickFind.NetworkSync.Player1PlayerCharacter;
+        if (!isPlayer1) PlayerID = QuickFind.NetworkSync.Player2PlayerCharacter;
+
+        QuickFind.InventoryManager.ShiftStackToFromShippingBin(BinItem, PlayerID);
         QuickFind.GUI_Inventory.CurrentHoverItem = null;
         LoadBin();
     }

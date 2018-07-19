@@ -87,9 +87,9 @@ public class DG_NetworkGrowthHandler : MonoBehaviour
         float Scale = IO.DefaultScale;
         T.localScale = new Vector3(Scale, Scale, Scale);
 
-        if (ShowBrokenItem) Spawn.GetComponent<DG_BreakObjectLoadSet>().LoadBrokenType();
+        if (ShowBrokenItem) Spawn.GetComponent<DG_BreakObjectLoadSet>().LoadBrokenType(NS.SceneID);
 
-        if (NS.SceneID != QuickFind.NetworkSync.CurrentScene)
+        if (!QuickFind.NetworkSync.AnyPlayersIControlAreInScene(NS.SceneID))
             NO.transform.gameObject.SetActive(false);
 
         if (DestroyOld)

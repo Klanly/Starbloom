@@ -501,7 +501,6 @@ GameObject:
   - component: {fileID: 114171051838745050}
   - component: {fileID: 114348269924878050}
   - component: {fileID: 114743207135592710}
-  - component: {fileID: 195713833658945184}
   - component: {fileID: 136883930271770002}
   - component: {fileID: 95875630996734122}
   - component: {fileID: 54695808172026730}
@@ -2140,6 +2139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e39e48200cd6f85459b9f6c4ecdfce6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  YouAreOwner: 0
 --- !u!114 &114428417862517318
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2387,24 +2387,3 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.16557378, y: -0.033099264, z: -0.026771486}
     m_Extent: {x: 0.9537291, y: 0.18249898, z: 0.62464696}
   m_DirtyAABB: 0
---- !u!195 &195713833658945184
-NavMeshAgent:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1455744706472234}
-  m_Enabled: 0
-  m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 0
-  m_AutoBraking: 0
-  m_AutoRepath: 0
-  m_Height: 2
-  m_BaseOffset: 0
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 2

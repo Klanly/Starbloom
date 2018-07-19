@@ -22,11 +22,11 @@ public class DG_CraftingGUI : MonoBehaviour {
     [System.NonSerialized] public DG_CraftButton CurrentHoverItem = null;
 
 
-    public void OpenUI()
+    public void OpenUI(int PlayerID)
     {
         QuickFind.GUI_OverviewTabs.CloseAllTabs();
         QuickFind.EnableCanvas(UICanvas, true);
-        LoadCraftingGUI();
+        LoadCraftingGUI(PlayerID);
     }
     public void CloseUI()
     {
@@ -34,10 +34,10 @@ public class DG_CraftingGUI : MonoBehaviour {
     }
 
 
-    void LoadCraftingGUI()
+    void LoadCraftingGUI(int PlayerID)
     {
         DG_CraftingDictionaryItem[] CraftingDictionary = QuickFind.CraftingDictionary.ItemCatagoryList;
-        int[] PlayerKnownCrafts = QuickFind.Farm.PlayerCharacters[QuickFind.NetworkSync.PlayerCharacterID].CraftsDiscovered;
+        int[] PlayerKnownCrafts = QuickFind.Farm.PlayerCharacters[PlayerID].CraftsDiscovered;
 
         int index = 0;
         int GUIChildCount = CraftGrid.childCount;
@@ -61,9 +61,10 @@ public class DG_CraftingGUI : MonoBehaviour {
 
                 index++;
                 CB.CraftDatabaseID = CDI.DatabaseID;
+                CB.PlayerID = PlayerID;
                 DG_ItemObject IO = QuickFind.ItemDatabase.GetItemFromID(CDI.ItemCreatedRef);
                 CB.Icon.sprite = IO.Icon;
-                if (InventoryContainsIngredients(CDI))
+                if (InventoryContainsIngredients(CDI, PlayerID))
                 {
                     CB.Icon.color = AbleToCraftColor;
                     CB.AbleToCraft = true;
@@ -77,12 +78,12 @@ public class DG_CraftingGUI : MonoBehaviour {
         }
     }
 
-    bool InventoryContainsIngredients(DG_CraftingDictionaryItem CDI)
+    bool InventoryContainsIngredients(DG_CraftingDictionaryItem CDI, int PlayerID)
     {
         for(int i = 0; i < CDI.IngredientList.Length; i++)
         {
             DG_CraftingDictionaryItem.Ingredient Ingredient = CDI.IngredientList[i];
-            if (QuickFind.InventoryManager.TotalInventoryCountOfItem(Ingredient.ItemDatabaseRef) < Ingredient.Value)
+            if (QuickFind.InventoryManager.TotalInventoryCountOfItem(Ingredient.ItemDatabaseRef, PlayerID) < Ingredient.Value)
                 return false;
         }
         return true;
@@ -96,25 +97,25 @@ public class DG_CraftingGUI : MonoBehaviour {
 
 
 
-    public void CraftButtonPressed(DG_CraftButton CraftButton)
+    public void CraftButtonPressed(DG_CraftButton CraftButton, int PlayerID)
     {
         int CraftDatabaseID = CraftButton.CraftDatabaseID;
         DG_CraftingDictionaryItem CDI = QuickFind.CraftingDictionary.GetItemFromID(CraftDatabaseID);
 
         //Check if Room First, before allowing player to derp themselves.
-        if (!QuickFind.InventoryManager.AddItemToRucksack(QuickFind.NetworkSync.PlayerCharacterID, CDI.ItemCreatedRef, DG_ItemObject.ItemQualityLevels.Low, false, true)) return;
+        if (!QuickFind.InventoryManager.AddItemToRucksack(CraftButton.PlayerID, CDI.ItemCreatedRef, DG_ItemObject.ItemQualityLevels.Low, false, true)) return;
 
 
         for (int i = 0; i < CDI.IngredientList.Length; i++)
         {
             DG_CraftingDictionaryItem.Ingredient Ingredient = CDI.IngredientList[i];
-            QuickFind.InventoryManager.SubtractNumberOfItemFromRucksack(Ingredient.ItemDatabaseRef, Ingredient.Value);
+            QuickFind.InventoryManager.SubtractNumberOfItemFromRucksack(Ingredient.ItemDatabaseRef, Ingredient.Value, PlayerID);
         }
 
-        QuickFind.InventoryManager.AddItemToRucksack(QuickFind.NetworkSync.PlayerCharacterID, CDI.ItemCreatedRef, DG_ItemObject.ItemQualityLevels.Low, false, false);
+        QuickFind.InventoryManager.AddItemToRucksack(CraftButton.PlayerID, CDI.ItemCreatedRef, DG_ItemObject.ItemQualityLevels.Low, false, false);
 
 
-        if (InventoryContainsIngredients(CDI))
+        if (InventoryContainsIngredients(CDI, PlayerID))
         {
             CraftButton.Icon.color = AbleToCraftColor;
             CraftButton.AbleToCraft = true;

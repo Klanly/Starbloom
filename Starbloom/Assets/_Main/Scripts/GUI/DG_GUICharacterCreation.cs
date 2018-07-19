@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class DG_GUICharacterCreation : MonoBehaviour {
 
+    public bool isPlayer1;
+
     [Header("Canvases")]
     public CanvasGroup UICanvas = null;
     public GameObject FarmNameObject = null;
     [Header("Static Text")]
     public DG_TextStatic[] StaticTextArray;
 
-    bool InitialCreate;
-    int CharID;
+
 
     private void Awake()
     {
@@ -26,20 +27,8 @@ public class DG_GUICharacterCreation : MonoBehaviour {
 
     public void OpenCharacterCreation(bool InitialCreation)
     {
-        foreach (DG_TextStatic TS in StaticTextArray)
-            TS.ManualLoad();
-
-        if (QuickFind.NetworkMaster.RequestedCharacterNum == -1)
-            QuickFind.NetworkMaster.RequestedCharacterNum = QuickFind.NetworkSync.UserList.Count - 1;
-
-        QuickFind.NetworkSync.PlayerCharacterID = QuickFind.NetworkMaster.RequestedCharacterNum;
-
-        QuickFind.NetworkSync.GetUserByID(QuickFind.NetworkSync.UserID).PlayerCharacterID = QuickFind.NetworkSync.PlayerCharacterID;
-        if (QuickFind.NetworkMaster.RequestedCharacterNum != 0)
-            FarmNameObject.SetActive(false);
-
-        CharID = QuickFind.NetworkMaster.RequestedCharacterNum;
-        InitialCreate = InitialCreation;
+        foreach (DG_TextStatic TS in StaticTextArray) TS.ManualLoad();
+        FarmNameObject.SetActive(QuickFind.Farm.FarmName == string.Empty);
         QuickFind.EnableCanvas(UICanvas, true);
     }
 
@@ -48,7 +37,9 @@ public class DG_GUICharacterCreation : MonoBehaviour {
 
     public void CharacterNameFieldChanged(TMPro.TMP_InputField InputField)
     {
-        QuickFind.Farm.PlayerCharacters[CharID].Name = InputField.text;
+        int PlayerID = QuickFind.NetworkSync.Player1PlayerCharacter;
+        if(!isPlayer1) PlayerID = QuickFind.NetworkSync.Player2PlayerCharacter;
+        QuickFind.Farm.PlayerCharacters[PlayerID].Name = InputField.text;
     }
     public void FarmNameFieldChanged(TMPro.TMP_InputField InputField)
     {
@@ -58,15 +49,14 @@ public class DG_GUICharacterCreation : MonoBehaviour {
 
     public void GoodToGOButton()
     {
-        if (QuickFind.Farm.PlayerCharacters[CharID].Name == string.Empty)
-            QuickFind.Farm.PlayerCharacters[CharID].Name = "Default Name " + QuickFind.NetworkSync.PlayerCharacterID.ToString();
-        if (QuickFind.Farm.FarmName == string.Empty)
-            QuickFind.Farm.FarmName = "Default Farm Name";
+        int PlayerID = QuickFind.NetworkSync.Player1PlayerCharacter;
+        if (!isPlayer1) PlayerID = QuickFind.NetworkSync.Player2PlayerCharacter;
+        if (QuickFind.Farm.PlayerCharacters[PlayerID].Name == string.Empty) QuickFind.Farm.PlayerCharacters[PlayerID].Name = "Default Name " + PlayerID.ToString();
+        if (QuickFind.Farm.FarmName == string.Empty) QuickFind.Farm.FarmName = "Default Farm Name";
 
-        if (PhotonNetwork.isMasterClient)
-            QuickFind.SaveHandler.SaveFileName = QuickFind.Farm.FarmName;
+        if (PhotonNetwork.isMasterClient) QuickFind.SaveHandler.SaveFileName = QuickFind.Farm.FarmName;
 
         QuickFind.EnableCanvas(UICanvas, false);
-        QuickFind.MainMenuUI.TriggerGameStart();
+        QuickFind.GameStartHandler.CharacterFinishedBeingCreated(PlayerID);
     }
 }

@@ -13,7 +13,7 @@ public class DG_TextPrintout : MonoBehaviour {
         public TMPro.TextMeshProUGUI TextMeshObject;
     }
 
-
+    public int PlayerID = -2;
     List<TextPrintObject> PrintObjects;
 
 
@@ -28,7 +28,7 @@ public class DG_TextPrintout : MonoBehaviour {
 
     public void AddNewDisplayText(string textToDisplay, TMPro.TextMeshProUGUI TextMeshObject)
     {
-        QuickFind.DialogueGUIController.SetGuiState(1);
+        QuickFind.DialogueGUIController.SetGuiState(1, PlayerID);
 
         TextPrintObject TPO = new TextPrintObject();
         TPO.FinalString = textToDisplay;
@@ -83,7 +83,7 @@ public class DG_TextPrintout : MonoBehaviour {
         }
 
         if(ObjectsToClear.Count == PrintObjects.Count)
-            QuickFind.DialogueGUIController.SetGuiState(2);
+            QuickFind.DialogueGUIController.SetGuiState(2, PlayerID);
 
         //Clear Finished Objects
         foreach (TextPrintObject Object in ObjectsToClear)

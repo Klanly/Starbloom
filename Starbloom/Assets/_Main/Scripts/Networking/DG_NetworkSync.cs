@@ -1,7 +1,6 @@
-﻿using System.Collections;
+﻿using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using UnityEngine;
-using Sirenix.OdinInspector;
 
 public class DG_NetworkSync : Photon.MonoBehaviour
 {
@@ -9,19 +8,25 @@ public class DG_NetworkSync : Photon.MonoBehaviour
     public class Users
     {
         [Header("Network")]
-        [ReadOnly] public int ID; //Note User ID is Assigned From Photon Network ID.
+        [ReadOnly] public int NetID; //Note User ID is Assigned From Photon Network ID.
         [Header("Character")]
-        [ReadOnly] public int PlayerCharacterID;
-        [ReadOnly] public int SceneID;
+        [ReadOnly] public int PlayerCharacterID = 0;
+        [ReadOnly] public int SceneID = -1;
         [ReadOnly] public DG_CharacterLink CharacterLink;
-
     }
 
-    [ReadOnly] public int UserID =  -1;
-    [ReadOnly] public int PlayerCharacterID = -1;
-    [ReadOnly] public int CurrentScene = -1;
-    [System.NonSerialized] public DG_CharacterLink CharacterLink;
+
+    [ReadOnly] public int NetID = -1;
+    [ReadOnly] public int Player1PlayerCharacter = -1;
+    [ReadOnly] public int Player2PlayerCharacter = -1;
     [System.NonSerialized] public PhotonView PV;
+
+
+
+    //[ReadOnly] public int PlayerCharacterID = -1;
+    //[ReadOnly] public int CurrentScene = -1;
+    //[System.NonSerialized] public DG_CharacterLink CharacterLink;
+
 
     bool AwaitingSync = false;
     bool FirstLoaded = false;
@@ -76,11 +81,12 @@ public class DG_NetworkSync : Photon.MonoBehaviour
 
     #region Get Helpers
 
-    public Users GetUserByID(int ID)
+    public List<Users> GetUsersByNetID(int ID)
     {
+        List<Users> ReturnUsers = new List<Users>();
         for (int i = 0; i < UserList.Count; i++)
-            { if (UserList[i].ID == ID) return UserList[i]; }
-        return null;
+            { if (UserList[i].NetID == ID) ReturnUsers.Add(UserList[i]); }
+        return ReturnUsers;
     }
     public Users GetUserByPlayerID(int ID)
     {
@@ -88,41 +94,63 @@ public class DG_NetworkSync : Photon.MonoBehaviour
         { if (UserList[i].PlayerCharacterID == ID) return UserList[i]; }
         return null;
     }
+    public DG_CharacterLink GetCharacterLinkByPlayerID(int ID)
+    {
+        Users U = GetUserByPlayerID(ID);
+        if (U != null)
+            return U.CharacterLink;
+        else
+            return null;
+    }
     public Users GetUserByCharacterLink(DG_CharacterLink Sync)
     {
         for (int i = 0; i < UserList.Count; i++)
         { if (UserList[i].CharacterLink == Sync) return UserList[i]; }
         return null;
     }
-    public int GetPlayerIDByUserID(int UserID)
+    public bool AnyPlayersIControlAreInScene(int SceneID, int IgnorePlayerID = -2)
     {
         for (int i = 0; i < UserList.Count; i++)
-        { if (UserList[i].ID == UserID) return UserList[i].PlayerCharacterID; }
-        return -1;
+        {
+            Users U = UserList[i];
+            if (U.NetID == NetID && U.SceneID == SceneID && U.PlayerCharacterID != IgnorePlayerID) return true;
+        }
+        return false;
     }
-    public DG_CharacterLink GetCharacterLinkByUserID(int ID)
+    public bool ThisPlayerBelongsToMe(int PlayerID)
     {
-        Users U = GetUserByID(ID);
-        if (U != null)
-            return U.CharacterLink;
-        else
-            return null;
+        for (int i = 0; i < UserList.Count; i++)
+        { if (UserList[i].NetID == NetID && UserList[i].PlayerCharacterID == PlayerID) return true; }
+        return false;
     }
-    public void RefreshUsersIDsInScene(bool ExcludeSelf)
+
+    //public int GetPlayerIDByUserID(int UserID)
+    //{
+    //    for (int i = 0; i < UserList.Count; i++)
+    //    { if (UserList[i].ID == UserID) return UserList[i].PlayerCharacterID; }
+    //    return -1;
+    //}
+
+    public void RefreshUsersIDsInScene(bool ExcludeSelf, int SceneID)
     {
         if (UsersInScene == null) UsersInScene = new int[4];
+        for (int iR = 0; iR < UsersInScene.Length; iR++) UsersInScene[iR] = -1;
         for (int i = 0; i < UsersInScene.Length; i++)
         {
-            if (i >= UserList.Count) { UsersInScene[i] = -1; continue;  }
+            if (i >= UserList.Count) { UsersInScene[i] = -1; continue; }
 
             Users U = UserList[i];
-
-            if (U.SceneID == CurrentScene)
+            if (U.SceneID == SceneID)
             {
-                if (ExcludeSelf && U.ID != UserID)
-                    UsersInScene[i] = -1;
+                if (ExcludeSelf && ThisPlayerBelongsToMe(U.PlayerCharacterID)) UsersInScene[i] = -1;
                 else
-                    UsersInScene[i] = i;
+                {
+                    bool Contains = false;
+                    for (int iN = 0; iN < UsersInScene.Length; iN++)
+                    { if (UsersInScene[i] == U.NetID) Contains = true; }
+                    if (Contains) UsersInScene[i] = -1;
+                    else UsersInScene[i] = U.NetID;
+                }
             }
             else
                 UsersInScene[i] = -1;
@@ -141,16 +169,16 @@ public class DG_NetworkSync : Photon.MonoBehaviour
     {
         Users NewUser = new Users();
 
-        NewUser.ID = PhotonID;
+        NewUser.NetID = PhotonID;
         UserList.Add(NewUser);
 
         List<int> TransferInts = new List<int>();
-        TransferInts.Add(NewUser.ID);
+        TransferInts.Add(NewUser.NetID);
         TransferInts.Add(UserList.Count);
         for (int i = 0; i < UserList.Count; i++)
         {
-            TransferInts.Add(UserList[i].ID);
             TransferInts.Add(UserList[i].PlayerCharacterID);
+            TransferInts.Add(UserList[i].NetID);
             TransferInts.Add(UserList[i].SceneID);
             TransferInts.Add((int)QuickFind.Farm.PlayerCharacters[UserList[i].PlayerCharacterID].CharacterGender);
         }
@@ -164,21 +192,21 @@ public class DG_NetworkSync : Photon.MonoBehaviour
     {
         //UserList.Clear();
 
-        if (UserID == -1) { UserID = TransferedIn[0];}
+        if (NetID == -1) { NetID = TransferedIn[0];}
 
         int UserCount = TransferedIn[1];
         if (UserCount == 1) UserList.Clear();
         int index = 2;
         for(int i = 0; i < UserCount; i++)
         {
-            if (GetUserByID(TransferedIn[index]) != null) { index = index + 4;  continue; }
+            if (GetUserByPlayerID(TransferedIn[index]) != null) { index = index + 4;  continue; }
 
             Users NewUser = new Users();
-            NewUser.ID = TransferedIn[index]; index++;
             NewUser.PlayerCharacterID = TransferedIn[index]; index++;
+            NewUser.NetID = TransferedIn[index]; index++;
             NewUser.SceneID = TransferedIn[index]; index++;
 
-            if (NewUser.ID == UserID || FirstLoaded) { UserList.Add(NewUser); index++; continue; }
+            if (NewUser.NetID == NetID || FirstLoaded) { UserList.Add(NewUser); index++; continue; }
             QuickFind.CharacterManager.SpawnCharController(TransferedIn[index], NewUser); index++;
             UserList.Add(NewUser);
         }
@@ -188,7 +216,7 @@ public class DG_NetworkSync : Photon.MonoBehaviour
             AwaitingSync = false;
             FirstLoaded = true;
 
-            Debug.Log("UserID == " + UserID.ToString());
+            Debug.Log("NetID == " + NetID.ToString());
             Debug.Log("Connected Online == " + QuickFind.GameSettings.PlayOnline.ToString());
 
             if (!PhotonNetwork.isMasterClient)
@@ -232,7 +260,7 @@ public class DG_NetworkSync : Photon.MonoBehaviour
     [PunRPC]
     void ReceivePlayerMovement(int[] InData)
     {
-        DG_CharacterLink CL = GetCharacterLinkByUserID(InData[0]);
+        DG_CharacterLink CL = GetCharacterLinkByPlayerID(InData[0]);
         if(CL != null) CL.MoveSync.UpdatePlayerPos(InData);
     }
 
@@ -243,7 +271,7 @@ public class DG_NetworkSync : Photon.MonoBehaviour
     [PunRPC]
     void ReceivePlayerAnimationState(int[] InData)
     {
-        GetCharacterLinkByUserID(InData[0]).MoveSync.AnimSync.UpdatePlayerAnimationState(InData);
+        GetCharacterLinkByPlayerID(InData[0]).MoveSync.AnimSync.UpdatePlayerAnimationState(InData);
     }
 
 
@@ -263,7 +291,7 @@ public class DG_NetworkSync : Photon.MonoBehaviour
     {PV.RPC("ReceiveAnimationSubState", PhotonTargets.Others, OutgoingData);}
     [PunRPC]
     void ReceiveAnimationSubState(int[] InData)
-    {GetCharacterLinkByUserID(InData[0]).MoveSync.AnimSync.ReceiveNetAnimation(InData);}
+    { GetCharacterLinkByPlayerID(InData[0]).MoveSync.AnimSync.ReceiveNetAnimation(InData);}
 
 
     #endregion
@@ -463,7 +491,7 @@ public class DG_NetworkSync : Photon.MonoBehaviour
     #region World Objects
     public void RequestWorldObjects()
     {
-        PV.RPC("GatherWorldObjects", PhotonTargets.MasterClient, UserID);
+        PV.RPC("GatherWorldObjects", PhotonTargets.MasterClient, NetID);
     }
     [PunRPC]
     void GatherWorldObjects(int ReturnPhotonOwner)
@@ -594,12 +622,12 @@ public class DG_NetworkSync : Photon.MonoBehaviour
 
     public void SendAIDestination(int[] OutData)
     {
-        RefreshUsersIDsInScene(false);
+        RefreshUsersIDsInScene(false, OutData[0]);
         for(int i = 0; i < UsersInScene.Length; i++)
         {
             if(UsersInScene[i] != -1)
             {
-                PhotonPlayer PP = PhotonPlayer.Find(UserList[UsersInScene[i]].ID);
+                PhotonPlayer PP = PhotonPlayer.Find(UsersInScene[i]);
                 PV.RPC("ReceiveAIDestination", PP, OutData);
             }
         }
@@ -620,9 +648,9 @@ public class DG_NetworkSync : Photon.MonoBehaviour
 
 
 
-    public void ReturnAIPositionsToReqester(int ReturnID, int[] OutData)
+    public void ReturnAIPositionsToReqester(int NetID, int[] OutData)
     {
-        PhotonPlayer PP = PhotonPlayer.Find(ReturnID); //This is correct
+        PhotonPlayer PP = PhotonPlayer.Find(NetID);
         PV.RPC("ReceiveReturnAIPositions", PP, OutData);
     }
     [PunRPC]

@@ -36,35 +36,39 @@ public class DG_HoeHandler : MonoBehaviour {
     }
 
 
-    public void InputDetected(bool isUP)
+    public void InputDetected(bool isUP, int PlayerID)
     {
         bool AllowAction = false;
         if (isUP || QuickFind.GameSettings.AllowActionsOnHold) AllowAction = true;
 
         if (AllowAction && SafeToPlace)
         {
-            if (!QuickFind.NetworkSync.CharacterLink.AnimationSync.CharacterIsGrounded()) return;
+            DG_CharacterLink CLink = QuickFind.NetworkSync.GetCharacterLinkByPlayerID(PlayerID);
+
+            if (!CLink.AnimationSync.CharacterIsGrounded()) return;
 
             AwaitingResponse = true;
             StoredPosition = QuickFind.GridDetection.DetectionPoint.position;
             if (QuickFind.GameSettings.DisableAnimations)
-                HitAction();
+                HitAction(PlayerID);
             else
             {
-                QuickFind.NetworkSync.CharacterLink.FacePlayerAtPosition(StoredPosition);
-                DG_ClothingObject Cloth = QuickFind.ClothingHairManager.GetAttachedClothingReference(QuickFind.NetworkSync.CharacterLink, DG_ClothingHairManager.ClothHairType.RightHand).ClothingRef;
-                QuickFind.NetworkSync.CharacterLink.AnimationSync.TriggerAnimation(Cloth.AnimationDatabaseNumber);
+                CLink.FacePlayerAtPosition(StoredPosition);
+                DG_ClothingObject Cloth = QuickFind.ClothingHairManager.GetAttachedClothingReference(CLink, DG_ClothingHairManager.ClothHairType.RightHand).ClothingRef;
+                CLink.AnimationSync.TriggerAnimation(Cloth.AnimationDatabaseNumber);
             }
         }
     }
 
 
-    public void HitAction()
+    public void HitAction(int PlayerID)
     {
         if (!AwaitingResponse) return;
         AwaitingResponse = false;
 
-        QuickFind.NetworkObjectManager.CreateNetSceneObject(QuickFind.NetworkSync.CurrentScene, NetworkObjectManager.NetworkObjectTypes.Item, HoeItemDatabaseNumber, 0, StoredPosition, 0);
+
+
+        QuickFind.NetworkObjectManager.CreateNetSceneObject(QuickFind.NetworkSync.GetUserByPlayerID(PlayerID).SceneID, NetworkObjectManager.NetworkObjectTypes.Item, HoeItemDatabaseNumber, 0, StoredPosition, 0);
     }
 
 

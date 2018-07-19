@@ -17,7 +17,7 @@ public class DG_GUIMainMenu : Photon.MonoBehaviour
     }
 
 
-    
+    public bool isPlayer1;
 
     [Header("Canvases")]
     public CanvasGroup UICanvas = null;
@@ -51,8 +51,9 @@ public class DG_GUIMainMenu : Photon.MonoBehaviour
 
 
 
-    public void TriggerGameStart()
-    { QuickFind.GameStartHandler.TriggerGameStart(); }
+
+    public void OpenPlayerSelectScreen()
+    { Debug.Log("Select Player to Play as HERE! :)"); }
 
     public void OpenCharacterCreationScreen()
     { QuickFind.CharacterCreation.OpenCharacterCreation(true); }

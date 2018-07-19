@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 public class DG_CharacterLink : MonoBehaviour {
 
@@ -12,6 +13,8 @@ public class DG_CharacterLink : MonoBehaviour {
     }
 
     [Header("References")]
+    [ReadOnly] public int PlayerID = -2;
+    [ReadOnly] public CameraLogic.PlayerCamRigg PlayerCam;
     public DG_MovementSync MoveSync;
     public DG_MagnetAttraction MagnetAttract;
     public DG_AnimationSync AnimationSync;
@@ -37,12 +40,12 @@ public class DG_CharacterLink : MonoBehaviour {
     Transform TargetingHelper;
     Transform TargetingHelper2;
 
-    [System.NonSerialized] public Transform _T;
+    [System.NonSerialized] public Transform PlayerTrans;
 
 
     private void Awake()
     {
-        _T = transform;
+        PlayerTrans = MoveSync.transform;
         AttachedClothes = new List<DG_ClothingHairManager.AttachedClothing>();
         if (!DoNotDisableOnStart)
         {
@@ -55,10 +58,10 @@ public class DG_CharacterLink : MonoBehaviour {
     private void Start()
     {
         if (!DoNotDisableOnStart)
-            _T.SetParent(QuickFind.CharacterManager.transform);
+            transform.SetParent(QuickFind.CharacterManager.transform);
         else
         {
-            QuickFind.PlayerTrans = _T;
+            QuickFind.PlayerTrans = MoveSync.transform;
             MoveSync.enabled = false;
             AnimationSync.enabled = false;
         }
@@ -78,8 +81,7 @@ public class DG_CharacterLink : MonoBehaviour {
     }
     private void Update()
     {
-        if (QuickFind.NetworkSync == null || QuickFind.NetworkSync.UserID == 0)
-            return;
+        if (PlayerID == -2 || QuickFind.NetworkSync == null) return;
 
         if(!Allow)
         {
@@ -92,14 +94,16 @@ public class DG_CharacterLink : MonoBehaviour {
         MagnetAttract.isOwner = true;
         MoveSync.isPlayer = true;
 
-        QuickFind.PlayerTrans = _T;
         AnimationSync.isPlayer = true;
-        QuickFind.CombatHandler.PlayerDashAttackHitboxes.transform.SetParent(_T);
+        QuickFind.CombatHandler.PlayerDashAttackHitboxes.transform.SetParent(PlayerTrans);
         QuickFind.CombatHandler.PlayerDashAttackHitboxes.transform.localPosition = Vector3.zero;
         QuickFind.CombatHandler.PlayerDashAttackHitboxes.transform.localRotation = Quaternion.identity;
         QuickFind.CombatHandler.PlayerDashAttackHitboxes.SetActive(false);
 
-        QuickFind.InputController.MainPlayer.CharLink = this;
+
+
+        DG_PlayerInput.Player MP = QuickFind.InputController.GetPlayerByPlayerID(PlayerID);
+        MP.CharLink = this;
 
         this.enabled = false;
     }
@@ -144,19 +148,19 @@ public class DG_CharacterLink : MonoBehaviour {
     public void FacePlayerAtPosition(Vector3 NewPosition)
     {
         TargetingHelper.position = NewPosition;
-        TargetingHelper2.position = _T.position;
+        TargetingHelper2.position = PlayerTrans.position;
 
         TargetingHelper2.LookAt(TargetingHelper);
 
-        Vector3 CurRot = _T.eulerAngles;
+        Vector3 CurRot = PlayerTrans.eulerAngles;
         CurRot.y = TargetingHelper2.eulerAngles.y;
-        _T.eulerAngles = CurRot;
+        PlayerTrans.eulerAngles = CurRot;
     }
 
     public void CenterCharacterX()
     {
-        Vector3 PlayerAngle = _T.eulerAngles;
+        Vector3 PlayerAngle = PlayerTrans.eulerAngles;
         PlayerAngle.x = 0;
-        _T.eulerAngles = PlayerAngle;
+        PlayerTrans.eulerAngles = PlayerAngle;
     }
 }

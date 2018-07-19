@@ -28,6 +28,7 @@ public class SceneIDList : MonoBehaviour {
         [ShowIf("ShowLocalization")]
         public bool AppendPlayerName;
         [Header("Visuals")]
+        public bool CenterStageScene;
         public bool AllowEnvironmentParticles;
         public bool AllowSnowShader;
 
@@ -35,7 +36,7 @@ public class SceneIDList : MonoBehaviour {
         public void JumpToScene_InGame()
         {
             if (!Application.isPlaying) return;
-            QuickFind.SceneTransitionHandler.TriggerSceneChange(SceneName, 0);
+            QuickFind.SceneTransitionHandler.TriggerSceneChange(SceneName, 0, QuickFind.NetworkSync.Player1PlayerCharacter);
         }
     }
 

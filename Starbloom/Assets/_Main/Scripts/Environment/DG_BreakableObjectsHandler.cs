@@ -20,7 +20,7 @@ public class DG_BreakableObjectsHandler : MonoBehaviour {
 
 
 
-    public void TryHitObject(DG_ContextObject CO, HotbarItemHandler.ActivateableTypes ActivateableType, DG_ItemObject.ItemQualityLevels ToolLevel, DG_PlayerCharacters.RucksackSlot RucksackSlotOpen)
+    public void TryHitObject(DG_ContextObject CO, HotbarItemHandler.ActivateableTypes ActivateableType, DG_ItemObject.ItemQualityLevels ToolLevel, DG_PlayerCharacters.RucksackSlot RucksackSlotOpen, int PlayerID)
     {
         NetworkObject NO = QuickFind.NetworkObjectManager.ScanUpTree(CO.transform);
         DG_ItemObject IO = QuickFind.ItemDatabase.GetItemFromID(NO.ItemRefID);
@@ -34,17 +34,19 @@ public class DG_BreakableObjectsHandler : MonoBehaviour {
             AwaitingResponse = true;
 
             if (QuickFind.GameSettings.DisableAnimations)
-                HitAction();
+                HitAction(PlayerID);
             else
             {
-                QuickFind.NetworkSync.CharacterLink.FacePlayerAtPosition(CO.transform.position);
-                DG_ClothingObject Cloth = QuickFind.ClothingHairManager.GetAttachedClothingReference(QuickFind.NetworkSync.CharacterLink, DG_ClothingHairManager.ClothHairType.RightHand).ClothingRef;
-                QuickFind.NetworkSync.CharacterLink.AnimationSync.TriggerAnimation(Cloth.AnimationDatabaseNumber);
+                DG_CharacterLink CL = QuickFind.NetworkSync.GetCharacterLinkByPlayerID(PlayerID);
+
+                CL.FacePlayerAtPosition(CO.transform.position);
+                DG_ClothingObject Cloth = QuickFind.ClothingHairManager.GetAttachedClothingReference(CL, DG_ClothingHairManager.ClothHairType.RightHand).ClothingRef;
+                CL.AnimationSync.TriggerAnimation(Cloth.AnimationDatabaseNumber);
             }
         }
         else return;
     }
-    public void HitAction()
+    public void HitAction(int PlayerID)
     {
         if (!AwaitingResponse) return;
         AwaitingResponse = false;
@@ -57,7 +59,7 @@ public class DG_BreakableObjectsHandler : MonoBehaviour {
             int Hitvalue = ToolIO.ToolQualityLevels[KnownToolLevel].StrengthValue;
             int newHealthValue = KnownNO.HealthValue - Hitvalue;
 
-            if (newHealthValue <= 0) { SendBreak(KnownNO, KnownCO, KnownIO); }
+            if (newHealthValue <= 0) { SendBreak(KnownNO, KnownCO, KnownIO, PlayerID); }
             else { SendHitData(KnownCO, KnownNO, newHealthValue); }
         }
     }
@@ -78,7 +80,7 @@ public class DG_BreakableObjectsHandler : MonoBehaviour {
     void SendHitData(DG_ContextObject CO, NetworkObject NO, int NewHealthValue)
     {
         int[] Sent = new int[3];
-        Sent[0] = QuickFind.NetworkSync.CurrentScene;
+        Sent[0] = NO.Scene.SceneID;
         Sent[1] = NO.NetworkObjectID;
         Sent[2] = NewHealthValue;
 
@@ -100,20 +102,18 @@ public class DG_BreakableObjectsHandler : MonoBehaviour {
 
 
 
-    void SendBreak(NetworkObject NO, DG_ContextObject CO, DG_ItemObject IO)
+    void SendBreak(NetworkObject NO, DG_ContextObject CO, DG_ItemObject IO, int PlayerID)
     {
         if(CO.Type == DG_ContextObject.ContextTypes.BreakableTree)
             CO.GetComponent<DG_TreeFall>().BreakMessage();
         else
         {
             int[] OutData = new int[2];
-            NetworkScene NS = NO.transform.parent.GetComponent<NetworkScene>();
-            OutData[0] = NS.SceneID;
+            OutData[0] = NO.Scene.SceneID;
             OutData[1] = NO.NetworkObjectID;
 
             QuickFind.NetworkSync.PlayDestroyEffect(OutData);
-            QuickFind.NetworkSync.RemoveNetworkSceneObject(QuickFind.NetworkSync.CurrentScene, NO.NetworkObjectID);
-            int SceneID = QuickFind.NetworkSync.CurrentScene;
+            QuickFind.NetworkSync.RemoveNetworkSceneObject(NO.Scene.SceneID, NO.NetworkObjectID);
             DG_BreakableObjectItem BOI = QuickFind.BreakableObjectsCompendium.GetItemFromID(IO.HarvestClusterIndex);
             DG_BreakableObjectItem.ItemClump[] IC = BOI.GetBreakReward();
 
@@ -122,12 +122,12 @@ public class DG_BreakableObjectsHandler : MonoBehaviour {
             {
                 DG_BreakableObjectItem.ItemClump Clump = IC[i];
                 for (int iN = 0; iN < Clump.Value; iN++)
-                    QuickFind.NetworkObjectManager.CreateNetSceneObject(SceneID, NetworkObjectManager.NetworkObjectTypes.Item, Clump.ItemID, Clump.ItemQuality, SPR.GetSpawnPoint(), 0, true, SPR.RandomVelocity());
+                    QuickFind.NetworkObjectManager.CreateNetSceneObject(NO.Scene.SceneID, NetworkObjectManager.NetworkObjectTypes.Item, Clump.ItemID, Clump.ItemQuality, SPR.GetSpawnPoint(), 0, true, SPR.RandomVelocity());
             }
 
             //EXP
             if (IO.EnvironmentValues[0].ActivateableTypeRequired == HotbarItemHandler.ActivateableTypes.Pickaxe)
-                QuickFind.SkillTracker.IncreaseSkillLevel(DG_SkillTracker.SkillTags.Mining, DG_ItemObject.ItemQualityLevels.Low);
+                QuickFind.SkillTracker.IncreaseSkillLevel(DG_SkillTracker.SkillTags.Mining, DG_ItemObject.ItemQualityLevels.Low, PlayerID);
 
             //FX
             CO.GetComponent<DG_FXContextObjectReference>().TriggerBreak();

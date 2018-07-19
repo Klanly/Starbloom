@@ -4,6 +4,23 @@ using UnityEngine;
 
 public class DG_ObjectPlacement : MonoBehaviour {
 
+
+    public class CharacterRequestingPlacement
+    {
+        public int PlayerID;
+        public bool PlacementActive = false;
+        public int ActiveSlot;
+
+        public Transform ObjectGhost;
+        public DG_PlayerCharacters.RucksackSlot RucksackSlotOpen;
+        public DG_ItemObject ItemDatabaseReference;
+
+        //Wait for Animation To Complete
+        public bool SpawnGhostAfterAnimation = false;
+        public bool SafeToPlace = false;
+    }
+
+
     public enum PlacementType
     {
         ItemObject,
@@ -20,59 +37,61 @@ public class DG_ObjectPlacement : MonoBehaviour {
     [Header("Debug")]
     public bool ShowDebug = false;
 
+    public CharacterRequestingPlacement[] PlayersPlacement;
 
-    [System.NonSerialized] public Transform ObjectGhost;
-    [System.NonSerialized] public bool PlacementActive;
     [System.NonSerialized] public bool AwaitingNetResponse;
 
-    [System.NonSerialized] public DG_PlayerCharacters.RucksackSlot RucksackSlotOpen;
-    [System.NonSerialized] public DG_ItemObject ItemDatabaseReference;
+
 
     PlacementType CurrentPlacementType;
     Collider DetectedInTheWay;
     NetworkObject SoilObject;
-    int ActiveSlot;
     bool AwaitingResponse;
-
-
 
     Vector3 SavedPosition;
     float SavedDirection;
 
-    //Wait for Animation To Complete
-    bool SpawnGhostAfterAnimation;
 
-    bool SafeToPlace = false;
+
+
 
 
     private void Awake()
     {
         QuickFind.ObjectPlacementManager = this;
+        PlayersPlacement = new CharacterRequestingPlacement[2];
+        PlayersPlacement[0] = new CharacterRequestingPlacement();
+        PlayersPlacement[1] = new CharacterRequestingPlacement();
     }
 
 
     private void Update()
     {
-        if (PlacementActive)
+        for (int i = 0; i < PlayersPlacement.Length; i++)
         {
-            ObjectGhost.position = QuickFind.GridDetection.DetectionPoint.position;
-            bool GoodToPlace = false;
-            if (ItemDatabaseReference.RequireTilledEarth)
-                GoodToPlace = AreaIsOkForSeedPlacement(SeedPlacementDetection, ObjectGhost.position, .45f);
-            else
-                GoodToPlace = AreaIsClear(BoxcastDetection, ObjectGhost.position, .45f);
+            CharacterRequestingPlacement CRP = PlayersPlacement[i];
 
-            QuickFind.GridDetection.GridMesh.enabled = GoodToPlace;
-            SetMaterialColors(GoodToPlace);
-            SafeToPlace = GoodToPlace;
-        }
-        else SafeToPlace = false;
+            if (CRP.PlacementActive)
+            {
+                CRP.ObjectGhost.position = QuickFind.GridDetection.DetectionPoint.position;
+                bool GoodToPlace = false;
+                if (CRP.ItemDatabaseReference.RequireTilledEarth)
+                    GoodToPlace = AreaIsOkForSeedPlacement(SeedPlacementDetection, CRP.ObjectGhost.position, .45f);
+                else
+                    GoodToPlace = AreaIsClear(BoxcastDetection, CRP.ObjectGhost.position, .45f);
 
-        if (SpawnGhostAfterAnimation)
-        {
-            if (QuickFind.NetworkSync.CharacterLink.AnimationSync.MidAnimation) return;
-            SpawnGhostAfterAnimation = false;
-            SetupItemObjectGhost(RucksackSlotOpen, ItemDatabaseReference, ActiveSlot);
+                QuickFind.GridDetection.GridMesh.enabled = GoodToPlace;
+                SetMaterialColors(GoodToPlace, CRP);
+                CRP.SafeToPlace = GoodToPlace;
+            }
+            else CRP.SafeToPlace = false;
+
+            if (CRP.SpawnGhostAfterAnimation)
+            {
+                if (QuickFind.NetworkSync.GetCharacterLinkByPlayerID(CRP.PlayerID).AnimationSync.MidAnimation) return;
+                CRP.SpawnGhostAfterAnimation = false;
+                SetupItemObjectGhost(CRP.PlayerID, CRP.RucksackSlotOpen, CRP.ItemDatabaseReference, CRP.ActiveSlot);
+            }
         }
     }
 
@@ -81,99 +100,106 @@ public class DG_ObjectPlacement : MonoBehaviour {
 
 
 
-    public void InputDetected(bool isUP)
+    public void InputDetected(bool isUP, int PlayerID)
     {
         bool AllowAction = false;
         if (isUP || QuickFind.GameSettings.AllowActionsOnHold) AllowAction = true;
 
-        if (AllowAction && SafeToPlace)
-        {
-            if (!QuickFind.NetworkSync.CharacterLink.AnimationSync.CharacterIsGrounded()) return;
+        CharacterRequestingPlacement CRP = GetCRPByPlayerID(PlayerID);
 
-            if (SoilDetection())
+        if (AllowAction && CRP.SafeToPlace)
+        {
+            if (!QuickFind.NetworkSync.GetCharacterLinkByPlayerID(PlayerID).AnimationSync.CharacterIsGrounded()) return;
+
+            int SceneID = QuickFind.NetworkSync.GetUserByPlayerID(PlayerID).SceneID;
+
+            if (SoilDetection(CRP, SceneID))
             {
                 if (SoilObject != null && SoilObject.SurrogateObjectIndex != 0) return;
                 if (AwaitingNetResponse) return;
 
                 AwaitingNetResponse = true;
 
-                if (!ItemDatabaseReference.isWallItem)
+                if (!CRP.ItemDatabaseReference.isWallItem)
                 {
                     AwaitingResponse = true;
-                    SavedPosition = ObjectGhost.position;
-                    SavedDirection = ObjectGhost.eulerAngles.y;
+                    SavedPosition = CRP.ObjectGhost.position;
+                    SavedDirection = CRP.ObjectGhost.eulerAngles.y;
 
                     if (QuickFind.GameSettings.DisableAnimations)
-                        PlacementHit();
+                        PlacementHit(CRP, SceneID);
                     else
                     {
-                        QuickFind.NetworkSync.CharacterLink.FacePlayerAtPosition(SavedPosition);
-                        QuickFind.NetworkSync.CharacterLink.AnimationSync.TriggerAnimation(ItemDatabaseReference.AnimationActionID);
+                        QuickFind.NetworkSync.GetCharacterLinkByPlayerID(PlayerID).FacePlayerAtPosition(SavedPosition);
+                        QuickFind.NetworkSync.GetCharacterLinkByPlayerID(PlayerID).AnimationSync.TriggerAnimation(CRP.ItemDatabaseReference.AnimationActionID);
                     }
                 }
                 else
-                    ObjectGhost.GetComponent<DG_DynamicWall>().TriggerPlaceWall();
-                DestroyObjectGhost();
-                QuickFind.InventoryManager.DestroyRucksackItem(RucksackSlotOpen, ActiveSlot);
+                    CRP.ObjectGhost.GetComponent<DG_DynamicWall>().TriggerPlaceWall();
+                DestroyObjectGhost(CRP);
+                QuickFind.InventoryManager.DestroyRucksackItem(CRP.RucksackSlotOpen, CRP.ActiveSlot, PlayerID);
                 QuickFind.GUI_Inventory.ResetHotbarSlot();
             }
         }
     }
 
 
-    public void PlacementHit()
+    public void PlacementHit(CharacterRequestingPlacement CRP, int SceneID)
     {
         if (!AwaitingResponse) return; AwaitingResponse = false;
 
-        QuickFind.NetworkObjectManager.CreateNetSceneObject(QuickFind.NetworkSync.CurrentScene, NetworkObjectManager.NetworkObjectTypes.Item, ItemDatabaseReference.DatabaseID, RucksackSlotOpen.CurrentStackActive, SavedPosition, SavedDirection);
+        QuickFind.NetworkObjectManager.CreateNetSceneObject(SceneID, NetworkObjectManager.NetworkObjectTypes.Item, CRP.ItemDatabaseReference.DatabaseID, CRP.RucksackSlotOpen.CurrentStackActive, SavedPosition, SavedDirection);
     }
 
 
 
-    bool SoilDetection()
+    bool SoilDetection(CharacterRequestingPlacement CRP, int SceneID)
     {
         if (!AreaIsClear(SoilReplaceDetection, QuickFind.GridDetection.DetectionPoint.position, .45f))
             SoilObject = QuickFind.NetworkObjectManager.ScanUpTree(DetectedInTheWay.transform);
         else
             SoilObject = null;
 
-        if (ItemDatabaseReference.RequireTilledEarth) { if (SoilObject != null) return true; else return false; }
+        if (CRP.ItemDatabaseReference.RequireTilledEarth) { if (SoilObject != null) return true; else return false; }
         else
         {
-            if(SoilObject != null && ItemDatabaseReference.DestroysSoilOnPlacement)
-                QuickFind.NetworkSync.RemoveNetworkSceneObject(QuickFind.NetworkSync.CurrentScene, SoilObject.NetworkObjectID);
+            if(SoilObject != null && CRP.ItemDatabaseReference.DestroysSoilOnPlacement)
+                QuickFind.NetworkSync.RemoveNetworkSceneObject(SceneID, SoilObject.NetworkObjectID);
             return true;
         }
     }
 
 
 
-    public void SetupItemObjectGhost(DG_PlayerCharacters.RucksackSlot Rucksack = null, DG_ItemObject Item = null, int slot = 0)
+    public void SetupItemObjectGhost(int PlayerID, DG_PlayerCharacters.RucksackSlot Rucksack = null, DG_ItemObject Item = null, int slot = 0)
     {
-        RucksackSlotOpen = Rucksack;
-        ItemDatabaseReference = Item;
-        ActiveSlot = slot;
+        CharacterRequestingPlacement CRP = GetCRPByPlayerID(PlayerID);
 
-        if (QuickFind.NetworkSync.CharacterLink.AnimationSync.MidAnimation) { SpawnGhostAfterAnimation = true; return; }
+        if (QuickFind.NetworkSync.GetCharacterLinkByPlayerID(PlayerID).AnimationSync.MidAnimation) { CRP.SpawnGhostAfterAnimation = true; return; }
 
-        PlacementActive = true;
+        CRP.PlayerID = PlayerID;
+        CRP.RucksackSlotOpen = Rucksack;
+        CRP.ItemDatabaseReference = Item;
+        CRP.ActiveSlot = slot;
+        CRP.PlacementActive = true;
+
         QuickFind.GridDetection.ObjectIsPlacing = true;
         QuickFind.GridDetection.GlobalPositioning = false;
 
         GameObject ToDestroy = null;
-        if (ObjectGhost != null) ToDestroy = ObjectGhost.gameObject;
+        if (CRP.ObjectGhost != null) ToDestroy = CRP.ObjectGhost.gameObject;
 
         if(Item.ShowPlacementGhost)
-            ObjectGhost = Instantiate(Item.ModelPrefab).transform;
+            CRP.ObjectGhost = Instantiate(Item.ModelPrefab).transform;
         else
-            ObjectGhost = new GameObject().transform;
+            CRP.ObjectGhost = new GameObject().transform;
 
-        ObjectGhost.SetParent(transform);
-        ObjectGhost.localScale = new Vector3(Item.DefaultScale, Item.DefaultScale, Item.DefaultScale);
+        CRP.ObjectGhost.SetParent(transform);
+        CRP.ObjectGhost.localScale = new Vector3(Item.DefaultScale, Item.DefaultScale, Item.DefaultScale);
 
-        TurnOffCollidersLoop(ObjectGhost);
+        TurnOffCollidersLoop(CRP.ObjectGhost);
 
-        if (Item.isWallItem) ObjectGhost.GetComponent<DG_DynamicWall>().TriggerPlacementMode();
+        if (Item.isWallItem) CRP.ObjectGhost.GetComponent<DG_DynamicWall>().TriggerPlacementMode(Item.DatabaseID, PlayerID);
         if (ToDestroy != null) Destroy(ToDestroy);
     }
     void TurnOffCollidersLoop(Transform T)
@@ -189,11 +215,11 @@ public class DG_ObjectPlacement : MonoBehaviour {
 
 
 
-    public void DestroyObjectGhost()
+    public void DestroyObjectGhost(CharacterRequestingPlacement CRP)
     {
         QuickFind.GridDetection.ObjectIsPlacing = false;
-        Destroy(ObjectGhost.gameObject);
-        PlacementActive = false;
+        Destroy(CRP.ObjectGhost.gameObject);
+        CRP.PlacementActive = false;
     }
 
 
@@ -268,9 +294,9 @@ public class DG_ObjectPlacement : MonoBehaviour {
 
 
 
-    public void SetMaterialColors(bool isGreen)
+    public void SetMaterialColors(bool isGreen, CharacterRequestingPlacement CRP)
     {
-        foreach (MeshRenderer c in ObjectGhost.GetComponents<MeshRenderer>())
+        foreach (MeshRenderer c in CRP.ObjectGhost.GetComponents<MeshRenderer>())
         {
             foreach (Material M in c.materials)
             {
@@ -280,5 +306,11 @@ public class DG_ObjectPlacement : MonoBehaviour {
                 M.color = C;
             }
         }
+    }
+
+    public CharacterRequestingPlacement GetCRPByPlayerID(int PlayerID)
+    {
+        if (PlayerID == QuickFind.NetworkSync.Player1PlayerCharacter) return PlayersPlacement[0];
+        else return PlayersPlacement[1];
     }
 }

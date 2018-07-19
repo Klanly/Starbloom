@@ -26,6 +26,7 @@ public class DG_AIEntity : MonoBehaviour {
     [System.NonSerialized] public DG_AIEntityCombat Combat;
     [System.NonSerialized] public DG_AIEntityDetection Detection;
     [System.NonSerialized] public DG_AIAnimationSync AnimationSync;
+    [ReadOnly] public bool YouAreOwner;
 
 
     Vector3 KnownDestination;
@@ -71,13 +72,14 @@ public class DG_AIEntity : MonoBehaviour {
     public void SetAgentDestination(Vector3 Position, int CurrentMovementBehaviour)
     {
         if (Position == Vector3.zero) return; //Appropriate Nav point was not found, don't do anything right now.
+        Vector3 LocalPos = Position + RelayNetworkObject.Scene.transform.position;
 
         if (OutMovementData == null) OutMovementData = new int[6];
-        OutMovementData[0] = QuickFind.NetworkSync.CurrentScene;
+        OutMovementData[0] = RelayNetworkObject.Scene.SceneID;
         OutMovementData[1] = RelayNetworkObject.NetworkObjectID;
-        OutMovementData[2] = QuickFind.ConvertFloatToInt(Position.x);
-        OutMovementData[3] = QuickFind.ConvertFloatToInt(Position.y);
-        OutMovementData[4] = QuickFind.ConvertFloatToInt(Position.z);
+        OutMovementData[2] = QuickFind.ConvertFloatToInt(LocalPos.x);
+        OutMovementData[3] = QuickFind.ConvertFloatToInt(LocalPos.y);
+        OutMovementData[4] = QuickFind.ConvertFloatToInt(LocalPos.z);
         OutMovementData[5] = CurrentMovementBehaviour;
         QuickFind.NetworkSync.SendAIDestination(OutMovementData);
     }
@@ -94,7 +96,8 @@ public class DG_AIEntity : MonoBehaviour {
         DataTransfer.BehaviourType = Behaviour;
 
         Vector3 Position = QuickFind.ConvertIntsToPosition(X, Y, Z);
-        Movement.ReceiveMoveOrder(Position, (DG_AIEntityMovement.MovementBehaviour)Behaviour);
+        Vector3 GlobalPos = Position - RelayNetworkObject.Scene.transform.position;
+        Movement.ReceiveMoveOrder(GlobalPos, (DG_AIEntityMovement.MovementBehaviour)Behaviour);
     }
 
     #endregion
@@ -103,8 +106,8 @@ public class DG_AIEntity : MonoBehaviour {
     //Network
     public bool CheckIfYouAreOwner()
     {
-        if (QuickFind.NetworkSync.UserID == RelayNetworkObject.Scene.SceneOwnerID) return true;
-        else return false;
+        if (QuickFind.NetworkSync.ThisPlayerBelongsToMe(RelayNetworkObject.Scene.ScenePlayerOwnerID)) { YouAreOwner = true; return true; }
+        else { YouAreOwner = false; return false; }
     }
     public Vector3 FindRandomNavMeshPoint(Vector3 CenterPoint, float Radius)
     {
@@ -119,7 +122,7 @@ public class DG_AIEntity : MonoBehaviour {
                 else return point;
             }
         }
-        Debug.Log("Valid Nav Mesh spot could not be found.");
+        //Debug.Log("Valid Nav Mesh spot could not be found.");
         return Vector3.zero;
     }
     public bool RandomPoint(Vector3 center, float range, out Vector3 result)
@@ -134,6 +137,7 @@ public class DG_AIEntity : MonoBehaviour {
                 return true;
             }
         }
+        //Debug.Log("Valid Random Point Could Not be found.");
         result = Vector3.zero;
         return false;
     }

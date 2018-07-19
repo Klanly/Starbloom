@@ -144,59 +144,62 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PrintButtonPressed: 0
-  EnableMoveTowardsMouse: 0
-  MainPlayer:
-    Context: 1
-    Targeting: 2
+  Players:
+  - CharLink: {fileID: 0}
+    CurrentInputState: 0
+    InputMode: 0
     ButtonSet:
       UpDir:
         MainKey: 119
-        AltKey: 273
+        AltKey: 0
       DownDir:
         MainKey: 115
-        AltKey: 274
+        AltKey: 0
       LeftDir:
         MainKey: 97
-        AltKey: 276
+        AltKey: 0
       RightDir:
         MainKey: 100
-        AltKey: 275
+        AltKey: 0
       Action:
         MainKey: 323
-        AltKey: 330
-      Interact:
+        AltKey: 0
+      SecondaryAction:
         MainKey: 324
-        AltKey: 331
+        AltKey: 0
       Special:
-        MainKey: 113
-        AltKey: 332
+        MainKey: 0
+        AltKey: 0
       Jump:
         MainKey: 32
+        AltKey: 0
+      CameraBut:
+        MainKey: 9
         AltKey: 0
       StartBut:
         MainKey: 101
         AltKey: 0
       JoyVert:
-        Inverted: 1
-        InputString: JoyVert
+        Inverted: 0
+        InputString: 
         InvertedAlt: 0
-        AltInputString: JoyDPadVert
+        AltInputString: 
         Value: 0
         Held: 0
         Up: 0
         Positive: 0
       JoyHor:
         Inverted: 0
-        InputString: JoyHor
+        InputString: 
         InvertedAlt: 0
-        AltInputString: JoyDPadHor
+        AltInputString: 
         Value: 0
         Held: 0
         Up: 0
         Positive: 0
       RJoyVert:
         Inverted: 0
-        InputString: JoyRightVert
+        InputString: 
         InvertedAlt: 0
         AltInputString: 
         Value: 0
@@ -205,7 +208,77 @@ MonoBehaviour:
         Positive: 0
       RJoyHor:
         Inverted: 0
-        InputString: JoyRightHor
+        InputString: 
+        InvertedAlt: 0
+        AltInputString: 
+        Value: 0
+        Held: 0
+        Up: 0
+        Positive: 0
+  - CharLink: {fileID: 0}
+    CurrentInputState: 0
+    InputMode: 0
+    ButtonSet:
+      UpDir:
+        MainKey: 0
+        AltKey: 0
+      DownDir:
+        MainKey: 0
+        AltKey: 0
+      LeftDir:
+        MainKey: 0
+        AltKey: 0
+      RightDir:
+        MainKey: 0
+        AltKey: 0
+      Action:
+        MainKey: 0
+        AltKey: 0
+      SecondaryAction:
+        MainKey: 0
+        AltKey: 0
+      Special:
+        MainKey: 0
+        AltKey: 0
+      Jump:
+        MainKey: 0
+        AltKey: 0
+      CameraBut:
+        MainKey: 0
+        AltKey: 0
+      StartBut:
+        MainKey: 0
+        AltKey: 0
+      JoyVert:
+        Inverted: 0
+        InputString: 
+        InvertedAlt: 0
+        AltInputString: 
+        Value: 0
+        Held: 0
+        Up: 0
+        Positive: 0
+      JoyHor:
+        Inverted: 0
+        InputString: 
+        InvertedAlt: 0
+        AltInputString: 
+        Value: 0
+        Held: 0
+        Up: 0
+        Positive: 0
+      RJoyVert:
+        Inverted: 0
+        InputString: 
+        InvertedAlt: 0
+        AltInputString: 
+        Value: 0
+        Held: 0
+        Up: 0
+        Positive: 0
+      RJoyHor:
+        Inverted: 0
+        InputString: 
         InvertedAlt: 0
         AltInputString: 
         Value: 0
@@ -307,6 +380,7 @@ MonoBehaviour:
   SlerpMoveRate: 0.18
   SlerpTurnRate: 0.3
   MaxDistance: 5
+  ApplyDeltaTime: 0
   PlayerMoveSpeed: 0.15
   PlayerSpinRate: 5
   ActualPosition: {fileID: 1568945607}
@@ -392,8 +466,9 @@ GameObject:
   m_Component:
   - component: {fileID: 580821917}
   - component: {fileID: 580821916}
+  - component: {fileID: 580821918}
   m_Layer: 0
-  m_Name: GameStart Handler
+  m_Name: Game Handler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -424,6 +499,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &580821918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 580821915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d888d676703d1ee4db57961d49d18d42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LocalCoopActive: 0
 --- !u!1 &680966592
 GameObject:
   m_ObjectHideFlags: 0
@@ -438,7 +525,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &680966593
 Transform:
   m_ObjectHideFlags: 0
@@ -591,7 +678,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 17233719
+    m_Bits: 16971575
 --- !u!114 &871592273
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1355,6 +1442,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayOnline: 1
   DisableAudio: 1
+  DisableLockMouseToScreen: 1
   GeneratedGender: 0
   DontHideGear: 0
   BypassMainMenu: 1
@@ -1723,7 +1811,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1857971650
 Transform:
   m_ObjectHideFlags: 0
@@ -1753,9 +1841,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SendRate: 0.1
-  SlerpMoveRate: 0.1
+  SlerpMoveRate: 5
   SlerpTurnRate: 0.3
   MaxDistance: 5
+  ApplyDeltaTime: 1
   PlayerMoveSpeed: 0.15
   PlayerSpinRate: 5
   ActualPosition: {fileID: 1757459168}
@@ -1877,6 +1966,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34dd57c746d47ea498713475e7e77920, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CameraSensitivity: 0.5
+  ThirdPersonCameraControlMode: 0
+  ThirdPersonInteractionDetection: 0
+  ThirdPersonEnemyDetectionMode: 1
+  ThirdPersonBreakableDetectionMode: 0
+  ThirdPersonObjectPlacementDetectionMode: 1
+  IsometricCameraControlMode: 0
+  IsometricInteractMode: 2
+  IsometricBreakableDetectionMode: 2
+  IsometricEnemyDetectionMode: 2
+  IsometricObjectPlacementDetectionMode: 2
   TextSpeed: 0.04
   CurrentLanguage: 0
   GlobalDisableCloudRendering: 0

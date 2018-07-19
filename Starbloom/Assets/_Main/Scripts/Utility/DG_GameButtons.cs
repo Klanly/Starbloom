@@ -46,6 +46,9 @@ public class DG_GameButtons
 
         public void Check(JoyAxis Joy)
         {
+            //You fucked up, and removed shit homie.
+            if (InputString == string.Empty) return;
+
             //Joy Stick Check
             bool Detected = false;
             float Axis = Input.GetAxis(InputString);
@@ -91,9 +94,10 @@ public class DG_GameButtons
     ////////////////////////////////////
     [Header("------ Action Buttons --------------------------------------------")]
     public Button Action;
-    public Button Interact;
+    public Button SecondaryAction;
     public Button Special;
     public Button Jump;
+    public Button CameraBut;
     ////////////////////////////////////
     [Header("------ Menu Buttons --------------------------------------------")]
     public Button StartBut;
@@ -117,9 +121,10 @@ public class DG_GameButtons
         RightDir.Check();
         //Buttons ////////////////////////////////////////////////////////
         Action.Check();
-        Interact.Check();
+        SecondaryAction.Check();
         Special.Check();
         Jump.Check();
+        CameraBut.Check();
         //Start / Select ////////////////////////////////////////////////////////
         StartBut.Check();
         //Joy Axis ////////////////////////////////////////////////////////
@@ -141,9 +146,10 @@ public class DG_GameButtons
         Add(ButtonList, RightDir);
 
         Add(ButtonList, Action);
-        Add(ButtonList, Interact);
+        Add(ButtonList, SecondaryAction);
         Add(ButtonList, Special);
         Add(ButtonList, Jump);
+        Add(ButtonList, CameraBut);
 
         Add(ButtonList, StartBut);
 
@@ -170,9 +176,10 @@ public class DG_GameButtons
         Set(IncomingData, RightDir);
 
         Set(IncomingData, Action);
-        Set(IncomingData, Interact);
+        Set(IncomingData, SecondaryAction);
         Set(IncomingData, Special);
         Set(IncomingData, Jump);
+        Set(IncomingData, CameraBut);
 
         Set(IncomingData, StartBut);
     }
@@ -195,9 +202,10 @@ public class DG_GameButtons
         ButtonList.Add(RightDir);
 
         ButtonList.Add(Action);
-        ButtonList.Add(Interact);
+        ButtonList.Add(SecondaryAction);
         ButtonList.Add(Special);
         ButtonList.Add(Jump);
+        ButtonList.Add(CameraBut);
 
         ButtonList.Add(StartBut);
 

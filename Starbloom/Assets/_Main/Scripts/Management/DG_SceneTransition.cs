@@ -5,6 +5,18 @@ using UnityEngine.SceneManagement;
 
 public class DG_SceneTransition : MonoBehaviour {
 
+    
+    public class PlayerTransitioning
+    {
+        public bool Transitioning = false;
+        public int PlayerID;
+        public Scene SceneUnloading;
+        public string SceneLoading;
+        public int NetworkSceneIndexUnloading;
+        public int NetworkSceneIndexLoading;
+        public int LoadingPortalID;
+    }
+
 
     public class AIObjectsWaitingForNetObjects
     {
@@ -15,18 +27,21 @@ public class DG_SceneTransition : MonoBehaviour {
         public DG_AIEntity.AIDestinationTransfer AICharData;
     }
 
-    Scene SceneUnloading;
-    int NetworkSceneIndexUnloading;
+    public float CenterStage;
+    public float StageA;
+    public float StageB;
 
-    string SceneLoading;
-    int NetworkSceneIndexLoading;
-    int LoadingPortalID;
+    PlayerTransitioning Player1Transition;
+    PlayerTransitioning Player2Transition;
+
     DG_SceneEntryPoints LoadingSceneEntryPoints;
-    bool Transitioning = false;
-    Material Skybox;
+
 
     int[] RequestInts;
     List<int> AITransferData;
+
+    public bool PrintDebug;
+
     [System.NonSerialized] public List<AIObjectsWaitingForNetObjects> AwaitingAIObjects;
 
 
@@ -35,96 +50,166 @@ public class DG_SceneTransition : MonoBehaviour {
         AITransferData = new List<int>();
         AwaitingAIObjects = new List<AIObjectsWaitingForNetObjects>();
         QuickFind.SceneTransitionHandler = this;
+        Player1Transition = new PlayerTransitioning();
+        Player2Transition = new PlayerTransitioning();
     }
 
 
 
-    public void TriggerSceneChange(string SceneString, int PortalValue)
+    public void TriggerSceneChange(string SceneString, int PortalValue, int PlayerID)
     {
-        if (Transitioning) return;
+        bool isPlayer1 = (QuickFind.NetworkSync.Player1PlayerCharacter == PlayerID);
+        if (isPlayer1 && Player1Transition.Transitioning) return;
+        if (!isPlayer1 && Player2Transition.Transitioning) return;
 
-        Transitioning = true;
-        SceneUnloading = SceneManager.GetActiveScene();
-        NetworkSceneIndexUnloading = QuickFind.SceneList.GetSceneIndexByString(SceneUnloading.name);
+        PlayerTransitioning PT = Player1Transition;
+        if (isPlayer1) PT = Player1Transition;
+        else PT = Player2Transition;
 
-        SceneLoading = SceneString;
-        NetworkSceneIndexLoading = QuickFind.SceneList.GetSceneIndexByString(SceneString);
-        LoadingPortalID = PortalValue;
+        PT.Transitioning = true;
+        PT.PlayerID = PlayerID;
+        PT.SceneUnloading = SceneManager.GetActiveScene();
+        PT.NetworkSceneIndexUnloading = QuickFind.SceneList.GetSceneIndexByString(PT.SceneUnloading.name);
+        PT.SceneLoading = SceneString;
+        PT.NetworkSceneIndexLoading = QuickFind.SceneList.GetSceneIndexByString(SceneString);
+        PT.LoadingPortalID = PortalValue;
 
         //Unload Network Objects
-        CreateNetworkAIObjects(false);
+
+        bool UnloadLeavingScene = true;
+        if (QuickFind.NetworkSync.AnyPlayersIControlAreInScene(PT.NetworkSceneIndexUnloading, PT.PlayerID)) UnloadLeavingScene = false;
+        if (UnloadLeavingScene)
+            CreateNetworkAIObjects(false, PT.NetworkSceneIndexUnloading);
 
         QuickFind.PathfindingGeneration.NavMeshIsGenerated = false;
 
-        Skybox = RenderSettings.skybox;
-
-        QuickFind.FadeScreen.FadeOut(DG_GUI_FadeScreen.FadeInSpeeds.QuickFade, this.gameObject, "FadeEnded");
+        if (PT.NetworkSceneIndexLoading == PT.NetworkSceneIndexUnloading)
+            FinalizeInScene(PT);
+        else
+        {
+            if (isPlayer1)
+                QuickFind.FadeScreen.FadeOut(DG_GUI_FadeScreen.FadeInSpeeds.QuickFade, this.gameObject, "FadeEndedPlayer1");
+            else
+                QuickFind.FadeScreen.FadeOut(DG_GUI_FadeScreen.FadeInSpeeds.QuickFade, this.gameObject, "FadeEndedPlayer2");
+        }
     }
 
-    public void FadeEnded()
+    public void FadeEndedPlayer1()
     {
-        SceneManager.LoadScene(SceneLoading, LoadSceneMode.Additive);
-        SceneManager.UnloadSceneAsync(SceneUnloading);
+        SceneLoad(Player1Transition);
+    }
+    public void FadeEndedPlayer2()
+    {
+        SceneLoad(Player2Transition);
+    }
+
+    void SceneLoad(PlayerTransitioning TransistionData)
+    {
+        SceneManager.LoadScene(TransistionData.SceneLoading, LoadSceneMode.Additive);
+
+        bool UnloadLeavingScene = true;
+        if (QuickFind.NetworkSync.AnyPlayersIControlAreInScene(TransistionData.NetworkSceneIndexUnloading, TransistionData.PlayerID)) UnloadLeavingScene = false;
+        if(UnloadLeavingScene) SceneManager.UnloadSceneAsync(TransistionData.SceneUnloading);
+
         SceneManager.sceneLoaded += OnLevelFinishedLoading;
     }
 
     void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
     {
+        PlayerTransitioning PT;
+        if (scene.name == Player1Transition.SceneLoading) PT = Player1Transition;
+        else PT = Player2Transition;
+
         SceneManager.sceneLoaded -= OnLevelFinishedLoading;
-        Scene LoadScene = SceneManager.GetSceneByName(SceneLoading);
+        Scene LoadScene = SceneManager.GetSceneByName(PT.SceneLoading);
         SceneManager.SetActiveScene(LoadScene);
 
-        RenderSettings.skybox = Skybox;
-
+        FinalizeInScene(PT);
+    }
+    void FinalizeInScene(PlayerTransitioning PT)
+    {
+        PT.Transitioning = false;
         //Load Network Objects;
-        SetSelfInScene(NetworkSceneIndexLoading);
-        QuickFind.WeatherHandler.CheckEnvironmentFX();
+        SetSelfInScene(PT.NetworkSceneIndexLoading, PT.PlayerID);
+
+        bool BypassWait = false;
+        if (PT.NetworkSceneIndexLoading == PT.NetworkSceneIndexUnloading) BypassWait = true;
+
+        bool UnloadLeavingScene = true;
+        if (QuickFind.NetworkSync.AnyPlayersIControlAreInScene(PT.NetworkSceneIndexUnloading, PT.PlayerID)) UnloadLeavingScene = false;
+
+        QuickFind.PathfindingGeneration.SceneChange(PT.SceneUnloading, PT.NetworkSceneIndexLoading, PT.PlayerID, BypassWait, UnloadLeavingScene);
+    }
+
+
+    public void SetStageBeforeNavMeshLoad(int SceneID)
+    {
+        PlayerTransitioning PT;
+        if (SceneID == Player1Transition.NetworkSceneIndexLoading) PT = Player1Transition;
+        else PT = Player2Transition;
+
+        //Set Stage
+        GameObject Stage = SceneManager.GetSceneByName(PT.SceneLoading).GetRootGameObjects()[0];
+        SceneIDList.SceneIdentity SI = QuickFind.SceneList.GetSceneById(PT.NetworkSceneIndexLoading);
+        if (SI.CenterStageScene) Stage.transform.position = new Vector3(CenterStage, 0, 0);
+        else
+        {
+            if (PT.PlayerID == QuickFind.NetworkSync.Player1PlayerCharacter) Stage.transform.position = new Vector3(StageA,0 , 0);
+            else Stage.transform.position = new Vector3(StageB, 0 , 0);
+        }
+        SI.SceneLink.transform.position = Stage.transform.position;
+        for(int i = 0; i < QuickFind.NetworkSync.UserList.Count; i++)
+        {
+            DG_NetworkSync.Users U = QuickFind.NetworkSync.UserList[i];
+            if(U.SceneID == SceneID) U.CharacterLink.transform.position = Stage.transform.position;
+        }       
+    }
+
+
+    public void NavMeshLoaded(int SceneID, int PlayerID)
+    {
+        if(PrintDebug) Debug.Log("Nav Mesh Loaded");
+
+        PlayerTransitioning PT;
+        if (SceneID == Player1Transition.NetworkSceneIndexLoading) PT = Player1Transition;
+        else PT = Player2Transition;
+        DG_CharacterLink CharLink = QuickFind.NetworkSync.GetCharacterLinkByPlayerID(PT.PlayerID);
 
         //Set Player, and Cam.
-        DG_SceneEntryObject Portal = QuickFind.SceneEntryPoints.GetItemFromID(LoadingPortalID);
+        DG_SceneEntryObject Portal = QuickFind.SceneEntryPoints.GetItemFromID(PT.LoadingPortalID);
         QuickFind.PlayerTrans.position = Portal.transform.position;
         QuickFind.PlayerTrans.eulerAngles = Portal.transform.eulerAngles;
-        QuickFind.PlayerCam.InstantSetCameraAngle(Portal.CameraFacing);
+        QuickFind.PlayerCam.InstantSetCameraAngle(Portal.CameraFacing, CharLink.PlayerCam);
 
-        QuickFind.PathfindingGeneration.SceneChange(SceneUnloading);
-
-
-        QuickFind.FadeScreen.FadeIn(DG_GUI_FadeScreen.FadeInSpeeds.QuickFade, this.gameObject, "FadeInEnded");
-    }
-
-    public void FadeInEnded()
-    {
-        Transitioning = false;
-    }
+        //Environment
+        QuickFind.WeatherHandler.CheckEnvironmentFX();
 
 
-
-
-
-    public void NavMeshLoaded()
-    {       
-        GetSceneAILocations();
-    }
-
-    void GetSceneAILocations()
-    {
-        NetworkScene NS = QuickFind.NetworkObjectManager.GetSceneByID(QuickFind.NetworkSync.CurrentScene);
-        if (NS.SomeoneElseIsInThisScene())
+        //Load AI
+        NetworkScene NS = QuickFind.NetworkObjectManager.GetSceneByID(SceneID);
+        int PlayerInScene = NS.SomeoneElseIsInThisScene(PlayerID);
+        if (QuickFind.NetworkSync.ThisPlayerBelongsToMe(PlayerInScene)) return;
+        if (PlayerInScene != -1 && QuickFind.NetworkSync.UserList.Count != 1)
         {
             if (RequestInts == null) RequestInts = new int[2];
             RequestInts[0] = NS.SceneID;
-            RequestInts[1] = QuickFind.NetworkSync.UserID;
+            RequestInts[1] = QuickFind.NetworkSync.NetID;
             QuickFind.NetworkSync.RequestAIPositionsFromOwner(RequestInts);
         }
         else
-            CreateNetworkAIObjects(true);
+            CreateNetworkAIObjects(true, NS.SceneID);
+
+        //FadeIn
+        QuickFind.FadeScreen.FadeIn(DG_GUI_FadeScreen.FadeInSpeeds.QuickFade);
     }
     public void AIPositionsRequested(int[] InData)
     {
         NetworkScene NS = QuickFind.NetworkObjectManager.GetSceneByID(InData[0]);
-        if (NS.SceneOwnerID != QuickFind.NetworkSync.UserID) return;
+        if (!QuickFind.NetworkSync.ThisPlayerBelongsToMe(NS.ScenePlayerOwnerID)) return;
 
         int ObjectCount = 0;
+
+        AITransferData.Add(NS.SceneID);
 
         for (int i = 0; i < NS.NetworkObjectList.Count; i++)
         {
@@ -159,8 +244,8 @@ public class DG_SceneTransition : MonoBehaviour {
     public void AIPositionsReceived(int[] InData)
     {
         AIObjectsWaitingForNetObjects AwaitObject;
-        NetworkScene NS = QuickFind.NetworkObjectManager.GetSceneByID(QuickFind.NetworkSync.CurrentScene);
         int index = 0;
+        NetworkScene NS = QuickFind.NetworkObjectManager.GetSceneByID(InData[index]); index++;
         int Count = InData[(InData.Length - 1)];
         for (int i = 0; i < Count; i++)
         {
@@ -194,20 +279,23 @@ public class DG_SceneTransition : MonoBehaviour {
             }
         }
 
-        CreateNetworkAIObjects(true);
+        CreateNetworkAIObjects(true, NS.SceneID);
     }
 
 
-    void CreateNetworkAIObjects(bool isEnable)
+    void CreateNetworkAIObjects(bool isEnable, int SceneID)
     {
-        NetworkScene NS = QuickFind.NetworkObjectManager.GetSceneByID(QuickFind.NetworkSync.CurrentScene);
+        NetworkScene NS = QuickFind.NetworkObjectManager.GetSceneByID(SceneID);
         for (int i = 0; i < NS.NetworkObjectList.Count; i++)
         {
             NetworkObject NO = NS.NetworkObjectList[i];
             if (!isEnable)
             {
                 if (NO.ObjectType == NetworkObjectManager.NetworkObjectTypes.Enemy)
-                    Destroy(NO.transform.GetChild(0).gameObject);
+                {
+                    if(NO.transform.childCount > 0)
+                        Destroy(NO.transform.GetChild(0).gameObject);
+                }
                 else
                     NO.gameObject.SetActive(false);
             }
@@ -285,31 +373,33 @@ public class DG_SceneTransition : MonoBehaviour {
 
 
 
-    public void SetSelfInScene(int NewScene)
+    public void SetSelfInScene(int NewScene, int PlayerID)
     {
-        int SceneLeaving = QuickFind.NetworkSync.CurrentScene;
-        QuickFind.NetworkSync.CurrentScene = NewScene;
-        LocalSetSelfInScene(SceneLeaving, NewScene);
+        int SceneLeaving = QuickFind.NetworkSync.GetUserByPlayerID(PlayerID).SceneID;
+        QuickFind.NetworkSync.GetUserByPlayerID(PlayerID).SceneID = NewScene;
+        LocalSetSelfInScene(SceneLeaving, NewScene, PlayerID);
 
         int[] IntGroup = new int[3];
-        IntGroup[0] = QuickFind.NetworkSync.UserID;
+        IntGroup[0] = PlayerID;
         IntGroup[1] = NewScene;
         IntGroup[2] = SceneLeaving;
         QuickFind.NetworkSync.NetSetUserInScene(IntGroup);
     }
-    public void LocalSetSelfInScene(int SceneLeaving, int NewScene)
+    public void LocalSetSelfInScene(int SceneLeaving, int NewScene, int PlayerID)
     {
-        if (SceneLeaving != -1) QuickFind.NetworkObjectManager.GetSceneByID(SceneLeaving).SceneOwnerID = 0;
-        DG_NetworkSync.Users U = QuickFind.NetworkSync.GetUserByID(QuickFind.NetworkSync.UserID);
+        if (SceneLeaving != -1) QuickFind.NetworkObjectManager.GetSceneByID(SceneLeaving).ScenePlayerOwnerID = 0;
+        DG_NetworkSync.Users U = QuickFind.NetworkSync.GetUserByPlayerID(PlayerID);
         U.SceneID = NewScene;
-        QuickFind.NetworkObjectManager.GetSceneByID(NewScene).SelfEnteredScene();
+        QuickFind.NetworkObjectManager.GetSceneByID(NewScene).SelfEnteredScene(PlayerID);
     }
     public void RemoteSetUserInScene(int[] IntGroup)
     {
         int ID = IntGroup[0];
-        DG_NetworkSync.Users U = QuickFind.NetworkSync.GetUserByID(ID);
+        DG_NetworkSync.Users U = QuickFind.NetworkSync.GetUserByPlayerID(ID);
         U.SceneID = IntGroup[1];
         int SceneLeaving = IntGroup[2];
         if (SceneLeaving != -1) QuickFind.NetworkObjectManager.GetSceneByID(SceneLeaving).UserLeftScene(U);
+
+        U.CharacterLink.transform.position = QuickFind.NetworkObjectManager.GetSceneByID(U.SceneID).transform.position;
     }
 }

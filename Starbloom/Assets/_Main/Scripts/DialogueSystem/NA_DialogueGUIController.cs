@@ -20,7 +20,7 @@ public class NA_DialogueGUIController : MonoBehaviour
 
     [System.NonSerialized] public GUIStates GUIState;
     [System.NonSerialized] public DialogueStates DialogueState;
-
+    [System.NonSerialized] public int PlayerID = -2;
 
     [Header("GUI")]
     public CanvasGroup UICanvas = null;
@@ -52,10 +52,9 @@ public class NA_DialogueGUIController : MonoBehaviour
 
     public void ActionKeyPressed()
     {
-        if (QuickFind.NameChangeUI.NameChangeIsOpen)
-            return;
+        if (QuickFind.NameChangeUI.NameChangeIsOpen) return;
 
-        DG_PlayerInput.Player Char = QuickFind.InputController.MainPlayer;
+        DG_PlayerInput.Player Char = QuickFind.InputController.GetPlayerByPlayerID(PlayerID);
 
         if (GUIState == GUIStates.NotInConversatation && QuickFind.ContextDetectionHandler.ContextHit)
         {
@@ -91,7 +90,7 @@ public class NA_DialogueGUIController : MonoBehaviour
         ActiveDialogue.NextChoice(Choice);
         TriggerEventInternal();
     }
-    public void SetGuiState(int State)
+    public void SetGuiState(int State, int PlayerID)
     {
         //This is triggered from an inpector OnEnd event from Text Over Time script in "Text" Object in GUI Canvas
         switch (State)
@@ -108,7 +107,7 @@ public class NA_DialogueGUIController : MonoBehaviour
                     if (DialogueState == DialogueStates.PopulatingCoice)
                     {
                         DialogueState = DialogueStates.AwaitingChoice;
-                        BuildAllOptions();
+                        BuildAllOptions(PlayerID);
                     }
                     else if (DialogueState == DialogueStates.AwaitingButton)
                         NextButton.enabled = true;
@@ -124,7 +123,7 @@ public class NA_DialogueGUIController : MonoBehaviour
     public void ClearAllOptions()
     {
         QuickFind.EnableCanvas(DescisionCanvas, false);
-        QuickFind.InputController.MainPlayer.InputState = DG_PlayerInput.Player.InputStateModes.Normal;
+        QuickFind.InputController.GetPlayerByPlayerID(PlayerID).InputMode = DG_PlayerInput.Player.InputStateModes.Normal;
         QuickFind.GUIContextHandler.isDialogueOption = false;
     }
 
@@ -172,7 +171,7 @@ public class NA_DialogueGUIController : MonoBehaviour
             {
                 int QuestID = ActiveDialogue.Current.ContextInt;
                 DG_QuestObject QuestObject = QuickFind.QuestDatabase.GetItemFromID(QuestID);
-                QuestObject.CompleteQuest();
+                QuestObject.CompleteQuest(PlayerID);
                 PathChoices = ActiveDialogue.GetWindowsByWindow(ActiveDialogue.Current);
                 if (PathChoices != null && PathChoices.Length > 0)
                     ActiveDialogue.Current = PathChoices[0];
@@ -186,7 +185,7 @@ public class NA_DialogueGUIController : MonoBehaviour
     }
     void DisplayText()
     {
-        QuickFind.InputController.MainPlayer.Moveable = false;
+        QuickFind.InputController.GetPlayerByPlayerID(PlayerID).Moveable = false;
         QuickFind.EnableCanvas(UICanvas, true);
 
         QuickFind.TextPrintout.AddNewDisplayText(BuildDialogueDisplay(ActiveDialogue.Current), MainTextDisplay);
@@ -202,7 +201,7 @@ public class NA_DialogueGUIController : MonoBehaviour
                 DialogueState = DialogueStates.AwaitingButton;
         }
     }
-    void BuildAllOptions()
+    void BuildAllOptions(int PlayerID)
     {
         QuickFind.EnableCanvas(DescisionCanvas, true);
 
@@ -221,7 +220,7 @@ public class NA_DialogueGUIController : MonoBehaviour
                 int QuestID = WindowOption.ContextInt;
                 DG_QuestObject QuestObject = QuickFind.QuestDatabase.GetItemFromID(QuestID);
 
-                if (!QuestObject.QuestRequirementsAreMet())
+                if (!QuestObject.QuestRequirementsAreMet(PlayerID))
                     DisplayTrue = false;
             }
 
@@ -242,7 +241,7 @@ public class NA_DialogueGUIController : MonoBehaviour
         QuickFind.TextPrintout.RushAllActiveTextEffects();
 
         //Set up Context for Controller.
-        QuickFind.InputController.MainPlayer.InputState = DG_PlayerInput.Player.InputStateModes.DialogueMenu;
+        QuickFind.InputController.GetPlayerByPlayerID(PlayerID).InputMode = DG_PlayerInput.Player.InputStateModes.DialogueMenu;
         QuickFind.GUIContextHandler.isDialogueOption = true;
         QuickFind.GUIContextHandler.ControllerMenuPosition = 0;
         QuickFind.GUIContextHandler.OpenNewContextMenuSelectionState(DescisionOptions.ToArray());
@@ -250,12 +249,12 @@ public class NA_DialogueGUIController : MonoBehaviour
     void EndConversation()
     {
         GUIState = GUIStates.NotInConversatation;
-        QuickFind.InputController.MainPlayer.Moveable = true;
+        QuickFind.InputController.GetPlayerByPlayerID(PlayerID).Moveable = true;
 
         QuickFind.EnableCanvas(UICanvas, false);
         QuickFind.EnableCanvas(DescisionCanvas, false);
 
-        QuickFind.InputController.MainPlayer.InputState = DG_PlayerInput.Player.InputStateModes.Normal;
+        QuickFind.InputController.GetPlayerByPlayerID(PlayerID).InputMode = DG_PlayerInput.Player.InputStateModes.Normal;
 
         MainTextDisplay.text = string.Empty;
         for (int i = 0; i < DescisionArray.Length; i++)

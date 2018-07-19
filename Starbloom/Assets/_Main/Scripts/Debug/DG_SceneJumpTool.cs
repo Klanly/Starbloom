@@ -14,7 +14,7 @@ public class DG_SceneJumpTool : MonoBehaviour {
     {
         public string Name;
         public DG_ScenePortalTrigger Portal;
-        [Button(ButtonSizes.Small)] public void TransistionToScene() { Portal.TriggerSceneChange(); }
+        [Button(ButtonSizes.Small)] public void TransistionToScene() { Portal.TriggerSceneChange(QuickFind.NetworkSync.Player1PlayerCharacter); }
     }
 
     [HideInEditorMode]

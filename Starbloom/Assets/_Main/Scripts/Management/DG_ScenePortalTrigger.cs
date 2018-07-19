@@ -11,10 +11,15 @@ public class DG_ScenePortalTrigger : MonoBehaviour {
     public int Owner;
 
     [Button(ButtonSizes.Large)]
-    public void TriggerSceneChange()
+    public void DebugTriggerSceneChange()
+    {
+        TriggerSceneChange(QuickFind.NetworkSync.Player1PlayerCharacter);
+    }
+
+    public void TriggerSceneChange(int PlayerID)
     {
         if (!Application.isPlaying) return;
-        QuickFind.SceneTransitionHandler.TriggerSceneChange(SceneString, PortalValue);
+        QuickFind.SceneTransitionHandler.TriggerSceneChange(SceneString, PortalValue, PlayerID);
 
     }
 }

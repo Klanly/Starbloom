@@ -7,11 +7,14 @@ using UnityEngine.SceneManagement;
 
 public class DG_PathfindingGenerationHandler : MonoBehaviour
 {
-    
 
+    int LoadingScene;
+    int LoadingPlayer;
+    bool IgnoreTheUnloadScene;
     Scene UnloadedScene;
     [System.NonSerialized] public bool NavMeshIsGenerated = false;
     [System.NonSerialized] public NavMeshSurface myNavMeshSurface;
+
 
 
     private void Awake()
@@ -29,23 +32,36 @@ public class DG_PathfindingGenerationHandler : MonoBehaviour
         for (int i = 0; i < scenecount; i++)
         {
             Scene SC = SceneManager.GetSceneAt(i);
-            if (SC == UnloadedScene) { GenerateMesh = false; break; }
+            if (!IgnoreTheUnloadScene && SC == UnloadedScene) { GenerateMesh = false; break; }
         }
-        if (GenerateMesh) { GenerateNavMesh(); this.enabled = false; }
+        if (GenerateMesh) { this.enabled = false; GenerateNavMesh(LoadingScene, LoadingPlayer); }
     }
 
 
 
-    public void SceneChange(Scene UnloadingScene)
+    public void SceneChange(Scene UnloadingScene, int Scene, int PlayerID, bool BypassWait, bool UnloadScene)
     {
+        LoadingScene = Scene;
+        LoadingPlayer = PlayerID;
+        IgnoreTheUnloadScene = !UnloadScene;
         UnloadedScene = UnloadingScene;
-        this.enabled = true;
+        if(BypassWait)
+            GenerateNavMesh(LoadingScene, LoadingPlayer);
+        else
+            this.enabled = true;
     }
+
     [Button(ButtonSizes.Small)]
-    public void GenerateNavMesh()
+    public void GenerateMeshDebug()
+    {
+        myNavMeshSurface.BuildNavMesh();
+    }
+
+    public void GenerateNavMesh(int SceneID, int PlayerID)
     {
         NavMeshIsGenerated = true;
+        QuickFind.SceneTransitionHandler.SetStageBeforeNavMeshLoad(SceneID);
         myNavMeshSurface.BuildNavMesh();
-        QuickFind.SceneTransitionHandler.NavMeshLoaded();
+        QuickFind.SceneTransitionHandler.NavMeshLoaded(SceneID, PlayerID);   
     }
 }

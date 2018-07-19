@@ -22,13 +22,13 @@ MonoBehaviour:
   winter: 1
   possibiltyInWinter: 80.2
   cloudsConfig:
-    topColor: {r: 0.60294116, g: 0.60294116, b: 0.60294116, a: 1}
-    bottomColor: {r: 0.4496107, g: 0.45871612, b: 0.4852941, a: 1}
+    topColor: {r: 0, g: 0, b: 0, a: 1}
+    bottomColor: {r: 0, g: 0, b: 0, a: 1}
     skyBlending: 1
     alphaCoef: 3
     scatteringCoef: 0.202
     density: 2
-    coverage: 1.47
+    coverage: 2
     coverageHeight: 2
     raymarchingScale: 1
     cloudType: 0.295
@@ -42,13 +42,13 @@ MonoBehaviour:
     flatColorPow: 2.12
   fogStartDistance: 0
   fogDistance: 0
-  fogDensity: 0.001
+  fogDensity: 0.005
   weatherSkyMod:
     serializedVersion: 2
     key0: {r: 0, g: 0, b: 0, a: 0.7254902}
     key1: {r: 0, g: 0, b: 0, a: 0.8235294}
     key2: {r: 0, g: 0, b: 0, a: 1}
-    key3: {r: 0, g: 0, b: 0, a: 0.90588236}
+    key3: {r: 0, g: 0, b: 0, a: 0.9019608}
     key4: {r: 0, g: 0, b: 0, a: 0}
     key5: {r: 0, g: 0, b: 0, a: 0}
     key6: {r: 0, g: 0, b: 0, a: 0}
@@ -74,10 +74,10 @@ MonoBehaviour:
     m_NumAlphaKeys: 4
   weatherLightMod:
     serializedVersion: 2
-    key0: {r: 0, g: 0, b: 0, a: 0.30588236}
+    key0: {r: 0, g: 0, b: 0, a: 0.7882353}
     key1: {r: 0, g: 0, b: 0, a: 1}
-    key2: {r: 0.3962264, g: 0.3943574, b: 0.3943574, a: 1}
-    key3: {r: 0.1981132, g: 0.1981132, b: 0.1981132, a: 1}
+    key2: {r: 0.21698111, g: 0.21698111, b: 0.21698111, a: 0.87058824}
+    key3: {r: 0.1981132, g: 0.1981132, b: 0.1981132, a: 0.8862745}
     key4: {r: 0, g: 0, b: 0, a: 0}
     key5: {r: 0, g: 0, b: 0, a: 0}
     key6: {r: 0, g: 0, b: 0, a: 0}

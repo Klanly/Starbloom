@@ -33,6 +33,7 @@ class DG_GUIControllerGhangeEditor : Editor
 
 public class DG_GUIControllerGhange : MonoBehaviour
 {
+    public bool isPlayer1;
 
     public CanvasGroup UICanvas = null;
     public Transform Grid1 = null;
@@ -107,8 +108,11 @@ public class DG_GUIControllerGhange : MonoBehaviour
     {
         QuickFind.EnableCanvas(UICanvas, true);
 
-        DG_PlayerInput.Player MP = QuickFind.InputController.MainPlayer;
-        MP.InputState = DG_PlayerInput.Player.InputStateModes.ControllerChangeMenu;
+        int PlayerID = QuickFind.NetworkSync.Player1PlayerCharacter;
+        if (!isPlayer1) PlayerID = QuickFind.NetworkSync.Player2PlayerCharacter;
+
+        DG_PlayerInput.Player MP = QuickFind.InputController.GetPlayerByPlayerID(PlayerID);
+        MP.InputMode = DG_PlayerInput.Player.InputStateModes.ControllerChangeMenu;
 
         if (MenuItems == null)
             FillArray();
@@ -135,8 +139,11 @@ public class DG_GUIControllerGhange : MonoBehaviour
 
         QuickFind.EnableCanvas(UICanvas, false);
 
-        DG_PlayerInput.Player MP = QuickFind.InputController.MainPlayer;
-        MP.InputState = DG_PlayerInput.Player.InputStateModes.Normal;
+        int PlayerID = QuickFind.NetworkSync.Player1PlayerCharacter;
+        if (!isPlayer1) PlayerID = QuickFind.NetworkSync.Player2PlayerCharacter;
+
+        DG_PlayerInput.Player MP = QuickFind.InputController.GetPlayerByPlayerID(PlayerID);
+        MP.InputMode = DG_PlayerInput.Player.InputStateModes.Normal;
 
         this.enabled = false;
     }
@@ -149,8 +156,11 @@ public class DG_GUIControllerGhange : MonoBehaviour
         MenuItems[index].SelectionDisplay.enabled = false;
         MenuItems[index].isActive = false;
 
+        int PlayerID = QuickFind.NetworkSync.Player1PlayerCharacter;
+        if (!isPlayer1) PlayerID = QuickFind.NetworkSync.Player2PlayerCharacter;
+
         bool isController = false;
-        if (QuickFind.InputController.MainPlayer.ButtonSet.JoyVert.Up)
+        if (QuickFind.InputController.GetPlayerByPlayerID(PlayerID).ButtonSet.JoyVert.Up)
             isController = true;
         if (isController)
             index = QuickFind.GetNextValueInArray(index, Grid1.childCount, !isUp, true);
@@ -218,12 +228,15 @@ public class DG_GUIControllerGhange : MonoBehaviour
     }
     void FillCurrentValueText()
     {
+        int PlayerID = QuickFind.NetworkSync.Player1PlayerCharacter;
+        if (!isPlayer1) PlayerID = QuickFind.NetworkSync.Player2PlayerCharacter;
+
         for (int i = 0; i < MenuItems.Length; i++)
         {
-            if (MenuItems[i].GetButton() != null)
+            if (MenuItems[i].GetButton(QuickFind.InputController.GetPlayerByPlayerID(PlayerID)) != null)
             {
-                MenuItems[i].KeyboardText.text = MenuItems[i].GetButton().MainKey.ToString();
-                string NewVal = MenuItems[i].GetButton().AltKey.ToString();
+                MenuItems[i].KeyboardText.text = MenuItems[i].GetButton(QuickFind.InputController.GetPlayerByPlayerID(PlayerID)).MainKey.ToString();
+                string NewVal = MenuItems[i].GetButton(QuickFind.InputController.GetPlayerByPlayerID(PlayerID)).AltKey.ToString();
                 if (NewVal == "None")
                     NewVal = string.Empty;
                 MenuItems[i].ControllerText.text = NewVal;
@@ -237,6 +250,9 @@ public class DG_GUIControllerGhange : MonoBehaviour
 
     void CheckInput()
     {
+        int PlayerID = QuickFind.NetworkSync.Player1PlayerCharacter;
+        if (!isPlayer1) PlayerID = QuickFind.NetworkSync.Player2PlayerCharacter;
+
         foreach (KeyCode kcode in Enum.GetValues(typeof(KeyCode)))
         {
             if (Input.GetKeyDown(kcode))
@@ -248,13 +264,13 @@ public class DG_GUIControllerGhange : MonoBehaviour
                 if (StringArray[0].ToString() == "J" && StringArray[1].ToString() == "o")
                 {
                     SwapIfNeeded(ConvertedKey, false);
-                    MenuItems[index].GetButton().AltKey = ConvertedKey;
+                    MenuItems[index].GetButton(QuickFind.InputController.GetPlayerByPlayerID(PlayerID)).AltKey = ConvertedKey;
                     break;
                 }
                 else
                 {
                     SwapIfNeeded(ConvertedKey, true);
-                    MenuItems[index].GetButton().MainKey = ConvertedKey;
+                    MenuItems[index].GetButton(QuickFind.InputController.GetPlayerByPlayerID(PlayerID)).MainKey = ConvertedKey;
                     break;
                 }
             }
@@ -263,15 +279,18 @@ public class DG_GUIControllerGhange : MonoBehaviour
 
     void SwapIfNeeded(KeyCode ConvertedKey, bool isMain)
     {
+        int PlayerID = QuickFind.NetworkSync.Player1PlayerCharacter;
+        if (!isPlayer1) PlayerID = QuickFind.NetworkSync.Player2PlayerCharacter;
+
         //Swap Out if Already Using Button;
-        List<DG_GameButtons.Button> ButtonList = QuickFind.InputController.MainPlayer.ButtonSet.GetButtonList();
+        List<DG_GameButtons.Button> ButtonList = QuickFind.InputController.GetPlayerByPlayerID(PlayerID).ButtonSet.GetButtonList();
         for (int i = 0; i < ButtonList.Count; i++)
         {
             if (isMain)
             {
                 if (ButtonList[i].MainKey == ConvertedKey)
                 {
-                    ButtonList[i].MainKey = MenuItems[index].GetButton().MainKey;
+                    ButtonList[i].MainKey = MenuItems[index].GetButton(QuickFind.InputController.GetPlayerByPlayerID(PlayerID)).MainKey;
                     return;
                 }
             }
@@ -279,7 +298,7 @@ public class DG_GUIControllerGhange : MonoBehaviour
             {
                 if (ButtonList[i].AltKey == ConvertedKey)
                 {
-                    ButtonList[i].AltKey = MenuItems[index].GetButton().AltKey;
+                    ButtonList[i].AltKey = MenuItems[index].GetButton(QuickFind.InputController.GetPlayerByPlayerID(PlayerID)).AltKey;
                     return;
                 }
             }

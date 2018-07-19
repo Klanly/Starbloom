@@ -29,39 +29,56 @@ public class DG_ContextCheckHandler : MonoBehaviour {
 
     void Update()
     {
-        if (QuickFind.GUI_OverviewTabs == null) return;
-        if (QuickFind.GUI_OverviewTabs.UIisOpen) return;
-        if (QuickFind.GUI_Inventory.InventoryIsOpen) return;
-
-        RaycastHit hit;
-        DG_PlayerInput.Player MP = QuickFind.InputController.MainPlayer;
-
-        if (MP.Context == DG_PlayerInput.ContextDetection.MousePosition)
+        for (int i = 0; i < QuickFind.InputController.Players.Length; i++)
         {
-            Ray ray = QuickFind.PlayerCam.MainCam.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray.origin, ray.direction, out hit, 200, ContextMask))
+            DG_PlayerInput.Player P = QuickFind.InputController.Players[i];
+            if (P.CharLink == null) continue;
+
+            if (QuickFind.PlayerTrans == null) return;
+            if (QuickFind.GUI_OverviewTabs.UIisOpen) return;
+            if (QuickFind.GUI_Inventory.InventoryIsOpen) return;
+
+            CameraLogic.UserCameraMode CamMode = P.CharLink.PlayerCam.CurrentCameraAngle;
+            CameraLogic.ContextDetection DetectionMode = CameraLogic.ContextDetection.InfrontPlayer;
+            if (CamMode == CameraLogic.UserCameraMode.Isometric) DetectionMode = QuickFind.UserSettings.IsometricInteractMode;
+            if (CamMode == CameraLogic.UserCameraMode.Thirdperson) DetectionMode = QuickFind.UserSettings.ThirdPersonInteractionDetection;
+
+            RaycastHit hit;
+            if (DetectionMode != CameraLogic.ContextDetection.InfrontPlayer)
             {
-                DetectionPoint.position = hit.point;
-                if (QuickFind.WithinDistance(DetectionPoint, QuickFind.PlayerTrans, MouseDistance))
+                Vector3 Origin;
+                Vector3 Direction;
+                Ray ray;
+                if (DetectionMode == CameraLogic.ContextDetection.MousePosition)
+                { ray = P.CharLink.PlayerCam.MainCam.ScreenPointToRay(Input.mousePosition); Origin = ray.origin; Direction = ray.direction; }
+                else
+                { Origin = P.CharLink.PlayerCam.CamTrans.position; Direction = P.CharLink.PlayerCam.CamTrans.forward; }
+
+                if (Physics.Raycast(Origin, Direction, out hit, 200, ContextMask))
+                {
+                    DetectionPoint.position = hit.point;
+                    if (QuickFind.WithinDistance(DetectionPoint, QuickFind.PlayerTrans, MouseDistance))
+                        AddNewContext(hit);
+                    else
+                    { ContextHit = false; }
+                }
+                else { ContextHit = false; }
+            }
+            else
+            {
+                DetectionPoint.position = QuickFind.PlayerTrans.position;
+                DetectionPoint.rotation = QuickFind.PlayerTrans.rotation;
+
+                if (Physics.SphereCast(DetectionPoint.position, SphereCastRadius, DetectionPoint.forward, out hit, SphereCastMaxLength, ContextMask))
                     AddNewContext(hit);
                 else
                 { ContextHit = false; }
             }
-            else { ContextHit = false; }
-        }
-        else
-        {
-            DetectionPoint.position = QuickFind.PlayerTrans.position;
-            DetectionPoint.rotation = QuickFind.PlayerTrans.rotation;
 
-            if (Physics.SphereCast(DetectionPoint.position, SphereCastRadius, DetectionPoint.forward, out hit, SphereCastMaxLength, ContextMask))
-                AddNewContext(hit);
-            else
-            { ContextHit = false; }
-        }
+            if (!ContextHit)
+            { LastEncounteredContext = null; if (LastEncounteredWobbleScript != null) LastEncounteredWobbleScript.Disable(); QuickFind.GUIPopup.HideToolTip(); }
 
-        if (!ContextHit)
-        { LastEncounteredContext = null; if (LastEncounteredWobbleScript != null) LastEncounteredWobbleScript.Disable(); QuickFind.GUIPopup.HideToolTip(); }
+        }
     }
 
 

@@ -7,6 +7,7 @@ using Sirenix.OdinInspector;
 public class DG_StorageGUI : MonoBehaviour {
 
 
+    public bool isPlayer1;
 
     [Header("Canvases")]
     public CanvasGroup UICanvas = null;
@@ -33,6 +34,7 @@ public class DG_StorageGUI : MonoBehaviour {
         {
             DG_InventoryItem II = HotbarGrid.GetChild(i).GetComponent<DG_InventoryItem>();
             II.SlotID = i;
+            II.isPlayer1 = isPlayer1;
             II.IsStorageSlot = true;
             StorageSlots[i] = II;
         }
@@ -46,15 +48,16 @@ public class DG_StorageGUI : MonoBehaviour {
     private void Update()
     {
         if (Wait1) { Wait1 = false; return; }
-
-
         if (!StorageUIOpen || QuickFind.GUI_Inventory.isFloatingInventoryItem || QuickFind.ShippingBinGUI.BinUIisOpen) return;
 
-        bool AllowHold = false;
-        if (QuickFind.GameSettings.AllowUIOnHold && QuickFind.InputController.MainPlayer.ButtonSet.Interact.Held) AllowHold = true;
+        int PlayerID = QuickFind.NetworkSync.Player1PlayerCharacter;
+        if (!isPlayer1) PlayerID = QuickFind.NetworkSync.Player2PlayerCharacter;
 
-        if (QuickFind.InputController.MainPlayer.ButtonSet.Interact.Up || AllowHold)
-            QuickFind.InventoryManager.ShiftStackToFromStorage();
+        bool AllowHold = false;
+        if (QuickFind.GameSettings.AllowUIOnHold && QuickFind.InputController.GetPlayerByPlayerID(PlayerID).ButtonSet.SecondaryAction.Held) AllowHold = true;
+
+        if (QuickFind.InputController.GetPlayerByPlayerID(PlayerID).ButtonSet.SecondaryAction.Up || AllowHold)
+            QuickFind.InventoryManager.ShiftStackToFromStorage(PlayerID);
     }
 
 

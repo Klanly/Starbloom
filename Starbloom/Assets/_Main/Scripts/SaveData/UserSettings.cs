@@ -2,13 +2,33 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using Sirenix.OdinInspector;
 
 public class UserSettings : MonoBehaviour {
 
-    //Gameplay
+    [Header("Camera")]
+    public float CameraSensitivity = .5f;
+
+    [Header("Third Person Settings")]
+    public CameraLogic.ControlMode ThirdPersonCameraControlMode;
+    public CameraLogic.ContextDetection ThirdPersonInteractionDetection;
+    public CameraLogic.ContextDetection ThirdPersonEnemyDetectionMode;
+    public CameraLogic.ContextDetection ThirdPersonBreakableDetectionMode;
+    public CameraLogic.ContextDetection ThirdPersonObjectPlacementDetectionMode;
+
+
+    [Header("Isometric Settings")]
+    public CameraLogic.ControlMode IsometricCameraControlMode;
+    public CameraLogic.ContextDetection IsometricInteractMode;
+    public CameraLogic.ContextDetection IsometricBreakableDetectionMode;
+    public CameraLogic.ContextDetection IsometricEnemyDetectionMode;
+    public CameraLogic.ContextDetection IsometricObjectPlacementDetectionMode;
+
+
+    [Header("Gameplay - Text")]
     public float TextSpeed = .04f;
     public int CurrentLanguage = 0;
-    //Graphics
+    [Header("Graphics")]
     public bool GlobalDisableCloudRendering = false;
     public bool GlobalDisableWaterReflection = false;
 

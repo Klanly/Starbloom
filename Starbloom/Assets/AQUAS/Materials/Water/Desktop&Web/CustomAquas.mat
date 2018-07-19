@@ -117,7 +117,7 @@ Material:
     - _NormalTiling: 1
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _ReflectionIntensity: 0.15
+    - _ReflectionIntensity: 0.4
     - _Refraction: 0.67
     - _RefractionDistance: 10
     - _RefractionFalloff: 1

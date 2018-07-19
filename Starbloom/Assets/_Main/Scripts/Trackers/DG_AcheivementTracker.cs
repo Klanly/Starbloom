@@ -17,9 +17,9 @@ public class DG_AcheivementTracker : MonoBehaviour {
 
 
 
-    public void CheckFishAchevement(DG_FishingRoller.FishRollValues ActiveFishReference)
+    public void CheckFishAchevement(DG_FishingRoller.FishRollValues ActiveFishReference, int PlayerID)
     {
-        DG_PlayerCharacters.CharacterAchievements Acheivements = QuickFind.Farm.PlayerCharacters[QuickFind.NetworkSync.PlayerCharacterID].Acheivements;
+        DG_PlayerCharacters.CharacterAchievements Acheivements = QuickFind.Farm.PlayerCharacters[PlayerID].Acheivements;
         int CurrentFishMax = Acheivements.LargestFishCaught[ActiveFishReference.AtlasObject.DatabaseID];
         if (CurrentFishMax < ActiveFishReference.Weight)
         {

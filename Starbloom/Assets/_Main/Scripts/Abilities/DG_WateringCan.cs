@@ -41,14 +41,16 @@ public class DG_WateringCan : MonoBehaviour {
     }
 
 
-    public void InputDetected(bool isUP)
+    public void InputDetected(bool isUP, int PlayerID)
     {
         bool AllowAction = false;
         if (isUP || QuickFind.GameSettings.AllowActionsOnHold) AllowAction = true;
 
         if (AllowAction && SafeToPlace)
         {
-            if (!QuickFind.NetworkSync.CharacterLink.AnimationSync.CharacterIsGrounded()) return;
+            DG_CharacterLink CL = QuickFind.NetworkSync.GetCharacterLinkByPlayerID(PlayerID);
+
+            if (!CL.AnimationSync.CharacterIsGrounded()) return;
 
             DG_ContextObject CO = HitObject.GetComponent<DG_ContextObject>();
             if (CO.Type == DG_ContextObject.ContextTypes.Soil)
@@ -56,22 +58,22 @@ public class DG_WateringCan : MonoBehaviour {
                 KnownCO = CO;
                 AwaitingResponse = true;
                 if (QuickFind.GameSettings.DisableAnimations)
-                    HitAction();
+                    HitAction(PlayerID);
                 else
                 {
-                    QuickFind.NetworkSync.CharacterLink.FacePlayerAtPosition(CO.transform.position);
-                    DG_ClothingObject Cloth = QuickFind.ClothingHairManager.GetAttachedClothingReference(QuickFind.NetworkSync.CharacterLink, DG_ClothingHairManager.ClothHairType.RightHand).ClothingRef;
-                    QuickFind.NetworkSync.CharacterLink.AnimationSync.TriggerAnimation(Cloth.AnimationDatabaseNumber);
+                    CL.FacePlayerAtPosition(CO.transform.position);
+                    DG_ClothingObject Cloth = QuickFind.ClothingHairManager.GetAttachedClothingReference(CL, DG_ClothingHairManager.ClothHairType.RightHand).ClothingRef;
+                    CL.AnimationSync.TriggerAnimation(Cloth.AnimationDatabaseNumber);
                 }
             }
         }
     }
-    public void HitAction()
+    public void HitAction(int PlayerID)
     {
         if (!AwaitingResponse) return;
         AwaitingResponse = false;
 
-        QuickFind.WateringSystem.WaterObject(KnownCO);
+        QuickFind.WateringSystem.WaterObject(KnownCO, PlayerID);
     }
 
 

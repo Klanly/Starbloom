@@ -288,7 +288,7 @@ public class DG_LocalDataHandler : MonoBehaviour {
             NetworkScene NS = QuickFind.SceneList.Scenes[i].SceneLink;
             //
             IntData.Add(NS.SceneID);
-            if(!ToDisk) IntData.Add(NS.SceneOwnerID);
+            if(!ToDisk) IntData.Add(NS.ScenePlayerOwnerID);
             IntData.Add(NS.NetworkObjectList.Count);
             //
             for (int iN = 0; iN < NS.NetworkObjectList.Count; iN++)
@@ -371,7 +371,7 @@ public class DG_LocalDataHandler : MonoBehaviour {
         {
             int SceneID = IntValues[Index]; Index++;
             NetworkScene NS = QuickFind.NetworkObjectManager.GetSceneByID(SceneID);
-            if(!FromDisk) NS.SceneOwnerID = IntValues[Index]; Index++;
+            if(!FromDisk) NS.ScenePlayerOwnerID = IntValues[Index]; Index++;
 
             NS.JunkObject = new GameObject();
             Transform Child = NS.transform;

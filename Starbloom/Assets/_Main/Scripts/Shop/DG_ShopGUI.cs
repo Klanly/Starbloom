@@ -5,14 +5,14 @@ using UnityEngine;
 public class DG_ShopGUI : MonoBehaviour {
 
 
+    public bool isPlayer1;
+
     [Header("Grid")]
     public RectTransform DisplayGrid = null;
     public DG_UICustomGridScroll GridScroll;
     [Header("Canvases")]
     public CanvasGroup UICanvas = null;
     [System.NonSerialized] public bool ShopUIisOpen = false;
-
-
 
 
     private void Awake()
@@ -103,15 +103,21 @@ public class DG_ShopGUI : MonoBehaviour {
     {
         if (QuickFind.GUI_Inventory.isFloatingInventoryItem) return;
 
-        if (!QuickFind.InventoryManager.AddItemToRucksack(QuickFind.NetworkSync.PlayerCharacterID, ShopItem.SeasonalGoodsRef.ItemDatabaseRef, (DG_ItemObject.ItemQualityLevels)ShopItem.SeasonalGoodsRef.QualityLevel, false, true)) return;
+        int PlayerID = QuickFind.NetworkSync.Player1PlayerCharacter;
+        if (!isPlayer1) PlayerID = QuickFind.NetworkSync.Player2PlayerCharacter;
+
+        if (!QuickFind.InventoryManager.AddItemToRucksack(PlayerID, ShopItem.SeasonalGoodsRef.ItemDatabaseRef, (DG_ItemObject.ItemQualityLevels)ShopItem.SeasonalGoodsRef.QualityLevel, false, true)) return;
         if (!QuickFind.MoneyHandler.CheckIfSubtractMoney(QuickFind.ItemDatabase.GetItemFromID(ShopItem.SeasonalGoodsRef.ItemDatabaseRef).GetBuyPriceByQuality(ShopItem.SeasonalGoodsRef.QualityLevel))) return;
         MakePurchase(ShopItem);
     }
     void MakePurchase(DG_ShopGuiItem ShopItem)
     {
+        int PlayerID = QuickFind.NetworkSync.Player1PlayerCharacter;
+        if (!isPlayer1) PlayerID = QuickFind.NetworkSync.Player2PlayerCharacter;
+
         DG_ItemObject IO = QuickFind.ItemDatabase.GetItemFromID(ShopItem.SeasonalGoodsRef.ItemDatabaseRef);
         QuickFind.MoneyHandler.TrySubtractMoney(IO.GetBuyPriceByQuality(ShopItem.SeasonalGoodsRef.QualityLevel));
-        QuickFind.InventoryManager.AddItemToRucksack(QuickFind.NetworkSync.PlayerCharacterID,
+        QuickFind.InventoryManager.AddItemToRucksack(PlayerID,
                                                     ShopItem.SeasonalGoodsRef.ItemDatabaseRef,
                                                     (DG_ItemObject.ItemQualityLevels)ShopItem.SeasonalGoodsRef.QualityLevel,
                                                     false);

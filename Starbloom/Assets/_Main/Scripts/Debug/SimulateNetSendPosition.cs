@@ -11,6 +11,7 @@ public class SimulateNetSendPosition : MonoBehaviour {
     public float SlerpMoveRate;
     public float SlerpTurnRate;
     public float MaxDistance;
+    public bool ApplyDeltaTime;
 
     [Header("Objects")]
     public float PlayerMoveSpeed;
@@ -68,7 +69,9 @@ public class SimulateNetSendPosition : MonoBehaviour {
         float Distance = Vector3.Distance(ShowPosition.position, KnownPosition);
         if (Distance > 2) AdditiveSpeedMultiplier = (int)Distance;
 
-        ShowPosition.position = Vector3.MoveTowards(ShowPosition.position, KnownPosition, SlerpMoveRate * AdditiveSpeedMultiplier);
+        float DeltaMultiplier = 1;
+        if (ApplyDeltaTime) DeltaMultiplier = Time.deltaTime;
+        ShowPosition.position = Vector3.MoveTowards(ShowPosition.position, KnownPosition, SlerpMoveRate * AdditiveSpeedMultiplier * DeltaMultiplier);
         ShowPosition.eulerAngles = QuickFind.AngleLerp(ShowPosition.eulerAngles, KnownHeading, SlerpTurnRate);
     }
 

@@ -27,6 +27,7 @@ public class DG_InventoryItem : MonoBehaviour {
     [System.NonSerialized] public int SlotID;
     [System.NonSerialized] public bool ContainsItem = false;
     [System.NonSerialized] public bool IsStorageSlot = false;
+    [System.NonSerialized] public bool isPlayer1;
 
     float Timer;
     bool ScaleUp = true;
@@ -63,7 +64,10 @@ public class DG_InventoryItem : MonoBehaviour {
         {
             if(!isMirror) QuickFind.TooltipHandler.HoveredInventoryItem = this;
 
-            DG_PlayerCharacters.RucksackSlot RSS = QuickFind.InventoryManager.GetRuckSackSlotInventoryItem(this);
+            int PlayerID = QuickFind.NetworkSync.Player1PlayerCharacter;
+            if (!isPlayer1) PlayerID = QuickFind.NetworkSync.Player2PlayerCharacter;
+
+            DG_PlayerCharacters.RucksackSlot RSS = QuickFind.InventoryManager.GetRuckSackSlotInventoryItem(this, PlayerID);
             QuickFind.TooltipHandler.ActiveRucksackSlot = RSS;
             QuickFind.TooltipHandler.ShowToolTip(QuickFind.ItemDatabase.GetItemFromID(RSS.ContainedItem).ToolTipType);
         }

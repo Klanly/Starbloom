@@ -202,7 +202,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 12
-  instanceID: 414846
+  instanceID: 88150
 --- !u!1 &319070339
 GameObject:
   m_ObjectHideFlags: 0
@@ -559,7 +559,6 @@ MonoBehaviour:
     PitchValue: 1
     RandomizePitchWithinRangeOfValue: 0
     RandomPitchRange: 0
-  Index: 0
 --- !u!114 &688823227
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -572,7 +571,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 13
-  instanceID: 414872
+  instanceID: 88176
 --- !u!1 &824571988
 GameObject:
   m_ObjectHideFlags: 0
@@ -719,22 +718,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Source1:
     AudioSource: {fileID: 319070341}
-    MusicID: 0
-    IsPlaying: 0
-    IsFading: 0
-    IsFadingOut: 0
-    FadeTime: 0
-    FadeTimer: 0
-    FinalVolume: 0
   Source2:
     AudioSource: {fileID: 397562488}
-    MusicID: 0
-    IsPlaying: 0
-    IsFading: 0
-    IsFadingOut: 0
-    FadeTime: 0
-    FadeTimer: 0
-    FinalVolume: 0
   FadeData:
   - FadeSpeedType: 0
     FadeTime: 0
@@ -888,4 +873,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DBType: 12
-  instanceID: 414910
+  instanceID: 88214

@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 
 
@@ -81,10 +82,15 @@ public class ConnectAndJoinRandom : Photon.MonoBehaviour
 
     public void OnPhotonPlayerDisconnected(PhotonPlayer player)
     {
-        DG_NetworkSync.Users U = QuickFind.NetworkSync.GetUserByID(player.ID);
-        QuickFind.NetworkObjectManager.GetSceneByID(U.SceneID).UserLeftScene(U);
-        Destroy(U.CharacterLink.gameObject);
-        QuickFind.NetworkSync.UserList.Remove(U);
+        List<DG_NetworkSync.Users> Users = QuickFind.NetworkSync.GetUsersByNetID(player.ID);
+        for(int i = 0; i < Users.Count; i++)
+        {
+            DG_NetworkSync.Users U = Users[i];
+
+            QuickFind.NetworkObjectManager.GetSceneByID(U.SceneID).UserLeftScene(U);
+            Destroy(U.CharacterLink.gameObject);
+            QuickFind.NetworkSync.UserList.Remove(U);
+        }
     }
 
 

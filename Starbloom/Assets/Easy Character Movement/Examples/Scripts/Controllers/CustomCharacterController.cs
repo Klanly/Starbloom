@@ -147,7 +147,7 @@ namespace ECM.Examples
 
             // Transform moveDirection vector to be relative to camera view direction
 
-            moveDirection = moveDirection.relativeTo(QuickFind.PlayerCam.MainCam.transform);
+            moveDirection = moveDirection.relativeTo(CharLink.PlayerCam.CamTrans);
         }
 
         #endregion

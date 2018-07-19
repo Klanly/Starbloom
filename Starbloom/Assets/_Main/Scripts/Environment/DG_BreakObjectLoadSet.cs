@@ -14,12 +14,12 @@ public class DG_BreakObjectLoadSet : MonoBehaviour {
 
 
 
-    public void LoadBrokenType()
+    public void LoadBrokenType(int SceneID)
     {
 
         switch(BrokenLoadType)
         {
-            case BreakObjectLoadType.Tree: { transform.GetComponent<DG_TreeFall>().QuickSetDestroyed(); } break;
+            case BreakObjectLoadType.Tree: { DG_TreeFall TF = transform.GetComponent<DG_TreeFall>(); TF.QuickSetDestroyed(); } break;
         }
     }
 }

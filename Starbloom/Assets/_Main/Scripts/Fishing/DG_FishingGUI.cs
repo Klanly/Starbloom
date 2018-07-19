@@ -70,9 +70,9 @@ public class DG_FishingGUI : MonoBehaviour
 
 
 
-    public void DisplayHookedText(Transform Bobber)
+    public void DisplayHookedText(Transform Bobber, int PlayerID)
     {
-        Vector3 screenPos = QuickFind.PlayerCam.MainCam.WorldToScreenPoint(Bobber.position);
+        Vector3 screenPos = QuickFind.NetworkSync.GetCharacterLinkByPlayerID(PlayerID).PlayerCam.MainCam.WorldToScreenPoint(Bobber.position);
         RectTransform HookedTextTransform = HookedText.GetComponent<RectTransform>();
         HookedTextTransform.position = screenPos;
         DisplayWobbleText(HookedText);

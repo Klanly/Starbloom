@@ -77,8 +77,8 @@ public class NetworkObject : MonoBehaviour {
 
             if (IO.UsePoolIDForSpawn && Application.isPlaying) Spawn = Prefab;
             else Spawn = Instantiate(Prefab);
-
             Scale = IO.DefaultScale;
+            SetLocalPosition(Spawn, Scale);
 
             if (IO.isBreakable) { HasHealth = true; HealthValue = IO.EnvironmentValues[0].ObjectHealth; }
             if (HasBeenWatered) QuickFind.WateringSystem.AdjustWateredObjectVisual(this, true);
@@ -93,6 +93,7 @@ public class NetworkObject : MonoBehaviour {
             if (EO.UsePoolIDForSpawn && Application.isPlaying) Spawn = Prefab;
             else Spawn = Instantiate(Prefab);
             Scale = EO.DefaultScale;
+            SetLocalPosition(Spawn, Scale);
             HasHealth = true; HealthValue = EO.HealthValue;
 
 
@@ -132,17 +133,20 @@ public class NetworkObject : MonoBehaviour {
 
         if (Spawn == null) return;
 
+        if (!QuickFind.NetworkSync.AnyPlayersIControlAreInScene(NS.SceneID)) transform.gameObject.SetActive(false);
+        transform.name = Spawn.name;
+    }
+
+    void SetLocalPosition(GameObject Spawn, float Scale)
+    {
+        if (Spawn == null) return;
+
         Transform T = Spawn.transform;
         T.SetParent(transform);
         T.localPosition = Vector3.zero;
         T.localEulerAngles = Vector3.zero;
         T.localScale = new Vector3(Scale, Scale, Scale);
-
-        if (NS.SceneID != QuickFind.NetworkSync.CurrentScene) transform.gameObject.SetActive(false);
-        transform.name = Spawn.name;
     }
-
-
 
 
 

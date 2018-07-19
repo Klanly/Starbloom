@@ -42,7 +42,7 @@ public class DG_GUINameChange : MonoBehaviour {
     }
 
 
-
+    public int PlayerID = -2;
 
     public CanvasGroup UICanvas = null;
     public DG_TextLetterGroup NameRegion;
@@ -92,8 +92,8 @@ public class DG_GUINameChange : MonoBehaviour {
     {
         QuickFind.EnableCanvas(UICanvas, true);
 
-        DG_PlayerInput.Player MP = QuickFind.InputController.MainPlayer;
-        MP.InputState = DG_PlayerInput.Player.InputStateModes.NameChangeMenu;
+        DG_PlayerInput.Player MP = QuickFind.InputController.GetPlayerByPlayerID(PlayerID);
+        MP.InputMode = DG_PlayerInput.Player.InputStateModes.NameChangeMenu;
 
         DefaultCharID = CharIDVal;
         //Populate Single Letter Regions
@@ -116,8 +116,8 @@ public class DG_GUINameChange : MonoBehaviour {
     {
         QuickFind.EnableCanvas(UICanvas, false);
 
-        DG_PlayerInput.Player MP = QuickFind.InputController.MainPlayer;
-        MP.InputState = DG_PlayerInput.Player.InputStateModes.Normal;
+        DG_PlayerInput.Player MP = QuickFind.InputController.GetPlayerByPlayerID(PlayerID);
+        MP.InputMode = DG_PlayerInput.Player.InputStateModes.Normal;
 
         NameChangeIsOpen = false;
 

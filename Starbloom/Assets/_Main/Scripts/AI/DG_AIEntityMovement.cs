@@ -135,7 +135,8 @@ public class DG_AIEntityMovement : MonoBehaviour {
                 if (CurrentMovementBehaviour == MovementBehaviour.RunAroundTarget)
                     Entity.Combat.CurrentCombatBehaviour = DG_AIEntityCombat.CombatBehaviour.SurroundMovementReceived;
             }
-            if (Entity.RelayNetworkObject.AICharData[0].DestinationReached) { WaitingForTimer = true; agent.speed = 0; Timer = RandTime; }
+            if (Entity.RelayNetworkObject.AICharData[0].DestinationReached)
+            { WaitingForTimer = true; agent.speed = 0; Timer = RandTime; }
             //Move Entity
             if (agent.remainingDistance > agent.stoppingDistance) Move(agent.desiredVelocity);
             else Move(Vector3.zero);
@@ -180,7 +181,6 @@ public class DG_AIEntityMovement : MonoBehaviour {
             }
 
             if (NodePosition == Vector3.zero) Debug.Log("This method has a fail case, re-think.");
-
 
             //Entity.SetAgentDestination(NodePosition, (int)CurrentMovementBehaviour);
             ReceiveMoveOrder(NodePosition, CurrentMovementBehaviour);
@@ -254,6 +254,6 @@ public class DG_AIEntityMovement : MonoBehaviour {
     #endregion
 
     #region UTIL
-    public void GetNavAgent() { agent = gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>(); agent.enabled = true; }
+    public void GetNavAgent() { agent = gameObject.AddComponent<UnityEngine.AI.NavMeshAgent>(); agent.enabled = true; }
     #endregion
 }

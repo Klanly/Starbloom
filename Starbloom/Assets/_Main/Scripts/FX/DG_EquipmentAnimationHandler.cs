@@ -18,7 +18,7 @@ public class DG_EquipmentAnimationHandler : MonoBehaviour {
     }
     public class ActiveAnimation
     {
-        public int UserID;
+        public int PlayerID;
         public int AnimationID;
 
         public DG_AnimationSync AnimationSyncRef;
@@ -115,10 +115,10 @@ public class DG_EquipmentAnimationHandler : MonoBehaviour {
 
 
     //Setup
-    public void SetEquipmentAnimationTracker(int UserID, int AnimationID, DG_AnimationSync AnimationSync)
+    public void SetEquipmentAnimationTracker(int PlayerID, int AnimationID, DG_AnimationSync AnimationSync)
     {
         DG_AnimationObject AO = QuickFind.AnimationDatabase.GetItemFromID(AnimationID);
-        ActiveAnimation AEA = GetAnimationTracker(AnimationID, UserID, AnimationSync);
+        ActiveAnimation AEA = GetAnimationTracker(AnimationID, PlayerID, AnimationSync);
 
         AEA.AnimationSyncRef = AnimationSync;
         AEA.CurrentAnimationState = AnimationStates.PreUnSheath;
@@ -127,14 +127,14 @@ public class DG_EquipmentAnimationHandler : MonoBehaviour {
         AEA.TransitionTime = AO.SheathUnSheathTransition.TransitionTime;
         AEA.Timer = AEA.TransitionTime;
 
-        DG_CharacterLink CL = QuickFind.NetworkSync.GetCharacterLinkByUserID(UserID);
+        DG_CharacterLink CL = QuickFind.NetworkSync.GetCharacterLinkByPlayerID(PlayerID);
         DG_ClothingHairManager.AttachedClothing AC = QuickFind.ClothingHairManager.GetAttachedClothingReference(CL, DG_ClothingHairManager.ClothHairType.RightHand);
         AEA.OriginalScale = AC.ClothingRef.GetCharOffsetRefByGender(CL.Gender).OffsetData.Scale;
         AEA.GameObjectLink = AC.ClothingPieces[0];
     }
 
     //Get Animation Tracker
-    ActiveAnimation GetAnimationTracker(int AnimationID, int UserID, DG_AnimationSync AnimationSync)
+    ActiveAnimation GetAnimationTracker(int AnimationID, int PlayerID, DG_AnimationSync AnimationSync)
     {
         ActiveAnimation Return = null;
 
@@ -153,7 +153,7 @@ public class DG_EquipmentAnimationHandler : MonoBehaviour {
         for (int i = 0; i < ActiveAnimations.Count; i++)
         {
             ActiveAnimation AEA = ActiveAnimations[i];
-            if (AEA.AnimationID == AnimationID && AEA.UserID == UserID)
+            if (AEA.AnimationID == AnimationID && AEA.PlayerID == PlayerID)
             {
                 Return = ActiveAnimations[i];
                 break;
@@ -164,7 +164,7 @@ public class DG_EquipmentAnimationHandler : MonoBehaviour {
             Return = new ActiveAnimation();
             ActiveAnimations.Add(Return);
             Return.AnimationID = AnimationID;
-            Return.UserID = UserID;
+            Return.PlayerID = PlayerID;
         }
         return Return;
     }

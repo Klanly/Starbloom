@@ -24,15 +24,22 @@ public class DG_EnvironmentUnderwaterTrigger : MonoBehaviour {
     {
         WaterLevel = AquasObject.position.y;
 
-        if (RainVFX == null) { GetObjects(); if (RainVFX == null) return; }
-
-        bool AboveWater = (QuickFind.PlayerCam.MainCam.transform.position.y > WaterLevel);
-
-        if (AboveWater == isUnderwater)
+        for (int i = 0; i < QuickFind.InputController.Players.Length; i++)
         {
-            RainVFX.SetActive(AboveWater);
-            ThunderstormVFX.SetActive(AboveWater);
-            isUnderwater = !AboveWater;
+            DG_PlayerInput.Player P = QuickFind.InputController.Players[i];
+            if (P.CharLink == null) continue;
+
+
+            if (RainVFX == null) { GetObjects(); if (RainVFX == null) return; }
+
+            bool AboveWater = (P.CharLink.PlayerCam.CamTrans.position.y > WaterLevel);
+
+            if (AboveWater == isUnderwater)
+            {
+                RainVFX.SetActive(AboveWater);
+                ThunderstormVFX.SetActive(AboveWater);
+                isUnderwater = !AboveWater;
+            }
         }
     }
 

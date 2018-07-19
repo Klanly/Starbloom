@@ -53,7 +53,7 @@ public class DG_QuestObject : MonoBehaviour {
         return false;
     }
 
-    public bool QuestRequirementsAreMet()
+    public bool QuestRequirementsAreMet(int PlayerID)
     {
         for(int i = 0; i < QuestRequirements.Length; i++)
         {
@@ -79,7 +79,7 @@ public class DG_QuestObject : MonoBehaviour {
                 switch (Req.MathCond)
                 {   //Less Than
                     case Requirements.MathConditions.LessThan:
-                        if (QuickFind.InventoryManager.TotalInventoryCountOfItem(Req.ReqItemDatabaseID) >= Req.ReqItemValue)
+                        if (QuickFind.InventoryManager.TotalInventoryCountOfItem(Req.ReqItemDatabaseID, PlayerID) >= Req.ReqItemValue)
                         {
                             Debug.Log("Quest Not Met");
                             return false;
@@ -87,7 +87,7 @@ public class DG_QuestObject : MonoBehaviour {
                         break;
                     //Greater Than
                     case Requirements.MathConditions.GreaterOrEqual:
-                        if (QuickFind.InventoryManager.TotalInventoryCountOfItem(Req.ReqItemDatabaseID) < Req.ReqItemValue)
+                        if (QuickFind.InventoryManager.TotalInventoryCountOfItem(Req.ReqItemDatabaseID, PlayerID) < Req.ReqItemValue)
                         {
                             Debug.Log("Quest Not Met");
                             return false;
@@ -99,7 +99,7 @@ public class DG_QuestObject : MonoBehaviour {
 
         return true;
     }
-    public void CompleteQuest()
+    public void CompleteQuest(int PlayerID)
     {
         //Quest Rewards
         for(int i = 0; i < QuestRewards.Length; i++)
@@ -110,7 +110,7 @@ public class DG_QuestObject : MonoBehaviour {
                 Debug.Log("Quality Level Not set dynamically");
                 DG_ItemObject.ItemQualityLevels RewardLevel = DG_ItemObject.ItemQualityLevels.Low;
 
-                QuickFind.InventoryManager.AddItemToRucksack(QuickFind.NetworkSync.PlayerCharacterID, Rew.RewardItemDatabaseID, RewardLevel, true);
+                QuickFind.InventoryManager.AddItemToRucksack(PlayerID, Rew.RewardItemDatabaseID, RewardLevel, true);
             }
         }
         Debug.Log("Quest " + BoolSaveLocation.ToString() + " Completed: Rewards Adjusted");

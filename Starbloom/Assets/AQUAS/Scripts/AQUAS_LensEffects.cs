@@ -137,47 +137,48 @@ public class AQUAS_LensEffects : MonoBehaviour {
 #endif
 
 #if UNITY_POST_PROCESSING_STACK_V2 && UNITY_EDITOR && AQUAS_PRESENT
-        if (QuickFind.PlayerCam.MainCam.GetComponent<PostProcessLayer>() == null)
-        {
-            EditorUtility.DisplayDialog("No Post Process Layer detected", "The camera object is missing a Post Process Layer and a Post Process Volume. In the Editor AQUAS will try to add them when entering play mode. However it is recommended that you add them manually before entering playmode, or else they will be missing in the build.", "Got It!");
 
-            gameObjects.mainCamera.AddComponent<PostProcessLayer>();
-
-            postProcessing = gameObjects.mainCamera.GetComponent<PostProcessLayer>();
-            PostProcessResources resources;
-
-            if ((PostProcessResources)AssetDatabase.LoadAssetAtPath("Assets/PostProcessing-2/PostProcessing/PostProcessResources.asset", typeof(PostProcessResources)) != null)
-            {
-                resources = (PostProcessResources)AssetDatabase.LoadAssetAtPath("Assets/PostProcessing-2/PostProcessing/PostProcessResources.asset", typeof(PostProcessResources));
-            }
-            else if ((PostProcessResources)AssetDatabase.LoadAssetAtPath("Assets/PostProcessing/PostProcessResources.asset", typeof(PostProcessResources)) != null)
-            {
-                resources = (PostProcessResources)AssetDatabase.LoadAssetAtPath("Assets/PostProcessing/PostProcessResources.asset", typeof(PostProcessResources));
-            }
-            else if ((PostProcessResources)AssetDatabase.LoadAssetAtPath("Assets/PostProcessing-2/PostProcessResources.asset", typeof(PostProcessResources)) != null)
-            {
-                resources = (PostProcessResources)AssetDatabase.LoadAssetAtPath("Assets/PostProcessing-2/PostProcessResources.asset", typeof(PostProcessResources));
-            }
-            else
-            {
-                EditorUtility.DisplayDialog("Could not locate Post Process Resource file.", "Please make sure your post processing folder is at the top level of the assets folder and named either 'PostProcessing' or 'PostProcessing-2'","Got It!");
-                resources = null;
-            }
-
-
-            postProcessing.Init(resources);
-
-            postProcessing.volumeTrigger = gameObjects.mainCamera.transform;
-            postProcessing.volumeLayer = LayerMask.NameToLayer("Everything");
-        }
-
-        if (QuickFind.PlayerCam.MainCam.GetComponent<PostProcessVolume>() == null)
-        {
-            QuickFind.PlayerCam.MainCam.gameObject.AddComponent<PostProcessVolume>();
-            QuickFind.PlayerCam.MainCam.GetComponent<PostProcessVolume>().isGlobal = true;
-        }
-        
-        postProcessingVolume = QuickFind.PlayerCam.MainCam.GetComponent<PostProcessVolume>();
+        //if (QuickFind.PlayerCam.MainCam.GetComponent<PostProcessLayer>() == null)
+        //{
+        //    EditorUtility.DisplayDialog("No Post Process Layer detected", "The camera object is missing a Post Process Layer and a Post Process Volume. In the Editor AQUAS will try to add them when entering play mode. However it is recommended that you add them manually before entering playmode, or else they will be missing in the build.", "Got It!");
+        //
+        //    gameObjects.mainCamera.AddComponent<PostProcessLayer>();
+        //
+        //    postProcessing = gameObjects.mainCamera.GetComponent<PostProcessLayer>();
+        //    PostProcessResources resources;
+        //
+        //    if ((PostProcessResources)AssetDatabase.LoadAssetAtPath("Assets/PostProcessing-2/PostProcessing/PostProcessResources.asset", typeof(PostProcessResources)) != null)
+        //    {
+        //        resources = (PostProcessResources)AssetDatabase.LoadAssetAtPath("Assets/PostProcessing-2/PostProcessing/PostProcessResources.asset", typeof(PostProcessResources));
+        //    }
+        //    else if ((PostProcessResources)AssetDatabase.LoadAssetAtPath("Assets/PostProcessing/PostProcessResources.asset", typeof(PostProcessResources)) != null)
+        //    {
+        //        resources = (PostProcessResources)AssetDatabase.LoadAssetAtPath("Assets/PostProcessing/PostProcessResources.asset", typeof(PostProcessResources));
+        //    }
+        //    else if ((PostProcessResources)AssetDatabase.LoadAssetAtPath("Assets/PostProcessing-2/PostProcessResources.asset", typeof(PostProcessResources)) != null)
+        //    {
+        //        resources = (PostProcessResources)AssetDatabase.LoadAssetAtPath("Assets/PostProcessing-2/PostProcessResources.asset", typeof(PostProcessResources));
+        //    }
+        //    else
+        //    {
+        //        EditorUtility.DisplayDialog("Could not locate Post Process Resource file.", "Please make sure your post processing folder is at the top level of the assets folder and named either 'PostProcessing' or 'PostProcessing-2'","Got It!");
+        //        resources = null;
+        //    }
+        //
+        //
+        //    postProcessing.Init(resources);
+        //
+        //    postProcessing.volumeTrigger = gameObjects.mainCamera.transform;
+        //    postProcessing.volumeLayer = LayerMask.NameToLayer("Everything");
+        //}
+        //
+        //if (QuickFind.PlayerCam.MainCam.GetComponent<PostProcessVolume>() == null)
+        //{
+        //    QuickFind.PlayerCam.MainCam.gameObject.AddComponent<PostProcessVolume>();
+        //    QuickFind.PlayerCam.MainCam.GetComponent<PostProcessVolume>().isGlobal = true;
+        //}
+        //
+        //postProcessingVolume = QuickFind.PlayerCam.MainCam.GetComponent<PostProcessVolume>();
 #endif
 
 
@@ -193,7 +194,7 @@ public class AQUAS_LensEffects : MonoBehaviour {
         waterLensAudio = gameObjects.waterLens.GetComponent<AudioSource>();
         airLensAudio = gameObjects.airLens.GetComponent<AudioSource>();
         audioComp = GetComponent<AudioSource>();
-        cameraAudio = QuickFind.PlayerCam.MainCam.GetComponent<AudioSource>();
+        //cameraAudio = QuickFind.PlayerCam.MainCam.GetComponent<AudioSource>();
 
         bubbleBehaviour = gameObjects.bubble.GetComponent<AQUAS_BubbleBehaviour>();
 

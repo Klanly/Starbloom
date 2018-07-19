@@ -24,20 +24,17 @@ public class Bed : MonoBehaviour
 	
 
     //////////////////////////////////////////////////
-    //Incoming Message from Interaction Handler
-    public void OnInteract()
+    public void BedInteract(int PlayerID)
     {
-        SetNetworkPlayerInBed();
+        SetNetworkPlayerInBed(PlayerID);
     }
 
 
 
 
-    //Network Send
-    [Button("Sleep", ButtonSizes.Small)]
-    void SetNetworkPlayerInBed()
+    void SetNetworkPlayerInBed(int PlayerID)
     {
-        QuickFind.NetworkSync.SetUserInBed(QuickFind.NetworkSync.PlayerCharacterID);
+        QuickFind.NetworkSync.SetUserInBed(PlayerID);
     }
     //Network Receive
     public static void AddSleepingPlayer(int PlayerAdded)

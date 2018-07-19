@@ -11,6 +11,8 @@ public class DG_GUIContextHandler : MonoBehaviour {
     [System.NonSerialized] public Image CurrentSelectedObject;
     [System.NonSerialized] public Image[] CurrentSelectableObjects;
 
+    public int PlayerID = -2;
+
     private void Awake()
     {
         QuickFind.GUIContextHandler = this;
@@ -26,7 +28,7 @@ public class DG_GUIContextHandler : MonoBehaviour {
     }
     public void ContextButtonViaMouse(DG_MenuContextItem ButtonPressed, int PlayerValue)
     {
-        QuickFind.InputController.MainPlayer.NoActionThisFrame = true;
+        QuickFind.InputController.GetPlayerByPlayerID(PlayerID).NoActionThisFrame = true;
 
         int buttonIndex = ButtonPressed.transform.GetSiblingIndex();
         if (buttonIndex != ControllerMenuPosition)

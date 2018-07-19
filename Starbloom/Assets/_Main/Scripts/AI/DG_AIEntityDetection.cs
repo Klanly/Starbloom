@@ -90,7 +90,7 @@ public class DG_AIEntityDetection : MonoBehaviour
         for (int i = 0; i < QuickFind.NetworkSync.UserList.Count; i++) 
         {
             if (QuickFind.NetworkSync.UserList[i].CharacterLink == null) continue;
-            Transform PlayerChar = QuickFind.NetworkSync.UserList[i].CharacterLink._T;
+            Transform PlayerChar = QuickFind.NetworkSync.UserList[i].CharacterLink.PlayerTrans;
             if (CurrentDetectionBehaviour != DetectionBehaviour.Detect_VisualOnly)
             { if (QuickFind.WithinDistance(Entity._T, PlayerChar, DetectionSettings.HearingRadius)) { SetDetectedTarget(PlayerChar); return false; } }
             if (CurrentDetectionBehaviour != DetectionBehaviour.Detect_HearingOnly)

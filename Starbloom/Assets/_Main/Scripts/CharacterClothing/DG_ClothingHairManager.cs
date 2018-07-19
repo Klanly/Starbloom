@@ -49,11 +49,10 @@ public class DG_ClothingHairManager : MonoBehaviour {
 
     public void AddClothingItem(DG_CharacterLink CharacterRef, int ID)
     {
-        int UserID = QuickFind.NetworkSync.GetUserByCharacterLink(CharacterRef).ID;
-        ClothingAdd(UserID, ID);
+        ClothingAdd(CharacterRef.PlayerID, ID, true);
 
         int[] OutData = new int[2];
-        OutData[0] = UserID;
+        OutData[0] = CharacterRef.PlayerID;
         OutData[1] = ID;
 
         QuickFind.NetworkSync.SetUserEquipment(OutData);
@@ -61,21 +60,21 @@ public class DG_ClothingHairManager : MonoBehaviour {
 
     public void NetReceivedClothingAdd(int[] InData)
     {   
-        ClothingAdd(InData[0], InData[1]);
+        ClothingAdd(InData[0], InData[1], true);
     }
 
 
 
-    public void ClothingAdd(int UserID, int ID)
+    public void ClothingAdd(int PlayerID, int ID, bool Add)
     {
-        DG_CharacterLink CharacterRef = QuickFind.NetworkSync.GetCharacterLinkByUserID(UserID);
+        DG_CharacterLink CharacterRef = QuickFind.NetworkSync.GetCharacterLinkByPlayerID(PlayerID);
         if (!Application.isPlaying) return;
         Transform Char = CharacterRef.transform.GetChild(0);
         
         DG_ClothingObject ClothingObject = QuickFind.ClothingDatabase.GetItemFromID(ID);
-        DG_PlayerCharacters.PlayerCharacter PC = QuickFind.Farm.PlayerCharacters[QuickFind.NetworkSync.GetPlayerIDByUserID(UserID)];
+        DG_PlayerCharacters.PlayerCharacter PC = QuickFind.Farm.PlayerCharacters[PlayerID];
         RemoveClothingPiece(CharacterRef, ClothingObject.Type, PC);
-        AttachNewClothingPiece(ClothingObject, CharacterRef, ClothingObject.Type, PC);
+        AttachNewClothingPiece(ClothingObject, CharacterRef, ClothingObject.Type, PC, Add);
     }
 
 
@@ -103,11 +102,12 @@ public class DG_ClothingHairManager : MonoBehaviour {
 
 
 
-    public void AttachNewClothingPiece(DG_ClothingObject ClothingObject, DG_CharacterLink CharacterRef, ClothHairType Type, DG_PlayerCharacters.PlayerCharacter PC)
+    public void AttachNewClothingPiece(DG_ClothingObject ClothingObject, DG_CharacterLink CharacterRef, ClothHairType Type, DG_PlayerCharacters.PlayerCharacter PC, bool Add)
     {
         AttachedClothing AC = GetAttachedClothingReference(CharacterRef, Type);
         AC.ClothingRef = ClothingObject;
-        PC.Equipment.EquippedClothing.Add(ClothingObject.DatabaseID);
+        if(Add)
+            PC.Equipment.EquippedClothing.Add(ClothingObject.DatabaseID);
 
         Transform Char = CharacterRef.transform.GetChild(0);
 
@@ -239,14 +239,14 @@ public class DG_ClothingHairManager : MonoBehaviour {
 
     
 
-    public void PlayerJoined(DG_NetworkSync.Users U)
+    public void PlayerJoined(DG_NetworkSync.Users U, bool Add)
     {
         DG_PlayerCharacters.PlayerCharacter PC = QuickFind.Farm.PlayerCharacters[U.PlayerCharacterID];
-        if (PC.Equipment.EquippedClothing.Count < 2) SetGameStartDefaultValues(U, PC.CharacterGender);
+        if (PC.Equipment.EquippedClothing.Count < 1) SetGameStartDefaultValues(U, PC.CharacterGender);
         else
         {
             for (int i = 0; i < PC.Equipment.EquippedClothing.Count; i++)
-                ClothingAdd(U.ID, PC.Equipment.EquippedClothing[i]);
+                ClothingAdd(U.PlayerCharacterID, PC.Equipment.EquippedClothing[i], Add);
         }
     }
 
@@ -255,12 +255,12 @@ public class DG_ClothingHairManager : MonoBehaviour {
        if (Gender == DG_PlayerCharacters.GenderValue.Male)
        {
            for (int i = 0; i < MaleDefault.Length; i++)
-                ClothingAdd(U.ID, MaleDefault[i].ID);
+                ClothingAdd(U.PlayerCharacterID, MaleDefault[i].ID, true);
        }
        else
        {
            for (int i = 0; i < FemaleDefault.Length; i++)
-                ClothingAdd(U.ID, FemaleDefault[i].ID);
+                ClothingAdd(U.PlayerCharacterID, FemaleDefault[i].ID, true);
        }
     }
 }

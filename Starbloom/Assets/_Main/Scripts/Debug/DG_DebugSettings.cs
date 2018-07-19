@@ -13,6 +13,7 @@ public class DG_DebugSettings : MonoBehaviour {
     public bool PlayOnline = true;
     [Header("Build Convenience")]
     public bool DisableAudio = false;
+    public bool DisableLockMouseToScreen = false;
     [Header("Character")]
     public DG_PlayerCharacters.GenderValue GeneratedGender;
     public bool DontHideGear;
@@ -67,6 +68,6 @@ public class DG_DebugSettings : MonoBehaviour {
         DG_SceneEntryObject Portal = QuickFind.SceneEntryPoints.GetItemFromID(ScenePointValue);
         QuickFind.PlayerTrans.position = Portal.transform.position;
         QuickFind.PlayerTrans.eulerAngles = Portal.transform.eulerAngles;
-        QuickFind.PlayerCam.InstantSetCameraAngle(Portal.CameraFacing);
+        QuickFind.PlayerCam.InstantSetCameraAngle(Portal.CameraFacing, QuickFind.NetworkSync.GetCharacterLinkByPlayerID(QuickFind.NetworkSync.Player1PlayerCharacter).PlayerCam);
     }
 }

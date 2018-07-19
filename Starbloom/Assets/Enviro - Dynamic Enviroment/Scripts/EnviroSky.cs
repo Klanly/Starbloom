@@ -198,7 +198,7 @@ public class EnviroCloudsLayer
 
 
 
-[ExecuteInEditMode]
+//[ExecuteInEditMode]
 public class EnviroSky : MonoBehaviour
 {
     private static EnviroSky _instance; // Creat a static instance for easy access!
@@ -364,6 +364,10 @@ public class EnviroSky : MonoBehaviour
     [HideInInspector] public Vector2 cloudAnim;
     [HideInInspector] public Vector2 cloudAnimNonScaled;
 
+
+    EnviroCustomSkybox CustomSkyboxScript = null;
+
+
     //private
     private Material skyMat;
     private Transform DomeTransform;
@@ -470,6 +474,7 @@ public class EnviroSky : MonoBehaviour
     private void Awake()
     {
         QuickFind.WeatherController = this;
+        CustomSkyboxScript = GetComponent<EnviroCustomSkybox>();
     }
 
     void Start()
@@ -747,7 +752,8 @@ public class EnviroSky : MonoBehaviour
             if(skySettings.galaxyCubeMap != null)
                 skyMat.SetTexture("_Galaxy", skySettings.galaxyCubeMap);
 
-            RenderSettings.skybox = skyMat;
+            //RenderSettings.skybox = skyMat;
+            CustomSkyboxScript.Skysphere.material = skyMat;
         }
         else if (skySettings.skyboxMode == EnviroSkySettings.SkyboxModi.CustomSkybox)
         {
@@ -1536,11 +1542,11 @@ public class EnviroSky : MonoBehaviour
 	void LateUpdate()
 	{
 		if (!serverMode && PlayerCamera != null && Player != null) {
-			transform.position = Player.transform.position;
-			transform.localScale = new Vector3 (PlayerCamera.farClipPlane, PlayerCamera.farClipPlane, PlayerCamera.farClipPlane);
+			//transform.position = Player.transform.position;
+			//transform.localScale = new Vector3 (PlayerCamera.farClipPlane, PlayerCamera.farClipPlane, PlayerCamera.farClipPlane);
 
-            if (EffectsHolder != null)
-                EffectsHolder.transform.position = Player.transform.position;
+            //if (EffectsHolder != null)
+            //    EffectsHolder.transform.position = Player.transform.position;
         }
 	}
 
@@ -1620,68 +1626,130 @@ public class EnviroSky : MonoBehaviour
 	// Setup the Shaders with correct information
 	private void SetupShader(float setup)
 	{
-		RenderSettings.skybox.SetVector ("_SunDir", -SunTransform.transform.forward);
-		RenderSettings.skybox.SetVector ("_MoonDir", Components.Moon.transform.forward);
-		RenderSettings.skybox.SetColor("_MoonColor",skySettings.moonColor);
-		RenderSettings.skybox.SetFloat ("_MoonSize", skySettings.moonSize);
-		RenderSettings.skybox.SetFloat ("_MoonBrightness", skySettings.moonBrightness);
-        if(skySettings.renderMoon)
-		    RenderSettings.skybox.SetTexture ("_MoonTex", moonRenderTarget);
+        //RenderSettings.skybox.SetVector ("_SunDir", -SunTransform.transform.forward);
+        //RenderSettings.skybox.SetVector ("_MoonDir", Components.Moon.transform.forward);
+        //RenderSettings.skybox.SetColor("_MoonColor",skySettings.moonColor);
+        //RenderSettings.skybox.SetFloat ("_MoonSize", skySettings.moonSize);
+        //RenderSettings.skybox.SetFloat ("_MoonBrightness", skySettings.moonBrightness);
+        //if(skySettings.renderMoon)
+        //    RenderSettings.skybox.SetTexture ("_MoonTex", moonRenderTarget);
+        //else
+        //    RenderSettings.skybox.SetTexture("_MoonTex", null);
+        //RenderSettings.skybox.SetColor("_scatteringColor",skySettings.scatteringColor.Evaluate(GameTime.solarTime));
+        //RenderSettings.skybox.SetColor("_sunDiskColor", skySettings.sunDiskColor.Evaluate(GameTime.solarTime));
+        //RenderSettings.skybox.SetColor("_weatherSkyMod", Color.Lerp(currentWeatherSkyMod, currentInteriorSkyboxMod, currentInteriorSkyboxMod.a));
+        //RenderSettings.skybox.SetColor("_weatherFogMod", Color.Lerp(currentWeatherFogMod, currentInteriorFogColorMod, currentInteriorFogColorMod.a));
+        //RenderSettings.skybox.SetVector ("_Bm", BetaMie () * (skySettings.mie * Fog.scatteringStrenght));
+        //RenderSettings.skybox.SetVector ("_Br", BetaRay() * skySettings.rayleigh);
+        //RenderSettings.skybox.SetVector ("_mieG",GetMieG ());
+        //RenderSettings.skybox.SetFloat ("_SunIntensity",skySettings.sunIntensity);
+        //RenderSettings.skybox.SetFloat ("_SunDiskSize", skySettings.sunDiskScale);
+        //RenderSettings.skybox.SetFloat ("_SunDiskIntensity", skySettings.sunDiskIntensity);
+        //RenderSettings.skybox.SetFloat ("_SunDiskSize",skySettings.sunDiskScale);
+        //RenderSettings.skybox.SetFloat ("_Exposure", skySettings.skyExposure);
+        //RenderSettings.skybox.SetFloat ("_SkyLuminance", skySettings.skyLuminence.Evaluate(GameTime.solarTime));
+        //RenderSettings.skybox.SetFloat ("_scatteringPower", skySettings.scatteringCurve.Evaluate(GameTime.solarTime));
+        //RenderSettings.skybox.SetFloat ("_SkyColorPower", skySettings.skyColorPower.Evaluate(GameTime.solarTime));
+        //RenderSettings.skybox.SetFloat ("_StarsIntensity", skySettings.starsIntensity.Evaluate(GameTime.solarTime));
+        //RenderSettings.skybox.SetFloat ("_GalaxyIntensity", skySettings.galaxyIntensity.Evaluate(GameTime.solarTime));
+        //RenderSettings.skybox.SetColor ("_moonGlowColor", skySettings.moonGlowColor);
+        //
+        //if (skySettings.blackGroundMode)
+        //    RenderSettings.skybox.SetInt("_blackGround",1);
+        //else
+        //    RenderSettings.skybox.SetInt("_blackGround", 0);
+        //
+        //float hdr = HDR ? 1f : 0f;
+        //RenderSettings.skybox.SetFloat ("_hdr", hdr);
+        //RenderSettings.skybox.SetFloat("_moonGlowStrenght", skySettings.moonGlow.Evaluate(GameTime.solarTime));
+        //
+        ////Clouds
+        //RenderSettings.skybox.SetVector ("_CloudAnimation", cloudAnim);
+        //
+        ////cirrus
+        //if (cloudsSettings.cirrusCloudsTexture != null)
+        //	RenderSettings.skybox.SetTexture ("_CloudMap", cloudsSettings.cirrusCloudsTexture);
+        //
+        //RenderSettings.skybox.SetColor("_CloudColor",cloudsSettings.cirrusCloudsColor.Evaluate(GameTime.solarTime));
+        //RenderSettings.skybox.SetFloat ("_CloudAltitude", cloudsSettings.cirrusCloudsAltitude);
+        //RenderSettings.skybox.SetFloat ("_CloudAlpha", cloudsConfig.cirrusAlpha);
+        //RenderSettings.skybox.SetFloat ("_CloudCoverage", cloudsConfig.cirrusCoverage);
+        //RenderSettings.skybox.SetFloat ("_CloudColorPower", cloudsConfig.cirrusColorPow);
+        //
+        ////flat procedural
+        //if (flatCloudsRenderTarget != null)
+        //{
+        //    RenderSettings.skybox.SetTexture("_Cloud1Map", flatCloudsRenderTarget);
+        //    RenderSettings.skybox.SetColor("_Cloud1Color", cloudsSettings.flatCloudsColor.Evaluate(GameTime.solarTime));
+        //    RenderSettings.skybox.SetFloat("_Cloud1Altitude", cloudsSettings.flatCloudsAltitude);
+        //    RenderSettings.skybox.SetFloat("_Cloud1Alpha", cloudsConfig.flatAlpha);
+        //    RenderSettings.skybox.SetFloat("_Cloud1ColorPower", cloudsConfig.flatColorPow);
+        //}
+
+        Material CustomSky = CustomSkyboxScript.Skysphere.material;
+
+        CustomSky.SetVector("_SunDir", -SunTransform.transform.forward);
+        CustomSky.SetVector("_MoonDir", Components.Moon.transform.forward);
+        CustomSky.SetColor("_MoonColor", skySettings.moonColor);
+        CustomSky.SetFloat("_MoonSize", skySettings.moonSize);
+        CustomSky.SetFloat("_MoonBrightness", skySettings.moonBrightness);
+        if (skySettings.renderMoon)
+            CustomSky.SetTexture("_MoonTex", moonRenderTarget);
         else
-            RenderSettings.skybox.SetTexture("_MoonTex", null);
-        RenderSettings.skybox.SetColor("_scatteringColor",skySettings.scatteringColor.Evaluate(GameTime.solarTime));
-		RenderSettings.skybox.SetColor("_sunDiskColor", skySettings.sunDiskColor.Evaluate(GameTime.solarTime));
-		RenderSettings.skybox.SetColor("_weatherSkyMod", Color.Lerp(currentWeatherSkyMod, currentInteriorSkyboxMod, currentInteriorSkyboxMod.a));
-		RenderSettings.skybox.SetColor("_weatherFogMod", Color.Lerp(currentWeatherFogMod, currentInteriorFogColorMod, currentInteriorFogColorMod.a));
-		RenderSettings.skybox.SetVector ("_Bm", BetaMie () * (skySettings.mie * Fog.scatteringStrenght));
-		RenderSettings.skybox.SetVector ("_Br", BetaRay() * skySettings.rayleigh);
-		RenderSettings.skybox.SetVector ("_mieG",GetMieG ());
-		RenderSettings.skybox.SetFloat ("_SunIntensity",skySettings.sunIntensity);
-		RenderSettings.skybox.SetFloat ("_SunDiskSize", skySettings.sunDiskScale);
-		RenderSettings.skybox.SetFloat ("_SunDiskIntensity", skySettings.sunDiskIntensity);
-		RenderSettings.skybox.SetFloat ("_SunDiskSize",skySettings.sunDiskScale);
-		RenderSettings.skybox.SetFloat ("_Exposure", skySettings.skyExposure);
-		RenderSettings.skybox.SetFloat ("_SkyLuminance", skySettings.skyLuminence.Evaluate(GameTime.solarTime));
-		RenderSettings.skybox.SetFloat ("_scatteringPower", skySettings.scatteringCurve.Evaluate(GameTime.solarTime));
-		RenderSettings.skybox.SetFloat ("_SkyColorPower", skySettings.skyColorPower.Evaluate(GameTime.solarTime));
-		RenderSettings.skybox.SetFloat ("_StarsIntensity", skySettings.starsIntensity.Evaluate(GameTime.solarTime));
-        RenderSettings.skybox.SetFloat ("_GalaxyIntensity", skySettings.galaxyIntensity.Evaluate(GameTime.solarTime));
-        RenderSettings.skybox.SetColor ("_moonGlowColor", skySettings.moonGlowColor);
+            CustomSky.SetTexture("_MoonTex", null);
+        CustomSky.SetColor("_scatteringColor", skySettings.scatteringColor.Evaluate(GameTime.solarTime));
+        CustomSky.SetColor("_sunDiskColor", skySettings.sunDiskColor.Evaluate(GameTime.solarTime));
+        CustomSky.SetColor("_weatherSkyMod", Color.Lerp(currentWeatherSkyMod, currentInteriorSkyboxMod, currentInteriorSkyboxMod.a));
+        CustomSky.SetColor("_weatherFogMod", Color.Lerp(currentWeatherFogMod, currentInteriorFogColorMod, currentInteriorFogColorMod.a));
+        CustomSky.SetVector("_Bm", BetaMie() * (skySettings.mie * Fog.scatteringStrenght));
+        CustomSky.SetVector("_Br", BetaRay() * skySettings.rayleigh);
+        CustomSky.SetVector("_mieG", GetMieG());
+        CustomSky.SetFloat("_SunIntensity", skySettings.sunIntensity);
+        CustomSky.SetFloat("_SunDiskSize", skySettings.sunDiskScale);
+        CustomSky.SetFloat("_SunDiskIntensity", skySettings.sunDiskIntensity);
+        CustomSky.SetFloat("_SunDiskSize", skySettings.sunDiskScale);
+        CustomSky.SetFloat("_Exposure", skySettings.skyExposure);
+        CustomSky.SetFloat("_SkyLuminance", skySettings.skyLuminence.Evaluate(GameTime.solarTime));
+        CustomSky.SetFloat("_scatteringPower", skySettings.scatteringCurve.Evaluate(GameTime.solarTime));
+        CustomSky.SetFloat("_SkyColorPower", skySettings.skyColorPower.Evaluate(GameTime.solarTime));
+        CustomSky.SetFloat("_StarsIntensity", skySettings.starsIntensity.Evaluate(GameTime.solarTime));
+        CustomSky.SetFloat("_GalaxyIntensity", skySettings.galaxyIntensity.Evaluate(GameTime.solarTime));
+        CustomSky.SetColor("_moonGlowColor", skySettings.moonGlowColor);
 
         if (skySettings.blackGroundMode)
-            RenderSettings.skybox.SetInt("_blackGround",1);
+            CustomSky.SetInt("_blackGround", 1);
         else
-            RenderSettings.skybox.SetInt("_blackGround", 0);
+            CustomSky.SetInt("_blackGround", 0);
 
         float hdr = HDR ? 1f : 0f;
-		RenderSettings.skybox.SetFloat ("_hdr", hdr);
-		RenderSettings.skybox.SetFloat("_moonGlowStrenght", skySettings.moonGlow.Evaluate(GameTime.solarTime));
+        CustomSky.SetFloat("_hdr", hdr);
+        CustomSky.SetFloat("_moonGlowStrenght", skySettings.moonGlow.Evaluate(GameTime.solarTime));
 
         //Clouds
-		RenderSettings.skybox.SetVector ("_CloudAnimation", cloudAnim);
-		
-        //cirrus
-		if (cloudsSettings.cirrusCloudsTexture != null)
-			RenderSettings.skybox.SetTexture ("_CloudMap", cloudsSettings.cirrusCloudsTexture);
+        CustomSky.SetVector("_CloudAnimation", cloudAnim);
 
-		RenderSettings.skybox.SetColor("_CloudColor",cloudsSettings.cirrusCloudsColor.Evaluate(GameTime.solarTime));
-		RenderSettings.skybox.SetFloat ("_CloudAltitude", cloudsSettings.cirrusCloudsAltitude);
-		RenderSettings.skybox.SetFloat ("_CloudAlpha", cloudsConfig.cirrusAlpha);
-		RenderSettings.skybox.SetFloat ("_CloudCoverage", cloudsConfig.cirrusCoverage);
-		RenderSettings.skybox.SetFloat ("_CloudColorPower", cloudsConfig.cirrusColorPow);
+        //cirrus
+        if (cloudsSettings.cirrusCloudsTexture != null)
+            CustomSky.SetTexture("_CloudMap", cloudsSettings.cirrusCloudsTexture);
+
+        CustomSky.SetColor("_CloudColor", cloudsSettings.cirrusCloudsColor.Evaluate(GameTime.solarTime));
+        CustomSky.SetFloat("_CloudAltitude", cloudsSettings.cirrusCloudsAltitude);
+        CustomSky.SetFloat("_CloudAlpha", cloudsConfig.cirrusAlpha);
+        CustomSky.SetFloat("_CloudCoverage", cloudsConfig.cirrusCoverage);
+        CustomSky.SetFloat("_CloudColorPower", cloudsConfig.cirrusColorPow);
 
         //flat procedural
         if (flatCloudsRenderTarget != null)
         {
-            RenderSettings.skybox.SetTexture("_Cloud1Map", flatCloudsRenderTarget);
-            RenderSettings.skybox.SetColor("_Cloud1Color", cloudsSettings.flatCloudsColor.Evaluate(GameTime.solarTime));
-            RenderSettings.skybox.SetFloat("_Cloud1Altitude", cloudsSettings.flatCloudsAltitude);
-            RenderSettings.skybox.SetFloat("_Cloud1Alpha", cloudsConfig.flatAlpha);
-            RenderSettings.skybox.SetFloat("_Cloud1ColorPower", cloudsConfig.flatColorPow);
+            CustomSky.SetTexture("_Cloud1Map", flatCloudsRenderTarget);
+            CustomSky.SetColor("_Cloud1Color", cloudsSettings.flatCloudsColor.Evaluate(GameTime.solarTime));
+            CustomSky.SetFloat("_Cloud1Altitude", cloudsSettings.flatCloudsAltitude);
+            CustomSky.SetFloat("_Cloud1Alpha", cloudsConfig.flatAlpha);
+            CustomSky.SetFloat("_Cloud1ColorPower", cloudsConfig.flatColorPow);
         }
 
-       //RenderSettings.skybox.SetFloat("_noiseScale", skySettings.noiseScale);
-       //RenderSettings.skybox.SetFloat("_noiseIntensity", skySettings.noiseIntensity);
+        //RenderSettings.skybox.SetFloat("_noiseScale", skySettings.noiseScale);
+        //RenderSettings.skybox.SetFloat("_noiseIntensity", skySettings.noiseIntensity);
 
         Shader.SetGlobalVector ("_SunDir", -Components.Sun.transform.forward);
 		Shader.SetGlobalVector ("_MoonDir", -Components.Moon.transform.forward);
@@ -1960,7 +2028,12 @@ public class EnviroSky : MonoBehaviour
 		starsRotation *= Quaternion.Euler(0, siderealTime, 0);
 
 		Components.starsRotation.localRotation = starsRotation;
-		RenderSettings.skybox.SetMatrix ("_StarsMatrix", Components.starsRotation.worldToLocalMatrix);
+
+        Material CustomSky = CustomSkyboxScript.Skysphere.material;
+        CustomSky.SetMatrix("_StarsMatrix", Components.starsRotation.worldToLocalMatrix);
+        //RenderSettings.skybox.SetMatrix ("_StarsMatrix", Components.starsRotation.worldToLocalMatrix);
+
+
 		//Matrix4x4 starsMatrix = Matrix4x4.TRS (DomeTransform.localPosition, starsRotation, new Vector3 (1f, 1f, 1f));
 		//RenderSettings.skybox.SetMatrix ("_StarsMatrix", starsMatrix);
 	}
@@ -2142,7 +2215,7 @@ public class EnviroSky : MonoBehaviour
 
 	void UpdateAmbientLight ()
 	{
-		switch (lightSettings.ambientMode) {
+        switch (lightSettings.ambientMode) {
 		case UnityEngine.Rendering.AmbientMode.Flat:
 			Color lightClr = Color.Lerp(lightSettings.ambientSkyColor.Evaluate (GameTime.solarTime),currentWeatherLightMod,currentWeatherLightMod.a) * lightSettings.ambientIntensity.Evaluate(GameTime.solarTime);
 			RenderSettings.ambientSkyColor = Color.Lerp (lightClr, currentInteriorAmbientLightMod, currentInteriorAmbientLightMod.a);

@@ -31,37 +31,35 @@ public class DG_SkillTracker : MonoBehaviour {
 
     [Header("Debug")]
     public int DebugValue;
-    [Button(ButtonSizes.Small)] public void DebugSetFishingLevel() { DebugIncreaseSkillLevel(SkillTags.Fishing, DebugValue); }
-    [Button(ButtonSizes.Small)] public void DebugSetFarmingLevel() { DebugIncreaseSkillLevel(SkillTags.Farming, DebugValue); }
-    [Button(ButtonSizes.Small)] public void DebugSetForagingLevel() { DebugIncreaseSkillLevel(SkillTags.Foraging, DebugValue); }
-    [Button(ButtonSizes.Small)] public void DebugSetMiningLevel() { DebugIncreaseSkillLevel(SkillTags.Mining, DebugValue); }
+    [Button(ButtonSizes.Small)] public void DebugSetPlayer1FishingLevel() { DebugIncreasePlayer1SkillLevel(SkillTags.Fishing, DebugValue); }
+    [Button(ButtonSizes.Small)] public void DebugSetPlayer1FarmingLevel() { DebugIncreasePlayer1SkillLevel(SkillTags.Farming, DebugValue); }
+    [Button(ButtonSizes.Small)] public void DebugSetPlayer1ForagingLevel() { DebugIncreasePlayer1SkillLevel(SkillTags.Foraging, DebugValue); }
+    [Button(ButtonSizes.Small)] public void DebugSetPlayer1MiningLevel() { DebugIncreasePlayer1SkillLevel(SkillTags.Mining, DebugValue); }
 
 
 
-    void DebugIncreaseSkillLevel(SkillTags Skill, int Value)
+    void DebugIncreasePlayer1SkillLevel(SkillTags Skill, int Value)
     {
-        int CurrentSkillEXP = GetSkillExp(Skill, QuickFind.NetworkSync.PlayerCharacterID);
-        int CurrentSkillLevel = GetSkillLevel(Skill, QuickFind.NetworkSync.PlayerCharacterID, CurrentSkillEXP);
-        SetSkillExp(Skill, Value);
+        int CurrentSkillEXP = GetSkillExp(Skill, QuickFind.NetworkSync.Player1PlayerCharacter);
+        int CurrentSkillLevel = GetSkillLevel(Skill, QuickFind.NetworkSync.Player1PlayerCharacter, CurrentSkillEXP);
+        SetSkillExp(Skill, Value, QuickFind.NetworkSync.Player1PlayerCharacter);
         Debug.Log(Skill.ToString() + " Set EXP " + Value.ToString());
     }
 
 
 
 
-    public void IncreaseSkillLevel(SkillTags SkillType, DG_ItemObject.ItemQualityLevels ReceivedQuality)
+    public void IncreaseSkillLevel(SkillTags SkillType, DG_ItemObject.ItemQualityLevels ReceivedQuality, int PlayerID)
     {
-        int PlayerCharID = QuickFind.NetworkSync.PlayerCharacterID;
-        int CurrentEXP = GetSkillExp(SkillType, PlayerCharID);
+        int CurrentEXP = GetSkillExp(SkillType, PlayerID);
         int AdditiveEXP = GetRewardByType(SkillType).QualityLevelRewards[(int)ReceivedQuality];
-        SetSkillExp(SkillType, CurrentEXP + AdditiveEXP);
+        SetSkillExp(SkillType, CurrentEXP + AdditiveEXP, PlayerID);
     }
 
-    public void IncreaseFishingLevel(DG_FishingRoller.FishRollValues ActiveFishReference, DG_ItemObject.ItemQualityLevels ReceivedQuality)
+    public void IncreaseFishingLevel(DG_FishingRoller.FishRollValues ActiveFishReference, DG_ItemObject.ItemQualityLevels ReceivedQuality, int PlayerID)
     {
         //Fishing EXP is adjusted in Fishing Atlas on a per fish basis.  As some fish may be drastically more difficult to catch.
-        int PlayerCharID = QuickFind.NetworkSync.PlayerCharacterID;
-        int CurrentEXP = GetSkillExp(SkillTags.Fishing, PlayerCharID);
+        int CurrentEXP = GetSkillExp(SkillTags.Fishing, PlayerID);
 
         int AdditiveEXP = 0;
         if(ActiveFishReference.AtlasObject.HasCustomEXPReward)
@@ -69,7 +67,7 @@ public class DG_SkillTracker : MonoBehaviour {
         else
             AdditiveEXP = GetRewardByType(SkillTags.Fishing).QualityLevelRewards[(int)ReceivedQuality];
 
-        SetSkillExp(SkillTags.Fishing, CurrentEXP + AdditiveEXP);
+        SetSkillExp(SkillTags.Fishing, CurrentEXP + AdditiveEXP, PlayerID);
     }
 
 
@@ -81,11 +79,10 @@ public class DG_SkillTracker : MonoBehaviour {
 
 
 
-    public int GetMySkillLevel(SkillTags Skill)
+    public int GetMySkillLevel(SkillTags Skill, int PlayerID)
     {
-        int Player = QuickFind.NetworkSync.PlayerCharacterID;
-        int EXP = QuickFind.SkillTracker.GetSkillExp(DG_SkillTracker.SkillTags.Fishing, Player);
-        return GetSkillLevel(Skill, Player, EXP);
+        int EXP = QuickFind.SkillTracker.GetSkillExp(DG_SkillTracker.SkillTags.Fishing, PlayerID);
+        return GetSkillLevel(Skill, PlayerID, EXP);
     }
     public int GetSkillLevel(SkillTags Skill, int PlayerID, int CurrentExp)
     {
@@ -127,12 +124,12 @@ public class DG_SkillTracker : MonoBehaviour {
 
 
     //Networking
-    public void SetSkillExp(SkillTags Skill, int Amount)
+    public void SetSkillExp(SkillTags Skill, int Amount, int PlayerID)
     {
         int[] SendInts = new int[3];
         SendInts[0] = (int)Skill;
         SendInts[1] = Amount;
-        SendInts[2] = QuickFind.NetworkSync.PlayerCharacterID;
+        SendInts[2] = PlayerID;
 
         QuickFind.NetworkSync.UpdatePlayerStat(SendInts);
     }

@@ -40,8 +40,8 @@ public class DG_CharacterControllers : Photon.MonoBehaviour
     public void GameStartSpawnClothing()
     {
         GameStart = false;
-        for(int i = 0; i < QuickFind.NetworkSync.UserList.Count; i++)
-            QuickFind.ClothingHairManager.PlayerJoined(QuickFind.NetworkSync.UserList[i]);
+        for (int i = 0; i < QuickFind.NetworkSync.UserList.Count; i++)
+            QuickFind.ClothingHairManager.PlayerJoined(QuickFind.NetworkSync.UserList[i], QuickFind.NetworkSync.ThisPlayerBelongsToMe(QuickFind.NetworkSync.UserList[i].PlayerCharacterID));
     }
 
     public void SpawnCharController(int Gender, DG_NetworkSync.Users NewUser)
@@ -51,11 +51,9 @@ public class DG_CharacterControllers : Photon.MonoBehaviour
         else newPlayerObject = Instantiate(FemalePrefabRef, Vector3.zero, Quaternion.identity);
 
         NewUser.CharacterLink = newPlayerObject.GetComponent<DG_CharacterLink>();
-
-        if (NewUser.ID == QuickFind.NetworkSync.UserID) QuickFind.NetworkSync.CharacterLink = NewUser.CharacterLink;
-
+        NewUser.CharacterLink.PlayerID = NewUser.PlayerCharacterID;
 
         if(!GameStart)
-            QuickFind.ClothingHairManager.PlayerJoined(NewUser);
+            QuickFind.ClothingHairManager.PlayerJoined(NewUser, true);
     }
 }

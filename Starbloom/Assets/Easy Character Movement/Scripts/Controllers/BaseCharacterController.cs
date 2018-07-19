@@ -17,6 +17,8 @@ namespace ECM.Controllers
     {
         #region EDITOR EXPOSED FIELDS
 
+        public DG_CharacterLink CharLink;
+
         [Header("Movement")]
         [Tooltip("Maximum movement speed (in m/s).")]
         [SerializeField]
@@ -624,11 +626,11 @@ namespace ECM.Controllers
         protected virtual void HandleInput()
         {
 
-            DG_PlayerInput.Player MP = QuickFind.InputController.MainPlayer;
+            DG_PlayerInput.Player MP = QuickFind.InputController.GetPlayerByPlayerID(CharLink.PlayerID);
             moveDirection = new Vector3 (MP.HorizontalAxis, 0.0f, MP.VerticalAxis );
-            moveDirection = moveDirection.relativeTo(QuickFind.PlayerCam.MainCam.transform);
+            moveDirection = moveDirection.relativeTo(MP.CharLink.PlayerCam.CamTrans);
 
-            jump = QuickFind.InputController.MainPlayer.ButtonSet.Jump.Held;
+            jump = QuickFind.InputController.GetPlayerByPlayerID(CharLink.PlayerID).ButtonSet.Jump.Held;
         }
 
         #endregion

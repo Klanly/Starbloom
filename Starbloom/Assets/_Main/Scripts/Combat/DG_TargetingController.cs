@@ -24,28 +24,42 @@ public class DG_TargetingController : MonoBehaviour {
 
     void Update()
     {
-        if (!QuickFind.CombatHandler.WeaponActive) return;
-        if (QuickFind.GUI_OverviewTabs.UIisOpen) return;
-        if (QuickFind.GUI_Inventory.InventoryIsOpen) return;
-
-        if (QuickFind.InputController.MainPlayer.Targeting == DG_PlayerInput.ContextDetection.MousePosition) //Detect Enemies from Mouse
+        for (int i = 0; i < QuickFind.InputController.Players.Length; i++)
         {
-            Ray ray = QuickFind.PlayerCam.MainCam.ScreenPointToRay(Input.mousePosition);
-            SphereCastAll(ray.origin, ray.direction, FromCamDistance);
-        }
-        else if (QuickFind.InputController.MainPlayer.Targeting == DG_PlayerInput.ContextDetection.MiddleScreenPosition)
-            SphereCastAll(QuickFind.PlayerCam.MainCam.transform.position, QuickFind.PlayerCam.MainCam.transform.forward, FromCamDistance);
-        else //Detect Enemies In Front of Player
-            SphereCastAll(QuickFind.PlayerTrans.position, QuickFind.PlayerTrans.forward, FromCharDistance);
+            DG_PlayerInput.Player Player = QuickFind.InputController.Players[i];
+            if (Player.CharLink == null) continue;
 
-        if (PlayerTarget != null)
-        {
-            TargetingCanvas.gameObject.SetActive(true);
-            TargetingCanvas.position = PlayerTarget.position;
-            TargetingCanvas.LookAt(QuickFind.PlayerCam.MainCam.transform);
+            if (!QuickFind.CombatHandler.WeaponActive) return;
+            if (QuickFind.GUI_OverviewTabs.UIisOpen) return;
+            if (QuickFind.GUI_Inventory.InventoryIsOpen) return;
+
+            CameraLogic.UserCameraMode CamMode = Player.CharLink.PlayerCam.CurrentCameraAngle;
+            CameraLogic.ContextDetection DetectionMode = CameraLogic.ContextDetection.InfrontPlayer;
+            if (CamMode == CameraLogic.UserCameraMode.Isometric) DetectionMode = QuickFind.UserSettings.IsometricEnemyDetectionMode;
+            if (CamMode == CameraLogic.UserCameraMode.Thirdperson) DetectionMode = QuickFind.UserSettings.ThirdPersonEnemyDetectionMode;
+
+            if (DetectionMode == CameraLogic.ContextDetection.MousePosition) //Detect Enemies from Mouse
+            {
+                Ray ray = Player.CharLink.PlayerCam.MainCam.ScreenPointToRay(Input.mousePosition);
+                SphereCastAll(ray.origin, ray.direction, FromCamDistance);
+            }
+            else if (DetectionMode == CameraLogic.ContextDetection.MiddleScreenPosition)
+                SphereCastAll(Player.CharLink.PlayerCam.CamTrans.position, Player.CharLink.PlayerCam.CamTrans.forward, FromCamDistance);
+            else //Detect Enemies In Front of Player
+            {
+                if (QuickFind.PlayerTrans == null) return;
+                SphereCastAll(QuickFind.PlayerTrans.position, QuickFind.PlayerTrans.forward, FromCharDistance);
+            }
+
+            if (PlayerTarget != null)
+            {
+                TargetingCanvas.gameObject.SetActive(true);
+                TargetingCanvas.position = PlayerTarget.position;
+                TargetingCanvas.LookAt(Player.CharLink.PlayerCam.CamTrans);
+            }
+            else
+                TargetingCanvas.gameObject.SetActive(false);
         }
-        else
-            TargetingCanvas.gameObject.SetActive(false);
     }
 
     void SphereCastAll(Vector3 Origin, Vector3 Direction, float Distance)

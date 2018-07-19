@@ -20,7 +20,7 @@ public class DG_FishingRoller : MonoBehaviour {
     }
 
 
-    public FishRollValues GetNewFishRoll(Fishing_MasterHandler.WaterTypes CurrentWater)
+    public FishRollValues GetNewFishRoll(Fishing_MasterHandler.WaterTypes CurrentWater, int PlayerID)
     {
         FishRollValues ReturnFish = new FishRollValues();
         DG_PlayerCharacters.RucksackSlot CurrentRucksackSlot = QuickFind.ItemActivateableHandler.CurrentRucksackSlot;
@@ -34,7 +34,7 @@ public class DG_FishingRoller : MonoBehaviour {
         ReturnFish.AtlasObject = RollForFish(AvailableFish);
         ReturnFish.WaitTime = GetFishWaitTime(ReturnFish.AtlasObject);
         ReturnFish.Weight = GetFishWeight(ReturnFish.AtlasObject);
-        ReturnFish.QualityLevel = GetQualityLevel(ReturnFish.AtlasObject, FishingRodQuality);
+        ReturnFish.QualityLevel = GetQualityLevel(ReturnFish.AtlasObject, FishingRodQuality, PlayerID);
 
         return ReturnFish;
     }
@@ -56,9 +56,9 @@ public class DG_FishingRoller : MonoBehaviour {
         float UpOneDecimal = RandomFishWeight * 10;
         return (int)UpOneDecimal;
     }
-    public DG_ItemObject.ItemQualityLevels GetQualityLevel(DG_FishingAtlasObject AtlasObject, DG_ItemObject.ItemQualityLevels FishingRodQuality)
+    public DG_ItemObject.ItemQualityLevels GetQualityLevel(DG_FishingAtlasObject AtlasObject, DG_ItemObject.ItemQualityLevels FishingRodQuality, int PlayerID)
     {
-        int FishingLevel = QuickFind.SkillTracker.GetMySkillLevel(DG_SkillTracker.SkillTags.Fishing);
+        int FishingLevel = QuickFind.SkillTracker.GetMySkillLevel(DG_SkillTracker.SkillTags.Fishing, PlayerID);
 
         if (FishingLevel == 9) return DG_ItemObject.ItemQualityLevels.Max;
 

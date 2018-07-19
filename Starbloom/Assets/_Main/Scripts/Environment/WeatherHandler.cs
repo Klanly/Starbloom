@@ -208,17 +208,20 @@ public class WeatherHandler : MonoBehaviour
 
     public void CheckEnvironmentFX()
     {
-        CheckParticles();
-        CheckShowShader();
+        Debug.Log("Todo, Adjust Weather particles, and shader based on each player camera, and location");
+        int CurrentScene = 0;  
+
+        CheckParticles(CurrentScene);
+        CheckShowShader(CurrentScene);
     }
-    void CheckParticles()
+    void CheckParticles(int CurrentScene)
     {
         if (EnviroVFXContainer == null) EnviroVFXContainer = QuickFind.WeatherController.EffectsHolder;
-        EnviroVFXContainer.SetActive(QuickFind.SceneList.GetSceneById(QuickFind.NetworkSync.CurrentScene).AllowEnvironmentParticles);
+        EnviroVFXContainer.SetActive(QuickFind.SceneList.GetSceneById(CurrentScene).AllowEnvironmentParticles);
     }
 
-    void CheckShowShader()
+    void CheckShowShader(int CurrentScene)
     {
-        SnowRend.enabled = (CurrentSeason == Seasons.Winter && QuickFind.SceneList.GetSceneById(QuickFind.NetworkSync.CurrentScene).AllowSnowShader);
+        SnowRend.enabled = (CurrentSeason == Seasons.Winter && QuickFind.SceneList.GetSceneById(CurrentScene).AllowSnowShader);
     }
 }

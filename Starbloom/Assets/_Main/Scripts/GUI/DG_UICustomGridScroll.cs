@@ -10,6 +10,8 @@ public class DG_UICustomGridScroll : MonoBehaviour {
     int ShownGridValue = 0;
     int Positionindex = 0;
 
+    int PlayerID = -2;
+
 
     private void Start()
     {
@@ -20,7 +22,7 @@ public class DG_UICustomGridScroll : MonoBehaviour {
 
     private void Update()
     {
-        float ZoomAxis = QuickFind.InputController.MainPlayer.CamZoomAxis;
+        float ZoomAxis = QuickFind.InputController.GetPlayerByPlayerID(PlayerID).CamZoomAxis;
         if (ZoomAxis != 0)
         {
             bool Add = false;

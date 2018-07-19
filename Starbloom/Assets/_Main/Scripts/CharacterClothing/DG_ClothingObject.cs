@@ -54,10 +54,10 @@ public class DG_ClothingObject : MonoBehaviour {
 
 
     [Button(ButtonSizes.Medium)]
-    public void RuntimeAddClothingItem()
+    public void RuntimeAddClothingToPlayer1()
     {
         if (!Application.isPlaying) return;    
-        QuickFind.ClothingHairManager.ClothingAdd(QuickFind.NetworkSync.UserID, DatabaseID);
+        QuickFind.ClothingHairManager.ClothingAdd(QuickFind.NetworkSync.Player1PlayerCharacter, DatabaseID, true);
     }
 
     [Button(ButtonSizes.Small)]

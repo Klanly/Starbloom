@@ -55,7 +55,13 @@ public class DG_InteractionGuiPopup : MonoBehaviour {
 
     private void Update()
     {
-        Vector3 screenPos = QuickFind.PlayerCam.MainCam.WorldToScreenPoint(ActiveContext.transform.position);
-        FloatingRect.position = screenPos;
+        for (int i = 0; i < QuickFind.InputController.Players.Length; i++)
+        {
+            DG_PlayerInput.Player P = QuickFind.InputController.Players[i];
+            if (P.CharLink == null) continue;
+
+            Vector3 screenPos = P.CharLink.PlayerCam.MainCam.WorldToScreenPoint(ActiveContext.transform.position);
+            FloatingRect.position = screenPos;
+        }
     }
 }

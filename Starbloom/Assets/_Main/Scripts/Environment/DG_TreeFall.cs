@@ -155,15 +155,15 @@ public class DG_TreeFall : MonoBehaviour {
 
     void SpawnReward(int RewardID, DG_ScatterPointReference ScatterRef)
     {
-        int SceneID = QuickFind.NetworkSync.CurrentScene;
         DG_BreakableObjectItem BOI = QuickFind.BreakableObjectsCompendium.GetItemFromID(RewardID);
         DG_BreakableObjectItem.ItemClump[] IC = BOI.GetBreakReward();
+        NetworkObject NO = QuickFind.NetworkObjectManager.ScanUpTree(transform);
 
         for (int i = 0; i < IC.Length; i++)
         {
             DG_BreakableObjectItem.ItemClump Clump = IC[i];
             for (int iN = 0; iN < Clump.Value; iN++)
-                QuickFind.NetworkObjectManager.CreateNetSceneObject(SceneID, NetworkObjectManager.NetworkObjectTypes.Item, Clump.ItemID, Clump.ItemQuality, ScatterRef.GetSpawnPoint(), 0, true, ScatterRef.RandomVelocity());
+                QuickFind.NetworkObjectManager.CreateNetSceneObject(NO.Scene.SceneID, NetworkObjectManager.NetworkObjectTypes.Item, Clump.ItemID, Clump.ItemQuality, ScatterRef.GetSpawnPoint(), 0, true, ScatterRef.RandomVelocity());
         }
     }
 
@@ -175,7 +175,7 @@ public class DG_TreeFall : MonoBehaviour {
         //Make this networked?
         BottomScatterRef.GetComponent<DG_FXContextObjectReference>().TriggerBreak();
 
-        QuickFind.NetworkSync.RemoveNetworkSceneObject(QuickFind.NetworkSync.CurrentScene, NO.NetworkObjectID);
+        QuickFind.NetworkSync.RemoveNetworkSceneObject(NO.Scene.SceneID, NO.NetworkObjectID);
     }
 
 
