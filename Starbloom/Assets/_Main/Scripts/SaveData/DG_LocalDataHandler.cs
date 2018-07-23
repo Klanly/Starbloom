@@ -74,7 +74,9 @@ public class DG_LocalDataHandler : MonoBehaviour {
 
         GetIntValues(null, true);
         GetStringValues(null, true);
-        QuickFind.GUI_Inventory.UpdateInventoryVisuals();
+
+        QuickFind.GUI_Inventory.UpdateInventoryVisuals(QuickFind.NetworkSync.Player1PlayerCharacter);
+        QuickFind.GUI_Inventory.UpdateInventoryVisuals(QuickFind.NetworkSync.Player2PlayerCharacter);
 
         QuickFind.NetworkObjectManager.ClearObjects();
         GetWorldInts(null, true);
@@ -94,6 +96,19 @@ public class DG_LocalDataHandler : MonoBehaviour {
     public List<int> GatherPlayerDataInts(bool ToDisk)
     {
         List<int> IntData = new List<int>();
+
+        if (!ToDisk)
+        {
+            IntData.Add(QuickFind.NetworkSync.UserList.Count);
+            for (int i = 0; i < QuickFind.NetworkSync.UserList.Count; i++)
+            {
+                DG_NetworkSync.Users U = QuickFind.NetworkSync.UserList[i];
+                IntData.Add(U.NetID);
+                IntData.Add(U.PlayerCharacterID);
+                IntData.Add(U.SceneID);
+            }
+        }
+
         DG_PlayerCharacters PlayerData = QuickFind.Farm;
         //
         IntData.Add(PlayerData.PlayerCharacters.Count);
@@ -106,6 +121,10 @@ public class DG_LocalDataHandler : MonoBehaviour {
         {
             DG_PlayerCharacters.PlayerCharacter PC = PlayerData.PlayerCharacters[i];
             DG_PlayerCharacters.CharacterEquipment CE = PC.Equipment;
+
+            int HasBeenCreated = PC.CharacterCreated ? 1 : 0;
+            IntData.Add(HasBeenCreated);
+            if (!PC.CharacterCreated) continue;
 
             IntData.Add((int)PC.CharacterGender);
 
@@ -166,6 +185,19 @@ public class DG_LocalDataHandler : MonoBehaviour {
         if (PrintDebug) PrintFileSentSize(IntValues.Length, false, FromDisk);
 
         int Index = 0;
+        if (!FromDisk)
+        {
+            int UserCount = IntValues[Index]; Index++;
+            for (int i = 0; i < UserCount; i++)
+            {
+                DG_NetworkSync.Users U = new DG_NetworkSync.Users();
+                QuickFind.NetworkSync.UserList.Add(U);
+                U.NetID = IntValues[Index]; Index++;
+                U.PlayerCharacterID = IntValues[Index]; Index++;
+                U.SceneID = IntValues[Index]; Index++;
+            }
+        }
+     
         int PlayerCount = 0;
         DG_PlayerCharacters PlayerData = QuickFind.Farm;
         //
@@ -179,6 +211,10 @@ public class DG_LocalDataHandler : MonoBehaviour {
         {
             DG_PlayerCharacters.PlayerCharacter PC = PlayerData.PlayerCharacters[i];
             DG_PlayerCharacters.CharacterEquipment CE = PC.Equipment;
+
+            int HasBeenCreated = IntValues[Index]; Index++;
+            bool BeenCreated = false; if (HasBeenCreated == 1) BeenCreated = true; PC.CharacterCreated = BeenCreated;
+            if (!PC.CharacterCreated) continue;
 
             PC.CharacterGender = (DG_PlayerCharacters.GenderValue)IntValues[Index]; Index++;
 

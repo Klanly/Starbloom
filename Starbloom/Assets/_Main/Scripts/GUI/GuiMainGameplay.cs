@@ -5,13 +5,26 @@ using UnityEngine;
 public class GuiMainGameplay : MonoBehaviour {
 
 
-    [Header("Canvases")]
-    public CanvasGroup UICanvas = null;
-    public CanvasGroup InventoryHotbar = null;
 
-    [Header("Inventory Hotbar")]
-    public Transform InventoryHotbarGrid = null;
+    [System.Serializable]
+    public class OverlayCharacter
+    {
+        [Header("Canvases")]
+        public CanvasGroup UICanvas = null;
+        public UnityEngine.UI.GraphicRaycaster Raycaster;
+        public CanvasGroup InventoryHotbar = null;
 
+        [Header("Inventory Hotbar")]
+        public Transform InventoryHotbarGrid = null;
+
+        [Header("Energy/Health/Mana Bars")]
+        public UnityEngine.UI.Image EnergyBar;
+        public UnityEngine.UI.Image HealthBar;
+    }
+
+    [Header("Main Overlay")]
+    public CanvasGroup MainOverlayCanvas = null;
+    public UnityEngine.UI.GraphicRaycaster MainOverlayRaycaster;
     [Header("Money Grid")]
     public Transform MoneyGrid = null;
     public float NewDayCycleTime;
@@ -22,16 +35,26 @@ public class GuiMainGameplay : MonoBehaviour {
     float CycleTimeMax;
     int ToMoney;
     int FromMoney;
-
     [Header("Time")]
     public TMPro.TextMeshProUGUI SeasonText = null;
     public TMPro.TextMeshProUGUI DayText = null;
     public TMPro.TextMeshProUGUI TimeText = null;
     public DG_TextStatic StaticText = null;
+    [Header("Text Data")]
+    public int SpringWordID = 115;
+    public int SummerWordID = 116;
+    public int AutumnWordID = 117;
+    public int WinterWordID = 118;
 
-    [Header("Energy/Health/Mana Bars")]
-    public UnityEngine.UI.Image EnergyBar;
-    public UnityEngine.UI.Image HealthBar;
+    [Header("Player Canvas Roots")]
+    public Transform Player1;
+    public Transform Player2;
+    public GameObject BlankSpaceLeft;
+    public GameObject BlankSpaceRight;
+
+
+    [Header("Players")]
+    public OverlayCharacter[] CharacterOverlays;
 
 
 
@@ -46,7 +69,9 @@ public class GuiMainGameplay : MonoBehaviour {
     }
     private void Start()
     {
-        QuickFind.EnableCanvas(UICanvas, false);
+        QuickFind.EnableCanvas(MainOverlayCanvas, false, MainOverlayRaycaster);
+        QuickFind.EnableCanvas(CharacterOverlays[0].UICanvas, false, CharacterOverlays[0].Raycaster);
+        QuickFind.EnableCanvas(CharacterOverlays[1].UICanvas, false, CharacterOverlays[1].Raycaster);
         transform.localPosition = Vector3.zero;
         this.enabled = false;
     }
@@ -66,8 +91,18 @@ public class GuiMainGameplay : MonoBehaviour {
 
 
 
+    public void OpenMainOverlay()
+    {
+        QuickFind.EnableCanvas(MainOverlayCanvas, true, MainOverlayRaycaster);
+    }
 
-    public void OpenUI(bool UIisOpen) { QuickFind.EnableCanvas(UICanvas, UIisOpen); }
+    public void OpenUI(bool UIisOpen, int PlayerID)
+    {
+        int ArrayNum = 0;
+        if (PlayerID == QuickFind.NetworkSync.Player2PlayerCharacter) ArrayNum = 1;
+
+        QuickFind.EnableCanvas(CharacterOverlays[ArrayNum].UICanvas, UIisOpen, CharacterOverlays[ArrayNum].Raycaster);
+    }
 
 
 
@@ -122,10 +157,10 @@ public class GuiMainGameplay : MonoBehaviour {
     {
         switch (Month)
         {
-            case 1: SeasonText.text = QuickFind.WordDatabase.GetWordFromID(115); break;
-            case 2: SeasonText.text = QuickFind.WordDatabase.GetWordFromID(116); break;
-            case 3: SeasonText.text = QuickFind.WordDatabase.GetWordFromID(117); break;
-            case 4: SeasonText.text = QuickFind.WordDatabase.GetWordFromID(118); break;
+            case 1: SeasonText.text = QuickFind.WordDatabase.GetWordFromID(SpringWordID); break;
+            case 2: SeasonText.text = QuickFind.WordDatabase.GetWordFromID(SummerWordID); break;
+            case 3: SeasonText.text = QuickFind.WordDatabase.GetWordFromID(AutumnWordID); break;
+            case 4: SeasonText.text = QuickFind.WordDatabase.GetWordFromID(WinterWordID); break;
         }
         DayText.text = Day.ToString();
     }
@@ -145,14 +180,18 @@ public class GuiMainGameplay : MonoBehaviour {
 
 
 
-    public void SetGuiEnergyValue(float NewEnergyPercentage)
+    public void SetGuiEnergyValue(float NewEnergyPercentage, int PlayerID)
     {
-        EnergyBar.fillAmount = NewEnergyPercentage;
+        int ArrayNum = 0;
+        if (PlayerID == QuickFind.NetworkSync.Player2PlayerCharacter) ArrayNum = 1;
+        CharacterOverlays[ArrayNum].EnergyBar.fillAmount = NewEnergyPercentage;
     }
 
-    public void SetGuiHealthValue(float NewHealthPercentage)
+    public void SetGuiHealthValue(float NewHealthPercentage, int PlayerID)
     {
-        HealthBar.fillAmount = NewHealthPercentage;
+        int ArrayNum = 0;
+        if (PlayerID == QuickFind.NetworkSync.Player2PlayerCharacter) ArrayNum = 1;
+        CharacterOverlays[ArrayNum].HealthBar.fillAmount = NewHealthPercentage;
     }
 
 }

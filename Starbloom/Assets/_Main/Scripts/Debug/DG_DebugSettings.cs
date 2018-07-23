@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -66,8 +67,15 @@ public class DG_DebugSettings : MonoBehaviour {
     void JumptoScenePoint(int ScenePointValue)
     {
         DG_SceneEntryObject Portal = QuickFind.SceneEntryPoints.GetItemFromID(ScenePointValue);
-        QuickFind.PlayerTrans.position = Portal.transform.position;
-        QuickFind.PlayerTrans.eulerAngles = Portal.transform.eulerAngles;
-        QuickFind.PlayerCam.InstantSetCameraAngle(Portal.CameraFacing, QuickFind.NetworkSync.GetCharacterLinkByPlayerID(QuickFind.NetworkSync.Player1PlayerCharacter).PlayerCam);
+        QuickFind.NetworkSync.GetCharacterLinkByPlayerID(QuickFind.NetworkSync.Player1PlayerCharacter).PlayerTrans.position = Portal.transform.position;
+        QuickFind.NetworkSync.GetCharacterLinkByPlayerID(QuickFind.NetworkSync.Player1PlayerCharacter).PlayerTrans.eulerAngles = Portal.transform.eulerAngles;
+        QuickFind.PlayerCam.InstantSetCameraAngle(Portal.CameraFacing, QuickFind.NetworkSync.GetCharacterLinkByPlayerID(QuickFind.NetworkSync.Player1PlayerCharacter).PlayerCam, 0);
+    }
+
+
+    [Button(ButtonSizes.Small)]
+    public void DebugToggleCoopMode()
+    {
+        QuickFind.LocalCoopController.TriggerLocalCoop(!QuickFind.LocalCoopController.LocalCoopActive);
     }
 }

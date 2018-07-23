@@ -17,43 +17,15 @@ public class DG_CharacterControllers : Photon.MonoBehaviour
     {
         QuickFind.CharacterManager = this;
     }
-    public int GetAvailablePlayerID()
-    {
-        for(int i = 0; i < int.MaxValue; i++)
-        {
-            bool Allow = true;
-            for(int iN = 0; iN < QuickFind.NetworkSync.UserList.Count; iN++)
-            {
-                if(QuickFind.NetworkSync.UserList[iN].PlayerCharacterID == i)
-                {
-                    Allow = false;
-                    break;
-                }
-            }
 
-            if (Allow)
-                return i;
-        }
-        return 0;
-    }
 
-    public void GameStartSpawnClothing()
-    {
-        GameStart = false;
-        for (int i = 0; i < QuickFind.NetworkSync.UserList.Count; i++)
-            QuickFind.ClothingHairManager.PlayerJoined(QuickFind.NetworkSync.UserList[i], QuickFind.NetworkSync.ThisPlayerBelongsToMe(QuickFind.NetworkSync.UserList[i].PlayerCharacterID));
-    }
-
-    public void SpawnCharController(int Gender, DG_NetworkSync.Users NewUser)
+    public void SpawnCharController(DG_PlayerCharacters.GenderValue Gender, DG_NetworkSync.Users NewUser)
     {
         GameObject newPlayerObject;
-        if (Gender == 0) newPlayerObject = Instantiate(MalePrefabRef, Vector3.zero, Quaternion.identity);
+        if (Gender == DG_PlayerCharacters.GenderValue.Male) newPlayerObject = Instantiate(MalePrefabRef, Vector3.zero, Quaternion.identity);
         else newPlayerObject = Instantiate(FemalePrefabRef, Vector3.zero, Quaternion.identity);
 
         NewUser.CharacterLink = newPlayerObject.GetComponent<DG_CharacterLink>();
         NewUser.CharacterLink.PlayerID = NewUser.PlayerCharacterID;
-
-        if(!GameStart)
-            QuickFind.ClothingHairManager.PlayerJoined(NewUser, true);
     }
 }

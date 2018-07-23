@@ -1,6 +1,9 @@
 using UnityEngine;
 using System.Collections;
 
+
+
+
 [AddComponentMenu("AQUAS/Reflection")]
 //[ExecuteInEditMode] // Make mirror live-update even when not in play mode
 public class AQUAS_Reflection : MonoBehaviour
@@ -20,6 +23,20 @@ public class AQUAS_Reflection : MonoBehaviour
 	private static bool s_InsideRendering = false;
 
     public bool ignoreOcclusionCulling;
+
+    Material[] materials;
+    Skybox sky;
+    Skybox mysky;
+    CameraClearFlags CamClearFlags = CameraClearFlags.Nothing;
+
+
+
+    private void Awake()
+    {
+        QuickFind.WaterReflection = this;
+        materials = GetComponent<Renderer>().sharedMaterials;
+    }
+
 
 #if UNITY_5_3 || UNITY_5_4 || UNITY_5_5
     public bool disableInEditMode;
@@ -97,29 +114,54 @@ public class AQUAS_Reflection : MonoBehaviour
 		reflectionCamera.transform.position = newpos;
 		Vector3 euler = cam.transform.eulerAngles;
 		reflectionCamera.transform.eulerAngles = new Vector3(0, euler.y, euler.z);
+
+
 		reflectionCamera.Render();
+
+
 		reflectionCamera.transform.position = oldpos;
 		GL.invertCulling = false;        //should be used
         //GL.SetRevertBackfacing (false);   //obsolete
-		Material[] materials = GetComponent<Renderer>().sharedMaterials;
-		foreach( Material mat in materials ) {
-			if( mat.HasProperty("_ReflectionTex") )
-				mat.SetTexture( "_ReflectionTex", m_ReflectionTexture );
-		}
-		
-		// Set matrix on the shader that transforms UVs from object space into screen
-		// space. We want to just project reflection texture on screen.
-		Matrix4x4 scaleOffset = Matrix4x4.TRS(
+
+
+
+		//Material[] materials = GetComponent<Renderer>().sharedMaterials;
+		//foreach( Material mat in materials ) {
+		//	if( mat.HasProperty("_ReflectionTex") )
+		//		mat.SetTexture( "_ReflectionTex", m_ReflectionTexture );
+		//}
+        for (int i = 0; i < materials.Length;i++)
+        {
+            Material mat = materials[i];
+            if (mat.HasProperty("_ReflectionTex"))
+                mat.SetTexture("_ReflectionTex", m_ReflectionTexture);
+        }
+
+
+
+        // Set matrix on the shader that transforms UVs from object space into screen
+        // space. We want to just project reflection texture on screen.
+        Matrix4x4 scaleOffset = Matrix4x4.TRS(
 			new Vector3(0.5f,0.5f,0.5f), Quaternion.identity, new Vector3(0.5f,0.5f,0.5f) );
 		Vector3 scale = transform.lossyScale;
 		Matrix4x4 mtx = transform.localToWorldMatrix * Matrix4x4.Scale( new Vector3(1.0f/scale.x, 1.0f/scale.y, 1.0f/scale.z) );
 		mtx = scaleOffset * cam.projectionMatrix * cam.worldToCameraMatrix * mtx;
-		foreach( Material mat in materials ) {
-			mat.SetMatrix( "_ProjMatrix", mtx );
-		}
-		
-		// Restore pixel light count
-		if( m_DisablePixelLights )
+
+
+
+		//foreach( Material mat in materials ) {
+		//	mat.SetMatrix( "_ProjMatrix", mtx );
+		//}
+        for (int i = 0; i < materials.Length; i++)
+        {
+            Material mat = materials[i];
+            mat.SetMatrix("_ProjMatrix", mtx);
+        }
+
+
+
+        // Restore pixel light count
+        if ( m_DisablePixelLights )
 			QualitySettings.pixelLightCount = oldPixelLightCount;
 		
 		s_InsideRendering = false;
@@ -145,36 +187,45 @@ public class AQUAS_Reflection : MonoBehaviour
 		if( dest == null )
 			return;
 
-		//sets camera to clear the same way as current camera
-		dest.clearFlags = src.clearFlags;
-		dest.backgroundColor = src.backgroundColor; 
-               
-		if( src.clearFlags == CameraClearFlags.Skybox )
-		{
-			Skybox sky = src.GetComponent(typeof(Skybox)) as Skybox;
-			Skybox mysky = dest.GetComponent(typeof(Skybox)) as Skybox;
-			if( !sky || !sky.material )
-			{
-				mysky.enabled = false;
-			}
+        if (CamClearFlags == CameraClearFlags.Nothing)
+        {
+            CamClearFlags = src.clearFlags;
 
-			else
-			{
-				mysky.enabled = true;
-				mysky.material = sky.material;
-			}
-		}
+            //sets camera to clear the same way as current camera
+            dest.clearFlags = src.clearFlags;
+            dest.backgroundColor = src.backgroundColor;
 
-        ///<summary>
-        ///Updates other values to match current camera.
-        ///Even if camera&projection matrices are supplied, some of values are used elsewhere (e.g. skybox uses far plane)
-        /// </summary>
-        dest.farClipPlane = src.farClipPlane;
-		dest.nearClipPlane = src.nearClipPlane;
-		dest.orthographic = src.orthographic;
-		dest.fieldOfView = src.fieldOfView;
-		dest.aspect = src.aspect;
-		dest.orthographicSize = src.orthographicSize;
+            if (CamClearFlags == CameraClearFlags.Skybox)
+            {
+                if (sky == null)
+                {
+                    sky = src.GetComponent(typeof(Skybox)) as Skybox;
+                    mysky = dest.GetComponent(typeof(Skybox)) as Skybox;
+
+                    if (!sky || !sky.material)
+                    {
+                        mysky.enabled = false;
+                    }
+
+                    else
+                    {
+                        mysky.enabled = true;
+                        mysky.material = sky.material;
+                    }
+                }
+            }
+
+            ///<summary>
+            ///Updates other values to match current camera.
+            ///Even if camera&projection matrices are supplied, some of values are used elsewhere (e.g. skybox uses far plane)
+            /// </summary>
+            dest.farClipPlane = src.farClipPlane;
+            dest.nearClipPlane = src.nearClipPlane;
+            dest.orthographic = src.orthographic;
+            dest.fieldOfView = src.fieldOfView;
+            dest.aspect = src.aspect;
+            dest.orthographicSize = src.orthographicSize;
+        }
 	}
 	
     //<summary>

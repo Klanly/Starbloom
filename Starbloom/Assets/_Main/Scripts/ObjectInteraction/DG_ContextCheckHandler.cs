@@ -11,19 +11,28 @@ public class DG_ContextCheckHandler : MonoBehaviour {
     public float SphereCastMaxLength = 10f;
     [Header("Mouse Distance")]
     public float MouseDistance = 2;
-
-
-    [System.NonSerialized] public Transform LastEncounteredContext;
-    [System.NonSerialized] public DG_UI_WobbleAndFade LastEncounteredWobbleScript;
-    [System.NonSerialized] public bool ContextHit = false;
-    [System.NonSerialized] public DG_ContextObject COEncountered;
-    Transform DetectionPoint;
     
+
+    public class PlayerContext
+    {
+        [System.NonSerialized] public Transform LastEncounteredContext;
+        [System.NonSerialized] public DG_UI_WobbleAndFade LastEncounteredWobbleScript;
+        [System.NonSerialized] public bool ContextHit = false;
+        [System.NonSerialized] public DG_ContextObject COEncountered;
+        [System.NonSerialized] public Transform DetectionPoint;
+    }
+
+    [System.NonSerialized] public PlayerContext[] Contexts;
+
 
     private void Awake()
     {
         QuickFind.ContextDetectionHandler = this;
-        DetectionPoint = transform.GetChild(0);
+        Contexts = new PlayerContext[2];
+        Contexts[0] = new PlayerContext();
+        Contexts[1] = new PlayerContext();
+        Contexts[0].DetectionPoint = transform.GetChild(0);
+        Contexts[1].DetectionPoint = transform.GetChild(1);
     }
 
 
@@ -34,14 +43,17 @@ public class DG_ContextCheckHandler : MonoBehaviour {
             DG_PlayerInput.Player P = QuickFind.InputController.Players[i];
             if (P.CharLink == null) continue;
 
-            if (QuickFind.PlayerTrans == null) return;
-            if (QuickFind.GUI_OverviewTabs.UIisOpen) return;
-            if (QuickFind.GUI_Inventory.InventoryIsOpen) return;
+            if (P.CharLink.PlayerTrans == null) return;
+            if (QuickFind.GUI_OverviewTabs.OverviewTabs[i].UIisOpen) return;
+            if (QuickFind.GUI_Inventory.PlayersInventory[i].InventoryIsOpen) return;
+
+            UserSettings.PlayerSettings PS = QuickFind.UserSettings.SingleSettings;
+            if (QuickFind.NetworkSync.Player2PlayerCharacter != -1) PS = QuickFind.UserSettings.CoopSettings[i];
 
             CameraLogic.UserCameraMode CamMode = P.CharLink.PlayerCam.CurrentCameraAngle;
             CameraLogic.ContextDetection DetectionMode = CameraLogic.ContextDetection.InfrontPlayer;
-            if (CamMode == CameraLogic.UserCameraMode.Isometric) DetectionMode = QuickFind.UserSettings.IsometricInteractMode;
-            if (CamMode == CameraLogic.UserCameraMode.Thirdperson) DetectionMode = QuickFind.UserSettings.ThirdPersonInteractionDetection;
+            if (CamMode == CameraLogic.UserCameraMode.Isometric) DetectionMode = PS.IsometricInteractMode;
+            if (CamMode == CameraLogic.UserCameraMode.Thirdperson) DetectionMode = PS.ThirdPersonInteractionDetection;
 
             RaycastHit hit;
             if (DetectionMode != CameraLogic.ContextDetection.InfrontPlayer)
@@ -56,72 +68,62 @@ public class DG_ContextCheckHandler : MonoBehaviour {
 
                 if (Physics.Raycast(Origin, Direction, out hit, 200, ContextMask))
                 {
-                    DetectionPoint.position = hit.point;
-                    if (QuickFind.WithinDistance(DetectionPoint, QuickFind.PlayerTrans, MouseDistance))
-                        AddNewContext(hit);
+                    Contexts[i].DetectionPoint.position = hit.point;
+                    if (QuickFind.WithinDistance(Contexts[i].DetectionPoint, P.CharLink.PlayerTrans, MouseDistance))
+                        AddNewContext(hit, P.CharLink.PlayerID);
                     else
-                    { ContextHit = false; }
+                    { Contexts[i].ContextHit = false; }
                 }
-                else { ContextHit = false; }
+                else { Contexts[i].ContextHit = false; }
             }
             else
             {
-                DetectionPoint.position = QuickFind.PlayerTrans.position;
-                DetectionPoint.rotation = QuickFind.PlayerTrans.rotation;
+                Contexts[i].DetectionPoint.position = P.CharLink.PlayerTrans.position;
+                Contexts[i].DetectionPoint.rotation = P.CharLink.PlayerTrans.rotation;
 
-                if (Physics.SphereCast(DetectionPoint.position, SphereCastRadius, DetectionPoint.forward, out hit, SphereCastMaxLength, ContextMask))
-                    AddNewContext(hit);
+                if (Physics.SphereCast(Contexts[i].DetectionPoint.position, SphereCastRadius, Contexts[i].DetectionPoint.forward, out hit, SphereCastMaxLength, ContextMask))
+                    AddNewContext(hit, P.CharLink.PlayerID);
                 else
-                { ContextHit = false; }
+                { Contexts[i].ContextHit = false; }
             }
 
-            if (!ContextHit)
-            { LastEncounteredContext = null; if (LastEncounteredWobbleScript != null) LastEncounteredWobbleScript.Disable(); QuickFind.GUIPopup.HideToolTip(); }
+            if (!Contexts[i].ContextHit)
+            { Contexts[i].LastEncounteredContext = null; if (Contexts[i].LastEncounteredWobbleScript != null) Contexts[i].LastEncounteredWobbleScript.Disable(); QuickFind.GUIPopup.HideToolTip(P.CharLink.PlayerID); }
 
         }
     }
 
 
 
-    void AddNewContext(RaycastHit hit)
+    void AddNewContext(RaycastHit hit, int PlayerID)
     {
-        if (hit.transform == LastEncounteredContext) return;
+        int Array = 0;
+        if (PlayerID == QuickFind.NetworkSync.Player2PlayerCharacter) Array = 1;
 
-        LastEncounteredContext = hit.transform;
-        COEncountered = LastEncounteredContext.GetComponent<DG_ContextObject>();
-        ContextHit = true;
+        if (hit.transform == Contexts[Array].LastEncounteredContext) return;
+
+        Contexts[Array].LastEncounteredContext = hit.transform;
+        Contexts[Array].COEncountered = Contexts[Array].LastEncounteredContext.GetComponent<DG_ContextObject>();
+        Contexts[Array].ContextHit = true;
 
 
 
-        if (COEncountered == null) return;
+        if (Contexts[Array].COEncountered == null) return;
 
         bool AllowWobble = false;
-        switch (COEncountered.Type)
+        switch (Contexts[Array].COEncountered.Type)
         {
             case DG_ContextObject.ContextTypes.PickupItem: AllowWobble = true; break;
             case DG_ContextObject.ContextTypes.MoveableStorage: AllowWobble = true; break;
         }
 
-        QuickFind.GUIPopup.ShowPopup(COEncountered);
+        QuickFind.GUIPopup.ShowPopup(Contexts[Array].COEncountered, PlayerID);
 
-        if (AllowWobble && LastEncounteredContext.GetComponent<DG_UI_WobbleAndFade>() != null)
+        if (AllowWobble && Contexts[Array].LastEncounteredContext.GetComponent<DG_UI_WobbleAndFade>() != null)
         {
-            if (LastEncounteredWobbleScript != null) LastEncounteredWobbleScript.Disable();
-            LastEncounteredWobbleScript = LastEncounteredContext.GetComponent<DG_UI_WobbleAndFade>();
-            LastEncounteredWobbleScript.Enable();
+            if (Contexts[Array].LastEncounteredWobbleScript != null) Contexts[Array].LastEncounteredWobbleScript.Disable();
+            Contexts[Array].LastEncounteredWobbleScript = Contexts[Array].LastEncounteredContext.GetComponent<DG_UI_WobbleAndFade>();
+            Contexts[Array].LastEncounteredWobbleScript.Enable();
         }     
-    }
-
-
-
-
-    void OnDrawGizmos() //Draw Gizmo in Scene view
-    {
-        if (ContextHit && LastEncounteredContext != null)
-        {
-            Vector3 Pos = LastEncounteredContext.position;
-            Gizmos.color = Color.yellow;
-            Gizmos.DrawCube(Pos, new Vector3(1,.2f,1));
-        }
     }
 }

@@ -19,7 +19,7 @@ public class DG_SFXHandler : MonoBehaviour {
             if (ItemLogic == DG_SFXObject.GreaterThan1SFXItemLogic.PlayRandom)
                 PlaySFX(MO, MO.SFXPieces[Random.Range(0, MO.SFXPieces.Length)], Position);
             if (ItemLogic == DG_SFXObject.GreaterThan1SFXItemLogic.PlaySequential)
-                { PlaySFX(MO, MO.SFXPieces[MO.Index], Position); MO.Index = QuickFind.GetNextValueInArray(MO.Index, MO.SFXPieces.Length, true, true); }
+                { PlaySFX(MO, MO.SFXPieces[MO.Index], Position); MO.Index = QuickFind.GetValueInArrayLoop(MO.Index, MO.SFXPieces.Length, true, true); }
             if (ItemLogic == DG_SFXObject.GreaterThan1SFXItemLogic.PlayAllInOrder)
                 Debug.Log("TODO Fishing Play All in ORder Logic");
         }

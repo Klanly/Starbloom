@@ -23,7 +23,9 @@ public class DG_ContextObject : MonoBehaviour
         ShippingBin,
         BreakableTree,
         ScenePortal,
-        Enemy
+        Enemy,
+        Bed,
+        MagneticItem
     }
 
     public ContextTypes Type;

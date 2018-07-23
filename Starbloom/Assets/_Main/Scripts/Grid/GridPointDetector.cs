@@ -10,31 +10,40 @@ public class GridPointDetector : MonoBehaviour
     [Header("Max Distance From Player")]
     public float MaxDistance;
 
-    [Header("Grid Display")]
-    public bool ShowGridDisplay;
-    public Transform GridDisplay;
-    public MeshRenderer GridMesh = null;
 
+    [System.Serializable]
+    public class PlayerGridDetection
+    {
+        [Header("Grid Display")]
+        public Transform GridDisplay;
+        public MeshRenderer GridMesh = null;
 
+        [System.NonSerialized] public Transform PlayerPointHelper;
+        [System.NonSerialized] public Transform PlayerPointHelper2;
+        [System.NonSerialized] public bool GridPointSet;
 
-    Transform PlayerPointHelper;
-    Transform PlayerPointHelper2;
-    bool GridPointSet;
+        [System.NonSerialized] public Transform DetectionPoint;
+        [System.NonSerialized] public bool ObjectIsPlacing = false;
+        [System.NonSerialized] public bool GlobalPositioning = false;
+    }
 
-    [System.NonSerialized] public Transform DetectionPoint;
-    [System.NonSerialized] public bool ObjectIsPlacing = false;
-    [System.NonSerialized] public bool GlobalPositioning = false;
+    public PlayerGridDetection[] GridDetections;
 
 
     private void Awake()
     {
         QuickFind.GridDetection = this;
-        DetectionPoint = new GameObject().transform;
-        PlayerPointHelper = new GameObject().transform;
-        DetectionPoint.SetParent(transform);
-        PlayerPointHelper.SetParent(transform);
-        GridDisplay.position = new Vector3(0, 10000, 0);
-        GridMesh.enabled = false;
+
+        for (int i = 0; i < GridDetections.Length; i++)
+        {
+            PlayerGridDetection PGD = GridDetections[i];
+            PGD.DetectionPoint = new GameObject().transform;
+            PGD.PlayerPointHelper = new GameObject().transform;
+            PGD.DetectionPoint.SetParent(transform);
+            PGD.PlayerPointHelper.SetParent(transform);
+            PGD.GridDisplay.position = new Vector3(0, 10000, 0);
+            PGD.GridMesh.enabled = false;
+        }
     }
 
 
@@ -45,32 +54,37 @@ public class GridPointDetector : MonoBehaviour
         {
             DG_PlayerInput.Player P = QuickFind.InputController.Players[i];
             if (P.CharLink == null) continue;
-            GetDetectionPoint(P);
+            GetDetectionPoint(P, i);
         }
     }
-    void GetDetectionPoint(DG_PlayerInput.Player P)
+    void GetDetectionPoint(DG_PlayerInput.Player P, int Index)
     {
-        if (QuickFind.PlayerTrans == null) return;
-        if (QuickFind.GUI_OverviewTabs.UIisOpen) return;
-        if (QuickFind.GUI_Inventory.InventoryIsOpen) return;
+        if (P.CharLink.PlayerTrans == null) return;
+        if (QuickFind.GUI_OverviewTabs.OverviewTabs[Index].UIisOpen) return;
+        if (QuickFind.GUI_Inventory.PlayersInventory[Index].InventoryIsOpen) return;
 
-        
-        PlayerPointHelper.position = QuickFind.PlayerTrans.position;
-        AlignTransToClosestGridPoint(PlayerPointHelper);
+        int Array = 0;
+        if (P.CharLink.PlayerID == QuickFind.NetworkSync.Player2PlayerCharacter) Array = 1;
+
+        GridDetections[Array].PlayerPointHelper.position = P.CharLink.PlayerTrans.position;
+        AlignTransToClosestGridPoint(GridDetections[Array].PlayerPointHelper);
 
         CameraLogic.UserCameraMode CamMode = P.CharLink.PlayerCam.CurrentCameraAngle;
         CameraLogic.ContextDetection DetectionMode = CameraLogic.ContextDetection.InfrontPlayer;
 
-        if (QuickFind.ItemActivateableHandler.CurrentItemDatabaseReference.ActivateableType == HotbarItemHandler.ActivateableTypes.Axe
-            || QuickFind.ItemActivateableHandler.CurrentItemDatabaseReference.ActivateableType == HotbarItemHandler.ActivateableTypes.Pickaxe)
+        UserSettings.PlayerSettings PS = QuickFind.UserSettings.SingleSettings;
+        if (QuickFind.NetworkSync.Player2PlayerCharacter != -1) PS = QuickFind.UserSettings.CoopSettings[Index];
+
+        if (QuickFind.ItemActivateableHandler.Hotbars[Index].CurrentItemDatabaseReference.ActivateableType == HotbarItemHandler.ActivateableTypes.Axe
+            || QuickFind.ItemActivateableHandler.Hotbars[Index].CurrentItemDatabaseReference.ActivateableType == HotbarItemHandler.ActivateableTypes.Pickaxe)
         {
-            if (CamMode == CameraLogic.UserCameraMode.Isometric) DetectionMode = QuickFind.UserSettings.IsometricBreakableDetectionMode;
-            if (CamMode == CameraLogic.UserCameraMode.Thirdperson) DetectionMode = QuickFind.UserSettings.ThirdPersonBreakableDetectionMode;
+            if (CamMode == CameraLogic.UserCameraMode.Isometric) DetectionMode = PS.IsometricBreakableDetectionMode;
+            if (CamMode == CameraLogic.UserCameraMode.Thirdperson) DetectionMode = PS.ThirdPersonBreakableDetectionMode;
         }
         else
         {
-            if (CamMode == CameraLogic.UserCameraMode.Isometric) DetectionMode = QuickFind.UserSettings.IsometricObjectPlacementDetectionMode;
-            if (CamMode == CameraLogic.UserCameraMode.Thirdperson) DetectionMode = QuickFind.UserSettings.ThirdPersonObjectPlacementDetectionMode;
+            if (CamMode == CameraLogic.UserCameraMode.Isometric) DetectionMode = PS.IsometricObjectPlacementDetectionMode;
+            if (CamMode == CameraLogic.UserCameraMode.Thirdperson) DetectionMode = PS.ThirdPersonObjectPlacementDetectionMode;
         }
 
         RaycastHit hit;
@@ -86,23 +100,23 @@ public class GridPointDetector : MonoBehaviour
 
             if (Physics.Raycast(Origin, Direction, out hit, 200, DetectionMask))
             {
-                DetectionPoint.position = hit.point;
-                if (!GlobalPositioning && !QuickFind.WithinDistance(DetectionPoint, PlayerPointHelper, 1f))
+                GridDetections[Array].DetectionPoint.position = hit.point;
+                if (!GridDetections[Array].GlobalPositioning && !QuickFind.WithinDistance(GridDetections[Array].DetectionPoint, GridDetections[Array].PlayerPointHelper, 1f))
                 {
-                    PlayerPointHelper.LookAt(DetectionPoint);
-                    PlayerPointHelper.position += PlayerPointHelper.forward * MaxDistance;
-                    DetectionPoint.position = PlayerPointHelper.position;
+                    GridDetections[Array].PlayerPointHelper.LookAt(GridDetections[Array].DetectionPoint);
+                    GridDetections[Array].PlayerPointHelper.position += GridDetections[Array].PlayerPointHelper.forward * MaxDistance;
+                    GridDetections[Array].DetectionPoint.position = GridDetections[Array].PlayerPointHelper.position;
                 }
             }
         }
         else
         {
-            DetectionPoint.position = PlayerPointHelper.position;
-            DetectionPoint.rotation = QuickFind.PlayerTrans.rotation;
-            DetectionPoint.position += DetectionPoint.forward * .8f;
+            GridDetections[Array].DetectionPoint.position = GridDetections[Array].PlayerPointHelper.position;
+            GridDetections[Array].DetectionPoint.rotation = P.CharLink.PlayerTrans.rotation;
+            GridDetections[Array].DetectionPoint.position += GridDetections[Array].DetectionPoint.forward * .8f;
         }
-        AlignTransToClosestGridPoint(DetectionPoint);
-        SetGridDisplay(DetectionPoint);
+        AlignTransToClosestGridPoint(GridDetections[Array].DetectionPoint);
+        SetGridDisplay(GridDetections[Array].DetectionPoint, Array);
     }
 
 
@@ -112,15 +126,15 @@ public class GridPointDetector : MonoBehaviour
         Vector3 Pos = T.position;
         T.position = new Vector3(Mathf.RoundToInt(Pos.x), Pos.y, Mathf.RoundToInt(Pos.z));
     }
-    void SetGridDisplay(Transform T)
+    void SetGridDisplay(Transform T, int Array)
     {
-        if (ObjectIsPlacing)
+        if (GridDetections[Array].ObjectIsPlacing)
         {
             Vector3 GridPoint = T.position;
             GridPoint.y = GridPoint.y - .45f;
-            GridDisplay.position = GridPoint;
+            GridDetections[Array].GridDisplay.position = GridPoint;
         }
         else
-            GridDisplay.position = new Vector3(0, 10000, 0);
+            GridDetections[Array].GridDisplay.position = new Vector3(0, 10000, 0);
     }
 }

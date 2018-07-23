@@ -105,7 +105,7 @@ public class DG_BreakableObjectsHandler : MonoBehaviour {
     void SendBreak(NetworkObject NO, DG_ContextObject CO, DG_ItemObject IO, int PlayerID)
     {
         if(CO.Type == DG_ContextObject.ContextTypes.BreakableTree)
-            CO.GetComponent<DG_TreeFall>().BreakMessage();
+            CO.GetComponent<DG_TreeFall>().BreakMessage(PlayerID);
         else
         {
             int[] OutData = new int[2];

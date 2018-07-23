@@ -171,15 +171,17 @@ public class DG_SceneTransition : MonoBehaviour {
         if(PrintDebug) Debug.Log("Nav Mesh Loaded");
 
         PlayerTransitioning PT;
-        if (SceneID == Player1Transition.NetworkSceneIndexLoading) PT = Player1Transition;
+        if (PlayerID == QuickFind.NetworkSync.Player1PlayerCharacter) PT = Player1Transition;
         else PT = Player2Transition;
         DG_CharacterLink CharLink = QuickFind.NetworkSync.GetCharacterLinkByPlayerID(PT.PlayerID);
 
         //Set Player, and Cam.
         DG_SceneEntryObject Portal = QuickFind.SceneEntryPoints.GetItemFromID(PT.LoadingPortalID);
-        QuickFind.PlayerTrans.position = Portal.transform.position;
-        QuickFind.PlayerTrans.eulerAngles = Portal.transform.eulerAngles;
-        QuickFind.PlayerCam.InstantSetCameraAngle(Portal.CameraFacing, CharLink.PlayerCam);
+        CharLink.PlayerTrans.position = Portal.transform.position;
+        CharLink.PlayerTrans.eulerAngles = Portal.transform.eulerAngles;
+
+        int index = 0; if (PlayerID == QuickFind.NetworkSync.Player2PlayerCharacter) index = 1;
+        QuickFind.PlayerCam.InstantSetCameraAngle(Portal.CameraFacing, CharLink.PlayerCam, index);
 
         //Environment
         QuickFind.WeatherHandler.CheckEnvironmentFX();
@@ -283,7 +285,7 @@ public class DG_SceneTransition : MonoBehaviour {
     }
 
 
-    void CreateNetworkAIObjects(bool isEnable, int SceneID)
+    public void CreateNetworkAIObjects(bool isEnable, int SceneID)
     {
         NetworkScene NS = QuickFind.NetworkObjectManager.GetSceneByID(SceneID);
         for (int i = 0; i < NS.NetworkObjectList.Count; i++)
@@ -376,6 +378,7 @@ public class DG_SceneTransition : MonoBehaviour {
     public void SetSelfInScene(int NewScene, int PlayerID)
     {
         int SceneLeaving = QuickFind.NetworkSync.GetUserByPlayerID(PlayerID).SceneID;
+        if (SceneLeaving == -1) SceneLeaving = 0;
         QuickFind.NetworkSync.GetUserByPlayerID(PlayerID).SceneID = NewScene;
         LocalSetSelfInScene(SceneLeaving, NewScene, PlayerID);
 
@@ -387,7 +390,7 @@ public class DG_SceneTransition : MonoBehaviour {
     }
     public void LocalSetSelfInScene(int SceneLeaving, int NewScene, int PlayerID)
     {
-        if (SceneLeaving != -1) QuickFind.NetworkObjectManager.GetSceneByID(SceneLeaving).ScenePlayerOwnerID = 0;
+        if(SceneLeaving != NewScene) QuickFind.NetworkObjectManager.GetSceneByID(SceneLeaving).ScenePlayerOwnerID = -3;
         DG_NetworkSync.Users U = QuickFind.NetworkSync.GetUserByPlayerID(PlayerID);
         U.SceneID = NewScene;
         QuickFind.NetworkObjectManager.GetSceneByID(NewScene).SelfEnteredScene(PlayerID);

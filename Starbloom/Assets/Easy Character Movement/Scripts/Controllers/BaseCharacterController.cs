@@ -630,7 +630,7 @@ namespace ECM.Controllers
             moveDirection = new Vector3 (MP.HorizontalAxis, 0.0f, MP.VerticalAxis );
             moveDirection = moveDirection.relativeTo(MP.CharLink.PlayerCam.CamTrans);
 
-            jump = QuickFind.InputController.GetPlayerByPlayerID(CharLink.PlayerID).ButtonSet.Jump.Held;
+            jump = QuickFind.InputController.GetPlayerByPlayerID(CharLink.PlayerID).JumpButton == DG_GameButtons.ButtonState.Held;
         }
 
         #endregion

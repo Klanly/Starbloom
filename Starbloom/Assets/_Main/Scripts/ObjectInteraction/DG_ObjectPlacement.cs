@@ -69,18 +69,20 @@ public class DG_ObjectPlacement : MonoBehaviour {
     {
         for (int i = 0; i < PlayersPlacement.Length; i++)
         {
+            if (QuickFind.InputController.Players[i].CharLink == null) continue;
+
             CharacterRequestingPlacement CRP = PlayersPlacement[i];
 
             if (CRP.PlacementActive)
             {
-                CRP.ObjectGhost.position = QuickFind.GridDetection.DetectionPoint.position;
+                CRP.ObjectGhost.position = QuickFind.GridDetection.GridDetections[i].DetectionPoint.position;
                 bool GoodToPlace = false;
                 if (CRP.ItemDatabaseReference.RequireTilledEarth)
                     GoodToPlace = AreaIsOkForSeedPlacement(SeedPlacementDetection, CRP.ObjectGhost.position, .45f);
                 else
                     GoodToPlace = AreaIsClear(BoxcastDetection, CRP.ObjectGhost.position, .45f);
 
-                QuickFind.GridDetection.GridMesh.enabled = GoodToPlace;
+                QuickFind.GridDetection.GridDetections[i].GridMesh.enabled = GoodToPlace;
                 SetMaterialColors(GoodToPlace, CRP);
                 CRP.SafeToPlace = GoodToPlace;
             }
@@ -111,6 +113,8 @@ public class DG_ObjectPlacement : MonoBehaviour {
         {
             if (!QuickFind.NetworkSync.GetCharacterLinkByPlayerID(PlayerID).AnimationSync.CharacterIsGrounded()) return;
 
+
+
             int SceneID = QuickFind.NetworkSync.GetUserByPlayerID(PlayerID).SceneID;
 
             if (SoilDetection(CRP, SceneID))
@@ -136,9 +140,9 @@ public class DG_ObjectPlacement : MonoBehaviour {
                 }
                 else
                     CRP.ObjectGhost.GetComponent<DG_DynamicWall>().TriggerPlaceWall();
-                DestroyObjectGhost(CRP);
+                DestroyObjectGhost(PlayerID, CRP);
                 QuickFind.InventoryManager.DestroyRucksackItem(CRP.RucksackSlotOpen, CRP.ActiveSlot, PlayerID);
-                QuickFind.GUI_Inventory.ResetHotbarSlot();
+                QuickFind.GUI_Inventory.ResetHotbarSlot(PlayerID);
             }
         }
     }
@@ -155,7 +159,10 @@ public class DG_ObjectPlacement : MonoBehaviour {
 
     bool SoilDetection(CharacterRequestingPlacement CRP, int SceneID)
     {
-        if (!AreaIsClear(SoilReplaceDetection, QuickFind.GridDetection.DetectionPoint.position, .45f))
+        int Array = 0;
+        if (CRP.PlayerID == QuickFind.NetworkSync.Player2PlayerCharacter) Array = 1;
+
+        if (!AreaIsClear(SoilReplaceDetection, QuickFind.GridDetection.GridDetections[Array].DetectionPoint.position, .45f))
             SoilObject = QuickFind.NetworkObjectManager.ScanUpTree(DetectedInTheWay.transform);
         else
             SoilObject = null;
@@ -177,14 +184,17 @@ public class DG_ObjectPlacement : MonoBehaviour {
 
         if (QuickFind.NetworkSync.GetCharacterLinkByPlayerID(PlayerID).AnimationSync.MidAnimation) { CRP.SpawnGhostAfterAnimation = true; return; }
 
+        int Array = 0;
+        if (PlayerID == QuickFind.NetworkSync.Player2PlayerCharacter) Array = 1;
+
         CRP.PlayerID = PlayerID;
         CRP.RucksackSlotOpen = Rucksack;
         CRP.ItemDatabaseReference = Item;
         CRP.ActiveSlot = slot;
         CRP.PlacementActive = true;
 
-        QuickFind.GridDetection.ObjectIsPlacing = true;
-        QuickFind.GridDetection.GlobalPositioning = false;
+        QuickFind.GridDetection.GridDetections[Array].ObjectIsPlacing = true;
+        QuickFind.GridDetection.GridDetections[Array].GlobalPositioning = false;
 
         GameObject ToDestroy = null;
         if (CRP.ObjectGhost != null) ToDestroy = CRP.ObjectGhost.gameObject;
@@ -215,9 +225,12 @@ public class DG_ObjectPlacement : MonoBehaviour {
 
 
 
-    public void DestroyObjectGhost(CharacterRequestingPlacement CRP)
+    public void DestroyObjectGhost(int PlayerID, CharacterRequestingPlacement CRP)
     {
-        QuickFind.GridDetection.ObjectIsPlacing = false;
+        int Array = 0;
+        if (PlayerID == QuickFind.NetworkSync.Player2PlayerCharacter) Array = 1;
+
+        QuickFind.GridDetection.GridDetections[Array].ObjectIsPlacing = false;
         Destroy(CRP.ObjectGhost.gameObject);
         CRP.PlacementActive = false;
     }

@@ -132,9 +132,8 @@ public class NetworkObject : MonoBehaviour {
         }
 
         if (Spawn == null) return;
-
-        if (!QuickFind.NetworkSync.AnyPlayersIControlAreInScene(NS.SceneID)) transform.gameObject.SetActive(false);
         transform.name = Spawn.name;
+        if (!QuickFind.NetworkSync.AnyPlayersIControlAreInScene(NS.SceneID)) transform.gameObject.SetActive(false);     
     }
 
     void SetLocalPosition(GameObject Spawn, float Scale)

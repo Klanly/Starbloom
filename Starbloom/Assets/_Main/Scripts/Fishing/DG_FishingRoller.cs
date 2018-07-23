@@ -22,8 +22,11 @@ public class DG_FishingRoller : MonoBehaviour {
 
     public FishRollValues GetNewFishRoll(Fishing_MasterHandler.WaterTypes CurrentWater, int PlayerID)
     {
+        int Array = 0;
+        if (PlayerID == QuickFind.NetworkSync.Player2PlayerCharacter) Array = 1;
+
         FishRollValues ReturnFish = new FishRollValues();
-        DG_PlayerCharacters.RucksackSlot CurrentRucksackSlot = QuickFind.ItemActivateableHandler.CurrentRucksackSlot;
+        DG_PlayerCharacters.RucksackSlot CurrentRucksackSlot = QuickFind.ItemActivateableHandler.Hotbars[Array].CurrentRucksackSlot;
         DG_ItemObject.ItemQualityLevels FishingRodQuality = (DG_ItemObject.ItemQualityLevels)CurrentRucksackSlot.CurrentStackActive;
         WeatherHandler.Seasons CurrentSeason = QuickFind.WeatherHandler.CurrentSeason;
         WeatherHandler.WeatherTyps CurrentWeather = QuickFind.WeatherHandler.CurrentWeather;

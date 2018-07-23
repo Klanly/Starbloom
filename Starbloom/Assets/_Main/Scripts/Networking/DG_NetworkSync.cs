@@ -21,16 +21,6 @@ public class DG_NetworkSync : Photon.MonoBehaviour
     [ReadOnly] public int Player2PlayerCharacter = -1;
     [System.NonSerialized] public PhotonView PV;
 
-
-
-    //[ReadOnly] public int PlayerCharacterID = -1;
-    //[ReadOnly] public int CurrentScene = -1;
-    //[System.NonSerialized] public DG_CharacterLink CharacterLink;
-
-
-    bool AwaitingSync = false;
-    bool FirstLoaded = false;
-
     [Header("UserList")]
     public List<Users> UserList;
     int[] UsersInScene;
@@ -65,9 +55,8 @@ public class DG_NetworkSync : Photon.MonoBehaviour
         transform.SetParent(QuickFind.NetworkMaster.transform);
         QuickFind.NetworkSync = this;
 
-        AwaitingSync = true;
         PhotonPlayer PP = PhotonNetwork.player;
-        PV.RPC("SetNewID", PhotonTargets.MasterClient, PP.ID);
+        PV.RPC("AddNewUser", PhotonTargets.MasterClient, PP.ID);
     }
 
 
@@ -165,67 +154,24 @@ public class DG_NetworkSync : Photon.MonoBehaviour
     //////////////////////////////////////////////////////
 
     [PunRPC]
-    void SetNewID(int PhotonID)
+    void AddNewUser(int PhotonID)
     {
-        Users NewUser = new Users();
-
-        NewUser.NetID = PhotonID;
-        UserList.Add(NewUser);
-
-        List<int> TransferInts = new List<int>();
-        TransferInts.Add(NewUser.NetID);
-        TransferInts.Add(UserList.Count);
-        for (int i = 0; i < UserList.Count; i++)
-        {
-            TransferInts.Add(UserList[i].PlayerCharacterID);
-            TransferInts.Add(UserList[i].NetID);
-            TransferInts.Add(UserList[i].SceneID);
-            TransferInts.Add((int)QuickFind.Farm.PlayerCharacters[UserList[i].PlayerCharacterID].CharacterGender);
-        }
-
-        UserList.Remove(NewUser);
-
-        PV.RPC("SendOutIDList", PhotonTargets.All, TransferInts.ToArray());
+        PhotonPlayer PP = PhotonPlayer.Find(PhotonID);
+        if (UserList.Count < 4)
+            PV.RPC("AllowNewUserToJoin", PP, true);
+        else
+            PV.RPC("AllowNewUserToJoin", PP, false);
     }
     [PunRPC]
-    void SendOutIDList(int[] TransferedIn)
+    void AllowNewUserToJoin(bool CanJoin)
     {
-        //UserList.Clear();
+        Debug.Log("Connected Online == " + QuickFind.GameSettings.PlayOnline.ToString());
 
-        if (NetID == -1) { NetID = TransferedIn[0];}
-
-        int UserCount = TransferedIn[1];
-        if (UserCount == 1) UserList.Clear();
-        int index = 2;
-        for(int i = 0; i < UserCount; i++)
-        {
-            if (GetUserByPlayerID(TransferedIn[index]) != null) { index = index + 4;  continue; }
-
-            Users NewUser = new Users();
-            NewUser.PlayerCharacterID = TransferedIn[index]; index++;
-            NewUser.NetID = TransferedIn[index]; index++;
-            NewUser.SceneID = TransferedIn[index]; index++;
-
-            if (NewUser.NetID == NetID || FirstLoaded) { UserList.Add(NewUser); index++; continue; }
-            QuickFind.CharacterManager.SpawnCharController(TransferedIn[index], NewUser); index++;
-            UserList.Add(NewUser);
-        }
-
-        if (AwaitingSync)
-        {
-            AwaitingSync = false;
-            FirstLoaded = true;
-
-            Debug.Log("NetID == " + NetID.ToString());
-            Debug.Log("Connected Online == " + QuickFind.GameSettings.PlayOnline.ToString());
-
-            if (!PhotonNetwork.isMasterClient)
-                QuickFind.NetworkSync.RequestPlayerDataSync();
-            else
-                QuickFind.GameStartHandler.Connected();
-        }
+        if (!PhotonNetwork.isMasterClient)
+            QuickFind.NetworkSync.RequestPlayerDataSync();
+        else
+            QuickFind.GameStartHandler.Connected();
     }
-
 
 
     public void NetSetUserInScene(int[] OutData)
@@ -249,7 +195,7 @@ public class DG_NetworkSync : Photon.MonoBehaviour
     [PunRPC]
     void UserSetInBed(int InData)
     {
-        Bed.AddSleepingPlayer(InData);
+        QuickFind.SleepHandler.AddSleepingPlayer(InData);
     }
 
 
@@ -294,6 +240,13 @@ public class DG_NetworkSync : Photon.MonoBehaviour
     { GetCharacterLinkByPlayerID(InData[0]).MoveSync.AnimSync.ReceiveNetAnimation(InData);}
 
 
+    public void NewPlayerFinishedEditingChar()
+    { PV.RPC("NewPLayerFinishedReceived", PhotonTargets.All); }
+    [PunRPC]
+    void NewPLayerFinishedReceived()
+    { QuickFind.GameStartHandler.SpawnUsers(); }
+
+
     #endregion
 
 
@@ -324,8 +277,7 @@ public class DG_NetworkSync : Photon.MonoBehaviour
     {
         QuickFind.SaveHandler.GetIntValues(IntValues, false);
 
-        if (!PhotonNetwork.isMasterClient)
-            QuickFind.GameStartHandler.Connected();
+        if (!PhotonNetwork.isMasterClient) QuickFind.GameStartHandler.Connected();
     }
 
 
@@ -359,7 +311,7 @@ public class DG_NetworkSync : Photon.MonoBehaviour
         RS.HighValue = info[index]; index++;
         RS.MaximumValue = info[index]; index++;
 
-        QuickFind.GUI_Inventory.UpdateInventoryVisuals();
+        QuickFind.GUI_Inventory.UpdateInventoryVisuals(info[0]);
     }
 
     public void SetStorageValue(int Scene, int NetObjectIndex, int Slot, int ContainedItem, int CurrentStackActive, int LowValue, int NormalValue, int HighValue, int MaximumValue)
@@ -391,7 +343,8 @@ public class DG_NetworkSync : Photon.MonoBehaviour
         RS.HighValue = info[index]; index++;
         RS.MaximumValue = info[index]; index++;
 
-        QuickFind.StorageUI.UpdateStorageVisuals();
+        QuickFind.StorageUI.UpdateStorageVisuals(QuickFind.NetworkSync.Player1PlayerCharacter);
+        QuickFind.StorageUI.UpdateStorageVisuals(QuickFind.NetworkSync.Player2PlayerCharacter);
     }
 
     public void SetNewFarmMoneyValue(int NewValue) { PV.RPC("NewMoneyValueSet", PhotonTargets.All, NewValue); }

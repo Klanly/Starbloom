@@ -30,11 +30,18 @@ public class DG_PickAxeHandler : MonoBehaviour {
 
     private void Update()
     {
-        if (PlacementActive)
-        { if (PickaxeObjectFound())
-            { QuickFind.GridDetection.GridMesh.enabled = true; SafeToPlace = true; }
-            else { QuickFind.GridDetection.GridMesh.enabled = false; SafeToPlace = false; } }
-        else SafeToPlace = false;
+        for (int i = 0; i < QuickFind.InputController.Players.Length; i++)
+        {
+            if (QuickFind.InputController.Players[i].CharLink == null) continue;
+
+            if (PlacementActive)
+            {
+                if (PickaxeObjectFound(i))
+                { QuickFind.GridDetection.GridDetections[i].GridMesh.enabled = true; SafeToPlace = true; }
+                else { QuickFind.GridDetection.GridDetections[i].GridMesh.enabled = false; SafeToPlace = false; }
+            }
+            else SafeToPlace = false;
+        }
     }
 
 
@@ -49,6 +56,7 @@ public class DG_PickAxeHandler : MonoBehaviour {
             DG_CharacterLink CL = QuickFind.NetworkSync.GetCharacterLinkByPlayerID(PlayerID);
 
             if (!CL.AnimationSync.CharacterIsGrounded()) return;
+            if (HitObject == null) return;
 
             DG_ContextObject CO = HitObject.GetComponent<DG_ContextObject>();
             QuickFind.BreakableObjectsHandler.TryHitObject(CO, CurrentActive, (DG_ItemObject.ItemQualityLevels)RucksackSlotOpen.CurrentStackActive, RucksackSlotOpen, PlayerID);
@@ -56,28 +64,34 @@ public class DG_PickAxeHandler : MonoBehaviour {
     }
 
 
-    public void SetupForHitting(DG_PlayerCharacters.RucksackSlot Rucksack = null, DG_ItemObject Item = null, int slot = 0, HotbarItemHandler.ActivateableTypes Current = HotbarItemHandler.ActivateableTypes.Pickaxe)
+    public void SetupForHitting(int PlayerID, DG_PlayerCharacters.RucksackSlot Rucksack = null, DG_ItemObject Item = null, int slot = 0, HotbarItemHandler.ActivateableTypes Current = HotbarItemHandler.ActivateableTypes.Pickaxe)
     {
+        int Array = 0;
+        if (PlayerID == QuickFind.NetworkSync.Player2PlayerCharacter) Array = 1;
+
         RucksackSlotOpen = Rucksack;
         ItemDatabaseReference = Item;
         ActiveSlot = slot;
         CurrentActive = Current;
-        QuickFind.GridDetection.ObjectIsPlacing = true;
-        QuickFind.GridDetection.GlobalPositioning = false;
+        QuickFind.GridDetection.GridDetections[Array].ObjectIsPlacing = true;
+        QuickFind.GridDetection.GridDetections[Array].GlobalPositioning = false;
         PlacementActive = true;
     }
 
-    public void CancelHittingMode()
+    public void CancelHittingMode(int PlayerID)
     {
+        int Array = 0;
+        if (PlayerID == QuickFind.NetworkSync.Player2PlayerCharacter) Array = 1;
+
         ItemDatabaseReference = null;
-        QuickFind.GridDetection.ObjectIsPlacing = false;
+        QuickFind.GridDetection.GridDetections[Array].ObjectIsPlacing = false;
         PlacementActive = false;
     }
 
-    public bool PickaxeObjectFound()
+    public bool PickaxeObjectFound(int i)
     {
 
-        Vector3 CastPoint = QuickFind.GridDetection.DetectionPoint.position;
+        Vector3 CastPoint = QuickFind.GridDetection.GridDetections[i].DetectionPoint.position;
         Collider[] hitColliders = Physics.OverlapSphere(CastPoint, .45f, PickaxeObjectDetection); //DetermineRadiusLater
 
         if (hitColliders.Length > 0)

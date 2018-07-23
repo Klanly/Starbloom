@@ -114,6 +114,34 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &35630413
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 35630414}
+  m_Layer: 0
+  m_Name: P2 Detection Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &35630414
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 35630413}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1017073428}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &92244912
 GameObject:
   m_ObjectHideFlags: 0
@@ -145,10 +173,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PrintButtonPressed: 0
   Players:
-  - CharLink: {fileID: 0}
+  - CurrentController: 0
+    CharLink: {fileID: 0}
     CurrentInputState: 0
-    InputMode: 0
     ButtonSet:
+      ControllerType: 0
       UpDir:
         MainKey: 119
         AltKey: 0
@@ -173,11 +202,17 @@ MonoBehaviour:
       Jump:
         MainKey: 32
         AltKey: 0
+      StartBut:
+        MainKey: 101
+        AltKey: 0
       CameraBut:
         MainKey: 9
         AltKey: 0
-      StartBut:
-        MainKey: 101
+      ScrollRight:
+        MainKey: 0
+        AltKey: 0
+      ScrollLeft:
+        MainKey: 0
         AltKey: 0
       JoyVert:
         Inverted: 0
@@ -198,8 +233,8 @@ MonoBehaviour:
         Up: 0
         Positive: 0
       RJoyVert:
-        Inverted: 0
-        InputString: 
+        Inverted: 1
+        InputString: Vertical
         InvertedAlt: 0
         AltInputString: 
         Value: 0
@@ -208,6 +243,15 @@ MonoBehaviour:
         Positive: 0
       RJoyHor:
         Inverted: 0
+        InputString: Horizontal
+        InvertedAlt: 0
+        AltInputString: 
+        Value: 0
+        Held: 0
+        Up: 0
+        Positive: 0
+      MouseAxis:
+        Inverted: 0
         InputString: 
         InvertedAlt: 0
         AltInputString: 
@@ -215,10 +259,11 @@ MonoBehaviour:
         Held: 0
         Up: 0
         Positive: 0
-  - CharLink: {fileID: 0}
+  - CurrentController: 2
+    CharLink: {fileID: 0}
     CurrentInputState: 0
-    InputMode: 0
     ButtonSet:
+      ControllerType: 1
       UpDir:
         MainKey: 0
         AltKey: 0
@@ -232,44 +277,50 @@ MonoBehaviour:
         MainKey: 0
         AltKey: 0
       Action:
-        MainKey: 0
+        MainKey: 332
         AltKey: 0
       SecondaryAction:
-        MainKey: 0
+        MainKey: 331
         AltKey: 0
       Special:
         MainKey: 0
         AltKey: 0
       Jump:
-        MainKey: 0
+        MainKey: 330
+        AltKey: 0
+      StartBut:
+        MainKey: 333
         AltKey: 0
       CameraBut:
         MainKey: 0
         AltKey: 0
-      StartBut:
+      ScrollRight:
+        MainKey: 0
+        AltKey: 0
+      ScrollLeft:
         MainKey: 0
         AltKey: 0
       JoyVert:
-        Inverted: 0
-        InputString: 
+        Inverted: 1
+        InputString: JoyVert
         InvertedAlt: 0
-        AltInputString: 
+        AltInputString: JoyDPadVert
         Value: 0
         Held: 0
         Up: 0
         Positive: 0
       JoyHor:
         Inverted: 0
-        InputString: 
+        InputString: JoyHor
         InvertedAlt: 0
-        AltInputString: 
+        AltInputString: JoyDPadHor
         Value: 0
         Held: 0
         Up: 0
         Positive: 0
       RJoyVert:
         Inverted: 0
-        InputString: 
+        InputString: JoyRightVert
         InvertedAlt: 0
         AltInputString: 
         Value: 0
@@ -278,6 +329,15 @@ MonoBehaviour:
         Positive: 0
       RJoyHor:
         Inverted: 0
+        InputString: JoyRightHor
+        InvertedAlt: 0
+        AltInputString: 
+        Value: 0
+        Held: 0
+        Up: 0
+        Positive: 0
+      MouseAxis:
+        Inverted: 0
         InputString: 
         InvertedAlt: 0
         AltInputString: 
@@ -285,6 +345,253 @@ MonoBehaviour:
         Held: 0
         Up: 0
         Positive: 0
+  ButtonSets:
+  - ControllerType: 0
+    UpDir:
+      MainKey: 119
+      AltKey: 0
+    DownDir:
+      MainKey: 115
+      AltKey: 0
+    LeftDir:
+      MainKey: 97
+      AltKey: 0
+    RightDir:
+      MainKey: 100
+      AltKey: 0
+    Action:
+      MainKey: 323
+      AltKey: 0
+    SecondaryAction:
+      MainKey: 324
+      AltKey: 0
+    Special:
+      MainKey: 0
+      AltKey: 0
+    Jump:
+      MainKey: 32
+      AltKey: 0
+    StartBut:
+      MainKey: 101
+      AltKey: 0
+    CameraBut:
+      MainKey: 9
+      AltKey: 0
+    ScrollRight:
+      MainKey: 0
+      AltKey: 0
+    ScrollLeft:
+      MainKey: 0
+      AltKey: 0
+    JoyVert:
+      Inverted: 0
+      InputString: 
+      InvertedAlt: 0
+      AltInputString: 
+      Value: 0
+      Held: 0
+      Up: 0
+      Positive: 0
+    JoyHor:
+      Inverted: 0
+      InputString: 
+      InvertedAlt: 0
+      AltInputString: 
+      Value: 0
+      Held: 0
+      Up: 0
+      Positive: 0
+    RJoyVert:
+      Inverted: 1
+      InputString: Vertical
+      InvertedAlt: 0
+      AltInputString: 
+      Value: 0
+      Held: 0
+      Up: 0
+      Positive: 0
+    RJoyHor:
+      Inverted: 0
+      InputString: Horizontal
+      InvertedAlt: 0
+      AltInputString: 
+      Value: 0
+      Held: 0
+      Up: 0
+      Positive: 0
+    MouseAxis:
+      Inverted: 0
+      InputString: 
+      InvertedAlt: 0
+      AltInputString: 
+      Value: 0
+      Held: 0
+      Up: 0
+      Positive: 0
+  - ControllerType: 1
+    UpDir:
+      MainKey: 0
+      AltKey: 0
+    DownDir:
+      MainKey: 0
+      AltKey: 0
+    LeftDir:
+      MainKey: 0
+      AltKey: 0
+    RightDir:
+      MainKey: 0
+      AltKey: 0
+    Action:
+      MainKey: 332
+      AltKey: 0
+    SecondaryAction:
+      MainKey: 331
+      AltKey: 0
+    Special:
+      MainKey: 0
+      AltKey: 0
+    Jump:
+      MainKey: 330
+      AltKey: 0
+    StartBut:
+      MainKey: 333
+      AltKey: 0
+    CameraBut:
+      MainKey: 0
+      AltKey: 0
+    ScrollRight:
+      MainKey: 0
+      AltKey: 0
+    ScrollLeft:
+      MainKey: 0
+      AltKey: 0
+    JoyVert:
+      Inverted: 1
+      InputString: JoyVert
+      InvertedAlt: 0
+      AltInputString: JoyDPadVert
+      Value: 0
+      Held: 0
+      Up: 0
+      Positive: 0
+    JoyHor:
+      Inverted: 0
+      InputString: JoyHor
+      InvertedAlt: 0
+      AltInputString: JoyDPadHor
+      Value: 0
+      Held: 0
+      Up: 0
+      Positive: 0
+    RJoyVert:
+      Inverted: 0
+      InputString: JoyRightVert
+      InvertedAlt: 0
+      AltInputString: 
+      Value: 0
+      Held: 0
+      Up: 0
+      Positive: 0
+    RJoyHor:
+      Inverted: 0
+      InputString: JoyRightHor
+      InvertedAlt: 0
+      AltInputString: 
+      Value: 0
+      Held: 0
+      Up: 0
+      Positive: 0
+    MouseAxis:
+      Inverted: 0
+      InputString: 
+      InvertedAlt: 0
+      AltInputString: 
+      Value: 0
+      Held: 0
+      Up: 0
+      Positive: 0
+  - ControllerType: 2
+    UpDir:
+      MainKey: 0
+      AltKey: 0
+    DownDir:
+      MainKey: 0
+      AltKey: 0
+    LeftDir:
+      MainKey: 0
+      AltKey: 0
+    RightDir:
+      MainKey: 0
+      AltKey: 0
+    Action:
+      MainKey: 332
+      AltKey: 0
+    SecondaryAction:
+      MainKey: 331
+      AltKey: 0
+    Special:
+      MainKey: 0
+      AltKey: 0
+    Jump:
+      MainKey: 330
+      AltKey: 0
+    StartBut:
+      MainKey: 333
+      AltKey: 0
+    CameraBut:
+      MainKey: 0
+      AltKey: 0
+    ScrollRight:
+      MainKey: 0
+      AltKey: 0
+    ScrollLeft:
+      MainKey: 0
+      AltKey: 0
+    JoyVert:
+      Inverted: 1
+      InputString: JoyVert
+      InvertedAlt: 0
+      AltInputString: JoyDPadVert
+      Value: 0
+      Held: 0
+      Up: 0
+      Positive: 0
+    JoyHor:
+      Inverted: 0
+      InputString: JoyHor
+      InvertedAlt: 0
+      AltInputString: JoyDPadHor
+      Value: 0
+      Held: 0
+      Up: 0
+      Positive: 0
+    RJoyVert:
+      Inverted: 0
+      InputString: JoyRightVert
+      InvertedAlt: 0
+      AltInputString: 
+      Value: 0
+      Held: 0
+      Up: 0
+      Positive: 0
+    RJoyHor:
+      Inverted: 0
+      InputString: JoyRightHor
+      InvertedAlt: 0
+      AltInputString: 
+      Value: 0
+      Held: 0
+      Up: 0
+      Positive: 0
+    MouseAxis:
+      Inverted: 0
+      InputString: 
+      InvertedAlt: 0
+      AltInputString: 
+      Value: 0
+      Held: 0
+      Up: 0
+      Positive: 0
 --- !u!4 &92244914
 Transform:
   m_ObjectHideFlags: 0
@@ -457,6 +764,74 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aeb13ce195055d348820fee007af47a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &538662779
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 538662780}
+  - component: {fileID: 538662782}
+  - component: {fileID: 538662781}
+  m_Layer: 0
+  m_Name: Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &538662780
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 538662779}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.54}
+  m_LocalScale: {x: 0.01, y: 0.01, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2078151961}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0.7}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &538662781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 538662779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300072, guid: bba01b71c3bb4d2478d56d33340dd469, type: 3}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &538662782
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 538662779}
 --- !u!1 &580821915
 GameObject:
   m_ObjectHideFlags: 0
@@ -638,7 +1013,7 @@ GameObject:
   - component: {fileID: 871592273}
   - component: {fileID: 871592272}
   m_Layer: 0
-  m_Name: Targeting Reticle
+  m_Name: P1 Targeting Reticle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -678,7 +1053,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 16971575
+    m_Bits: 16839479
 --- !u!114 &871592273
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -814,7 +1189,7 @@ GameObject:
   m_Component:
   - component: {fileID: 916298285}
   m_Layer: 0
-  m_Name: Detection Point
+  m_Name: P1 Detection Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -945,6 +1320,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 916298285}
+  - {fileID: 35630414}
   m_Father: {fileID: 92244914}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1133,6 +1509,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1730668925}
+  - {fileID: 1392685969}
   m_Father: {fileID: 92244914}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1151,9 +1528,83 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 32768
   MaxDistance: 1.4
-  ShowGridDisplay: 0
-  GridDisplay: {fileID: 1730668925}
-  GridMesh: {fileID: 1730668926}
+  GridDetections:
+  - GridDisplay: {fileID: 1730668925}
+    GridMesh: {fileID: 1730668926}
+  - GridDisplay: {fileID: 1392685969}
+    GridMesh: {fileID: 1392685970}
+--- !u!1 &1392685968
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1392685969}
+  - component: {fileID: 1392685971}
+  - component: {fileID: 1392685970}
+  m_Layer: 0
+  m_Name: P2 Cube
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1392685969
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1392685968}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 3, y: 20, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1337580522}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &1392685970
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1392685968}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
+  m_Materials:
+  - {fileID: 2100000, guid: be1ca2694ac770847b25f18f572a809a, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &1392685971
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1392685968}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1458579799
 GameObject:
   m_ObjectHideFlags: 0
@@ -1440,10 +1891,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71db83065fb78444d8871f4fbc218db5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayOnline: 1
+  PlayOnline: 0
   DisableAudio: 1
   DisableLockMouseToScreen: 1
-  GeneratedGender: 0
+  GeneratedGender: 2
   DontHideGear: 0
   BypassMainMenu: 1
   DisableAnimations: 0
@@ -1705,7 +2156,7 @@ GameObject:
   - component: {fileID: 1730668927}
   - component: {fileID: 1730668926}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: P1 Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1966,20 +2417,48 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34dd57c746d47ea498713475e7e77920, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CameraSensitivity: 0.5
-  ThirdPersonCameraControlMode: 0
-  ThirdPersonInteractionDetection: 0
-  ThirdPersonEnemyDetectionMode: 1
-  ThirdPersonBreakableDetectionMode: 0
-  ThirdPersonObjectPlacementDetectionMode: 1
-  IsometricCameraControlMode: 0
-  IsometricInteractMode: 2
-  IsometricBreakableDetectionMode: 2
-  IsometricEnemyDetectionMode: 2
-  IsometricObjectPlacementDetectionMode: 2
-  TextSpeed: 0.04
+  SingleSettings:
+    CameraHorizontalPanSpeed: 0.003
+    CameraVerticalPanSpeed: 0.003
+    ThirdPersonCameraControlMode: 0
+    ThirdPersonInteractionDetection: 0
+    ThirdPersonEnemyDetectionMode: 1
+    ThirdPersonBreakableDetectionMode: 0
+    ThirdPersonObjectPlacementDetectionMode: 1
+    IsometricCameraControlMode: 0
+    IsometricInteractMode: 0
+    IsometricBreakableDetectionMode: 0
+    IsometricEnemyDetectionMode: 0
+    IsometricObjectPlacementDetectionMode: 0
+    TextSpeed: 0.04
+  CoopSettings:
+  - CameraHorizontalPanSpeed: 0.003
+    CameraVerticalPanSpeed: 0.003
+    ThirdPersonCameraControlMode: 1
+    ThirdPersonInteractionDetection: 0
+    ThirdPersonEnemyDetectionMode: 1
+    ThirdPersonBreakableDetectionMode: 0
+    ThirdPersonObjectPlacementDetectionMode: 1
+    IsometricCameraControlMode: 1
+    IsometricInteractMode: 0
+    IsometricBreakableDetectionMode: 0
+    IsometricEnemyDetectionMode: 0
+    IsometricObjectPlacementDetectionMode: 0
+    TextSpeed: 0.04
+  - CameraHorizontalPanSpeed: 6
+    CameraVerticalPanSpeed: 3
+    ThirdPersonCameraControlMode: 1
+    ThirdPersonInteractionDetection: 0
+    ThirdPersonEnemyDetectionMode: 1
+    ThirdPersonBreakableDetectionMode: 0
+    ThirdPersonObjectPlacementDetectionMode: 1
+    IsometricCameraControlMode: 1
+    IsometricInteractMode: 0
+    IsometricBreakableDetectionMode: 0
+    IsometricEnemyDetectionMode: 0
+    IsometricObjectPlacementDetectionMode: 0
+    TextSpeed: 0.04
   CurrentLanguage: 0
-  GlobalDisableCloudRendering: 0
   GlobalDisableWaterReflection: 0
 --- !u!1 &2059881537
 GameObject:
@@ -2051,6 +2530,100 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!1 &2078151960
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 2078151961}
+  - component: {fileID: 2078151964}
+  - component: {fileID: 2078151963}
+  - component: {fileID: 2078151962}
+  m_Layer: 0
+  m_Name: P2 Targeting Reticle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2078151961
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2078151960}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 538662780}
+  m_Father: {fileID: 2126961905}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 950, y: 540}
+  m_SizeDelta: {x: 1900, y: 1080}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2078151962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2078151960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1301386320, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 16839479
+--- !u!114 &2078151963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2078151960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1980459831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UiScaleMode: 0
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 800, y: 600}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
+--- !u!223 &2078151964
+Canvas:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2078151960}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
 --- !u!1 &2126961904
 GameObject:
   m_ObjectHideFlags: 0
@@ -2078,6 +2651,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 871592271}
+  - {fileID: 2078151961}
   m_Father: {fileID: 92244914}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2092,8 +2666,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e99e69b5d8858974baa24706d0a4c9d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerTarget: {fileID: 0}
-  TargetingCanvas: {fileID: 871592271}
+  Targeting:
+  - PlayerTarget: {fileID: 0}
+    TargetingCanvas: {fileID: 871592271}
+  - PlayerTarget: {fileID: 0}
+    TargetingCanvas: {fileID: 2078151961}
   EnemyDetection:
     serializedVersion: 2
     m_Bits: 16777216

@@ -2,27 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-
-
-
-#if UNITY_EDITOR
-using UnityEditor;
-/////////////////////////////////////////////////////////////////////////////////Editor Extension Buttons
-[CustomEditor(typeof(DG_GUIControllerGhange))]
-class DG_GUIControllerGhangeEditor : Editor
-{
-    public override void OnInspectorGUI()
-    {
-        //Buttons
-        DG_GUIControllerGhange myScript = (DG_GUIControllerGhange)target;
-        if (GUILayout.Button("OpenControllerChangeUI"))
-            myScript.OpenControllerChangeUI();
-
-        DrawDefaultInspector();
-    }
-}
-//////////////////////////////////////////////////////////////////////////////////
-#endif
+using Sirenix.OdinInspector;
 
 
 
@@ -33,24 +13,29 @@ class DG_GUIControllerGhangeEditor : Editor
 
 public class DG_GUIControllerGhange : MonoBehaviour
 {
-    public bool isPlayer1;
+    [System.Serializable]
+    public class PlayerGUIControllerChange
+    {
+        public CanvasGroup UICanvas = null;
+        public UnityEngine.UI.GraphicRaycaster Raycaster;
+        public Transform Grid1 = null;
+        public Transform Grid2 = null;
 
-    public CanvasGroup UICanvas = null;
-    public Transform Grid1 = null;
-    public Transform Grid2 = null;
+        [Header("Set Button UI")]
+        public GameObject ButtonScreen = null;
+        public DG_ControllerMenuItem ChangeScreenItem = null;
+        [Header("Static Text")]
+        public DG_TextStatic[] StaticTextArray;
 
-    [Header("Set Button UI")]
-    public GameObject ButtonScreen = null;
-    public DG_ControllerMenuItem ChangeScreenItem = null;
-    [Header("Static Text")]
-    public DG_TextStatic[] StaticTextArray;
+        [System.NonSerialized] public int index = 0;
+        [System.NonSerialized] public DG_ControllerMenuItem[] MenuItems;
+        [System.NonSerialized] public bool SelectingNewInput = false;
 
-    int index = 0;
-    DG_ControllerMenuItem[] MenuItems;
-    bool SelectingNewInput = false;
+        [System.NonSerialized] public int TimeDifference = 20;
+        [System.NonSerialized] public int Timer;
+    }
 
-    int TimeDifference = 20;
-    int Timer;
+    public PlayerGUIControllerChange[] PlayerGUIChanges;
 
 
 
@@ -60,7 +45,8 @@ public class DG_GUIControllerGhange : MonoBehaviour
     }
     private void Start()
     {
-        QuickFind.EnableCanvas(UICanvas, false);
+        QuickFind.EnableCanvas(PlayerGUIChanges[0].UICanvas, false, PlayerGUIChanges[0].Raycaster);
+        QuickFind.EnableCanvas(PlayerGUIChanges[1].UICanvas, false, PlayerGUIChanges[1].Raycaster);
 
         transform.localPosition = Vector3.zero;
         this.enabled = false;
@@ -68,139 +54,192 @@ public class DG_GUIControllerGhange : MonoBehaviour
 
     private void Update()
     {
-        if (Timer > 0)
+        for (int i = 0; i < PlayerGUIChanges.Length; i++)
         {
-            Timer--;
-            return;
-        }
+            if (QuickFind.InputController.Players[i].CharLink == null) continue;
 
-        if (SelectingNewInput)
-        {
-            if (Input.anyKey)
+            PlayerGUIControllerChange PGC = PlayerGUIChanges[i];
+
+            if (PGC.Timer > 0)
             {
-                CheckInput();
-                SelectingNewInput = false;
-                Timer = TimeDifference;
-                OpenControllerChangeUI();
+                PGC.Timer--;
+                return;
+            }
+
+            if (PGC.SelectingNewInput)
+            {
+                if (Input.anyKey)
+                {
+                    CheckInput(i);
+                    PGC.SelectingNewInput = false;
+                    PGC.Timer = PGC.TimeDifference;
+                    OpenControllerChangeUI(i);
+                }
             }
         }
     }
 
 
-    public void ActionButtonSent()
+    public void P1ActionButtonSent()
     {
-        if (Timer > 0)
+        ActionButtonSent(0);
+    }
+    public void P2ActionButtonSent()
+    {
+        ActionButtonSent(1);
+    }
+    void ActionButtonSent(int Index)
+    {
+        PlayerGUIControllerChange PGC = PlayerGUIChanges[Index];
+
+        if (PGC.Timer > 0)
             return;
 
-        if (MenuItems[index].ButtonValue != DG_ControllerMenuItem.ButtonSwitch.Close)
+        if (PGC.MenuItems[PGC.index].ButtonValue != DG_ControllerMenuItem.ButtonSwitch.Close)
         {
-            Timer = TimeDifference;
-            MenuItems[index].SelectionDisplay.enabled = false;
-            MenuItems[index].isActive = false;
-            OpenChangeButtonScreen();
+            PGC.Timer = PGC.TimeDifference;
+            PGC.MenuItems[PGC.index].SelectionDisplay.enabled = false;
+            PGC.MenuItems[PGC.index].isActive = false;
+            OpenChangeButtonScreen(Index);
         }
         else
-            CloseControllerChangeUI();
+            CloseControllerChangeUI(Index);
     }
 
-
-    public void OpenControllerChangeUI()
+    [Button(ButtonSizes.Small)]
+    public void DebugOpenControllerChangeUI()
     {
-        QuickFind.EnableCanvas(UICanvas, true);
+        OpenControllerChangeUI(0);
+    }
+
+    
+    public void OpenControllerChangeUI(int Index)
+    {
+        PlayerGUIControllerChange PGC = PlayerGUIChanges[Index];
+
+        QuickFind.EnableCanvas(PGC.UICanvas, true, PGC.Raycaster);
 
         int PlayerID = QuickFind.NetworkSync.Player1PlayerCharacter;
-        if (!isPlayer1) PlayerID = QuickFind.NetworkSync.Player2PlayerCharacter;
+        if (Index == 1) PlayerID = QuickFind.NetworkSync.Player2PlayerCharacter;
 
         DG_PlayerInput.Player MP = QuickFind.InputController.GetPlayerByPlayerID(PlayerID);
-        MP.InputMode = DG_PlayerInput.Player.InputStateModes.ControllerChangeMenu;
+        MP.CurrentInputState = DG_PlayerInput.CurrentInputState.InMenu;
 
-        if (MenuItems == null)
-            FillArray();
+        if (PGC.MenuItems == null)
+            FillArray(Index);
 
-        FillCurrentValueText();
+        FillCurrentValueText(Index);
 
-        MenuItems[index].SelectionDisplay.enabled = false;
-        MenuItems[index].isActive = false;
+        PGC.MenuItems[PGC.index].SelectionDisplay.enabled = false;
+        PGC.MenuItems[PGC.index].isActive = false;
 
-        index = 0;
-        MenuItems[0].SelectionDisplay.enabled = true;
-        ButtonScreen.SetActive(false);
+        PGC.index = 0;
+        PGC.MenuItems[0].SelectionDisplay.enabled = true;
+        PGC.ButtonScreen.SetActive(false);
 
-        for (int i = 0; i < StaticTextArray.Length; i++)
-            StaticTextArray[i].ManualLoad();
+        for (int i = 0; i < PGC.StaticTextArray.Length; i++)
+            PGC.StaticTextArray[i].ManualLoad();
 
         this.enabled = true;
     }
 
-    public void CloseControllerChangeUI()
+
+    public void CloseP1ControllerChange()
     {
-        if (SelectingNewInput || Timer > 0)
+        CloseControllerChangeUI(0);
+    }
+    public void CloseP2ControllerChange()
+    {
+        CloseControllerChangeUI(1);
+    }
+
+
+    void CloseControllerChangeUI(int Index)
+    {
+        PlayerGUIControllerChange PGC = PlayerGUIChanges[Index];
+
+        if (PGC.SelectingNewInput || PGC.Timer > 0)
             return;
 
-        QuickFind.EnableCanvas(UICanvas, false);
+        QuickFind.EnableCanvas(PGC.UICanvas, false, PGC.Raycaster);
 
         int PlayerID = QuickFind.NetworkSync.Player1PlayerCharacter;
-        if (!isPlayer1) PlayerID = QuickFind.NetworkSync.Player2PlayerCharacter;
+        if (Index == 1) PlayerID = QuickFind.NetworkSync.Player2PlayerCharacter;
 
         DG_PlayerInput.Player MP = QuickFind.InputController.GetPlayerByPlayerID(PlayerID);
-        MP.InputMode = DG_PlayerInput.Player.InputStateModes.Normal;
+        MP.CurrentInputState = DG_PlayerInput.CurrentInputState.Default;
 
         this.enabled = false;
     }
 
-    public void AdjustButtonViaController(bool isUp)
+    public void P1AdjustByController(bool isUp)
     {
-        if (SelectingNewInput)
+        AdjustButtonViaController(isUp, 0);
+    }
+    public void P2AdjustByController(bool isUp)
+    {
+        AdjustButtonViaController(isUp, 1);
+    }
+
+    void AdjustButtonViaController(bool isUp, int Index)
+    {
+        PlayerGUIControllerChange PGC = PlayerGUIChanges[Index];
+
+        if (PGC.SelectingNewInput)
             return;
 
-        MenuItems[index].SelectionDisplay.enabled = false;
-        MenuItems[index].isActive = false;
+        PGC.MenuItems[PGC.index].SelectionDisplay.enabled = false;
+        PGC.MenuItems[PGC.index].isActive = false;
 
         int PlayerID = QuickFind.NetworkSync.Player1PlayerCharacter;
-        if (!isPlayer1) PlayerID = QuickFind.NetworkSync.Player2PlayerCharacter;
+        if (Index == 1) PlayerID = QuickFind.NetworkSync.Player2PlayerCharacter;
 
         bool isController = false;
-        if (QuickFind.InputController.GetPlayerByPlayerID(PlayerID).ButtonSet.JoyVert.Up)
+        if (QuickFind.InputController.Players[Index].VerticalAxisState == DG_GameButtons.AxisState.PosUp)
             isController = true;
         if (isController)
-            index = QuickFind.GetNextValueInArray(index, Grid1.childCount, !isUp, true);
+            PGC.index = QuickFind.GetValueInArrayLoop(PGC.index, PGC.Grid1.childCount, !isUp, true);
         else
-            index = QuickFind.GetNextValueInArray(index, MenuItems.Length, !isUp, true);
-        MenuItems[index].SelectionDisplay.enabled = true;
-        MenuItems[index].isActive = true;
+            PGC.index = QuickFind.GetValueInArrayLoop(PGC.index, PGC.MenuItems.Length, !isUp, true);
+        PGC.MenuItems[PGC.index].SelectionDisplay.enabled = true;
+        PGC.MenuItems[PGC.index].isActive = true;
     }
 
-    public void ContextButtonViaMouse(DG_ControllerMenuItem ItemScript)
+    public void ContextButtonViaMouse(DG_ControllerMenuItem ItemScript, int Index)
     {
-        MenuItems[index].SelectionDisplay.enabled = false;
-        MenuItems[index].isActive = false;
+        PlayerGUIControllerChange PGC = PlayerGUIChanges[Index];
 
-        for (int i = 0; i < MenuItems.Length; i++)
+        PGC.MenuItems[PGC.index].SelectionDisplay.enabled = false;
+        PGC.MenuItems[PGC.index].isActive = false;
+
+        for (int i = 0; i < PGC.MenuItems.Length; i++)
         {
-            if (ItemScript == MenuItems[i])
-                index = i;
+            if (ItemScript == PGC.MenuItems[i])
+                PGC.index = i;
         }
 
-        MenuItems[index].SelectionDisplay.enabled = true;
-        MenuItems[index].isActive = true;
+        PGC.MenuItems[PGC.index].SelectionDisplay.enabled = true;
+        PGC.MenuItems[PGC.index].isActive = true;
     }
-    void OpenChangeButtonScreen()
+    void OpenChangeButtonScreen(int Index)
     {
-        SelectingNewInput = true;
-        DG_ControllerMenuItem Item = MenuItems[index];
+        PlayerGUIControllerChange PGC = PlayerGUIChanges[Index];
+
+        PGC.SelectingNewInput = true;
+        DG_ControllerMenuItem Item = PGC.MenuItems[PGC.index];
 
 
         string display = Item.DisplayText.text;
-        ChangeScreenItem.DisplayText.text = display;
+        PGC.ChangeScreenItem.DisplayText.text = display;
         display = Item.KeyboardText.text;
-        ChangeScreenItem.KeyboardText.text = display;
+        PGC.ChangeScreenItem.KeyboardText.text = display;
         display = Item.ControllerText.text;
-        ChangeScreenItem.ControllerText.text = display;
+        PGC.ChangeScreenItem.ControllerText.text = display;
 
-        MenuItems[index].SelectionDisplay.enabled = false;
-        MenuItems[index].isActive = false;
+        PGC.MenuItems[PGC.index].SelectionDisplay.enabled = false;
+        PGC.MenuItems[PGC.index].isActive = false;
 
-        ButtonScreen.SetActive(true);
+        PGC.ButtonScreen.SetActive(true);
 
     }
 
@@ -209,37 +248,41 @@ public class DG_GUIControllerGhange : MonoBehaviour
 
 
 
-    void FillArray()
+    void FillArray(int Index)
     {
+        PlayerGUIControllerChange PGC = PlayerGUIChanges[Index];
+
         int index = 0;
-        int count = Grid1.childCount;
-        count = count + Grid2.childCount;
-        MenuItems = new DG_ControllerMenuItem[count];
-        for (int i = 0; i < Grid1.childCount; i++)
+        int count = PGC.Grid1.childCount;
+        count = count + PGC.Grid2.childCount;
+        PGC.MenuItems = new DG_ControllerMenuItem[count];
+        for (int i = 0; i < PGC.Grid1.childCount; i++)
         {
-            MenuItems[index] = Grid1.GetChild(i).GetComponent<DG_ControllerMenuItem>();
+            PGC.MenuItems[index] = PGC.Grid1.GetChild(i).GetComponent<DG_ControllerMenuItem>();
             index++;
         }
-        for (int i = 0; i < Grid2.childCount; i++)
+        for (int i = 0; i < PGC.Grid2.childCount; i++)
         {
-            MenuItems[index] = Grid2.GetChild(i).GetComponent<DG_ControllerMenuItem>();
+            PGC.MenuItems[index] = PGC.Grid2.GetChild(i).GetComponent<DG_ControllerMenuItem>();
             index++;
         }
     }
-    void FillCurrentValueText()
+    void FillCurrentValueText(int Index)
     {
-        int PlayerID = QuickFind.NetworkSync.Player1PlayerCharacter;
-        if (!isPlayer1) PlayerID = QuickFind.NetworkSync.Player2PlayerCharacter;
+        PlayerGUIControllerChange PGC = PlayerGUIChanges[Index];
 
-        for (int i = 0; i < MenuItems.Length; i++)
+        int PlayerID = QuickFind.NetworkSync.Player1PlayerCharacter;
+        if (Index == 1) PlayerID = QuickFind.NetworkSync.Player2PlayerCharacter;
+
+        for (int i = 0; i < PGC.MenuItems.Length; i++)
         {
-            if (MenuItems[i].GetButton(QuickFind.InputController.GetPlayerByPlayerID(PlayerID)) != null)
+            if (PGC.MenuItems[i].GetButton(QuickFind.InputController.GetPlayerByPlayerID(PlayerID)) != null)
             {
-                MenuItems[i].KeyboardText.text = MenuItems[i].GetButton(QuickFind.InputController.GetPlayerByPlayerID(PlayerID)).MainKey.ToString();
-                string NewVal = MenuItems[i].GetButton(QuickFind.InputController.GetPlayerByPlayerID(PlayerID)).AltKey.ToString();
+                PGC.MenuItems[i].KeyboardText.text = PGC.MenuItems[i].GetButton(QuickFind.InputController.GetPlayerByPlayerID(PlayerID)).MainKey.ToString();
+                string NewVal = PGC.MenuItems[i].GetButton(QuickFind.InputController.GetPlayerByPlayerID(PlayerID)).AltKey.ToString();
                 if (NewVal == "None")
                     NewVal = string.Empty;
-                MenuItems[i].ControllerText.text = NewVal;
+                PGC.MenuItems[i].ControllerText.text = NewVal;
             }
         }
     }
@@ -248,10 +291,12 @@ public class DG_GUIControllerGhange : MonoBehaviour
 
 
 
-    void CheckInput()
+    void CheckInput(int Index)
     {
+        PlayerGUIControllerChange PGC = PlayerGUIChanges[Index];
+
         int PlayerID = QuickFind.NetworkSync.Player1PlayerCharacter;
-        if (!isPlayer1) PlayerID = QuickFind.NetworkSync.Player2PlayerCharacter;
+        if (Index == 1) PlayerID = QuickFind.NetworkSync.Player2PlayerCharacter;
 
         foreach (KeyCode kcode in Enum.GetValues(typeof(KeyCode)))
         {
@@ -263,45 +308,49 @@ public class DG_GUIControllerGhange : MonoBehaviour
                 char[] StringArray = KeyCodeString.ToCharArray();
                 if (StringArray[0].ToString() == "J" && StringArray[1].ToString() == "o")
                 {
-                    SwapIfNeeded(ConvertedKey, false);
-                    MenuItems[index].GetButton(QuickFind.InputController.GetPlayerByPlayerID(PlayerID)).AltKey = ConvertedKey;
+                    SwapIfNeeded(ConvertedKey, false, Index);
+                    PGC.MenuItems[PGC.index].GetButton(QuickFind.InputController.GetPlayerByPlayerID(PlayerID)).AltKey = ConvertedKey;
                     break;
                 }
                 else
                 {
-                    SwapIfNeeded(ConvertedKey, true);
-                    MenuItems[index].GetButton(QuickFind.InputController.GetPlayerByPlayerID(PlayerID)).MainKey = ConvertedKey;
+                    SwapIfNeeded(ConvertedKey, true, Index);
+                    PGC.MenuItems[PGC.index].GetButton(QuickFind.InputController.GetPlayerByPlayerID(PlayerID)).MainKey = ConvertedKey;
                     break;
                 }
             }
         }
     }
 
-    void SwapIfNeeded(KeyCode ConvertedKey, bool isMain)
+    void SwapIfNeeded(KeyCode ConvertedKey, bool isMain, int Index)
     {
+        PlayerGUIControllerChange PGC = PlayerGUIChanges[Index];
+
         int PlayerID = QuickFind.NetworkSync.Player1PlayerCharacter;
-        if (!isPlayer1) PlayerID = QuickFind.NetworkSync.Player2PlayerCharacter;
+        if (Index == 0) PlayerID = QuickFind.NetworkSync.Player2PlayerCharacter;
+
+        Debug.Log("Needs to be updated");
 
         //Swap Out if Already Using Button;
-        List<DG_GameButtons.Button> ButtonList = QuickFind.InputController.GetPlayerByPlayerID(PlayerID).ButtonSet.GetButtonList();
-        for (int i = 0; i < ButtonList.Count; i++)
-        {
-            if (isMain)
-            {
-                if (ButtonList[i].MainKey == ConvertedKey)
-                {
-                    ButtonList[i].MainKey = MenuItems[index].GetButton(QuickFind.InputController.GetPlayerByPlayerID(PlayerID)).MainKey;
-                    return;
-                }
-            }
-            else
-            {
-                if (ButtonList[i].AltKey == ConvertedKey)
-                {
-                    ButtonList[i].AltKey = MenuItems[index].GetButton(QuickFind.InputController.GetPlayerByPlayerID(PlayerID)).AltKey;
-                    return;
-                }
-            }
-        }
+        //List<DG_GameButtons.Button> ButtonList = QuickFind.InputController.Players[Index].ActiveButtonSet;
+        //for (int i = 0; i < ButtonList.Count; i++)
+        //{
+        //    if (isMain)
+        //    {
+        //        if (ButtonList[i].MainKey == ConvertedKey)
+        //        {
+        //            ButtonList[i].MainKey = PGC.MenuItems[PGC.index].GetButton(QuickFind.InputController.GetPlayerByPlayerID(PlayerID)).MainKey;
+        //            return;
+        //        }
+        //    }
+        //    else
+        //    {
+        //        if (ButtonList[i].AltKey == ConvertedKey)
+        //        {
+        //            ButtonList[i].AltKey = PGC.MenuItems[PGC.index].GetButton(QuickFind.InputController.GetPlayerByPlayerID(PlayerID)).AltKey;
+        //            return;
+        //        }
+        //    }
+        //}
     }
 }

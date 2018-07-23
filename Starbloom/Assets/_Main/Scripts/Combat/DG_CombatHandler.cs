@@ -36,26 +36,33 @@ public class DG_CombatHandler : MonoBehaviour {
     }
 
 
-    [System.NonSerialized] public DG_PlayerCharacters.RucksackSlot RucksackSlotOpen;
-    [System.NonSerialized] public DG_ItemObject ItemDatabaseReference;
-    [System.NonSerialized] public int ActiveSlot;
-    [System.NonSerialized] public bool WeaponActive;
+    [System.Serializable]
+    public class PlayerCombat
+    {
+        public GameObject PlayerDashAttackHitboxes;
+
+        [System.NonSerialized] public DG_PlayerCharacters.RucksackSlot RucksackSlotOpen;
+        [System.NonSerialized] public DG_ItemObject ItemDatabaseReference;
+        [System.NonSerialized] public int ActiveSlot;
+        [System.NonSerialized] public bool WeaponActive;
+        [System.NonSerialized] public EquipmentSetups ActiveEquipmentSetup;
+        [System.NonSerialized] public bool AwaitingResponse;
+    }
+
+    public PlayerCombat[] Combats;
     public Transform EnemySurroundHelper = null;
     public Transform EnemySurroundNewPoint = null;
     public float PlayerWeaponDashDistance;
     public float PlayerWeaponDashTime;
-    public GameObject PlayerDashAttackHitboxes;
-    EquipmentSetups ActiveEquipmentSetup;
-    bool AwaitingResponse;
 
     int[] Sent;
     int[] PlayerSent;
 
 
-
     private void Awake()
     {
         QuickFind.CombatHandler = this;
+        Combats[1].PlayerDashAttackHitboxes.SetActive(false);
     }
 
 
@@ -67,12 +74,15 @@ public class DG_CombatHandler : MonoBehaviour {
         bool AllowAction = false;
         if (isUP || QuickFind.GameSettings.AllowActionsOnHold) AllowAction = true;
 
+        int ArrayNum = 0;
+        if (PlayerID == QuickFind.NetworkSync.Player2PlayerCharacter) ArrayNum = 1;
+
         if (AllowAction)
         {
-            AwaitingResponse = true;
+            Combats[ArrayNum].AwaitingResponse = true;
 
-            QuickFind.CombatHandler.TriggerMeleeDash(PlayerWeaponDashTime, PlayerWeaponDashDistance);
-            PlayerDashAttackHitboxes.SetActive(true);
+            QuickFind.CombatHandler.TriggerMeleeDash(PlayerWeaponDashTime, PlayerWeaponDashDistance, PlayerID);
+            Combats[ArrayNum].PlayerDashAttackHitboxes.SetActive(true);
 
             DG_CharacterLink CL = QuickFind.NetworkSync.GetCharacterLinkByPlayerID(PlayerID);
 
@@ -80,16 +90,19 @@ public class DG_CombatHandler : MonoBehaviour {
             CL.AnimationSync.TriggerAnimation(Cloth.AnimationDatabaseNumber);
         }
     }
-    public void DashComplete()
+    public void DashComplete(int PlayerID)
     {
-        if (!AwaitingResponse) return;
-        AwaitingResponse = false;
+        int ArrayNum = 0;
+        if (PlayerID == QuickFind.NetworkSync.Player2PlayerCharacter) ArrayNum = 1;
+
+        if (!Combats[ArrayNum].AwaitingResponse) return;
+        Combats[ArrayNum].AwaitingResponse = false;
 
         //Not sure how else to handle this from a callback without changing dash controller completely.
         for(int i = 0; i < QuickFind.NetworkSync.UserList.Count; i++)
             QuickFind.NetworkSync.UserList[i].CharacterLink.CenterCharacterX();
 
-        PlayerDashAttackHitboxes.SetActive(false);
+        Combats[ArrayNum].PlayerDashAttackHitboxes.SetActive(false);
     }
 
 
@@ -101,19 +114,25 @@ public class DG_CombatHandler : MonoBehaviour {
 
 
 
-    public void SetupForHitting(DG_PlayerCharacters.RucksackSlot Rucksack = null, DG_ItemObject Item = null, int slot = 0)
+    public void SetupForHitting(int PlayerID, DG_PlayerCharacters.RucksackSlot Rucksack = null, DG_ItemObject Item = null, int slot = 0)
     {
-        QuickFind.CombatHandler.RucksackSlotOpen = Rucksack;
-        QuickFind.CombatHandler.ItemDatabaseReference = Item;
-        QuickFind.CombatHandler.ActiveSlot = slot;
+        int ArrayNum = 0;
+        if (PlayerID == QuickFind.NetworkSync.Player2PlayerCharacter) ArrayNum = 1;
 
-        ActiveEquipmentSetup = EquipmentSetups.SingleSword;
-        WeaponActive = true;
+        Combats[ArrayNum].RucksackSlotOpen = Rucksack;
+        Combats[ArrayNum].ItemDatabaseReference = Item;
+        Combats[ArrayNum].ActiveSlot = slot;
+
+        Combats[ArrayNum].ActiveEquipmentSetup = EquipmentSetups.SingleSword;
+        Combats[ArrayNum].WeaponActive = true;
     }
 
-    public void CancelHittingMode()
+    public void CancelHittingMode(int PlayerID)
     {
-        WeaponActive = false;
+        int ArrayNum = 0;
+        if (PlayerID == QuickFind.NetworkSync.Player2PlayerCharacter) ArrayNum = 1;
+
+        Combats[ArrayNum].WeaponActive = false;
     }
 
 
@@ -122,10 +141,14 @@ public class DG_CombatHandler : MonoBehaviour {
 
 
 
-    public void TriggerMeleeDash(float DashTime, float NoTargetDistance)
+    public void TriggerMeleeDash(float DashTime, float NoTargetDistance, int PlayerID)
     {
-        if (QuickFind.TargetingController.PlayerTarget != null) QuickFind.PlayerTrans.LookAt(QuickFind.TargetingController.PlayerTarget);
-        QuickFind.CharacterDashController.DashAction(QuickFind.PlayerTrans, DashTime, NoTargetDistance, true, this.gameObject);
+        int Array = 0;
+        if (PlayerID == QuickFind.NetworkSync.Player2PlayerCharacter) Array = 1;
+
+        Transform PlayerTrans = QuickFind.NetworkSync.GetCharacterLinkByPlayerID(PlayerID).PlayerTrans;
+        if (QuickFind.TargetingController.Targeting[Array].PlayerTarget != null) PlayerTrans.LookAt(QuickFind.TargetingController.Targeting[Array].PlayerTarget);
+        QuickFind.CharacterDashController.DashAction(PlayerID, PlayerTrans, DashTime, NoTargetDistance, true, this.gameObject);
     }
 
 
@@ -133,13 +156,16 @@ public class DG_CombatHandler : MonoBehaviour {
 
 
 
-    public void MeleeHitTrigger(DG_ContextObject CO)
+    public void MeleeHitTrigger(int Index, DG_ContextObject CO)
     {
         NetworkObject NO = QuickFind.NetworkObjectManager.ScanUpTree(CO.transform);
         DG_EnemyObject EO = QuickFind.EnemyDatabase.GetItemFromID(NO.ItemRefID);
 
+        int PlayerID = QuickFind.NetworkSync.Player1PlayerCharacter;
+        if(Index == 1) PlayerID = QuickFind.NetworkSync.Player2PlayerCharacter;
+
         //New Health Value
-        int newHealthValue = CalculateEnemyHealthAfterDamage(NO, EO);
+        int newHealthValue = CalculateEnemyHealthAfterDamage(PlayerID, NO, EO);
         if (newHealthValue <= 0) { SendKill(NO, CO, EO); }
         else { SendEnemyHitData(CO, NO, newHealthValue); }
     }
@@ -155,14 +181,17 @@ public class DG_CombatHandler : MonoBehaviour {
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    public void ObjectHitReturn(Collider EnemyHit)
+    public void ObjectHitReturn(Collider EnemyHit, int Index)
     {
         //Todo, determine what kind of attack is being done.
-        MeleeHitTrigger(QuickFind.TargetingController.PlayerTarget.GetComponent<DG_ContextObject>());
+        MeleeHitTrigger(Index, QuickFind.TargetingController.Targeting[Index].PlayerTarget.GetComponent<DG_ContextObject>());
     }
-    public int CalculateEnemyHealthAfterDamage(NetworkObject NO, DG_EnemyObject EO)
+    public int CalculateEnemyHealthAfterDamage(int PlayerID, NetworkObject NO, DG_EnemyObject EO)
     {
-        DG_ItemObject.Weapon Wep = ItemDatabaseReference.WeaponValues[0];
+        int ArrayNum = 0;
+        if (PlayerID == QuickFind.NetworkSync.Player2PlayerCharacter) ArrayNum = 1;
+
+        DG_ItemObject.Weapon Wep = Combats[ArrayNum].ItemDatabaseReference.WeaponValues[0];
         int HitAmount = Random.Range(Wep.DamageValues.DamageMin, (Wep.DamageValues.DamageMax + 1));
         HitAmount = ScanResistances(HitAmount, EO.EnemyResistances, Wep.DamageValues.DamageType);
         return NO.HealthValue - HitAmount;
@@ -263,7 +292,8 @@ public class DG_CombatHandler : MonoBehaviour {
         PC.Energies.CurrentHealth = Data[1];
 
         //Update Healthbar
-        QuickFind.GUI_MainOverview.SetGuiHealthValue((float)PC.Energies.CurrentHealth / (float)PC.Energies.MaxHealth);
+        if(QuickFind.NetworkSync.ThisPlayerBelongsToMe(U.PlayerCharacterID))
+            QuickFind.GUI_MainOverview.SetGuiHealthValue((float)PC.Energies.CurrentHealth / (float)PC.Energies.MaxHealth, U.PlayerCharacterID);
 
         //FX
         DG_CharacterLink CharLink = U.CharacterLink;

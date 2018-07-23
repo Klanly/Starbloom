@@ -13,6 +13,7 @@ public class DG_ShopGuiItem : MonoBehaviour {
     public Image Icon = null;
     public float ScaleSize;
     public float ScaleTime;
+    [System.NonSerialized] public bool Player1; 
 
     [Header("Text")]
     public TMPro.TextMeshProUGUI AmountText = null;
@@ -85,11 +86,13 @@ public class DG_ShopGuiItem : MonoBehaviour {
 
 
 
-    public void UpdateVisuals()
+    public void UpdateVisuals(bool isPlayer1)
     {
         DG_ItemObject IO = QuickFind.ItemDatabase.GetItemFromID(SeasonalGoodsRef.ItemDatabaseRef);
         Icon.sprite = IO.GetItemSpriteByQuality(SeasonalGoodsRef.QualityLevel);
         AmountText.text = IO.GetBuyPriceByQuality(SeasonalGoodsRef.QualityLevel).ToString();
         NameText.text = QuickFind.WordDatabase.GetWordFromID(IO.ToolTipType.MainLocalizationID);
+        Player1 = isPlayer1;
+        transform.localScale = Vector3.one;
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
+using UnityEngine.Rendering.PostProcessing;
 
 public class CameraLogic : MonoBehaviour {
 
@@ -34,11 +35,6 @@ public class CameraLogic : MonoBehaviour {
     [System.Serializable]
     public class ThirdPersonControlVariables
     {
-        [Header("True Pan Speeds")]
-        public float MousePanHorSpeed;
-        public float MousePanVertSpeed;
-        public float JoyPanHorSpeed;
-        public float JoyPanVertSpeed;
         [Header("Slerp Speed")]
         public float RotationalSlerp;
         [Header("X Restriction")]
@@ -64,17 +60,19 @@ public class CameraLogic : MonoBehaviour {
         public UserCameraMode CurrentCameraAngle;
         [ReadOnly] public CameraState CurrentCameraState;
         [ReadOnly] public ContextDetection CurrentDetectionStyle;
-        [ReadOnly] public int PlayerID = -1;
+        //[ReadOnly]
+        public int PlayerID = -1;
         [System.NonSerialized] public Transform CamTrans;
         [System.NonSerialized] public UserCameraMode KnownCameraAngle;
+
+        [System.NonSerialized] public Transform CamHelper;
     }
 
     public PlayerCamRigg[] CameraRiggs;
     public ThirdPersonControlVariables ThirdPersonVariables;
     public IsometricVariables IsoVariables;
     public float CameraTransitionSpeed;
-    Transform CamHelper;
-    bool isPlayer1 = true;
+
 
 
 
@@ -87,9 +85,13 @@ public class CameraLogic : MonoBehaviour {
         CameraRiggs[0].KnownCameraAngle = CameraRiggs[0].CurrentCameraAngle;
         CameraRiggs[1].KnownCameraAngle = CameraRiggs[1].CurrentCameraAngle;
 
-        CamHelper = new GameObject().transform;
-        CamHelper.SetParent(transform);
-        CamHelper.eulerAngles = CameraRiggs[0].Rigg.eulerAngles;
+        CameraRiggs[0].CamHelper = new GameObject().transform;
+        CameraRiggs[0].CamHelper.SetParent(transform);
+        CameraRiggs[0].CamHelper.eulerAngles = CameraRiggs[0].Rigg.eulerAngles;
+
+        CameraRiggs[1].CamHelper = new GameObject().transform;
+        CameraRiggs[1].CamHelper.SetParent(transform);
+        CameraRiggs[1].CamHelper.eulerAngles = CameraRiggs[1].Rigg.eulerAngles;
     }
     private void Update()
     {
@@ -98,12 +100,15 @@ public class CameraLogic : MonoBehaviour {
             PlayerCamRigg PCR = CameraRiggs[i];
             if (PCR.PlayerID == -1) continue;
 
+            UserSettings.PlayerSettings PS = QuickFind.UserSettings.SingleSettings;
+            if(QuickFind.NetworkSync.Player2PlayerCharacter != -1) PS = QuickFind.UserSettings.CoopSettings[i];
+
             switch (PCR.CurrentCameraState)
             {
                 case CameraState.Disabled: { EnableMouse(true); return; }
                 case CameraState.DisabledHideMouse: { EnableMouse(false); return; }
-                case CameraState.Thirdperson: { EnableMouse(QuickFind.UserSettings.ThirdPersonCameraControlMode == ControlMode.Mouse); HandleThirdPerson(PCR); } break;
-                case CameraState.Isometric: { EnableMouse(QuickFind.UserSettings.IsometricCameraControlMode == ControlMode.Mouse); HandleIsometric(PCR); } break;
+                case CameraState.Thirdperson: { EnableMouse(PS.ThirdPersonCameraControlMode == ControlMode.Mouse); HandleThirdPerson(PCR, PS, i); } break;
+                case CameraState.Isometric: { EnableMouse(PS.IsometricCameraControlMode == ControlMode.Mouse); HandleIsometric(PCR, i); } break;
             }
         }
     }
@@ -113,40 +118,33 @@ public class CameraLogic : MonoBehaviour {
 
 
     //Third Person
-    void HandleThirdPerson(PlayerCamRigg PCR)
+    void HandleThirdPerson(PlayerCamRigg PCR, UserSettings.PlayerSettings PS, int index)
     {
-        if (QuickFind.PlayerTrans == null) return;
-        PCR.Rigg.position = QuickFind.PlayerTrans.position;
+        DG_PlayerInput.Player MP = QuickFind.InputController.Players[index];
 
-        DG_PlayerInput.Player MP;
-        if(isPlayer1) MP = QuickFind.InputController.Players[0];
-        else MP = QuickFind.InputController.Players[1];
+        if (MP.CharLink == null) return;
+        PCR.Rigg.position = MP.CharLink.PlayerTrans.position;
 
         bool AllowRotationChange = false;
         if (MP.CamVerticalAxis != 0 || MP.CamHorizontalAxis != 0) AllowRotationChange = true;
-        if (QuickFind.UserSettings.ThirdPersonCameraControlMode == ControlMode.Mouse && !Input.GetMouseButton(2)) AllowRotationChange = false;
+        if (PS.ThirdPersonCameraControlMode == ControlMode.Mouse && !Input.GetMouseButton(2)) AllowRotationChange = false;
 
         if (AllowRotationChange)
         {
-            if (QuickFind.UserSettings.ThirdPersonCameraControlMode == ControlMode.Mouse) { Cursor.visible = false; Cursor.lockState = CursorLockMode.Locked; }
+            if (PS.ThirdPersonCameraControlMode == ControlMode.Mouse) { Cursor.visible = false; Cursor.lockState = CursorLockMode.Locked; }
 
-            Vector3 CurAngle = CamHelper.eulerAngles;
-
-            float VertMult = -ThirdPersonVariables.MousePanVertSpeed;
-            if (MP.ButtonSet.RJoyVert.Held) VertMult = ThirdPersonVariables.JoyPanVertSpeed;
-            float HorMult = ThirdPersonVariables.MousePanHorSpeed;
-            if (MP.ButtonSet.RJoyHor.Held) HorMult = ThirdPersonVariables.JoyPanHorSpeed;
+            Vector3 CurAngle = CameraRiggs[index].CamHelper.eulerAngles;
 
             CurAngle.z = 0;
-            CurAngle.y += MP.CamHorizontalAxis * HorMult * QuickFind.UserSettings.CameraSensitivity;
-            CurAngle.x += MP.CamVerticalAxis * VertMult * QuickFind.UserSettings.CameraSensitivity;
+            CurAngle.y += MP.CamHorizontalAxis * PS.CameraHorizontalPanSpeed;
+            CurAngle.x += MP.CamVerticalAxis * PS.CameraVerticalPanSpeed;
             if (CurAngle.x > ThirdPersonVariables.MaxX) CurAngle.x = ThirdPersonVariables.MaxX;
             if (CurAngle.x < ThirdPersonVariables.MinX) CurAngle.x = ThirdPersonVariables.MinX;
 
-            CamHelper.eulerAngles = CurAngle;
+            CameraRiggs[index].CamHelper.eulerAngles = CurAngle;
         }
 
-        Quaternion NewRotation = Quaternion.Slerp(PCR.Rigg.rotation, CamHelper.rotation, ThirdPersonVariables.RotationalSlerp);
+        Quaternion NewRotation = Quaternion.Slerp(PCR.Rigg.rotation, CameraRiggs[index].CamHelper.rotation, ThirdPersonVariables.RotationalSlerp);
         PCR.Rigg.rotation = NewRotation;
 
 
@@ -160,12 +158,14 @@ public class CameraLogic : MonoBehaviour {
     }
 
     //Isometric
-    void HandleIsometric(PlayerCamRigg PCR)
+    void HandleIsometric(PlayerCamRigg PCR, int index)
     {
-        if (QuickFind.PlayerTrans == null) return;
-        PCR.Rigg.position = QuickFind.PlayerTrans.position;
-        CamHelper.eulerAngles = new Vector3(30, 0, 0);
-        Quaternion NewRotation = Quaternion.Slerp(PCR.Rigg.rotation, CamHelper.rotation, ThirdPersonVariables.RotationalSlerp);
+        Transform PlayerTrans = QuickFind.NetworkSync.GetCharacterLinkByPlayerID(PCR.PlayerID).PlayerTrans;
+
+        if (PlayerTrans == null) return;
+        PCR.Rigg.position = PlayerTrans.position;
+        CameraRiggs[index].CamHelper.eulerAngles = new Vector3(30, 0, 0);
+        Quaternion NewRotation = Quaternion.Slerp(PCR.Rigg.rotation, CameraRiggs[index].CamHelper.rotation, ThirdPersonVariables.RotationalSlerp);
         PCR.Rigg.rotation = NewRotation;
 
 
@@ -180,7 +180,7 @@ public class CameraLogic : MonoBehaviour {
 
 
 
-    public void InstantSetCameraAngle(float CameraFacing, PlayerCamRigg PCR) { Vector3 Pos = new Vector3(30, CameraFacing, 0); PCR.Rigg.eulerAngles = Pos; CamHelper.eulerAngles = Pos; }
+    public void InstantSetCameraAngle(float CameraFacing, PlayerCamRigg PCR, int index) { Vector3 Pos = new Vector3(30, CameraFacing, 0); PCR.Rigg.eulerAngles = Pos; CameraRiggs[index].CamHelper.eulerAngles = Pos; }
     public void EnableCamera(PlayerCamRigg PCR, bool isTrue, bool ShowMouse = false)
     {
         if (isTrue)

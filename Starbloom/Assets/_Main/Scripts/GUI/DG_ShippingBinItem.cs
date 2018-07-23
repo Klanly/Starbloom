@@ -17,6 +17,7 @@ public class DG_ShippingBinItem : MonoBehaviour {
     public TMPro.TextMeshProUGUI AmountText = null;
     public TMPro.TextMeshProUGUI NameText = null;
     public TMPro.TextMeshProUGUI StackText = null;
+    public bool isPlayer1;
 
     float Timer;
     bool ScaleUp = true;
@@ -84,12 +85,13 @@ public class DG_ShippingBinItem : MonoBehaviour {
 
 
 
-    public void UpdateVisuals()
+    public void UpdateVisuals(bool Player1)
     {
         DG_ItemObject IO = QuickFind.ItemDatabase.GetItemFromID(ReferenceItem.ItemRef);
         Icon.sprite = IO.GetItemSpriteByQuality(0);
         AmountText.text = QuickFind.ShippingBin.CalculateTotalOfStack(ReferenceItem).ToString();
         NameText.text = QuickFind.WordDatabase.GetWordFromID(IO.ToolTipType.MainLocalizationID);
         StackText.text = ReferenceItem.GetStackValue().ToString();
+        isPlayer1 = Player1;
     }
 }

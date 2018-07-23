@@ -31,7 +31,6 @@ public class DG_CraftButton : MonoBehaviour {
         this.enabled = false;
     }
 
-
     public void ItemHoverIn()
     {
         ScaleUp = true;
@@ -43,7 +42,8 @@ public class DG_CraftButton : MonoBehaviour {
         QuickFind.GUI_Crafting.CurrentHoverItem = this;
 
         DG_CraftingDictionaryItem CDI = QuickFind.CraftingDictionary.GetItemFromID(CraftDatabaseID);
-        QuickFind.TooltipHandler.ShowToolTip(QuickFind.ItemDatabase.GetItemFromID(CDI.ItemCreatedRef).ToolTipType);
+
+        QuickFind.TooltipHandler.ShowToolTip(QuickFind.ItemDatabase.GetItemFromID(CDI.ItemCreatedRef).ToolTipType, PlayerID);
     }
     public void ItemHoverOut()
     {
@@ -53,7 +53,7 @@ public class DG_CraftButton : MonoBehaviour {
         EndLoop = true;
         this.enabled = true;
 
-        QuickFind.TooltipHandler.HideToolTip();
+        QuickFind.TooltipHandler.HideToolTip(PlayerID);
     }
 
     public void ItemPressed()

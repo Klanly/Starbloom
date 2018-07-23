@@ -9,6 +9,31 @@ using UnityEngine;
 [System.Serializable]
 public class DG_GameButtons
 {
+    public enum Controller
+    {
+        Keyboard,
+        Player1Controller,
+        Player2Controller
+    }
+    public enum ButtonState
+    {
+        None,
+        Down,
+        Held,
+        Up
+    }
+    public enum AxisState
+    {
+        None,
+        PosDown,
+        PosHeld,
+        PosUp,
+        NegDown,
+        NegHeld,
+        NegUp
+    }
+
+
     [System.Serializable]
     public class Button
     {
@@ -18,6 +43,8 @@ public class DG_GameButtons
 
         [System.NonSerialized] public bool Held;
         [System.NonSerialized] public bool Up;
+        [System.NonSerialized] public ButtonState CurrentState;
+
 
         public void Check()
         {
@@ -29,11 +56,15 @@ public class DG_GameButtons
     [System.Serializable]
     public class JoyAxis
     {
-        
+
+
+
         public bool Inverted = false;
         public string InputString;
         public bool InvertedAlt = false;
         public string AltInputString;
+
+        [System.NonSerialized] public AxisState CurrentAxisState;
 
         //[System.NonSerialized]
         public float Value;
@@ -84,7 +115,7 @@ public class DG_GameButtons
 
 
 
-
+    public Controller ControllerType;
     ////////////////////////////////////
     [Header("------ Movement --------------------------------------------")]
     public Button UpDir;
@@ -97,10 +128,13 @@ public class DG_GameButtons
     public Button SecondaryAction;
     public Button Special;
     public Button Jump;
-    public Button CameraBut;
     ////////////////////////////////////
-    [Header("------ Menu Buttons --------------------------------------------")]
+    [Header("------ Utility Buttons --------------------------------------------")]
     public Button StartBut;
+    public Button CameraAllowPan;
+    public Button CameraBut;
+    public Button ScrollRight;
+    public Button ScrollLeft;
     ////////////////////////////////////
     [Header("------ Joy Axis --------------------------------------------")]
     public JoyAxis JoyVert;
@@ -108,6 +142,8 @@ public class DG_GameButtons
     [Header("Right Stick")]
     public JoyAxis RJoyVert;
     public JoyAxis RJoyHor;
+    [Header("MouseAxis")]
+    public JoyAxis MouseAxis;
     ////////////////////////////////////
 
 
@@ -124,14 +160,18 @@ public class DG_GameButtons
         SecondaryAction.Check();
         Special.Check();
         Jump.Check();
-        CameraBut.Check();
-        //Start / Select ////////////////////////////////////////////////////////
+        //Utility ////////////////////////////////////////////////////////
         StartBut.Check();
+        CameraAllowPan.Check();
+        CameraBut.Check();
+        ScrollRight.Check();
+        ScrollLeft.Check();
         //Joy Axis ////////////////////////////////////////////////////////
         JoyVert.Check(JoyVert);
         JoyHor.Check(JoyHor);
         RJoyVert.Check(RJoyVert);
         RJoyHor.Check(RJoyHor);
+        MouseAxis.Check(MouseAxis);
     }
 
 
@@ -149,9 +189,12 @@ public class DG_GameButtons
         Add(ButtonList, SecondaryAction);
         Add(ButtonList, Special);
         Add(ButtonList, Jump);
-        Add(ButtonList, CameraBut);
 
         Add(ButtonList, StartBut);
+        Add(ButtonList, CameraAllowPan);
+        Add(ButtonList, CameraBut);
+        Add(ButtonList, ScrollRight);
+        Add(ButtonList, ScrollLeft);
 
         return ButtonList.ToArray();
     }
@@ -160,9 +203,6 @@ public class DG_GameButtons
         ButtonList.Add(Button.MainKey.ToString());
         ButtonList.Add(Button.AltKey.ToString());
     }
-
-
-
 
 
     int Loadindex;
@@ -179,9 +219,12 @@ public class DG_GameButtons
         Set(IncomingData, SecondaryAction);
         Set(IncomingData, Special);
         Set(IncomingData, Jump);
-        Set(IncomingData, CameraBut);
 
         Set(IncomingData, StartBut);
+        Set(IncomingData, CameraAllowPan);
+        Set(IncomingData, CameraBut);
+        Set(IncomingData, ScrollRight);
+        Set(IncomingData, ScrollLeft);
     }
     void Set(string[] IncomingData, Button Button)
     {
@@ -205,9 +248,12 @@ public class DG_GameButtons
         ButtonList.Add(SecondaryAction);
         ButtonList.Add(Special);
         ButtonList.Add(Jump);
-        ButtonList.Add(CameraBut);
 
         ButtonList.Add(StartBut);
+        ButtonList.Add(CameraAllowPan);
+        ButtonList.Add(CameraBut);
+        ButtonList.Add(ScrollRight);
+        ButtonList.Add(ScrollLeft);
 
         return ButtonList;
     }

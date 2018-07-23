@@ -53,7 +53,7 @@ public class DG_TreeFall : MonoBehaviour {
     public void TriggerBreakDebug()
     {
         if(Application.isPlaying)
-            BreakMessage();
+            BreakMessage(QuickFind.NetworkSync.Player1PlayerCharacter);
     }
 
 
@@ -70,22 +70,22 @@ public class DG_TreeFall : MonoBehaviour {
 
 
 
-    public void BreakMessage()
+    public void BreakMessage(int PlayerID)
     {
         if (isFalling) return;
-        if (!TopBroke) TriggerInitialBreak();
+        if (!TopBroke) TriggerInitialBreak(PlayerID);
         else SpawnTrunkReward();
 
     }
 
 
-    public void TriggerInitialBreak()
+    public void TriggerInitialBreak(int PlayerID)
     {
         IsOwner = true;
         isFalling = true;
         TopBroke = true;
         CurrentFallSpeed = 0;
-        DetermineDirectionToFall();
+        DetermineDirectionToFall(PlayerID);
     }
     private void Update()
     {
@@ -100,9 +100,9 @@ public class DG_TreeFall : MonoBehaviour {
 
 
 
-    void DetermineDirectionToFall()
+    void DetermineDirectionToFall(int PlayerID)
     {
-        TreeTopDetectionPoint.LookAt(QuickFind.PlayerTrans);
+        TreeTopDetectionPoint.LookAt(QuickFind.NetworkSync.GetCharacterLinkByPlayerID(PlayerID).PlayerTrans);
 
         float FinalDirection = RaycastLoop(180 + TreeTopDetectionPoint.eulerAngles.y, 8, 45);
 

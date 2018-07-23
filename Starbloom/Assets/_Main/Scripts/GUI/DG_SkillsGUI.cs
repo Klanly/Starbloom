@@ -15,61 +15,83 @@ public class DG_SkillsGUI : MonoBehaviour {
         NonCombat
     }
 
+    [System.Serializable]
+    public class PlayerSkillGUI
+    {
+        [Header("Canvases")]
+        public CanvasGroup UICanvas = null;
+        public UnityEngine.UI.GraphicRaycaster Raycaster;
+        [Header("Reference")]
+        public Transform SkillGrid = null;
+
+        [System.NonSerialized] public GUICatgories OpenSkillTab = GUICatgories.NonCombat;
+    }
 
 
-    public bool isPlayer1;
-    [Header("Canvases")]
-    public CanvasGroup UICanvas = null;
-    [Header("Reference")]
-    public Transform SkillGrid = null;
+    public PlayerSkillGUI[] PlayerSkills;
+
     [Header("Localization")]
     public SkillTagLocalization[] Localization;
-
-    [System.NonSerialized] public GUICatgories OpenSkillTab = GUICatgories.NonCombat;
 
 
 
     private void Awake() { QuickFind.GUI_Skills = this; }
-    private void Start() { QuickFind.EnableCanvas(UICanvas, false); transform.localPosition = Vector3.zero; }
-
-
-
-    public void OpenUI()
+    private void Start()
     {
-        QuickFind.GUI_OverviewTabs.CloseAllTabs();
-        QuickFind.EnableCanvas(UICanvas, true);
-        LoadSkillGrid();
-    }
-    public void CloseUI()
-    {
-        QuickFind.EnableCanvas(UICanvas, false);
+        QuickFind.EnableCanvas(PlayerSkills[0].UICanvas, false, PlayerSkills[0].Raycaster);
+        QuickFind.EnableCanvas(PlayerSkills[1].UICanvas, false, PlayerSkills[1].Raycaster);
+        transform.localPosition = Vector3.zero;
     }
 
 
 
-    void LoadSkillGrid()
+    public void OpenUI(int PlayerID)
     {
+        int ArrayNum = 0;
+        if (PlayerID == QuickFind.NetworkSync.Player2PlayerCharacter) ArrayNum = 1;
+
+        QuickFind.GUI_OverviewTabs.CloseAllTabs(ArrayNum, PlayerID);
+        QuickFind.EnableCanvas(PlayerSkills[ArrayNum].UICanvas, true, PlayerSkills[ArrayNum].Raycaster);
+        LoadSkillGrid(PlayerID);
+    }
+    public void CloseUI(int PlayerID)
+    {
+        int ArrayNum = 0;
+        if (PlayerID == QuickFind.NetworkSync.Player2PlayerCharacter) ArrayNum = 1;
+        QuickFind.EnableCanvas(PlayerSkills[ArrayNum].UICanvas, false, PlayerSkills[ArrayNum].Raycaster);
+    }
+
+
+
+    void LoadSkillGrid(int PlayerID)
+    {
+        int ArrayNum = 0;
+        if (PlayerID == QuickFind.NetworkSync.Player2PlayerCharacter) ArrayNum = 1;
+
         int index = 0;
-        if (OpenSkillTab == GUICatgories.NonCombat)  //Non-Combat Skills GUI Order shown
+        if (PlayerSkills[ArrayNum].OpenSkillTab == GUICatgories.NonCombat)  //Non-Combat Skills GUI Order shown
         {
-            LoadSkill(DG_SkillTracker.SkillTags.Farming, index); index++;
-            LoadSkill(DG_SkillTracker.SkillTags.Fishing, index); index++;
-            LoadSkill(DG_SkillTracker.SkillTags.Foraging, index); index++;
-            LoadSkill(DG_SkillTracker.SkillTags.Mining, index); index++;
+            LoadSkill(DG_SkillTracker.SkillTags.Farming, index, PlayerID); index++;
+            LoadSkill(DG_SkillTracker.SkillTags.Fishing, index, PlayerID); index++;
+            LoadSkill(DG_SkillTracker.SkillTags.Foraging, index, PlayerID); index++;
+            LoadSkill(DG_SkillTracker.SkillTags.Mining, index, PlayerID); index++;
         }
     }
 
 
 
 
-    void LoadSkill(DG_SkillTracker.SkillTags SkillTag, int index)
+    void LoadSkill(DG_SkillTracker.SkillTags SkillTag, int index, int PlayerID)
     {
+        int ArrayNum = 0;
+        if (PlayerID == QuickFind.NetworkSync.Player2PlayerCharacter) ArrayNum = 1;
+
         Transform GridItem;
-        if (index < SkillGrid.childCount) GridItem = SkillGrid.GetChild(index);
+        if (index < PlayerSkills[ArrayNum].SkillGrid.childCount) GridItem = PlayerSkills[ArrayNum].SkillGrid.GetChild(index);
         else
         {
-            GridItem = Instantiate(SkillGrid.GetChild(0));
-            GridItem.SetParent(SkillGrid);
+            GridItem = Instantiate(PlayerSkills[ArrayNum].SkillGrid.GetChild(0));
+            GridItem.SetParent(PlayerSkills[ArrayNum].SkillGrid);
         }
 
         DG_SkillTrackerItem STI = GridItem.GetComponent<DG_SkillTrackerItem>();
@@ -81,9 +103,6 @@ public class DG_SkillsGUI : MonoBehaviour {
             if (Localization[i].Tag == SkillTag)
                 STI.TitleText.text = QuickFind.WordDatabase.GetWordFromID(Localization[i].LocalizationID);
         }
-
-        int PlayerID = QuickFind.NetworkSync.Player1PlayerCharacter;
-        if (!isPlayer1) PlayerID = QuickFind.NetworkSync.Player2PlayerCharacter;
 
         int SkillExp = QuickFind.SkillTracker.GetSkillExp(SkillTag, PlayerID);
         int SkillLevel = QuickFind.SkillTracker.GetSkillLevel(SkillTag, PlayerID, SkillExp);

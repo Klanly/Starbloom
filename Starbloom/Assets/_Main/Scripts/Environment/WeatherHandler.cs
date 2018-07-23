@@ -55,7 +55,6 @@ public class WeatherHandler : MonoBehaviour
     public Seasons CurrentSeason = Seasons.Spring;
     [ReadOnly]
     public WeatherTyps CurrentWeather = WeatherTyps.Clear;
-    public GlobalSnowEffect.GlobalSnow SnowRend;
     public GameObject EnviroVFXContainer;
 
 
@@ -222,6 +221,6 @@ public class WeatherHandler : MonoBehaviour
 
     void CheckShowShader(int CurrentScene)
     {
-        SnowRend.enabled = (CurrentSeason == Seasons.Winter && QuickFind.SceneList.GetSceneById(CurrentScene).AllowSnowShader);
+        QuickFind.SnowHandler.enabled = (CurrentSeason == Seasons.Winter && QuickFind.SceneList.GetSceneById(CurrentScene).AllowSnowShader);
     }
 }

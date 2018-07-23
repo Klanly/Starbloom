@@ -28,8 +28,6 @@ public class DG_GUIContextHandler : MonoBehaviour {
     }
     public void ContextButtonViaMouse(DG_MenuContextItem ButtonPressed, int PlayerValue)
     {
-        QuickFind.InputController.GetPlayerByPlayerID(PlayerID).NoActionThisFrame = true;
-
         int buttonIndex = ButtonPressed.transform.GetSiblingIndex();
         if (buttonIndex != ControllerMenuPosition)
         {

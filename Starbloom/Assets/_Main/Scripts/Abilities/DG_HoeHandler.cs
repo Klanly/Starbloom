@@ -26,13 +26,18 @@ public class DG_HoeHandler : MonoBehaviour {
 
     private void Update()
     {
-        if (PlacementActive)
+        for (int i = 0; i < QuickFind.InputController.Players.Length; i++)
         {
-            if (ThisPlaceisSafeToPlaceObject())
-            { QuickFind.GridDetection.GridMesh.enabled = true; SafeToPlace = true; }
-            else { QuickFind.GridDetection.GridMesh.enabled = false; SafeToPlace = false; }
+            if (QuickFind.InputController.Players[i].CharLink == null) continue;
+
+            if (PlacementActive)
+            {
+                if (ThisPlaceisSafeToPlaceObject(i))
+                { QuickFind.GridDetection.GridDetections[i].GridMesh.enabled = true; SafeToPlace = true; }
+                else { QuickFind.GridDetection.GridDetections[i].GridMesh.enabled = false; SafeToPlace = false; }
+            }
+            else { SafeToPlace = false; }
         }
-        else { SafeToPlace = false; }
     }
 
 
@@ -41,6 +46,9 @@ public class DG_HoeHandler : MonoBehaviour {
         bool AllowAction = false;
         if (isUP || QuickFind.GameSettings.AllowActionsOnHold) AllowAction = true;
 
+        int Array = 0;
+        if (PlayerID == QuickFind.NetworkSync.Player2PlayerCharacter) Array = 1;
+
         if (AllowAction && SafeToPlace)
         {
             DG_CharacterLink CLink = QuickFind.NetworkSync.GetCharacterLinkByPlayerID(PlayerID);
@@ -48,7 +56,7 @@ public class DG_HoeHandler : MonoBehaviour {
             if (!CLink.AnimationSync.CharacterIsGrounded()) return;
 
             AwaitingResponse = true;
-            StoredPosition = QuickFind.GridDetection.DetectionPoint.position;
+            StoredPosition = QuickFind.GridDetection.GridDetections[Array].DetectionPoint.position;
             if (QuickFind.GameSettings.DisableAnimations)
                 HitAction(PlayerID);
             else
@@ -75,26 +83,32 @@ public class DG_HoeHandler : MonoBehaviour {
 
 
 
-    public void SetupForHoeing(DG_PlayerCharacters.RucksackSlot Rucksack = null, DG_ItemObject Item = null, int slot = 0)
+    public void SetupForHoeing(int PlayerID, DG_PlayerCharacters.RucksackSlot Rucksack = null, DG_ItemObject Item = null, int slot = 0)
     {
+        int Array = 0;
+        if (PlayerID == QuickFind.NetworkSync.Player2PlayerCharacter) Array = 1;
+
         RucksackSlotOpen = Rucksack;
         ItemDatabaseReference = Item;
         ActiveSlot = slot;
-        QuickFind.GridDetection.ObjectIsPlacing = true;
-        QuickFind.GridDetection.GlobalPositioning = false;
+        QuickFind.GridDetection.GridDetections[Array].ObjectIsPlacing = true;
+        QuickFind.GridDetection.GridDetections[Array].GlobalPositioning = false;
         PlacementActive = true;
     }
 
-    public void CancelHoeing()
+    public void CancelHoeing(int PlayerID)
     {
-        QuickFind.GridDetection.ObjectIsPlacing = false;
+        int Array = 0;
+        if (PlayerID == QuickFind.NetworkSync.Player2PlayerCharacter) Array = 1;
+
+        QuickFind.GridDetection.GridDetections[Array].ObjectIsPlacing = false;
         PlacementActive = false;
     }
 
-    public bool ThisPlaceisSafeToPlaceObject()
+    public bool ThisPlaceisSafeToPlaceObject(int Index)
     {
         
-        Vector3 CastPoint = QuickFind.GridDetection.DetectionPoint.position;
+        Vector3 CastPoint = QuickFind.GridDetection.GridDetections[Index].DetectionPoint.position;
 
         Collider[] hitColliders = Physics.OverlapSphere(CastPoint, .45f, UnSafeGroundDetection); //DetermineRadiusLater
 

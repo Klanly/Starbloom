@@ -5,7 +5,6 @@ using System;
 
 public class TimeHandler : MonoBehaviour
 {
-	public static event Action<int> OnNewDay;
     public static event Action<int> OnNewHour;
     public static event Action<int> OnNewTenMinute;
 
@@ -174,8 +173,9 @@ public class TimeHandler : MonoBehaviour
         QuickFind.NetworkGrowthHandler.CheckDayChangedHasBeenWatered();
         QuickFind.GUI_MainOverview.SetMoneyValue(0, QuickFind.Farm.SharedMoney, true);
         QuickFind.GUI_MainOverview.SetGuiDayValue(QuickFind.Farm.Month, QuickFind.Farm.Day);
-        if (null != OnNewDay) OnNewDay(QuickFind.Farm.Day);
-	}
+        QuickFind.SleepHandler.NewDay();
+
+    }
 
 
 

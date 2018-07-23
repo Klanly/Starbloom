@@ -153,7 +153,7 @@ public class DG_AIEntityCombat : MonoBehaviour {
                 CurrentCombatBehaviour = CombatBehaviour.AttackTrigger;
                 Entity.AnimationSync.PlayAnimation(CombatSettings.AttackAnim);
                 AttackHitbox.SetActive(true);
-                QuickFind.CharacterDashController.DashAction(Entity._T, CombatSettings.AttackTravelTime, CombatSettings.AttackTravelDistance, false, Entity.gameObject);
+                QuickFind.CharacterDashController.DashAction(0, Entity._T, CombatSettings.AttackTravelTime, CombatSettings.AttackTravelDistance, false, Entity.gameObject);
             }
         }
 
@@ -180,7 +180,7 @@ public class DG_AIEntityCombat : MonoBehaviour {
     }
 
 
-    public void DashComplete()
+    public void DashComplete(int EnemyNum)
     {
         CurrentCombatBehaviour = CombatBehaviour.AttackComplete; 
     }

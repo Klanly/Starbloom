@@ -99,34 +99,39 @@ public class DG_TooltipGUI : MonoBehaviour {
 
 
 
+    [System.Serializable]
+    public class PlayerTooltipGUI
+    {
+        [System.NonSerialized] public bool Enabled;
+        [Header("Floating QualitySelection")]
+        public RectTransform FloatingQualitySelect;
+        public RectTransform FloatingQualityGrid;
+        [Header("Floating Inventory Item")]
+        public RectTransform FloatingRect;
+        public RectTransform VerticalGridRect;
+        public UnityEngine.UI.ContentSizeFitter CSF;
 
-    public bool isPlayer1;
+        [System.NonSerialized] public bool DisplayTooltip = false;
+        [System.NonSerialized] public bool IsQualitySelection = false;
 
-    [Header("Floating QualitySelection")]
-    public RectTransform FloatingQualitySelect;
-    public RectTransform FloatingQualityGrid;
-    [Header("Floating Inventory Item")]
-    public RectTransform FloatingRect;
-    public RectTransform VerticalGridRect;
-    public UnityEngine.UI.ContentSizeFitter CSF;
+        //Context Per UI Type
+        [System.NonSerialized] public DG_InventoryItem HoveredInventoryItem;
+        [System.NonSerialized] public DG_PlayerCharacters.RucksackSlot ActiveRucksackSlot;
+        [System.NonSerialized] public ToolTipGroup ActiveToolTipGroup;
+        [System.NonSerialized] public ToolTipContainerItem ActiveItemObject;
+        [System.NonSerialized] public float DefaultX;
+
+        [System.NonSerialized] public List<DG_TooltipModule> Modules;
+    }
+
+    public PlayerTooltipGUI[] TooltipGuis;
+
     [ListDrawerSettings(ListElementLabelName = "GroupType", NumberOfItemsPerPage = 16, Expanded = false)]
     public ToolTipGroup[] ToolTipTypes;
 
     [Header("Debug")]
     public bool DebugON = false;
 
-
-
-    [System.NonSerialized] public bool DisplayTooltip = false;
-    [System.NonSerialized] public bool IsQualitySelection = false;
-    float DefaultX;
-    List<DG_TooltipModule> Modules;
-
-    //Context Per UI Type
-    [System.NonSerialized] public DG_InventoryItem HoveredInventoryItem;
-    [System.NonSerialized] public DG_PlayerCharacters.RucksackSlot ActiveRucksackSlot;
-    ToolTipGroup ActiveToolTipGroup;
-    ToolTipContainerItem ActiveItemObject;
 
 
 
@@ -136,165 +141,213 @@ public class DG_TooltipGUI : MonoBehaviour {
     private void Awake()
     {
         QuickFind.TooltipHandler = this;
-        transform.localPosition = Vector3.zero;
-        DefaultX = VerticalGridRect.localPosition.x;
-        Modules = new List<DG_TooltipModule>();
-        for (int i = 0; i < VerticalGridRect.childCount; i++)
-            Modules.Add(VerticalGridRect.GetChild(i).GetComponent<DG_TooltipModule>());
-        FloatingQualitySelect.position = new Vector3(8000, 0, 0);
-        FloatingRect.position = new Vector3(8000, 0, 0);
-        this.enabled = false;
+
     }
     private void Start()
     {
-        SetQualityLevelStars();
+        for (int iN = 0; iN < TooltipGuis.Length; iN++)
+            SetQualityLevelStars(iN);
+
+        transform.localPosition = Vector3.zero;
+
+        for (int iN = 0; iN < TooltipGuis.Length; iN++)
+        {
+            PlayerTooltipGUI PTG = TooltipGuis[iN];
+
+            PTG.DefaultX = PTG.VerticalGridRect.localPosition.x;
+            PTG.Modules = new List<DG_TooltipModule>();
+            for (int i = 0; i < PTG.VerticalGridRect.childCount; i++)
+                PTG.Modules.Add(PTG.VerticalGridRect.GetChild(i).GetComponent<DG_TooltipModule>());
+            PTG.FloatingQualitySelect.localPosition = new Vector3(8000, 0, 0);
+            PTG.FloatingRect.localPosition = new Vector3(8000, 0, 0);
+        }
+        this.enabled = false;
     }
-    public void ShowToolTip(ToolTipContainerItem TTContainer)
+    public void ShowToolTip(ToolTipContainerItem TTContainer, int PlayerID)
     {
-        if (QuickFind.GUI_Inventory.isFloatingInventoryItem) return;
-        ActiveItemObject = TTContainer;
-        ActiveToolTipGroup = GetGroupByEnum(TTContainer.GroupType);
-        GenerateToolTip();
-        GenerateQualitySelectionGrid();
-        DisplayTooltip = true;
+        int ArrayNum = 0;
+        if (PlayerID == QuickFind.NetworkSync.Player2PlayerCharacter) ArrayNum = 1;
+
+        if (QuickFind.GUI_Inventory.PlayersInventory[ArrayNum].isFloatingInventoryItem) return;
+        TooltipGuis[ArrayNum].ActiveItemObject = TTContainer;
+        TooltipGuis[ArrayNum].ActiveToolTipGroup = GetGroupByEnum(TTContainer.GroupType);
+        GenerateToolTip(PlayerID);
+        GenerateQualitySelectionGrid(PlayerID);
+        TooltipGuis[ArrayNum].DisplayTooltip = true;
+        TooltipGuis[ArrayNum].Enabled = true;
         this.enabled = true;
     }
-    public void HideToolTip()
+    public void HideToolTip(int PlayerID)
     {
-        HoveredInventoryItem = null;
-        if (QuickFind.GUI_Inventory.isFloatingInventoryItem) return;
-        FloatingQualitySelect.position = new Vector3(8000, 0, 0);
-        IsQualitySelection = false;
-        DisplayTooltip = false;
+        int ArrayNum = 0;
+        if (PlayerID == QuickFind.NetworkSync.Player2PlayerCharacter) ArrayNum = 1;
+
+        TooltipGuis[ArrayNum].HoveredInventoryItem = null;
+        if (QuickFind.GUI_Inventory.PlayersInventory[ArrayNum].isFloatingInventoryItem) return;
+        TooltipGuis[ArrayNum].FloatingQualitySelect.position = new Vector3(8000, 0, 0);
+        TooltipGuis[ArrayNum].IsQualitySelection = false;
+        TooltipGuis[ArrayNum].DisplayTooltip = false;
     }
 
-    public void UpdateEquippedNum(int isUP, bool CanLoop)
+    public void UpdateEquippedNum(int isUP, bool CanLoop, int PlayerID)
     {
-        AddRucksack(isUP, CanLoop, ActiveRucksackSlot.CurrentStackActive);
+        int ArrayNum = 0;
+        if (PlayerID == QuickFind.NetworkSync.Player2PlayerCharacter) ArrayNum = 1;
 
-        int PlayerID = QuickFind.NetworkSync.Player1PlayerCharacter;
-        if (!isPlayer1) PlayerID = QuickFind.NetworkSync.Player2PlayerCharacter;
+        AddRucksack(isUP, CanLoop, TooltipGuis[ArrayNum].ActiveRucksackSlot.CurrentStackActive, PlayerID);
 
         DG_PlayerCharacters.CharacterEquipment Equipment = QuickFind.Farm.PlayerCharacters[PlayerID].Equipment;
-        QuickFind.GUI_Inventory.UpdateRucksackSlotVisual(HoveredInventoryItem, ActiveRucksackSlot);
-        GenerateQualitySelectionGrid();
-        GenerateToolTip();
-        if (HoveredInventoryItem.SlotID < 12)
-            QuickFind.GUI_Inventory.UpdateMirrorSlot(HoveredInventoryItem.SlotID);
+        QuickFind.GUI_Inventory.UpdateRucksackSlotVisual(TooltipGuis[ArrayNum].HoveredInventoryItem, TooltipGuis[ArrayNum].ActiveRucksackSlot, PlayerID);
+        GenerateQualitySelectionGrid(PlayerID);
+        GenerateToolTip(PlayerID);
+        if (TooltipGuis[ArrayNum].HoveredInventoryItem.SlotID < 12)
+            QuickFind.GUI_Inventory.UpdateMirrorSlot(TooltipGuis[ArrayNum].HoveredInventoryItem.SlotID, ArrayNum);
     }
-    void AddRucksack(int isUP, bool CanLoop, int OriginalValue)
+    void AddRucksack(int isUP, bool CanLoop, int OriginalValue, int PlayerID)
     {
+        int ArrayNum = 0;
+        if (PlayerID == QuickFind.NetworkSync.Player2PlayerCharacter) ArrayNum = 1;
+
         bool PreventInfinite = true;
-        ActiveRucksackSlot.CurrentStackActive += isUP;
-        if (ActiveRucksackSlot.CurrentStackActive > 3)
-            { if (CanLoop) ActiveRucksackSlot.CurrentStackActive = 0; else { ActiveRucksackSlot.CurrentStackActive = OriginalValue; PreventInfinite = false; } }
-        if (ActiveRucksackSlot.CurrentStackActive < 0)
-            { if (CanLoop) ActiveRucksackSlot.CurrentStackActive = 3; else { ActiveRucksackSlot.CurrentStackActive = OriginalValue; PreventInfinite = false; } }
-        if (ActiveRucksackSlot.GetNumberOfQuality((DG_ItemObject.ItemQualityLevels)ActiveRucksackSlot.CurrentStackActive) == 0 && PreventInfinite)
-            AddRucksack(isUP, CanLoop, OriginalValue);
+        TooltipGuis[ArrayNum].ActiveRucksackSlot.CurrentStackActive += isUP;
+        if (TooltipGuis[ArrayNum].ActiveRucksackSlot.CurrentStackActive > 3)
+            { if (CanLoop) TooltipGuis[ArrayNum].ActiveRucksackSlot.CurrentStackActive = 0; else { TooltipGuis[ArrayNum].ActiveRucksackSlot.CurrentStackActive = OriginalValue; PreventInfinite = false; } }
+        if (TooltipGuis[ArrayNum].ActiveRucksackSlot.CurrentStackActive < 0)
+            { if (CanLoop) TooltipGuis[ArrayNum].ActiveRucksackSlot.CurrentStackActive = 3; else { TooltipGuis[ArrayNum].ActiveRucksackSlot.CurrentStackActive = OriginalValue; PreventInfinite = false; } }
+        if (TooltipGuis[ArrayNum].ActiveRucksackSlot.GetNumberOfQuality((DG_ItemObject.ItemQualityLevels)TooltipGuis[ArrayNum].ActiveRucksackSlot.CurrentStackActive) == 0 && PreventInfinite)
+            AddRucksack(isUP, CanLoop, OriginalValue, PlayerID);
     }
 
 
 
     private void Update()
     {
-        if (DisplayTooltip || DebugON)
+        for (int iN = 0; iN < TooltipGuis.Length; iN++)
         {
-            float Height = 0; bool TooltipBelow = false; bool MouseRightSide = false;
+            if (QuickFind.InputController.Players[iN].CharLink == null) continue;
 
-            Vector2 MousePos = Input.mousePosition; if(DebugON) { MousePos.x = 800; MousePos.y = 600; }
-            FloatingRect.position = MousePos;
-            if (MousePos.y >= Screen.height * 0.2) TooltipBelow = true;
-            if (MousePos.x >= Screen.width * 0.8) MouseRightSide = true;
-            for (int i = 0; i < Modules.Count; i++)
+            PlayerTooltipGUI PTG = TooltipGuis[iN];
+
+            if (PTG.DisplayTooltip || DebugON)
             {
-                DG_TooltipModule Module = Modules[i];
-                if (Module.isActive) { Height = Height + Module.GetComponent<RectTransform>().rect.height; Module.StretchHeightToBounds(); }
+                float Height = 0; bool TooltipBelow = false; bool MouseRightSide = false;
+
+                Vector2 MousePos = Input.mousePosition; if (DebugON) { MousePos.x = 800; MousePos.y = 600; }
+                PTG.FloatingRect.position = MousePos;
+                if (MousePos.y >= Screen.height * 0.2) TooltipBelow = true;
+                if (MousePos.x >= Screen.width * 0.8) MouseRightSide = true;
+                for (int i = 0; i < PTG.Modules.Count; i++)
+                {
+                    DG_TooltipModule Module = PTG.Modules[i];
+                    if (Module.isActive) { Height = Height + Module.GetComponent<RectTransform>().rect.height; Module.StretchHeightToBounds(); }
+                }
+                float OffsetHeight = 0 - (Height / 2); if (!TooltipBelow) OffsetHeight = -OffsetHeight;
+                float OffsetWidth = PTG.DefaultX; if (MouseRightSide) OffsetWidth = -PTG.DefaultX;
+
+                Vector3 CurrentPos = PTG.VerticalGridRect.localPosition; CurrentPos.x = OffsetWidth; CurrentPos.y = OffsetHeight;
+                PTG.VerticalGridRect.localPosition = CurrentPos;
+                //
+                PTG.CSF.enabled = false; PTG.CSF.enabled = true;
             }
-            float OffsetHeight = 0 - (Height / 2); if (!TooltipBelow) OffsetHeight = -OffsetHeight;
-            float OffsetWidth = DefaultX; if (MouseRightSide) OffsetWidth = -DefaultX;
+            else
+            {
+                PTG.Enabled = false; PTG.FloatingRect.position = new Vector3(8000, 0, 0);
+            }
 
-            Vector3 CurrentPos = VerticalGridRect.localPosition; CurrentPos.x = OffsetWidth; CurrentPos.y = OffsetHeight;
-            VerticalGridRect.localPosition = CurrentPos;
-            //
-            CSF.enabled = false; CSF.enabled = true;
+            int PlayerID = QuickFind.NetworkSync.Player1PlayerCharacter;
+            if(iN == 1) PlayerID = QuickFind.NetworkSync.Player2PlayerCharacter;
+
+            SetQualityHotbarPosition(PlayerID);
         }
-        else
-        { this.enabled = false; FloatingRect.position = new Vector3(8000, 0, 0); }
 
-        SetQualityHotbarPosition();
+        if (!TooltipGuis[0].Enabled && !TooltipGuis[1].Enabled) this.enabled = false;
     }
 
 
 
-    void GenerateToolTip()
+    void GenerateToolTip(int PlayerID)
     {
-        SetCorrectActiveModules();
-        switch(ActiveToolTipGroup.GroupType)
+        int ArrayNum = 0;
+        if (PlayerID == QuickFind.NetworkSync.Player2PlayerCharacter) ArrayNum = 1;
+
+        SetCorrectActiveModules(PlayerID);
+        switch(TooltipGuis[ArrayNum].ActiveToolTipGroup.GroupType)
         {
             case ToolTipGroups.NonEdibleItem:
                 {
-                    SetMain();
-                    SetSub();
-                    SetDescription();
+                    SetMain(PlayerID);
+                    SetSub(PlayerID);
+                    SetDescription(PlayerID);
                 }
                 break;
             case ToolTipGroups.Tool:
                 {
-                    SetMain();
-                    SetSub();
-                    SetDescription();
+                    SetMain(PlayerID);
+                    SetSub(PlayerID);
+                    SetDescription(PlayerID);
                 }
                 break;
             case ToolTipGroups.EdibleItem:
                 {
-                    SetMain();
-                    SetSub();
-                    SetDescription();
-                    SetUpInventoryStats();
+                    SetMain(PlayerID);
+                    SetSub(PlayerID);
+                    SetDescription(PlayerID);
+                    SetUpInventoryStats(PlayerID);
                 }
                 break;
             case ToolTipGroups.Craft:
                 {
-                    SetMain();
-                    SetSub();
-                    SetUpCraftIngredients();
-                    SetDescription();
+                    SetMain(PlayerID);
+                    SetSub(PlayerID);
+                    SetUpCraftIngredients(PlayerID);
+                    SetDescription(PlayerID);
                 }
                 break;
             case ToolTipGroups.Weapon:
                 {
-                    SetMain();
-                    SetSub();
-                    SetDescription();
-                    SetUpCombatStats();
+                    SetMain(PlayerID);
+                    SetSub(PlayerID);
+                    SetDescription(PlayerID);
+                    SetUpCombatStats(PlayerID);
                 }
                 break;
         }
     }
 
-    void SetMain()
+    void SetMain(int PlayerID)
     {
-        DG_TooltipModule Main = GetModuleByType(ToolTipModules.Main);
-        Main.TextObject.text = QuickFind.WordDatabase.GetWordFromID(ActiveItemObject.MainLocalizationID);
+        int ArrayNum = 0;
+        if (PlayerID == QuickFind.NetworkSync.Player2PlayerCharacter) ArrayNum = 1;
+
+        DG_TooltipModule Main = GetModuleByType(ToolTipModules.Main, TooltipGuis[ArrayNum]);
+        Main.TextObject.text = QuickFind.WordDatabase.GetWordFromID(TooltipGuis[ArrayNum].ActiveItemObject.MainLocalizationID);
     }
-    void SetSub()
+    void SetSub(int PlayerID)
     {
-        DG_TooltipModule Sub = GetModuleByType(ToolTipModules.SubName);
-        Sub.TextObject.text = QuickFind.WordDatabase.GetWordFromID(ActiveItemObject.SubLocalizationID);
+        int ArrayNum = 0;
+        if (PlayerID == QuickFind.NetworkSync.Player2PlayerCharacter) ArrayNum = 1;
+
+        DG_TooltipModule Sub = GetModuleByType(ToolTipModules.SubName, TooltipGuis[ArrayNum]);
+        Sub.TextObject.text = QuickFind.WordDatabase.GetWordFromID(TooltipGuis[ArrayNum].ActiveItemObject.SubLocalizationID);
     }
-    void SetDescription()
+    void SetDescription(int PlayerID)
     {
-        DG_TooltipModule Desc = GetModuleByType(ToolTipModules.Description);
-        Desc.TextObject.text = QuickFind.WordDatabase.GetWordFromID(ActiveItemObject.DescriptionID);
+        int ArrayNum = 0;
+        if (PlayerID == QuickFind.NetworkSync.Player2PlayerCharacter) ArrayNum = 1;
+
+        DG_TooltipModule Desc = GetModuleByType(ToolTipModules.Description, TooltipGuis[ArrayNum]);
+        Desc.TextObject.text = QuickFind.WordDatabase.GetWordFromID(TooltipGuis[ArrayNum].ActiveItemObject.DescriptionID);
     }
-    void SetUpInventoryStats()
+    void SetUpInventoryStats(int PlayerID)
     {
-        DG_TooltipModule Desc = GetModuleByType(ToolTipModules.InventoryStat);
+        int ArrayNum = 0;
+        if (PlayerID == QuickFind.NetworkSync.Player2PlayerCharacter) ArrayNum = 1;
+
+        DG_TooltipModule Desc = GetModuleByType(ToolTipModules.InventoryStat, TooltipGuis[ArrayNum]);
         Desc.TurnOFFSubs();
-        DG_ItemObject IO = QuickFind.ItemDatabase.GetItemFromID(ActiveItemObject.ContextID);
+        DG_ItemObject IO = QuickFind.ItemDatabase.GetItemFromID(TooltipGuis[ArrayNum].ActiveItemObject.ContextID);
         if (IO == null) Debug.Log("trying to hoverover an edible item that has no context ID, be sure to set the context ID to the Item database ID");
-        DG_ItemObject.Item Item = IO.GetItemByQuality(ActiveRucksackSlot.CurrentStackActive);
+        DG_ItemObject.Item Item = IO.GetItemByQuality(TooltipGuis[ArrayNum].ActiveRucksackSlot.CurrentStackActive);
 
         int index = 0;
         if (Item.AdjustsHealth)
@@ -322,19 +375,19 @@ public class DG_TooltipGUI : MonoBehaviour {
             Sub.DisplayImage.color = C;
         }
     }
-    void SetUpCraftIngredients()
+    void SetUpCraftIngredients(int PlayerID)
     {
-        DG_TooltipModule Desc = GetModuleByType(ToolTipModules.CraftingIngredient);
+        int ArrayNum = 0;
+        if (PlayerID == QuickFind.NetworkSync.Player2PlayerCharacter) ArrayNum = 1;
+
+        DG_TooltipModule Desc = GetModuleByType(ToolTipModules.CraftingIngredient, TooltipGuis[ArrayNum]);
         Desc.TurnOFFSubs();
 
         //Update Static Ingredients Text based on language.
         Desc.transform.GetChild(0).GetChild(0).GetComponent<DG_TextStatic>().ManualLoad();
 
-        DG_CraftingDictionaryItem CDI = QuickFind.CraftingDictionary.GetItemFromID(ActiveItemObject.ContextID);
+        DG_CraftingDictionaryItem CDI = QuickFind.CraftingDictionary.GetItemFromID(TooltipGuis[ArrayNum].ActiveItemObject.ContextID);
         DG_ItemObject IO = QuickFind.ItemDatabase.GetItemFromID(CDI.ItemCreatedRef);
-
-        int PlayerID = QuickFind.NetworkSync.Player1PlayerCharacter;
-        if (!isPlayer1) PlayerID = QuickFind.NetworkSync.Player2PlayerCharacter;
 
         int index = 0;
         for (int i = 0; i < CDI.IngredientList.Length; i++)
@@ -359,11 +412,14 @@ public class DG_TooltipGUI : MonoBehaviour {
             }
         }
     }
-    void SetUpCombatStats()
+    void SetUpCombatStats(int PlayerID)
     {
-        DG_TooltipModule Desc = GetModuleByType(ToolTipModules.InventoryStat);
+        int ArrayNum = 0;
+        if (PlayerID == QuickFind.NetworkSync.Player2PlayerCharacter) ArrayNum = 1;
+
+        DG_TooltipModule Desc = GetModuleByType(ToolTipModules.InventoryStat, TooltipGuis[ArrayNum]);
         Desc.TurnOFFSubs();
-        DG_ItemObject IO = QuickFind.ItemDatabase.GetItemFromID(ActiveItemObject.ContextID);
+        DG_ItemObject IO = QuickFind.ItemDatabase.GetItemFromID(TooltipGuis[ArrayNum].ActiveItemObject.ContextID);
         if (IO == null) Debug.Log("trying to hoverover an edible item that has no context ID, be sure to set the context ID to the Item database ID");
 
         for (int i = 0; i < IO.WeaponValues.Length; i++)
@@ -389,18 +445,23 @@ public class DG_TooltipGUI : MonoBehaviour {
 
 
 
-    void SetCorrectActiveModules()
+    void SetCorrectActiveModules(int PlayerID)
     {
-        for (int i = 0; i < Modules.Count; i++)
+        int ArrayNum = 0;
+        if (PlayerID == QuickFind.NetworkSync.Player2PlayerCharacter) ArrayNum = 1;
+
+        PlayerTooltipGUI PTG = TooltipGuis[ArrayNum];
+
+        for (int i = 0; i < PTG.Modules.Count; i++)
         {
-            if (ActiveToolTipGroup.ContainsModule(Modules[i].ModuleType))
-                Modules[i].gameObject.SetActive(true);
-            else Modules[i].gameObject.SetActive(false);
+            if (TooltipGuis[ArrayNum].ActiveToolTipGroup.ContainsModule(PTG.Modules[i].ModuleType))
+                PTG.Modules[i].gameObject.SetActive(true);
+            else PTG.Modules[i].gameObject.SetActive(false);
         }
     }
 
-    DG_TooltipModule GetModuleByType(ToolTipModules M)
-    { for (int i = 0; i < Modules.Count; i++) { if (Modules[i].ModuleType == M) return Modules[i]; } return null; }
+    DG_TooltipModule GetModuleByType(ToolTipModules M, PlayerTooltipGUI PTG)
+    { for (int i = 0; i < PTG.Modules.Count; i++) { if (PTG.Modules[i].ModuleType == M) return PTG.Modules[i]; } return null; }
 
     ToolTipGroup GetGroupByEnum(ToolTipGroups ToolTipType)
     { for(int i = 0; i < ToolTipTypes.Length; i++) { if(ToolTipTypes[i].GroupType == ToolTipType) return ToolTipTypes[i];} return null; }
@@ -421,28 +482,34 @@ public class DG_TooltipGUI : MonoBehaviour {
 
 
 
-    void SetQualityHotbarPosition()
+    void SetQualityHotbarPosition(int PlayerID)
     {
-        if (DisplayTooltip && HoveredInventoryItem != null)
-        {
-            DG_ItemObject IO = QuickFind.ItemDatabase.GetItemFromID(ActiveRucksackSlot.ContainedItem);
-            if(QuickFind.GUI_Inventory.isFloatingInventoryItem)
-                IsQualitySelection = false;
-            if (IO.MaxStackSize < 2 || QuickFind.GUI_Inventory.isFloatingInventoryItem)
-            { FloatingQualitySelect.position = new Vector3(8000, 0, 0);  return; }
+        int ArrayNum = 0;
+        if (PlayerID == QuickFind.NetworkSync.Player2PlayerCharacter) ArrayNum = 1;
 
-            IsQualitySelection = true;
-            RectTransform InventoryItem = HoveredInventoryItem.GetComponent<RectTransform>();
-            FloatingQualitySelect.position = InventoryItem.position;
+        if (TooltipGuis[ArrayNum].DisplayTooltip && TooltipGuis[ArrayNum].HoveredInventoryItem != null)
+        {
+            DG_ItemObject IO = QuickFind.ItemDatabase.GetItemFromID(TooltipGuis[ArrayNum].ActiveRucksackSlot.ContainedItem);
+            if(QuickFind.GUI_Inventory.PlayersInventory[ArrayNum].isFloatingInventoryItem)
+                TooltipGuis[ArrayNum].IsQualitySelection = false;
+            if (IO.MaxStackSize < 2 || QuickFind.GUI_Inventory.PlayersInventory[ArrayNum].isFloatingInventoryItem)
+            { TooltipGuis[ArrayNum].FloatingQualitySelect.position = new Vector3(8000, 0, 0);  return; }
+
+            TooltipGuis[ArrayNum].IsQualitySelection = true;
+            RectTransform InventoryItem = TooltipGuis[ArrayNum].HoveredInventoryItem.GetComponent<RectTransform>();
+            TooltipGuis[ArrayNum].FloatingQualitySelect.position = InventoryItem.position;
         }
     }
 
 
-    void SetQualityLevelStars()
+    void SetQualityLevelStars(int Index)
     {
-        for (int i = 0; i < FloatingQualityGrid.childCount; i++)
+        int ArrayNum = 0;
+        if (Index == 1) ArrayNum = 1;
+
+        for (int i = 0; i < TooltipGuis[ArrayNum].FloatingQualityGrid.childCount; i++)
         {
-            DG_InventoryItem GuiSlot = FloatingQualityGrid.GetChild(i).GetComponent<DG_InventoryItem>();
+            DG_InventoryItem GuiSlot = TooltipGuis[ArrayNum].FloatingQualityGrid.GetChild(i).GetComponent<DG_InventoryItem>();
             GuiSlot.QualityLevelOverlay.enabled = true;
             DG_ItemsDatabase.GenericIconDatabaseItem ICD = QuickFind.ItemDatabase.GetGenericIconByString("QualityMarker");
             GuiSlot.QualityLevelOverlay.sprite = ICD.Icon;
@@ -450,30 +517,36 @@ public class DG_TooltipGUI : MonoBehaviour {
         }
     }
 
-    void GenerateQualitySelectionGrid()
+    void GenerateQualitySelectionGrid(int PlayerID)
     {
-        if (HoveredInventoryItem == null) return;
+        int ArrayNum = 0;
+        if (PlayerID == QuickFind.NetworkSync.Player2PlayerCharacter) ArrayNum = 1;
 
-        for (int i = 0; i < FloatingQualityGrid.childCount; i++)
+        if (TooltipGuis[ArrayNum].HoveredInventoryItem == null) return;
+
+        for (int i = 0; i < TooltipGuis[ArrayNum].FloatingQualityGrid.childCount; i++)
         {
-            DG_InventoryItem GuiSlot = FloatingQualityGrid.GetChild(i).GetComponent<DG_InventoryItem>();
-            SetValue(GuiSlot, ActiveRucksackSlot.GetNumberOfQuality((DG_ItemObject.ItemQualityLevels)i));
-            if (ActiveRucksackSlot.CurrentStackActive == i)
+            DG_InventoryItem GuiSlot = TooltipGuis[ArrayNum].FloatingQualityGrid.GetChild(i).GetComponent<DG_InventoryItem>();
+            SetValue(GuiSlot, TooltipGuis[ArrayNum].ActiveRucksackSlot.GetNumberOfQuality((DG_ItemObject.ItemQualityLevels)i), PlayerID);
+            if (TooltipGuis[ArrayNum].ActiveRucksackSlot.CurrentStackActive == i)
                 GuiSlot.ActiveHotbarItem.enabled = true;
             else
                 GuiSlot.ActiveHotbarItem.enabled = false;
         }
     }
-    void SetValue(DG_InventoryItem GuiSlot, int Amount)
+    void SetValue(DG_InventoryItem GuiSlot, int Amount, int PlayerID)
     {
+        int ArrayNum = 0;
+        if (PlayerID == QuickFind.NetworkSync.Player2PlayerCharacter) ArrayNum = 1;
+
         if (Amount == 0)
         {
             GuiSlot.Icon.sprite = QuickFind.GUI_Inventory.DefaultNullSprite;
             GuiSlot.QualityAmountText.text = string.Empty;
         }
-            else
+        else
         {
-            GuiSlot.Icon.sprite = HoveredInventoryItem.Icon.sprite;
+            GuiSlot.Icon.sprite = TooltipGuis[ArrayNum].HoveredInventoryItem.Icon.sprite;
             GuiSlot.QualityAmountText.text = Amount.ToString();
         }
     }

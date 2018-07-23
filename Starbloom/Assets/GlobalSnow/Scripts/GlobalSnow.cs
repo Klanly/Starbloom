@@ -68,7 +68,6 @@ namespace GlobalSnowEffect
     public delegate void OnUpdatePropertiesEvent();
 
     [ExecuteInEditMode]
-    [RequireComponent(typeof(Camera))]
     [DisallowMultipleComponent]
     [HelpURL("http://kronnect.com/taptapgo")]
     [ImageEffectAllowedInSceneView]
@@ -103,30 +102,6 @@ namespace GlobalSnowEffect
         #region Public properties
 
         public OnUpdatePropertiesEvent OnUpdateProperties;
-
-        static GlobalSnow _snow;
-
-        public static GlobalSnow instance
-        {
-            get
-            {
-                if (_snow == null)
-                {
-                    if (Camera.main != null)
-                        _snow = Camera.main.GetComponent<GlobalSnow>();
-                    if (_snow == null)
-                    {
-                        foreach (Camera camera in Camera.allCameras)
-                        {
-                            _snow = camera.GetComponent<GlobalSnow>();
-                            if (_snow != null)
-                                break;
-                        }
-                    }
-                }
-                return _snow;
-            }
-        }
 
         [SerializeField]
         GameObject
@@ -814,74 +789,6 @@ namespace GlobalSnowEffect
 
 
         [SerializeField]
-        bool _snowfall = true;
-
-        public bool snowfall
-        {
-            get { return _snowfall; }
-            set
-            {
-                if (value != _snowfall)
-                {
-                    _snowfall = value;
-                    UpdateSnowfallProperties();
-                }
-            }
-        }
-
-
-        [SerializeField]
-        [Range(0.001f, 1f)]
-        float _snowfallIntensity = 0.1f;
-
-        public float snowfallIntensity
-        {
-            get { return _snowfallIntensity; }
-            set
-            {
-                if (value != _snowfallIntensity)
-                {
-                    _snowfallIntensity = value;
-                    UpdateSnowfallProperties();
-                }
-            }
-        }
-
-        [SerializeField]
-        bool _snowfallUseIllumination = false;
-
-        public bool snowfallUseIllumination
-        {
-            get { return _snowfallUseIllumination; }
-            set
-            {
-                if (value != _snowfallUseIllumination)
-                {
-                    _snowfallUseIllumination = value;
-                    UpdateSnowfallProperties();
-                }
-            }
-        }
-
-
-        [SerializeField]
-        bool _snowfallReceiveShadows = false;
-
-        public bool snowfallReceiveShadows
-        {
-            get { return _snowfallReceiveShadows; }
-            set
-            {
-                if (value != _snowfallReceiveShadows)
-                {
-                    _snowfallReceiveShadows = value;
-                    UpdateSnowfallProperties();
-                }
-            }
-        }
-
-
-        [SerializeField]
         [Range(0f, 2f)]
         float _maxExposure = 0.85f;
 
@@ -997,24 +904,6 @@ namespace GlobalSnowEffect
                 {
                     _cameraFrostSpread = value;
                     UpdateProperties();
-                }
-            }
-        }
-
-        public Camera snowCamera { get { return cameraEffect; } }
-
-
-        public bool deferred
-        {
-            get
-            {
-                if (!_forceForwardRenderingPath && cameraEffect != null)
-                {
-                    return cameraEffect.actualRenderingPath == RenderingPath.DeferredShading;
-                }
-                else
-                {
-                    return false;
                 }
             }
         }
@@ -1320,22 +1209,6 @@ namespace GlobalSnowEffect
             }
         }
 
-        [SerializeField]
-        CharacterController _characterController;
-
-        public CharacterController characterController
-        {
-            get { return _characterController; }
-            set
-            {
-                if (value != _characterController)
-                {
-                    _characterController = value;
-                    needFootprintBlit = true;
-                }
-            }
-        }
-
 
         [SerializeField]
         bool _maskEditorEnabled;
@@ -1437,8 +1310,13 @@ namespace GlobalSnowEffect
         [NonSerialized]
         public Material composeMat, distantSnowMat;
         Material decalMat, snowParticle, snowParticleIllum, snowParticleIllumOpaque, blurMat;
-        GameObject snowCamObj;
-        Camera cameraEffect, zenithCam, snowCam;
+
+        public GameObject[] snowCamObjs;
+        public Camera[] snowCams;
+        public GameObject[] ZenithObjects;
+        public Camera[] zenithCams;
+
+        
         RenderTexture depthTexture, snowedSceneTexture, snowedSceneTexture2, footprintTexture, footprintTexture2, decalTexture, decalTexture2;
         Shader depthShader, depthShaderMask;
         Vector3 lastCameraEffectPosition, lastCameraMarkPosition;
@@ -1446,8 +1324,6 @@ namespace GlobalSnowEffect
         Texture2D snowTex, snowNormalsTex, noiseTex, detailTex;
         int lastPosX, lastPosZ;
         Vector3 lastTargetPos;
-        [NonSerialized]
-        public ParticleSystem snowfallSystem;
         protected List<GlobalSnowIgnoreCoverage> ignoredGOs = new List<GlobalSnowIgnoreCoverage>();
         int currentCoverageResolution, currentCoverageExtension;
         bool needUpdateSnowCoverage, needFootprintBlit;
@@ -1477,256 +1353,217 @@ namespace GlobalSnowEffect
 
         void OnEnable()
         {
-
-            cameraEffect = gameObject.GetComponent<Camera>();
-
-            Transform t = transform;
-            while (t.parent != null)
-            {
-                t = t.parent;
-            }
-            _characterController = t.GetComponentInChildren<CharacterController>();
-            needFootprintBlit = true; // forces blit footprints if enabled
-
-            lastCameraEffectPosition = Vector3.one * 1000;
-            SetupSun();
-            UpdatePropertiesNow();
-            needsUpdateProperties = true;
+            EnableTrigger();
 
 #if UNITY_EDITOR
             RefreshSceneView();
 #endif
         }
-
-        void LoadResources()
+        public void EnableTrigger()
         {
+            Transform t = transform;
+            while (t.parent != null)
+            {
+                t = t.parent;
+            }
+            needFootprintBlit = true; // forces blit footprints if enabled
 
+            lastCameraEffectPosition = Vector3.one * 1000;
+            SetupSun();
+
+            for (int i = 0; i < QuickFind.PlayerCam.CameraRiggs.Length; i++)
+            {
+                if (QuickFind.PlayerCam.CameraRiggs[i].MainCam.isActiveAndEnabled)
+                    UpdatePropertiesNow(QuickFind.PlayerCam.CameraRiggs[i]);
+            }
+
+            needsUpdateProperties = true;
+        }
+
+        void LoadResources(CameraLogic.PlayerCamRigg PCR)
+        {
             if (composeMat == null)
             {
                 composeMat = Instantiate(Resources.Load<Material>("Common/Materials/Compose"));
                 composeMat.hideFlags = HideFlags.DontSave;
             }
 
-            RemoveCommandBuffer();
+            RemoveCommandBuffer(PCR);
 
-            if (deferred)
+            needRebuildCommandBuffer = false;
+            if (buf == null || cbMat == null)
             {
-                needRebuildCommandBuffer = false;
-                if (buf == null || cbMat == null)
+                cbMat = Resources.Load<Material>("Workflow_Deferred/Materials/DeferredSnow");
+                if (cbMat == null)
                 {
-                    cbMat = Resources.Load<Material>("Workflow_Deferred/Materials/DeferredSnow");
-                    if (cbMat == null)
-                    {
-                        forceForwardRenderingPath = true;
-                        return;
-                    }
-                    if (cbMatExcludedObjects == null)
-                    {
-                        cbMatExcludedObjects = new Material(Shader.Find("GlobalSnow/DeferredMaskWrite"));
-                    }
+                    forceForwardRenderingPath = true;
+                    { Debug.Log("Problem Area"); return; }
+                }
+                if (cbMatExcludedObjects == null)
+                {
+                    cbMatExcludedObjects = new Material(Shader.Find("GlobalSnow/DeferredMaskWrite"));
+                }
 
-                    buf = new CommandBuffer();
-                    buf.name = "Deferred Snow";
+                buf = new CommandBuffer();
+                buf.name = "Deferred Snow";
 
-                    RenderTextureDescriptor rtDesc;
+                RenderTextureDescriptor rtDesc;
 #if UNITY_2017_2_OR_NEWER
-																				if (UnityEngine.XR.XRSettings.enabled)
-																				{
-																					rtDesc = UnityEngine.XR.XRSettings.eyeTextureDesc;
-																				}
-																				else
-																				{
-																				rtDesc = new RenderTextureDescriptor(cameraEffect.pixelWidth, cameraEffect.pixelHeight);
-																				}
+                if (UnityEngine.XR.XRSettings.enabled)
+                {
+                    rtDesc = UnityEngine.XR.XRSettings.eyeTextureDesc;
+                }
+                else
+                {
+                    rtDesc = new RenderTextureDescriptor(PCR.MainCam.pixelWidth, PCR.MainCam.pixelHeight);
+                }
 #else
                     rtDesc = new RenderTextureDescriptor(cameraEffect.pixelWidth, cameraEffect.pixelHeight);
 #endif
-                    rtDesc.depthBufferBits = 0;
-                    rtDesc.sRGB = false;
-                    rtDesc.msaaSamples = 1;
-                    rtDesc.useMipMap = false;
-                    rtDesc.volumeDepth = 1;
+                rtDesc.depthBufferBits = 0;
+                rtDesc.sRGB = false;
+                rtDesc.msaaSamples = 1;
+                rtDesc.useMipMap = false;
+                rtDesc.volumeDepth = 1;
 
-                    // Copy normals
-                    bool flatShading = _snowQuality == SNOW_QUALITY.FlatShading;
-                    if (!flatShading)
+                // Copy normals
+                bool flatShading = _snowQuality == SNOW_QUALITY.FlatShading;
+                if (!flatShading)
+                {
+                    var normalsID = Shader.PropertyToID("_GS_GBuffer2Copy");
+                    RenderTextureDescriptor normalsDesc = rtDesc;
+                    if (_floatingPointNormalsBuffer && SystemInfo.SupportsRenderTextureFormat(RenderTextureFormat.ARGBHalf))
                     {
-                        var normalsID = Shader.PropertyToID("_GS_GBuffer2Copy");
-                        RenderTextureDescriptor normalsDesc = rtDesc;
-                        if (_floatingPointNormalsBuffer && SystemInfo.SupportsRenderTextureFormat(RenderTextureFormat.ARGBHalf))
-                        {
-                            normalsDesc.colorFormat = RenderTextureFormat.ARGBHalf;
-                        }
-                        buf.GetTemporaryRT(normalsID, normalsDesc);
-                        buf.Blit(BuiltinRenderTextureType.GBuffer2, normalsID);
+                        normalsDesc.colorFormat = RenderTextureFormat.ARGBHalf;
                     }
-                    // Copy diffuse
-                    var diffuseID = Shader.PropertyToID("_GS_GBuffer0Copy");
-                    buf.GetTemporaryRT(diffuseID, rtDesc);
-                    buf.Blit(BuiltinRenderTextureType.GBuffer0, diffuseID);
-                    // Copy specular
-                    var specularID = Shader.PropertyToID("_GS_GBuffer1Copy");
-                    buf.GetTemporaryRT(specularID, rtDesc);
-                    buf.Blit(BuiltinRenderTextureType.GBuffer1, specularID);
+                    buf.GetTemporaryRT(normalsID, normalsDesc);
+                    buf.Blit(BuiltinRenderTextureType.GBuffer2, normalsID);
+                }
+                // Copy diffuse
+                var diffuseID = Shader.PropertyToID("_GS_GBuffer0Copy");
+                buf.GetTemporaryRT(diffuseID, rtDesc);
+                buf.Blit(BuiltinRenderTextureType.GBuffer0, diffuseID);
+                // Copy specular
+                var specularID = Shader.PropertyToID("_GS_GBuffer1Copy");
+                buf.GetTemporaryRT(specularID, rtDesc);
+                buf.Blit(BuiltinRenderTextureType.GBuffer1, specularID);
 
-                    // Draw excluded objects
-                    RenderTextureDescriptor rtMaskDesc = rtDesc;
-                    rtMaskDesc.colorFormat = RenderTextureFormat.Depth;
-                    rtMaskDesc.depthBufferBits = 24;
+                // Draw excluded objects
+                RenderTextureDescriptor rtMaskDesc = rtDesc;
+                rtMaskDesc.colorFormat = RenderTextureFormat.Depth;
+                rtMaskDesc.depthBufferBits = 24;
 
-                    var maskTarget = Shader.PropertyToID("_GS_DeferredExclusionBuffer");
-                    buf.GetTemporaryRT(maskTarget, rtMaskDesc);
-                    buf.SetRenderTarget(maskTarget);
-                    buf.ClearRenderTarget(true, false, Color.white);
+                var maskTarget = Shader.PropertyToID("_GS_DeferredExclusionBuffer");
+                buf.GetTemporaryRT(maskTarget, rtMaskDesc);
+                buf.SetRenderTarget(maskTarget);
+                buf.ClearRenderTarget(true, false, Color.white);
 
-                    Renderer[] rr = FindObjectsOfType<Renderer>();
-                    for (int k = 0; k < rr.Length; k++)
+                Renderer[] rr = FindObjectsOfType<Renderer>();
+                for (int k = 0; k < rr.Length; k++)
+                {
+                    Renderer r = rr[k];
+                    if (r.enabled && r.gameObject.activeSelf)
                     {
-                        Renderer r = rr[k];
-                        if (r.enabled && r.gameObject.activeSelf)
+                        int objLayer = r.gameObject.layer;
+                        if (objLayer != 0 && objLayer != SNOW_PARTICLES_LAYER && (objLayer == _defaultExclusionLayer || ((1 << objLayer) & _layerMask.value) == 0))
                         {
-                            int objLayer = r.gameObject.layer;
-                            if (objLayer != 0 && objLayer != SNOW_PARTICLES_LAYER && (objLayer == _defaultExclusionLayer || ((1 << objLayer) & _layerMask.value) == 0))
+                            buf.DrawRenderer(rr[k], cbMatExcludedObjects);
+                        }
+                    }
+                }
+
+                GlobalSnowIgnoreCoverage[] ic = FindObjectsOfType<GlobalSnowIgnoreCoverage>();
+                for (int k = 0; k < ic.Length; k++)
+                {
+                    GlobalSnowIgnoreCoverage GSIC = ic[k];
+                    if (GSIC.isActiveAndEnabled)
+                    {
+                        Renderer r = GSIC.GetComponent<Renderer>();
+                        if (r != null)
+                        {
+                            if (GSIC.rendHasSubmeshes)
                             {
-                                buf.DrawRenderer(rr[k], cbMatExcludedObjects);
+                                Material[] Mats = r.sharedMaterials;
+                                for (int i = 0; i < Mats.Length; i++)
+                                    buf.DrawRenderer(r, Mats[i], i, 0);
                             }
+                            else
+                                buf.DrawRenderer(r, cbMatExcludedObjects);
                         }
                     }
+                }
 
-                    GlobalSnowIgnoreCoverage[] ic = FindObjectsOfType<GlobalSnowIgnoreCoverage>();
-                    for (int k = 0; k < ic.Length; k++)
+
+
+                buf.ReleaseTemporaryRT(maskTarget);
+
+                RenderTargetIdentifier[] mrt;
+                if (flatShading)
+                {
+                    if (PCR.MainCam.allowHDR)
                     {
-                        GlobalSnowIgnoreCoverage GSIC = ic[k];
-                        if (GSIC.isActiveAndEnabled)
-                        {
-                            Renderer r = GSIC.GetComponent<Renderer>();
-                            if (r != null)
-                            {
-                                if(GSIC.rendHasSubmeshes)
-                                {
-                                    Material[] Mats = r.sharedMaterials;
-                                    for (int i = 0; i < Mats.Length; i++)
-                                        buf.DrawRenderer(r, Mats[i], i, 0);
-                                }
-                                else
-                                    buf.DrawRenderer(r, cbMatExcludedObjects);
-                            }
-                        }
-                    }
-
-
-
-                    buf.ReleaseTemporaryRT(maskTarget);
-
-                    RenderTargetIdentifier[] mrt;
-                    if (flatShading)
-                    {
-                        if (cameraEffect.allowHDR)
-                        {
-                            mrt = new RenderTargetIdentifier[] {
+                        mrt = new RenderTargetIdentifier[] {
                                                                                                                                 BuiltinRenderTextureType.GBuffer0,    // Albedo, Occ
 																																BuiltinRenderTextureType.GBuffer1,    // Spec, Roughness
 																																BuiltinRenderTextureType.CameraTarget // Emission / Ambient light
 																												};
-                        }
-                        else
-                        {
-                            mrt = new RenderTargetIdentifier[] {
-                                                                                                                                BuiltinRenderTextureType.GBuffer0,    // Albedo, Occ
-																																BuiltinRenderTextureType.GBuffer1,    // Spec, Roughness
-																																BuiltinRenderTextureType.GBuffer3    // Emission / Ambient light
-																												};
-                        }
                     }
                     else
                     {
-                        if (cameraEffect.allowHDR)
-                        {
-                            mrt = new RenderTargetIdentifier[] {
+                        mrt = new RenderTargetIdentifier[] {
+                                                                                                                                BuiltinRenderTextureType.GBuffer0,    // Albedo, Occ
+																																BuiltinRenderTextureType.GBuffer1,    // Spec, Roughness
+																																BuiltinRenderTextureType.GBuffer3    // Emission / Ambient light
+																												};
+                    }
+                }
+                else
+                {
+                    if (PCR.MainCam.allowHDR)
+                    {
+                        mrt = new RenderTargetIdentifier[] {
                                                                                                                                 BuiltinRenderTextureType.GBuffer0,    // Albedo, Occ
 																																BuiltinRenderTextureType.GBuffer1,    // Spec, Roughness
 																																BuiltinRenderTextureType.GBuffer2,	   // Normals
 																																BuiltinRenderTextureType.CameraTarget // Emission / Ambient light
 																												};
-                        }
-                        else
-                        {
-                            mrt = new RenderTargetIdentifier[] {
+                    }
+                    else
+                    {
+                        mrt = new RenderTargetIdentifier[] {
                                                                                                                                 BuiltinRenderTextureType.GBuffer0,    // Albedo, Occ
 																																BuiltinRenderTextureType.GBuffer1,    // Spec, Roughness
 																																BuiltinRenderTextureType.GBuffer2,	   // Normals
 																																BuiltinRenderTextureType.GBuffer3    // Emission / Ambient light
 																												};
-                        }
                     }
-                    buf.SetRenderTarget(mrt, BuiltinRenderTextureType.CameraTarget);
+                }
+                buf.SetRenderTarget(mrt, BuiltinRenderTextureType.CameraTarget);
 
-                    if (decalMesh == null)
-                    {
-                        decalMesh = new Mesh { name = "GS Fullscreen Triangle" };
-                        decalMesh.SetVertices(new List<Vector3> {
+                if (decalMesh == null)
+                {
+                    decalMesh = new Mesh { name = "GS Fullscreen Triangle" };
+                    decalMesh.SetVertices(new List<Vector3> {
                                                                                                                 new Vector3 (-1f, -1f, 0f),
                                                                                                                 new Vector3 (-1f, 3f, 0f),
                                                                                                                 new Vector3 (3f, -1f, 0f)
                                                                                                 });
-                        decalMesh.SetIndices(new[] { 0, 1, 2 }, MeshTopology.Triangles, 0, false);
-                        decalMesh.UploadMeshData(false);
+                    decalMesh.SetIndices(new[] { 0, 1, 2 }, MeshTopology.Triangles, 0, false);
+                    decalMesh.UploadMeshData(false);
 
-                    }
-                    buf.DrawMesh(decalMesh, Matrix4x4.identity, cbMat, 0, flatShading ? 1 : 0);
-                    lastCameraAllowHDR = cameraEffect.allowHDR;
                 }
-                cameraEffect.AddCommandBuffer(_deferredCameraEvent.ToUnityCameraEvent(), buf);
-                currentCameraEvent = _deferredCameraEvent;
-
-                eraseOverlayShader = Shader.Find("Hidden/GlobalSnow/Deferred Eraser");
-                if (!eraseOverlayShader.isSupported)
-                {
-                    Debug.Log("Deferred Eraser shader not supported on this platform.");
-                    enabled = false;
-                    return;
-                }
+                buf.DrawMesh(decalMesh, Matrix4x4.identity, cbMat, 0, flatShading ? 1 : 0);
+                lastCameraAllowHDR = PCR.MainCam.allowHDR;
             }
-            else
-            {
-                snowShader = Shader.Find("GlobalSnow/Snow");
-                if (snowShader == null)
-                {
-                    if (_forceForwardRenderingPath)
-                    {
-                        forceForwardRenderingPath = false;
-                        return;
-                    }
-                    Debug.LogError("Snow shader not found. Workflow_Forward folder under Resources might be removed?");
-                    enabled = false;
-                    return;
-                }
-                if (!snowShader.isSupported)
-                {
-                    Debug.Log("Snow shader not supported on this platform.");
-                    enabled = false;
-                    return;
-                }
+            PCR.MainCam.AddCommandBuffer(_deferredCameraEvent.ToUnityCameraEvent(), buf);
+            currentCameraEvent = _deferredCameraEvent;
 
-                if (eraseShader == null)
-                {
-                    eraseShader = Shader.Find("GlobalSnow/EraseShader");
-                    if (!eraseShader.isSupported)
-                    {
-                        Debug.Log("EraseShader shader not supported on this platform.");
-                        enabled = false;
-                        return;
-                    }
-                }
-                if (snowedSpeedTreeBillboardShader == null)
-                {
-                    snowedSpeedTreeBillboardShader = Shader.Find("GlobalSnow/SpeedTree Billboard Adapted");
-                }
-                if (distantSnowMat == null)
-                {
-                    distantSnowMat = Instantiate(Resources.Load("Workflow_Forward/Materials/GlobalSnowDistant")) as Material;
-                    distantSnowMat.hideFlags = HideFlags.DontSave;
-                }
+            eraseOverlayShader = Shader.Find("Hidden/GlobalSnow/Deferred Eraser");
+            if (!eraseOverlayShader.isSupported)
+            {
+                Debug.Log("Deferred Eraser shader not supported on this platform.");
+                enabled = false;
+                { Debug.Log("Problem Area"); return; }
             }
 
             if (depthShader == null)
@@ -1736,7 +1573,7 @@ namespace GlobalSnowEffect
                 {
                     Debug.Log("Depth shader not supported on this platform.");
                     enabled = false;
-                    return;
+                    { Debug.Log("Problem Area"); return; }
                 }
             }
 
@@ -1747,7 +1584,7 @@ namespace GlobalSnowEffect
                 {
                     Debug.Log("Depth Mask shader not supported on this platform.");
                     enabled = false;
-                    return;
+                    { Debug.Log("Problem Area"); return; }
                 }
             }
 
@@ -1758,7 +1595,7 @@ namespace GlobalSnowEffect
                 {
                     Debug.Log("Decal Drawing not supported on this platform.");
                     enabled = false;
-                    return;
+                    { Debug.Log("Problem Area"); return; }
                 }
                 decalMat = new Material(decalShader);
                 decalMat.hideFlags = HideFlags.DontSave;
@@ -1771,7 +1608,7 @@ namespace GlobalSnowEffect
                 {
                     Debug.Log("Blur not supported on this platform.");
                     enabled = false;
-                    return;
+                    { Debug.Log("Problem Area"); return; }
                 }
                 blurMat = new Material(blurShader);
                 blurMat.hideFlags = HideFlags.DontSave;
@@ -1814,11 +1651,11 @@ namespace GlobalSnowEffect
 
         }
 
-        void RemoveCommandBuffer()
+        void RemoveCommandBuffer(CameraLogic.PlayerCamRigg PCR)
         {
-            if (buf != null && cameraEffect != null)
+            if (buf != null && PCR.MainCam != null)
             {
-                cameraEffect.RemoveCommandBuffer(currentCameraEvent.ToUnityCameraEvent(), buf);
+                PCR.MainCam.RemoveCommandBuffer(currentCameraEvent.ToUnityCameraEvent(), buf);
                 buf = null;
             }
         }
@@ -1832,7 +1669,11 @@ namespace GlobalSnowEffect
 
         void OnDisable()
         {
-            RemoveCommandBuffer();
+            for (int i = 0; i < QuickFind.PlayerCam.CameraRiggs.Length; i++)
+            {
+                if (QuickFind.PlayerCam.CameraRiggs[i].MainCam.isActiveAndEnabled)
+                    RemoveCommandBuffer(QuickFind.PlayerCam.CameraRiggs[i]);
+            }
             GlobalSnowImageEffect ef = GetComponent<GlobalSnowImageEffect>();
             if (ef != null)
             {
@@ -1865,11 +1706,6 @@ namespace GlobalSnowEffect
         {
             CleanUpTextureDepth();
             CleanUpTextureSnowScene();
-            if (snowCamObj != null)
-            {
-                DestroyImmediate(snowCamObj);
-                snowCamObj = null;
-            }
             if (footprintTexture != null)
             {
                 footprintTexture.Release();
@@ -1890,19 +1726,11 @@ namespace GlobalSnowEffect
                 decalTexture2.Release();
                 decalTexture2 = null;
             }
-            if (snowfallSystem != null)
-            {
-                DestroyImmediate(snowfallSystem.gameObject);
-                snowfallSystem = null;
-            }
         }
 
-        void UpdateSnowCoverageNow()
+        void UpdateSnowCoverageNow(CameraLogic.PlayerCamRigg PCR, int ZenithIndex)
         {
-
-            needUpdateSnowCoverage = false;
-            const float camAltitudeOffset = 100f;
-            int res = (int)Mathf.Pow(2, _coverageResolution + 8);
+            Camera zenithCam = zenithCams[ZenithIndex];
 
             // Setup zenith cam
             if (currentCoverageResolution != _coverageResolution || currentCoverageExtension != _coverageExtension)
@@ -1914,31 +1742,34 @@ namespace GlobalSnowEffect
                     CleanUpTextureDepth();
                 }
             }
+
+            needUpdateSnowCoverage = false;
+            const float camAltitudeOffset = 100f;
+            int res = (int)Mathf.Pow(2, _coverageResolution + 8);
+
+
             if (zenithCam == null)
             {
-                GameObject camGO = GameObject.Find(ZENITH_CAM);
-                if (camGO == null)
-                {
-                    camGO = new GameObject(ZENITH_CAM);
-                    zenithCam = camGO.AddComponent<Camera>();
-                }
-                else
-                {
-                    zenithCam = camGO.GetComponent<Camera>();
-                }
-                camGO.hideFlags = HideFlags.DontSave | HideFlags.HideInHierarchy;
-                zenithCam.enabled = false;
-                zenithCam.renderingPath = RenderingPath.Forward;
-                zenithCam.orthographic = true;
-                currentCoverageResolution = _coverageResolution;
-                currentCoverageExtension = _coverageExtension;
+                zenithCam = ZenithObjects[ZenithIndex].AddComponent<Camera>();
+                zenithCams[ZenithIndex] = zenithCam;
             }
+            else
+                zenithCam = ZenithObjects[ZenithIndex].GetComponent<Camera>();
+
+
+            ZenithObjects[ZenithIndex].hideFlags = HideFlags.DontSave | HideFlags.HideInHierarchy;
+            zenithCam.enabled = false;
+            zenithCam.renderingPath = RenderingPath.Forward;
+            zenithCam.orthographic = true;
+            currentCoverageResolution = _coverageResolution;
+            currentCoverageExtension = _coverageExtension;
+
             zenithCam.orthographicSize = Mathf.Pow(2, 7f + _coverageExtension);
             zenithCam.clearFlags = CameraClearFlags.SolidColor;
             zenithCam.allowMSAA = false;
             zenithCam.backgroundColor = Color.white; // new Color(1f, 1, 1, 1); // new Color(0.9882353f, 0.4470558f, 0.75f, 0f); // new Color (1, 1, 1, 1);
             zenithCam.cullingMask = zenithalMask & ~(1 << SNOW_PARTICLES_LAYER) & ~(1 << _defaultExclusionLayer);
-            Vector3 currentSnowCamPosition = new Vector3((int)(cameraEffect.transform.position.x), cameraEffect.transform.position.y + camAltitudeOffset, (int)(cameraEffect.transform.position.z));
+            Vector3 currentSnowCamPosition = new Vector3((int)(PCR.MainCam.transform.position.x), PCR.MainCam.transform.position.y + camAltitudeOffset, (int)(PCR.MainCam.transform.position.z));
             zenithCam.nearClipPlane = 1f;
             zenithCam.farClipPlane = Mathf.Max(currentSnowCamPosition.y - _minimumAltitude, 0.01f) + 1f;
             zenithCam.transform.position = currentSnowCamPosition; //new Vector3(currentSnowCamPosition.x, currentSnowCamPosition.y + camAltitudeOffset, currentSnowCamPosition.z);
@@ -1976,8 +1807,10 @@ namespace GlobalSnowEffect
             Shader.SetGlobalVector("_GS_SnowCamPos", new Vector4(zenithCam.transform.position.x, zenithCam.transform.position.y, zenithCam.transform.position.z, zenithCam.farClipPlane));
         }
 
-        void RenderFootprints()
+        void RenderFootprints(CameraLogic.PlayerCamRigg PCR, int ZenithIndex)
         {
+            Camera zenithCam = zenithCams[ZenithIndex];
+
             if (footprintTexture == null || footprintTexture2 == null)
             {
                 footprintTexture = new RenderTexture(FOOTPRINT_TEXTURE_RESOLUTION, FOOTPRINT_TEXTURE_RESOLUTION, 0, RenderTextureFormat.ARGBFloat);
@@ -1990,7 +1823,7 @@ namespace GlobalSnowEffect
                 footprintTexture2.hideFlags = HideFlags.DontSave;
                 Shader.SetGlobalTexture("_GS_FootprintTex", footprintTexture2);
             }
-            Vector3 targetPos = cameraEffect.transform.position;
+            Vector3 targetPos = PCR.MainCam.transform.position;
             targetPos.x *= 1f / _footprintsScale;
             targetPos.z *= 1f / _footprintsScale;
             int posX = Mathf.FloorToInt(targetPos.x);
@@ -2015,14 +1848,9 @@ namespace GlobalSnowEffect
                         validStep = true;
                     }
                 }
-                if (validStep && _characterController != null)
-                {
-                    // check player is grounded
-                    validStep = _characterController.isGrounded;
-                }
                 if (validStep || needFootprintBlit)
                 {
-                    Vector3 targetDir = cameraEffect.transform.forward;
+                    Vector3 targetDir = PCR.MainCam.transform.forward;
                     Vector2 dirxz = new Vector2(targetDir.x, targetDir.z).normalized;
                     float angle = ((UnityEngine.Random.value - 0.5f) * 8f - GetAngle(Vector2.up, dirxz)) * Mathf.Deg2Rad;
                     Vector2 vpos = new Vector2(((posX + FOOTPRINT_TEXTURE_RESOLUTION) % FOOTPRINT_TEXTURE_RESOLUTION) + 0.5f, ((posZ + FOOTPRINT_TEXTURE_RESOLUTION) % FOOTPRINT_TEXTURE_RESOLUTION) + 0.5f);
@@ -2071,10 +1899,13 @@ namespace GlobalSnowEffect
         }
 
 
-        void RenderTerrainMarks()
+        void RenderTerrainMarks(int ZenithIndex)
         {
-            if (zenithCam == null)
-                return;
+            Camera zenithCam = null;
+                if(zenithCams[ZenithIndex] != null)
+                    zenithCam = zenithCams[ZenithIndex];
+
+            if (zenithCam == null) { return; }
 
             int textureSize = (int)terrainMarksTextureSize;
             if (decalTexture == null || decalTexture2 == null)
@@ -2152,55 +1983,45 @@ namespace GlobalSnowEffect
         }
 
 
-        void SnowRender_DeferredPath()
+        void SnowRender_DeferredPath(CameraLogic.PlayerCamRigg PCR, int ZenithIndex)
         {
 
             // Render footprints
             if (_footprints && decalMat != null)
-                RenderFootprints();
+                RenderFootprints(PCR, ZenithIndex);
 
             // Render decals
             if (_terrainMarks && decalMat != null)
-                RenderTerrainMarks();
+                RenderTerrainMarks(ZenithIndex);
 
 
         }
 
-        void SnowRender_ForwardPath()
+        void SnowRender_ForwardPath(CameraLogic.PlayerCamRigg PCR, int ZenithIndex)
         {
+            Camera snowCam = snowCams[ZenithIndex];
+
 
             // Render footprints
             if (_footprints && decalMat != null)
-                RenderFootprints();
+                RenderFootprints(PCR, ZenithIndex);
 
             // Render decals
             if (_terrainMarks && decalMat != null)
-                RenderTerrainMarks();
+                RenderTerrainMarks(ZenithIndex);
 
             // Render snowed scene
             CleanUpTextureSnowScene();
             if (snowCam == null)
             {
-                if (snowCamObj == null)
-                {
-                    snowCamObj = new GameObject(REP_CAM);
-                    snowCamObj.hideFlags = HideFlags.HideAndDontSave;
-                    snowCam = snowCamObj.AddComponent<Camera>();
+                    snowCam = snowCamObjs[ZenithIndex].AddComponent<Camera>();
                     snowCam.enabled = false;
                 }
                 else
-                {
-                    snowCam = snowCamObj.GetComponent<Camera>();
-                    if (snowCam == null)
-                    {
-                        DestroyImmediate(snowCamObj);
-                        snowCamObj = null;
-                        return;
-                    }
-                }
-            }
+                    snowCam = snowCamObjs[ZenithIndex].GetComponent<Camera>();
 
-            snowCam.CopyFrom(cameraEffect);
+
+            snowCam.CopyFrom(PCR.MainCam);
             snowCam.renderingPath = RenderingPath.Forward;
             snowCam.depthTextureMode = DepthTextureMode.None;
             snowedSceneTexture = RenderTexture.GetTemporary(snowCam.pixelWidth, snowCam.pixelHeight, 24, RenderTextureFormat.ARGB32);
@@ -2212,20 +2033,14 @@ namespace GlobalSnowEffect
             snowCam.rect = new Rect(0, 0, 1f, 1f);
             LayerMask layerMask;
 #if UNITY_EDITOR
-            GlobalSnow realcam = GlobalSnow.instance;
-            layerMask = GlobalSnow.instance.layerMask;
+            GlobalSnow realcam = QuickFind.SnowHandler;
+            layerMask = QuickFind.SnowHandler.layerMask;
 #else
 												layerMask = _layerMask;
 #endif
-            int cameraCullingMask = _excludedCastShadows ? cameraEffect.cullingMask : cameraEffect.cullingMask & layerMask;
-            if (_snowfall && _snowfallReceiveShadows)
-            {
-                snowCam.cullingMask = cameraCullingMask; // don't include layermask so everyone can cast shadows
-            }
-            else
-            {
+            int cameraCullingMask = _excludedCastShadows ? PCR.MainCam.cullingMask : PCR.MainCam.cullingMask & layerMask;
                 snowCam.cullingMask = cameraCullingMask & ~(1 << SNOW_PARTICLES_LAYER); // don't include layermask so everyone can cast shadows
-            }
+
             if (_distanceOptimization)
             {
                 snowCam.farClipPlane = _detailDistance;
@@ -2247,7 +2062,7 @@ namespace GlobalSnowEffect
 
             if (layerMask.value != -1 || ignoredGOs.Count > 0)
             {
-                snowCam.cullingMask = cameraEffect.cullingMask & ((1 << _defaultExclusionLayer) | ~layerMask.value) & ~(1 << SNOW_PARTICLES_LAYER);
+                snowCam.cullingMask = PCR.MainCam.cullingMask & ((1 << _defaultExclusionLayer) | ~layerMask.value) & ~(1 << SNOW_PARTICLES_LAYER);
                 snowCam.clearFlags = CameraClearFlags.Nothing;
                 snowCam.RenderWithShader(eraseShader, "RenderType");
             }
@@ -2262,20 +2077,15 @@ namespace GlobalSnowEffect
                 snowedSceneTexture2 = RenderTexture.GetTemporary(snowCam.pixelWidth, snowCam.pixelHeight, 24, RenderTextureFormat.ARGB32);
                 snowCam.targetTexture = snowedSceneTexture2;
                 snowCam.clearFlags = CameraClearFlags.SolidColor;
-                if (_snowfall && _snowfallReceiveShadows)
-                {
-                    snowCam.cullingMask = cameraCullingMask; // don't include layermask so everyone can cast shadows
-                }
-                else
-                {
+
                     snowCam.cullingMask = cameraCullingMask & ~(1 << SNOW_PARTICLES_LAYER); // don't include layermask so everyone can cast shadows
-                }
+
                 snowCam.projectionMatrix = snowCam.GetStereoProjectionMatrix(Camera.StereoscopicEye.Right);
 
                 snowCam.RenderWithShader(snowShader, "RenderType");
                 if (layerMask.value != -1 || ignoredGOs.Count > 0)
                 {
-                    snowCam.cullingMask = cameraEffect.cullingMask & ((1 << _defaultExclusionLayer) | ~layerMask.value) & ~(1 << SNOW_PARTICLES_LAYER);
+                    snowCam.cullingMask = PCR.MainCam.cullingMask & ((1 << _defaultExclusionLayer) | ~layerMask.value) & ~(1 << SNOW_PARTICLES_LAYER);
                     snowCam.clearFlags = CameraClearFlags.Nothing;
                     snowCam.RenderWithShader(eraseShader, "RenderType");
                 }
@@ -2286,20 +2096,19 @@ namespace GlobalSnowEffect
         }
 
         // Do the magic
-        void OnPreCull()
+        public void ExternalOnPreCull(CameraLogic.PlayerCamRigg PCR, int i)
         {
-
-            GlobalSnow gs = GlobalSnow.instance;
-            if (!enabled || !gameObject.activeInHierarchy || cameraEffect == null || gs == null)
-                return;
+            GlobalSnow gs = QuickFind.SnowHandler;
+            if (!enabled || !gameObject.activeInHierarchy || PCR.MainCam == null || gs == null)
+            { return; }
 
             if (needsUpdateProperties)
             {
                 needsUpdateProperties = false;
-                UpdatePropertiesNow();
+                UpdatePropertiesNow(PCR);
             }
 
-            CheckSunOcclusion();
+            CheckSunOcclusion(PCR);
 
             // Apply exclusion list
             List<GlobalSnowIgnoreCoverage> ignoredGOs = gs.ignoredGOs;
@@ -2318,7 +2127,7 @@ namespace GlobalSnowEffect
             bool updateCoverage = !Application.isPlaying || needUpdateSnowCoverage || _coverageUpdateMethod == SNOW_COVERAGE_UPDATE_METHOD.EveryFrame;
             if (!updateCoverage && _coverageUpdateMethod == SNOW_COVERAGE_UPDATE_METHOD.Discrete)
             {
-                updateCoverage = (lastCameraEffectPosition - cameraEffect.transform.position).sqrMagnitude > 2500;
+                updateCoverage = (lastCameraEffectPosition - PCR.MainCam.transform.position).sqrMagnitude > 2500;
             }
 
 #if UNITY_EDITOR
@@ -2329,8 +2138,8 @@ namespace GlobalSnowEffect
 #endif
             if (updateCoverage)
             {
-                lastCameraEffectPosition = cameraEffect.transform.position;
-                UpdateSnowCoverageNow(); // get snow coverage on 50 m. position change
+                lastCameraEffectPosition = PCR.MainCam.transform.position;
+                UpdateSnowCoverageNow(PCR, i); // get snow coverage on 50 m. position change
             }
 
             // Render snow scene
@@ -2347,79 +2156,85 @@ namespace GlobalSnowEffect
             }
             Shader.SetGlobalVector("_GS_SnowData1", new Vector4(_reliefAmount, _occlusionIntensity, _glitterStrength, brightness));
 
-            if (deferred)
-            {
-                SnowRender_DeferredPath();
-            }
-            else if (!_distanceOptimization || _detailDistance > 0)
-            {
-                SnowRender_ForwardPath();
-            }
+
+            SnowRender_DeferredPath(PCR, i);
+
 
             // Restore exclusion list
             for (int igo = 0; igo < ignoredGOsCount; igo++)
             {
                 ignoredGOs[igo].gameObject.layer = ignoredGOs[igo].layer;
             }
-
         }
 
-        private void OnPreRender()
+        public void ExternalOnPreRender(CameraLogic.PlayerCamRigg PCR)
         {
-            if (cbMat != null && cameraEffect != null)
+            if (cbMat != null && PCR.MainCam != null)
             {
-                cbMat.SetMatrix("_ClipToWorld", cameraEffect.cameraToWorldMatrix); // * cameraEffect.projectionMatrix.inverse);
+                cbMat.SetMatrix("_ClipToWorld", PCR.MainCam.cameraToWorldMatrix); // * cameraEffect.projectionMatrix.inverse);
             }
         }
 
         void Update()
         {
-            if (cameraEffect != null)
+            for (int i = 0; i < QuickFind.PlayerCam.CameraRiggs.Length; i++)
             {
-                if (snowfallSystem != null)
+                if (QuickFind.PlayerCam.CameraRiggs[i].MainCam.isActiveAndEnabled)
                 {
-                    snowfallSystem.transform.position = cameraEffect.transform.position + Vector3.up * 50f;
+                    CameraLogic.PlayerCamRigg PCR = QuickFind.PlayerCam.CameraRiggs[i];
+
+                    if (PCR.MainCam != null)
+                    {
+
+                        if (lastCameraAllowHDR != PCR.MainCam.allowHDR || lastRenderingPath != PCR.MainCam.actualRenderingPath)
+                        {
+                            UpdateProperties();
+                        }
+                    }
+
+                    if (_terrainMarks && _terrainMarksAutoFPS && (transform.position - lastCameraMarkPosition).sqrMagnitude > 0.5f)
+                    {
+                        Vector3 dir = transform.position - lastCameraMarkPosition;
+                        Vector3 dirxz = new Vector3(dir.z, 0, -dir.x).normalized * UnityEngine.Random.Range(0.11f, 0.35f);
+                        Vector3 medPos = (lastCameraMarkPosition + transform.position) * 0.5f;
+                        lastCameraMarkPosition = transform.position;
+                        MarkSnowAt(medPos + dirxz, 0.185f);
+                        MarkSnowAt(transform.position - dirxz, 0.185f);
+                    }
+
+                    if (_enableHotKeys)
+                    {
+                        if (Input.GetKey(KeyCode.K))
+                            minimumAltitude--;
+                        else if (Input.GetKey(KeyCode.I))
+                            minimumAltitude++;
+                    }
                 }
-
-                if (lastCameraAllowHDR != cameraEffect.allowHDR || lastRenderingPath != cameraEffect.actualRenderingPath)
-                {
-                    UpdateProperties();
-                }
-            }
-
-            if (_terrainMarks && _terrainMarksAutoFPS && (transform.position - lastCameraMarkPosition).sqrMagnitude > 0.5f)
-            {
-                Vector3 dir = transform.position - lastCameraMarkPosition;
-                Vector3 dirxz = new Vector3(dir.z, 0, -dir.x).normalized * UnityEngine.Random.Range(0.11f, 0.35f);
-                Vector3 medPos = (lastCameraMarkPosition + transform.position) * 0.5f;
-                lastCameraMarkPosition = transform.position;
-                MarkSnowAt(medPos + dirxz, 0.185f);
-                MarkSnowAt(transform.position - dirxz, 0.185f);
-            }
-
-            if (_enableHotKeys)
-            {
-                if (Input.GetKey(KeyCode.K))
-                    minimumAltitude--;
-                else if (Input.GetKey(KeyCode.I))
-                    minimumAltitude++;
             }
 
         }
 
         private void LateUpdate()
         {
-            if (needRebuildCommandBuffer && deferred) LoadResources();
+            for (int i = 0; i < QuickFind.PlayerCam.CameraRiggs.Length; i++)
+            {
+                if (QuickFind.PlayerCam.CameraRiggs[i].MainCam.isActiveAndEnabled)
+                {
+                    CameraLogic.PlayerCamRigg PCR = QuickFind.PlayerCam.CameraRiggs[i];
+
+                    if (needRebuildCommandBuffer) LoadResources(PCR);
+                }
+            }
         }
 
         #endregion
 
         #region Internal stuff
 
-        void CheckSunOcclusion()
+        void CheckSunOcclusion(CameraLogic.PlayerCamRigg PCR)
         {
-            if (cameraEffect == null || _sun == null)
-                return;
+            if (PCR.MainCam == null || _sun == null)
+            { Debug.Log("Problem Area"); return; }
             //												float dist = Vector3.Distance (sun.transform.position, cameraEffect.transform.position);
             //												if (dist != lastDistanceBetweenCameraAndSun || _sun.transform.rotation != lastSunRotation) {
             //																lastDistanceBetweenCameraAndSun = dist;
@@ -2528,18 +2343,24 @@ namespace GlobalSnowEffect
             }
             else
             {
-                UpdatePropertiesNow();
+                for (int i = 0; i < QuickFind.PlayerCam.CameraRiggs.Length; i++)
+                {
+                    if (QuickFind.PlayerCam.CameraRiggs[i].MainCam.isActiveAndEnabled)
+                    {
+                        CameraLogic.PlayerCamRigg PCR = QuickFind.PlayerCam.CameraRiggs[i];
+                        UpdatePropertiesNow(PCR);
+                    }
+                }
             }
         }
 
-        void UpdatePropertiesNow()
+        void UpdatePropertiesNow(CameraLogic.PlayerCamRigg PCR)
         {
 
-            if (GlobalSnow.instance == null)
-                return;
+            if (QuickFind.SnowHandler == null) { Debug.Log("Problem Area"); return; }
 
             // Setup materials & shaders
-            LoadResources();
+            LoadResources(PCR);
 
             needUpdateSnowCoverage = true;
 
@@ -2595,8 +2416,6 @@ namespace GlobalSnowEffect
             }
             if (_footprints)
             {
-                if (characterController == null)
-                    characterController = FindObjectOfType<CharacterController>();
                 Shader.EnableKeyword(SKW_FOOTPRINTS);
             }
             else
@@ -2628,86 +2447,17 @@ namespace GlobalSnowEffect
                 Shader.DisableKeyword(SKW_REMOVE_LEAVES);
             }
 
-            if (snowfallSystem == null)
-            {
-                GameObject go = GameObject.Find(SNOW_PARTICLE_SYSTEM);
-                if (go != null)
-                {
-                    snowfallSystem = go.GetComponent<ParticleSystem>();
-                    if (snowfallSystem == null)
-                        DestroyImmediate(go);
-                }
-            }
-
-            UpdateSnowfallProperties();
-
-            lastRenderingPath = cameraEffect.actualRenderingPath;
+            lastRenderingPath = PCR.MainCam.actualRenderingPath;
 
             composeMatKeywords.Clear();
 
-            if (deferred)
-            {
-                composeMatKeywords.Add(SKW_NO_SNOW);
-            }
-            else
-            {
-                UpdateScene();
-                UpdateMaterials();
+            composeMatKeywords.Add(SKW_NO_SNOW);
 
-                if (_distanceOptimization)
-                {
-                    cameraEffect.depthTextureMode |= DepthTextureMode.Depth;
-                    distanceMatKeywords.Clear();
-                    if (_distanceIgnoreNormals)
-                    {
-                        distanceMatKeywords.Add(SKW_IGNORE_NORMALS);
-                    }
-                    else
-                    {
-                        if (cameraEffect.actualRenderingPath == RenderingPath.DeferredShading)
-                        {
-                            distanceMatKeywords.Add(SKW_GBUFFER_NORMALS);
-                        }
-                        else
-                        {
-                            cameraEffect.depthTextureMode |= DepthTextureMode.DepthNormals;
-                        }
-                    }
-                    if (_distanceIgnoreCoverage)
-                    {
-                        distanceMatKeywords.Add(SKW_IGNORE_COVERAGE);
-                    }
-                    distantSnowMat.shaderKeywords = distanceMatKeywords.ToArray();
-                    distantSnowMat.SetColor("_Color", _distanceSnowColor);
-                    distantSnowMat.SetFloat("_Distance01", 0.000001f + (_detailDistance * 0.9f) / cameraEffect.farClipPlane);
-                }
-
-                if (_forceSPSR)
-                {
-                    composeMatKeywords.Add(SKW_FORCE_STEREO_RENDERING);
-                }
-                if (_distanceOptimization)
-                {
-                    if (_detailDistance == 0)
-                    {
-                        composeMatKeywords.Add(SKW_JUST_DISTANT_SNOW);
-                    }
-                    else
-                    {
-                        composeMatKeywords.Add(SKW_USE_DISTANT_SNOW);
-                    }
-                }
-                if (!_cameraFrost)
-                {
-                    composeMatKeywords.Add(SKW_NO_FROST);
-                }
-            }
             composeMat.shaderKeywords = composeMatKeywords.ToArray();
 
             // Image effect renderer
             GlobalSnowImageEffect fr = GetComponent<GlobalSnowImageEffect>();
-            if (deferred)
-            {
+
                 if (cameraFrost && fr == null)
                 {
                     fr = gameObject.AddComponent<GlobalSnowImageEffect>();
@@ -2717,14 +2467,7 @@ namespace GlobalSnowEffect
                     DestroyImmediate(fr);
                     fr = null;
                 }
-            }
-            else
-            {
-                if (fr == null)
-                {
-                    fr = gameObject.AddComponent<GlobalSnowImageEffect>();
-                }
-            }
+
             if (fr != null)
             {
                 fr.enabled = true;
@@ -2744,65 +2487,10 @@ namespace GlobalSnowEffect
                 OnUpdateProperties();
         }
 
-        public void UpdateSnowfallProperties()
-        {
-            if (_snowfall)
-            {
-                if (snowfallSystem == null)
-                {
-                    GameObject go = Instantiate(Resources.Load<GameObject>("Common/Prefabs/SnowParticleSystem")) as GameObject;
-                    go.name = SNOW_PARTICLE_SYSTEM;
-                    go.hideFlags = HideFlags.DontSave;
-                    if (go == null)
-                    {
-                        Debug.Log("SnowParticleSystem not found.");
-                        _snowfall = false;
-                    }
-                    else
-                    {
-                        snowfallSystem = go.GetComponent<ParticleSystem>();
-                    }
-                }
-                if (snowfallSystem != null)
-                {
-                    var emission = snowfallSystem.emission;
-#if WORLDAPI_PRESENT
-																				emission.rateOverTime = 1000 * _snowfallIntensity * WAPI.WorldManager.Instance.SnowPower;
-#else
-                    emission.rateOverTime = 1000 * _snowfallIntensity;
-#endif
-
-                    snowfallSystem.gameObject.layer = SNOW_PARTICLES_LAYER;
-                    ParticleSystemRenderer r = snowfallSystem.GetComponent<ParticleSystemRenderer>();
-                    r.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
-                    if (_snowfallReceiveShadows)
-                    {
-                        r.sharedMaterial = snowParticleIllumOpaque;
-                        r.receiveShadows = true;
-                    }
-                    else if (_snowfallUseIllumination)
-                    {
-                        r.sharedMaterial = snowParticleIllum;
-                        r.receiveShadows = false;
-                    }
-                    else
-                    {
-                        r.sharedMaterial = snowParticle;
-                        r.receiveShadows = false;
-                    }
-                }
-            }
-            else if (snowfallSystem != null)
-            {
-                DestroyImmediate(snowfallSystem.gameObject);
-                snowfallSystem = null;
-            }
-        }
-
         void UpdateMaterials()
         {
             if (!_fixMaterials)
-                return;
+            { Debug.Log("Problem Area"); return; }
 
             const int RENDERQUEUE_TRANSPARENT = 3000;
             Material[] materials = FindObjectsOfType<Material>();
@@ -2822,12 +2510,12 @@ namespace GlobalSnowEffect
         void UpdateLODMaterials(LODGroup lodGroup)
         {
             if (lodGroup == null)
-                return;
+            { Debug.Log("Problem Area"); return; }
             Shader originalSpeedTreeBillboardShader = Shader.Find("Nature/SpeedTree Billboard");
 
             LOD[] lods = lodGroup.GetLODs();
             if (lods == null)
-                return;
+            { Debug.Log("Problem Area"); return; }
             for (int ld = 0; ld < lods.Length; ld++)
             {
                 Renderer[] rr = lods[ld].renderers;
@@ -2974,7 +2662,7 @@ namespace GlobalSnowEffect
         void UpdateTerrain(Terrain terrain)
         {
             if (terrain == null)
-                return;
+            { Debug.Log("Problem Area"); return; }
             GlobalSnowCollisionDetector cd = terrain.GetComponent<GlobalSnowCollisionDetector>();
             if (_terrainMarks)
             {
@@ -3010,10 +2698,7 @@ namespace GlobalSnowEffect
             {
                 ignoredGOs.Add(o);
                 needUpdateSnowCoverage = true;
-                if (deferred)
-                {
-                    needRebuildCommandBuffer = true;
-                }
+                needRebuildCommandBuffer = true;
             }
         }
 
@@ -3026,10 +2711,7 @@ namespace GlobalSnowEffect
             if (ignoredGOs.Contains(o))
             {
                 ignoredGOs.Remove(o);
-                if (deferred)
-                {
                     needRebuildCommandBuffer = true;
-                }
 
             }
         }

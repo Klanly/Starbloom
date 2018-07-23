@@ -8,16 +8,23 @@ public class DG_InteractHandler : MonoBehaviour
 
 
 
+    public class PlayerInteract
+    {
+        [System.NonSerialized] public DG_ContextObject SavedCO;
+        [System.NonSerialized] public NetworkObject SavedNO;
+        [System.NonSerialized] public DG_ItemObject SavedIO;
+        [System.NonSerialized] public bool AwaitingResponse;
+    }
 
+    [System.NonSerialized] public PlayerInteract[] Interactors;
 
-    DG_ContextObject SavedCO;
-    NetworkObject SavedNO;
-    DG_ItemObject SavedIO;
-    bool AwaitingResponse;
 
 
     private void Awake()
     {
+        Interactors = new PlayerInteract[2];
+        Interactors[0] = new PlayerInteract();
+        Interactors[1] = new PlayerInteract();
         QuickFind.InteractHandler = this;
     }
 
@@ -31,19 +38,19 @@ public class DG_InteractHandler : MonoBehaviour
             if (P.CurrentInputState != DG_PlayerInput.CurrentInputState.Default) continue;
 
             bool AllowHold = false;
-            if (QuickFind.GameSettings.AllowActionsOnHold) { if (P.ButtonSet.SecondaryAction.Held) AllowHold = true; }
+            if (QuickFind.GameSettings.AllowActionsOnHold) { if (P.InteractButton == DG_GameButtons.ButtonState.Held) AllowHold = true; }
 
-            if (P.ButtonSet.SecondaryAction.Up || AllowHold)
+            if (P.InteractButton == DG_GameButtons.ButtonState.Up || AllowHold)
             {
                 if (!P.CharLink.AnimationSync.CharacterIsGrounded()) return;
 
-                if (QuickFind.ContextDetectionHandler.ContextHit)
+                if (QuickFind.ContextDetectionHandler.Contexts[i].ContextHit)
                 {
-                    DG_ContextObject CO = QuickFind.ContextDetectionHandler.COEncountered;
+                    DG_ContextObject CO = QuickFind.ContextDetectionHandler.Contexts[i].COEncountered;
                     if (CO == null)
                     {
-                        if (QuickFind.ContextDetectionHandler.LastEncounteredContext != null)
-                            QuickFind.ContextDetectionHandler.LastEncounteredContext.SendMessage("OnInteract"); return;
+                        if (QuickFind.ContextDetectionHandler.Contexts[i].LastEncounteredContext != null)
+                            QuickFind.ContextDetectionHandler.Contexts[i].LastEncounteredContext.SendMessage("OnInteract"); return;
                     }
 
                     switch (CO.Type)
@@ -51,12 +58,13 @@ public class DG_InteractHandler : MonoBehaviour
                         case DG_ContextObject.ContextTypes.PickupItem: TriggerAnimation(CO, P.CharLink.PlayerID); break;
                         case DG_ContextObject.ContextTypes.Conversation: break;
                         case DG_ContextObject.ContextTypes.Treasure: break;
-                        case DG_ContextObject.ContextTypes.MoveableStorage: HandleMoveableStorage(CO); break;
+                        case DG_ContextObject.ContextTypes.MoveableStorage: HandleMoveableStorage(CO, P.CharLink.PlayerID); break;
                         case DG_ContextObject.ContextTypes.HarvestablePlant: TriggerAnimation(CO, P.CharLink.PlayerID); break;
                         case DG_ContextObject.ContextTypes.HarvestableTree: TriggerAnimation(CO, P.CharLink.PlayerID); break;
-                        case DG_ContextObject.ContextTypes.ShopInterface: HandleShopInterface(CO); break;
-                        case DG_ContextObject.ContextTypes.ShippingBin: QuickFind.ShippingBinGUI.OpenBinUI(CO); break;
+                        case DG_ContextObject.ContextTypes.ShopInterface: HandleShopInterface(CO, P.CharLink.PlayerID); break;
+                        case DG_ContextObject.ContextTypes.ShippingBin: QuickFind.ShippingBinGUI.OpenBinUI(CO, P.CharLink.PlayerID); break;
                         case DG_ContextObject.ContextTypes.ScenePortal: CO.GetComponent<DG_ScenePortalTrigger>().TriggerSceneChange(P.CharLink.PlayerID); break;
+                        case DG_ContextObject.ContextTypes.Bed: QuickFind.SleepHandler.BedInteract(P.CharLink.PlayerID); break;
                     }
                 }
             }
@@ -66,17 +74,20 @@ public class DG_InteractHandler : MonoBehaviour
 
     public void TriggerAnimation(DG_ContextObject CO, int PlayerID)
     {
-        AwaitingResponse = true;
-        SavedCO = CO;
-        SavedNO = QuickFind.NetworkObjectManager.ScanUpTree(CO.transform);
-        SavedIO = QuickFind.ItemDatabase.GetItemFromID(SavedNO.ItemRefID);
+        int Array = 0;
+        if (PlayerID == QuickFind.NetworkSync.Player2PlayerCharacter) Array = 1;
+
+        Interactors[Array].AwaitingResponse = true;
+        Interactors[Array].SavedCO = CO;
+        Interactors[Array].SavedNO = QuickFind.NetworkObjectManager.ScanUpTree(CO.transform);
+        Interactors[Array].SavedIO = QuickFind.ItemDatabase.GetItemFromID(Interactors[Array].SavedNO.ItemRefID);
 
         if (QuickFind.GameSettings.DisableAnimations)
             ReturnInteractionHit(PlayerID);
         else
         {
             QuickFind.NetworkSync.GetUserByPlayerID(PlayerID).CharacterLink.FacePlayerAtPosition(CO.transform.position);
-            QuickFind.NetworkSync.GetUserByPlayerID(PlayerID).CharacterLink.AnimationSync.TriggerAnimation(SavedIO.AnimationInteractID);
+            QuickFind.NetworkSync.GetUserByPlayerID(PlayerID).CharacterLink.AnimationSync.TriggerAnimation(Interactors[Array].SavedIO.AnimationInteractID);
         }
     }
 
@@ -84,13 +95,16 @@ public class DG_InteractHandler : MonoBehaviour
 
     public void ReturnInteractionHit(int PlayerId)
     {
-        if (!AwaitingResponse) return; AwaitingResponse = false;
+        int Array = 0;
+        if (PlayerId == QuickFind.NetworkSync.Player2PlayerCharacter) Array = 1;
 
-        switch (SavedCO.Type)
+        if (!Interactors[Array].AwaitingResponse) return; Interactors[Array].AwaitingResponse = false;
+
+        switch (Interactors[Array].SavedCO.Type)
         {
-            case DG_ContextObject.ContextTypes.PickupItem: HandlePickUpItem(SavedCO, PlayerId); break;
-            case DG_ContextObject.ContextTypes.HarvestablePlant: HandleSingleHarvest(SavedCO, PlayerId); break;
-            case DG_ContextObject.ContextTypes.HarvestableTree: HandleClusterHarvest(SavedCO); break;
+            case DG_ContextObject.ContextTypes.PickupItem: HandlePickUpItem(Interactors[Array].SavedCO, PlayerId); break;
+            case DG_ContextObject.ContextTypes.HarvestablePlant: HandleSingleHarvest(Interactors[Array].SavedCO, PlayerId); break;
+            case DG_ContextObject.ContextTypes.HarvestableTree: HandleClusterHarvest(Interactors[Array].SavedCO); break;
         }
     }
 
@@ -120,10 +134,10 @@ public class DG_InteractHandler : MonoBehaviour
     }
 
 
-    void HandleMoveableStorage(DG_ContextObject CO)
+    void HandleMoveableStorage(DG_ContextObject CO, int PlayerID)
     {
         NetworkObject NO = QuickFind.NetworkObjectManager.ScanUpTree(CO.transform);
-        QuickFind.StorageUI.OpenStorageUI(NO, false);
+        QuickFind.StorageUI.OpenStorageUI(NO, false, PlayerID);
     }
 
     public void HandleClusterHarvest(DG_ContextObject CO)
@@ -168,9 +182,9 @@ public class DG_InteractHandler : MonoBehaviour
                 QuickFind.SkillTracker.IncreaseSkillLevel(DG_SkillTracker.SkillTags.Farming, (DG_ItemObject.ItemQualityLevels)ItemQuality, PlayerID);
         }
     }
-    void HandleShopInterface(DG_ContextObject CO)
+    void HandleShopInterface(DG_ContextObject CO, int PlayerID)
     {
         DG_ShopInteractionPoint SIP = CO.GetComponent<DG_ShopInteractionPoint>();
-        QuickFind.ShopGUI.OpenShopUI(SIP.ShopID);
+        QuickFind.ShopGUI.OpenShopUI(SIP.ShopID, PlayerID);
     }
 }

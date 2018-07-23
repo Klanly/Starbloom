@@ -17,10 +17,9 @@ public class DG_GUIMainMenu : Photon.MonoBehaviour
     }
 
 
-    public bool isPlayer1;
-
     [Header("Canvases")]
     public CanvasGroup UICanvas = null;
+    public UnityEngine.UI.GraphicRaycaster Raycaster;
 
     [Header("Static Text")]
     public DG_TextStatic[] StaticTextArray;
@@ -32,15 +31,14 @@ public class DG_GUIMainMenu : Photon.MonoBehaviour
 
 
 
-
     private void Awake()
     {
         QuickFind.MainMenuUI = this;
     }
     private void Start()
     {
-        if (!QuickFind.GameSettings.BypassMainMenu) QuickFind.EnableCanvas(UICanvas, true);
-        else QuickFind.EnableCanvas(UICanvas, false);
+        if (!QuickFind.GameSettings.BypassMainMenu) { QuickFind.EnableCanvas(UICanvas, true, Raycaster); QuickFind.EnableCanvas(UICanvas, true, Raycaster); }
+        else { QuickFind.EnableCanvas(UICanvas, false, Raycaster); QuickFind.EnableCanvas(UICanvas, false, Raycaster); }
         transform.localPosition = Vector3.zero;
         OnlineToggle.isOn = QuickFind.GameSettings.PlayOnline;
 
@@ -51,12 +49,6 @@ public class DG_GUIMainMenu : Photon.MonoBehaviour
 
 
 
-
-    public void OpenPlayerSelectScreen()
-    { Debug.Log("Select Player to Play as HERE! :)"); }
-
-    public void OpenCharacterCreationScreen()
-    { QuickFind.CharacterCreation.OpenCharacterCreation(true); }
 
 
     public void ButtonHit(DG_MainMenuItem ItemRoot)
@@ -80,7 +72,7 @@ public class DG_GUIMainMenu : Photon.MonoBehaviour
         foreach (DG_TextStatic TS in StaticTextArray)
             TS.ManualLoad();
 
-        QuickFind.EnableCanvas(UICanvas, false);
+        QuickFind.EnableCanvas(UICanvas, false, Raycaster);
         QuickFind.NetworkMaster.CreateNewRoom = true;
         QuickFind.NetworkMaster.StartGame();
     }
@@ -92,7 +84,7 @@ public class DG_GUIMainMenu : Photon.MonoBehaviour
 
     void JoinGameMultiplayer()
     {
-        QuickFind.EnableCanvas(UICanvas, false);
+        QuickFind.EnableCanvas(UICanvas, false, Raycaster);
         QuickFind.NetworkMaster.CreateNewRoom = false;
         QuickFind.NetworkMaster.StartGame();
     }

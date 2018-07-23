@@ -13,7 +13,7 @@ public class DG_SceneEntryObject : MonoBehaviour {
     public float CameraFacing;
 
 
-    [Button(ButtonSizes.Small)] public void JumpToPoint() { if (!Application.isPlaying) return; QuickFind.PlayerTrans.position = transform.position; QuickFind.PlayerTrans.eulerAngles = transform.eulerAngles; }
+    [Button(ButtonSizes.Small)] public void JumpToPoint() { if (!Application.isPlaying) return; Transform PlayerTrans = QuickFind.NetworkSync.GetCharacterLinkByPlayerID(QuickFind.NetworkSync.Player1PlayerCharacter).PlayerTrans;  PlayerTrans.position = transform.position; PlayerTrans.eulerAngles = transform.eulerAngles; }
 
 
 

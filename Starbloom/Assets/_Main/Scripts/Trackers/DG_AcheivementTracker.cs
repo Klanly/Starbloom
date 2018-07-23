@@ -23,7 +23,7 @@ public class DG_AcheivementTracker : MonoBehaviour {
         int CurrentFishMax = Acheivements.LargestFishCaught[ActiveFishReference.AtlasObject.DatabaseID];
         if (CurrentFishMax < ActiveFishReference.Weight)
         {
-            QuickFind.FishingGUI.DisplayFishRecordText();
+            QuickFind.FishingGUI.DisplayFishRecordText(PlayerID);
             Acheivements.LargestFishCaught[ActiveFishReference.AtlasObject.DatabaseID] = ActiveFishReference.Weight;
         }
     }

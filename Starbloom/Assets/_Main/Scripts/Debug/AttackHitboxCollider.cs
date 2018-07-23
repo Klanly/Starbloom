@@ -7,9 +7,11 @@ public class AttackHitboxCollider : MonoBehaviour {
     public enum AttackerType
     {
         Player,
+        Player2,
         Enemy
     }
     public AttackerType Type;
+
 
     private void OnEnable()
     {
@@ -25,7 +27,7 @@ public class AttackHitboxCollider : MonoBehaviour {
         }
         if(Type == AttackerType.Player)
         {
-            QuickFind.CombatHandler.ObjectHitReturn(other);
+            QuickFind.CombatHandler.ObjectHitReturn(other, (int)Type);
         }
     }
 }

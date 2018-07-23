@@ -4,16 +4,19 @@ using UnityEngine;
 
 public class DG_ShopGUI : MonoBehaviour {
 
+    [System.Serializable]
+    public class PlayerShopGUI
+    {
+        [Header("Grid")]
+        public RectTransform DisplayGrid = null;
+        public DG_UICustomGridScroll GridScroll;
+        [Header("Canvases")]
+        public CanvasGroup UICanvas = null;
+        public UnityEngine.UI.GraphicRaycaster Raycaster;
+        [System.NonSerialized] public bool ShopUIisOpen = false;
+    }
 
-    public bool isPlayer1;
-
-    [Header("Grid")]
-    public RectTransform DisplayGrid = null;
-    public DG_UICustomGridScroll GridScroll;
-    [Header("Canvases")]
-    public CanvasGroup UICanvas = null;
-    [System.NonSerialized] public bool ShopUIisOpen = false;
-
+    public PlayerShopGUI[] ShopGuis;
 
     private void Awake()
     {
@@ -22,38 +25,55 @@ public class DG_ShopGUI : MonoBehaviour {
 
     private void Start()
     {
-        QuickFind.EnableCanvas(UICanvas, false);
+        QuickFind.EnableCanvas(ShopGuis[0].UICanvas, false, ShopGuis[0].Raycaster);
+        QuickFind.EnableCanvas(ShopGuis[1].UICanvas, false, ShopGuis[1].Raycaster);
         transform.localPosition = Vector3.zero;
     }
 
 
 
-    public void OpenShopUI(int ShopID)
+    public void OpenShopUI(int ShopID, int PlayerID)
     {
-        GridScroll.ResetGrid();
-        LoadShopData(ShopID);
+        int ArrayNum = 0;
+        if (PlayerID == QuickFind.NetworkSync.Player2PlayerCharacter) ArrayNum = 1;
 
-        ShopUIisOpen = true;
-        QuickFind.EnableCanvas(UICanvas, true);
-        QuickFind.GUI_Inventory.OpenShopUI();
-    }
-    public void CloseShopUI()
-    {
-        ShopUIisOpen = false;
-        QuickFind.EnableCanvas(UICanvas, false);
-        QuickFind.GUI_Inventory.CloseShopUI();
+        ShopGuis[ArrayNum].GridScroll.ResetGrid();
+        LoadShopData(ShopID, PlayerID);
+
+        ShopGuis[ArrayNum].ShopUIisOpen = true;
+        QuickFind.EnableCanvas(ShopGuis[ArrayNum].UICanvas, true, ShopGuis[ArrayNum].Raycaster);
+        QuickFind.GUI_Inventory.OpenShopUI(PlayerID);
     }
 
-
-
-    void LoadShopData(int ShopID)
+    public void ClosePlayer1Shop()
     {
+        ShopGuis[0].ShopUIisOpen = false;
+        QuickFind.EnableCanvas(ShopGuis[0].UICanvas, false, ShopGuis[0].Raycaster);
+        QuickFind.GUI_Inventory.CloseShopUI(QuickFind.NetworkSync.Player1PlayerCharacter);
+    }
+    public void ClosePlayer2Shop()
+    {
+        ShopGuis[1].ShopUIisOpen = false;
+        QuickFind.EnableCanvas(ShopGuis[1].UICanvas, false, ShopGuis[1].Raycaster);
+        QuickFind.GUI_Inventory.CloseShopUI(QuickFind.NetworkSync.Player2PlayerCharacter);
+    }
+
+
+
+    void LoadShopData(int ShopID, int PlayerID)
+    {
+        int ArrayNum = 0;
+        bool Player1 = true;
+        if (PlayerID == QuickFind.NetworkSync.Player2PlayerCharacter) { ArrayNum = 1; Player1 = false; }
+
+        PlayerShopGUI PSG = ShopGuis[ArrayNum];
+
         //Load Data from Atlas.
         DG_ShopAtlasObject SAO = QuickFind.ShopAtlas.GetItemFromID(ShopID);
         WeatherHandler.Seasons CurrentSeason = QuickFind.WeatherHandler.CurrentSeason;
 
         int index = 0;
-        int GridCount = DisplayGrid.childCount;
+        int GridCount = PSG.DisplayGrid.childCount;
 
         for (int i = 0; i < SAO.Seasons.Length; i++)
         {
@@ -67,20 +87,20 @@ public class DG_ShopGUI : MonoBehaviour {
                     DG_ShopGuiItem SGI;
                     if (index < GridCount)
                     {
-                        SGI = DisplayGrid.GetChild(index).GetComponent<DG_ShopGuiItem>();
+                        SGI = PSG.DisplayGrid.GetChild(index).GetComponent<DG_ShopGuiItem>();
                         SGI.gameObject.SetActive(true);
                     }
                     else
                     {
-                        Transform New = Instantiate(DisplayGrid.GetChild(0));
-                        New.SetParent(DisplayGrid);
+                        Transform New = Instantiate(PSG.DisplayGrid.GetChild(0));
+                        New.SetParent(PSG.DisplayGrid);
                         SGI = New.GetComponent<DG_ShopGuiItem>();
                         SGI.gameObject.SetActive(true);
                         GridCount++;
                     }
 
                     SGI.SeasonalGoodsRef = SG;
-                    SGI.UpdateVisuals();
+                    SGI.UpdateVisuals(Player1);
                     index++;
                 }
             }
@@ -89,7 +109,7 @@ public class DG_ShopGUI : MonoBehaviour {
         if (index < (GridCount - 1))
         {
             for (int i = index; i < GridCount; i++)
-                DisplayGrid.GetChild(i).gameObject.SetActive(false);
+                PSG.DisplayGrid.GetChild(i).gameObject.SetActive(false);
         }
     }
 
@@ -101,10 +121,13 @@ public class DG_ShopGUI : MonoBehaviour {
 
     public void ShopItemPressed(DG_ShopGuiItem ShopItem)
     {
-        if (QuickFind.GUI_Inventory.isFloatingInventoryItem) return;
+        int ArrayNum = 0;
+        if (!ShopItem.Player1) ArrayNum = 1;
+
+        if (QuickFind.GUI_Inventory.PlayersInventory[ArrayNum].isFloatingInventoryItem) return;
 
         int PlayerID = QuickFind.NetworkSync.Player1PlayerCharacter;
-        if (!isPlayer1) PlayerID = QuickFind.NetworkSync.Player2PlayerCharacter;
+        if (!ShopItem.Player1) PlayerID = QuickFind.NetworkSync.Player2PlayerCharacter;
 
         if (!QuickFind.InventoryManager.AddItemToRucksack(PlayerID, ShopItem.SeasonalGoodsRef.ItemDatabaseRef, (DG_ItemObject.ItemQualityLevels)ShopItem.SeasonalGoodsRef.QualityLevel, false, true)) return;
         if (!QuickFind.MoneyHandler.CheckIfSubtractMoney(QuickFind.ItemDatabase.GetItemFromID(ShopItem.SeasonalGoodsRef.ItemDatabaseRef).GetBuyPriceByQuality(ShopItem.SeasonalGoodsRef.QualityLevel))) return;
@@ -113,7 +136,7 @@ public class DG_ShopGUI : MonoBehaviour {
     void MakePurchase(DG_ShopGuiItem ShopItem)
     {
         int PlayerID = QuickFind.NetworkSync.Player1PlayerCharacter;
-        if (!isPlayer1) PlayerID = QuickFind.NetworkSync.Player2PlayerCharacter;
+        if (!ShopItem.Player1) PlayerID = QuickFind.NetworkSync.Player2PlayerCharacter;
 
         DG_ItemObject IO = QuickFind.ItemDatabase.GetItemFromID(ShopItem.SeasonalGoodsRef.ItemDatabaseRef);
         QuickFind.MoneyHandler.TrySubtractMoney(IO.GetBuyPriceByQuality(ShopItem.SeasonalGoodsRef.QualityLevel));

@@ -18,13 +18,22 @@ public class HotbarItemHandler : MonoBehaviour {
     }
 
 
-    bool AwaitingActivateable;
-    [System.NonSerialized] public DG_PlayerCharacters.RucksackSlot CurrentRucksackSlot;
-    [System.NonSerialized] public DG_ItemObject CurrentItemDatabaseReference;
+
+    public class PlayerHotbar
+    {
+        [System.NonSerialized] public bool AwaitingActivateable;
+        [System.NonSerialized] public DG_PlayerCharacters.RucksackSlot CurrentRucksackSlot;
+        [System.NonSerialized] public DG_ItemObject CurrentItemDatabaseReference;
+    }
+
+    public PlayerHotbar[] Hotbars;
 
 
     private void Awake()
     {
+        Hotbars = new PlayerHotbar[2];
+        Hotbars[0] = new PlayerHotbar();
+        Hotbars[1] = new PlayerHotbar();
         QuickFind.ItemActivateableHandler = this;
     }
 
@@ -44,15 +53,15 @@ public class HotbarItemHandler : MonoBehaviour {
             if (P.CharLink == null) return;
 
             if (P.CharLink.AnimationSync.MidAnimation) return;
-            if (QuickFind.GUI_OverviewTabs.UIisOpen || QuickFind.StorageUI.StorageUIOpen) return;
+            if (QuickFind.GUI_OverviewTabs.OverviewTabs[i].UIisOpen || QuickFind.StorageUI.StorageGuis[i].StorageUIOpen) return;
 
 
-            if (P.ButtonSet.Action.Held) AllowSent = true;
-            if (P.ButtonSet.Action.Up) { AllowSent = true; UpEvent = true; }
+            if (P.ToolButton == DG_GameButtons.ButtonState.Held) AllowSent = true;
+            if (P.ToolButton == DG_GameButtons.ButtonState.Up) { AllowSent = true; UpEvent = true; }
 
-            if (AwaitingActivateable && AllowSent)
+            if (Hotbars[i].AwaitingActivateable && AllowSent)
             {
-                switch (CurrentItemDatabaseReference.ActivateableType)
+                switch (Hotbars[i].CurrentItemDatabaseReference.ActivateableType)
                 {
                     case ActivateableTypes.PlaceableItem: QuickFind.ObjectPlacementManager.InputDetected(UpEvent, P.CharLink.PlayerID); break;
                     case ActivateableTypes.Axe: QuickFind.PickaxeHandler.InputDetected(UpEvent, P.CharLink.PlayerID); break;
@@ -73,37 +82,40 @@ public class HotbarItemHandler : MonoBehaviour {
 
     public void SetCurrentActiveItem(DG_PlayerCharacters.RucksackSlot RucksackSlot, DG_ItemObject ItemDatabaseReference, int Slot, int PlayerID)
     {
-        AwaitingActivateable = true;
-        CurrentRucksackSlot = RucksackSlot;
-        CurrentItemDatabaseReference = ItemDatabaseReference;
+        int Array = 0;
+        if (PlayerID == QuickFind.NetworkSync.Player2PlayerCharacter) Array = 1;
+
+        Hotbars[Array].AwaitingActivateable = true;
+        Hotbars[Array].CurrentRucksackSlot = RucksackSlot;
+        Hotbars[Array].CurrentItemDatabaseReference = ItemDatabaseReference;
 
 
-        if (QuickFind.ObjectPlacementManager.GetCRPByPlayerID(PlayerID).PlacementActive) QuickFind.ObjectPlacementManager.DestroyObjectGhost(QuickFind.ObjectPlacementManager.GetCRPByPlayerID(PlayerID));
-        if (QuickFind.HoeHandler.PlacementActive) QuickFind.HoeHandler.CancelHoeing();
-        if (QuickFind.WateringCanHandler.PlacementActive) QuickFind.WateringCanHandler.CancelWatering();
-        if (QuickFind.PickaxeHandler.PlacementActive) QuickFind.PickaxeHandler.CancelHittingMode();
-        if (QuickFind.CombatHandler.WeaponActive) QuickFind.CombatHandler.CancelHittingMode();
+        if (QuickFind.ObjectPlacementManager.GetCRPByPlayerID(PlayerID).PlacementActive) QuickFind.ObjectPlacementManager.DestroyObjectGhost(PlayerID, QuickFind.ObjectPlacementManager.GetCRPByPlayerID(PlayerID));
+        if (QuickFind.HoeHandler.PlacementActive) QuickFind.HoeHandler.CancelHoeing(PlayerID);
+        if (QuickFind.WateringCanHandler.PlacementActive) QuickFind.WateringCanHandler.CancelWatering(PlayerID);
+        if (QuickFind.PickaxeHandler.PlacementActive) QuickFind.PickaxeHandler.CancelHittingMode(PlayerID);
+        if (QuickFind.CombatHandler.Combats[Array].WeaponActive) QuickFind.CombatHandler.CancelHittingMode(PlayerID);
 
-        QuickFind.TargetingController.TargetingCanvas.gameObject.SetActive(false);
+        QuickFind.TargetingController.Targeting[Array].TargetingCanvas.gameObject.SetActive(false);
 
 
         switch (ItemDatabaseReference.ActivateableType)
         {
             case ActivateableTypes.PlaceableItem: QuickFind.ObjectPlacementManager.SetupItemObjectGhost(PlayerID, RucksackSlot, ItemDatabaseReference, Slot); break;
-            case ActivateableTypes.Hoe: QuickFind.HoeHandler.SetupForHoeing(RucksackSlot, ItemDatabaseReference, Slot); break;
-            case ActivateableTypes.WateringCan: QuickFind.WateringCanHandler.SetupForWatering(RucksackSlot, ItemDatabaseReference, Slot); break;
-            case ActivateableTypes.Pickaxe: QuickFind.PickaxeHandler.SetupForHitting(RucksackSlot, ItemDatabaseReference, Slot, ActivateableTypes.Pickaxe); break;
-            case ActivateableTypes.Axe: QuickFind.PickaxeHandler.SetupForHitting(RucksackSlot, ItemDatabaseReference, Slot, ActivateableTypes.Axe); break;
-            case ActivateableTypes.Weapon: QuickFind.CombatHandler.SetupForHitting(RucksackSlot, ItemDatabaseReference, Slot); break;
+            case ActivateableTypes.Hoe: QuickFind.HoeHandler.SetupForHoeing(PlayerID, RucksackSlot, ItemDatabaseReference, Slot); break;
+            case ActivateableTypes.WateringCan: QuickFind.WateringCanHandler.SetupForWatering(PlayerID, RucksackSlot, ItemDatabaseReference, Slot); break;
+            case ActivateableTypes.Pickaxe: QuickFind.PickaxeHandler.SetupForHitting(PlayerID, RucksackSlot, ItemDatabaseReference, Slot, ActivateableTypes.Pickaxe); break;
+            case ActivateableTypes.Axe: QuickFind.PickaxeHandler.SetupForHitting(PlayerID, RucksackSlot, ItemDatabaseReference, Slot, ActivateableTypes.Axe); break;
+            case ActivateableTypes.Weapon: QuickFind.CombatHandler.SetupForHitting(PlayerID, RucksackSlot, ItemDatabaseReference, Slot); break;
         }
 
 
         if (ItemDatabaseReference.isTool || ItemDatabaseReference.isWeapon)
             QuickFind.ClothingHairManager.AddClothingItem(QuickFind.NetworkSync.GetCharacterLinkByPlayerID(PlayerID), ItemDatabaseReference.GetClothingID(RucksackSlot));
     }
-    public void SetNoActiveItem()
+    public void SetNoActiveItem(int Array)
     {
-        AwaitingActivateable = false;
+        Hotbars[Array].AwaitingActivateable = false;
     }
 
 }

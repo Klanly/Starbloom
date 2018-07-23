@@ -6,7 +6,7 @@ namespace GlobalSnowEffect {
 								GlobalSnow snow;
 
 								void Start () {
-												snow = GlobalSnow.instance;
+												snow = QuickFind.SnowHandler;
 								}
 
 								void Update () {

@@ -12,6 +12,7 @@ public class DG_GUITab : MonoBehaviour {
     public RectTransform ScaleRect = null;
     public Image HoverOverImage = null;
 
+    public bool isPlayer1;
 
     [Header("Icon Scale Effect")]
     public float ScaleSize;

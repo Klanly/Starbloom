@@ -50,6 +50,8 @@ public class DG_InventoryItem : MonoBehaviour {
         if (!isTrash) Icon.sprite = QuickFind.GUI_Inventory.DefaultNullSprite;
     }
 
+
+
     public void ItemHoverIn()
     {
         ScaleUp = true;
@@ -58,18 +60,21 @@ public class DG_InventoryItem : MonoBehaviour {
         EndLoop = false;
         this.enabled = true;
 
-        QuickFind.GUI_Inventory.CurrentHoverItem = this;
+        int ArrayNum = 0;
+        if (!isPlayer1) ArrayNum = 1;
+
+        int PlayerID = QuickFind.NetworkSync.Player1PlayerCharacter;
+        if (!isPlayer1) PlayerID = QuickFind.NetworkSync.Player2PlayerCharacter;
+
+        QuickFind.GUI_Inventory.PlayersInventory[ArrayNum].CurrentHoverItem = this;
 
         if (ContainsItem)
         {
-            if(!isMirror) QuickFind.TooltipHandler.HoveredInventoryItem = this;
-
-            int PlayerID = QuickFind.NetworkSync.Player1PlayerCharacter;
-            if (!isPlayer1) PlayerID = QuickFind.NetworkSync.Player2PlayerCharacter;
+            if(!isMirror) QuickFind.TooltipHandler.TooltipGuis[ArrayNum].HoveredInventoryItem = this;
 
             DG_PlayerCharacters.RucksackSlot RSS = QuickFind.InventoryManager.GetRuckSackSlotInventoryItem(this, PlayerID);
-            QuickFind.TooltipHandler.ActiveRucksackSlot = RSS;
-            QuickFind.TooltipHandler.ShowToolTip(QuickFind.ItemDatabase.GetItemFromID(RSS.ContainedItem).ToolTipType);
+            QuickFind.TooltipHandler.TooltipGuis[ArrayNum].ActiveRucksackSlot = RSS;
+            QuickFind.TooltipHandler.ShowToolTip(QuickFind.ItemDatabase.GetItemFromID(RSS.ContainedItem).ToolTipType, PlayerID);
         }
     }
     public void ItemHoverOut()
@@ -80,26 +85,40 @@ public class DG_InventoryItem : MonoBehaviour {
         EndLoop = true;
         this.enabled = true;
 
-        QuickFind.TooltipHandler.HideToolTip();
+        int PlayerID = QuickFind.NetworkSync.Player1PlayerCharacter;
+        if (!isPlayer1) PlayerID = QuickFind.NetworkSync.Player2PlayerCharacter;
+
+        QuickFind.TooltipHandler.HideToolTip(PlayerID);
     }
 
     public void ItemPressed()
     {
         if (Input.GetMouseButtonDown(1)) return;
 
-        if (QuickFind.ShippingBinGUI.BinUIisOpen) QuickFind.ShippingBinGUI.DropPanel.SetActive(false);
+        int ArrayNum = 0;
+        if (!isPlayer1) ArrayNum = 1;
+
+        if (QuickFind.ShippingBinGUI.ShippingGUIS[ArrayNum].BinUIisOpen) QuickFind.ShippingBinGUI.ShippingGUIS[ArrayNum].DropPanel.SetActive(false);
         QuickFind.GUI_Inventory.InventoryItemPressed(this);
     }
 
     public void OnDrag()
     {
         if (isMirror) return;
-        if(!QuickFind.GUI_Inventory.isFloatingInventoryItem) ItemPressed();
+
+        int ArrayNum = 0;
+        if (!isPlayer1) ArrayNum = 1;
+
+        if (!QuickFind.GUI_Inventory.PlayersInventory[ArrayNum].isFloatingInventoryItem) ItemPressed();
     }
     public void DragReleased()
     {
         if (isMirror) return;
-        if (QuickFind.ShippingBinGUI.BinUIisOpen) QuickFind.ShippingBinGUI.DropPanel.SetActive(false);
+
+        int ArrayNum = 0;
+        if (!isPlayer1) ArrayNum = 1;
+
+        if (QuickFind.ShippingBinGUI.ShippingGUIS[ArrayNum].BinUIisOpen) QuickFind.ShippingBinGUI.ShippingGUIS[ArrayNum].DropPanel.SetActive(false);
         ItemPressed();
     }
 

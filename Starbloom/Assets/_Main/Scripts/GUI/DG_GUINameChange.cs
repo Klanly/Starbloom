@@ -45,6 +45,7 @@ public class DG_GUINameChange : MonoBehaviour {
     public int PlayerID = -2;
 
     public CanvasGroup UICanvas = null;
+    public UnityEngine.UI.GraphicRaycaster Raycast = null;
     public DG_TextLetterGroup NameRegion;
     public DG_TextLetterGroup LetterSelectRegion;
     public Transform TextButtonGrid;
@@ -81,7 +82,7 @@ public class DG_GUINameChange : MonoBehaviour {
     }
     private void Start()
     {
-        QuickFind.EnableCanvas(UICanvas, false);
+        QuickFind.EnableCanvas(UICanvas, false, Raycast);
         transform.localPosition = Vector3.zero;
     }
 
@@ -90,10 +91,10 @@ public class DG_GUINameChange : MonoBehaviour {
 
     public void OpenNameChangeUI(int CharIDVal, bool FirstTimeDisplay)
     {
-        QuickFind.EnableCanvas(UICanvas, true);
+        QuickFind.EnableCanvas(UICanvas, true, Raycast);
 
         DG_PlayerInput.Player MP = QuickFind.InputController.GetPlayerByPlayerID(PlayerID);
-        MP.InputMode = DG_PlayerInput.Player.InputStateModes.NameChangeMenu;
+        MP.CurrentInputState = DG_PlayerInput.CurrentInputState.InMenu;
 
         DefaultCharID = CharIDVal;
         //Populate Single Letter Regions
@@ -114,10 +115,10 @@ public class DG_GUINameChange : MonoBehaviour {
     }
     public void CloseNameChangeUI()
     {
-        QuickFind.EnableCanvas(UICanvas, false);
+        QuickFind.EnableCanvas(UICanvas, false, Raycast);
 
         DG_PlayerInput.Player MP = QuickFind.InputController.GetPlayerByPlayerID(PlayerID);
-        MP.InputMode = DG_PlayerInput.Player.InputStateModes.Normal;
+        MP.CurrentInputState = DG_PlayerInput.CurrentInputState.InMenu;
 
         NameChangeIsOpen = false;
 

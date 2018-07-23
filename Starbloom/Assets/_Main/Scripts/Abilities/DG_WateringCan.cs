@@ -31,13 +31,18 @@ public class DG_WateringCan : MonoBehaviour {
 
     private void Update()
     {
-        if (PlacementActive)
+        for (int i = 0; i < QuickFind.InputController.Players.Length; i++)
         {
-            if (WaterableObjectFound())
-            { QuickFind.GridDetection.GridMesh.enabled = true; SafeToPlace = true; }
-            else { QuickFind.GridDetection.GridMesh.enabled = false; SafeToPlace = false; }
+            if (QuickFind.InputController.Players[i].CharLink == null) continue;
+
+            if (PlacementActive)
+            {
+                if (WaterableObjectFound(i))
+                { QuickFind.GridDetection.GridDetections[i].GridMesh.enabled = true; SafeToPlace = true; }
+                else { QuickFind.GridDetection.GridDetections[i].GridMesh.enabled = false; SafeToPlace = false; }
+            }
+            else { SafeToPlace = false; }
         }
-        else { SafeToPlace = false; }
     }
 
 
@@ -79,25 +84,31 @@ public class DG_WateringCan : MonoBehaviour {
 
 
 
-    public void SetupForWatering(DG_PlayerCharacters.RucksackSlot Rucksack = null, DG_ItemObject Item = null, int slot = 0)
+    public void SetupForWatering(int PlayerID, DG_PlayerCharacters.RucksackSlot Rucksack = null, DG_ItemObject Item = null, int slot = 0)
     {
+        int Array = 0;
+        if (PlayerID == QuickFind.NetworkSync.Player2PlayerCharacter) Array = 1;
+
         RucksackSlotOpen = Rucksack;
         ItemDatabaseReference = Item;
         ActiveSlot = slot;
-        QuickFind.GridDetection.ObjectIsPlacing = true;
-        QuickFind.GridDetection.GlobalPositioning = false;
+        QuickFind.GridDetection.GridDetections[Array].ObjectIsPlacing = true;
+        QuickFind.GridDetection.GridDetections[Array].GlobalPositioning = false;
         PlacementActive = true;
     }
 
-    public void CancelWatering()
+    public void CancelWatering(int PlayerID)
     {
-        QuickFind.GridDetection.ObjectIsPlacing = false;
+        int Array = 0;
+        if (PlayerID == QuickFind.NetworkSync.Player2PlayerCharacter) Array = 1;
+
+        QuickFind.GridDetection.GridDetections[Array].ObjectIsPlacing = false;
         PlacementActive = false;
     }
 
-    public bool WaterableObjectFound()
+    public bool WaterableObjectFound(int i)
     {
-        Vector3 CastPoint = QuickFind.GridDetection.DetectionPoint.position;
+        Vector3 CastPoint = QuickFind.GridDetection.GridDetections[i].DetectionPoint.position;
         Collider[] hitColliders = Physics.OverlapSphere(CastPoint, .45f, WaterableObjectDetection); //DetermineRadiusLater
 
         if (hitColliders.Length > 0)

@@ -18,11 +18,12 @@ public class DG_TreasureSelection : MonoBehaviour {
 
 
 
-    public void OpenTrashUI(int ItemID, DG_ItemObject.ItemQualityLevels QualityLevel)
+    public void OpenTrashUI(int ItemID, DG_ItemObject.ItemQualityLevels QualityLevel, int PlayerID)
     {
         ClearTreasureChest();
         AddItemToTreasure(ItemID, QualityLevel);
-        QuickFind.StorageUI.OpenStorageUI(TreasureObject, true);
+
+        QuickFind.StorageUI.OpenStorageUI(TreasureObject, true, PlayerID);
     }
 
 

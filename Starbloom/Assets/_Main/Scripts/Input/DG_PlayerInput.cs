@@ -23,32 +23,38 @@ public class DG_PlayerInput : MonoBehaviour {
     [System.Serializable]
     public class Player
     {
-        public enum InputStateModes
-        {
-            Normal,
-            DialogueMenu,
-            NameChangeMenu,
-            ControllerChangeMenu
-        }
-
-
-        [ReadOnly] public DG_CharacterLink CharLink;
+        public DG_GameButtons.Controller CurrentController;
         [ReadOnly] public CurrentInputState CurrentInputState;
-        [ReadOnly] public InputStateModes InputMode = InputStateModes.Normal;
+        [ReadOnly] public DG_CharacterLink CharLink;
+        [System.NonSerialized] public DG_GameButtons ActiveButtonSet;
 
-        [System.NonSerialized] public bool NoActionThisFrame; //Added to Enable Double clicking with Unity's built in button system.
-        [System.NonSerialized] public bool Moveable = true;
-        [System.NonSerialized] public bool InVehicle = false;
-        [System.NonSerialized] public bool ShowCursor = true;
 
+        //
+        [System.NonSerialized] public DG_GameButtons.ButtonState InteractButton;
+        [System.NonSerialized] public DG_GameButtons.ButtonState ToolButton;
+        [System.NonSerialized] public DG_GameButtons.ButtonState SpecialButton;
+        [System.NonSerialized] public DG_GameButtons.ButtonState JumpButton;
+        //
+        [System.NonSerialized] public DG_GameButtons.ButtonState StartButton;
+        [System.NonSerialized] public DG_GameButtons.ButtonState CameraAllowPanButton;
+        [System.NonSerialized] public DG_GameButtons.ButtonState CameraTransitionButton;
+        [System.NonSerialized] public DG_GameButtons.ButtonState ScrollRightButton;
+        [System.NonSerialized] public DG_GameButtons.ButtonState ScrollLeftButton;
+
+        //Movement
         [System.NonSerialized] public float VerticalAxis;
+        [System.NonSerialized] public DG_GameButtons.AxisState VerticalAxisState;
         [System.NonSerialized] public float HorizontalAxis;
+        [System.NonSerialized] public DG_GameButtons.AxisState HorizontalAxisState;
+        //Camera
         [System.NonSerialized] public float CamVerticalAxis;
+        [System.NonSerialized] public DG_GameButtons.AxisState CamVerticalAxisState;
         [System.NonSerialized] public float CamHorizontalAxis;
-        [System.NonSerialized] public float CamZoomAxis;
-
-        [Header("Button Set")] public DG_GameButtons ButtonSet;
+        [System.NonSerialized] public DG_GameButtons.AxisState CamHorizontalAxisState;
+        //Scroll
+        [System.NonSerialized] public DG_GameButtons.AxisState CamScrollAxisState;
     }
+
 
 
     [Header("Debug")]
@@ -59,96 +65,117 @@ public class DG_PlayerInput : MonoBehaviour {
     [Header("Players")]
     [ListDrawerSettings(NumberOfItemsPerPage = 1)]
     public Player[] Players;
-
+    [Header("Button Sets")]
+    [ListDrawerSettings(NumberOfItemsPerPage = 1)]
+    public DG_GameButtons[] ButtonSets;
 
 
     private void Awake()
     {
         QuickFind.InputController = this;
-        Players[0].ButtonSet.GetButtonList();
-        Players[1].ButtonSet.GetButtonList();
+        for(int i = 0; i < ButtonSets.Length; i++) ButtonSets[i].GetButtonList();
+        Players[0].ActiveButtonSet = EquipButtonSet(Players[0].CurrentController);
+        Players[1].ActiveButtonSet = EquipButtonSet(Players[1].CurrentController);
     }
-
+    public DG_GameButtons EquipButtonSet(DG_GameButtons.Controller Controller)
+    {
+        for (int i = 0; i < ButtonSets.Length; i++)
+        { if (ButtonSets[i].ControllerType == Controller) return ButtonSets[i]; } return ButtonSets[0];
+    }
 
     private void Update()
     {
-        CheckCharInput();
-        if (PrintButtonPressed)
-            DetectPressedKeyOrButton();
-    }
-
-
-    void CheckCharInput()
-    {
         for (int i = 0; i < Players.Length; i++)
         {
+            bool CoopMode = false;
+            if (QuickFind.NetworkSync.Player2PlayerCharacter != -1) CoopMode = true;
+            else if (i == 1) return;
+
             Player P = Players[i];
-            P.ButtonSet.CheckButtons();
+            P.ActiveButtonSet.CheckButtons();
 
-            if (P.CurrentInputState == CurrentInputState.Default)
+            UserSettings.PlayerSettings PS = QuickFind.UserSettings.SingleSettings;
+            if (CoopMode) PS = QuickFind.UserSettings.CoopSettings[i];
+
+            switch (P.CurrentInputState)
             {
-
-                float JoystickVertical = 0;
-                float JoystickHorizontal = 0;
-                //Wasd Check
-                if (P.ButtonSet.UpDir.Held) JoystickVertical = 1;
-                if (P.ButtonSet.DownDir.Held) JoystickVertical = -1;
-                if (P.ButtonSet.RightDir.Held) JoystickHorizontal = 1;
-                if (P.ButtonSet.LeftDir.Held) JoystickHorizontal = -1;
-                //Controller Left Stick Check
-                if (P.ButtonSet.JoyVert.Held) JoystickVertical = P.ButtonSet.JoyVert.Value;
-                if (P.ButtonSet.JoyHor.Held) JoystickHorizontal = P.ButtonSet.JoyHor.Value;
-                //Set Values
-                P.VerticalAxis = JoystickVertical;
-                P.HorizontalAxis = JoystickHorizontal;
-
-                JoystickVertical = 0;
-                JoystickHorizontal = 0;
-                //Camera Axis Check
-
-                if (P.ButtonSet.RJoyVert.Value != 0) JoystickVertical = P.ButtonSet.RJoyVert.Value;
-                else if (Input.GetAxis("Vertical") != 0) JoystickVertical = Input.GetAxis("Vertical");
-
-                if (P.ButtonSet.RJoyHor.Value != 0) JoystickHorizontal = P.ButtonSet.RJoyHor.Value;
-                else if (Input.GetAxis("Horizontal") != 0) JoystickHorizontal = Input.GetAxis("Horizontal");
-
-                //Set Values
-                P.CamVerticalAxis = JoystickVertical;
-                P.CamHorizontalAxis = JoystickHorizontal;
-
-                if (P.ButtonSet.CameraBut.Up)
-                {
-                    if (P.CharLink.PlayerCam.CurrentCameraState == CameraLogic.CameraState.Disabled || P.CharLink.PlayerCam.CurrentCameraState == CameraLogic.CameraState.DisabledHideMouse) return;
-
-                    if (P.CharLink.PlayerCam.CurrentCameraAngle == CameraLogic.UserCameraMode.Isometric) P.CharLink.PlayerCam.CurrentCameraAngle = CameraLogic.UserCameraMode.Thirdperson;
-                    else if (P.CharLink.PlayerCam.CurrentCameraAngle == CameraLogic.UserCameraMode.Thirdperson) P.CharLink.PlayerCam.CurrentCameraAngle = CameraLogic.UserCameraMode.Isometric;
-                    QuickFind.PlayerCam.EnableCamera(P.CharLink.PlayerCam, true);
-                }
-
-            }
-
-
-
-            if (P.ButtonSet.StartBut.Up) //Menu Button
-            {
-                if (P.CurrentInputState != CurrentInputState.InCinema)
-                {
-                    if (QuickFind.StorageUI.StorageUIOpen)
-                        QuickFind.StorageUI.CloseStorageUI();
-                    else
-                        QuickFind.GUI_OverviewTabs.OpenUI();
-                }
-            }
-
-            if (P.CurrentInputState == CurrentInputState.Default || P.CurrentInputState == CurrentInputState.InMenu)
-            {
-                //Fix Later for Controller Input
-                P.CamZoomAxis = 0;
-                float ScrollAxis = Input.GetAxis("Mouse ScrollWheel");
-                if (ScrollAxis > 0) P.CamZoomAxis = 1;
-                if (ScrollAxis < 0) P.CamZoomAxis = -1;
+                case CurrentInputState.Default: HandleDefaultControlState(P); break;
             }
         }
+        if (PrintButtonPressed) DetectPressedKeyOrButton();
+    }
+
+    void HandleDefaultControlState(Player P)
+    {
+        //State Stuff
+        ///////////////////////////////////////////////////////////////
+
+        P.InteractButton = P.ActiveButtonSet.Action.CurrentState;
+        P.ToolButton = P.ActiveButtonSet.Action.CurrentState;
+        P.SpecialButton = P.ActiveButtonSet.Action.CurrentState;
+        P.JumpButton = P.ActiveButtonSet.Action.CurrentState;
+
+        P.StartButton = P.ActiveButtonSet.Action.CurrentState;
+        P.CameraAllowPanButton = P.ActiveButtonSet.Action.CurrentState;
+        P.CameraTransitionButton = P.ActiveButtonSet.Action.CurrentState;
+        P.ScrollRightButton = P.ActiveButtonSet.Action.CurrentState;
+        P.ScrollLeftButton = P.ActiveButtonSet.Action.CurrentState;
+
+        P.VerticalAxisState = P.ActiveButtonSet.JoyVert.CurrentAxisState;
+        P.HorizontalAxisState = P.ActiveButtonSet.JoyHor.CurrentAxisState;
+        P.CamVerticalAxisState = P.ActiveButtonSet.RJoyVert.CurrentAxisState;
+        P.CamHorizontalAxisState = P.ActiveButtonSet.RJoyHor.CurrentAxisState;
+        P.CamScrollAxisState = P.ActiveButtonSet.MouseAxis.CurrentAxisState;
+
+        //Axis Stuff
+        ///////////////////////////////////////////////////////////////
+
+        //Wasd Check
+        float AxisVertical = 0; if (P.ActiveButtonSet.UpDir.Held) AxisVertical = 1; if (P.ActiveButtonSet.DownDir.Held) AxisVertical = -1;
+        float AxisHorizontal = 0; if (P.ActiveButtonSet.RightDir.Held) AxisHorizontal = 1; if (P.ActiveButtonSet.LeftDir.Held) AxisHorizontal = -1;
+        //Controller Left Stick Check
+        if (P.ActiveButtonSet.JoyVert.Held) AxisVertical = P.ActiveButtonSet.JoyVert.Value;
+        if (P.ActiveButtonSet.JoyHor.Held) AxisHorizontal = P.ActiveButtonSet.JoyHor.Value;
+        //Set Values
+        P.VerticalAxis = AxisVertical;
+        P.HorizontalAxis = AxisHorizontal;
+        //Camera Axis Check
+        P.CamVerticalAxis = 0; if (P.ActiveButtonSet.RJoyVert.Held) P.CamVerticalAxis = P.ActiveButtonSet.RJoyVert.Value;
+        P.CamHorizontalAxis = 0; if (P.ActiveButtonSet.RJoyHor.Held) P.CamHorizontalAxis = P.ActiveButtonSet.RJoyHor.Value;
+
+        
+
+
+
+
+        //Should be handled By Camera
+
+        //if (P.ButtonSet.CameraBut.Up)
+        //{
+        //    if (P.CharLink.PlayerCam.CurrentCameraState == CameraLogic.CameraState.Disabled || P.CharLink.PlayerCam.CurrentCameraState == CameraLogic.CameraState.DisabledHideMouse) return;
+        //
+        //    if (P.CharLink.PlayerCam.CurrentCameraAngle == CameraLogic.UserCameraMode.Isometric) P.CharLink.PlayerCam.CurrentCameraAngle = CameraLogic.UserCameraMode.Thirdperson;
+        //    else if (P.CharLink.PlayerCam.CurrentCameraAngle == CameraLogic.UserCameraMode.Thirdperson) P.CharLink.PlayerCam.CurrentCameraAngle = CameraLogic.UserCameraMode.Isometric;
+        //    QuickFind.PlayerCam.EnableCamera(P.CharLink.PlayerCam, true);
+        //}
+
+
+        //Should be handled by Inventory GUI
+
+        //if (P.ButtonSet.StartBut.Up) //Menu Button
+        //{
+        //    if (P.CurrentInputState != CurrentInputState.InCinema)
+        //    {
+        //        if (QuickFind.StorageUI.StorageGuis[i].StorageUIOpen)
+        //            QuickFind.StorageUI.CloseStorageUI(P.CharLink.PlayerID);
+        //        else
+        //            QuickFind.GUI_OverviewTabs.OpenUI(i);
+        //    }
+        //}
+    }
+    void HandleInMenuState()
+    {
+
     }
 
 
@@ -175,4 +202,7 @@ public class DG_PlayerInput : MonoBehaviour {
         if (PlayerID == QuickFind.NetworkSync.Player1PlayerCharacter) return Players[0];
         else return Players[1];
     }
+
+
+
 }

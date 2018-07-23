@@ -15,6 +15,7 @@ public class DG_CharacterDashController : MonoBehaviour {
         public Transform DashHelper1;
         public Transform DashHelper2;
         public GameObject MessageReturn;
+        public int ObjectID;
     }
 
     public Transform DashHelper;
@@ -52,7 +53,7 @@ public class DG_CharacterDashController : MonoBehaviour {
             {
                 DO.Timer = 0;
                 DO.inUse = false;
-                if(DO.MessageReturn != null) DO.MessageReturn.SendMessage("DashComplete");
+                if(DO.MessageReturn != null) DO.MessageReturn.SendMessage("DashComplete", DO.ObjectID);
             }
             float Percentage = 1 - (DO.Timer / DO.TotalTime);
             DO.CurrentMovingChar.position = Vector3.Lerp(DO.DashHelper1.position, TrueTarget.position, Percentage);
@@ -62,9 +63,10 @@ public class DG_CharacterDashController : MonoBehaviour {
 
 
 
-    public void DashAction(Transform Character, float DashTime, float DashDistance, bool DoRaycast = false, GameObject ReturnObject = null)
+    public void DashAction(int PlayerID, Transform Character, float DashTime, float DashDistance, bool DoRaycast = false, GameObject ReturnObject = null)
     {
         DashingObject DO = GetDashObjectController(Character);
+        DO.ObjectID = PlayerID;
         DO.inUse = true;
         DO.MessageReturn = ReturnObject;
         DO.CurrentMovingChar = Character;

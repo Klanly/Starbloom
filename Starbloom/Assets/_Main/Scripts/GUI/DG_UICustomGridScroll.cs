@@ -22,13 +22,13 @@ public class DG_UICustomGridScroll : MonoBehaviour {
 
     private void Update()
     {
-        float ZoomAxis = QuickFind.InputController.GetPlayerByPlayerID(PlayerID).CamZoomAxis;
-        if (ZoomAxis != 0)
-        {
-            bool Add = false;
-            if (ZoomAxis < 0) Add = true;
-            AdjustGridPosition(Add);
-        }
+        //float ZoomAxis = QuickFind.InputController.GetPlayerByPlayerID(PlayerID).CamZoomAxis;
+        //if (ZoomAxis != 0)
+        //{
+        //    bool Add = false;
+        //    if (ZoomAxis < 0) Add = true;
+        //    AdjustGridPosition(Add);
+        //}
     }
     public void ResetGrid()
     {

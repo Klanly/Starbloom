@@ -34,11 +34,9 @@ public class DG_BasicCharMovement : MonoBehaviour
 
         DG_PlayerInput.Player MP = QuickFind.InputController.GetPlayerByPlayerID(CharLink.PlayerID);
 
-        if (MP.VerticalAxis != 0 || MP.HorizontalAxis != 0)
-            inputDetected = true;
+        if (MP.VerticalAxis != 0 || MP.HorizontalAxis != 0) inputDetected = true;
 
-
-        if (MP.Moveable && inputDetected)
+        if (inputDetected)
         {
             Transform Camera = MP.CharLink.PlayerCam.CamTrans;
             Vector3 forward = Camera.transform.forward;

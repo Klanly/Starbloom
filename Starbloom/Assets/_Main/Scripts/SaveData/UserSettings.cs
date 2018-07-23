@@ -4,32 +4,46 @@ using UnityEngine;
 using System;
 using Sirenix.OdinInspector;
 
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
+
+
 public class UserSettings : MonoBehaviour {
 
-    [Header("Camera")]
-    public float CameraSensitivity = .5f;
+    [System.Serializable]
+    public class PlayerSettings
+    {
+        [Header("Camera")]
+        public float CameraHorizontalPanSpeed;
+        public float CameraVerticalPanSpeed;
 
-    [Header("Third Person Settings")]
-    public CameraLogic.ControlMode ThirdPersonCameraControlMode;
-    public CameraLogic.ContextDetection ThirdPersonInteractionDetection;
-    public CameraLogic.ContextDetection ThirdPersonEnemyDetectionMode;
-    public CameraLogic.ContextDetection ThirdPersonBreakableDetectionMode;
-    public CameraLogic.ContextDetection ThirdPersonObjectPlacementDetectionMode;
+        [Header("Third Person Settings")]
+        public CameraLogic.ControlMode ThirdPersonCameraControlMode;
+        public CameraLogic.ContextDetection ThirdPersonInteractionDetection;
+        public CameraLogic.ContextDetection ThirdPersonEnemyDetectionMode;
+        public CameraLogic.ContextDetection ThirdPersonBreakableDetectionMode;
+        public CameraLogic.ContextDetection ThirdPersonObjectPlacementDetectionMode;
 
 
-    [Header("Isometric Settings")]
-    public CameraLogic.ControlMode IsometricCameraControlMode;
-    public CameraLogic.ContextDetection IsometricInteractMode;
-    public CameraLogic.ContextDetection IsometricBreakableDetectionMode;
-    public CameraLogic.ContextDetection IsometricEnemyDetectionMode;
-    public CameraLogic.ContextDetection IsometricObjectPlacementDetectionMode;
+        [Header("Isometric Settings")]
+        public CameraLogic.ControlMode IsometricCameraControlMode;
+        public CameraLogic.ContextDetection IsometricInteractMode;
+        public CameraLogic.ContextDetection IsometricBreakableDetectionMode;
+        public CameraLogic.ContextDetection IsometricEnemyDetectionMode;
+        public CameraLogic.ContextDetection IsometricObjectPlacementDetectionMode;
+
+        [Header("Gameplay - Text")]
+        public float TextSpeed = .04f;
+    }
+
+    public PlayerSettings SingleSettings;
+    public PlayerSettings[] CoopSettings;
 
 
     [Header("Gameplay - Text")]
-    public float TextSpeed = .04f;
     public int CurrentLanguage = 0;
     [Header("Graphics")]
-    public bool GlobalDisableCloudRendering = false;
     public bool GlobalDisableWaterReflection = false;
 
 
@@ -44,22 +58,41 @@ public class UserSettings : MonoBehaviour {
     {
         QuickFind.UserSettings = this;
         SettingsDirectory = DG_LocalDataHandler.FindOrCreateSaveDirectory(Environment.CurrentDirectory, "UserSettings") + "/";
+
+
+#if UNITY_EDITOR
+        ArrayList SceneViews = SceneView.sceneViews;
+        foreach (SceneView SV in SceneViews)
+        {
+            if (SV.in2DMode)
+            {
+                Debug.Log("Disabling Water Reflections while in 2D mode.");
+                GlobalDisableWaterReflection = true;
+            }
+        }
+#endif
+
+    }
+
+    private void Start()
+    {
         LoadAllSettings();
     }
 
 
-
     public void LoadAllSettings()
     {
+        UserSettings.PlayerSettings PS = QuickFind.UserSettings.SingleSettings;
+
         Save = false;
-        SetText(TextSpeed);
+        SetText(PS.TextSpeed, PS);
         SetLang(CurrentLanguage);
         Save = true;
     }
 
 
 
-    public void SetText(float Value){ if(!Save) Value = (float)SaveOrLoad("TextSpeed",       "Float", TextSpeed);       TextSpeed       = Value; }
+    public void SetText(float Value, UserSettings.PlayerSettings PS) { if(!Save) Value = (float)SaveOrLoad("TextSpeed",       "Float", PS.TextSpeed); PS.TextSpeed       = Value; }
     public void SetLang(int   Value){ if(!Save) Value = (int)  SaveOrLoad("CurrentLanguage", "Int",   CurrentLanguage); CurrentLanguage = Value; }
 
 

@@ -913,6 +913,133 @@ MonoBehaviour:
   DashBlockingMask:
     serializedVersion: 2
     m_Bits: 32769
+--- !u!1 &1181976774
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1181976775}
+  m_Layer: 12
+  m_Name: Player 2 Dash Attack Hitboxes
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1181976775
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1181976774}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.74, y: 2.422, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1214656562}
+  m_Father: {fileID: 1553316938}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1214656561
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1214656562}
+  - component: {fileID: 1214656566}
+  - component: {fileID: 1214656565}
+  - component: {fileID: 1214656564}
+  - component: {fileID: 1214656563}
+  m_Layer: 26
+  m_Name: HITBOX - Basic Slash
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1214656562
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1214656561}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.942, z: 0.992}
+  m_LocalScale: {x: 1.1207159, y: 0.79587203, z: 1.4922081}
+  m_Children: []
+  m_Father: {fileID: 1181976775}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1214656563
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1214656561}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &1214656564
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1214656561}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
+  m_Materials:
+  - {fileID: 2100000, guid: 58a692d86da3bbf40b1663caa74b44bd, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &1214656565
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1214656561}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1214656566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1214656561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eaf61753b262deb4bab4af41accde6b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Type: 0
 --- !u!1 &1237949739
 GameObject:
   m_ObjectHideFlags: 0
@@ -1061,6 +1188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b932fd6f8c5b3f4e9a49ecb37da7136, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CurrentStates: 
   WaterDetection:
     serializedVersion: 2
     m_Bits: 33041
@@ -1082,8 +1210,6 @@ MonoBehaviour:
   CameraHeight: 40
   CameraSpeed: 4
   PrintDebug: 0
-  GizmoFishingDetection: 1
-  GizmoCasterRange: 1
   QuickHookFish: 0
   QuickCatchFish: 0
   MoveUpFish: 60
@@ -1157,6 +1283,7 @@ Transform:
   - {fileID: 1099949131}
   - {fileID: 1237949740}
   - {fileID: 1754585076}
+  - {fileID: 1181976775}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1171,6 +1298,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aecfc05238261864faafb83301014445, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Combats:
+  - EnemySurroundHelper: {fileID: 1237949740}
+    EnemySurroundNewPoint: {fileID: 758980671}
+    PlayerDashAttackHitboxes: {fileID: 1754585075}
+  - EnemySurroundHelper: {fileID: 1237949740}
+    EnemySurroundNewPoint: {fileID: 758980671}
+    PlayerDashAttackHitboxes: {fileID: 1181976774}
   EnemySurroundHelper: {fileID: 1237949740}
   EnemySurroundNewPoint: {fileID: 758980671}
   PlayerWeaponDashDistance: 5
@@ -1185,7 +1319,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1754585076}
   m_Layer: 12
-  m_Name: Player Dash Attack Hitboxes
+  m_Name: Player 1 Dash Attack Hitboxes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

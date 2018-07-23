@@ -141,7 +141,7 @@ public class FakeRainDropCollision : MonoBehaviour
             if (P.CharLink == null) continue;
 
 
-            if (QuickFind.PlayerTrans == null) return;
+            if (P.CharLink.PlayerTrans == null) return;
 
             if (!IsRaining)
             {
@@ -157,7 +157,7 @@ public class FakeRainDropCollision : MonoBehaviour
             TurnOffSplashCount = 0;
             TurnOffRipplesCount = 0;
 
-            Vector3 CamPos = QuickFind.PlayerTrans.position;
+            Vector3 CamPos = P.CharLink.PlayerTrans.position;
             Vector3 CamOffset = new Vector3(CamPos.x, 100, CamPos.z);
 
             Timer = Timer - Time.deltaTime;

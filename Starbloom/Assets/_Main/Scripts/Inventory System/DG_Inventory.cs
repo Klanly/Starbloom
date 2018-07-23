@@ -71,12 +71,12 @@ public class DG_Inventory : MonoBehaviour {
 
 
         if (OpenTrash)
-            QuickFind.TreasureManager.OpenTrashUI(ItemID, QualityLevel);
+            QuickFind.TreasureManager.OpenTrashUI(ItemID, QualityLevel, PlayerID);
         else if(DestroyNetItem && !JustCheck)
         {
             QuickFind.NetworkSync.SetRucksackValue(PlayerID, ItemAddSlotPosition, RucksackSlot.ContainedItem, RucksackSlot.CurrentStackActive,
             RucksackSlot.LowValue, RucksackSlot.NormalValue, RucksackSlot.HighValue, RucksackSlot.MaximumValue);
-            QuickFind.SystemMessageGUI.GenerateSystemMessage(ItemID);
+            QuickFind.SystemMessageGUI.GenerateSystemMessage(ItemID, PlayerID);
         }
 
 
@@ -119,7 +119,7 @@ public class DG_Inventory : MonoBehaviour {
         else
         {
             SetItemValueInRucksack(RucksackSlotA, ObjectIndexA, SlotA.SlotID, 0, 0, 0, 0, 0, 0, SlotA.IsStorageSlot, PlayerID);
-            QuickFind.GUI_Inventory.ClearFloatingObject();
+            QuickFind.GUI_Inventory.ClearFloatingObject(PlayerID);
         }
 
         if (!SlotB.isTrash) SetItemValueInRucksack(RucksackSlotB, ObjectIndexB, SlotB.SlotID, ContainedItem, CurrentStackActive, LowValue, NormalValue, HighValue, MaximumValue, SlotB.IsStorageSlot, PlayerID);
@@ -135,12 +135,15 @@ public class DG_Inventory : MonoBehaviour {
         RucksackSlot.HighValue = HighValue;
         RucksackSlot.MaximumValue = MaximumValue;
 
-        if(!isStorage)
+        int Playerindex = 0;
+        if (PlayerID != QuickFind.NetworkSync.Player1PlayerCharacter) Playerindex = 1;
+
+        if (!isStorage)
             QuickFind.NetworkSync.SetRucksackValue(ObjectIndex, Slot, ContainedItem, CurrentStackActive, LowValue, NormalValue, HighValue, MaximumValue);
-        else if(!QuickFind.StorageUI.isTreasureUI)
+        else if(!QuickFind.StorageUI.StorageGuis[Playerindex].isTreasureUI)
             QuickFind.NetworkSync.SetStorageValue(QuickFind.NetworkSync.GetUserByPlayerID(PlayerID).SceneID, ObjectIndex, Slot, ContainedItem, CurrentStackActive, LowValue, NormalValue, HighValue, MaximumValue);
         else
-            QuickFind.GUI_Inventory.UpdateInventoryVisuals();
+            QuickFind.GUI_Inventory.UpdateInventoryVisuals(PlayerID);
     }
 
 
@@ -158,7 +161,11 @@ public class DG_Inventory : MonoBehaviour {
             return Equipment.RucksackSlots[II.SlotID];
         }
         else
-            return QuickFind.StorageUI.ActiveStorage.StorageSlots[II.SlotID];
+        {
+            int Playerindex = 0;
+            if (PlayerID != QuickFind.NetworkSync.Player1PlayerCharacter) Playerindex = 1;
+            return QuickFind.StorageUI.StorageGuis[Playerindex].ActiveStorage.StorageSlots[II.SlotID];
+        }
     }
     public DG_ItemObject GetItemByInventoryItem(DG_InventoryItem II, int PlayerID)
     {
@@ -166,10 +173,14 @@ public class DG_Inventory : MonoBehaviour {
         if (!II.IsStorageSlot)
         {
             DG_PlayerCharacters.CharacterEquipment Equipment = QuickFind.Farm.PlayerCharacters[PlayerID].Equipment;
-            RucksackSlot = Equipment.RucksackSlots[II.SlotID];     
+            RucksackSlot = Equipment.RucksackSlots[II.SlotID];
         }
         else
-            RucksackSlot = QuickFind.StorageUI.ActiveStorage.StorageSlots[II.SlotID];
+        {
+            int Playerindex = 0;
+            if (PlayerID != QuickFind.NetworkSync.Player1PlayerCharacter) Playerindex = 1;
+            RucksackSlot = QuickFind.StorageUI.StorageGuis[Playerindex].ActiveStorage.StorageSlots[II.SlotID];
+        }
 
         return QuickFind.ItemDatabase.GetItemFromID(RucksackSlot.ContainedItem);
     }
@@ -190,8 +201,12 @@ public class DG_Inventory : MonoBehaviour {
 
         int IndexA = PlayerID;
         int IndexB = PlayerID;
-        if (FromItem.IsStorageSlot) IndexA = QuickFind.StorageUI.ActiveStorage.transform.GetSiblingIndex();
-        if (ToItem.IsStorageSlot) IndexB = QuickFind.StorageUI.ActiveStorage.transform.GetSiblingIndex();
+
+        int Playerindex = 0;
+        if (PlayerID != QuickFind.NetworkSync.Player1PlayerCharacter) Playerindex = 1;
+
+        if (FromItem.IsStorageSlot) IndexA = QuickFind.StorageUI.StorageGuis[Playerindex].ActiveStorage.transform.GetSiblingIndex();
+        if (ToItem.IsStorageSlot) IndexB = QuickFind.StorageUI.StorageGuis[Playerindex].ActiveStorage.transform.GetSiblingIndex();
 
         int ItemID = From.ContainedItem;
         if (To.ContainedItem == ItemID || To.GetStackValue() == 0)
@@ -249,9 +264,13 @@ public class DG_Inventory : MonoBehaviour {
     {
         ExchangeItems.Clear();
 
-        DG_InventoryItem CurrentHoverItem = QuickFind.GUI_Inventory.CurrentHoverItem;
-        DG_InventoryItem[] InventorySlots = QuickFind.GUI_Inventory.GuiItemSlots;
+        int Playerindex = 0;
+        if (PlayerID != QuickFind.NetworkSync.Player1PlayerCharacter) Playerindex = 1;
 
+        DG_InventoryItem CurrentHoverItem = QuickFind.GUI_Inventory.PlayersInventory[Playerindex].CurrentHoverItem;
+        if (CurrentHoverItem == null) return;
+
+        DG_InventoryItem[] InventorySlots = QuickFind.GUI_Inventory.PlayersInventory[Playerindex].GuiItemSlots;
 
         DG_PlayerCharacters.RucksackSlot MoveStack = GetRuckSackSlotInventoryItem(CurrentHoverItem, PlayerID);
         DG_PlayerCharacters.RucksackSlot[] AlternateSide;
@@ -266,18 +285,19 @@ public class DG_Inventory : MonoBehaviour {
         else
         {
             IsStorage = false;
-            AlternateSide = QuickFind.StorageUI.ActiveStorage.StorageSlots; InventorySlots = QuickFind.StorageUI.StorageSlots;
+            AlternateSide = QuickFind.StorageUI.StorageGuis[Playerindex].ActiveStorage.StorageSlots;
+            InventorySlots = QuickFind.StorageUI.StorageGuis[Playerindex].StorageSlots;
         }
 
         
 
 
 
-        DG_ItemObject IO = GetItemByInventoryItem(QuickFind.GUI_Inventory.CurrentHoverItem, PlayerID);
+        DG_ItemObject IO = GetItemByInventoryItem(QuickFind.GUI_Inventory.PlayersInventory[Playerindex].CurrentHoverItem, PlayerID);
 
         int MaxStack = IO.MaxStackSize;
         int MoveStackValue = MoveStack.GetStackValue();
-        int StorageID = QuickFind.StorageUI.ActiveStorage.transform.GetSiblingIndex();
+        int StorageID = QuickFind.StorageUI.StorageGuis[Playerindex].ActiveStorage.transform.GetSiblingIndex();
         int LoopIndex = PlayerID;
         int FinalIndex = StorageID;
 

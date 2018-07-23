@@ -99,4 +99,8 @@ MonoBehaviour:
   - ReceiveReturnAIPositions
   - OwnershipRequestReceived
   - ReceivePlayerHit
+  - ReceiveSpawnNewlyCreatedChar
+  - AddNewUser
+  - AllowNewUserToJoin
+  - NewPLayerFinishedReceived
   DisableAutoOpenWizard: 1

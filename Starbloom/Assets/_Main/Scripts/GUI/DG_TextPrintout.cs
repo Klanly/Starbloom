@@ -30,13 +30,19 @@ public class DG_TextPrintout : MonoBehaviour {
     {
         QuickFind.DialogueGUIController.SetGuiState(1, PlayerID);
 
+        int Array = 0;
+        if (PlayerID == QuickFind.NetworkSync.Player2PlayerCharacter) Array = 1;
+
+        UserSettings.PlayerSettings PS = QuickFind.UserSettings.SingleSettings;
+        if (QuickFind.NetworkSync.Player2PlayerCharacter != -1) PS = QuickFind.UserSettings.CoopSettings[Array];
+
         TextPrintObject TPO = new TextPrintObject();
         TPO.FinalString = textToDisplay;
         TPO.DisplayCharArray = textToDisplay.ToCharArray();
         TPO.CurrentPosition = 0;
         TPO.TextMeshObject = TextMeshObject;
 
-        float CharDisplayInterval = QuickFind.UserSettings.TextSpeed;
+        float CharDisplayInterval = PS.TextSpeed;
         TPO.TimeTillNextChar = CharDisplayInterval;
 
         PrintObjects.Add(TPO);
@@ -58,7 +64,13 @@ public class DG_TextPrintout : MonoBehaviour {
         if (PrintObjects.Count == 0)
             return;
 
-        float CharDisplayInterval = QuickFind.UserSettings.TextSpeed;
+        int Array = 0;
+        if (PlayerID == QuickFind.NetworkSync.Player2PlayerCharacter) Array = 1;
+
+        UserSettings.PlayerSettings PS = QuickFind.UserSettings.SingleSettings;
+        if (QuickFind.NetworkSync.Player2PlayerCharacter != -1) PS = QuickFind.UserSettings.CoopSettings[Array];
+
+        float CharDisplayInterval = PS.TextSpeed;
         float DeltaTime = Time.deltaTime;
         List<TextPrintObject> ObjectsToClear = new List<TextPrintObject>();
 

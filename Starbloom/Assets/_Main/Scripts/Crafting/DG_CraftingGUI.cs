@@ -4,43 +4,60 @@ using UnityEngine;
 
 public class DG_CraftingGUI : MonoBehaviour {
 
-    [Header("Canvases")]
-    public CanvasGroup UICanvas = null;
-    [Header("References")]
-    public Transform CraftGrid = null;
+
+    [System.Serializable]
+    public class PlayerCraftingGUI
+    {
+        [Header("Canvases")]
+        public CanvasGroup UICanvas = null;
+        public UnityEngine.UI.GraphicRaycaster Raycaster;
+        [Header("References")]
+        public Transform CraftGrid = null;
+    }
+
+    public PlayerCraftingGUI[] CraftingGuis;
+
     [Header("Coloring")]
     public Color AbleToCraftColor;
     public Color InableToCraftColor;
 
-    [Header("Debug")]
-    public bool CanCraft;
+
 
 
     private void Awake() { QuickFind.GUI_Crafting = this; }
-    private void Start() { QuickFind.EnableCanvas(UICanvas, false); transform.localPosition = Vector3.zero; }
+    private void Start() { QuickFind.EnableCanvas(CraftingGuis[0].UICanvas, false, CraftingGuis[0].Raycaster); QuickFind.EnableCanvas(CraftingGuis[1].UICanvas, false, CraftingGuis[1].Raycaster); transform.localPosition = Vector3.zero; }
 
     [System.NonSerialized] public DG_CraftButton CurrentHoverItem = null;
 
 
     public void OpenUI(int PlayerID)
     {
-        QuickFind.GUI_OverviewTabs.CloseAllTabs();
-        QuickFind.EnableCanvas(UICanvas, true);
+        int ArrayNum = 0;
+        if (PlayerID == QuickFind.NetworkSync.Player2PlayerCharacter) ArrayNum = 1;
+
+        QuickFind.GUI_OverviewTabs.CloseAllTabs(ArrayNum, PlayerID);
+        QuickFind.EnableCanvas(CraftingGuis[ArrayNum].UICanvas, true, CraftingGuis[ArrayNum].Raycaster);
         LoadCraftingGUI(PlayerID);
     }
-    public void CloseUI()
+    public void CloseUI(int PlayerID)
     {
-        QuickFind.EnableCanvas(UICanvas, false);
+        int ArrayNum = 0;
+        if (PlayerID == QuickFind.NetworkSync.Player2PlayerCharacter) ArrayNum = 1;
+        QuickFind.EnableCanvas(CraftingGuis[ArrayNum].UICanvas, false, CraftingGuis[ArrayNum].Raycaster);
     }
 
 
     void LoadCraftingGUI(int PlayerID)
     {
+        int ArrayNum = 0;
+        if (PlayerID == QuickFind.NetworkSync.Player2PlayerCharacter) ArrayNum = 1;
+
+
         DG_CraftingDictionaryItem[] CraftingDictionary = QuickFind.CraftingDictionary.ItemCatagoryList;
         int[] PlayerKnownCrafts = QuickFind.Farm.PlayerCharacters[PlayerID].CraftsDiscovered;
 
         int index = 0;
-        int GUIChildCount = CraftGrid.childCount;
+        int GUIChildCount = CraftingGuis[ArrayNum].CraftGrid.childCount;
 
         for (int i = 0; i < CraftingDictionary.Length; i++)
         {
@@ -50,11 +67,11 @@ public class DG_CraftingGUI : MonoBehaviour {
 
                 DG_CraftButton CB = null;
                 if (index < GUIChildCount)
-                    CB = CraftGrid.GetChild(index).GetComponent<DG_CraftButton>();
+                    CB = CraftingGuis[ArrayNum].CraftGrid.GetChild(index).GetComponent<DG_CraftButton>();
                 else
                 {
-                    Transform NewChild = Instantiate(CraftGrid.GetChild(0));
-                    NewChild.SetParent(CraftGrid);
+                    Transform NewChild = Instantiate(CraftingGuis[ArrayNum].CraftGrid.GetChild(0));
+                    NewChild.SetParent(CraftingGuis[ArrayNum].CraftGrid);
                     CB = NewChild.GetComponent<DG_CraftButton>();
                     GUIChildCount++;
                 }

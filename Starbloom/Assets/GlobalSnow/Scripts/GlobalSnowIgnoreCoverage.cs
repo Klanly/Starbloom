@@ -14,7 +14,7 @@ namespace GlobalSnowEffect
 
         void OnEnable()
         {
-            snow = GlobalSnow.instance;
+            snow = QuickFind.SnowHandler;
             AddToExclusionList();
         }
 
@@ -22,7 +22,7 @@ namespace GlobalSnowEffect
         {
             if (snow == null)
             {
-                snow = GlobalSnow.instance;
+                snow = QuickFind.SnowHandler;
                 AddToExclusionList();
             }
             this.layer = gameObject.layer;

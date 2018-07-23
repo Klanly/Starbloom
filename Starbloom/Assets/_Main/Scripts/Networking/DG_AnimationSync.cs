@@ -162,6 +162,7 @@ public class DG_AnimationSync : MonoBehaviour {
     public void SetMovementControlState(bool isTrue)
     {
         if (CharacterLink != QuickFind.NetworkSync.GetCharacterLinkByPlayerID(CharacterLink.PlayerID)) return;
+        if (!QuickFind.NetworkSync.ThisPlayerBelongsToMe(CharacterLink.PlayerID)) return;
         CharacterLink.EnablePlayerMovement(!isTrue);
         MidAnimation = isTrue;
     }

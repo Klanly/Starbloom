@@ -62,16 +62,14 @@ public static class QuickFind
     public static DG_PlayerCharacters Farm = null;
     public static DG_DebugSettings GameSettings = null;
     public static UserSettings UserSettings = null;
-    public static DG_LocalCoopMaster LocalCoopController = null;
-
 
 
     //InputController
-    public static Transform PlayerTrans = null;
     public static DG_PlayerInput InputController = null;
     public static DG_CharacterControllers CharacterManager = null;
     public static DG_InteractHandler InteractHandler = null;
     public static HotbarItemHandler ItemActivateableHandler = null;
+    public static DG_LocalCoopMaster LocalCoopController = null;
 
     //Cameras
     public static CameraLogic PlayerCam;
@@ -86,6 +84,7 @@ public static class QuickFind
 
     //GUI
     public static DG_GUIMainMenu MainMenuUI = null;
+    public static DG_PlayerSelectionScreen PlayerSelectionScreen = null;
     public static DG_GUI_FadeScreen FadeScreen = null;
     public static NA_DialogueGUIController DialogueGUIController = null;
     public static DG_TextPrintout TextPrintout = null;
@@ -143,6 +142,7 @@ public static class QuickFind
     public static DG_SceneTransition SceneTransitionHandler = null;
     public static DG_ClothingHairManager ClothingHairManager = null;
     public static DG_GameStartHandler GameStartHandler = null;
+    public static DG_SleepHandler SleepHandler = null;
 
     //AI
     public static DG_PathfindingGenerationHandler PathfindingGeneration = null;
@@ -212,6 +212,7 @@ public static class QuickFind
     public static FakeRainDropCollision RainDropHandler = null;
     public static DG_EnvironmentColorSync EnvironmentColorSync = null;
     public static GlobalSnowEffect.GlobalSnow SnowHandler = null;
+    public static AQUAS_Reflection WaterReflection = null;
 
 
 
@@ -247,15 +248,15 @@ public static class QuickFind
         Vector3 Lerped = new Vector3(xLerp, yLerp, zLerp);
         return Lerped;
     }
-    public static int GetNextValueInArray(int current, int ArrayLength, bool Add, bool CanLoop)
+    public static int GetValueInArrayLoop(int current, int ArrayLength, bool Add, bool CanLoop)
     {
         int Return = current;
         if(Add) { Return++; if (Return == ArrayLength) { if (CanLoop) Return = 0; else Return--; } }
         else { Return--; if (Return < 0) { if (CanLoop) Return = ArrayLength - 1; else Return++; } }
         return Return;
     }
-    public static void EnableCanvas(CanvasGroup C, bool isTrue)
-    { float value = 0; if (isTrue) value = 1; C.alpha = value; C.interactable = isTrue; C.blocksRaycasts = isTrue; }
+    public static void EnableCanvas(CanvasGroup C, bool isTrue, UnityEngine.UI.GraphicRaycaster Raycast)
+    { float value = 0; if (isTrue) value = 1; C.alpha = value; C.interactable = isTrue; C.blocksRaycasts = isTrue; if (Raycast != null) Raycast.enabled = isTrue; }
     public static int GetIfWithinBounds(int IncomingValue, int Min, int ArrayLength)
     {
         if (IncomingValue < Min) return Min;

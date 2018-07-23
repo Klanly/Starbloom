@@ -19,6 +19,7 @@ public class DG_PlayerCharacters : MonoBehaviour {
     [System.Serializable]
     public class PlayerCharacter
     {
+        public bool CharacterCreated;
         public string Name;
         public GenderValue CharacterGender;
 

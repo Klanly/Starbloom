@@ -7,6 +7,7 @@ using UnityEngine;
 	{
 		protected bool  supportHDRTextures = true;
 		protected bool  supportDX11 = false;
+    protected bool HasbeenChecked = false;
 		protected bool  isSupported = true;
 
 		protected Material CheckShaderAndCreateMaterial ( Shader s, Material m2Create)
@@ -65,7 +66,7 @@ using UnityEngine;
 
 		void OnEnable ()
 		{
-			isSupported = true;
+			isSupported = false;
 		}
 
 		protected bool CheckSupport ()
@@ -88,7 +89,9 @@ using UnityEngine;
 
 		protected bool CheckSupport (bool needDepth)
 		{
-			isSupported = true;
+        if (HasbeenChecked == true) return isSupported;
+        HasbeenChecked = true;
+        isSupported = true;
 			supportHDRTextures = SystemInfo.SupportsRenderTextureFormat(RenderTextureFormat.ARGBHalf);
 			supportDX11 = SystemInfo.graphicsShaderLevel >= 50 && SystemInfo.supportsComputeShaders;
 

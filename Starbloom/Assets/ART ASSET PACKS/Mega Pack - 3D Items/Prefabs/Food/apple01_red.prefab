@@ -113,12 +113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 027477bf64d11f046bd5b019919046fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Claimed: 0
-  AllowMagnetic: 0
   RandomizeRotationOnEnable: 1
-  DetectionMask:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &114654838534590930
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -130,10 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 538995c128d53fe48a7051ffbb220cf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ThisIsGrowthItem: 0
-  ContextID: 22
-  Type: 4
-  BreakValues: []
+  Type: 16
 --- !u!135 &135176526328714888
 SphereCollider:
   m_ObjectHideFlags: 1

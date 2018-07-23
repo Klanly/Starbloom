@@ -50,7 +50,7 @@ public class DG_MagnetAttraction : MonoBehaviour {
             if (MT.OwnerID == CharLink.PlayerID && QuickFind.WithinDistance(MT.Trans, AdjustedHeight, .05f))
             {
                 NetworkObject NO = QuickFind.NetworkObjectManager.ScanUpTree(MT.Trans);
-                QuickFind.NetworkSync.RemoveNetworkSceneObject(NO.transform.parent.GetComponent<NetworkScene>().SceneID, NO.NetworkObjectID);
+                QuickFind.NetworkSync.RemoveNetworkSceneObject(NO.Scene.SceneID, NO.NetworkObjectID);
                 MagnetObjects.Remove(MT);
             }
         }

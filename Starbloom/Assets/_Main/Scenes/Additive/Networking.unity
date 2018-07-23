@@ -1123,7 +1123,8 @@ MonoBehaviour:
   Month: 1
   Day: 1
   PlayerCharacters:
-  - Name: 
+  - CharacterCreated: 0
+    Name: 
     CharacterGender: 0
     Energies:
       CurrentEnergy: 1000
@@ -1358,242 +1359,8 @@ MonoBehaviour:
     CraftsDiscovered: 010000000100000001000000
     Acheivements:
       LargestFishCaught: 000000000000000000000000
-  - Name: 
-    CharacterGender: 0
-    Energies:
-      CurrentEnergy: 1000
-      MaxEnergy: 1000
-      CurrentHealth: 1000
-      MaxHealth: 1000
-    NonCombatSkillEXP:
-      Farming: 0
-      Mining: 0
-      Foraging: 0
-      Fishing: 0
-    Equipment:
-      EquippedClothing: 
-      RuckSackUnlockedSize: 12
-      RucksackSlots:
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 1
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 1
-        CurrentStackActive: 0
-        LowValue: 1
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 2
-        CurrentStackActive: 0
-        LowValue: 1
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 18
-        CurrentStackActive: 0
-        LowValue: 1
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 38
-        CurrentStackActive: 0
-        LowValue: 1
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-      - ContainedItem: 0
-        CurrentStackActive: 0
-        LowValue: 0
-        NormalValue: 0
-        HighValue: 0
-        MaximumValue: 0
-    CraftsDiscovered: 010000000100000001000000
-    Acheivements:
-      LargestFishCaught: 000000000000000000000000
-  - Name: 
+  - CharacterCreated: 0
+    Name: 
     CharacterGender: 0
     Energies:
       CurrentEnergy: 1000
@@ -1828,7 +1595,244 @@ MonoBehaviour:
     CraftsDiscovered: 010000000100000001000000
     Acheivements:
       LargestFishCaught: 000000000000000000000000
-  - Name: 
+  - CharacterCreated: 0
+    Name: 
+    CharacterGender: 0
+    Energies:
+      CurrentEnergy: 1000
+      MaxEnergy: 1000
+      CurrentHealth: 1000
+      MaxHealth: 1000
+    NonCombatSkillEXP:
+      Farming: 0
+      Mining: 0
+      Foraging: 0
+      Fishing: 0
+    Equipment:
+      EquippedClothing: 
+      RuckSackUnlockedSize: 12
+      RucksackSlots:
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 1
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 1
+        CurrentStackActive: 0
+        LowValue: 1
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 2
+        CurrentStackActive: 0
+        LowValue: 1
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 18
+        CurrentStackActive: 0
+        LowValue: 1
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 38
+        CurrentStackActive: 0
+        LowValue: 1
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+      - ContainedItem: 0
+        CurrentStackActive: 0
+        LowValue: 0
+        NormalValue: 0
+        HighValue: 0
+        MaximumValue: 0
+    CraftsDiscovered: 010000000100000001000000
+    Acheivements:
+      LargestFishCaught: 000000000000000000000000
+  - CharacterCreated: 0
+    Name: 
     CharacterGender: 0
     Energies:
       CurrentEnergy: 1000

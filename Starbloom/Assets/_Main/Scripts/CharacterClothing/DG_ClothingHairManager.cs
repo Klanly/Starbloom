@@ -239,28 +239,30 @@ public class DG_ClothingHairManager : MonoBehaviour {
 
     
 
-    public void PlayerJoined(DG_NetworkSync.Users U, bool Add)
+    public void PlayerJoined(DG_NetworkSync.Users U)
     {
         DG_PlayerCharacters.PlayerCharacter PC = QuickFind.Farm.PlayerCharacters[U.PlayerCharacterID];
         if (PC.Equipment.EquippedClothing.Count < 1) SetGameStartDefaultValues(U, PC.CharacterGender);
         else
         {
             for (int i = 0; i < PC.Equipment.EquippedClothing.Count; i++)
-                ClothingAdd(U.PlayerCharacterID, PC.Equipment.EquippedClothing[i], Add);
+                ClothingAdd(U.PlayerCharacterID, PC.Equipment.EquippedClothing[i], false);
         }
     }
 
     public void SetGameStartDefaultValues(DG_NetworkSync.Users U, DG_PlayerCharacters.GenderValue Gender)
     {
-       if (Gender == DG_PlayerCharacters.GenderValue.Male)
-       {
-           for (int i = 0; i < MaleDefault.Length; i++)
-                ClothingAdd(U.PlayerCharacterID, MaleDefault[i].ID, true);
-       }
-       else
-       {
-           for (int i = 0; i < FemaleDefault.Length; i++)
-                ClothingAdd(U.PlayerCharacterID, FemaleDefault[i].ID, true);
-       }
+        DG_PlayerCharacters.PlayerCharacter PC = QuickFind.Farm.PlayerCharacters[U.PlayerCharacterID];
+
+        if (Gender == DG_PlayerCharacters.GenderValue.Male)
+        {
+            for (int i = 0; i < MaleDefault.Length; i++)
+                PC.Equipment.EquippedClothing.Add(MaleDefault[i].ID);
+        }
+        else
+        {
+            for (int i = 0; i < FemaleDefault.Length; i++)
+                PC.Equipment.EquippedClothing.Add(FemaleDefault[i].ID);
+        }
     }
 }

@@ -14,18 +14,24 @@ public class DG_SystemMessageGUI : MonoBehaviour {
         public int value;
     }
 
-    [Header("Ref")]
-    public Transform MessageGrid = null;
+
+    [System.Serializable]
+    public class PlayerMessageGUI
+    {
+        [Header("Ref")]
+        public Transform MessageGrid = null;
+        [System.NonSerialized] public List<SystemMessageDisplay> DisplayGroup;
+    }
+
+    public PlayerMessageGUI[] MessageGUIs;
 
     [Header("Values")]
     public float MessageDisplayTime;
     public float FadeOutTime;
 
 
-    List<SystemMessageDisplay> DisplayGroup;
-
     [Button(ButtonSizes.Small)]
-    public void DebugButton(){ GenerateSystemMessage(Random.Range(5, 7)); }
+    public void DebugButton(){ GenerateSystemMessage(Random.Range(5, 7), QuickFind.NetworkSync.Player1PlayerCharacter); }
 
 
 
@@ -34,50 +40,65 @@ public class DG_SystemMessageGUI : MonoBehaviour {
     private void Awake()
     {
         QuickFind.SystemMessageGUI = this;
-        DisplayGroup = new List<SystemMessageDisplay>();
+        MessageGUIs[0].DisplayGroup = new List<SystemMessageDisplay>();
+        MessageGUIs[1].DisplayGroup = new List<SystemMessageDisplay>();
     }
 
     private void Start()
     {
         transform.localPosition = Vector3.zero;
-        MessageGrid.GetChild(0).gameObject.SetActive(false);
+
+        MessageGUIs[0].MessageGrid.GetChild(0).gameObject.SetActive(false);
+        MessageGUIs[1].MessageGrid.GetChild(0).gameObject.SetActive(false);
     }
 
     private void Update()
     {
-        if (DisplayGroup.Count > 0)
+        for (int iN = 0; iN < MessageGUIs.Length; iN++)
         {
-            float DeltaTime = Time.deltaTime;
-            for (int i = 0; i < DisplayGroup.Count; i++)
+            if (QuickFind.InputController.Players[iN].CharLink == null) continue;
+
+            PlayerMessageGUI PMG = MessageGUIs[iN];
+
+            if (PMG.DisplayGroup.Count > 0)
             {
-                SystemMessageDisplay SMD = DisplayGroup[i];
-                SMD.TimeRemaining -= DeltaTime;
-                if (SMD.TimeRemaining < 0)
+                float DeltaTime = Time.deltaTime;
+                for (int i = 0; i < PMG.DisplayGroup.Count; i++)
                 {
-                    SMD.Object.gameObject.SetActive(false);
-                    DisplayGroup.Remove(SMD);
+                    SystemMessageDisplay SMD = PMG.DisplayGroup[i];
+                    SMD.TimeRemaining -= DeltaTime;
+                    if (SMD.TimeRemaining < 0)
+                    {
+                        SMD.Object.gameObject.SetActive(false);
+                        PMG.DisplayGroup.Remove(SMD);
+                    }
+                    else
+                        UpdateSMDAlpha(SMD);
                 }
-                else
-                    UpdateSMDAlpha(SMD);
             }
+            else
+                this.enabled = false;
         }
-        else
-            this.enabled = false;
     }
 
 
 
 
-    public void GenerateSystemMessage(int ItemID)
+    public void GenerateSystemMessage(int ItemID, int PlayerID)
     {
         this.enabled = true;
 
         SystemMessageDisplay SMD = null;
 
-        for (int i = 0; i < DisplayGroup.Count; i++)
+        int ArrayNum = 0;
+        if (PlayerID == QuickFind.NetworkSync.Player2PlayerCharacter) ArrayNum = 1;
+
+        PlayerMessageGUI PMG = MessageGUIs[ArrayNum];
+
+        for (int i = 0; i < PMG.DisplayGroup.Count; i++)
         {
 
-            SystemMessageDisplay InnerSMD = DisplayGroup[i];
+            SystemMessageDisplay InnerSMD = PMG.DisplayGroup[i];
             if (InnerSMD.ItemID != ItemID) continue;
             else
             {
@@ -93,15 +114,15 @@ public class DG_SystemMessageGUI : MonoBehaviour {
             SMD.value = 1;
             SMD.ItemID = ItemID;
             SMD.TimeRemaining = MessageDisplayTime;
-            DisplayGroup.Add(SMD);
+            PMG.DisplayGroup.Add(SMD);
             Transform ObjectTransform;
-            if (MessageGrid.childCount < DisplayGroup.Count)
+            if (PMG.MessageGrid.childCount < PMG.DisplayGroup.Count)
             {
-                ObjectTransform = Instantiate(MessageGrid.GetChild(0));
-                ObjectTransform.SetParent(MessageGrid);
+                ObjectTransform = Instantiate(PMG.MessageGrid.GetChild(0));
+                ObjectTransform.SetParent(PMG.MessageGrid);
             }
             else
-                ObjectTransform = MessageGrid.GetChild(DisplayGroup.Count - 1);
+                ObjectTransform = PMG.MessageGrid.GetChild(PMG.DisplayGroup.Count - 1);
 
             SMD.Object = ObjectTransform.GetComponent<DG_SystemMessageObject>();        
         }

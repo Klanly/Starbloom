@@ -40,8 +40,8 @@ TagManager:
   - PlayerStrikeColider
   - 
   - CameraPostVolume
-  - Player1Lights
-  - Player2Lights
+  - Player1Only
+  - Player2Only
   - 
   m_SortingLayers:
   - name: Default
